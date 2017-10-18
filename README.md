@@ -97,17 +97,17 @@ Here's our code:
 
 ```javascript
 game.func.waitC(1, function() {
-		var text = new game.objects.textScreen({
-			x: 140,
-			y: 0,
-			colour: "#F00",
-			text: "Amazing!",
-			size: 50,
-			font: "Impact"
-		});
-		text.instance();
-		game.anim.transitionLinear(text, "y", 1, -100, 50);
+	var text = new game.objects.textScreen({
+		x: 140,
+		y: 0,
+		colour: "#F00",
+		text: "Amazing!",
+		size: 50,
+		font: "Impact"
 	});
+	text.instance();
+	game.anim.transitionLinear(text, "y", 1, -100, 50);
+});
 ```
 
 This is saying "Wait one second, then create a text object with text that says "Amazing!", and have it transition from the top into the screen".
