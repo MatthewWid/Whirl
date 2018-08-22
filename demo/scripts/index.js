@@ -10,11 +10,6 @@ let startInd = game.assetM.add([
 		name: "player",
 		type: "image",
 		src: "./img/playerSprite.png"
-	},
-	{
-		name: "giant_image",
-		type: "image",
-		src: "http://s1.1zoom.me/big3/189/Planets_solar_system_449630.jpg"
 	}
 ]);
 
@@ -29,5 +24,9 @@ game.viewportM.add("mainC", "#canvas", game.stageM.add("world"), {
 	cW: 500,
 	cH: 400
 });
+
+game.s.get("world").addChild(game.shape.circ("myCircle", 50, 50, 80));
+game.stop();
+game.s.get("world").getChildren()[0].render(game.vp.get("mainC").ctx);
 
 game.start();

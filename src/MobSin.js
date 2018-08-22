@@ -1,3 +1,13 @@
+// TODO:
+// Split code so that the following are in separate files:
+/*
+	stdObj
+	Asset Manager
+	Stage Manager
+	Viewport Manager
+	Shapes
+*/
+
 function MobSin() {
 	// The global index of all objects in the game
 	// Assigns unique IDs to objects
@@ -65,6 +75,8 @@ function MobSin() {
 	};
 	this.initObj = (that, cfg) => stdObj(that, cfg);
 
+	// Assets are imported reusable pieces of data for use in your game
+	// Assets can be, for example, images, spritesheets, audio, JSON data, etc.
 	this.assets = [];
 
 	function asset(name, type, src) {
@@ -80,7 +92,6 @@ function MobSin() {
 		this.type = type;
 		this.src = src;
 
-		console.log(this);
 		this.loaded = false;
 		this.event.create("didLoad");
 
@@ -220,12 +231,66 @@ function MobSin() {
 		}
 	};
 
+	function shape_rect(name, x, y, w, h, cfg = {}) {
+		stdObj(this, {
+			typeName: "MobSin.shape.rect",
+			eventSystem: true,
+			childSystem: true
+		}, [
+			"name",
+			"x",
+			"y",
+			"w",
+			"h"
+		]);
+
+		this.name = name;
+		this.x = x;
+		this.y = y;
+		this.w = w;
+		this.h = h;
+	}
+	function shape_circ(name, x, y, r, cfg = {}) {
+		stdObj(this, {
+			typeName: "MobSin.shape.circ",
+			eventSystem: true,
+			childSystem: true
+		}, [
+			"name",
+			"x",
+			"y",
+			"r"
+		]);
+
+		this.name = name;
+		this.x = x;
+		this.y = y;
+		this.r = r;
+
+		this.render = (ctx) => {
+			ctx.fillStyle = "rgb(255, 0, 0)";
+			ctx.beginPath();
+			ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+			ctx.fill();
+			ctx.closePath();
+		};
+	}
+	this.shape = {
+		rect: (name, x, y, w, h, cfg) => {
+			return new shape_rect(name, x, y, w, h, cfg);
+		},
+		circ: (name, x, y, r, cfg) => {
+			return new shape_circ(name, x, y, r, cfg);
+		}
+	};
+
 	// Give the game container standard objects properties
 	stdObj(this, {
 		typeName: "MobSin.gameContainer",
 		eventSystem: true
 	});
 
+	// TODO: Put into init() method
 	// Create events for standard game events
 	this.event.create("willUpdate"); // Before any updates are run
 	this.event.create("didUpdate"); // After updates are run
@@ -250,7 +315,7 @@ function MobSin() {
 	let update = () => {
 		this.event.invoke("willUpdate");
 
-		// Run physics, collisions, animations, renders, etc.
+		// Run physics, collisions, animations, tickers, timers,s renders, etc.
 		render();
 
 		this.event.invoke("didUpdate");
