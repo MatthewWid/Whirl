@@ -33,7 +33,7 @@ html {
   width: 500px;
   margin: 0 auto; }
   .container #canvas {
-    margin: 20px;
+    margin: 20px 0;
     box-shadow: 0 0 0 1px #000; }
 
 /*# sourceMappingURL=index.css.map */
