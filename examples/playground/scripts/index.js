@@ -1,5 +1,9 @@
-let ms = MobSin;
-
 let game = new MobSin.game();
 
-// console.log(game.assetManager);
+game.assetManager.add([
+	{
+		name: "player",
+		type: "image",
+		src: "./img/playerSprite.png"
+	}
+]);

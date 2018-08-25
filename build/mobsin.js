@@ -5,25 +5,74 @@
 
 let MobSin = {
 	game: require("./game"), // Game instance
+	eventSystem: require("./eventSystem"),
+	childSystem: require("./childSystem"),
 	shapes: require("./shapes"), // Shapes and geometry
+	text: require("./text") // Advanced text
 };
+MobSin.game.container = MobSin;
 
 module.exports = MobSin;
 global.MobSin = MobSin;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./game":3,"./shapes":4}],2:[function(require,module,exports){
+},{"./childSystem":2,"./eventSystem":3,"./game":6,"./shapes":7,"./text":8}],2:[function(require,module,exports){
+module.exports = () => {
+	return "childSystem -> index.js";
+};
+},{}],3:[function(require,module,exports){
+module.exports = (that) => {
+	that.events = {};
+
+	that.events = that.e = {
+		on: (name, func) => {
+			if (that.events[name]) {
+				that.events[name].push(func);
+			} else {
+				that.events[name] = [func];
+			}
+		},
+		emit: (name, data) => {
+			if (that.events[name]) {
+				for (let i = 0, n = that.events[name].length; i < n; i++) {
+					that.events[name][i](data);
+				}
+			}
+			return false;
+		}
+	};
+};
+},{}],4:[function(require,module,exports){
+// MobSin.game.assetManager
+
 module.exports = (_game) => {
 	function Asset(name, type, src) {
-		// Default types
+		_game.object.init(this, [
+			"eventSystem"
+		]);
 
 		this.name = name;
 		this.type = type;
 		this.src = src;
 
-		this.loaded = false;
+		this.data._loaded = false;
+
+		switch (this.type) {
+			case "image": {
+				this.img = new Image();
+				this.img.addEventListener("load", () => {
+					console.log("Loaded image: " + this.name);
+				});
+				this.img.src = this.src;
+				break;
+			}
+			// audio
+			// json
+			// rawtext
+		}
 	}
 
 	_game.assets = [];
+
 	_game.assetManager = {
 		add: (assetList) => {
 			if (typeof assetList == "object" && !Array.isArray(assetList)) {
@@ -36,23 +85,67 @@ module.exports = (_game) => {
 					_game.assetManager.add(assetList[i]);
 				}
 			}
+		},
+		get: (name) => {
+			return _game.assets.find((e) => e.name == name);
+		},
+		getAll: () => {
+			return _game.assets;
 		}
 	};
-	_game.a = _game.assetManager;
+	_game.a = _game.assetManager; // ALias to game.a
 };
-},{}],3:[function(require,module,exports){
-function Game() {
-	let globalIndex = 0;
+},{}],5:[function(require,module,exports){
+// MobSin.game.gameObject
 
+module.exports = (_game) => {
+	_game.globalIndex = 0;
+
+	_game.object = {
+		init: (that, presets) => {
+			that._id = _game.globalIndex++;
+			that._type = "";
+
+			that.data = {};
+
+			if (presets && presets.length > 0) {
+				if (presets.indexOf("eventSystem") != -1 || presets.indexOf("eSys") != -1) {
+					require("../../eventSystem")(that);
+				}
+				if (presets.indexOf("childSystem") != -1 || presets.indexOf("cSys") != -1) {
+					require("../../eventSystem")(that);
+				}
+			}
+		},
+		nextID: () => {
+			return _game.globalIndex++;
+		}
+	};
+	_game.o = _game.object;
+};
+},{"../../eventSystem":3}],6:[function(require,module,exports){
+function Game() {
 	this.running = false;
 	this.frameCount = 0;
 
+	// game.object               | game.o
+	require("./gameObject")(this);
+
+	// game.assetManager         | game.a
 	require("./assetManager")(this);
+
+	// game.viewportManager      | game.v
+
+	// game.pluginManager        | game.p
 }
 
 module.exports = Game;
-},{"./assetManager":2}],4:[function(require,module,exports){
+},{"./assetManager":4,"./gameObject":5}],7:[function(require,module,exports){
 module.exports = () => {
 	return "shapes -> index.js";
+};
+},{}],8:[function(require,module,exports){
+module.exports = () => {
+	return "text -> index.js";
 };
 },{}]},{},[1]);
