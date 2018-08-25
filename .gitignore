@@ -1,3 +1,4 @@
 node_modules
-./demo/styles/.sass-cache
+examples/*/styles/.sass-cache
+build/
 changelog.txt
