@@ -11,6 +11,8 @@
 	Shapes
 */
 
+console.log("WARNING: This version of MobSin is deprecated. It is recommended you upgrade to the lastest version of the engine ot be without worry of bugs, mistakes or unintended behaviour.");
+
 function MobSin() {
 	// The global index of all objects in the game
 	// Assigns unique IDs to objects
