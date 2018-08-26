@@ -1,6 +1,6 @@
 <p align="center"><img src="./doc/logo/logo_text.png" alt="drawing" width="50%" /></p>
 
-<p align="center"><b>MobSin is a lightweight Javascript game engine focused on simplicity and ease-of-use<b></p>
+<p align="center"><b>MobSin is a lightweight Javascript game engine focused on simplicity and ease-of-use</b></p>
 
 <p align="center"><sup><i>This project is still a work in progress and has not yet reached completion.</i></sup></p>
 
