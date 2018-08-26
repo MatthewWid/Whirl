@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="640"
+   height="480"
+   version="1.1"
+   id="svg17"
+   sodipodi:docname="logo.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <metadata
+     id="metadata21">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     id="namedview19"
+     showgrid="false"
+     inkscape:zoom="1.2551145"
+     inkscape:cx="203.10083"
+     inkscape:cy="257.45365"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g15" />
+  <title
+     id="title2">flame</title>
+  <defs
+     id="defs9">
+    <linearGradient
+       y2="1"
+       x2="1"
+       y1="0"
+       x1="0"
+       id="svg_1">
+      <stop
+         stop-color="#ff0000"
+         offset="0"
+         id="stop4"
+         style="stop-color:#0000ff;stop-opacity:0.94117647" />
+      <stop
+         stop-color="#ffff00"
+         offset="1"
+         id="stop6"
+         style="stop-color:#00ffff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <g
+     id="g15">
+    <title
+       id="title11">Layer 1</title>
+    <g
+       id="layer1">
+      <path
+         fill="url(#svg_1)"
+         fill-rule="evenodd"
+         stroke="#000000"
+         stroke-width="0"
+         stroke-linecap="square"
+         stroke-miterlimit="4"
+         id="path4355"
+         d="m287.937775,22.070196c-27.377869,182.130671 -114.228104,183.790857 -123.750809,277.938379c-9.56546,94.569733 92.630905,152.912292 109.464767,156.875671c0,0 -48.008652,-52.273834 -43.494751,-96.901398c3.125809,-30.903076 16.63353,-42.089905 42.129913,-75.910339c18.324799,-24.307465 39.018707,-57.662552 54.231873,-106.925705c54.139465,44.630371 77.356018,70.599136 88.172424,124.489609c10.816528,53.890533 -33.849426,150.792084 -33.849426,150.792084c161.554169,-114.660645 120.166748,-289.697418 -92.903992,-430.358301z" />
+    </g>
+  </g>
+</svg>

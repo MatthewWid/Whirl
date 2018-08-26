@@ -1,6 +1,9 @@
+// MobSin.game
+
 function Game() {
 	this.running = false;
 	this.frameCount = 0;
+	this.frameRate = 60;
 
 	// game.object               | game.o
 	require("./gameObject")(this);
@@ -9,6 +12,7 @@ function Game() {
 	require("./assetManager")(this);
 
 	// game.viewportManager      | game.v
+	require("./viewportManager")(this);
 
 	// game.pluginManager        | game.p
 }

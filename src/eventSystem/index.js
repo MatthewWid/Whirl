@@ -1,9 +1,10 @@
 module.exports = (that) => {
 	that.events = {};
 
-	that.events = that.e = {
+	that.event = that.e = {
 		on: (name, func) => {
 			if (that.events[name]) {
+				func._id = that.events.length;
 				that.events[name].push(func);
 			} else {
 				that.events[name] = [func];
@@ -16,6 +17,9 @@ module.exports = (that) => {
 				}
 			}
 			return false;
+		},
+		remove: (name) => {
+			delete that.events[name];
 		}
 	};
 };

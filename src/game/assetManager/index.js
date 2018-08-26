@@ -2,16 +2,16 @@
 
 module.exports = (_game) => {
 	function Asset(name, type, src) {
-		_game.object.init(this, [
-			"eventSystem"
-		]);
+		_game.object.init(this, "MobSin.asset", ["eventSystem"]);
 
+		// Mandatory presets
 		this.name = name;
 		this.type = type;
 		this.src = src;
 
 		this.data._loaded = false;
 
+		// Attach data and properties based on asset type
 		switch (this.type) {
 			case "image": {
 				this.img = new Image();
@@ -30,6 +30,7 @@ module.exports = (_game) => {
 	_game.assets = [];
 
 	_game.assetManager = {
+		// Provide either an object or an array of objects
 		add: (assetList) => {
 			if (typeof assetList == "object" && !Array.isArray(assetList)) {
 				let newInd = _game.assets.push(
@@ -49,5 +50,5 @@ module.exports = (_game) => {
 			return _game.assets;
 		}
 	};
-	_game.a = _game.assetManager; // ALias to game.a
+	_game.a = _game.assetManager; // Alias to game.a
 };
