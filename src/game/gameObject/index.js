@@ -13,10 +13,10 @@ module.exports = (_game) => {
 			that.data = {};
 
 			if (systems && systems.length > 0) {
-				if (systems.indexOf("eventSystem") != -1 || presets.indexOf("eSys") != -1) {
+				if (systems.indexOf("eventSystem") != -1 || systems.indexOf("eSys") != -1) {
 					require("../../eventSystem")(that);
 				}
-				if (systems.indexOf("childSystem") != -1 || presets.indexOf("cSys") != -1) {
+				if (systems.indexOf("childSystem") != -1 || systems.indexOf("cSys") != -1) {
 					require("../../eventSystem")(that);
 				}
 			}

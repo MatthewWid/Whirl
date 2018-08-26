@@ -15,6 +15,9 @@ function Game() {
 	require("./viewportManager")(this);
 
 	// game.pluginManager        | game.p
+
+	let updater = require("./updater").bind(this);
+	let renderer = require("./renderer").bind(this);
 }
 
 module.exports = Game;
