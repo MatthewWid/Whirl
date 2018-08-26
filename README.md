@@ -17,6 +17,6 @@ Once compiled, you can simply include `mobsin.js` into your HTML page with a scr
 
     <script src="mobsin.js></script>
     
-And from there you are free to use the powerful features offered by **MobSin**. Happy coding!
+From there you are free to use the powerful features offered by **MobSin**. Happy coding!
 
 <sup>\* <i>You may need to globally install Browserify and Watchify to be able to compile successfully.</i></sup>
