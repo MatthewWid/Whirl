@@ -1,3 +1,5 @@
+// MobSin.eventSystem
+
 module.exports = (that) => {
 	that.events = {};
 

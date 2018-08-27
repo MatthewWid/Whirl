@@ -1,5 +1,10 @@
 // MobSin.shapes.rectangle
 
-module.exports = () => {
-	"rectangle -> shapes";
-};
+function Rectangle(x, y, w, h) {
+	this.x = x;
+	this.y = y;
+	this.w = w;
+	this.h = h;
+}
+
+module.exports = Rectangle;

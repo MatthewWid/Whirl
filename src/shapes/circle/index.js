@@ -1,5 +1,9 @@
 // MobSin.shapes.circle
 
-module.exports = () => {
-	return "circle -> shapes";
-};
+function Circle(x, y, r) {
+	this.x = x;
+	this.y = y;
+	this.r = r;
+}
+
+module.exports = Circle;
