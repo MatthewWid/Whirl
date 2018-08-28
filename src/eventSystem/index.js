@@ -1,27 +1,27 @@
 // MobSin.eventSystem
 
-module.exports = (that) => {
-	that.events = {};
+module.exports = (_obj) => {
+	_obj.events = {};
 
-	that.event = that.e = {
+	_obj.event = _obj.e = {
 		on: (name, func) => {
-			if (that.events[name]) {
-				func._id = that.events.length;
-				that.events[name].push(func);
+			if (_obj.events[name]) {
+				func._id = _obj.events.length;
+				_obj.events[name].push(func);
 			} else {
-				that.events[name] = [func];
+				_obj.events[name] = [func];
 			}
 		},
 		emit: (name, data) => {
-			if (that.events[name]) {
-				for (let i = 0, n = that.events[name].length; i < n; i++) {
-					that.events[name][i](data);
+			if (_obj.events[name]) {
+				for (let i = 0, n = _obj.events[name].length; i < n; i++) {
+					_obj.events[name][i](data);
 				}
 			}
 			return false;
 		},
 		remove: (name) => {
-			delete that.events[name];
+			delete _obj.events[name];
 		}
 	};
 };

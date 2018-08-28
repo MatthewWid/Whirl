@@ -22,6 +22,8 @@ game.assetManager.add([
 	});
 });
 
+let myCont = new ms.container(game);
+
 let myVp = game.viewportManager.add("vp", "#canvas", undefined, {
 	cW: 400,
 	cH: 400

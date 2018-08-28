@@ -17,9 +17,10 @@ module.exports = (_game) => {
 					require("../../eventSystem")(that);
 				}
 				if (systems.indexOf("childSystem") != -1 || systems.indexOf("cSys") != -1) {
-					require("../../eventSystem")(that);
+					require("../../childSystem")(that);
 				}
 			}
+			return that;
 		},
 		// Generate a new unique ID for a game object
 		nextID: () => {
