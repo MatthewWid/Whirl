@@ -6,26 +6,35 @@ module.exports = (_obj) => {
 	_obj.child = _obj.c = {
 		add: (newChild) => {
 			if (typeof newChild == "object" && !Array.isArray(newChild)) {
-				let newInd = _obj.children.push(
-					newChild
-				) - 1;
-				return _obj.children[newInd];
+				_obj.children.push(newChild);
 			} else if (Array.isArray(newChild)) {
-				console.log("ADDING NEW ARRAY");
-				let newChildrenArr = [];
 				for (let i = 0, n = newChild.length; i < n; i++) {
-					newChildrenArr.push(
-						_obj.child.add(newChild[i])
-					);
+					_obj.child.add(newChild[i]);
 				}
-				return newChildrenArr;
 			}
+			return _obj;
 		},
+		// Get specific child based on child name
 		get: (name) => {
 			return _obj.children.find((e) => e.name == name);
 		},
+		// Get immediate children of object
 		getAll: () => {
 			return _obj.children;
+		},
+		// Get all children, including children of children, with recursion
+		getAllDeep: (returnedChildren = []) => {
+			// Get children from children
+			for (let i = 0, n = _obj.children.length; i < n; i++) {
+				_obj.children[i].child.getAllDeep(returnedChildren);
+			}
+
+			// Push direct children to returned objects array
+			for (let i = 0, n = _obj.children.length; i < n; i++) {
+				returnedChildren.push(_obj.children[i]);
+			}
+
+			return returnedChildren;
 		}
 	};
 };

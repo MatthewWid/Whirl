@@ -1,6 +1,7 @@
 // MobSin.shapes.circle
 
-function Circle(x, y, r) {
+function Circle(name, x, y, r) {
+	this.name = name;
 	this.x = x;
 	this.y = y;
 	this.r = r;
