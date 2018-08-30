@@ -1,12 +1,9 @@
 // MobSin.game
 
 function Game() {
-	this.running = false;
-	this.frameCount = 0;
-	this.frameRate = 60;
-
 	// game.object               | game.o
 	require("./gameObject")(this);
+	this.object.init(this, "MobSin.game", ["eventSystem"]);
 
 	// game.assetManager         | game.a
 	require("./assetManager")(this);
@@ -16,8 +13,7 @@ function Game() {
 
 	// game.pluginManager        | game.p
 
-	let updater = require("./updater").bind(this);
-	let renderer = require("./renderer").bind(this);
+	let updater = require("./updater")(this);
 }
 
 module.exports = Game;

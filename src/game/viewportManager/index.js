@@ -17,14 +17,15 @@ module.exports = (_game) => {
 		this.renderTo(canvas);
 
 		// Optional presets with defaults
-		this.c.width = presets.cW ? presets.cW : this.c.width;
-		this.c.height = presets.cH ? presets.cH : this.c.height;
-		this.renderable = presets.renderable ? presets.renderable : true;
-		this.clear = presets.clear ? presets.clear : true;
-		this.x = presets.x ? presets.x : 0;
-		this.y = presets.y ? presets.y : 0;
-		this.w = presets.w ? presets.w : this.c.width;
-		this.h = presets.h ? presets.h : this.c.height;
+		this.c.width = presets.cW || this.c.width;
+		this.c.height = presets.cH || this.c.height;
+		this.renderable = presets.renderable || true;
+		this.clear = presets.clear || true;
+		this.x = presets.x || 0;
+		this.y = presets.y || 0;
+		this.w = presets.w || this.c.width;
+		this.h = presets.h || this.c.height;
+		this.bg = presets.bg || "rgba(0, 0, 0, 0)";
 	}
 
 	_game.viewports = [];
