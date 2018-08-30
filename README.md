@@ -6,13 +6,13 @@
 
 # Features
 
-**MobSin**'s aim is to allow you to to quickly and easily create games in the browser; allowing you to easily create, extend and import game objects and plugins, making its functionality also highly extendable outside of its core features.
+**MobSin**'s aim is to allow you to to quickly and easily create games in the browser; allowing you to create, extend and import game objects and plugins, making its functionality highly extendable outside of its many already included core features.
 
 Some features offered by the **MobSin** game engine are:
 
 * A **dynamic custom events system** that allows for the creation and broadcasting of events across game objects.
 * A **child-parent tree architecture** of game objects that allows you to easily organise your game world into a simple hierarchy.
-* A **state-like world system** that makes it easy to load, unload and switch your scene and level instantly.
+* A **state-like world system** that makes it easy to load, unload and switch your scene or level instantly.
 * A **modularised viewport manager** that enables you to create multiple game viewports and screens *without* the need for multiple canvasses and extra HTML elements.
 * **Standardised object importation methods** that make it easy to create your own custom plugins and special game objects that can be imported and used in your games.
 
