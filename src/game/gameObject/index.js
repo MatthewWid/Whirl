@@ -8,7 +8,9 @@ module.exports = (_game) => {
 		// Objects can optionally inherit the event system and child system
 		init: (that, typeName, systems) => {
 			that._id = _game.globalIndex++;
-			that._type = typeName;
+			if (!that._type) {
+				that._type = typeName;
+			}
 
 			that.data = {};
 
