@@ -6,6 +6,7 @@ let MobSin = {
 	eventSystem: require("./eventSystem"), // Custom events
 	childSystem: require("./childSystem"), // Tree of parent-children system
 	math: require("./math"), // Math modules
+	util: require("./util"), // Utility functions
 	shapes: require("./shapes"), // Shapes and geometry
 	text: require("./text"), // Advanced text
 	container: require("./container") // Generic game container object

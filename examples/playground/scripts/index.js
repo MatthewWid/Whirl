@@ -1,4 +1,4 @@
-document.getElementsByTagName("html")[0].style.backgroundColor = "#EEE";
+// document.getElementsByTagName("html")[0].style.backgroundColor = "#EEE";
 
 let ms = MobSin;
 
@@ -10,10 +10,31 @@ let myVp = game.viewportManager.add("vp", "#canvas", undefined, {
 	bg: "rgb(255, 0, 0)"
 });
 
+let v = game.viewportManager.get("vp");
+
+game.event.on("didUpdate", (data) => {
+	c.r = ms.math.stepTo(c.r, c.rT, c.step);
+	c.g = ms.math.stepTo(c.g, c.gT, c.step);
+	c.b = ms.math.stepTo(c.b, c.bT, c.step);
+
+	if (
+		ms.math.between(c.rT, c.r, c.rT, 3) &&
+		ms.math.between(c.gT, c.g, c.gT, 3) &&
+		ms.math.between(c.bT, c.b, c.bT, 3)
+	) {
+		setNewCol();
+	}
+});
+
+game.event.on("willRender", () => {
+	v.bg = `rgb(${c.r}, ${c.g}, ${c.b})`;
+});
+
+// Set a new target colour
 function setNewCol() {
-	c.rT = Math.floor(Math.random() * 255);
-	c.gT = Math.floor(Math.random() * 255);
-	c.bT = Math.floor(Math.random() * 255);
+	c.rT = ms.math.random(255);
+	c.gT = ms.math.random(255);
+	c.bT = ms.math.random(255);
 }
 
 let c = {
@@ -23,30 +44,9 @@ let c = {
 	rT: 0,
 	gT: 0,
 	bT: 0,
-	step: .1
+	step: 1
 };
 setNewCol();
-
-let v = game.viewportManager.get("vp");
-
-game.event.on("didUpdate", (data) => {
-
-	c.r = ms.math.lerp(c.r, c.rT, c.step);
-	c.g = ms.math.lerp(c.g, c.gT, c.step);
-	c.b = ms.math.lerp(c.b, c.bT, c.step);
-
-	if (
-		ms.math.between(c.rT - 1, c.r, c.rT + 1) &&
-		ms.math.between(c.gT - 1, c.g, c.gT + 1) &&
-		ms.math.between(c.bT - 1, c.b, c.bT + 1)
-	) {
-		setNewCol();
-	}
-});
-
-game.event.on("willRender", () => {
-	v.bg = `rgb(${c.r}, ${c.g}, ${c.b})`;
-});
 
 let debugText = {
 	padLeft: 20,
