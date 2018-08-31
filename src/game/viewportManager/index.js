@@ -25,7 +25,20 @@ module.exports = (_game) => {
 		this.y = presets.y || 0;
 		this.w = presets.w || this.c.width;
 		this.h = presets.h || this.c.height;
-		this.bg = presets.bg || "rgba(0, 0, 0, 0)";
+		this.clear = presets.clear || true;
+		this.bg = presets.bg || null;
+
+		this.render = () => {
+			if (this.clear) {
+				this.ctx.clearRect(this.x, this.y, this.w, this.h);
+			}
+			if (this.bg) {
+				this.ctx.fillStyle = this.bg;
+				this.ctx.fillRect(this.x, this.y, this.w, this.h);
+			}
+
+			// Render all activeStage children
+		};
 	}
 
 	_game.viewports = [];

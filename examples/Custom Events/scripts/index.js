@@ -48,7 +48,25 @@ mycont.event.emit("myRepeatingEvent");
 mycont.event.emit("mySpecialEvent");
 mycont.event.emit("myRepeatingEvent");
 
-let myVp = game.viewportManager.add("vp", "#canvas", undefined, {
-	cW: 400,
-	cH: 400
+// When the game starts store the time it started
+game.event.on("willStart", () => {
+	startTime = Date.now();
+	console.log("Game started");
 });
+
+// When the game ends calculate the time between it starting and finishing
+game.event.on("willStop", () => {
+	let expectStop = ((60 * 5 / 60) * 1000);
+	let now = Date.now();
+	console.log(`Stopped after: ${now - startTime}ms\nExpected stop: ${expectStop}ms\nDifference: ${(now - startTime) - expectStop}ms`);
+});
+
+// On each update check if 180 frames have passed (Approx. three seconds)
+// If so, stop the game
+game.event.on("willUpdate", (data) => {
+	if (data.frameCount >= 60 * 5) {
+		game.stop();
+	}
+});
+
+game.start();

@@ -1,5 +1,5 @@
 // MobSin.math.lerp
 
 module.exports = (start, end, through) => {
-	return (start - end) * through + start;
+	return (1 - through) * start + through * end;
 };

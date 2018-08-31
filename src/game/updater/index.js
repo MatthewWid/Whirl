@@ -1,7 +1,19 @@
 // MobSin.game.updater
 
+// Main game loop
 function update() {
+	this.event.emit("willUpdate", {
+		frameCount: this.frameCount
+	});
+
+	// Object updates, physics, culling, calculations
+
 	require("./renderer").bind(this)();
+
+	this.frameCount++;
+	this.event.emit("didUpdate", {
+		frameCount: this.frameCount
+	});
 	if (this.running) {
 		requestAnimationFrame(update.bind(this));
 	}
@@ -9,13 +21,19 @@ function update() {
 
 // Start the game loop
 function start() {
-	this.running = true;
-	requestAnimationFrame(update.bind(this));
+	if (!this.running) {
+		this.running = true;
+		this.event.emit("willStart");
+		requestAnimationFrame(update.bind(this));
+	}
 }
 
 // Stop the game loop
 function stop() {
-	this.running = false;
+	if (this.running) {
+		this.running = false;
+		this.event.emit("willStop");
+	}
 }
 
 module.exports = (_game, presets = {}) => {
