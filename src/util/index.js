@@ -1,8 +1,9 @@
 // MobSin.util
 
 module.exports = {
-	randRgb: require("./randRGB"),
-	randRgba: require("./randRGBA"),
-	randHSL: require("randHSL")
+	randRGB: require("./randRGB"),
+	randHSL: require("./randHSL"),
+	randArr: require("./randArr"),
+	shuffleArr: require("./shuffleArr")
 	// Formatted date + time, date, time
-}
+};
