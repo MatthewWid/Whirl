@@ -8,6 +8,9 @@ function Game() {
 	// game.assetManager         | game.a
 	require("./assetManager")(this);
 
+	// game.stageManager         | game.s
+	require("./stageManager")(this);
+
 	// game.viewportManager      | game.v
 	require("./viewportManager")(this);
 
