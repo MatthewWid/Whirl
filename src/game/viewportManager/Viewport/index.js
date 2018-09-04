@@ -38,6 +38,8 @@ function Viewport(_game, name, canvas, activeStage, presets = {}) {
 
 		// Render all activeStage children
 	};
+
+	require("./cameraManager")(this);
 }
 
 module.exports = Viewport;
