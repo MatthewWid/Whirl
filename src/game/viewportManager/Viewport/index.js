@@ -1,5 +1,7 @@
 // MobSin.game.viewportManager.Viewport
 
+let Rectangle = require("../../../shapes/Rectangle");
+
 function Viewport(_game, name, canvas, activeStage, presets = {}) {
 	_game.object.init(this, "MobSin.viewport");
 
@@ -22,7 +24,7 @@ function Viewport(_game, name, canvas, activeStage, presets = {}) {
 	this.clear = presets.clear || true;
 
 	// The x, y and width and height of this viewport
-	this.bounds = new _game.CONTAINER.shapes.Rectangle(
+	this.bounds = new Rectangle(
 		presets.x || 0,
 		presets.y || 0,
 		presets.w || this.c.width,

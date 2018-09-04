@@ -1,5 +1,7 @@
 // MobSin.game.stageManager.Stage
 
+let Rectangle = require("../../../shapes/Rectangle");
+
 function Stage(_game, name, presets = {}) {
 	_game.object.init(this, "MobSin.stage", ["childSystem"]);
 
@@ -7,7 +9,7 @@ function Stage(_game, name, presets = {}) {
 	this.renderable = presets.renderable || true;
 	
 	// Boundaries of the world
-	this.bounds = new _game.CONTAINER.shapes.Rectangle(
+	this.bounds = new Rectangle(
 		presets.x || 0,
 		presets.y || 0,
 		presets.w || 0,
