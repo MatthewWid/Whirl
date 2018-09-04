@@ -1,7 +1,6 @@
 // MobSin.shapes.rectangle
 
-function Rectangle(name, x, y, w, h) {
-	this.name = name;
+function Rectangle(x, y, w, h) {
 	this.x = x;
 	this.y = y;
 	this.w = w;

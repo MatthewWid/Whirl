@@ -1,10 +1,10 @@
 // MobSin.shapes
 
 let shapes = {
-	rectangle: require("./rectangle"),
-	circle: require("./circle")
+	Rectangle: require("./Rectangle"),
+	Circle: require("./Circle"),
+	Line: require("./Line"),
+	Point: require("./Point")
 };
-shapes.rect = shapes.Rectangle;
-shapes.circ = shapes.Circle;
 
 module.exports = shapes;

@@ -1,6 +1,10 @@
 // MobSin.game
 
+let CONTAINER;
+
 function Game() {
+	this.CONTAINER = CONTAINER;
+
 	// game.object               | game.o
 	require("./gameObject")(this);
 	this.object.init(this, "MobSin.game", ["eventSystem"]);
@@ -19,4 +23,8 @@ function Game() {
 	let updater = require("./updater")(this);
 }
 
-module.exports = Game;
+module.exports = (_container) => {
+	CONTAINER = _container;
+
+	return Game;
+};

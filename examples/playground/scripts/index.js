@@ -1,4 +1,4 @@
-document.getElementsByTagName("html")[0].style.backgroundColor = "#EEE";
+// document.getElementsByTagName("html")[0].style.backgroundColor = "#EEE";
 
 let ms = MobSin;
 

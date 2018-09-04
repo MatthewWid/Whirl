@@ -20,23 +20,24 @@ function Viewport(_game, name, canvas, activeStage, presets = {}) {
 	this.c.height = presets.cH || this.c.height;
 	this.renderable = presets.renderable || true;
 	this.clear = presets.clear || true;
-	this.x = presets.x || 0;
-	this.y = presets.y || 0;
-	this.w = presets.w || this.c.width;
-	this.h = presets.h || this.c.height;
-	this.clear = presets.clear || true;
+
+	// The x, y and width and height of this viewport
+	this.bounds = new _game.CONTAINER.shapes.Rectangle(
+		presets.x || 0,
+		presets.y || 0,
+		presets.w || this.c.width,
+		presets.h || this.c.height
+	);
 	this.bg = presets.bg || null;
 
 	this.render = () => {
 		if (this.clear) {
-			this.ctx.clearRect(this.x, this.y, this.w, this.h);
+			this.ctx.clearRect(this.bounds.x, this.bounds.y, this.bounds.w, this.bounds.h);
 		}
 		if (this.bg) {
 			this.ctx.fillStyle = this.bg;
-			this.ctx.fillRect(this.x, this.y, this.w, this.h);
+			this.ctx.fillRect(this.bounds.x, this.bounds.y, this.bounds.w, this.bounds.h);
 		}
-
-		// Render all activeStage children
 	};
 
 	require("./cameraManager")(this);
