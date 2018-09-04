@@ -35,8 +35,8 @@ Simply clone the repository, build the source ([See the "Build" section](#build)
 
 Once compiled, you can simply include `mobsin.js` into your HTML page with a script tag:
 
-    <script src="mobsin.js></script>
+    <script src="mobsin.js"></script>
     
-From there you are free to use the powerful features offered by **MobSin**. Happy coding!
+From there you are free to use the plethora of features offered by **MobSin**. Happy coding!
 
 <sup>\* <i>You may need to globally install Browserify and Watchify to be able to compile successfully.</i></sup>
