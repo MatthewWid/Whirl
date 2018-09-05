@@ -2,7 +2,11 @@
 
 let Rectangle = require("../../../shapes/Rectangle");
 
-function Viewport(_game, name, canvas, activeStage, presets = {}) {
+// A viewport is a screen that will be rendered to (A canvas)
+// Takes a selector to find an HTML canvas
+// Takes a game stage that contains objects to be rendered
+// Takes a camera that culls and renders the objects to viewport
+function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	_game.object.init(this, "MobSin.viewport");
 
 	// Mandatory presets
@@ -11,11 +15,11 @@ function Viewport(_game, name, canvas, activeStage, presets = {}) {
 
 	// Set what canvas this viewport renders to
 	// Changing the rendering canvas should be done with this method, not directly setting this.c or this.ctx
-	this.renderTo = (newCanvas) => {
+	this.setCanvas = (newCanvas) => {
 		this.c = document.querySelector(newCanvas);
 		this.ctx = this.c.getContext("2d");
 	};
-	this.renderTo(canvas);
+	this.setCanvas(canvas);
 
 	// Optional presets with defaults
 	this.c.width = presets.cW || this.c.width;
@@ -30,6 +34,7 @@ function Viewport(_game, name, canvas, activeStage, presets = {}) {
 		presets.w || this.c.width,
 		presets.h || this.c.height
 	);
+	// Used for debugging - will be removed later
 	this.bg = presets.bg || null;
 
 	this.render = () => {
@@ -41,8 +46,6 @@ function Viewport(_game, name, canvas, activeStage, presets = {}) {
 			this.ctx.fillRect(this.bounds.x, this.bounds.y, this.bounds.w, this.bounds.h);
 		}
 	};
-
-	require("./cameraManager")(this);
 }
 
 module.exports = Viewport;

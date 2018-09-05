@@ -1,11 +1,7 @@
-// MobSin.generic
+// MobSin.Container
 
-function Container(_game, name) {
+function Container(_game) {
 	_game.object.init(this, "MobSin.container", ["childSystem"]);
-
-	this.name = name;
-
-	return this;
 }
 
 module.exports = Container;

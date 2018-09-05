@@ -9,6 +9,7 @@ let MobSin = {
 	util: require("./util"), // Utility functions
 	shapes: require("./shapes"), // Shapes and geometry
 	text: require("./text"), // Advanced text
+	Camera: require("./Camera"), // Camera object
 	container: require("./container"), // Generic game container object
 };
 
