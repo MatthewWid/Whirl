@@ -6,9 +6,9 @@ module.exports = (_game) => {
 	_game.stages = [];
 
 	_game.stageManager = {
-		add: (name) => {
+		add: (name, presets) => {
 			let newInd = _game.stages.push(
-				new Stage(_game, name)
+				new Stage(_game, name, presets)
 			) - 1;
 			return _game.stages[newInd];
 		},

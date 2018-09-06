@@ -6,9 +6,9 @@ module.exports = (_game) => {
 	_game.viewports = [];
 
 	_game.viewportManager = {
-		add: (name, canvas, activeStage, presets) => {
+		add: (name, canvas, activeStage, camera, presets) => {
 			let newInd = _game.viewports.push(
-				new Viewport(_game, name, canvas, activeStage, presets)
+				new Viewport(_game, name, canvas, activeStage, camera, presets)
 			) - 1;
 			return _game.viewports[newInd];
 		},
