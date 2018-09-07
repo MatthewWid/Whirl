@@ -52,12 +52,14 @@ function Sprite(_game, name, fill, presets = {}) {
 		presets.h
 	);
 
-	this._realBounds = new shapes.Rectangle(
-		this.bounds.x - this.bounds.w * this.anchor.x,
-		this.bounds.y - this.bounds.y * this.anchor.y,
-		this.bounds.w,
-		this.bounds.h
-	);
+	this._physBounds = new shapes.Rectangle();
+	this._calculateRealBounds = () => {
+		this._physBounds.x = this.bounds.x - this.bounds.w * this.anchor.x;
+		this._physBounds.y = this.bounds.y - this.bounds.y * this.anchor.y;
+		this._physBounds.w = this.bounds.w;
+		this._physBounds.h = this.bounds.h;
+	};
+	this._calculateRealBounds();
 }
 
 module.exports = Sprite;

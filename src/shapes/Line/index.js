@@ -1,6 +1,7 @@
 // MobSin.shapes.Line
 
 function Line(x1, y1, x2, y2) {
+	this.shape = "line";
 	this.from = {
 		x: x1 || 0,
 		y: y1 || 0

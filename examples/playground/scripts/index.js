@@ -8,11 +8,7 @@ let player = new ms.Sprite(game, "player", ms.util.randRGB(), {
 	x: 50,
 	y: 50,
 	w: 50,
-	h: 50,
-	anchor: {
-		x: .5,
-		y: .5
-	}
+	h: 50
 });
 
 let myStage = game.stageManager.add("world", {
@@ -29,4 +25,28 @@ let myViewport = game.viewportManager.add("vp", "#canvas", myStage, ms.CAMERA, {
 	cH: 400
 });
 
+let moveRight = true;
+
+// game.event.on("willUpdate", () => {
+// 	if (moveRight) {
+// 		player.bounds.x++;
+// 	}
+// 	if (moveRight) {
+// 		player.bounds.x--;
+// 	}
+
+// 	if (player.bounds.x >= 300 || player.bounds.x <= 50) {
+// 		moveRight = !moveRight;
+// 	}
+// });
+
+game.event.on("didUpdate", (data) => {
+	if (data.frameCount >= 60 && false) {
+		game.stop();
+		console.log("Stopped");
+	}
+});
+
 console.log(myStage, myViewport, player);
+
+game.start();

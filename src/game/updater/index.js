@@ -1,14 +1,24 @@
 // MobSin.game.updater
 
+let renderer = require("./renderer");
+
 // Main game loop
 function update() {
 	this.event.emit("willUpdate", {
 		frameCount: this.frameCount
 	});
 
-	// Object updates, physics, culling, calculations
+	for (let i = 0, n = this.stages.length; i < n; i++) {
+		let objectList = this.stages[i].child.getAll();
 
-	require("./renderer").bind(this)();
+		for (let j = 0, m = objectList.length; j < m; j++) {
+			let object = objectList[j];
+
+			objectList[j]._calculateRealBounds();
+		}
+	}
+
+	renderer.bind(this)();
 
 	this.frameCount++;
 	this.event.emit("didUpdate", {
