@@ -1,7 +1,7 @@
 // MobSin.util.shuffleArr
 
 /*
-	Return a shuffled copy of an array 'arr'.
+	Return a shuffled copy (Not reference) of an array 'arr'.
 	Eg,
 		MobSin.util.shuffleArr([1, 5, 3, 2])
 		~> [2, 5, 3, 1]

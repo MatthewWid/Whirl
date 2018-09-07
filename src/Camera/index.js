@@ -2,8 +2,13 @@
 
 let shapes = require("../shapes");
 
-// A camera is the view into your world (stage)
-// It grabs all objects and renders them onto your screen
+/*
+	A camera is the view into your world (stage)
+	It grabs all objects and renders them onto your screen
+
+	Presets can be:
+	- scroll {x, y}
+*/
 function Camera(_game, x, y, w, h, presets = {}) {
 	_game.object.init(this, "MobSin.camera");
 
@@ -13,8 +18,8 @@ function Camera(_game, x, y, w, h, presets = {}) {
 	// The scroll of the camera through the game world
 	// Will offset objects' physical positions on the canvas depending on the scroll
 	this.scroll = {
-		x: presets.scrollX || 0,
-		y: presets.scrollY || 0
+		x: (presets.scroll || {}).x || 0,
+		y: (presets.scroll || {}).y || 0,
 	};
 
 	// The physical area that this camera can see in the game world

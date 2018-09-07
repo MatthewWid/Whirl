@@ -30,3 +30,14 @@ let myVp = game.viewportManager.add("vp", "#canvas", undefined, {
 	cW: 400,
 	cH: 400
 });
+
+let player = new ms.Sprite(game, "player", game.assetManager.get("player"), {
+	x: 50,
+	y: 50,
+	w: 50,
+	h: 50,
+	anchor: {
+		x: .5,
+		y: .5
+	}
+});

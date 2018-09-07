@@ -2,7 +2,7 @@
 // By MatthewWid
 
 let MobSin = {
-	// Game functions, modules and constructors
+	// Game functions and modules
 	game: require("./game"), // Game instance
 	eventSystem: require("./eventSystem"), // Custom events
 	childSystem: require("./childSystem"), // Tree of parent-children system
@@ -10,8 +10,11 @@ let MobSin = {
 	util: require("./util"), // Utility functions
 	shapes: require("./shapes"), // Shapes and geometry
 	text: require("./text"), // Advanced text
+
+	// Object constructors
 	Camera: require("./Camera"), // Camera object
-	Container: require("./container"), // Generic game container object
+	Container: require("./Container"), // Generic game container object
+	Sprite: require("./Sprite"),
 
 	// Hard constants
 	STAGE: "_DEFAULTSTAGE",

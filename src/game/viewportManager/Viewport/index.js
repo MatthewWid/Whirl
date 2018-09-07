@@ -3,10 +3,23 @@
 let Rectangle = require("../../../shapes/Rectangle");
 let Camera = require("../../../Camera");
 
-// A viewport is a screen that will be rendered to (A canvas)
-// Takes a selector to find an HTML canvas
-// Takes a game stage that contains objects to be rendered
-// Takes a camera that culls and renders the objects to viewport
+/*
+	A viewport is a screen that will be rendered to (A canvas)
+	Takes a selector to find an HTML canvas
+	Takes a game stage that contains objects to be rendered
+	Takes a camera that culls and renders the objects to viewport
+
+	Presets can be:
+	- cW
+	- cH
+	- x
+	- y
+	- w
+	- h
+	- renderable
+	- clear
+	- bg
+*/
 function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	_game.object.init(this, "MobSin.viewport");
 
