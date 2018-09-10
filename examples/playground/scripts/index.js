@@ -4,7 +4,23 @@ let ms = MobSin;
 
 let game = new ms.game();
 
-let player = new ms.Sprite(game, "player", ms.util.randRGB(), {
+let player;
+game.assetManager.add({
+	name: "playerPic",
+	type: "image",
+	src: "./img/playerSprite.png"
+}).event.on("didLoad", (data) => {
+	player = new ms.Sprite(game, "player", data.asset, {
+		x: 50,
+		y: 150,
+		w: 50,
+		h: 50
+	});
+
+	myStage.child.add(player);
+});
+
+let bouncyBlock = new ms.Sprite(game, "bouncyBlock", ms.util.randRGB(), {
 	x: 50,
 	y: 50,
 	w: 50,
@@ -17,7 +33,7 @@ let myStage = game.stageManager.add("world", {
 	w: 400,
 	h: 400
 }).child.add(
-	player
+	bouncyBlock
 );
 
 let myViewport = game.viewportManager.add("vp", "#canvas", myStage, ms.CAMERA, {
@@ -25,28 +41,21 @@ let myViewport = game.viewportManager.add("vp", "#canvas", myStage, ms.CAMERA, {
 	cH: 400
 });
 
-let moveRight = true;
+let speed = 3;
 
-// game.event.on("willUpdate", () => {
-// 	if (moveRight) {
-// 		player.bounds.x++;
-// 	}
-// 	if (moveRight) {
-// 		player.bounds.x--;
-// 	}
+game.event.on("didUpdate", () => {
+	bouncyBlock.bounds.x += speed;
 
-// 	if (player.bounds.x >= 300 || player.bounds.x <= 50) {
-// 		moveRight = !moveRight;
-// 	}
-// });
-
-game.event.on("didUpdate", (data) => {
-	if (data.frameCount >= 60 && false) {
-		game.stop();
-		console.log("Stopped");
+	if (bouncyBlock.bounds.x + bouncyBlock.bounds.w >= myViewport.bounds.w) {
+		bouncyBlock.setFill(MobSin.util.randRGB());
+		speed = -speed;
+	}
+	if (bouncyBlock.bounds.x <= 0) {
+		bouncyBlock.setFill(MobSin.util.randRGB());
+		speed = -speed;
 	}
 });
 
-console.log(myStage, myViewport, player);
+console.log(myStage, myViewport, bouncyBlock);
 
 game.start();

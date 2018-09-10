@@ -17,13 +17,13 @@ function update() {
 			objectList[j]._calculateRealBounds();
 		}
 	}
-
-	renderer.bind(this)();
-
+	
 	this.frameCount++;
 	this.event.emit("didUpdate", {
 		frameCount: this.frameCount
 	});
+
+	renderer.bind(this)();
 	if (this.running) {
 		requestAnimationFrame(update.bind(this));
 	}

@@ -41,17 +41,20 @@ function Sprite(_game, name, fill, presets = {}) {
 	};
 	this.setFill(fill);
 
+	// The anchor point for where this sprite's X and Y are based off of
 	this.anchor = {
 		x: (presets.anchor || {}).x || 0,
 		y: (presets.anchor || {}).y || 0
 	};
+	// The coords and dimensions the sprite will draw to, does not include physics
 	this.bounds = new shapes.Rectangle(
-		presets.x,
-		presets.y,
-		presets.w,
-		presets.h
+		presets.x || 0,
+		presets.y || 0,
+		presets.w || 0,
+		presets.h || 0
 	);
 
+	// The physical bounds of the object taking into account the anchor point
 	this._physBounds = new shapes.Rectangle();
 	this._calculateRealBounds = () => {
 		this._physBounds.x = this.bounds.x - this.bounds.w * this.anchor.x;
@@ -60,6 +63,21 @@ function Sprite(_game, name, fill, presets = {}) {
 		this._physBounds.h = this.bounds.h;
 	};
 	this._calculateRealBounds();
+
+	// Render this sprite given a canvas context, offset coordinates and scaling
+	this._render = (_ctx, modifiers = {}) => { // Take offsets
+		_ctx.save();
+		if (this.fill.type === "colour") {
+			if (this.bounds.shape === "rectangle") {
+				_ctx.fillStyle = this.fill.data;
+				_ctx.fillRect(this._physBounds.x, this._physBounds.y, this._physBounds.w, this._physBounds.h);
+			}
+		}
+		if (this.fill.type === "image") {
+			_ctx.drawImage(this.fill.data.img, this._physBounds.x, this._physBounds.y, this._physBounds.w, this._physBounds.h);
+		}
+		_ctx.restore();
+	};
 }
 
 module.exports = Sprite;

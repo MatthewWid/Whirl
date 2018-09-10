@@ -75,13 +75,19 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	// Used for debugging - will be removed later
 	this.bg = presets.bg || null;
 
-	this.render = () => {
+	this._render = () => {
 		if (this.clear) {
-			this.ctx.clearRect(this.bounds.x, this.bounds.y, this.bounds.w, this.bounds.h);
+			this.ctx.clearRect(
+				this.bounds.x,
+				this.bounds.y,
+				this.bounds.w,
+				this.bounds.h
+			);
 		}
-		if (this.bg) {
-			this.ctx.fillStyle = this.bg;
-			this.ctx.fillRect(this.bounds.x, this.bounds.y, this.bounds.w, this.bounds.h);
+
+		let objectList = this.activeStage.child.getAll();
+		for (let i = 0, n = objectList.length; i < n; i++) {
+			objectList[i]._render(this.ctx); // Give camera offsets
 		}
 	};
 }
