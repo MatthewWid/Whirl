@@ -5,7 +5,7 @@ let ms = MobSin;
 let game = new ms.game();
 
 // Load an array of assets
-game.assetManager.add([
+game.assetManager.load([
 	// Load an image called "player" from the "./img/" directory
 	{
 		name: "player",
@@ -18,12 +18,12 @@ game.assetManager.add([
 		type: "audio",
 		src: "./audio/8bit.mp3"
 	}
-]).forEach((asset) => { // Loop through the newly added assets
-	// Attach an event to every asset that fires when the asset finishes loading
-	asset.event.on("didLoad", (data) => {
-		// Log information about the newly loaded asset
-		console.log(`Loaded asset (${asset.type}): ${asset.name} (Took ${data.timeTaken}ms)`);
-	});
+])
+.event.on("didLoadAsset", (data) => {
+	console.log(data);
+})
+.event.onOnce("didLoadAll", (data) => {
+	console.log(data);
 });
 
 let myVp = game.viewportManager.add("vp", "#canvas", undefined, {

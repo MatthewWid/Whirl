@@ -15,20 +15,20 @@ function Asset(_game, name, type, src) {
 	// Attach data and properties based on asset type
 	switch (this.type) {
 		case "image": {
-			this.img = new Image();
-			this.img.addEventListener("load", () => {
+			this.rawData = new Image();
+			this.rawData.addEventListener("load", () => {
 				this.data._loaded = true;
 				this.event.emit("didLoad", {
 					asset: this,
 					timeTaken: Date.now() - startLoad
 				});
 			});
-			this.img.src = this.src;
+			this.rawData.src = this.src;
 			break;
 		}
 		case "audio": {
-			this.audio = new Audio(this.src);
-			this.audio.addEventListener("loadeddata", () => {
+			this.rawData = new Audio(this.src);
+			this.rawData.addEventListener("loadeddata", () => {
 				this.data._loaded = true;
 				this.event.emit("didLoad", {
 					asset: this,

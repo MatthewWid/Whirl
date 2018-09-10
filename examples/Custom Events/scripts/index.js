@@ -9,7 +9,7 @@ let game = new ms.game();
 // });
 
 // Load two assets, and when loaded console log information about them
-game.assetManager.add([
+game.assetManager.load([
 	{
 		name: "player",
 		type: "image",
@@ -28,7 +28,7 @@ game.assetManager.add([
 });
 
 // Create a game container and give it the event system
-let mycont = new MobSin.container(game, "eventTest");
+let mycont = new MobSin.Container(game, "eventTest");
 game.object.init(mycont, "", ["eventSystem"]);
 
 // Listen to 'mySpecialEvent' once
@@ -44,8 +44,8 @@ mycont.event.on("myRepeatingEvent", () => {
 // Notice that 'mySpecialEvent' only logs once when called twice
 // but 'myRepeatingEvent' logs twice when called twice
 mycont.event.emit("mySpecialEvent");
-mycont.event.emit("myRepeatingEvent");
 mycont.event.emit("mySpecialEvent");
+mycont.event.emit("myRepeatingEvent");
 mycont.event.emit("myRepeatingEvent");
 
 // When the game starts store the time it started
@@ -56,15 +56,16 @@ game.event.on("willStart", () => {
 
 // When the game ends calculate the time between it starting and finishing
 game.event.on("willStop", () => {
-	let expectStop = ((60 * 5 / 60) * 1000);
+	let expectStop = (60 * 3 / 60) * 1000;
 	let now = Date.now();
-	console.log(`Stopped after: ${now - startTime}ms\nExpected stop: ${expectStop}ms\nDifference: ${(now - startTime) - expectStop}ms`);
+	let diff = Math.abs((now - startTime) - expectStop);
+	console.log(`Stopped after: ${now - startTime}ms\nExpected stop: ${expectStop}ms\nDifference: ${diff}ms`);
 });
 
 // On each update check if 180 frames have passed (Approx. three seconds)
 // If so, stop the game
 game.event.on("willUpdate", (data) => {
-	if (data.frameCount >= 60 * 5) {
+	if (data.frameCount >= 60 * 3) {
 		game.stop();
 	}
 });

@@ -14,18 +14,27 @@ module.exports = (_obj) => {
 			} else {
 				_obj.events[name] = [func];
 			}
+
+			return _obj;
 		},
 		onOnce: (name, func) => {
 			_obj.event.on(name, func, true);
+
+			return _obj;
 		},
-		emit: (name, data) => {
+		emit: (name, data = {}) => {
 			if (_obj.events[name]) {
-				for (let i = 0, n = _obj.events[name].length; i < n; i++) {
+				for (let i = 0; i < _obj.events[name].length; i++) {
 					_obj.events[name][i](data);
 					if (_obj.events[name][i]._once) {
 						_obj.events[name] = _obj.events[name].filter((evt) => evt._id != _obj.events[name][i]._id);
+						if (_obj.events[name].length == 0) { // If there are no more listeners
+							delete _obj.events[name]; // Delete the event listeners property
+							break; // Stop looping over event listener properties
+						}
 					}
 				}
+				return true;
 			}
 			return false;
 		},

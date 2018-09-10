@@ -7,37 +7,34 @@ module.exports = (_game) => {
 
 	_game.assetManager = {
 		// Provide either an object or an array of objects
-		add: (assetList, progress = {
-			num: 1,
-			total: 1,
-			progress: 1
-		}) => {
-			// Returns the newly made asset if only an asset object is given
-			if (typeof assetList == "object" && !Array.isArray(assetList)) {
+		load: (assetList) => {
+			// Returns the newly made asset if only an asset object is given (And not array)
+			let newAssetArr = [];
+			let totalLoaded = 0;
+			let totalToLoad = assetList.length;
+			let totalTime = 0;
+
+			for (let i = 0, n = assetList.length; i < assetList.length; i++) {
 				let newInd = _game.assets.push(
-					new Asset(_game, assetList.name, assetList.type, assetList.src)
+					new Asset(_game, assetList[i].name, assetList[i].type, assetList[i].src)
 				) - 1;
-				_game.assetManager.event.emit("willLoadAsset", {
-					asset: _game.assets[newInd],
-					num: progress.num,
-					total: progress.total,
-					progress: progress.progress
+				newAssetArr[i] = _game.assets[newInd];
+				newAssetArr[i].event.onOnce("didLoad", (data) => {
+					totalLoaded++;
+					totalTime += data.timeTaken;
+
+					_game.assetManager.event.emit("didLoadAsset", {...data});
+
+					if (totalLoaded == totalToLoad) { // If all the new assets have finished loading
+						_game.assetManager.event.emit("didLoadAll", {
+							newAssets: newAssetArr,
+							totalTimeTaken: totalTime
+						});
+					}
 				});
-				return _game.assets[newInd];
-			// Returns an array of newly made assets if an array of asset objects is given
-			} else if (Array.isArray(assetList)) {
-				let newAssetArr = [];
-				for (let i = 0, n = assetList.length; i < assetList.length; i++) {
-					newAssetArr.push(
-						_game.assetManager.add(assetList[i], {
-							num: i + 1,
-							total: n,
-							progress: (i + 1) / n
-						})
-					);
-				}
-				return newAssetArr;
 			}
+
+			return _game.assetManager;
 		},
 		get: (name) => {
 			return _game.assets.find((e) => e.name == name);

@@ -50,8 +50,8 @@ function Sprite(_game, name, fill, presets = {}) {
 	this.bounds = new shapes.Rectangle(
 		presets.x || 0,
 		presets.y || 0,
-		presets.w || 0,
-		presets.h || 0
+		presets.w || (this.fill.type === "image" ? this.fill.data.rawData.width : false) || 0,
+		presets.h || (this.fill.type === "image" ? this.fill.data.rawData.width : false) || 0
 	);
 
 	// The physical bounds of the object taking into account the anchor point
@@ -74,7 +74,7 @@ function Sprite(_game, name, fill, presets = {}) {
 			}
 		}
 		if (this.fill.type === "image") {
-			_ctx.drawImage(this.fill.data.img, this._physBounds.x, this._physBounds.y, this._physBounds.w, this._physBounds.h);
+			_ctx.drawImage(this.fill.data.rawData, this._physBounds.x, this._physBounds.y, this._physBounds.w, this._physBounds.h);
 		}
 		_ctx.restore();
 	};
