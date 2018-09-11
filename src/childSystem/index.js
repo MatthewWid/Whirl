@@ -26,7 +26,9 @@ module.exports = (_obj) => {
 		getAllDeep: (returnedChildren = []) => {
 			// Get children from children
 			for (let i = 0, n = _obj.children.length; i < n; i++) {
-				_obj.children[i].child.getAllDeep(returnedChildren);
+				if (_obj.children[i].child) {
+					_obj.children[i].child.getAllDeep(returnedChildren);
+				}
 			}
 
 			// Push direct children to returned objects array
