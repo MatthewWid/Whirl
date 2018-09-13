@@ -1,10 +1,10 @@
 // Alias some things away so we don't have to type them every time
-document.getElementsByTagName("html")[0].style.backgroundColor = "#EEE";
+// document.getElementsByTagName("html")[0].style.backgroundColor = "#EEE";
 let ms = MobSin;
 let game = new ms.game();
 
 // Create our variables
-let player, bouncyBlock, myStage, myViewport;
+let player, bouncyBlock, myStage, myViewport, myCamera;
 let speed = 3;
 
 // Called when our game has finished its initial load
@@ -44,8 +44,10 @@ function setup() {
 		player
 	]);
 
+	myCamera = new ms.Camera(game);
+
 	// Create our viewport (Screen)
-	myViewport = game.viewportManager.add("vp", "#canvas", myStage, ms.CAMERA, {
+	myViewport = game.viewportManager.add("vp", "#canvas", myStage, myCamera, {
 		cW: 400, // Resize the canvas to 400x400
 		cH: 400
 	});

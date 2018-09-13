@@ -7,13 +7,26 @@ let shapes = require("../shapes");
 	It grabs all objects and renders them onto your screen
 
 	Presets can be:
-	- scroll {x, y}
+
+	(Position and dimensions of camera on the canvas)
+		- x
+		- y
+		- w
+		- h
+	
+	(Scroll of camera through the game world)
+		- scroll {x, y}
 */
-function Camera(_game, x, y, w, h, presets = {}) {
+function Camera(_game, presets = {}) {
 	_game.object.init(this, "MobSin.camera");
 
 	// The position and dimension on the screen that the camera will render to
-	this.bounds = new shapes.Rectangle(x, y, w, h);
+	this.bounds = new shapes.Rectangle(
+		presets.x || 0,
+		presets.y || 0,
+		presets.w || 0,
+		presets.h || 0
+	);
 
 	// The scroll of the camera through the game world
 	// Will offset objects' physical positions on the canvas depending on the scroll
@@ -23,8 +36,10 @@ function Camera(_game, x, y, w, h, presets = {}) {
 	};
 
 	// The physical area that this camera can see in the game world
-	// used forrender culling and exclusions to update
+	// used for render culling and exclusions to update
 	this._physView = new shapes.Rectangle();
+	this._calculateWorldView = () => {};
+	this._calculateWorldView();
 
 	// Filters, effects, following, culling, etc.
 }

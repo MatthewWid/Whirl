@@ -19,6 +19,7 @@ let Camera = require("../../../Camera");
 	- renderable
 	- clear
 	- bg
+	- resizeCamera
 */
 function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	_game.object.init(this, "MobSin.viewport");
@@ -61,9 +62,21 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 
 	this.setCamera = (newCamera) => {
 		if (newCamera === "_DEFAULTCAMERA") {
-			this.camera = new Camera(_game, this.bounds.x, this.bounds.y, this.bounds.w, this.bounds.h);
+			this.activeCamera = new Camera(_game, {
+				x: this.bounds.x,
+				y: this.bounds.y,
+				w: this.bounds.w,
+				h: this.bounds.h
+			});
 		} else {
-			this.camera = newCamera;
+			this.activeCamera = newCamera;
+
+			if (typeof presets.resizeCamera == "undefined" || presets.resizeCamera) {
+				this.activeCamera.bounds.x = this.bounds.x;
+				this.activeCamera.bounds.y = this.bounds.y;
+				this.activeCamera.bounds.w = this.bounds.w;
+				this.activeCamera.bounds.h = this.bounds.h;
+			}
 		}
 	};
 	this.setCamera(camera);
@@ -72,10 +85,9 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	this.renderable = presets.renderable || true;
 	this.clear = presets.clear || true;
 
-	// Used for debugging - will be removed later
-	this.bg = presets.bg || null;
-
 	this._render = () => {
+		this.ctx.save();
+
 		if (this.clear) {
 			this.ctx.clearRect(
 				this.bounds.x,
@@ -85,10 +97,14 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 			);
 		}
 
+		this.ctx.translate(-this.activeCamera.scroll.x, -this.activeCamera.scroll.y);
+
 		let objectList = this.activeStage.child.getAll();
 		for (let i = 0, n = objectList.length; i < n; i++) {
 			objectList[i]._render(this.ctx); // Give camera offsets
 		}
+
+		this.ctx.restore();
 	};
 }
 

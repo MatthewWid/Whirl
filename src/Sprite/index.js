@@ -11,6 +11,7 @@ let math = require("../math");
 	- x
 	- y
 	- anchor {x, y}
+	- alpha
 */
 function Sprite(_game, name, fill, presets = {}) {
 	_game.object.init(this, "MobSin.sprite");
@@ -41,6 +42,8 @@ function Sprite(_game, name, fill, presets = {}) {
 	};
 	this.setFill(fill);
 
+	this.alpha = presets.alpha || 1;
+
 	// The anchor point for where this sprite's X and Y are based off of
 	this.anchor = {
 		x: (presets.anchor || {}).x || 0,
@@ -67,15 +70,24 @@ function Sprite(_game, name, fill, presets = {}) {
 	// Render this sprite given a canvas context, offset coordinates and scaling
 	this._render = (_ctx, modifiers = {}) => { // Take offsets
 		_ctx.save();
-		if (this.fill.type === "colour") {
-			if (this.bounds.shape === "rectangle") {
-				_ctx.fillStyle = this.fill.data;
-				_ctx.fillRect(this._physBounds.x, this._physBounds.y, this._physBounds.w, this._physBounds.h);
+
+		if (this.alpha != 0) {
+			if (this.alpha != 1) {
+				_ctx.globalAlpha = this.alpha;
+			}
+
+			if (this.fill.type === "colour") {
+				if (this.bounds.shape === "rectangle") {
+					_ctx.fillStyle = this.fill.data;
+					_ctx.fillRect(this._physBounds.x, this._physBounds.y, this._physBounds.w, this._physBounds.h);
+				}
+			}
+
+			if (this.fill.type === "image") {
+				_ctx.drawImage(this.fill.data.rawData, this._physBounds.x, this._physBounds.y, this._physBounds.w, this._physBounds.h);
 			}
 		}
-		if (this.fill.type === "image") {
-			_ctx.drawImage(this.fill.data.rawData, this._physBounds.x, this._physBounds.y, this._physBounds.w, this._physBounds.h);
-		}
+
 		_ctx.restore();
 	};
 }

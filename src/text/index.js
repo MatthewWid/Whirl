@@ -1,5 +1,5 @@
-// MobSin.text
+// MobSin.Text
 
 module.exports = () => {
-	return "text -> index.js";
+	return "Text -> index.js";
 };

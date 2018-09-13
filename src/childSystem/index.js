@@ -23,6 +23,8 @@ module.exports = (_obj) => {
 			return _obj.children;
 		},
 		// Get all children, including children of children, with recursion
+		// TODO:
+		// Add an accumulator object for accumulating values on each level of children
 		getAllDeep: (returnedChildren = []) => {
 			// Get children from children
 			for (let i = 0, n = _obj.children.length; i < n; i++) {
