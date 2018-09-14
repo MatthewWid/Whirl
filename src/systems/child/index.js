@@ -1,4 +1,4 @@
-// MobSin.childSystem
+// MobSin.systems.child
 
 module.exports = (_obj) => {
 	_obj.children = [];

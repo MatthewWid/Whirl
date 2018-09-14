@@ -1,5 +1,6 @@
 // MobSin.Sprite
 
+let render = require("./render");
 let shapes = require("../shapes");
 let math = require("../math");
 
@@ -10,8 +11,10 @@ let math = require("../math");
 	Presets can be:
 	- x
 	- y
-	- anchor {x, y}
 	- alpha
+	- scale
+	- z
+	- anchor {x, y}
 */
 function Sprite(_game, name, fill, presets = {}) {
 	_game.object.init(this, "MobSin.sprite");
@@ -42,7 +45,17 @@ function Sprite(_game, name, fill, presets = {}) {
 	};
 	this.setFill(fill);
 
+	// The alpha for this sprite (0-1) that will fade it on render
 	this.alpha = presets.alpha || 1;
+
+	// The scaling for this sprite - Used a multiplier that increases/decreases the bounds
+	// Eg, a 'width' of 50 and a 'scale' of 1 will be a 'width' of 50
+	// However, with a 'scale' of 2 it will be a 'width' of 100
+	this.scale = presets.scale || 1;
+
+	// The z-axis for this sprite, allows for "layers" in your game world
+	// Eg, a sprite with a 'z' of 5 will render after (And above) a sprite with a 'z' of 2
+	this.z = presets.z || 0;
 
 	// The anchor point for where this sprite's X and Y are based off of
 	this.anchor = {
@@ -54,16 +67,17 @@ function Sprite(_game, name, fill, presets = {}) {
 		presets.x || 0,
 		presets.y || 0,
 		presets.w || (this.fill.type === "image" ? this.fill.data.rawData.width : false) || 0,
-		presets.h || (this.fill.type === "image" ? this.fill.data.rawData.width : false) || 0
+		presets.h || (this.fill.type === "image" ? this.fill.data.rawData.height : false) || 0
 	);
 
 	// The physical bounds of the object taking into account the anchor point
+	// _physBounds should be considered read-only outside of the _calculateRealBounds() method
 	this._physBounds = new shapes.Rectangle();
 	this._calculateRealBounds = () => {
-		this._physBounds.x = this.bounds.x - this.bounds.w * this.anchor.x;
-		this._physBounds.y = this.bounds.y - this.bounds.y * this.anchor.y;
-		this._physBounds.w = this.bounds.w;
-		this._physBounds.h = this.bounds.h;
+		this._physBounds.x = this.bounds.x - this.bounds.w * this.anchor.x * this.scale;
+		this._physBounds.y = this.bounds.y - this.bounds.h * this.anchor.y * this.scale;
+		this._physBounds.w = this.bounds.w * this.scale;
+		this._physBounds.h = this.bounds.h * this.scale;
 	};
 	this._calculateRealBounds();
 
@@ -71,22 +85,23 @@ function Sprite(_game, name, fill, presets = {}) {
 	this._render = (_ctx, modifiers = {}) => { // Take offsets
 		_ctx.save();
 
-		if (this.alpha != 0) {
+		// Render background ...
+
+		if (this.alpha != 0 && this.scale != 0 || (this.fill.type == "colour" && this.fill.data != "transparent")) { // Don't render if we won't see it anyway
 			if (this.alpha != 1) {
 				_ctx.globalAlpha = this.alpha;
 			}
 
 			if (this.fill.type === "colour") {
-				if (this.bounds.shape === "rectangle") {
-					_ctx.fillStyle = this.fill.data;
-					_ctx.fillRect(this._physBounds.x, this._physBounds.y, this._physBounds.w, this._physBounds.h);
-				}
+				render.colour(_ctx, this);
 			}
 
 			if (this.fill.type === "image") {
-				_ctx.drawImage(this.fill.data.rawData, this._physBounds.x, this._physBounds.y, this._physBounds.w, this._physBounds.h);
+				render.image(_ctx, this);
 			}
 		}
+
+		// Render outline ...
 
 		_ctx.restore();
 	};

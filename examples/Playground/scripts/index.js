@@ -1,10 +1,10 @@
 // Alias some things away so we don't have to type them every time
-// document.getElementsByTagName("html")[0].style.backgroundColor = "#EEE";
+document.getElementsByTagName("html")[0].style.backgroundColor = "#EEE";
 let ms = MobSin;
 let game = new ms.game();
 
 // Create our variables
-let player, bouncyBlock, myStage, myViewport, myCamera;
+let player, player2, bouncyBlock, myStage, myViewport, myCamera;
 let speed = 3;
 
 // Called when our game has finished its initial load
@@ -15,8 +15,17 @@ function setup() {
 		"player", // With the name "player"
 		game.assetManager.get("playerPic"), // Fill with our player image
 		{
-			x: 100, // Sprite coordinates
-			y: 150 // Width and height are automatically set to our images width and height
+			scale: 1
+		}
+	);
+
+	player2 = new ms.Sprite(
+		game, // In our game
+		"player", // With the name "player"
+		game.assetManager.get("playerPic"), // Fill with our player image
+		{
+			x: 110, // Sprite coordinates
+			y: 160 // Width and height are automatically set to our images width and height
 		}
 	);
 
@@ -41,7 +50,8 @@ function setup() {
 		h: 400
 	}).child.add([ // Add our sprites to the game world
 		bouncyBlock,
-		player
+		player,
+		player2
 	]);
 
 	myCamera = new ms.Camera(game);
@@ -53,18 +63,26 @@ function setup() {
 	});
 
 	// Call our update function when the game updates
-	game.event.on("didUpdate", update);
+	game.event.on("willUpdate", preUpdate);
+	game.event.on("didUpdate", postUpdate);
+
+	// Ready? Start the game!
+	game.start();
 }
 
-function update() {
+// Move things before updating
+function preUpdate() {
 	bouncyBlock.bounds.x += speed; // Move our bouncyBlock each game time
+}
 
+// Check things after updating
+function postUpdate() {
 	// Reverse direction and change colour when it hits the edge of the screen
-	if (bouncyBlock.bounds.x + bouncyBlock.bounds.w >= myViewport.bounds.w) {
+	if (bouncyBlock._physBounds.x + bouncyBlock._physBounds.w > myViewport.bounds.w) {
 		bouncyBlock.setFill(MobSin.util.randRGB());
 		speed = -speed;
 	}
-	if (bouncyBlock.bounds.x <= 0) {
+	if (bouncyBlock._physBounds.x <= 0) {
 		bouncyBlock.setFill(MobSin.util.randRGB());
 		speed = -speed;
 	}
@@ -79,6 +97,3 @@ game.assetManager.load([
 	}
 // Begin game setup when assets have finished loading
 ]).event.onOnce("didLoadAll", setup);
-
-// Ready? Start the game!
-game.start();
