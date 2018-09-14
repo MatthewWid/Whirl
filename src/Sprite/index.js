@@ -11,6 +11,9 @@ let math = require("../math");
 	Presets can be:
 	- x
 	- y
+	- w
+	- h
+	- outline
 	- alpha
 	- scale
 	- z
@@ -45,6 +48,9 @@ function Sprite(_game, name, fill, presets = {}) {
 	};
 	this.setFill(fill);
 
+	// A colour for an outline of your sprite
+	this.outline = presets.outline || null;
+
 	// The alpha for this sprite (0-1) that will fade it on render
 	this.alpha = presets.alpha || 1;
 
@@ -73,13 +79,13 @@ function Sprite(_game, name, fill, presets = {}) {
 	// The physical bounds of the object taking into account the anchor point
 	// _physBounds should be considered read-only outside of the _calculateRealBounds() method
 	this._physBounds = new shapes.Rectangle();
-	this._calculateRealBounds = () => {
-		this._physBounds.x = this.bounds.x - this.bounds.w * this.anchor.x * this.scale;
-		this._physBounds.y = this.bounds.y - this.bounds.h * this.anchor.y * this.scale;
+	this._calculatePhysBounds = () => {
+		this._physBounds.x = Math.round(this.bounds.x - this.bounds.w * this.anchor.x * this.scale);
+		this._physBounds.y = Math.round(this.bounds.y - this.bounds.h * this.anchor.y * this.scale);
 		this._physBounds.w = this.bounds.w * this.scale;
 		this._physBounds.h = this.bounds.h * this.scale;
 	};
-	this._calculateRealBounds();
+	this._calculatePhysBounds();
 
 	// Render this sprite given a canvas context, offset coordinates and scaling
 	this._render = (_ctx, modifiers = {}) => { // Take offsets
@@ -101,7 +107,13 @@ function Sprite(_game, name, fill, presets = {}) {
 			}
 		}
 
-		// Render outline ...
+		if (this.outline) {
+			_ctx.globalAlpha = 1;
+
+			_ctx.lineWidth = 2;
+			_ctx.strokeStyle = this.outline;
+			_ctx.strokeRect(this._physBounds.x - 1, this._physBounds.y - 1, this._physBounds.w + 2, this._physBounds.h + 2);
+		}
 
 		_ctx.restore();
 	};

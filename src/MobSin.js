@@ -4,11 +4,14 @@
 let MobSin = {
 	// Game functions and modules
 	game: require("./game"), // Game instance
-	eventSystem: require("./eventSystem"), // Custom events
-	childSystem: require("./childSystem"), // Tree of parent-children system
 	math: require("./math"), // Math functions
 	util: require("./util"), // Utility functions
 	shapes: require("./shapes"), // Shapes and geometry
+
+	systems: {
+		event: require("./systems/event"),
+		child: require("./systems/child")
+	},
 
 	// Object constructors
 	Camera: require("./Camera"), // Camera object

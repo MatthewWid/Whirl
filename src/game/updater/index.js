@@ -14,7 +14,7 @@ function update() {
 		for (let j = 0, m = objectList.length; j < m; j++) {
 			let object = objectList[j];
 
-			object._calculateRealBounds();
+			object._calculatePhysBounds();
 		}
 	}
 	

@@ -83,7 +83,7 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 
 	// Optional presets with defaults
 	this.renderable = presets.renderable || true;
-	this.clear = presets.clear || true;
+	this.clear = (presets.hasOwnProperty("clear") ? presets.clear : true);
 
 	this._render = () => {
 		this.ctx.save();
@@ -97,9 +97,12 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 			);
 		}
 
-		this.ctx.translate(-this.activeCamera.scroll.x, -this.activeCamera.scroll.y);
+		// TODO: Replace canvas scaling with recursively reducing childrens dimensions
+		const scroll = this.activeCamera._getScroll();
+		this.ctx.translate(scroll.x, scroll.y);
+		this.ctx.scale(this.activeCamera.zoom, this.activeCamera.zoom);
 
-		let objectList = this.activeStage.child.getAll();
+		const objectList = this.activeStage.child.getAll();
 		for (let i = 0, n = objectList.length; i < n; i++) {
 			objectList[i]._render(this.ctx); // Give camera offsets
 		}
