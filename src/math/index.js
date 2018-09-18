@@ -7,4 +7,6 @@ module.exports = {
 	between: require("./between"),
 	stepTo: require("./stepTo"),
 	average: require("./average")
+
+	// Constructor for Vector
 };

@@ -22,6 +22,8 @@ let shapes = require("../shapes");
 
 	Zoom of camera in the game world
 		- zoom
+
+		- roundPixels
 */
 function Camera(_game, presets = {}) {
 	_game.object.init(this, "MobSin.camera");
@@ -52,26 +54,28 @@ function Camera(_game, presets = {}) {
 		};
 	}
 
+	// The zoom of this camera - Scales the canvas context
 	this.zoom = presets.zoom || 1;
 
+	// Whether the position of this camera when rendering should be rounded to the nearest whole number when locked onto an object
+	// For sprites with an image fill this can produce a more crisp result, but may offset the cameras position by half a pixel
+	// Only affects the cameras rendered position, not its real position in the world
+	this.roundPixels = presets.roundPixels || true;
+
 	this._lockObject = null;
-	// this.lockTo = (_object) => {
-	// 	if (_object.bounds) {
-	// 		this.anchor = {
-	// 			x: .5,
-	// 			y: .5
-	// 		};
-	// 		this._lockObject = _object;
-	// 		return true;
-	// 	}
-	// 	return false;
-	// };
-	// this.removeLock = () => {
-	// 	this._lockObject = null;
-	// };
-	// if (presets.lockTo) {
-	// 	this.lockTo(presets.lockTo);
-	// }
+	this.lockTo = (_object) => {
+		if (_object.bounds) {
+			this._lockObject = _object;
+			return true;
+		}
+		return false;
+	};
+	this.removeLock = () => {
+		this._lockObject = null;
+	};
+	if (presets.lockTo) {
+		this.lockTo(presets.lockTo);
+	}
 
 	// The physical area that this camera can see in the game world
 	// used for render culling and exclusions to update
@@ -81,20 +85,23 @@ function Camera(_game, presets = {}) {
 
 	this._getScroll = () => {
 		if (this._lockObject) {
-			// const mid = {
-			// 	x: this._lockObject._physBounds.x + this._lockObject._physBounds.w / 2,
-			// 	y: this._lockObject._physBounds.y + this._lockObject._physBounds.h / 2
-			// };
-			// return {
-			// 	x: 0,
-			// 	y: 0
-			// };
-		} else {
-			return {
-				x: -(this.scroll.x - (this.bounds.w * this.anchor.x)),
-				y: -(this.scroll.y - (this.bounds.h * this.anchor.y))
+			const mid = this._lockObject._physBounds.getMidpoint();
+			this.scroll = {
+				x: mid.x * this.zoom,
+				y: mid.y * this.zoom
 			};
+
+			if (this.roundPixels) {
+				this.scroll = {
+					x: Math.round(this.scroll.x),
+					y: Math.round(this.scroll.y)
+				};
+			}
 		}
+		return {
+			x: -(this.scroll.x - (this.bounds.w * this.anchor.x)),
+			y: -(this.scroll.y - (this.bounds.h * this.anchor.y))
+		};
 	};
 
 	// Filters, effects, following, culling, etc.

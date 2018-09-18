@@ -2,6 +2,7 @@
 
 /*
 	Return a shuffled copy (Not reference) of an array 'arr'.
+	Does not mutate the given array.
 	Eg,
 		MobSin.util.shuffleArr([1, 5, 3, 2])
 		~> [2, 5, 3, 1]

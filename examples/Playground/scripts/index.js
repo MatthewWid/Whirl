@@ -15,6 +15,7 @@ function setup() {
 		"player", // With the name "player"
 		game.assetManager.get("playerPic"), // Fill with our player image
 		{
+			x: 50,
 			anchor: {
 				x: .5,
 				y: .5
@@ -27,8 +28,8 @@ function setup() {
 		"player", // With the name "player"
 		game.assetManager.get("playerPic"), // Fill with our player image
 		{
-			x: 110, // Sprite coordinates
-			y: 160 // Width and height are automatically set to our images width and height
+			x: 120, // Sprite coordinates
+			y: 150 // Width and height are automatically set to our images width and height
 		}
 	);
 
@@ -75,14 +76,16 @@ function setup() {
 
 	// Create a camera to look into our game world
 	myCamera = new ms.Camera(game, {
+		zoom: 1,
 		scroll: { // Scroll the camera in the game world
-			x: 160,
-			y: 100
+			x: 0,
+			y: 0
 		},
 		anchor: { // Set the camera anchor to the center of the screen
 			x: .5,
 			y: .5
-		}
+		},
+		lockTo: player
 	});
 
 	// Create our viewport (the screen for our game)

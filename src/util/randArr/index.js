@@ -1,7 +1,7 @@
 // MobSin.util.randArr
 
 /*
-	Get a random value of an array 'arr'.
+	Get a random value from an array 'arr'.
 	Eg,
 		MobSin.util.randArr([1, 5, 2])
 		~> 5
