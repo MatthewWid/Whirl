@@ -6,7 +6,7 @@ module.exports = {
 	roundTo: require("./roundTo"),
 	between: require("./between"),
 	stepTo: require("./stepTo"),
-	average: require("./average")
-
+	average: require("./average"),
+	map: require("./map")
 	// Constructor for Vector
 };

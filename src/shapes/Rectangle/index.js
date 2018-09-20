@@ -1,5 +1,7 @@
 // MobSin.shapes.rectangle
 
+let shapes = require("../");
+
 function Rectangle(x, y, w, h) {
 	this.shape = "rectangle";
 	this.x = x || 0;

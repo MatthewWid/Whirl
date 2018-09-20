@@ -3,7 +3,7 @@
 
 let MobSin = {
 	// Game functions and modules
-	game: require("./game"), // Game instance
+	Game: require("./Game"), // Game instance
 	math: require("./math"), // Math functions
 	util: require("./util"), // Utility functions
 	shapes: require("./shapes"), // Shapes and geometry

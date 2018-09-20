@@ -22,10 +22,10 @@ let math = require("../math");
 function Sprite(_game, name, fill, presets = {}) {
 	_game.object.init(this, "MobSin.sprite");
 
-	this.name = name;
+	this.name = name || "";
 
 	this.setFill = (newFill) => {
-		if (typeof newFill == "string") {
+		if (typeof newFill == "string" && newFill.length > 0) {
 			this.fill = {
 				type: "colour",
 				data: newFill
