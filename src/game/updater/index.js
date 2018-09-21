@@ -5,11 +5,12 @@ let renderer = require("./renderer");
 // Main game loop
 function update() {
 	this.event.emit("willUpdate", {
+		game: this,
 		frameCount: this.frameCount
 	});
 
 	for (let i = 0, n = this.stages.length; i < n; i++) {
-		let objectList = this.stages[i].child.getAll();
+		let objectList = this.stages[i]._sortChildren();
 
 		for (let j = 0, m = objectList.length; j < m; j++) {
 			let object = objectList[j];
@@ -20,6 +21,7 @@ function update() {
 	
 	this.frameCount++;
 	this.event.emit("didUpdate", {
+		game: this,
 		frameCount: this.frameCount
 	});
 

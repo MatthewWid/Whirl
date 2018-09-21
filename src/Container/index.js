@@ -1,7 +1,7 @@
 // MobSin.Container
 
 function Container(_game) {
-	_game.object.init(this, "MobSin.container", ["childSystem"]);
+	_game.object.init(this, "MobSin.container", {child: true});
 }
 
 module.exports = Container;

@@ -3,15 +3,10 @@
 
 let MobSin = {
 	// Game functions and modules
-	Game: require("./Game"), // Game instance
+	Game: require("./Game"), // Make a new game instance
 	math: require("./math"), // Math functions
 	util: require("./util"), // Utility functions
 	shapes: require("./shapes"), // Shapes and geometry
-
-	systems: {
-		event: require("./systems/event"),
-		child: require("./systems/child")
-	},
 
 	// Object constructors
 	Camera: require("./Camera"), // Camera object

@@ -1,7 +1,6 @@
 // MobSin.game.gameObject
 
-let eventSystem = require("../../systems/event");
-let childSystem = require("../../systems/child");
+let systems = require("../../systems");
 
 module.exports = (_game) => {
 	_game._globalIndex = 0;
@@ -9,7 +8,7 @@ module.exports = (_game) => {
 	_game.object = {
 		// Initialise a game object with standard properties that all objects in the game must have
 		// Objects can optionally inherit the event system and child system
-		init: (that, typeName, systems) => {
+		init: (that, typeName, useSystems = {}) => {
 			that._id = _game.object.nextID();
 			if (!that._type) {
 				that._type = typeName;
@@ -17,13 +16,11 @@ module.exports = (_game) => {
 
 			that.data = {};
 
-			if (systems && systems.length > 0) {
-				if (systems.indexOf("eventSystem") != -1 || systems.indexOf("eSys") != -1) {
-					eventSystem(that);
-				}
-				if (systems.indexOf("childSystem") != -1 || systems.indexOf("cSys") != -1) {
-					childSystem(that);
-				}
+			if (useSystems.event) {
+				systems.event(that);
+			}
+			if (useSystems.child) {
+				systems.child(that);
 			}
 
 			_game.object.globalStore.push(that);

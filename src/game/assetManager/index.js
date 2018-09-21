@@ -43,6 +43,6 @@ module.exports = (_game) => {
 			return _game.assets;
 		}
 	};
-	_game.object.init(_game.assetManager, "MobSin.system.assetManager", ["eventSystem"]);
+	_game.object.init(_game.assetManager, "MobSin.system.assetManager", {event: true});
 	_game.a = _game.assetManager; // Alias to game.a
 };
