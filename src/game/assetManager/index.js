@@ -7,7 +7,7 @@ module.exports = (_game) => {
 
 	_game.assetManager = {
 		// Provide either an object or an array of objects
-		load: (assetList) => {
+		load: (assetList = []) => {
 			// Returns the newly made asset if only an asset object is given (And not array)
 			let newAssetArr = [];
 			let totalLoaded = 0;

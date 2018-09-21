@@ -1,34 +1,36 @@
-// Alias some things away so we don't have to type them every time
-// document.getElementsByTagName("html")[0].style.backgroundColor = "#EEE";
-let ms = MobSin;
-let game = new ms.Game();
+function update() {
+	// Run some code...
+}
 
-let vp = game.viewportManager.add("myScreen", "#canvas", ms.STAGE, ms.CAMERA, {
-	cW: 400,
-	cH: 400
-});
+function setup(data) {
+	let {game, stage} = data;
 
-vp.activeStage.child.add([
-	new ms.Sprite(game, "border", "transparent", {
-		w: 400,
-		h: 400,
-		outline: "green"
-	}),
-	new ms.Sprite(game, "player", "red", {
+	// Create a red block
+	let block = new MobSin.Sprite(game, "block", "#E00", {
+		x: 50,
+		y: 50,
 		w: 50,
 		h: 50
+	});
+
+	// Add it to our game world
+	stage.child.add([
+		block
+	]);
+
+	// The update function every time the game updates
+	game.event.on("willUpdate", update);
+}
+
+// Create a new game
+// Call the setup function when the "didSetup" event fires
+// Set up the game with the given canvas and make it 400x400 pixels
+// Start the game loop
+MobSin.Game()
+	.event.onOnce("didSetup", setup)
+	.setup({
+		canvas: "#canvas",
+		cW: 400,
+		cH: 400
 	})
-]);
-
-game.event.on("willUpdate", () => {
-	game.object.get("myScreen")[0].activeCamera.scroll.x += .5;
-	game.object.get("myScreen")[0].activeCamera.scroll.y -= 1;
-	game.object.get("myScreen")[0].activeStage.child.getAll()[1].bounds.x += 1;
-});
-game.event.on("didUpdate", () => {
-	if (game.object.get("myScreen")[0].activeStage.child.getAll()[1]._physBounds.x > 200) {
-		game.stop();
-	}
-});
-
-game.start();
+	.start();

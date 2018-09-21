@@ -17,6 +17,11 @@ function Game() {
 	// game.pluginManager        | game.p
 
 	let updater = require("./updater")(this);
+
+	// game.setup                |
+	require("./setup")(this);
 }
 
-module.exports = Game;
+module.exports = () => {
+	return new Game();
+};

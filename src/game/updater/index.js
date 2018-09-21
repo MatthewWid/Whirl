@@ -36,6 +36,8 @@ function start() {
 		this.event.emit("willStart");
 		requestAnimationFrame(update.bind(this));
 	}
+
+	return this;
 }
 
 // Stop the game loop
@@ -44,6 +46,8 @@ function stop() {
 		this.running = false;
 		this.event.emit("willStop");
 	}
+
+	return this;
 }
 
 module.exports = (_game, presets = {}) => {

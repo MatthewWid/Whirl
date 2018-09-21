@@ -25,7 +25,7 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	_game.object.init(this, "MobSin.viewport");
 
 	// Mandatory presets
-	this.name = name;
+	this.name = name || "";
 
 	// Set what canvas this viewport renders to
 	// Changing the rendering canvas should be done with this method, not directly setting this.c or this.ctx
@@ -57,7 +57,7 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 		} else {
 			this.activeStage = activeStage;
 		}
-	}
+	};
 	this.setStage(activeStage);
 
 	this.setCamera = (newCamera) => {

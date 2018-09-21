@@ -4,13 +4,13 @@ let eventSystem = require("../../systems/event");
 let childSystem = require("../../systems/child");
 
 module.exports = (_game) => {
-	_game.globalIndex = 0;
+	_game._globalIndex = 0;
 
 	_game.object = {
 		// Initialise a game object with standard properties that all objects in the game must have
 		// Objects can optionally inherit the event system and child system
 		init: (that, typeName, systems) => {
-			that._id = _game.globalIndex++;
+			that._id = _game.object.nextID();
 			if (!that._type) {
 				that._type = typeName;
 			}
@@ -32,7 +32,7 @@ module.exports = (_game) => {
 		},
 		// Generate a new unique ID for a game object
 		nextID: () => {
-			return _game.globalIndex++;
+			return _game._globalIndex++;
 		},
 		// Get an object from the globalStore of objects based on either its name or ID
 		get: (query) => {

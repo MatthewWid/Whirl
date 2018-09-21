@@ -1,4 +1,4 @@
-// MobSin.eventSystem
+// MobSin.systems.event
 
 module.exports = (_obj) => {
 	_obj.events = {
