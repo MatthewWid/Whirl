@@ -9,15 +9,9 @@ function update() {
 		frameCount: this.frameCount
 	});
 
-	for (let i = 0, n = this.stages.length; i < n; i++) {
-		let objectList = this.stages[i]._sortChildren();
+	this.stageManager.updateAll();
 
-		for (let j = 0, m = objectList.length; j < m; j++) {
-			let object = objectList[j];
-
-			object._calculatePhysBounds();
-		}
-	}
+	this.tweenManager.updateAll();
 	
 	this.frameCount++;
 	this.event.emit("didUpdate", {

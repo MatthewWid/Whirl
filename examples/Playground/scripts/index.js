@@ -1,23 +1,36 @@
+'use strict'
+
+let {log} = console;
+
 function update(data) {
-	// Run code on each update ...
+	// console.log(data.game.stageManager.get("main_stage").children);
+
+	if (data.frameCount >= 600) {
+		data.game.stop();
+		log("Game stopped");
+	}
 }
+
+let block, block2;
 
 function setup(data) {
 	let {game, stage} = data;
 
 	// Create a red block
-	let block = new MobSin.Sprite(game, "block", "#E00", {
+	block = new MobSin.Sprite(game, "block", "#E00", {
 		x: 50,
 		y: 50,
 		w: 50,
-		h: 50
+		h: 50,
+		z: 0
 	});
 	// Create a green block
-	let block2 = new MobSin.Sprite(game, "under_block", "#0E0", {
+	block2 = new MobSin.Sprite(game, "under_block", "#0E0", {
 		x: 75,
 		y: 75,
 		w: 50,
-		h: 50
+		h: 50,
+		z: 1
 	});
 
 	// Add it to our game world
@@ -25,9 +38,6 @@ function setup(data) {
 		block,
 		block2
 	]);
-
-	// Run the update function every time the game updates
-	game.event.on("willUpdate", update);
 }
 
 // Create a new game

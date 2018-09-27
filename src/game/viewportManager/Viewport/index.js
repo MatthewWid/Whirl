@@ -22,7 +22,7 @@ let Camera = require("../../../Camera");
 	- resizeCamera
 */
 function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
-	_game.object.init(this, "MobSin.viewport");
+	_game.object.init(this, "MobSin.Viewport");
 
 	// Mandatory presets
 	this.name = name || "";

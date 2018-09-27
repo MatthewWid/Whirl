@@ -3,7 +3,7 @@
 function Game() {
 	// game.object               | game.o
 	require("./gameObject")(this);
-	this.object.init(this, "MobSin.game", {event: true});
+	this.object.init(this, "MobSin.Game", {event: true});
 
 	// game.assetManager         | game.a
 	require("./assetManager")(this);
@@ -14,8 +14,11 @@ function Game() {
 	// game.viewportManager      | game.v
 	require("./viewportManager")(this);
 
+	// game.tweenManager         | game.t
+	require("./tweenManager")(this);
+
 	// game.pluginManager        | game.p
-	// Eg, MobSinQuickStart, MobSinDebugger, MatterJS, TweenJS
+	// Eg, MobSinQuickStart, MobSinDebugger, MatterJS, TweenJS, etc.
 
 	let updater = require("./updater")(this);
 

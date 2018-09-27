@@ -15,7 +15,7 @@ let Rectangle = require("../../../shapes/Rectangle");
 	- renderable
 */
 function Stage(_game, name, presets = {}) {
-	_game.object.init(this, "MobSin.stage", {child: true});
+	_game.object.init(this, "MobSin.Stage", {child: true});
 
 	this.name = name;
 	this.renderable = presets.renderable || true;
@@ -29,9 +29,12 @@ function Stage(_game, name, presets = {}) {
 	);
 
 	this._sortChildren = () => {
-		this.children.sort((current, next) => {
-			if (current.z && next.z) {
-				return current.z - next.z;
+		this.children.sort((curr, next) => {
+			if (
+				typeof curr.z != "undefined" &&
+				typeof next.z != "undefined"
+			) {
+				return curr.z - next.z;
 			} else {
 				return 0;
 			}

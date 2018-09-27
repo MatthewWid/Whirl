@@ -22,6 +22,9 @@ module.exports = (_game) => {
 			if (useSystems.child) {
 				systems.child(that);
 			}
+			if (useSystems.tween) {
+				systems.tween(_game, that);
+			}
 
 			_game.object.globalStore.push(that);
 
@@ -31,14 +34,18 @@ module.exports = (_game) => {
 		nextID: () => {
 			return _game._globalIndex++;
 		},
-		// Get an object from the globalStore of objects based on either its name or ID
-		get: (query) => {
-			if (typeof query === "string") {
-				return _game.object.globalStore.filter((e) => e.name === query);
-			};
-			if (typeof query === "number") {
-				return _game.object.globalStore.filter((e) => e._id === query);
-			}
+		// Retrieve objects from the global object store
+		// Based on its given name
+		getByName: (query) => {
+			return _game.object.globalStore.filter((e) => e.name === query);
+		},
+		// Based on its internal ID
+		getById: (query) => {
+			return _game.object.globalStore.filter((e) => e._id === query);
+		},
+		// Based on its internal type
+		getByType: (query) => {
+			return _game.object.globalStore.filter((e) => e._type === query);
 		},
 		// Get all objects from the globalStore
 		getAll: () => {

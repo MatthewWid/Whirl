@@ -17,6 +17,18 @@ module.exports = (_game) => {
 		},
 		getAll: () => {
 			return _game.stages;
+		},
+		updateAll: () => {
+			// Sort children by 'z' in stages and calculate their physical boundaries from the world to canvas
+			for (let i = 0, n = _game.stages.length; i < n; i++) {
+				let objectList = _game.stages[i]._sortChildren();
+
+				for (let j = 0, m = objectList.length; j < m; j++) {
+					let object = objectList[j];
+
+					object._calculatePhysBounds();
+				}
+			}
 		}
 	};
 	_game.s = _game.stageManager;
