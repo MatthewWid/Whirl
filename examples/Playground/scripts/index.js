@@ -1,11 +1,9 @@
-'use strict'
-
 let {log} = console;
 
 function update(data) {
 	// console.log(data.game.stageManager.get("main_stage").children);
 
-	if (data.frameCount >= 600) {
+	if (data.frameCount >= 240) {
 		data.game.stop();
 		log("Game stopped");
 	}
@@ -54,3 +52,19 @@ let game = MobSin.Game()
 	})
 	.event.on("willUpdate", update)
 	.start();
+
+let block1 = game.object.getByName("block")[0];
+
+// Change the block's alpha from 1 to 0.4 over 2 seconds
+block1.tween({alpha: .4}, {alpha: 1}, 4000);
+
+// Move the block to (300, 100) over 2 seconds and then move it to (100, 100) over 2 seconds
+let tween2 = game.tweenManager.create(block1.bounds, {x: 50, y: 50}, {x: 300, y: 100}, 2000, {
+	easing: MobSin.tweens.quadratic.out,
+	roundValues: true
+}).chain(
+	game.tweenManager.create(block1.bounds, {x: 300}, {x: 100}, 2000, {
+		start: false,
+		roundValues: true
+	})
+);

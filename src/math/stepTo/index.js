@@ -12,8 +12,6 @@
 
 		MobSin.math.stepTo(7, 0, 8)
 		> 0
-
-		MobSin.math.stepTo()
 */
 module.exports = (val, target, increment = 1) => {
 	if (val == target) {

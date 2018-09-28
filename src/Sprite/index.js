@@ -20,7 +20,7 @@ let math = require("../math");
 	- anchor {x, y}
 */
 function Sprite(_game, name, fill, presets = {}) {
-	_game.object.init(this, "MobSin.sprite");
+	_game.object.init(this, "MobSin.Sprite", {tween: true});
 
 	this.name = name || "";
 

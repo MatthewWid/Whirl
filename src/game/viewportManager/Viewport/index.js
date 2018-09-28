@@ -83,7 +83,7 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 
 	// Optional presets with defaults
 	this.renderable = presets.renderable || true;
-	this.clear = (presets.hasOwnProperty("clear") ? presets.clear : true);
+	this.clear = presets.hasOwnProperty("clear") ? presets.clear : true;
 
 	this._render = () => {
 		this.ctx.save();

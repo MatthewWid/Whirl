@@ -16,10 +16,16 @@ module.exports = (_game) => {
 			return _game.tweens;
 		},
 		updateAll: () => {
-			for (let i = 0; i < _game.tweens.length; i++) {
+			for (let i = _game.tweens.length - 1; i >= 0; i--) {
 				_game.tweens[i]._update();
+
+				if (_game.tweenManager.purge && _game.tweens[i].finished) {
+					_game.tweens.splice(i, 1);
+				}
 			}
-		}
+		},
+		// Whether tweens should be deleted out of the tweens list when they have finished
+		purge: false
 	};
 	_game.t = _game.tweenManager;
 };
