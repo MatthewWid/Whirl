@@ -15,6 +15,9 @@ module.exports = (_game) => {
 		getAll: () => {
 			return _game.tweens;
 		},
+		destroyAll: () => {
+			_game.tweens = [];
+		},
 		updateAll: () => {
 			for (let i = _game.tweens.length - 1; i >= 0; i--) {
 				_game.tweens[i]._update();

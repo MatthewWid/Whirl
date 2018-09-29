@@ -1,7 +1,7 @@
 // MonSin.game.assetManager.Asset
 
 function Asset(_game, name, type, src) {
-	_game.object.init(this, "MobSin.Asset", ["eventSystem"]);
+	_game.object.init(this, "MobSin.Asset", {event: true});
 
 	// Mandatory presets
 	this.name = name;

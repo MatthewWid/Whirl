@@ -2,15 +2,18 @@ document.getElementsByTagName("html")[0].style.backgroundColor = "#EEE";
 
 let ms = MobSin;
 
-let game = new ms.game();
+let game = ms.Game();
 
-let myVp = game.viewportManager.add("vp", "#canvas", undefined, {
+let v = game.viewportManager.add("vp", "#canvas", ms.STAGE, ms.CAMERA, {
 	cW: 400,
-	cH: 400,
-	bg: "rgb(255, 0, 0)"
+	cH: 400
 });
-
-let v = game.viewportManager.get("vp");
+v.activeStage.child.add(
+	ms.Sprite(game, "background", "rgb(0, 0, 0)", {
+		w: 400,
+		h: 400
+	})
+);
 
 game.event.on("didUpdate", (data) => {
 	c.r = ms.math.stepTo(c.r, c.rT, c.step);
@@ -27,7 +30,7 @@ game.event.on("didUpdate", (data) => {
 });
 
 game.event.on("willRender", () => {
-	v.bg = `rgb(${c.r}, ${c.g}, ${c.b})`;
+	v.activeStage.child.getByName("background")[0].setFill(`rgb(${c.r}, ${c.g}, ${c.b})`);
 });
 
 // Set a new target colour

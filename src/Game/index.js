@@ -26,6 +26,4 @@ function Game() {
 	require("./setup")(this);
 }
 
-module.exports = () => {
-	return new Game();
-};
+module.exports = () => new Game();

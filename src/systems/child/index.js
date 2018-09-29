@@ -15,8 +15,8 @@ module.exports = (_obj) => {
 			return _obj;
 		},
 		// Get specific child based on child name
-		get: (name) => {
-			return _obj.children.find((e) => e.name == name);
+		getByName: (query) => {
+			return _obj.children.filter((e) => e.name === query);
 		},
 		// Get immediate children of object
 		getAll: () => {

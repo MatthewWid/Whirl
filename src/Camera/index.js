@@ -26,7 +26,7 @@ let shapes = require("../shapes");
 		- roundPixels
 */
 function Camera(_game, presets = {}) {
-	_game.object.init(this, "MobSin.camera");
+	_game.object.init(this, "MobSin.camera", {tween: true});
 
 	this.anchor = {
 		x: (presets.anchor || {}).x || 0,
@@ -77,8 +77,11 @@ function Camera(_game, presets = {}) {
 		this.lockTo(presets.lockTo);
 	}
 
-	// The physical area that this camera can see in the game world
-	// used for render culling and exclusions to update
+	/*
+		TODO:
+		The physical area that this camera can see in the game world
+		used for render culling and exclusions to update
+	*/
 	this._worldView = new shapes.Rectangle();
 	this._calculateWorldView = () => {};
 	this._calculateWorldView();
@@ -103,8 +106,6 @@ function Camera(_game, presets = {}) {
 			y: -(this.scroll.y - (this.bounds.h * this.anchor.y))
 		};
 	};
-
-	// Filters, effects, following, culling, etc.
 }
 
 module.exports = Camera;

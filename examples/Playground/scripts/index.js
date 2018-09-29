@@ -1,29 +1,32 @@
 let {log} = console;
 
 function update(data) {
-	// console.log(data.game.stageManager.get("main_stage").children);
-
-	if (data.frameCount >= 240) {
-		data.game.stop();
-		log("Game stopped");
-	}
+	// Run some code on each update ...
 }
 
 let block, block2;
 
 function setup(data) {
-	let {game, stage} = data;
+	let {game, stage, camera} = data;
+
+	game.tweenManager.purge = true;
 
 	// Create a red block
-	block = new MobSin.Sprite(game, "block", "#E00", {
+	block = MobSin.Sprite(game, "block", "#E00", {
 		x: 50,
 		y: 50,
 		w: 50,
 		h: 50,
 		z: 0
 	});
+
+	block.tween({x: 50}, {x: 300}, 2000, {modify: "bounds"})
+		.event.onOnce("didFinish", () => {
+			log("Tween finished");
+		});
+
 	// Create a green block
-	block2 = new MobSin.Sprite(game, "under_block", "#0E0", {
+	block2 = MobSin.Sprite(game, "under_block", "#0E0", {
 		x: 75,
 		y: 75,
 		w: 50,
@@ -52,19 +55,3 @@ let game = MobSin.Game()
 	})
 	.event.on("willUpdate", update)
 	.start();
-
-let block1 = game.object.getByName("block")[0];
-
-// Change the block's alpha from 1 to 0.4 over 2 seconds
-block1.tween({alpha: .4}, {alpha: 1}, 4000);
-
-// Move the block to (300, 100) over 2 seconds and then move it to (100, 100) over 2 seconds
-let tween2 = game.tweenManager.create(block1.bounds, {x: 50, y: 50}, {x: 300, y: 100}, 2000, {
-	easing: MobSin.tweens.quadratic.out,
-	roundValues: true
-}).chain(
-	game.tweenManager.create(block1.bounds, {x: 300}, {x: 100}, 2000, {
-		start: false,
-		roundValues: true
-	})
-);

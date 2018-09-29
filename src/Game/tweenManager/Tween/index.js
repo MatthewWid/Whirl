@@ -35,10 +35,6 @@ function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 	// Whether the tween is allowed to update
 	this.canRun = presets.hasOwnProperty("start") ? presets.start : true;
 
-	/*
-		TODO:
-		If start() is called again then restart the tween from the beginning
-	*/
 	this.start = () => {
 		this.startTime = Date.now();
 		this.endTime = this.startTime + time;
@@ -50,11 +46,6 @@ function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 
 		return this;
 	};
-	/*
-		TODO:
-		When the tween stops then round the currently modified values
-		presets.roundLast
-	*/
 	this.stop = () => {
 		this.canRun = false;
 		this.event.emit("willStop");
@@ -85,12 +76,15 @@ function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 
 			// If the tween has finished then stop the tween and call its chained tween, if any
 			if (through >= 1) {
-				this.stop();
-				this.event.emit("didFinish");
+				this.stop(); // Stop the tween
+				this.finished = true; // Set the finished flag to true
+				this.event.emit("didFinish"); // Emit an event for finishing
 
-				this.finished = true;
+				for (prop in to) { // Set the final values to the last 'to' value
+					this.object[prop] = this.to[prop];
+				}
 
-				if (this.chainedTween) {
+				if (this.chainedTween) { // Call the chained tween
 					this.chainedTween.start();
 				}
 
@@ -98,12 +92,11 @@ function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 			}
 
 			// Iterate through each property to modify
-			let toKeys = Object.keys(to);
-			for (let i = 0; i < toKeys.length; i++) {
+			for (prop in to) {
 				// Move it between the two values using the tween's easing function
-				this.object[toKeys[i]] = this.from[toKeys[i]] + (this.to[toKeys[i]] - this.from[toKeys[i]]) * this._easing(through);
+				this.object[prop] = this.from[prop] + (this.to[prop] - this.from[prop]) * this._easing(through);
 				if (this.roundValues) {
-					this.object[toKeys[i]] = Math.round(this.object[toKeys[i]]);
+					this.object[prop] = Math.round(this.object[prop]);
 				}
 			}
 

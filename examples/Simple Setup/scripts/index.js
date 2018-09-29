@@ -1,39 +1,12 @@
 function update(data) {
-	// Move our block by one pixel each frame
-	data.game.object.get("block")[0]
-		.bounds.x++;
-
-	// Stop the game after two seconds (120 frames)
-	if (data.frameCount > 120) {
-		data.game.stop();
-	}
+	// Run some code each update loop ...
 }
 
 function setup(data) {
-	let {game, stage} = data;
+	let {game, viewport, stage, camera} = data;
 
-	// Create a red block
-	let block = new MobSin.Sprite(game, "block", "#E00", {
-		x: 50,
-		y: 50,
-		w: 50,
-		h: 50
-	});
-	let block2 = new MobSin.Sprite(game, "under_block", "#0E0", {
-		x: 75,
-		y: 75,
-		w: 50,
-		h: 50
-	});
-
-	// Add it to our game world
-	stage.child.add([
-		block,
-		block2
-	]);
-
-	// Run the update function every time the game updates
-	game.event.on("willUpdate", update);
+	// Set up your game
+	// Create objects, initialise stage, viewport and camera, insert plugins, etc.
 }
 
 // Create a new game

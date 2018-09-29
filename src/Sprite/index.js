@@ -119,4 +119,4 @@ function Sprite(_game, name, fill, presets = {}) {
 	};
 }
 
-module.exports = Sprite;
+module.exports = (_game, name, fill, presets) => new Sprite(_game, name, fill, presets);
