@@ -45,4 +45,8 @@ let keys = {
 	z: 90
 };
 
+keys.getByKeyCode = (keyCode) => {
+	return Object.keys(keys).find(key => keys[key] === keyCode);
+};
+
 module.exports = keys;

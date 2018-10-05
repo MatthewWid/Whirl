@@ -2,6 +2,21 @@ let {log} = console;
 
 function update(data) {
 	// Run some code on each update ...
+	let {game} = data;
+	let {keyIsDown} = game.input;
+
+	if (keyIsDown(MobSin.keys.s)) {
+		block2.bounds.y += 3;
+	}
+	if (keyIsDown(MobSin.keys.w)) {
+		block2.bounds.y -= 3;
+	}
+	if (keyIsDown(MobSin.keys.a)) {
+		block2.bounds.x -= 3;
+	}
+	if (keyIsDown(MobSin.keys.d)) {
+		block2.bounds.x += 3;
+	}
 }
 
 let block, block2, circle;
@@ -46,7 +61,8 @@ function setup(data) {
 		circle.tween({x: circle.bounds.x}, {x: circle.bounds.x + 200}, 2000, {modify: "bounds"})
 	);
 
-	block.tween({x: 50}, {x: 300}, 2000, {modify: "bounds"});
+	block.tween({x: 50}, {x: 300}, 2000, {modify: "bounds", step: 20});
+	block.tween({}, {y: -20}, 2000, {modify: "bounds"});
 
 	// Add it to our game world
 	stage.child.add([

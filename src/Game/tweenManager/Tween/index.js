@@ -1,6 +1,7 @@
 // MobSin.game.tweenManager.Tween
 
 let linearTweenFunction = require("../../../easing/linear");
+let roundTo = require("../../../math/roundTo");
 
 /*
 	A tween is an instruction to modify a given object by
@@ -20,14 +21,20 @@ function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 	// If no easing function is given then a linear tween will be defaulted to
 	this._easing = presets.easing || linearTweenFunction;
 
-	// TODO: 
-	// If 'from' is not given any values but 'to' is
-	// then assume they want to go from its current position
-	// *to* an offset from its 'from' position.
-	// Otherwise if both 'from' and 'to' are given simply
-	// move between the two absolute values.
 	this.from = {...from};
 	this.to = {...to};
+
+	// If a property is given in 'to' and not 'from' then treat 'to' as an offset from the current value, instead of an absolute value.
+	for (prop in to) {
+		if (!from.hasOwnProperty(prop)) {
+			this.from[prop] = _obj[prop];
+			this.to[prop] = this.from[prop] + to[prop];
+		}
+	}
+
+	// The 'step' in between every update
+	// i.e. setting to 20 will round the value of the property being modified to the nearest value divisible 20 every update
+	this.step = presets.step;
 
 	// Whether the values being modified should be rounded to an integer
 	this.roundValues = presets.roundValues || false;
@@ -96,6 +103,9 @@ function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 			for (prop in to) {
 				// Move it between the two values using the tween's easing function
 				this.object[prop] = this.from[prop] + (this.to[prop] - this.from[prop]) * this._easing(through);
+				if (this.step) {
+					this.object[prop] = roundTo(this.object[prop], this.step);
+				}
 				if (this.roundValues) {
 					this.object[prop] = Math.round(this.object[prop]);
 				}

@@ -1,6 +1,6 @@
 // MobSin.game
 
-function Game() {
+function Game(presets = {}) {
 	// game.object               | game.o
 	require("./gameObject")(this);
 	this.object.init(this, "MobSin.Game", {event: true}, false);
@@ -18,7 +18,7 @@ function Game() {
 	require("./tweenManager")(this);
 
 	// game.input                | game.i
-	require("./input")(this);
+	require("./input")(this, presets);
 
 	// game.pluginManager        | game.p
 	// Eg, MobSinQuickStart, MobSinDebugger, MatterJS, TweenJS, etc.
@@ -29,4 +29,4 @@ function Game() {
 	require("./setup")(this);
 }
 
-module.exports = () => new Game();
+module.exports = (presets) => new Game(presets);
