@@ -1,6 +1,6 @@
 // MobSin.systems.event
 
-module.exports = (_obj) => {
+module.exports = (_game, _obj) => {
 	_obj.events = {
 		_index: 0
 	};
@@ -38,6 +38,7 @@ module.exports = (_obj) => {
 			}
 			return false;
 		},
+		// Remove all event listeners of the given name
 		removeAll: (name) => {
 			delete _obj.events[name];
 		}

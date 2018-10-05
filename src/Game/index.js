@@ -3,7 +3,7 @@
 function Game() {
 	// game.object               | game.o
 	require("./gameObject")(this);
-	this.object.init(this, "MobSin.Game", {event: true});
+	this.object.init(this, "MobSin.Game", {event: true}, false);
 
 	// game.assetManager         | game.a
 	require("./assetManager")(this);

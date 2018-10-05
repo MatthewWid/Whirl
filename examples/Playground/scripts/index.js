@@ -18,11 +18,6 @@ function setup(data) {
 		z: 0
 	});
 
-	block.tween({x: 50}, {x: 300}, 2000, {modify: "bounds"})
-		.event.onOnce("didFinish", () => {
-			log("Tween finished");
-		});
-
 	// Create a green block
 	block2 = MobSin.Sprite(game, "under_block", "#0E0", {
 		x: 75,
@@ -43,12 +38,15 @@ function setup(data) {
 		r: 50,
 		scale: 2
 	});
+	
 	circle.tween({scale: 2}, {scale: 0}, 1000)
 	.chain(
 		circle.tween({scale: 0}, {scale: 2}, 1000)
 	).chain(
 		circle.tween({x: circle.bounds.x}, {x: circle.bounds.x + 200}, 2000, {modify: "bounds"})
 	);
+
+	block.tween({x: 50}, {x: 300}, 2000, {modify: "bounds"});
 
 	// Add it to our game world
 	stage.child.add([

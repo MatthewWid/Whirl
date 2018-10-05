@@ -26,7 +26,7 @@ let shapes = require("../shapes");
 		- roundPixels
 */
 function Camera(_game, presets = {}) {
-	_game.object.init(this, "MobSin.camera", {tween: true});
+	_game.object.init(this, "MobSin.Camera", {tween: true});
 
 	this.anchor = {
 		x: (presets.anchor || {}).x || 0,

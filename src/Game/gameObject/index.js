@@ -7,8 +7,8 @@ module.exports = (_game) => {
 
 	_game.object = {
 		// Initialise a game object with standard properties that all objects in the game must have
-		// Objects can optionally inherit the event system and child system
-		init: (that, typeName, useSystems = {}) => {
+		// Objects can optionally inherit various systems that extend their functionality
+		init: (that, typeName, useSystems = {}, store) => {
 			that._id = _game.object.nextID();
 			if (!that._type) {
 				that._type = typeName;
@@ -16,17 +16,15 @@ module.exports = (_game) => {
 
 			that.data = {};
 
-			if (useSystems.event) {
-				systems.event(that);
-			}
-			if (useSystems.child) {
-				systems.child(that);
-			}
-			if (useSystems.tween) {
-				systems.tween(_game, that);
+			for (sys in useSystems) {
+				if (useSystems[sys]) {
+					systems[sys](_game, that);
+				}
 			}
 
-			_game.object.globalStore.push(that);
+			if (typeof store === "undefined" || store) {
+				_game.object.globalStore.push(that);
+			}
 
 			return that;
 		},
@@ -51,6 +49,7 @@ module.exports = (_game) => {
 		getAll: () => {
 			return _game.object.globalStore;
 		},
+		// Remove an object from the global store based on its unique ID
 		destroyById: (query) => {
 			_game.object.globalStore = _game.object.globalStore.filter((e) => e._id !== query);
 		},

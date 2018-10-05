@@ -1,6 +1,6 @@
 // MobSin.systems.child
 
-module.exports = (_obj) => {
+module.exports = (_game, _obj) => {
 	_obj.children = [];
 
 	_obj.child = _obj.c = {
