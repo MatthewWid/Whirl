@@ -51,6 +51,9 @@ module.exports = (_game) => {
 		getAll: () => {
 			return _game.object.globalStore;
 		},
+		destroyById: (query) => {
+			_game.object.globalStore = _game.object.globalStore.filter((e) => e._id !== query);
+		},
 		globalStore: []
 	};
 	_game.o = _game.object;

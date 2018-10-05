@@ -23,6 +23,7 @@ module.exports = (_game) => {
 				_game.tweens[i]._update();
 
 				if (_game.tweenManager.purge && _game.tweens[i].finished) {
+					_game.object.destroyById(_game.tweens[i]._id);
 					_game.tweens.splice(i, 1);
 				}
 			}

@@ -17,7 +17,8 @@ let MobSin = {
 
 	// Hard constants
 	STAGE: "_DEFAULTSTAGE",
-	CAMERA: "_DEFAULTCAMERA"
+	CAMERA: "_DEFAULTCAMERA",
+	keys: require("./keys")
 };
 
 module.exports = MobSin;

@@ -17,6 +17,9 @@ function Game() {
 	// game.tweenManager         | game.t
 	require("./tweenManager")(this);
 
+	// game.input                | game.i
+	require("./input")(this);
+
 	// game.pluginManager        | game.p
 	// Eg, MobSinQuickStart, MobSinDebugger, MatterJS, TweenJS, etc.
 
