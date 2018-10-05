@@ -3,7 +3,7 @@
 let shapes = require("../");
 
 function Rectangle(x, y, w, h) {
-	this.shape = "rectangle";
+	this._shape = "rectangle";
 	this.x = x || 0;
 	this.y = y || 0;
 	this.w = w || 0;
@@ -17,4 +17,4 @@ function Rectangle(x, y, w, h) {
 	};
 }
 
-module.exports = Rectangle;
+module.exports = (x, y, w, h) => new Rectangle(x, y, w, h);
