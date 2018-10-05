@@ -6,7 +6,7 @@ let MobSin = {
 	Game: require("./Game"), // Make a new game instance
 	math: require("./math"), // Math functions
 	util: require("./util"), // Utility functions
-	tweens: require("./tweens"), // Tweening functions
+	easing: require("./easing"), // Tweening functions
 	shapes: require("./shapes"), // Shapes and geometry
 
 	// Object constructors

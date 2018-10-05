@@ -39,7 +39,7 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	this.c.height = presets.cH || this.c.height;
 
 	// The x, y and width and height of this viewport
-	this.bounds = new Rectangle(
+	this.bounds = Rectangle(
 		presets.x || 0,
 		presets.y || 0,
 		presets.w || this.c.width,

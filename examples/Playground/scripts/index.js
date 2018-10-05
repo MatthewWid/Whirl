@@ -4,12 +4,10 @@ function update(data) {
 	// Run some code on each update ...
 }
 
-let block, block2;
+let block, block2, circle;
 
 function setup(data) {
 	let {game, stage, camera} = data;
-
-	game.tweenManager.purge = true;
 
 	// Create a red block
 	block = MobSin.Sprite(game, "block", "#E00", {
@@ -31,13 +29,32 @@ function setup(data) {
 		y: 75,
 		w: 50,
 		h: 50,
-		z: 1
+		z: 1,
+		anchor: {
+			x: .5,
+			y: .5
+		}
 	});
+
+	circle = MobSin.Sprite(game, "circle", "#0EE", {
+		shape: MobSin.shapes.Circle(),
+		x: stage.limits.getMidpoint().x,
+		y: stage.limits.getMidpoint().y,
+		r: 50,
+		scale: 2
+	});
+	circle.tween({scale: 2}, {scale: 0}, 1000)
+	.chain(
+		circle.tween({scale: 0}, {scale: 2}, 1000)
+	).chain(
+		circle.tween({x: circle.bounds.x}, {x: circle.bounds.x + 200}, 2000, {modify: "bounds"})
+	);
 
 	// Add it to our game world
 	stage.child.add([
 		block,
-		block2
+		block2,
+		circle
 	]);
 }
 

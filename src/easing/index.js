@@ -1,4 +1,4 @@
-// MobSin.tweens
+// MobSin.easing
 
 module.exports = {
 	linear: require("./linear"),

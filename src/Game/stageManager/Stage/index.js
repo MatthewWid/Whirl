@@ -21,7 +21,7 @@ function Stage(_game, name, presets = {}) {
 	this.renderable = presets.renderable || true;
 	
 	// The limits of the game world that objects and textures should not be able to surpass
-	this.limits = new Rectangle(
+	this.limits = Rectangle(
 		presets.x || 0,
 		presets.y || 0,
 		presets.w || 0,

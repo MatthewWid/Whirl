@@ -25,11 +25,13 @@ function Sprite(_game, name, fill, presets = {}) {
 	this.name = name || "";
 
 	this.setFill = (newFill) => {
+		// If a string is given fill with a colour that is the given string.
 		if (typeof newFill == "string" && newFill.length > 0) {
 			this.fill = {
 				type: "colour",
 				data: newFill
 			};
+		// If an image asset is given will with that image.
 		} else if (
 			typeof newFill == "object" &&
 			newFill._type == "MobSin.asset" &&
@@ -39,6 +41,7 @@ function Sprite(_game, name, fill, presets = {}) {
 				type: "image",
 				data: newFill
 			};
+		// Otherwise, default to filling with a transparent colour
 		} else {
 			this.fill = {
 				type: "colour",
@@ -68,22 +71,50 @@ function Sprite(_game, name, fill, presets = {}) {
 		x: (presets.anchor || {}).x || 0,
 		y: (presets.anchor || {}).y || 0
 	};
+
 	// The coords and dimensions the sprite will draw to, does not include physics
-	this.bounds = new shapes.Rectangle(
-		presets.x || 0,
-		presets.y || 0,
-		presets.w || (this.fill.type === "image" ? this.fill.data.rawData.width : false) || 0,
-		presets.h || (this.fill.type === "image" ? this.fill.data.rawData.height : false) || 0
-	);
+	presets.shape = presets.shape || shapes.Rectangle();
+	switch (presets.shape._shape) {
+		case "rectangle":
+			this.bounds = shapes.Rectangle(
+				presets.x || 0,
+				presets.y || 0,
+				presets.w || (this.fill.type === "image" ? this.fill.data.rawData.width : false) || 0,
+				presets.h || (this.fill.type === "image" ? this.fill.data.rawData.height : false) || 0
+			);
+			this._physBounds = shapes.Rectangle();
+			break;
+		case "circle":
+			this.bounds = presets.shape.set({
+				x: presets.x || 0,
+				y: presets.y || 0,
+				r: presets.r || 0
+			});
+			this._physBounds = shapes.Circle();
+			break;
+	}
+	
 
 	// The physical bounds of the object taking into account the anchor point
 	// _physBounds should be considered read-only outside of the _calculateRealBounds() method
-	this._physBounds = new shapes.Rectangle();
 	this._calculatePhysBounds = () => {
-		this._physBounds.w = this.bounds.w * this.scale;
-		this._physBounds.h = this.bounds.h * this.scale;
-		this._physBounds.x = Math.round(this.bounds.x - this.bounds.w * this.anchor.x * this.scale);
-		this._physBounds.y = Math.round(this.bounds.y - this.bounds.h * this.anchor.y * this.scale);
+		switch (this.bounds._shape) {
+			case "rectangle":
+				this._physBounds.set({
+					w: this.bounds.w * this.scale,
+					h: this.bounds.h * this.scale,
+					x: Math.round(this.bounds.x - this.bounds.w * this.anchor.x * this.scale),
+					y: Math.round(this.bounds.y - this.bounds.h * this.anchor.y * this.scale)
+				});
+				break;
+			case "circle":
+				this._physBounds.set({
+					x: this.bounds.x,
+					y: this.bounds.y,
+					r: this.bounds.r * this.scale
+				});
+				break;
+		}
 	};
 	this._calculatePhysBounds();
 
@@ -91,20 +122,12 @@ function Sprite(_game, name, fill, presets = {}) {
 	this._render = (_ctx, modifiers = {}) => { // Take offsets
 		_ctx.save();
 
-		// Render background ...
-
 		if (this.alpha != 0 && this.scale != 0 || (this.fill.type == "colour" && this.fill.data != "transparent")) { // Don't render if we won't see it anyway
 			if (this.alpha != 1) {
 				_ctx.globalAlpha = this.alpha;
 			}
 
-			if (this.fill.type === "colour") {
-				render.colour(_ctx, this);
-			}
-
-			if (this.fill.type === "image") {
-				render.image(_ctx, this);
-			}
+			render[this.fill.type](_ctx, this);
 		}
 
 		if (this.outline) {

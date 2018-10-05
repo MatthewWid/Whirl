@@ -1,4 +1,4 @@
-// MobSin.tweens.quadratic
+// MobSin.easing.quadratic
 
 module.exports = {
 	in: require("./in"),

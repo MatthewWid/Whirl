@@ -1,6 +1,6 @@
 // MobSin.game.tweenManager.Tween
 
-let linearTweenFunction = require("../../../tweens/linear");
+let linearTweenFunction = require("../../../easing/linear");
 
 /*
 	A tween is an instruction to modify a given object by
@@ -60,9 +60,10 @@ function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 	// A chained tween is started when the current tween ends
 	this.chainedTween = null;
 	this.chain = (tween) => {
+		tween.stop();
 		this.chainedTween = tween;
 
-		return tween;
+		return this.chainedTween;
 	};
 	this.unchain = () => {
 		this.chainedTween = null;

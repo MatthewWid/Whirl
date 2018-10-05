@@ -28,7 +28,7 @@ module.exports = (_game) => {
 			}
 		},
 		// Whether tweens should be deleted out of the tweens list when they have finished
-		purge: false
+		purge: true
 	};
 	_game.t = _game.tweenManager;
 };

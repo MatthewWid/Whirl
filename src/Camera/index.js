@@ -33,7 +33,7 @@ function Camera(_game, presets = {}) {
 		y: (presets.anchor || {}).y || 0
 	};
 	// The position and dimension on the screen that the camera will render to
-	this.bounds = new shapes.Rectangle(
+	this.bounds = shapes.Rectangle(
 		presets.x || 0,
 		presets.y || 0,
 		presets.w || 0,
@@ -82,7 +82,7 @@ function Camera(_game, presets = {}) {
 		The physical area that this camera can see in the game world
 		used for render culling and exclusions to update
 	*/
-	this._worldView = new shapes.Rectangle();
+	this._worldView = shapes.Rectangle();
 	this._calculateWorldView = () => {};
 	this._calculateWorldView();
 
