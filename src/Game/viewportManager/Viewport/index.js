@@ -62,7 +62,7 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 
 	this.setCamera = (newCamera) => {
 		if (newCamera === "_DEFAULTCAMERA") {
-			this.activeCamera = new Camera(_game, {
+			this.activeCamera = Camera(_game, {
 				x: this.bounds.x,
 				y: this.bounds.y,
 				w: this.bounds.w,

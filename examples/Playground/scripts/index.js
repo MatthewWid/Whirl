@@ -3,20 +3,6 @@ let {log} = console;
 function update(data) {
 	// Run some code on each update ...
 	let {game} = data;
-	let {keyIsDown} = game.input;
-
-	if (keyIsDown(MobSin.keys.s)) {
-		block2.bounds.y += 3;
-	}
-	if (keyIsDown(MobSin.keys.w)) {
-		block2.bounds.y -= 3;
-	}
-	if (keyIsDown(MobSin.keys.a)) {
-		block2.bounds.x -= 3;
-	}
-	if (keyIsDown(MobSin.keys.d)) {
-		block2.bounds.x += 3;
-	}
 }
 
 let block, block2, circle;
@@ -39,11 +25,7 @@ function setup(data) {
 		y: 75,
 		w: 50,
 		h: 50,
-		z: 1,
-		anchor: {
-			x: .5,
-			y: .5
-		}
+		z: 1
 	});
 
 	circle = MobSin.Sprite(game, "circle", "#0EE", {
@@ -51,18 +33,8 @@ function setup(data) {
 		x: stage.limits.getMidpoint().x,
 		y: stage.limits.getMidpoint().y,
 		r: 50,
-		scale: 2
+		scale: 1.5
 	});
-	
-	circle.tween({scale: 2}, {scale: 0}, 1000)
-	.chain(
-		circle.tween({scale: 0}, {scale: 2}, 1000)
-	).chain(
-		circle.tween({x: circle.bounds.x}, {x: circle.bounds.x + 200}, 2000, {modify: "bounds"})
-	);
-
-	block.tween({x: 50}, {x: 300}, 2000, {modify: "bounds", step: 20});
-	block.tween({}, {y: -20}, 2000, {modify: "bounds"});
 
 	// Add it to our game world
 	stage.child.add([
@@ -72,17 +44,34 @@ function setup(data) {
 	]);
 }
 
-// Create a new game
-// Call the 'setup' function when the "didSetup" event fires
-// Set up the game with the given canvas and make it 400x400 pixels
-// Call the 'update' function when the "willUpdate" event fires
-// Start the game loop
+// let MobSinShorten = require("./plugins/MobSinShorten.js");
+let MobSinShorten = {
+	connected: (_game) => {
+		_game.a = _game.assetManager;
+		_game.i = _game.input;
+		_game.o = _game.object;
+		_game.s = _game.stageManager;
+		_game.t = _game.tweenManager;
+		_game.v = _game.viewportManager;
+
+		_game.event.on("didInitObject", (data) => {
+			if (data.useSystems.event) {
+				data.object.e = data.object.event;
+			}
+			if (data.useSystems.tween) {
+				data.object.t = data.object.tween;
+			}
+		});
+	}
+};
+
 let game = MobSin.Game()
 	.event.onOnce("didSetup", setup)
+	.event.on("willUpdate", update)
+	.pluginManager.connect([MobSinShorten])
 	.setup({
 		canvas: "#canvas",
 		cW: 400,
 		cH: 400
 	})
-	.event.on("willUpdate", update)
 	.start();

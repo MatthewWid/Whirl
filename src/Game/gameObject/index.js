@@ -8,7 +8,7 @@ module.exports = (_game) => {
 	_game.object = {
 		// Initialise a game object with standard properties that all objects in the game must have
 		// Objects can optionally inherit various systems that extend their functionality
-		init: (that, typeName, useSystems = {}, store) => {
+		init: (that, typeName, useSystems = {}, store = true) => {
 			that._id = _game.object.nextID();
 			if (!that._type) {
 				that._type = typeName;
@@ -22,9 +22,14 @@ module.exports = (_game) => {
 				}
 			}
 
-			if (typeof store === "undefined" || store) {
+			if (store) {
 				_game.object.globalStore.push(that);
 			}
+
+			_game.event.emit("didInitObject", {
+				object: that,
+				useSystems: useSystems
+			});
 
 			return that;
 		},
@@ -55,5 +60,4 @@ module.exports = (_game) => {
 		},
 		globalStore: []
 	};
-	_game.o = _game.object;
 };

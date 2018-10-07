@@ -44,5 +44,4 @@ module.exports = (_game) => {
 		}
 	};
 	_game.object.init(_game.assetManager, "MobSin.system.assetManager", {event: true}, false);
-	_game.a = _game.assetManager;
 };

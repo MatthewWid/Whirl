@@ -36,7 +36,6 @@ module.exports = (_game, presets) => {
 		}
 	};
 	_game.object.init(_game.input, "MobSin.system.input", {event: true}, false);
-	_game.i = _game.input;
 
 	setTarget(_game, presets.inputElement);
 };

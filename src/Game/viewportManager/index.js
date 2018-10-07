@@ -19,5 +19,4 @@ module.exports = (_game) => {
 			return _game.viewports;
 		}
 	};
-	_game.v = _game.viewportManager;
 };

@@ -18,7 +18,7 @@ module.exports = (_game) => {
 		destroyAll: () => {
 			_game.tweens = [];
 		},
-		updateAll: () => {
+		_updateAll: () => {
 			for (let i = _game.tweens.length - 1; i >= 0; i--) {
 				_game.tweens[i]._update();
 
@@ -31,5 +31,4 @@ module.exports = (_game) => {
 		// Whether tweens should be deleted out of the tweens list when they have finished
 		purge: true
 	};
-	_game.t = _game.tweenManager;
 };

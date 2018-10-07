@@ -73,9 +73,6 @@ function Camera(_game, presets = {}) {
 	this.removeLock = () => {
 		this._lockObject = null;
 	};
-	if (presets.lockTo) {
-		this.lockTo(presets.lockTo);
-	}
 
 	/*
 		TODO:
@@ -108,4 +105,4 @@ function Camera(_game, presets = {}) {
 	};
 }
 
-module.exports = Camera;
+module.exports = (_game, presets) => new Camera(_game, presets);

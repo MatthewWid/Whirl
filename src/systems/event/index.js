@@ -5,7 +5,7 @@ module.exports = (_game, _obj) => {
 		_index: 0
 	};
 
-	_obj.event = _obj.e = {
+	_obj.event = {
 		on: (name, func, once = false) => {
 			func._id = _obj.events._index++;
 			func._once = once ? once : false;

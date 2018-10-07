@@ -9,9 +9,11 @@ function update() {
 		frameCount: this.frameCount
 	});
 
-	this.stageManager.updateAll();
+	this.stageManager._updateAll();
 
-	this.tweenManager.updateAll();
+	this.tweenManager._updateAll();
+
+	this.pluginManager._updateAll();
 	
 	this.frameCount++;
 	this.event.emit("didUpdate", {

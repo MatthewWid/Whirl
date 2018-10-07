@@ -9,17 +9,17 @@ function setup(data) {
 	// Create objects, initialise stage, viewport and camera, insert plugins, etc.
 }
 
-// Create a new game
-// Call the 'setup' function when the "didSetup" event fires
-// Set up the game with the given canvas and make it 400x400 pixels
-// Call the 'update' function when the "willUpdate" event fires
-// Start the game loop
+// 1. Create a new game
+// 2. Call the 'setup' function when the "didSetup" event fires
+// 3. Call the 'update' function when the "willUpdate" event fires
+// 4. Set up the game with the given canvas and make it 400x400 pixels
+// 5. Start the game loop
 MobSin.Game()
 	.event.onOnce("didSetup", setup)
+	.event.on("willUpdate", update)
 	.setup({
 		canvas: "#canvas",
 		cW: 400,
 		cH: 400
 	})
-	.event.on("willUpdate", update)
 	.start();

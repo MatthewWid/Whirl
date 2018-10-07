@@ -1,31 +1,32 @@
 // MobSin.game
 
 function Game(presets = {}) {
-	// game.object               | game.o
+	// game.object
 	require("./gameObject")(this);
 	this.object.init(this, "MobSin.Game", {event: true}, false);
 
-	// game.assetManager         | game.a
+	// game.assetManager
 	require("./assetManager")(this);
 
-	// game.stageManager         | game.s
+	// game.stageManager
 	require("./stageManager")(this);
 
-	// game.viewportManager      | game.v
+	// game.viewportManager
 	require("./viewportManager")(this);
 
-	// game.tweenManager         | game.t
+	// game.tweenManager
 	require("./tweenManager")(this);
 
-	// game.input                | game.i
+	// game.input
 	require("./input")(this, presets);
 
-	// game.pluginManager        | game.p
-	// Eg, MobSinQuickStart, MobSinDebugger, MatterJS, TweenJS, etc.
+	// game.pluginManager
+	// Eg, MobSinQuickStart, MobSinDebugger, MobSinShorten, MatterJS, TweenJS, etc.
+	require("./pluginManager")(this);
 
 	let updater = require("./updater")(this);
 
-	// game.setup                |
+	// game.setup
 	require("./setup")(this);
 }
 
