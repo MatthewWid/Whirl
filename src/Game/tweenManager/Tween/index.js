@@ -10,7 +10,9 @@ let roundTo = require("../../../math/roundTo");
 	Presets can be:
 	- easing
 	- start
+	- step
 	- roundValues
+	- loop
 */
 function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 	_game.object.init(this, "MobSin.Tween", {event: true});
@@ -38,6 +40,10 @@ function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 
 	// Whether the values being modified should be rounded to an integer
 	this.roundValues = presets.roundValues || false;
+
+	// Whether the Tween will restart after stopping
+	// If the Tween has a Tween chained to it then it will not loop regardless of this flag
+	this.loop = presets.loop || false;
 
 	// Whether the tween is allowed to update
 	this.canRun = presets.hasOwnProperty("start") ? presets.start : true;
@@ -94,9 +100,13 @@ function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 
 				if (this.chainedTween) { // Call the chained tween
 					this.chainedTween.start();
+
+					return;
 				}
 
-				return;
+				if (this.loop) {
+					this.start();
+				}
 			}
 
 			// Iterate through each property to modify
