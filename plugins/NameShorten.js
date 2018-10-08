@@ -1,7 +1,14 @@
-// MobSinShorten
+// NameShorten
 
-let MobSinShorten = {
+let NameShorten = {
+	_meta: {
+		name: "NameShorten",
+		desc: "Shorten methods and variable names used by the MobSin game engine.",
+		repo: ""
+	},
 	connected: (_game) => {
+		window.ms = MobSin;
+
 		_game.a = _game.assetManager;
 		_game.i = _game.input;
 		_game.o = _game.object;
@@ -20,4 +27,4 @@ let MobSinShorten = {
 	}
 };
 
-module.exports = MobSinShorten;
+module.exports = NameShorten;
