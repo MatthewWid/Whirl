@@ -17,6 +17,9 @@ let NameShorten = {
 		_game.v = _game.viewportManager;
 
 		_game.event.on("didInitObject", (data) => {
+			if (data.useSystems.child) {
+				data.object.c = data.object.child;
+			}
 			if (data.useSystems.event) {
 				data.object.e = data.object.event;
 			}
