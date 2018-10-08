@@ -1,5 +1,3 @@
 // MobSin.easing.linear
 
-module.exports = (t) => {
-	return t;
-};
+module.exports = (t) => t;

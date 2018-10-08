@@ -2,5 +2,6 @@
 
 module.exports = {
 	linear: require("./linear"),
-	quadratic: require("./quadratic")
+	quadratic: require("./quadratic"),
+	cubic: require("./cubic")
 };
