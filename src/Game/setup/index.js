@@ -3,8 +3,8 @@
 function setup(presets) {
 	if (presets.canvas) {
 		let mainViewport = this.viewportManager.add("main", presets.canvas, MobSin.STAGE, MobSin.CAMERA, {
-			cW: presets.cW || canvas.width,
-			cH: presets.cH || canvas.height
+			cW: presets.cW || presets.canvasWidth || canvas.width,
+			cH: presets.cH || presets.canvasHeight || canvas.height
 		});
 
 		this.event.emit("didSetup", {

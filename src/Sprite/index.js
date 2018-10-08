@@ -69,7 +69,12 @@ function Sprite(_game, name, fill, presets = {}) {
 	// The anchor point for where this sprite's X and Y are based off of
 	this.anchor = {
 		x: (presets.anchor || {}).x || 0,
-		y: (presets.anchor || {}).y || 0
+		y: (presets.anchor || {}).y || 0,
+		center: () => {
+			this.anchor.x = this.anchor.y = .5;
+
+			return this;
+		}
 	};
 
 	// The coords and dimensions the sprite will draw to, does not include physics

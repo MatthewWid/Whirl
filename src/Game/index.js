@@ -1,6 +1,9 @@
 // MobSin.game
 
 function Game(presets = {}) {
+	// game.config
+	require("./config")(this, presets);
+
 	// game.object
 	require("./gameObject")(this);
 	this.object.init(this, "MobSin.Game", {event: true}, false);

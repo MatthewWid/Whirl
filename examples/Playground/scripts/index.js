@@ -17,7 +17,7 @@ function setup(data) {
 		w: 50,
 		h: 50,
 		z: 0
-	});
+	}).anchor.center();
 
 	// Create a green block
 	block2 = MobSin.Sprite(game, "under_block", "#0E0", {
@@ -28,7 +28,7 @@ function setup(data) {
 		z: 1
 	});
 
-	circle = MobSin.Sprite(game, "circle", "#0EE", {
+	circle = MobSin.Sprite(game, "ball", "#0EE", {
 		shape: MobSin.shapes.Circle(),
 		x: stage.limits.getMidpoint().x,
 		y: stage.limits.getMidpoint().y,
@@ -42,36 +42,20 @@ function setup(data) {
 		block2,
 		circle
 	]);
+
+	block.tween({}, {x: 200}, 5000, {modify: "bounds"});
 }
-
-// let MobSinShorten = require("./plugins/MobSinShorten.js");
-let MobSinShorten = {
-	connected: (_game) => {
-		_game.a = _game.assetManager;
-		_game.i = _game.input;
-		_game.o = _game.object;
-		_game.s = _game.stageManager;
-		_game.t = _game.tweenManager;
-		_game.v = _game.viewportManager;
-
-		_game.event.on("didInitObject", (data) => {
-			if (data.useSystems.event) {
-				data.object.e = data.object.event;
-			}
-			if (data.useSystems.tween) {
-				data.object.t = data.object.tween;
-			}
-		});
-	}
-};
 
 let game = MobSin.Game()
 	.event.onOnce("didSetup", setup)
 	.event.on("willUpdate", update)
-	.pluginManager.connect([MobSinShorten])
 	.setup({
 		canvas: "#canvas",
-		cW: 400,
-		cH: 400
+		canvasWidth: 400,
+		canvasHeight: 400
 	})
 	.start();
+
+game.input.event.on("keyDown", (data) => {
+	console.log(data.keyName);
+});

@@ -22,7 +22,7 @@ function handle_keyUp(evt) {
 }
 
 function setTarget(_game, newTarget) {
-	_game.input._targetElement = document.querySelector(newTarget) || document.body;
+	_game.input._targetElement = newTarget;
 
 	_game.input._targetElement.addEventListener("keydown", handle_keyDown.bind(_game));
 	_game.input._targetElement.addEventListener("keyup", handle_keyUp.bind(_game));
@@ -37,5 +37,5 @@ module.exports = (_game, presets) => {
 	};
 	_game.object.init(_game.input, "MobSin.system.input", {event: true}, false);
 
-	setTarget(_game, presets.inputElement);
+	setTarget(_game, _game.config.inputElement);
 };

@@ -30,7 +30,12 @@ function Camera(_game, presets = {}) {
 
 	this.anchor = {
 		x: (presets.anchor || {}).x || 0,
-		y: (presets.anchor || {}).y || 0
+		y: (presets.anchor || {}).y || 0,
+		center: () => {
+			this.anchor.x = this.anchor.y = .5;
+
+			return this;
+		}
 	};
 	// The position and dimension on the screen that the camera will render to
 	this.bounds = shapes.Rectangle(
@@ -66,9 +71,8 @@ function Camera(_game, presets = {}) {
 	this.lockTo = (_object) => {
 		if (_object.bounds) {
 			this._lockObject = _object;
-			return true;
 		}
-		return false;
+		return this;
 	};
 	this.removeLock = () => {
 		this._lockObject = null;
