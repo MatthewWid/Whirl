@@ -1,8 +1,9 @@
 // MobSin.game.tweenManager
 
-module.exports = (_game) => {
-	let Tween = require("./Tween");
+let Tween = require("./Tween");
+let TweenGroup = require("./TweenGroup");
 
+module.exports = (_game) => {
 	_game.tweens = [];
 	_game.tweenManager = {
 		create: (_obj, from, to, time, presets) => {
@@ -11,6 +12,9 @@ module.exports = (_game) => {
 			) - 1;
 
 			return _game.tweens[newInd];
+		},
+		createGroup: (tweens, presets) => {
+			return new TweenGroup(tweens, presets);
 		},
 		getAll: () => {
 			return _game.tweens;
@@ -22,7 +26,10 @@ module.exports = (_game) => {
 			for (let i = _game.tweens.length - 1; i >= 0; i--) {
 				_game.tweens[i]._update();
 
-				if (_game.tweenManager.purge && _game.tweens[i].finished) {
+				if (_game.tweenManager.purge &&
+					_game.tweens[i].finished &&
+					_game.tweens[i].canPurge
+				) {
 					_game.object.destroyById(_game.tweens[i]._id);
 					_game.tweens.splice(i, 1);
 				}

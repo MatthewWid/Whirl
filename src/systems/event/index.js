@@ -25,18 +25,28 @@ module.exports = (_game, _obj) => {
 		emit: (name, data = {}) => {
 			if (_obj.events[name]) {
 				for (let i = 0; i < _obj.events[name].length; i++) {
+					data._eventId = _obj.events[name][i]._id;
 					_obj.events[name][i](data);
+
 					if (_obj.events[name][i]._once) {
-						_obj.events[name] = _obj.events[name].filter((evt) => evt._id != _obj.events[name][i]._id);
-						if (_obj.events[name].length == 0) { // If there are no more listeners
-							delete _obj.events[name]; // Delete the event listeners property
-							break; // Stop looping over event listener properties
-						}
+						_obj.event.removeById(name, _obj.events[name][i]._id);
+						break;
 					}
 				}
-				return true;
 			}
-			return false;
+			
+			return _obj;
+		},
+		// Remove a specific event listener by its ID
+		// Takes the event name and the listener ID
+		removeById: (name, id) => {
+			_obj.events[name] = _obj.events[name].filter((evt) => evt._id != id);
+						
+			if (_obj.events[name].length == 0) { // If there are no more listeners
+				delete _obj.events[name]; // Delete the event listeners property
+			}
+
+			return _obj;
 		},
 		// Remove all event listeners of the given name
 		removeAll: (name) => {

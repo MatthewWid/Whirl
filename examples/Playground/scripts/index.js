@@ -5,7 +5,7 @@ function update(data) {
 	let {game} = data;
 }
 
-let block, block2, circle;
+let block, block2, circle, group;
 
 function setup(data) {
 	let {game, stage, camera} = data;
@@ -25,7 +25,8 @@ function setup(data) {
 		y: 75,
 		w: 50,
 		h: 50,
-		z: 1
+		z: 1,
+		outline: "#111"
 	});
 
 	circle = MobSin.Sprite(game, "ball", "#0EE", {
@@ -43,7 +44,21 @@ function setup(data) {
 		circle
 	]);
 
-	block.tween({}, {x: 200}, 5000, {modify: "bounds"});
+	// Move our red block 200 pixels to the left over 1 second
+	block.tween({}, {x: 200}, 1000, {modify: "bounds", easing: MobSin.easing.cubic.inOut});
+
+	// Grow our circle bigger and smaller over two seconds
+	circle.tween({scale: 1.5}, {scale: 2}, 1000, {easing: MobSin.easing.quadratic.out})
+	.chain(
+		circle.tween({scale: 2}, {scale: 1.5}, 1000, {easing: MobSin.easing.quadratic.inOut})
+	);
+
+	// game.tweenManager.purge = false;
+
+	group = game.tweenManager.createGroup([
+		block2.tween({scale: 1}, {scale: 2}, 1000),
+		block2.tween({scale: 2}, {scale: 1}, 1000)
+	], {loop: true});
 }
 
 let game = MobSin.Game()

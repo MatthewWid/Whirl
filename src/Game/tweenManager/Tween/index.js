@@ -13,6 +13,7 @@ let roundTo = require("../../../math/roundTo");
 	- step
 	- roundValues
 	- loop
+	- canPurge
 */
 function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 	_game.object.init(this, "MobSin.Tween", {event: true});
@@ -44,6 +45,9 @@ function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 	// Whether the Tween will restart after stopping
 	// If the Tween has a Tween chained to it then it will not loop regardless of this flag
 	this.loop = presets.loop || false;
+
+	// Whether the Tween can be purged from the Tweens list once it has completed
+	this.canPurge = presets.hasOwnProperty("canPurge") ? presets.canPurge : true;
 
 	// Whether the tween is allowed to update
 	this.canRun = presets.hasOwnProperty("start") ? presets.start : true;

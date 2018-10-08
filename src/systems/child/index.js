@@ -3,7 +3,7 @@
 module.exports = (_game, _obj) => {
 	_obj.children = [];
 
-	_obj.child = _obj.c = {
+	_obj.child = {
 		add: (newChild) => {
 			if (typeof newChild == "object" && !Array.isArray(newChild)) {
 				_obj.children.push(newChild);

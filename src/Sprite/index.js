@@ -135,7 +135,7 @@ function Sprite(_game, name, fill, presets = {}) {
 			render[this.fill.type](_ctx, this);
 		}
 
-		if (this.outline) {
+		if (this.outline && this.bounds._shape === "rectangle") {
 			_ctx.globalAlpha = 1;
 
 			_ctx.lineWidth = 2;
