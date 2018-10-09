@@ -20,22 +20,33 @@ function TweenGroup(tweens, presets = {}) {
 			this.tweens[i].chain(this.tweens[i + 1]);
 		}
 	}
-
-	if (this.loop) {
-		this.tweens[this.tweens.length - 1].event.on("didFinish", (data) => {
-			// If this TweenGroup will loop start the first Tween again once the last Tween has finished
-			if (this.loop) {
-				this.tweens[0].start();
-			// If the loop has been turned off after being on
-			} else {
-				// Remove the event listener and allow the Tweens to be purged
-				this.tweens[this.tweens.length - 1].event.removeById("didFinish", data._id);
-				for (let i = 0; i < this.tweens.length; i++) {
-					this.tweens[i].canPurge = true;
-				}
+	this.tweens[this.tweens.length - 1].event.on("didFinish", (data) => {
+		// If this TweenGroup will loop start the first Tween again once the last Tween has finished
+		if (this.loop) {
+			this.start();
+		// If the loop has been turned off after being on
+		} else {
+			// Remove the event listener and allow the Tweens to be purged
+			this.tweens[this.tweens.length - 1].event.removeById("didFinish", data._id);
+			for (let i = 0; i < this.tweens.length; i++) {
+				this.tweens[i].canPurge = true;
 			}
-		});
-	}
+		}
+	});
+
+	// Start this TweenGroup's run
+	// You cannot restart a stopped TweenGroup that isn't looping
+	this.start = () => {
+		this.tweens[0].start();
+	};
+	// Stop every Tween in this TweenGroup from running
+	this.stop = () => {
+		for (let i = 0; i < this.tweens.length; i++) {
+			this.tweens[i].stop();
+		}
+	};
+
+	this.start();
 }
 
 module.exports = TweenGroup;
