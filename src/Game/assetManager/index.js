@@ -34,7 +34,7 @@ module.exports = (_game) => {
 				});
 			}
 
-			return _game.assetManager;
+			return _game;
 		},
 		get: (name) => {
 			return _game.assets.find((e) => e.name == name);

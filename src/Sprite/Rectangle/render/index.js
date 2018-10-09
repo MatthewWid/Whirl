@@ -1,4 +1,4 @@
-// MobSin.Sprite.render
+// MobSin.Sprite.Rectangle.render
 
 let render = {
 	image: require("./image"),

@@ -1,0 +1,1 @@
+// MobSin.Sprite.Circle.render.image
