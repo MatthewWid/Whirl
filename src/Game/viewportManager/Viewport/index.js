@@ -18,8 +18,8 @@ let Camera = require("../../../Camera");
 	- h
 	- renderable
 	- clear
-	- bg
-	- resizeCamera
+	- imageSmoothing
+	- fitCamera
 */
 function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	_game.object.init(this, "MobSin.Viewport");
@@ -71,7 +71,7 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 		} else {
 			this.activeCamera = newCamera;
 
-			if (typeof presets.resizeCamera == "undefined" || presets.resizeCamera) {
+			if (typeof presets.fitCamera == "undefined" || presets.fitCamera) {
 				this.activeCamera.bounds.x = this.bounds.x;
 				this.activeCamera.bounds.y = this.bounds.y;
 				this.activeCamera.bounds.w = this.bounds.w;
@@ -81,12 +81,18 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	};
 	this.setCamera(camera);
 
-	// Optional presets with defaults
-	this.renderable = presets.renderable || true;
+	// Whether images in the canvas should be anti-aliased (smoothed)
+	this.imageSmoothing = presets.hasOwnProperty("imageSmoothing") ? presets.imageSmoothing : true;
+
+	// Whether the canvas should be cleared at the beginning of each frame
 	this.clear = presets.hasOwnProperty("clear") ? presets.clear : true;
 
 	this._render = () => {
 		this.ctx.save();
+
+		if (!this.imageSmoothing) {
+			this.ctx.imageSmoothingEnabled = false;
+		}
 
 		if (this.clear) {
 			this.ctx.clearRect(
