@@ -8,30 +8,33 @@ module.exports = (_game) => {
 	_game.object = {
 		// Initialise a game object with standard properties that all objects in the game must have
 		// Objects can optionally inherit various systems that extend their functionality
-		init: (that, typeName, useSystems = {}, store = true) => {
-			that._id = _game.object.nextID();
-			if (!that._type) {
-				that._type = typeName;
+		init: (_obj, typeName, useSystems, store = true) => {
+			_obj._id = _game.object.nextID();
+			if (!_obj._type) {
+				_obj._type = typeName;
 			}
 
-			that.data = {};
+			_obj.data = {};
 
-			for (sys in useSystems) {
-				if (useSystems[sys]) {
-					systems[sys](_game, that);
-				}
-			}
+			_game.object.attachSystem(_obj, useSystems);
 
 			if (store) {
-				_game.object.globalStore.push(that);
+				_game.object.globalStore.push(_obj);
 			}
 
 			_game.event.emit("didInitObject", {
-				object: that,
+				object: _obj,
 				useSystems: useSystems
 			});
 
-			return that;
+			return _obj;
+		},
+		attachSystem: (_obj, useSystems = {}) => {
+			for (sys in useSystems) {
+				if (useSystems[sys]) {
+					systems[sys](_game, _obj);
+				}
+			}
 		},
 		// Generate a new unique ID for a game object
 		nextID: () => {
