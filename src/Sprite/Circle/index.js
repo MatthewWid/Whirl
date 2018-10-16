@@ -4,19 +4,6 @@ let _BaseSprite = require("../_Base");
 let render = require("./render");
 let shapes = require("../../shapes");
 
-// this.bounds = presets.shape.set({
-// 	x: presets.x || 0,
-// 	y: presets.y || 0,
-// 	r: presets.r || 0
-// });
-// this._physBounds = shapes.Circle();
-
-// this._physBounds.set({
-// 	x: this.bounds.x,
-// 	y: this.bounds.y,
-// 	r: this.bounds.r * this.scale
-// });
-
 function Sprite_Circle(_game, name, fill, presets = {}) {
 	_BaseSprite.bind(this)(_game, name, fill, presets); // Extend the _BaseSprite class
 
@@ -27,7 +14,7 @@ function Sprite_Circle(_game, name, fill, presets = {}) {
 	);
 
 	// The physical bounds of the object taking into account the anchor point
-	// _physBounds should be considered read-only outside of the _calculateRealBounds() method
+	// _physBounds should be considered read-only outside of the _calculatePhysBounds() method
 	this._physBounds = shapes.Circle();
 	this._calculatePhysBounds = () => {
 		this._physBounds.set({

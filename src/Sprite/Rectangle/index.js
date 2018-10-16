@@ -50,7 +50,7 @@ function Sprite_Rectangle(_game, name, fill, presets = {}) {
 	this.resizeToImage();
 
 	// The physical bounds of the object taking into account the anchor point
-	// _physBounds should be considered read-only outside of the _calculateRealBounds() method
+	// _physBounds should be considered read-only outside of the _calculatePhysBounds() method
 	this._physBounds = shapes.Rectangle();
 	this._calculatePhysBounds = () => {
 		this._physBounds.set({
