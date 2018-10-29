@@ -20,6 +20,7 @@ let Camera = require("../../../Camera");
 	- clear
 	- imageSmoothing
 	- fitCamera
+	- clip
 */
 function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	_game.object.init(this, "MobSin.Viewport");
@@ -71,6 +72,7 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 		} else {
 			this.activeCamera = newCamera;
 
+			// Fit the camera bounds to the same bounds as the viewport
 			if (typeof presets.fitCamera == "undefined" || presets.fitCamera) {
 				this.activeCamera.bounds.x = this.bounds.x;
 				this.activeCamera.bounds.y = this.bounds.y;
@@ -87,6 +89,17 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	// Whether the canvas should be cleared at the beginning of each frame
 	this.clear = presets.hasOwnProperty("clear") ? presets.clear : true;
 
+	// Whether the viewport should clip out anything not within its boundaries
+	this.clip = presets.clip || true;
+
+	// Bring the camera's scroll to the relative (0,0) point of the viewport
+	this.bringCamera = () => {
+		this.activeCamera.scroll.x = -this.bounds.x;
+		this.activeCamera.scroll.y = -this.bounds.y;
+
+		return this;
+	};
+
 	this._render = () => {
 		this.ctx.save();
 
@@ -94,12 +107,24 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 			this.ctx.imageSmoothingEnabled = false;
 		}
 
+		if (this.clip) {
+			this.ctx.beginPath();
+			this.ctx.rect(this.bounds.x, this.bounds.y, this.bounds.w, this.bounds.h);
+			this.ctx.clip();
+		}
+
 		if (this.clear) {
+			// this.ctx.clearRect(
+			// 	this.bounds.x,
+			// 	this.bounds.y,
+			// 	this.bounds.w,
+			// 	this.bounds.h
+			// );
 			this.ctx.clearRect(
-				this.bounds.x,
-				this.bounds.y,
-				this.bounds.w,
-				this.bounds.h
+				0,
+				0,
+				400,
+				400
 			);
 		}
 
