@@ -1,0 +1,1 @@
+// MobSin.input.mouse

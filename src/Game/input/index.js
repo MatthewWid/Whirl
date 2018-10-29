@@ -1,41 +1,26 @@
 // MobSin.game.input
 
-let keys = require("../../keys");
-
-function handle_keyDown(evt) {
-	this.input.keysDown[evt.keyCode] = true;
-
-	this.input.event.emit("keyDown", {
-		event: evt,
-		keyCode: evt.keyCode,
-		keyName: keys.getByKeyCode(evt.keyCode)
-	});
-}
-function handle_keyUp(evt) {
-	this.input.keysDown[evt.keyCode] = false;
-
-	this.input.event.emit("keyUp", {
-		event: evt,
-		keyCode: evt.keyCode,
-		keyName: keys.getByKeyCode(evt.keyCode)
-	});
+// Set the target HTML element that event listeners will be added to
+function setTargetEl(_game, targetEl) {
+	_game.input._targetElement = document.querySelector(targetEl) || document.body;
 }
 
-function setTarget(_game, newTarget) {
-	_game.input._targetElement = newTarget;
+// Prepares the game to receive various kinds of inputs
+// Setup the input object and target element
+function setup(inputEl) {
+	setTargetEl(this, inputEl);
 
-	_game.input._targetElement.addEventListener("keydown", handle_keyDown.bind(_game));
-	_game.input._targetElement.addEventListener("keyup", handle_keyUp.bind(_game));
+	return this.input;
 }
 
 module.exports = (_game, presets) => {
 	_game.input = {
-		keysDown: [],
-		keyIsDown: (keyCode) => {
-			return _game.input.keysDown[keyCode];
-		}
+		setup: setup.bind(_game),
+		setupKeyboard: require("./keyboard").bind(_game)
 	};
-	_game.object.init(_game.input, "MobSin.system.input", {event: true}, false);
 
-	setTarget(_game, _game.config.inputElement);
+	if (presets.noInput) return;
+	_game.input
+		.setup(presets.inputElement)
+		.setupKeyboard();
 };
