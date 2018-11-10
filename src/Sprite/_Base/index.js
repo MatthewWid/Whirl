@@ -61,6 +61,10 @@ function _BaseSprite(_game, name, fill, presets = {}) {
 	// The z-axis for this sprite, allows for "layers" in your game world
 	// Eg, a sprite with a 'z' of 5 will render after (And above) a sprite with a 'z' of 2
 	this.z = presets.z || 0;
+
+	// To be overridden by a subclass of Sprite
+	this._calculatePhysBounds = () => {};
+	this._render = () => {};
 }
 
 module.exports = _BaseSprite;
