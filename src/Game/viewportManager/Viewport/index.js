@@ -114,17 +114,11 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 		}
 
 		if (this.clear) {
-			// this.ctx.clearRect(
-			// 	this.bounds.x,
-			// 	this.bounds.y,
-			// 	this.bounds.w,
-			// 	this.bounds.h
-			// );
 			this.ctx.clearRect(
-				0,
-				0,
-				400,
-				400
+				this.bounds.x,
+				this.bounds.y,
+				this.bounds.w,
+				this.bounds.h
 			);
 		}
 
