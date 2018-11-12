@@ -31,7 +31,7 @@ function Text(_game, content, presets = {}) {
 	// Text fill, defaulted to black
 	this.fill = presets.fill || "#000";
 
-	this._calculatePhysBounds = () => {};
+	this._update = () => {};
 	this._render = (_ctx, offsets = {}) => {
 		_ctx.save();
 

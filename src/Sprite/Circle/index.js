@@ -14,16 +14,16 @@ function Sprite_Circle(_game, name, fill, presets = {}) {
 	);
 
 	// The physical bounds of the object taking into account the anchor point
-	// _physBounds should be considered read-only outside of the _calculatePhysBounds() method
+	// _physBounds should be considered read-only outside of the _update() method
 	this._physBounds = shapes.Circle();
-	this._calculatePhysBounds = () => {
+	this._update = () => {
 		this._physBounds.set({
 			x: this.bounds.x,
 			y: this.bounds.y,
 			r: this.bounds.r * this.scale
 		});
 	};
-	this._calculatePhysBounds();
+	this._update();
 
 	// Render this sprite given a canvas context, offset coordinates and scaling
 	this._render = (_ctx, modifiers = {}) => {

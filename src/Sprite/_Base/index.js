@@ -63,7 +63,7 @@ function _BaseSprite(_game, name, fill, presets = {}) {
 	this.z = presets.z || 0;
 
 	// To be overridden by a subclass of Sprite
-	this._calculatePhysBounds = () => {};
+	this._update = () => {};
 	this._render = () => {};
 }
 

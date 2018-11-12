@@ -46,7 +46,7 @@ function Stage(_game, name, presets = {}) {
 	this._update = () => {
 		// Sort children by 'z' in stages and calculate their physical boundaries from the world to canvas
 		for (i in this._sortChildren()) {
-			this.children[i]._calculatePhysBounds();
+			this.children[i]._update();
 		}
 	};
 }
