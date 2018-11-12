@@ -13,10 +13,13 @@
 
 	You can make other custom Sprites with your own shapes as boundaries and their own behaviours as long as they inherit from the _BaseSprite class and have the preceding required properties and methods.
 */
-let Sprite = {
-	_BaseSprite: require("./_Base"),
-	Rectangle: require("./Rectangle"),
-	Circle: require("./Circle")
-};
+let Sprite_Base = require("./_Base");
+let Sprite_Rectangle = require("./Rectangle");
+let Sprite_Circle = require("./Circle");
+
+const Sprite = (...args) => Sprite_Rectangle(...args);
+Sprite._BaseSprite = Sprite_Base;
+Sprite.Rectangle = Sprite_Rectangle;
+Sprite.Circle = Sprite_Circle;
 
 module.exports = Sprite;
