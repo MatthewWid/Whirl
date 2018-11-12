@@ -33,4 +33,4 @@ function Game(presets = {}) {
 	require("./setup")(this);
 }
 
-module.exports = (presets) => new Game(presets);
+module.exports = (...args) => new Game(...args);

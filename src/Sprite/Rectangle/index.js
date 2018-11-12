@@ -86,4 +86,4 @@ function Sprite_Rectangle(_game, name, fill, presets = {}) {
 	};
 }
 
-module.exports = (_game, name, fill, presets) => new Sprite_Rectangle(_game, name, fill, presets);
+module.exports = (...args) => new Sprite_Rectangle(...args);

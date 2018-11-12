@@ -26,4 +26,4 @@ function Line(x1, y1, x2, y2) {
 	};
 }
 
-module.exports = (x1, y1, x2, y2) => new Line(x1, y1, x2, y2);
+module.exports = (...args) => new Line(...args);

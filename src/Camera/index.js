@@ -109,4 +109,4 @@ function Camera(_game, presets = {}) {
 	};
 }
 
-module.exports = (_game, presets) => new Camera(_game, presets);
+module.exports = (...args) => new Camera(...args);

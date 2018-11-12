@@ -25,4 +25,4 @@ function Rectangle(x, y, w, h) {
 	};
 }
 
-module.exports = (x, y, w, h) => new Rectangle(x, y, w, h);
+module.exports = (...args) => new Rectangle(...args);

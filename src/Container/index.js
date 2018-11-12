@@ -1,7 +1,10 @@
 // MobSin.Container
 
-function Container(_game) {
+function Container(_game, children = [], presets = {}) {
 	_game.object.init(this, "MobSin.Container", {child: true});
+
+	this._update = () => {};
+	this._render = () => {};
 }
 
-module.exports = (_game) => new Container(_game);
+module.exports = (...args) => new Container(...args);

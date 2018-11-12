@@ -13,4 +13,4 @@ function Point(x, y) {
 	}
 }
 
-module.exports = (x, y) => Point(x, y);
+module.exports = (...args) => Point(...args);

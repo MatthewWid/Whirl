@@ -43,4 +43,4 @@ function Text(_game, content, presets = {}) {
 	};
 }
 
-module.exports = (_game, content, presets) => new Text(_game, content, presets);
+module.exports = (...args) => new Text(...args);

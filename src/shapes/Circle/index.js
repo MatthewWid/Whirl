@@ -15,4 +15,4 @@ function Circle(x, y, r) {
 	};
 }
 
-module.exports = (x, y, r) => new Circle(x, y, r);
+module.exports = (...args) => new Circle(...args);

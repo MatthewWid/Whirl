@@ -49,4 +49,4 @@ function Sprite_Circle(_game, name, fill, presets = {}) {
 	};
 }
 
-module.exports = (_game, name, fill, presets) => new Sprite_Circle(_game, name, fill, presets);
+module.exports = (...args) => new Sprite_Circle(...args);
