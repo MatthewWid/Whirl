@@ -60,7 +60,6 @@ function Sprite_Rectangle(_game, name, fill, presets = {}) {
 			y: Math.round(this.bounds.y - this.bounds.h * this.anchor.y * this.scale)
 		});
 	};
-	this._update();
 
 	// Render this sprite given a canvas context, offset coordinates and scaling
 	this._render = (_ctx, offset = {}) => {

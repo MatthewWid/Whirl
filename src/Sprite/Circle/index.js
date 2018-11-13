@@ -23,7 +23,6 @@ function Sprite_Circle(_game, name, fill, presets = {}) {
 			r: this.bounds.r * this.scale
 		});
 	};
-	this._update();
 
 	// Render this sprite given a canvas context, offset coordinates and scaling
 	this._render = (_ctx, modifiers = {}) => {
