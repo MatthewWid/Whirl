@@ -17,8 +17,15 @@ function _BaseSprite(_game, name, fill, presets = {}) {
 	// The name of this Sprite
 	this.name = name || "";
 
+	this.fill = {
+		type: "colour",
+		data: "transparent"
+	};
 	// Sprites are filled with either a colour or an image
 	this.setFill = (newFill) => {
+		if (!newFill) {
+			return this;
+		}
 		// If a string is given fill with a colour that is the given string.
 		if (typeof newFill == "string" && newFill.length > 0) {
 			this.fill = {
@@ -34,12 +41,6 @@ function _BaseSprite(_game, name, fill, presets = {}) {
 			this.fill = {
 				type: "image",
 				data: newFill
-			};
-		// Otherwise, default to filling with a transparent colour
-		} else {
-			this.fill = {
-				type: "colour",
-				data: "transparent"
 			};
 		}
 
