@@ -1,0 +1,16 @@
+site_name: MobSin Game Engine
+
+repo_url: https://github.com/MatthewWid/MobSin
+repo_name: "GitHub"
+edit_uri: ""
+
+theme: cinder
+docs_dir: "doc"
+extra_css: [css/css/global.css]
+
+nav:
+    - Home: index.md
+    - Documentation: documentation/index.md
+    - Getting Started: getting-started/index.md
+    - About:
+      - Licence: about/licence.md

@@ -1,0 +1,69 @@
+$nav-bg: #2196f3 !important;
+
+.navbar-default {
+	background-color: $nav-bg;
+	border-bottom-color: #00BCD4;
+
+	.navbar-brand {
+		position: relative;
+		margin-left: 25px !important;
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 5px;
+			right: calc(100% - 8px);
+			width: 24px;
+			height: 32px;
+			background-image: url(../../logo/logo.png);
+			background-size: cover;
+			background-position: center;
+		}
+	}
+	
+	.dropdown.open {
+		& > a, .dropdown-menu {
+			background-color: $nav-bg;
+		}
+	}
+	.navbar-nav {
+		background-color: $nav-bg;
+
+		& > li {
+			&.active > a, & > a:hover, & > a:focus {
+				color: #191919 !important;
+				background-color: #fbfbfb !important;
+			}
+		}
+		&.navbar-right {
+			li:nth-of-type(2), li:nth-of-type(3) {
+				display: none !important;
+			}
+		}
+	}
+}
+.bs-sidenav {
+	font-size: 14px;
+
+	& > li > a {
+		padding: 2px 20px !important;
+	}
+}
+
+.homepage div[role="main"] {
+	& > h1 {
+		font-size: 4em;
+
+		small {
+			font-size: .3em;
+		}
+	}
+
+	h2 {
+		color: #3a3a3a;
+	}
+}
+
+footer {
+	display: none !important;
+}
