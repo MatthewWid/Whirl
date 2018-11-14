@@ -13,8 +13,9 @@ nav:
     - Documentation:
       - Installation: documentation/install.md
       - Concepts: documentation/concepts.md
-      - Game Setup: documentation/setup.md
-      - Sprites: documentation/sprites.md
+      - Classes: documentation/classes.md
+      - In-Built Libraries: documentation/libraries.md
+      - Constants: documentation/constants.md
     - Getting Started: getting-started/index.md
     - About:
       - Licence: about/licence.md
