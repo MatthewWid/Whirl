@@ -2,3 +2,5 @@ node_modules
 examples/*/styles/.sass-cache
 build/mobsin.js
 changelog.txt
+doc/css/.sass-cache
+doc/css/css/
