@@ -16,6 +16,12 @@ Visit the [Getting Started](getting-started) section for a simple and easy setup
 
 You can also follow along with the documentation, as it will naturally take you through how the engine works, providing comprehensive explanations for each element of the engine coupled with useful examples.
 
+## Documentation
+
+Full documentation concerning development with the **MobSin** game engine is in the [Documentation](documentation/concepts.md) section.
+
+It will give you extensive information in learning concepts within the engine, information on all game classes, installation and importation of the engine, as well as plenty of examples to go with documentation to help your understanding.
+
 ## Install
 
 **MobSin** takes advantage of [Browserify](http://browserify.org/) to compile its source code down into a single, usable Javascript file.
