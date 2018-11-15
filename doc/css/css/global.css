@@ -1,0 +1,42 @@
+.navbar-default {
+  background-color: #2196f3 !important;
+  border-bottom-color: #00BCD4; }
+  .navbar-default .navbar-brand {
+    position: relative;
+    margin-left: 25px !important; }
+    .navbar-default .navbar-brand:before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      right: calc(100% - 8px);
+      width: 24px;
+      height: 32px;
+      background-image: url(../../logo/logo.png);
+      background-size: cover;
+      background-position: center; }
+  .navbar-default .dropdown.open > a, .navbar-default .dropdown.open .dropdown-menu {
+    background-color: #2196f3 !important; }
+  .navbar-default .navbar-nav {
+    background-color: #2196f3 !important; }
+    .navbar-default .navbar-nav > li.active > a, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+      color: #191919 !important;
+      background-color: #fbfbfb !important; }
+    .navbar-default .navbar-nav.navbar-right li:nth-of-type(2), .navbar-default .navbar-nav.navbar-right li:nth-of-type(3) {
+      display: none !important; }
+
+.bs-sidenav {
+  font-size: 14px; }
+  .bs-sidenav > li > a {
+    padding: 2px 20px !important; }
+
+.homepage div[role="main"] > h1 {
+  font-size: 4em; }
+  .homepage div[role="main"] > h1 small {
+    font-size: .3em; }
+.homepage div[role="main"] h2 {
+  color: #3a3a3a; }
+
+footer {
+  display: none !important; }
+
+/*# sourceMappingURL=global.css.map */
