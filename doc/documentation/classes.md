@@ -288,7 +288,7 @@ The following Sprite types are available: `MobSin.Sprite.Rectangle(...)` and `Mo
 <span class="tI tI-1">
 	**String** `outline` - String colour value for a one-pixel thick outline of the Sprite (Default: `false`).  
 	**Float** `alpha` - Alpha/transparency for the Sprite (`0` to `1`) (Default: `1`).  
-	**Float** `scale` - The scale of this Sprite - scales its bounding box size. (Default: `1`).  
+	**Float** `scale` - The scale of this Sprite - scales its bounding box size (Default: `1`).  
 	**Integer** `z` - The z-index (Layer) of this Sprite (Default: `0`).
 </span>
 
@@ -487,4 +487,45 @@ MobSin.Sprite.Circle(<game>, <name>, <fill>, <options>)
 	`.x` - The x-coordinate of the origin point.  
 	`.y` - The y-coordinate of the origin point.  
 	`.r` - The radius of the circle.
+</span>
+
+# .Camera()
+
+Returns a new instance of a Camera object.
+
+Cameras serve as the view into your world (the Stage). Scrolling the camera around lets you look around different parts of your world. Cameras can be scrolled around, lock onto objects, zoom, apply effects and more.
+
+Inherits the `tween` object system.
+
+```javascript
+MobSin.Camera(<game>, <options>)
+```
+
+### Parameters
+
+**Object** `<game>`
+
+<span class="tI tI-1">
+	An already instantiated [Game](#game) object.
+</span>
+
+**Object** `<options>`
+
+<span class="tI tI-1">
+	**Number** `.x` - The x-coordinate of the origin point (Default: `0`).  
+	**Number** `.y` - The y-coordinate of the origin point (Default: `0`).  
+	**Number** `.w` - The width of the camera view (Default: `0`).  
+	**Number** `.h` - The height of the camera view (Default: `0`).  
+	**Object** `anchor` - Moves the anchor/origin point:
+	<span class="tI tI-1">
+		**Float** `x` - The x-coordinate of the anchor point (Default: `0`).  
+		**Float** `y` - The y-coordinate of the anchor point (Default: `0`).
+	</span>
+	**Object** `scroll` - Scrolls the Camera view around the game world:
+	<span class="tI tI-1">
+		**Float** `x` - The x-coordinate of the scroll position (Default: `0`).  
+		**Float** `y` - The y-coordinate of the scroll position (Default: `0`).
+	</span>
+	**Float** `zoom` - The zoom level of the Camera (Default: `1`).
+	**Boolean** `roundPixels` - Whether to round the scroll position to the nearest whole number (Default `true`).
 </span>

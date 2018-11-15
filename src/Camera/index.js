@@ -65,7 +65,7 @@ function Camera(_game, presets = {}) {
 	// Whether the position of this camera when rendering should be rounded to the nearest whole number when locked onto an object
 	// For sprites with an image fill this can produce a more crisp result, but may offset the cameras position by half a pixel
 	// Only affects the cameras rendered position, not its real position in the world
-	this.roundPixels = presets.roundPixels || true;
+	this.roundPixels = presets.hasOwnProperty("roundPixels") ? presets.roundPixels : true;
 
 	this._lockObject = null;
 	this.lockTo = (_object) => {
