@@ -31,7 +31,7 @@ MobSin
 `.Camera()`
 
 <span class="tI tI-1">
-	Returns a new Camera instance object.
+	Returns a new [Camera](#camera) instance object.
 </span>
 
 `.Text()`
@@ -109,10 +109,8 @@ MobSin.Game(<options>)
 	**Object**  
 	Persistent configuration of the Game instance.
 </span>
-<span class="tI tI-1">
-	<span class="tI tI-1">
-		`.ignoreWarnings` - Ignore debug warnings. Also set through the initialisation paramaters.
-	</span>
+<span class="tI tI-2">
+	`.ignoreWarnings` - Ignore debug warnings. Also set through the initialisation paramaters.
 </span>
 
 `.frameRate`
@@ -141,19 +139,11 @@ MobSin.Game(<options>)
 	**Object** `<options>`
 </span>
 
-<span class="tI tI-1">
-	<span class="tI tI-1">
-		**String** `canvas` - Selector for an HTML5 `<canvas>` element.
-	</span>
-	<span class="tI tI-1">
-		**String** `canvasWidth` or `cW` - Width in pixels to resize the canvas element to.
-	</span>
-	<span class="tI tI-1">
-		**String** `canvasHeight` or `cH` - Height in pixels to resize the canvas element to.
-	</span>
-	<span class="tI tI-1">
-		If a canvas width or height value is not given then the canvas will not resize.
-	</span>
+<span class="tI tI-2">
+	**String** `canvas` - Selector for an HTML5 `<canvas>` element.  
+	**String** `canvasWidth` or `cW` - Width in pixels to resize the canvas element to.  
+	**String** `canvasHeight` or `cH` - Height in pixels to resize the canvas element to.  
+	If a canvas width or height value is not given then the canvas will not resize.
 </span>
 
 <span class="tI tI-1">
@@ -310,11 +300,9 @@ The following Sprite types are available: `MobSin.Sprite.Rectangle(...)` and `Mo
 	**Object**  
 	Holds information about the Sprite's fill.  
 </span>
-<span class="tI tI-1">
-	<span class="tI tI-1">
-		`.type` - Type of fill. Can either be "`colour`" or "`image`".  
-		`.data` - Data of the fill. The colour value or the image asset.
-	</span>
+<span class="tI tI-2">
+	`.type` - Type of fill. Can either be "`colour`" or "`image`".  
+	`.data` - Data of the fill. The colour value or the image asset.
 </span>
 <span class="tI tI-1">
 	**Do not modify directly. Use the `.setFill()` method.**
