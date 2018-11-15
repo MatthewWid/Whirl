@@ -10,7 +10,12 @@ extra_css: [css/css/global.css]
 
 nav:
     - Home: index.md
-    - Documentation: documentation/index.md
+    - Documentation:
+      - Installation: documentation/install.md
+      - Concepts: documentation/concepts.md
+      - Classes: documentation/classes.md
+      - In-Built Libraries: documentation/libraries.md
+      - Constants: documentation/constants.md
     - Getting Started: getting-started/index.md
     - About:
       - Licence: about/licence.md

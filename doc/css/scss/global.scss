@@ -41,10 +41,19 @@ $nav-bg: #2196f3 !important;
 			}
 		}
 	}
+
+	.navbar-collapse {
+		border-color: transparent !important;
+	}
 }
 .bs-sidenav {
+	margin-top: 0;
+	margin-bottom: 0;
 	font-size: 14px;
-
+	
+	& > li.second-level {
+		padding-left: 1em;
+	}
 	& > li > a {
 		padding: 2px 20px !important;
 	}
