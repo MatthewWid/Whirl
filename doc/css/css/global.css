@@ -50,8 +50,13 @@
   color: #3a3a3a; }
 
 span.tI {
-  margin-left: 2em !important;
   display: block; }
+  span.tI.tI-1 {
+    margin-left: 2em !important; }
+  span.tI.tI-2 {
+    margin-left: 4em !important; }
+  span.tI.tI-3 {
+    margin-left: 6em !important; }
 
 h1 a.headerlink, h2 a.headerlink, h3 a.headerlink, h4 a.headerlink, h5 a.headerlink, h6 a.headerlink {
   display: none;
@@ -59,6 +64,9 @@ h1 a.headerlink, h2 a.headerlink, h3 a.headerlink, h4 a.headerlink, h5 a.headerl
 h1:hover a.headerlink, h2:hover a.headerlink, h3:hover a.headerlink, h4:hover a.headerlink, h5:hover a.headerlink, h6:hover a.headerlink {
   display: inline; }
 
+@media (max-width: 992px) {
+  .container > .col-md-3 {
+    margin-top: 50px; } }
 footer {
   display: none !important; }
 

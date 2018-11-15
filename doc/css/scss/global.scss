@@ -84,8 +84,17 @@ $nav-bg: #2196f3 !important;
 
 // Tab indent
 span.tI {
-	margin-left: 2em !important;
 	display: block;
+
+	&.tI-1 {
+		margin-left: 2em !important;
+	}
+	&.tI-2 {
+		margin-left: 4em !important;
+	}
+	&.tI-3 {
+		margin-left: 6em !important;
+	}
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -97,6 +106,18 @@ h1, h2, h3, h4, h5, h6 {
 		display: inline;
 	}
 }
+
+@media (max-width: 992px) {
+    .container > .col-md-3 {
+        margin-top: 50px;
+    }
+}
+
+// @media (min-width: 768px) {
+// 	.container {
+// 		width: 830px !important;
+// 	}
+// }
 
 footer {
 	display: none !important;
