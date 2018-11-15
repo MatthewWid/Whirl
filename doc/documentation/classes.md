@@ -25,7 +25,7 @@ MobSin
 `.Sprite()`
 
 <span class="tI">
-	Returns a new Sprite instance object.
+	Returns a new [Sprite](#sprite) instance object.
 </span>
 
 `.Camera()`
@@ -126,7 +126,7 @@ MobSin.Game(<options>)
 
 <span class="tI">
 	**Integer**  
-	The number of frames elapsed since the game's beggining.
+	The number of frames elapsed since the game's beginning.
 </span>
 
 ## Methods
