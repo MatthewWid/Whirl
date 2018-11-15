@@ -13,9 +13,14 @@ nav:
     - Documentation:
       - Installation: documentation/install.md
       - Concepts: documentation/concepts.md
-      - Classes: documentation/classes.md
+      - Game Classes: documentation/classes.md
       - In-Built Libraries: documentation/libraries.md
       - Constants: documentation/constants.md
+      - Object Systems: documentation/systems.md
     - Getting Started: getting-started/index.md
     - About:
       - Licence: about/licence.md
+
+markdown_extensions:
+    - toc:
+        permalink: true

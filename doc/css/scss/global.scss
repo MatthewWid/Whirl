@@ -35,6 +35,12 @@ $nav-bg: #2196f3 !important;
 				background-color: #fbfbfb !important;
 			}
 		}
+		.dropdown-menu > li > a:hover,
+		.dropdown-menu > .active > a,
+		.dropdown-menu > .active > a:hover {
+			color: #191919 !important;
+			background-color: #fbfbfb !important;
+		}
 		&.navbar-right {
 			li:nth-of-type(2), li:nth-of-type(3) {
 				display: none !important;
@@ -52,7 +58,10 @@ $nav-bg: #2196f3 !important;
 	font-size: 14px;
 	
 	& > li.second-level {
-		padding-left: 1em;
+		padding-left: .5em;
+	}
+	& > li.third-level {
+		padding-left: 1em !important;
 	}
 	& > li > a {
 		padding: 2px 20px !important;
@@ -70,6 +79,22 @@ $nav-bg: #2196f3 !important;
 
 	h2 {
 		color: #3a3a3a;
+	}
+}
+
+// Tab indent
+span.tI {
+	margin-left: 2em !important;
+	display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	a.headerlink {
+		display: none;
+		margin-left: .4em;
+	}
+	&:hover a.headerlink {
+		display: inline;
 	}
 }
 
