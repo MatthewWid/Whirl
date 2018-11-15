@@ -36,14 +36,6 @@ function Sprite_Circle(_game, name, fill, presets = {}) {
 			render[this.fill.type](_ctx, this);
 		}
 
-		if (this.outline) {
-			_ctx.globalAlpha = 1;
-
-			_ctx.lineWidth = 2;
-			_ctx.strokeStyle = this.outline;
-			_ctx.strokeRect(this._physBounds.x - 1, this._physBounds.y - 1, this._physBounds.w + 2, this._physBounds.h + 2);
-		}
-
 		_ctx.restore();
 	};
 }
