@@ -17,6 +17,7 @@ nav:
       - In-Built Libraries: documentation/libraries.md
       - Constants: documentation/constants.md
       - Object Systems: documentation/systems.md
+      - Customisation: documentation/customisation.md
     - Getting Started: getting-started/index.md
     - About:
       - Licence: about/licence.md
