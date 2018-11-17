@@ -114,7 +114,7 @@ MobSin.Game(<options>)
 	Persistent configuration of the Game instance.
 </span>
 <span class="tI tI-2">
-	`.ignoreWarnings` - Ignore debug warnings. Also set through the initialisation paramaters.
+	`.ignoreWarnings` - Ignore debug warnings.
 </span>
 
 `.frameRate`
@@ -304,14 +304,12 @@ The following Sprite types are available: `MobSin.Sprite.Rectangle(...)` and `Mo
 
 <span class="tI tI-1">
 	**Object**  
+	**Do not modify directly. Use the `.setFill()` method.**  
 	Holds information about the Sprite's fill.  
 </span>
 <span class="tI tI-2">
 	`.type` - Type of fill. Can either be "`colour`" or "`image`".  
 	`.data` - Data of the fill. The colour value or the image asset.
-</span>
-<span class="tI tI-1">
-	**Do not modify directly. Use the `.setFill()` method.**
 </span>
 
 `.outline`
@@ -365,6 +363,8 @@ The following Sprite types are available: `MobSin.Sprite.Rectangle(...)` and `Mo
 mySprite.setFill("rgb(100, 255, 255)");
 ```
 
+---
+
 ## .Rectangle()
 
 Returns a new instance of a rectangle Sprite object.
@@ -388,10 +388,10 @@ MobSin.Sprite.Rectangle(<game>, <name>, <fill>, <options>)
 **Object** `<options>`
 
 <span class="tI tI-1">
-	**Integer** `x` - X-coordinate of the bounding box (Default: `0`).  
-	**Integer** `y` - Y-coordinate of the bounding box (Default: `0`).  
-	**Integer** `w` - Width of the bounding box (Default: `0`).  
-	**Integer** `h` - Height of the bounding box (Default: `0`).  
+	**Number** `x` - X-coordinate of the bounding box (Default: `0`).  
+	**Number** `y` - Y-coordinate of the bounding box (Default: `0`).  
+	**Number** `w` - Width of the bounding box (Default: `0`).  
+	**Number** `h` - Height of the bounding box (Default: `0`).  
 	**Object** `anchor` - Moves the anchor/origin point:
 	<span class="tI tI-1">
 		**Float** `x` - X-coordinate of the anchor point (Default: `0`).  
@@ -409,8 +409,8 @@ MobSin.Sprite.Rectangle(<game>, <name>, <fill>, <options>)
 	Derived from `MobSin.shapes.Rectangle(...)`.
 </span>
 <span class="tI tI-2">
-	`.x` - X-coordinate of the origin point.  
-	`.y` - Y-coordinate of the origin point.  
+	`.x` - X-coordinate of the bounding box.  
+	`.y` - Y-coordinate of the bounding box.  
 	`.w` - Width of the bounding box.  
 	`.h` - Height of the bounding box.
 </span>
@@ -433,9 +433,7 @@ MobSin.Sprite.Rectangle(<game>, <name>, <fill>, <options>)
 
 ### Methods
 
-```javascript
-.resizeToImage(<scale>)
-```
+`.resizeToImage(<scale>)`
 
 <span class="tI tI-1">
 	Will not execute if the Sprite does not have an `image` fill type.  
@@ -450,13 +448,13 @@ MobSin.Sprite.Rectangle(<game>, <name>, <fill>, <options>)
 	Scales the width and height value of the Sprite after modifying it (Default: `1`).
 </span>
 
-```javascript
-.anchor.center()
-```
+`.anchor.center()`
 
 <span class="tI tI-1">
 	Sets the anchor point to `(0.5, 0.5)`.
 </span>
+
+---
 
 ## .Circle()
 
@@ -475,9 +473,9 @@ MobSin.Sprite.Circle(<game>, <name>, <fill>, <options>)
 **Object** `<options>`
 
 <span class="tI tI-1">
-	**Integer** `x` - X-coordinate of the center point (Default: `0`).  
-	**Integer** `y` - Y-coordinate of the center point (Default: `0`).  
-	**Integer** `r` - Radius of the circle (Default: `0`).
+	**Number** `x` - X-coordinate of the center point (Default: `0`).  
+	**Number** `y` - Y-coordinate of the center point (Default: `0`).  
+	**Number** `r` - Radius of the circle (Default: `0`).
 </span>
 
 ### Properties
@@ -486,12 +484,12 @@ MobSin.Sprite.Circle(<game>, <name>, <fill>, <options>)
 
 <span class="tI tI-1">
 	**Object**  
-	The bounding position and dimensions of this sprite.  
+	The bounding position and dimensions of this Sprite.  
 	Derived from `MobSin.shapes.Circle(...)`.
 </span>
 <span class="tI tI-2">
-	`.x` - X-coordinate of the origin point.  
-	`.y` - Y-coordinate of the origin point.  
+	`.x` - X-coordinate of the bounding box.  
+	`.y` - Y-coordinate of the bounding box.  
 	`.r` - Radius of the circle.
 </span>
 
@@ -520,8 +518,8 @@ MobSin.Camera(<game>, <options>)
 **Object** `<options>`
 
 <span class="tI tI-1">
-	**Number** `.x` - X-coordinate of the origin point (Default: `0`).  
-	**Number** `.y` - Y-coordinate of the origin point (Default: `0`).  
+	**Number** `.x` - X-coordinate of the bounding box (Default: `0`).  
+	**Number** `.y` - Y-coordinate of the bounding box (Default: `0`).  
 	**Number** `.w` - Width of the camera view (Default: `0`).  
 	**Number** `.h` - Height of the camera view (Default: `0`).  
 	**Object** `anchor` - Moves the anchor/origin point:
@@ -536,4 +534,143 @@ MobSin.Camera(<game>, <options>)
 	</span>
 	**Float** `zoom` - Zoom level of the Camera (Default: `1`).  
 	**Boolean** `roundPixels` - Whether to round the scroll position to the nearest whole number (Default `true`).
+</span>
+
+### Properties
+
+`.bounds`
+
+<span class="tI tI-1">
+	**Object**  
+	The position and dimensions of the Camera on screen.  
+	Derived from `MobSin.shapes.Rectangle(...)`.
+</span>
+<span class="tI tI-2">
+	`.x` - X-coordinate of the bounding box.  
+	`.y` - Y-coordinate of the bounding box.  
+	`.w` - Width of the bounding box.  
+	`.h` - Height of the bounding box.
+</span>
+<span class="tI tI-1">
+	Note that the `.bounds` property defines where the Camera will draw to *on the screen*, not where it will draw from *in the world*.  
+	Use the `.scroll` property to move around in space.
+</span>
+<span class="tI tI-1">
+	The width and height properties do not cut off rendering on the screen, but are used to determine render culling zones and no-update zones.
+</span>
+
+`.anchor`
+
+<span class="tI tI-1">
+	**Object**  
+	Sets the anchor / origin point of the camera's coordinates and zoom.
+</span>
+<span class="tI tI-2">
+	`.x` - X-coordinate of the origin point.  
+	`.y` - Y-coordinate of the origin point.
+</span>
+<span class="tI tI-1">
+	Has no effect if the Camera is locked to an object (`._lockObject`).
+</span>
+
+`._lockObject`
+
+<span class="tI tI-1">
+	**Object**  
+	**Do not modify directly. Use the `.lockTo()` and `.removeLock()` methods.**  
+	Holds a reference to the object that the Camera is locked to.
+</span>
+
+`.scroll`
+
+<span class="tI tI-1">
+	**Object**  
+	The position in the world that the Camera is observing. Moves the camera's view around the game world.
+</span>
+<span class="tI tI-2">
+	`.x` - X-coordinate of the scroll position.  
+	`.y` - Y-coordinate of the scroll position.
+</span>
+<span class="tI tI-1">
+	Changing this will have no effect if the Camera is locked to an object (`._lockObject`) as its scroll position is bound to the object it is locked to.
+</span>
+
+`.zoom`
+
+<span class="tI tI-1">
+	**Number**  
+	The zoom of the camera. Scales what the camera sees up/down by the given amount.
+	Will always zoom around the anchor point.  
+	A zoom level of `1` (Default) means no scaling / a normal view.  
+	A zoom level of `2` would zoom *in* twice the normal amount - you would see half of normal view.  
+	A zoom level of `.5` would zoom *out* twice the normal amount - you would see double the amount of the normal view.
+</span>
+
+`.roundPixels`
+
+<span class="tI tI-1">
+	Rounds the scroll (`.scroll`) position to the nearest whole number if the Camera is locked to an object.
+</span>
+
+### Methods
+
+`.lockTo(<sprite>)`
+
+<span class="tI tI-1">
+	"Locks" the Camera to a specific Sprite.
+</span>
+
+<span class="tI tI-2">
+	**Object** `<sprite>`
+</span>
+<span class="tI tI-3">
+	The Sprite object that the Camera should lock to.  
+	This can be any object with a `bounds` property derived from `MobSin.shapes.Rectangle(...)` such as a [rectangle Sprite](#rectangle).
+</span>
+
+<span class="tI tI-1">
+	When a Camera is locked to a Sprite it will attempt to keep the Sprite in the exact center of the screen each update; moving the scroll (`.scroll`) position to the center of the Sprite's bounds.
+</span>
+
+<span class="tI tI-1">
+	While it is locked, the camera zoom (`.zoom`) will instead zoom around the center of the screen, equivalent to an anchor point of `(0.5, 0.5)`.
+</span>
+
+<span class="tI tI-1">
+	**Example:**
+</span>
+
+```javascript
+const mySprite = MobSin.Sprite(myGame, "Blocky", "#F00", {
+	x: 50,
+	y: 90,
+	w: 40,
+	h: 40
+});
+
+const myCamera = MobSin.Camera(myGame, {
+	w: 400,
+	h: 400
+})
+	.lockTo(mySprite);
+```
+
+`.removeLock()`
+
+<span class="tI tI-1">
+	Removes the lock and lock reference (`._lockObject`) from the Camera.
+</span>
+
+<span class="tI tI-1">
+	When "unlocked", the scroll (`.scroll`) will stay in its last position that it was locked at, essentially not moving.
+</span>
+
+<span class="tI tI-1">
+	The zoom (`.zoom`) and anchor (`.anchor`) positions remain unchanged throughout the time that the Camera is locked, so will still be the same after unlocking.
+</span>
+
+`.anchor.center()`
+
+<span class="tI tI-1">
+	Sets the anchor point to `(0.5, 0.5)`.
 </span>
