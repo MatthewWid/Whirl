@@ -4,6 +4,8 @@ All top-level classes are namespaced under the global `MobSin` object. Therefore
 
 All classes are initialised as you call them. You should not use the `new` keyword.
 
+---
+
 # MobSin
 
 The global `MobSin` object contains all the classes, constructors and constants that make up the **MobSin** game engine.
@@ -79,6 +81,8 @@ MobSin
 <span class="tI tI-1">
 	Used in Viewport instantiation to indicate to the engine to automatically create a new Camera.
 </span>
+
+---
 
 # .Game()
 
@@ -220,6 +224,8 @@ const myGame = MobSin.Game()
 
 myGame.stop();
 ```
+
+---
 
 # .Sprite()
 
@@ -382,14 +388,14 @@ MobSin.Sprite.Rectangle(<game>, <name>, <fill>, <options>)
 **Object** `<options>`
 
 <span class="tI tI-1">
-	**Integer** `x` - The x-coordinate of the bounding box (Default: `0`).  
-	**Integer** `y` - The y-coordinate of the bounding box (Default: `0`).  
-	**Integer** `w` - The width of the bounding box (Default: `0`).  
-	**Integer** `h` - The height of the bounding box (Default: `0`).  
+	**Integer** `x` - X-coordinate of the bounding box (Default: `0`).  
+	**Integer** `y` - Y-coordinate of the bounding box (Default: `0`).  
+	**Integer** `w` - Width of the bounding box (Default: `0`).  
+	**Integer** `h` - Height of the bounding box (Default: `0`).  
 	**Object** `anchor` - Moves the anchor/origin point:
 	<span class="tI tI-1">
-		**Float** `x` - The x-coordinate of the anchor point (Default: `0`).  
-		**Float** `y` - The y-coordinate of the anchor point (Default: `0`).
+		**Float** `x` - X-coordinate of the anchor point (Default: `0`).  
+		**Float** `y` - X-coordinate of the anchor point (Default: `0`).
 	</span>
 </span>
 
@@ -403,10 +409,10 @@ MobSin.Sprite.Rectangle(<game>, <name>, <fill>, <options>)
 	Derived from `MobSin.shapes.Rectangle(...)`.
 </span>
 <span class="tI tI-2">
-	`.x` - The x-coordinate of the origin point.  
-	`.y` - The y-coordinate of the origin point.  
-	`.w` - The width of the bounding box.  
-	`.h` - The height of the bounding box.
+	`.x` - X-coordinate of the origin point.  
+	`.y` - Y-coordinate of the origin point.  
+	`.w` - Width of the bounding box.  
+	`.h` - Height of the bounding box.
 </span>
 
 `.anchor`
@@ -416,13 +422,13 @@ MobSin.Sprite.Rectangle(<game>, <name>, <fill>, <options>)
 	Sets the anchor / origin point of the sprite's coordinates.
 </span>
 <span class="tI tI-2">
-	`.x` - The x-coordinate of the origin point.  
-	`.y` - The y-coordinate of the origin point.
+	`.x` - X-coordinate of the origin point.  
+	`.y` - Y-coordinate of the origin point.
 </span>
 
 <span class="tI tI-1">
-	By default the `x` and `y` origin point are located at `(0, 0)`, the top-left point, of the sprite.  
-	`(1, 1)` would be the bottom-right, and `(0.5, 0.5)` would be the very center.
+	By default the `x` and `y` origin point are located at `(0, 0)`, the top-left point of the sprite.  
+	`(1, 1)` would be the bottom-right and `(0.5, 0.5)` would be the very center.
 </span>
 
 ### Methods
@@ -469,9 +475,9 @@ MobSin.Sprite.Circle(<game>, <name>, <fill>, <options>)
 **Object** `<options>`
 
 <span class="tI tI-1">
-	**Integer** `x` - The x-coordinate of the center point (Default: `0`).  
-	**Integer** `y` - The y-coordinate of the center point (Default: `0`).  
-	**Integer** `r` - The radius of the circle (Default: `0`).
+	**Integer** `x` - X-coordinate of the center point (Default: `0`).  
+	**Integer** `y` - Y-coordinate of the center point (Default: `0`).  
+	**Integer** `r` - Radius of the circle (Default: `0`).
 </span>
 
 ### Properties
@@ -484,16 +490,18 @@ MobSin.Sprite.Circle(<game>, <name>, <fill>, <options>)
 	Derived from `MobSin.shapes.Circle(...)`.
 </span>
 <span class="tI tI-2">
-	`.x` - The x-coordinate of the origin point.  
-	`.y` - The y-coordinate of the origin point.  
-	`.r` - The radius of the circle.
+	`.x` - X-coordinate of the origin point.  
+	`.y` - Y-coordinate of the origin point.  
+	`.r` - Radius of the circle.
 </span>
+
+---
 
 # .Camera()
 
 Returns a new instance of a Camera object.
 
-Cameras serve as the view into your world (the Stage). Scrolling the camera around lets you look around different parts of your world. Cameras can be scrolled around, lock onto objects, zoom, apply effects and more.
+Cameras serve as the view into your world (the Stage). Scrolling the camera around lets you look around different parts of your world. Cameras can be scrolled around, lock onto objects, zoom in/out, apply effects and more.
 
 Inherits the `tween` object system.
 
@@ -512,20 +520,20 @@ MobSin.Camera(<game>, <options>)
 **Object** `<options>`
 
 <span class="tI tI-1">
-	**Number** `.x` - The x-coordinate of the origin point (Default: `0`).  
-	**Number** `.y` - The y-coordinate of the origin point (Default: `0`).  
-	**Number** `.w` - The width of the camera view (Default: `0`).  
-	**Number** `.h` - The height of the camera view (Default: `0`).  
+	**Number** `.x` - X-coordinate of the origin point (Default: `0`).  
+	**Number** `.y` - Y-coordinate of the origin point (Default: `0`).  
+	**Number** `.w` - Width of the camera view (Default: `0`).  
+	**Number** `.h` - Height of the camera view (Default: `0`).  
 	**Object** `anchor` - Moves the anchor/origin point:
 	<span class="tI tI-1">
-		**Float** `x` - The x-coordinate of the anchor point (Default: `0`).  
-		**Float** `y` - The y-coordinate of the anchor point (Default: `0`).
+		**Float** `x` - X-coordinate of the anchor point (Default: `0`).  
+		**Float** `y` - Y-coordinate of the anchor point (Default: `0`).
 	</span>
 	**Object** `scroll` - Scrolls the Camera view around the game world:
 	<span class="tI tI-1">
-		**Float** `x` - The x-coordinate of the scroll position (Default: `0`).  
-		**Float** `y` - The y-coordinate of the scroll position (Default: `0`).
+		**Float** `x` - X-coordinate of the scroll position (Default: `0`).  
+		**Float** `y` - Y-coordinate of the scroll position (Default: `0`).
 	</span>
-	**Float** `zoom` - The zoom level of the Camera (Default: `1`).
+	**Float** `zoom` - Zoom level of the Camera (Default: `1`).  
 	**Boolean** `roundPixels` - Whether to round the scroll position to the nearest whole number (Default `true`).
 </span>
