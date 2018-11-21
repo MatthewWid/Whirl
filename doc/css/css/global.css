@@ -31,16 +31,19 @@
   .navbar-default .navbar-collapse {
     border-color: transparent !important; }
 
-.bs-sidenav {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 14px; }
-  .bs-sidenav > li.second-level {
-    padding-left: .5em; }
-  .bs-sidenav > li.third-level {
-    padding-left: 1em !important; }
-  .bs-sidenav > li > a {
-    padding: 2px 20px !important; }
+.bs-sidebar {
+  overflow-y: auto;
+  max-height: 86vh; }
+  .bs-sidebar .bs-sidenav {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 14px; }
+    .bs-sidebar .bs-sidenav > li.second-level {
+      padding-left: .5em; }
+    .bs-sidebar .bs-sidenav > li.third-level {
+      padding-left: 1em !important; }
+    .bs-sidebar .bs-sidenav > li > a {
+      padding: 2px 20px !important; }
 
 .homepage div[role="main"] > h1 {
   font-size: 4em; }

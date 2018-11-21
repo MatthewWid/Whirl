@@ -52,19 +52,24 @@ $nav-bg: #2196f3 !important;
 		border-color: transparent !important;
 	}
 }
-.bs-sidenav {
-	margin-top: 0;
-	margin-bottom: 0;
-	font-size: 14px;
-	
-	& > li.second-level {
-		padding-left: .5em;
-	}
-	& > li.third-level {
-		padding-left: 1em !important;
-	}
-	& > li > a {
-		padding: 2px 20px !important;
+.bs-sidebar {
+	overflow-y: auto;
+	max-height: 86vh;
+
+	.bs-sidenav {
+		margin-top: 0;
+		margin-bottom: 0;
+		font-size: 14px;
+		
+		& > li.second-level {
+			padding-left: .5em;
+		}
+		& > li.third-level {
+			padding-left: 1em !important;
+		}
+		& > li > a {
+			padding: 2px 20px !important;
+		}
 	}
 }
 
