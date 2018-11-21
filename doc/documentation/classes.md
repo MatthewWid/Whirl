@@ -73,13 +73,13 @@ MobSin
 `.STAGE`
 
 <span class="tI tI-1">
-	Used in Viewport instantiation to indicate the engine to automatically create a new Stage.
+	Used in [Viewport](#viewport) instantiation to indicate the engine to automatically create a new [Stage](#stage).
 </span>
 
 `.CAMERA`
 
 <span class="tI tI-1">
-	Used in Viewport instantiation to indicate to the engine to automatically create a new Camera.
+	Used in [Viewport](#viewport) instantiation to indicate to the engine to automatically create a new [Camera](#camera).
 </span>
 
 ---
@@ -155,7 +155,7 @@ MobSin.Game(<options>)
 </span>
 
 <span class="tI tI-1">
-	This is not required to set up a game. Alternatively, a Viewport, Stage and Camera can be set up manually using the Viewport Manager.
+	This is not required to set up a game. Alternatively, a [Viewport](#viewport), [Stage](#stage) and [Camera](#camera) can be set up manually using the Viewport Manager.
 </span>
 
 <span class="tI tI-1">
@@ -509,13 +509,14 @@ MobSin.Sprite.Circle(<game>, <name>, <fill>, <options>)
 	`.y` - Y-coordinate of the bounding box.  
 	`.r` - Radius of the circle.
 </span>
+
 ---
 
 # .Camera()
 
 Returns a new instance of a Camera object.
 
-Cameras serve as the view into your world (the Stage). Scrolling the camera around lets you look around different parts of your world. Cameras can be scrolled around, lock onto objects, zoom in/out, apply effects and more.
+Cameras serve as the view into your world (the [Stage](#stage)). Scrolling the camera around lets you look around different parts of your world. Cameras can be scrolled around, lock onto objects, zoom in/out, apply effects and more.
 
 Inherits the `tween` object system.
 
