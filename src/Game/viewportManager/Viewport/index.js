@@ -90,7 +90,7 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	this.clear = presets.hasOwnProperty("clear") ? presets.clear : true;
 
 	// Whether the viewport should clip out anything not within its boundaries
-	this.clip = presets.clip || true;
+	this.clip = presets.hasOwnProperty("clip") ? presets.clip : true;
 
 	// Bring the camera's scroll to the relative (0,0) point of the viewport
 	this.bringCamera = () => {
