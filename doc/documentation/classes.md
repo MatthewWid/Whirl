@@ -238,7 +238,7 @@ All Sprites inherit from a `MobSin.Sprite._baseSprite` class and different types
 Inherits the `tween` object system.
 
 ```javascript
-MobSin.Sprite(<game>, <name>, <fill>, <options>)
+MobSin.Sprite(<Game>, <name>, <fill>, <options>)
 ```
 
 By just calling `MobSin.Sprite()` it will return a Rectangle Sprite. Different types of sprites can be instantiated by adding `.<Sprite Type>(...)`.
@@ -247,7 +247,7 @@ The following Sprite types are available: `MobSin.Sprite.Rectangle(...)` and `Mo
 
 ### Parameters
 
-**Object** `<game>`
+**Object** `<Game>`
 
 <span class="tI tI-1">
 	An already instantiated [Game](#game) object.
@@ -271,7 +271,7 @@ The following Sprite types are available: `MobSin.Sprite.Rectangle(...)` and `Mo
 
 <span class="tI tI-1">
 	A colour or image to fill the Sprite with.  
-	Performs the same function as the `Sprite.setFill()` method.
+	Performs the same function as the `.setFill(...)` method.
 </span>
 
 <span class="tI tI-1">
@@ -391,13 +391,13 @@ Extends and inherits the [base sprite](#sprite) parameters, properties and metho
 Rectangle sprite bounds are defined by a top-left point and a width and height.
 
 ```javascript
-MobSin.Sprite(<game>, <name>, <fill>, <options>)
+MobSin.Sprite(<Game>, <name>, <fill>, <options>)
 ```
 
 **or**
 
 ```javascript
-MobSin.Sprite.Rectangle(<game>, <name>, <fill>, <options>)
+MobSin.Sprite.Rectangle(<Game>, <name>, <fill>, <options>)
 ```
 
 ### Parameters
@@ -482,7 +482,7 @@ Extends and inherits the [base sprite](#sprite) parameters, properties and metho
 Circle sprites bounds are defined by a center point and a radius.
 
 ```javascript
-MobSin.Sprite.Circle(<game>, <name>, <fill>, <options>)
+MobSin.Sprite.Circle(<Game>, <name>, <fill>, <options>)
 ```
 
 ### Parameters
@@ -521,12 +521,12 @@ Cameras serve as the view into your world (the [Stage](#stage)). Scrolling the c
 Inherits the `tween` object system.
 
 ```javascript
-MobSin.Camera(<game>, <options>)
+MobSin.Camera(<Game>, <options>)
 ```
 
 ### Parameters
 
-**Object** `<game>`
+**Object** `<Game>`
 
 <span class="tI tI-1">
 	An already instantiated [Game](#game) object.
@@ -787,3 +787,74 @@ The above code would return a reference to the Stage object as contained in the 
 ---
 
 # Viewport
+
+A viewport is a screen that renders to an HTML5 Canvas.
+
+Viewports hold the render settings used by the canvas element and require a [Stage](#stage) and [Camera](#camera) to use for rendering.
+
+```javascript
+<Game>.viewportManager.add(<name>, <canvas>, <Stage>, <Camera>, <options>)
+```
+
+`<Game>` represents an already instantiated [game instance](#game).
+
+The above code would return a reference to the Viewport object as contained in the Viewport Manager.
+
+### Parameters
+
+**String** `<name>`
+
+<span class="tI tI-1">
+	A custom name for the Viewport.
+</span>
+
+<span class="tI tI-1">
+	This name is used for identification and is searched and indexed by the Viewport Manager.
+</span>
+
+**String** `<canvas>`
+
+<span class="tI tI-1">
+	A selector for a `<canvas>` element contained in the DOM.
+</span>
+
+**Object** or **String** `<Stage>`
+
+<span class="tI tI-1">
+	An already instantiated [Stage](#stage) object.  
+	Performs the same function as the `.setStage(...)` method.
+</span>
+
+<span class="tI tI-1">
+	Alternatively, `MobSin.STAGE` can be given and a new [Stage](#stage) object will be automatically created and associated with the Viewport.
+</span>
+
+**Object** or **String** `<Camera>`
+
+<span class="tI tI-1">
+	An already instantiated [Camera](#camera) object.  
+	Performs the same function as the `.setCamera(...)` method.
+</span>
+
+<span class="tI tI-1">
+	Alternatively, `MobSin.CAMERA` can be given and a new [Camera](#camera) object with the same dimensions will be automatically created and associated with the Viewport.
+</span>
+
+**Object** `<options>`
+
+<span class="tI tI-1">
+	**Number** `x` - X-coordinate of the bounding box (Default: `0`).  
+	**Number** `y` - Y-coordinate of the bounding box (Default: `0`).  
+	**Number** `w` - Width of the bounding box (Default: `0`).  
+	**Number** `h` - Height of the bounding box (Default: `0`).  
+	**Integer** `cW` - Resize the `<canvas>` element to a given width.  
+	**Integer** `cH` - Resize the `<canvas>` element to a given height.  
+	**Boolean** `imageSmoothing` - Canvas anti-aliasing enabled or not (Default: `true`).  
+	**Boolean** `clear` - Clear canvas at the beginning of each render clear (Default: `true`).  
+	**Boolean** `clip` - Clip out anything rendered beyond the Viewport's boundaries (Default: `true`).  
+	**Boolean** `fitCamera` - Resize and move the [Camera](#camera) to the same coordinates and dimensions as the Viewport (Default: `true`).
+</span>
+
+### Properties
+
+### Methods
