@@ -18,7 +18,6 @@ function Stage(_game, name, presets = {}) {
 	_game.object.init(this, "MobSin.Stage", {child: true});
 
 	this.name = name;
-	this.renderable = presets.renderable || true;
 	
 	// The limits of the game world that objects and textures should not be able to surpass
 	this.limits = Rectangle(
