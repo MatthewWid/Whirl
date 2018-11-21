@@ -151,7 +151,7 @@ MobSin.Game(<options>)
 </span>
 
 <span class="tI tI-1">
-	AutomatI tI-1cally sets up the game with a Viewport, Stage and Camera.
+	Automatically sets up the game with a [Viewport](#viewport), [Stage](#stage) and [Camera](#camera).
 </span>
 
 <span class="tI tI-1">
@@ -300,6 +300,17 @@ The following Sprite types are available: `MobSin.Sprite.Rectangle(...)` and `Mo
 
 ### Properties
 
+`.name`
+
+<span class="tI tI-1">
+	**String**  
+	The name of the Sprite.
+</span>
+
+<span class="tI tI-1">
+	Used by the global object manager to search for Sprites with given names.
+</span>
+
 `.fill`
 
 <span class="tI tI-1">
@@ -362,6 +373,12 @@ The following Sprite types are available: `MobSin.Sprite.Rectangle(...)` and `Mo
 ```javascript
 mySprite.setFill("rgb(100, 255, 255)");
 ```
+
+`.tween.`
+
+<span class="tI tI-1">
+	See the tween object system.
+</span>
 
 ---
 
@@ -492,7 +509,6 @@ MobSin.Sprite.Circle(<game>, <name>, <fill>, <options>)
 	`.y` - Y-coordinate of the bounding box.  
 	`.r` - Radius of the circle.
 </span>
-
 ---
 
 # .Camera()
@@ -669,8 +685,104 @@ const myCamera = MobSin.Camera(myGame, {
 	The zoom (`.zoom`) and anchor (`.anchor`) positions remain unchanged throughout the time that the Camera is locked, so will still be the same after unlocking.
 </span>
 
+```javascript
+myCamera.removeLock();
+```
+
 `.anchor.center()`
 
 <span class="tI tI-1">
 	Sets the anchor point to `(0.5, 0.5)`.
 </span>
+
+`.tween.`
+
+<span class="tI tI-1">
+	See the tween object system.
+</span>
+
+---
+
+# Stage
+
+A stage is the 'world' of your game that you put your game objects into. It used for keeping track of and updating game objects in the world.
+
+Objects not contained in a Stage are not rendered or updated.
+
+Stages and their contents are rendered using a [Viewport](#viewport) and will update by themselves even when not being rendered.
+
+Inherits the `child` object system.
+
+```javascript
+<Game>.stageManager.add(<name>, <options>)
+```
+
+`<Game>` represents an already instantiated [game instance](#game).
+
+The above code would return a reference to the Stage object as contained in the Stage Manager.
+
+### Parameters
+
+**String** `<name>`
+
+<span class="tI tI-1">
+	A custom name for the Stage.
+</span>
+
+<span class="tI tI-1">
+	This name is used for identification and is searched and indexed by the Stage Manager.
+</span>
+
+**Object** `<options>`
+
+<span class="tI tI-1">
+	**Number** `.x` - X-coordinate of the stage limits (Default: `0`).  
+	**Number** `.y` - Y-coordinate of the stage limits (Default: `0`).  
+	**Number** `.w` - Width of the stage limits (Default: `0`).  
+	**Number** `.y` - Height of the stage limits (Default: `0`).
+</span>
+
+### Properties
+
+`.name`
+
+<span class="tI tI-1">
+	**String**  
+	The name of the Stage.
+</span>
+
+<span class="tI tI-1">
+	Used by the stage and global object manager to search for Stages with given names.
+</span>
+
+`.limits`
+
+<span class="tI tI-1">
+	**Object**  
+	The limits of the game world.  
+	Objects with physics applied cannot leave the limits of the game world.  
+	Derived from `MobSin.shapes.Rectangle(...)`.
+</span>
+<span class="tI tI-2">
+	`.x` - X-coordinate of the stage limits.  
+	`.y` - Y-coordinate of the stage limits.  
+	`.w` - Width of the stage limits.  
+	`.h` - Height of the stage limits.
+</span>
+
+### Methods
+
+`.child.`
+
+<span class="tI tI-1">
+	See the child object system.
+</span>
+
+<span class="tI tI-1">
+	Objects must be contained inside a Stage using the child object system.  
+	Only objects that are children of a Stage are updated and/or rendered.
+</span>
+
+---
+
+# Viewport
