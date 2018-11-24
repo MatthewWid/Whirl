@@ -308,15 +308,15 @@ The following Sprite types are available: `MobSin.Sprite.Rectangle(...)` and `Mo
 </span>
 
 <span class="tI tI-1">
-	Used by the global object manager to search for Sprites with given names.
+	Used by the global object manager to search for Sprites.
 </span>
 
-`.fill`
+`.fill` (Read-only)
 
 <span class="tI tI-1">
 	**Object**  
 	**Do not modify directly. Use the `.setFill()` method.**  
-	Holds information about the Sprite's fill.  
+	Information about the Sprite's fill.  
 </span>
 <span class="tI tI-2">
 	`.type` - Type of fill. Can either be "`colour`" or "`image`".  
@@ -590,12 +590,12 @@ MobSin.Camera(<Game>, <options>)
 	Has no effect if the Camera is locked to an object (`._lockObject`).
 </span>
 
-`._lockObject`
+`._lockObject` (Read-only)
 
 <span class="tI tI-1">
 	**Object**  
-	**Do not modify directly. Use the `.lockTo()` and `.removeLock()` methods.**  
-	Holds a reference to the object that the Camera is locked to.
+	**Do not modify directly. Use the `.lockTo(...)` and `.removeLock()` methods.**  
+	Reference to the object that the Camera is locked to.
 </span>
 
 `.scroll`
@@ -753,7 +753,7 @@ The above code would return a reference to the Stage object as contained in the 
 </span>
 
 <span class="tI tI-1">
-	Used by the stage and global object manager to search for Stages with given names.
+	Used by the stage and global object manager to search for Stages.
 </span>
 
 `.limits`
@@ -850,11 +850,104 @@ The above code would return a reference to the Viewport object as contained in t
 	**Integer** `cW` - Resize the `<canvas>` element to a given width.  
 	**Integer** `cH` - Resize the `<canvas>` element to a given height.  
 	**Boolean** `imageSmoothing` - Canvas anti-aliasing enabled or not (Default: `true`).  
-	**Boolean** `clear` - Clear canvas at the beginning of each render clear (Default: `true`).  
+	**Boolean** `clear` - Clear canvas at the beginning of each render loop (Default: `true`).  
 	**Boolean** `clip` - Clip out anything rendered beyond the Viewport's boundaries (Default: `true`).  
 	**Boolean** `fitCamera` - Resize and move the [Camera](#camera) to the same coordinates and dimensions as the Viewport (Default: `true`).
 </span>
 
 ### Properties
 
+`.name`
+
+<span class="tI tI-1">
+	**String**  
+	The name of the Viewport.
+</span>
+
+<span class="tI tI-1">
+	Used by the viewport and global object manager to search for Viewports.
+</span>
+
+`.bounds`
+
+<span class="tI tI-1">
+	**Object**  
+	The bounding position and dimensions of this viewport on the screen.  
+	Derived from `MobSin.shapes.Rectangle(...)`.
+</span>
+<span class="tI tI-2">
+	`.x` - X-coordinate of the bounding box.  
+	`.y` - Y-coordinate of the bounding box.  
+	`.w` - Width of the bounding box.  
+	`.h` - Height of the bounding box.
+</span>
+<span class="tI tI-1">
+	Viewports should be static. Object clipping and screen clearing is based on the `.bounds` property and therefore it **should not** be modified after the initial definition in the `<options>` parameter.
+</span>
+
+`.c` (Read-only)
+
+<span class="tI tI-1">
+	**Object**  
+	**Do not modify directly. Use the `.setCanvas(...)` method.**  
+	Reference to the HTML5 canvas element that the viewport will render to.  
+	This holds the actual element node, not just a selector or a copy.
+</span>
+
+`.ctx` (Read-only)
+
+<span class="tI tI-1">
+	**Object**  
+	**Do not modify directly. Use the `.setCanvas(...)` method.**  
+	Reference to the drawing context of the viewport's canvas.
+</span>
+
+`.activeStage` (Read-only)
+
+<span class="tI tI-1">
+	**Object**  
+	**Do not modify directly. Use the `.setStage(...)` method.**  
+	Reference to the [Stage](#stage) being rendered.
+</span>
+
+`.activeCamera` (Read-only)
+
+<span class="tI tI-1">
+	**Object**  
+	**Do not modify directly. Use the `.setCamera(...)` method.**  
+	Reference to the [Camera](#camera) being used for rendering.
+</span>
+
+`.imageSmoothing`
+
+<span class="tI tI-1">
+	**Boolean**  
+	Whether scaled images are smoothed (anti-aliased) or not.  
+	Useful for games that use pixel art a lot.
+</span>
+
+`.clear`
+
+<span class="tI tI-1">
+	**Boolean**  
+	Clear the canvas at the beginning of every render loop.  
+	Only the area that the viewport occupies on the canvas is cleared. If the viewport has the same dimensions as the canvas then the entire canvas will be cleared.
+</span>
+
+`.clip`
+
+<span class="tI tI-1">
+	**Boolean**  
+	Clip out anything in the entire canvas that is not within the viewport's boundaries.  
+	It is recommended to disable this if there is more than one viewport being used on the same canvas.
+</span>
+
 ### Methods
+
+`.setCanvas(<canvas>)`
+
+`.setStage(<Stage>)`
+
+`.setCamera(<Camera>)`
+
+`.bringCamera()`
