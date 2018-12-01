@@ -367,11 +367,15 @@ The following Sprite types are available: `MobSin.Sprite.Rectangle(...)` and `Mo
 </span>
 
 <span class="tI tI-1">
-	**Example:**
+	**Example(s):**
 </span>
 
 ```javascript
 mySprite.setFill("rgb(100, 255, 255)");
+
+mySprite.setFill("#F00");
+
+mySprite.setFill("blue");
 ```
 
 `.tween.`
@@ -686,6 +690,10 @@ const myCamera = MobSin.Camera(myGame, {
 	The zoom (`.zoom`) and anchor (`.anchor`) positions remain unchanged throughout the time that the Camera is locked, so will still be the same after unlocking.
 </span>
 
+<span class="tI tI-1">
+	**Example:**
+</span>
+
 ```javascript
 myCamera.removeLock();
 ```
@@ -815,7 +823,8 @@ The above code would return a reference to the Viewport object as contained in t
 **String** `<canvas>`
 
 <span class="tI tI-1">
-	A selector for a `<canvas>` element contained in the DOM.
+	Selector for a `<canvas>` element contained in the DOM.  
+	Performs the same function as the `.setCanvas(...)` method.
 </span>
 
 **Object** or **String** `<Stage>`
@@ -946,8 +955,99 @@ The above code would return a reference to the Viewport object as contained in t
 
 `.setCanvas(<canvas>)`
 
+<span class="tI tI-1">
+	Sets the HTML5 canvas element to render to.  
+	Also see the `.c` and `.ctx` [viewport properties](#properties_7).
+</span>
+
+<span class="tI tI-2">
+	**String** `<canvas>`
+</span>
+<span class="tI tI-3">
+	Selector string for an HTML5 `<canvas>` element.
+</span>
+
+<span class="tI tI-1">
+	**Example:**
+</span>
+
+```javascript
+myViewport.setCanvas("#myCanvas");
+```
+
 `.setStage(<Stage>)`
+
+<span class="tI tI-1">
+	Sets the current [stage](#stage) to be rendered.  
+	Also see the `.activeStage` [viewport property](#properties_7).
+</span>
+
+<span class="tI tI-2">
+	**Object** `<Stage>`
+</span>
+<span class="tI tI-3">
+	An already instantiated [Stage](#stage) object.
+</span>
+
+<span class="tI tI-3">
+	The `MobSin.STAGE` constant can be given instead and a new [Stage](#stage) object will be automatically created with the same position and dimensions as the viewport.
+</span>
 
 `.setCamera(<Camera>)`
 
+<span class="tI tI-1">
+	Sets the current [camera](#camera) to be used for rendering.  
+	Also see the `.activeCamera` [viewport property](#properties_7).
+</span>
+
+<span class="tI tI-2">
+	**Object** `<Camera>`
+</span>
+<span class="tI tI-3">
+	An already instantiated [Camera](#camera) object.
+</span>
+
+<span class="tI tI-3">
+	The `MobSin.CAMERA` constant can be given instead and a new [Camera](#camera) object will be automatically created with the same position and dimensions as the viewport.
+</span>
+
+<span class="tI tI-1">
+	If the `fitCamera` [viewport parameter](#parameters_6) is not explicitly set to the `false` then the given [camera](#camera) will be repositioned and resized to the same position and dimensions of the viewport.
+</span>
+
 `.bringCamera()`
+
+<span class="tI tI-1">
+	Returns the Viewport object.
+</span>
+
+<span class="tI tI-1">
+	Moves the active [camera](#camera)'s `scroll` position to the top-left point of the viewport's position.
+</span>
+
+<span class="tI tI-1">
+	If the viewport is placed anywhere that isnt `(0, 0)` it is recommended to bring the [camera](#camera) to avoid discrepancies between rendering zones and unwanted clipping of objects by the viewport after they have been rendered.
+</span>
+
+<span class="tI tI-1">
+	**Example:**
+</span>
+
+```javascript
+const myCamera = MobSin.Camera(myGame, {
+	x: 50,
+	y: 75,
+	w: 200,
+	h: 200
+});
+
+const myViewport = myGame.viewportManager.add(..., ..., ..., myCamera, {
+	x: 0,
+	y: 0,
+	w: 400,
+	h: 400
+})
+	.bringCamera();
+
+// The camera is now moved from (50, 75) and 200 width and height to (0, 0) and 400 width and height.
+```
