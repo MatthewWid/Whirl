@@ -70,10 +70,12 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 				h: this.bounds.h
 			});
 		} else {
+			const firstCam = typeof this.activeCamera === "undefined";
+
 			this.activeCamera = newCamera;
 
-			// Fit the camera bounds to the same bounds as the viewport
-			if (typeof presets.fitCamera == "undefined" || presets.fitCamera) {
+			// Fit the camera bounds to the same bounds as the viewport if it is the initial camera
+			if (firstCam && (typeof presets.fitCamera == "undefined" || presets.fitCamera)) {
 				this.activeCamera.bounds.x = this.bounds.x;
 				this.activeCamera.bounds.y = this.bounds.y;
 				this.activeCamera.bounds.w = this.bounds.w;
