@@ -1,14 +1,12 @@
 {
 	"name": "mobsin",
-	"version": "0.0.1",
 	"description": "A JavaScript canvas game engine",
-	"main": "index.js",
 	"repository": "https://github.com/MatthewWid/MobSin.git",
 	"author": "MatthewWid",
 	"license": "MIT",
 	"scripts": {
-		"build": "browserify ./src/MobSin.js -o ./build/mobsin.js",
-		"build-watch": "watchify ./src/MobSin.js -o ./build/mobsin.js"
+		"dev": "watchify ./src/MobSin.js -o ./build/mobsin.js",
+		"build": "browserify ./src/MobSin.js -o ./build/mobsin.js"
 	},
 	"devDependencies": {
 		"browserify": "^16.2.2",
