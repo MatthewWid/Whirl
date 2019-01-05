@@ -7,6 +7,14 @@ function setup(data) {
 
 	// Set up your game
 	// Create objects, initialise stage, viewport and camera, insert plugins, etc.
+	const box = MobSin.Sprite.Rectangle(game, "Boxy", "#EEE", {
+		x: 50,
+		y: 50,
+		w: 50,
+		h: 50
+	});
+
+	stage.child.add(box);
 }
 
 // 1. Create a new game

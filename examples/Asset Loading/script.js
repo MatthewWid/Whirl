@@ -10,13 +10,13 @@ game.assetManager.load([
 	{
 		name: "player",
 		type: "image",
-		src: "./img/playerSprite.png"
+		src: "../_common/img/playerSprite.png"
 	},
 	// Load an audio file called "bg_music" from the "./audio" directory
 	{
 		name: "bg_music",
 		type: "audio",
-		src: "./audio/8bit.mp3"
+		src: "../_common/audio/8bit.mp3"
 	}
 ])
 .event.on("didLoadAsset", (data) => {
