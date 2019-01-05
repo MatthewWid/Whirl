@@ -29,12 +29,6 @@ npm install
 npm run build
 ```
 
-or with Watchify:
-
-```bash
-npm run build-watch
-```
-
 You can now see that a file called `mobsin.js` has appeared in the `/build/` directory.
 
 # Usage
