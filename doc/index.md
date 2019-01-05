@@ -18,7 +18,7 @@ You can also follow along with the documentation, as it will naturally take you 
 
 ## Documentation
 
-Full documentation concerning development with the **MobSin** game engine is in the [Documentation](documentation/concepts.md) section.
+Full documentation concerning development with the **MobSin** game engine is in the [Documentation](documentation/classes.md) section.
 
 It will give you extensive information in learning concepts within the engine, information on all game classes, installation and importation of the engine, as well as plenty of examples to go with documentation to help your understanding.
 
