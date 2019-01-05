@@ -20,7 +20,7 @@ module.exports = (_game) => {
 		},
 		_updateAll: () => {
 			for (let i = 0, n = _game.stages.length; i < n; i++) {
-				game.stages[i]._update();
+				_game.stages[i]._update();
 			}
 		}
 	};
