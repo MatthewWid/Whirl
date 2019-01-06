@@ -1,6 +1,6 @@
 // MobSin.game.updater
 
-let renderer = require("./renderer");
+let render;
 
 // Main game loop
 function update() {
@@ -21,7 +21,7 @@ function update() {
 		frameCount: this.frameCount
 	});
 
-	renderer.bind(this)();
+	render();
 	if (this.running) {
 		requestAnimationFrame(update.bind(this));
 	}
@@ -55,4 +55,6 @@ module.exports = (_game, presets = {}) => {
 	
 	_game.start = start.bind(_game);
 	_game.stop = stop.bind(_game);
+
+	render = require("./renderer").bind(_game);
 };
