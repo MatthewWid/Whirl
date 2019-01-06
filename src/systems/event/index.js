@@ -24,13 +24,12 @@ module.exports = (_game, _obj) => {
 		},
 		emit: (name, data = {}) => {
 			if (_obj.events[name]) {
-				for (let i = 0; i < _obj.events[name].length; i++) {
+				for (let i = _obj.events[name].length - 1; i >= 0; i--) {
 					data._eventId = _obj.events[name][i]._id;
 					_obj.events[name][i](data);
 
 					if (_obj.events[name][i]._once) {
 						_obj.event.removeById(name, _obj.events[name][i]._id);
-						break;
 					}
 				}
 			}
