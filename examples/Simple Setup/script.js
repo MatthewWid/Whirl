@@ -15,9 +15,10 @@ function setup(data) {
 // 4. Set up the game with the given canvas and make it 400x400 pixels
 // 5. Start the game loop
 MobSin.Game()
-	.event.onOnce("didSetup", setup)
-	.event.on("willUpdate", update)
 	.setup({
+		setup,
+		update
+
 		canvas: "#canvas",
 		cW: 400,
 		cH: 400
