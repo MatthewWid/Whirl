@@ -147,7 +147,9 @@ MobSin.Game(<options>)
 	**String** `canvas` - Selector for an HTML5 `<canvas>` element.  
 	**String** `canvasWidth` or `cW` - Width in pixels to resize the canvas element to.  
 	**String** `canvasHeight` or `cH` - Height in pixels to resize the canvas element to.  
-	If a canvas width or height value is not given then the canvas will not resize.
+	If a canvas width or height value is not given then the canvas will not resize.  
+	**Function** `setup` - Called when the game has finished setting up (Called with the `didSetup` event).  
+	**Funtion** `update` - Called when the game will update.
 </span>
 
 <span class="tI tI-1">
@@ -159,7 +161,7 @@ MobSin.Game(<options>)
 </span>
 
 <span class="tI tI-1">
-	Once the game has finished setting up, this emits the `didSetup` event on the Game object.
+	Once setup has completed, the `didSetup` event is emitted on the Game object.
 </span>
 
 <span class="tI tI-1">
@@ -167,8 +169,20 @@ MobSin.Game(<options>)
 </span>
 
 ```javascript
+function gameSetup(data) {
+	// Create objects, import assets, insert plugins, etc.
+}
+
+function gameLoop(data) {
+	// Update object positions, detect key presses, animate sprites, etc.
+}
+
+
 const myGame = MobSin.Game()
     .setup({
+		setup: gameSetup,
+		update: gameLoop,
+
     	canvas: "#myCanvas",
 		canvasWidth: 400,
 		canvasHeight: 400
