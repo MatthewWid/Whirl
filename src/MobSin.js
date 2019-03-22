@@ -1,7 +1,7 @@
 // MobSin.js
 // By MatthewWid
 
-let MobSin = {
+const MobSin = {
 	// Game functions and modules
 	Game: require("./Game"), // Make a new game instance
 	math: require("./math"), // Math functions
