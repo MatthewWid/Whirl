@@ -1,6 +1,7 @@
 // MobSin.game.stageManager.Stage
 
 let Rectangle = require("../../../shapes/Rectangle");
+const _sortChildren = require("../../../lib/sortChildren");
 
 /*
 	The stage is the game world that holds all of your game objects
@@ -27,24 +28,9 @@ function Stage(_game, name, presets = {}) {
 		presets.h || 0
 	);
 
-	this._sortChildren = () => {
-		this.children.sort((curr, next) => {
-			if (
-				typeof curr.z != "undefined" &&
-				typeof next.z != "undefined"
-			) {
-				return curr.z - next.z;
-			} else {
-				return 0;
-			}
-		});
-
-		return this.children;
-	};
-
 	this._update = () => {
 		// Sort children by 'z' in stages and calculate their physical boundaries from the world to canvas
-		for (i in this._sortChildren()) {
+		for (i in _sortChildren(this.children)) {
 			this.children[i]._update();
 		}
 	};

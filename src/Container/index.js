@@ -1,5 +1,7 @@
 // MobSin.Container
 
+const _sortChildren = require("../lib/sortChildren");
+
 function Container(_game, children = [], presets = {}) {
 	_game.object.init(this, "MobSin.Container", {child: true});
 	this.child.add(children);
@@ -14,9 +16,8 @@ function Container(_game, children = [], presets = {}) {
 	this.z = presets.z || 0;
 
 	this._update = () => {
-		const children = this.child.getAll()
-		for (let i = 0, n = children.length; i < n; i++) {
-			children[i]._update({
+		for (i in _sortChildren(this.children)) {
+			this.children[i]._update({
 				x: this.pos.x,
 				y: this.pos.y
 			});
