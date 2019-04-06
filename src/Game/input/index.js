@@ -8,7 +8,7 @@ module.exports = (_game) => {
 	// Add setup functions to game input object
 	_game.input = {
 		setupKeyboard: keyboard.setup.bind(_game),
-		setKeyElement: keyboard.setKeyElement.bind(_game),
+		setKeyElement: keyboard.setKeyElement.bind(_game)
 	};
 
 	_game.event.on("didInitObject", (e) => {
