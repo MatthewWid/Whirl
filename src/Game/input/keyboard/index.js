@@ -21,8 +21,8 @@ function handle_keyUp(evt) {
 		keyName: keys.getByKeyCode(evt.keyCode)
 	});
 }
-function keyIsDown(_game, keyCode) {
-	return _game.input.keysDown[keyCode];
+function keyIsDown(keyCode) {
+	return _game.input.keysDown[keyCode] || false;
 }
 
 const keyboard = {
