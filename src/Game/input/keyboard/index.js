@@ -41,7 +41,7 @@ const keyboard = {
 		this.input.keysDown = [];
 		this.input.keyIsDown = keyIsDown;
 
-		sysId = this.object.init(this.input, "MobSin.system.input", {event: true}, false);
+		sysId = this.object.init(this.input, "MobSin.system.input.keyboard", {event: true}, false);
 		return true;
 	},
 
