@@ -1,26 +1,18 @@
 // MobSin.game.input
 
-// Set the target HTML element that event listeners will be added to
-function setTargetEl(_game, targetEl) {
-	_game.input._targetElement = document.querySelector(targetEl) || document.body;
-}
+module.exports = (_game) => {
+	// Extract configuration variables and import input methods
+	const {input, inputElement} = _game.config;
+	const keyboard = require("./keyboard");
 
-// Prepares the game to receive various kinds of inputs
-// Setup the input object and target element
-function setup(inputEl) {
-	setTargetEl(this, inputEl);
-
-	return this.input;
-}
-
-module.exports = (_game, presets) => {
+	// Add setup functions to game input object
 	_game.input = {
-		setup: setup.bind(_game),
-		setupKeyboard: require("./keyboard").bind(_game)
+		setupKeyboard: keyboard.setup.bind(_game),
+		setKeyElement: keyboard.setKeyElement.bind(_game)
 	};
 
-	if (presets.noInput) return;
-	_game.input
-		.setup(presets.inputElement)
-		.setupKeyboard();
+	// If `input` is true then set up all input systems with defaults
+	if (!input) return;
+	_game.input.setKeyElement(inputElement)
+	_game.input.setupKeyboard();
 };

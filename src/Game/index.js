@@ -21,7 +21,7 @@ function Game(presets = {}) {
 	require("./tweenManager")(this);
 
 	// game.input
-	require("./input")(this, presets);
+	require("./input")(this);
 
 	// game.pluginManager
 	// Eg, MobSinQuickStart, MobSinDebugger, MobSinShorten, MatterJS, TweenJS, etc.
