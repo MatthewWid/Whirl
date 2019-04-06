@@ -2,6 +2,7 @@
 
 module.exports = (_game, presets) => {
 	_game.config = {
-		ignoreWarnings: presets.ignoreWarnings || false
+		ignoreWarnings: presets.ignoreWarnings || false,
+		...presets
 	};
 };
