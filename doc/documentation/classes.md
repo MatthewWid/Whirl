@@ -101,8 +101,12 @@ MobSin.Game(<options>)
 <span class="tI tI-1">
 	Preset configuration options for the Game instance.  
 	**Boolean** `ignoreWarnings` - Ignore debug warnings (Default: `true`).  
-	**Boolean** `noInput` - Do not setup input event listeners on game startup (Default: `false`).  
-	**String** `inputElement` - Element that listens for keyboard inputs (Default: `document.body`).
+	**Boolean** `input` - Set up input event listeners on game startup and bind input listeners to any objects created in the future (Default: `true`).  
+	**HTMLElement** `keyElement` - Element that listens for keyboard input events (Default: `document.body`).
+</span>
+
+<span class="tI tI-1">
+	Any other properties given to the `<options>` object will also be attached to the `Game.config` object, too.
 </span>
 
 ## Properties
@@ -111,24 +115,28 @@ MobSin.Game(<options>)
 
 <span class="tI tI-1">
 	**Object**  
-	Persistent configuration of the Game instance.
+	Persistent configuration of the Game instance.  
+	Also includes any additional properties given when initially creating a game instance.
 </span>
 <span class="tI tI-2">
-	`.ignoreWarnings` - Ignore debug warnings.
+	`.ignoreWarnings` - Ignore debug warnings.  
+	`.input` - Viewports created while the `Game.config.input` option is set to `true` will automatically have keyboard/mouse input event listeners attached to them.
 </span>
 
 `.frameRate`
 
 <span class="tI tI-1">
 	**Integer**  
-	Limits the maximum frames per second (FPS).
+	Limits the maximum frames per second (FPS).  
+	Default `60`.
 </span>
 
 `.frameCount`
 
 <span class="tI tI-1">
 	**Integer**  
-	The number of frames elapsed since the game's beginning.
+	The number of update frames elapsed since the game's start.  
+	Will only start counting once the game has been started with the `Game.start()` method, not when the game is instantiated.
 </span>
 
 ## Methods
