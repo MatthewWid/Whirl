@@ -136,6 +136,10 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 
 		this.ctx.restore();
 	};
+
+	_game.event.emit("requestMouseEvents", {
+		object: this
+	});
 }
 
 module.exports = Viewport;
