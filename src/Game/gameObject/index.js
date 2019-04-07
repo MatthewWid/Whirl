@@ -15,6 +15,7 @@ module.exports = (_game) => {
 			}
 
 			_obj.data = {};
+			_obj._systems = [];
 
 			_game.object.attachSystem(_obj, useSystems);
 
@@ -31,9 +32,12 @@ module.exports = (_game) => {
 		},
 		attachSystem: (_obj, useSystems = {}) => {
 			for (sys in useSystems) {
-				if (useSystems[sys]) {
+				if (useSystems[sys] && _obj._systems.indexOf(sys) === -1) {
 					systems[sys](_game, _obj);
+					_obj._systems.push(sys);
+					continue;
 				}
+				console.warn(`MobSin | System "${sys}" has already been attached.`);
 			}
 		},
 		// Generate a new unique ID for a game object
