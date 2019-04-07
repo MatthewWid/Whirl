@@ -59,7 +59,13 @@ module.exports = (_game) => {
 		},
 		// Remove an object from the global store based on its unique ID
 		destroyById: (query) => {
-			_game.object.globalStore = _game.object.globalStore.filter((e) => e._id !== query);
+			const searchObj = _game.object.getById(query)[0];
+			if (!searchObj) {
+				return false;
+			}
+
+			_game.object.globalStore = _game.object.globalStore.filter((e) => e._id !== searchObj._id);
+			return searchObj;
 		},
 		globalStore: []
 	};
