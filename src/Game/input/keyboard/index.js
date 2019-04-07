@@ -7,7 +7,7 @@ function handle_keyDown(evt) {
 	_game.input.keysDown[evt.keyCode] = true;
 
 	_game.input.event.emit("keyDown", {
-		event: evt,
+		rawEvent: evt,
 		keyCode: evt.keyCode,
 		keyName: keys.getByKeyCode(evt.keyCode)
 	});
@@ -16,7 +16,7 @@ function handle_keyUp(evt) {
 	_game.input.keysDown[evt.keyCode] = false;
 
 	_game.input.event.emit("keyUp", {
-		event: evt,
+		rawEvent: evt,
 		keyCode: evt.keyCode,
 		keyName: keys.getByKeyCode(evt.keyCode)
 	});

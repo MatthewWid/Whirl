@@ -5,10 +5,17 @@ function registerMouseElement(target) {
 		console.error("MobSin | No target element given when trying to register a mouse event element.");
 		return false;
 	}
-	console.log(target, target._type !== "MobSin.Viewport", !target.c);
 	if (target._type !== "MobSin.Viewport" || !target.c) {
 		console.error("MobSin | Target element must be a MobSin.Viewport with a valid canvas element.");
 	}
+	const {c} = target;
+	this.object.attachSystem(target, {event: true});
+
+	c.addEventListener("click", (e) => {
+		target.event.emit("mouseClick", {
+			rawEvent: e
+		});
+	});
 
 	return true;
 }
