@@ -3,7 +3,7 @@ function update(data) {
 }
 
 function setup(data) {
-	let {game, viewport, stage, camera} = data;
+	const {game, viewport, stage, camera} = data;
 
 	// Set up your game
 	// Create objects, initialise stage, viewport and camera, insert plugins, etc.
