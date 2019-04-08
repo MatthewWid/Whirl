@@ -463,3 +463,43 @@ MobSin.math.stepTo(10, 14, 20); // 14
 ```
 
 # Easing Functions
+
+Library of easing functions to alter the rate of change of a given value.
+
+| Function | Description |
+|-|-|
+| Linear | No acceleration. |
+| In | Acceleration from zero velocity. |
+| Out | Decelerating  to zero velocity. |
+| In Out | Acceleration until halfway, then deceleration. |
+
+## Linear
+
+Implies a linear rate of change (`t`).
+
+```javascript
+MobSin.easing.linear(<t>)
+```
+## Quadratic
+
+Implies a rate of change by a degree of two (2) (`t^2`);
+
+```javascript
+MobSin.easing.quadratic.in(<t>)
+
+MobSin.easing.quadratic.out(<t>)
+
+MobSin.easing.quadratic.inOut(<t>)
+```
+
+## Cubic
+
+Implies a rate of change by a degree of three (3) (`t^3`);
+
+```javascript
+MobSin.easing.cubic.in(<t>)
+
+MobSin.easing.cubic.out(<t>)
+
+MobSin.easing.cubic.inOut(<t>)
+```
