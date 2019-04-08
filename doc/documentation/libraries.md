@@ -1,6 +1,6 @@
 # In-Built Libraries
 
-Below is documentation for libraries that MobSin provides that aren't necessarily needed when creating a game, but can be convenient when so as to not reinvent the wheel with common operations you may do as part of a game.
+Below is documentation for libraries that MobSin provides that aren't necessarily needed when creating a game but can be convenient so as to not reinvent the wheel with common operations you may do as part of a game.
 
 Such libraries include general utility functions, mathematical functions and easing functions.
 
@@ -145,5 +145,321 @@ MobSin.util.shuffleArr([1, 5, 3, 2]); // [2, 1, 5, 3]
 ```
 
 # Mathematical Functions
+
+Library of mathematical functions.
+
+```javascript
+MobSin.math.<function>
+```
+
+## Average
+
+Returns the average of the given set of numbers in an array.
+
+```javascript
+MobSin.math.average(<arr>)
+```
+
+<span class="tI tI-1">
+	**Array** `<arr>`
+</span>
+<span class="tI tI-2">
+	Array of numbers to averaged.
+</span>
+
+**Example(s):**
+
+```javascript
+MobSin.math.average([1, 2, 3]); // 2
+MobSin.math.average([1, 2, 3, 4]); // 2.5
+MobSin.math.average([8, 3, 9.2, 12, 5.5]); // 7.540000000000001
+```
+
+## Between Bounds
+
+Returns `true` if a given value is greater than or equal to a minimum value and less than a maximum value, otherwise returns `false`.  
+
+```javascript
+MobSin.math.between(<val>, <min>, <max>, <leniency>)
+```
+
+<span class="tI tI-1">
+	**Number** `<val>`
+</span>
+<span class="tI tI-2">
+	Value to be checked if it is between the minimum and maximum.
+</span>
+
+<span class="tI tI-1">
+	**Number** `<min>`
+</span>
+<span class="tI tI-2">
+	Minimum value of the range to be checked.
+</span>
+
+<span class="tI tI-1">
+	**Number** `<max>`
+</span>
+<span class="tI tI-2">
+	Maximum value of the range to be checked.
+</span>
+
+<span class="tI tI-1">
+	**Number** `<leniency>` (Optional) (Default: `0`)
+</span>
+<span class="tI tI-2">
+	If given, will still return `true` if the value is outside of the minimum or maximum range but still within the **leniency** value's range from the minimum or maximum value.  
+	For example, will still return true if `<val>` is **two (2)**, `<min>` is **four (4)** and `<leniency>` is **three (3)** because **two (2)** (`<val>`) is still at most **three (3)** (`<leniency>`) away from **four (4)** (`<min>`).
+</span>
+
+**Example(s):**
+
+```javascript
+MobSin.math.between(8, 5, 10); // true
+MobSin.math.between(12, 5, 10); // false
+MobSin.math.between(12, 5, 10, 4); // true
+```
+
+## Clamp
+
+Clamps a given value between a given minimum and maximum value.  
+Returns the given value if it is within the range, otherwise returns the minimum or maximum value if the value is lower than or greater than the given range, respectivly.
+
+```javascript
+MobSin.math.clamp(<val>, <min>, <max>)
+```
+
+<span class="tI tI-1">
+	**Number** `<val>`
+</span>
+<span class="tI tI-2">
+	Value to be clamped.
+</span>
+
+<span class="tI tI-1">
+	**Number** `<min>`
+</span>
+<span class="tI tI-2">
+	Minimum value of the range to be clamped to.
+</span>
+
+<span class="tI tI-1">
+	**Number** `<max>`
+</span>
+<span class="tI tI-2">
+	Minimum value of the range to be clamped to.
+</span>
+
+**Example(s):**
+
+```javascript
+MobSin.math.clamp(10, 5, 15); // 10
+MobSin.math.clamp(12, 5, 15); // 12
+MobSin.math.clamp(3, 5, 15); // 5
+MobSin.math.clamp(19, 5, 15); // 15
+```
+
+## Linear Interpolation
+
+Interpolate between a given start and end value by a given interpolant value.
+
+```javascript
+MobSin.math.lerp(<start>, <end>, <through>)
+```
+
+<span class="tI tI-1">
+	**Number** `<start>`
+</span>
+<span class="tI tI-2">
+	Start or beginning value.
+</span>
+
+<span class="tI tI-1">
+	**Number** `<end>`
+</span>
+<span class="tI tI-2">
+	Last or ending value.
+</span>
+
+<span class="tI tI-1">
+	**Float** `<through>`
+</span>
+<span class="tI tI-2">
+	Value being the interpolant between the start and end values.
+</span>
+
+**Example(s):**
+
+```javascript
+MobSin.math.lerp(0, 100, 0.1); // 10
+MobSin.math.lerp(0, 50, 0.5); // 25
+MobSin.math.lerp(50, 0, 0.5); // 25
+MobSin.math.lerp(0, 50, 2); // 100
+```
+
+## Map Value Between Ranges
+
+Extrapolate how far through a given range of values a given point is to another given range of values.
+
+For example, **five (5)** is **fifty percent (50%)** of the way between **zero (0)** and **ten (10)**. To map the given point linearly between the range zero (0) to ten (10) to the range **fifty (50)** to **one-hundred (100)** would mean going **fifty percent (50%)** of the way between fifty (50) and one-hundred (100) to get **seventy-five (75)**.
+
+```javascript
+MobSin.math.map(<value>, <in_min>, <in_max>, <out_min>, <out_max>)
+```
+
+<span class="tI tI-1">
+	**Number** `<value>`
+</span>
+<span class="tI tI-2">
+	Value to use as a point between the first given range.
+</span>
+
+<span class="tI tI-1">
+	**Number** `<in_min>`
+</span>
+<span class="tI tI-2">
+	Lower bound of the input range.
+</span>
+
+<span class="tI tI-1">
+	**Number** `<in_max>`
+</span>
+<span class="tI tI-2">
+	Upper bound of the input range.
+</span>
+
+<span class="tI tI-1">
+	**Number** `<out_min>`
+</span>
+<span class="tI tI-2">
+	Lower bound of the output range.
+</span>
+
+<span class="tI tI-1">
+	**Number** `<out_max>`
+</span>
+<span class="tI tI-2">
+	Upper bound of the output range.
+</span>
+
+**Example(s):**
+
+```javascript
+MobSin.math.map(5, 3, 7, 50, 100); // 75
+MobSin.math.map(25, 0, 50, 100, 200); // 150
+MobSin.math.map(75, 50, 100, 1000, 2000); // 1500
+MobSin.math.map(5, 10, 20, 100, 200); // 50
+```
+
+## Random
+
+Returns a random float in the range of zero (0) to one (1) (inclusive of zero (0) but not of one (1)).  
+If **one** argument is given then will return an integer in the range of zero (0) up to the given value.  
+If **two** arguments are given then will return an integer in the range between the two given arguments.
+
+```javascript
+MobSin.math.random(<a>, <b>)
+```
+
+<span class="tI tI-1">
+	**Number** `<a>` (Optional)
+</span>
+<span class="tI tI-2">
+	If given without `<b>` being given, will be the upper bound of the range of the random number.  
+	If given **with** `<b>` being given, will be the lower bound of the range of the random number.
+</span>
+
+<span class="tI tI-1">
+	**Number** `<b>` (Optional)
+</span>
+<span class="tI tI-2">
+	The upper bound of the range of the random number.
+</span>
+
+**Example(s):**
+
+```javascript
+MobSin.math.random(); // 0.6019569996537999
+MobSin.math.random(); // 0.2947829307200911
+
+MobSin.math.random(5); // 0
+MobSin.math.random(5); // 4
+
+MobSin.math.random(5, 10); // 7
+MobSin.math.random(5, 10); // 9
+```
+
+## Rounding
+
+Rounds a given value to the nearest multiple of a given value.  
+If no rounding number is given, will round the value to the nearest integer.
+
+```javascript
+MobSin.math.roundTo(<num>, <rounder>)
+```
+
+<span class="tI tI-1">
+	**Number** `<num>`
+</span>
+<span class="tI tI-2">
+	Number to be rounded.
+</span>
+
+<span class="tI tI-1">
+	**Integer** `<rounder>` (Optional) (Default: `1`)
+</span>
+<span class="tI tI-2">
+	Multiple to round the `<num>` value to.
+</span>
+
+**Example(s):**
+
+```javascript
+MobSin.math.roundTo(89, 100); // 100
+MobSin.math.roundTo(24, 100); // 0
+MobSin.math.roundTo(5, 10); // 10
+MobSin.math.roundTo(1729, 200); // 1800
+```
+
+## Step Towards
+
+Steps/Increments a given value towards a target value by a given increment.  
+If after stepping/incrementing the value it exceeds the target then the target itself will be returned.
+
+```javascript
+MobSin.math.stepTo(<val>, <target>, <increment>)
+```
+
+<span class="tI tI-1">
+	**Number** `<val>`
+</span>
+<span class="tI tI-2">
+	Value to step.
+</span>
+
+<span class="tI tI-1">
+	**Number** `<target>`
+</span>
+<span class="tI tI-2">
+	Target value to step the given value towards.
+</span>
+
+<span class="tI tI-1">
+	**Number** `<increment>` (Optional) (Default: `1`)
+</span>
+<span class="tI tI-2">
+	Increment to move the given value by.
+</span>
+
+**Example(s):**
+
+```javascript
+MobSin.math.stepTo(5, 10); // 6
+MobSin.math.stepTo(5, 10, 3); // 8
+MobSin.math.stepTo(6, 1, 3); // 3
+
+MobSin.math.stepTo(7, 0, 8); // 0
+MobSin.math.stepTo(10, 14, 20); // 14
+```
 
 # Easing Functions
