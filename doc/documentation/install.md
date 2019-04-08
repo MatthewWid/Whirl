@@ -29,11 +29,11 @@ npm install
 npm run build
 ```
 
-You can now see that a file called `mobsin.js` has appeared in the `/build/` directory.
+You should now see that a file called `mobsin.js` has appeared in the `/build/` directory.
 
 # Usage
 
-Once you have a copy of the compiled source you can include it into your project...
+Once you have a copy of the compiled source you can include it into your project:
 
 ```html
 <script src="mobsin.js"></script>
@@ -44,3 +44,5 @@ Once you have a copy of the compiled source you can include it into your project
 ```javascript
 const MobSin = require("mobsin.js");
 ```
+
+Alternatively, you can simply open the `index.html` file in any of the example projects in the `/examples/` directory to quickly mess around with and observe what the engine is capable of.
