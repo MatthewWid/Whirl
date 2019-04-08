@@ -1,5 +1,18 @@
 // MobSin.input.mouse
 
+const formatMousePos = (e, c) => ({
+	rawEvent: e,
+	pos: {
+		// TODO: Include viewport and camera offsets in calculation
+		x: e.pageX - c.offsetLeft,
+		y: e.pageY - c.offsetTop
+	},
+	page: {
+		x: e.pageX,
+		y: e.pageY
+	}
+});
+
 function registerMouseElement(target) {
 	if (!target) {
 		console.error("MobSin | No target element given when trying to register a mouse event element.");
@@ -13,21 +26,10 @@ function registerMouseElement(target) {
 	this.object.attachSystem(target, {event: true});
 
 	c.addEventListener("click", (e) => {
-		// pageX/Y - Top left of content - affected by scrolling
-		// clientX/clientY - Top left of the content viewport
-		// screenX/Y - Top left of physical monitor screen
-
+		const evtInfo = formatMousePos(e, c);
+		
 		target.event.emit("mouseClick", {
-			rawEvent: e,
-			pos: {
-				// TODO: Include viewport and camera offsets in calculation
-				x: e.pageX - c.offsetLeft,
-				y: e.pageY - c.offsetTop
-			},
-			page: {
-				x: e.pageX,
-				y: e.pageY
-			}
+			...evtInfo
 		});
 	});
 
