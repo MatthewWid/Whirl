@@ -12,7 +12,6 @@ nav:
     - Home: index.md
     - Documentation:
       - Installation: documentation/install.md
-      - Concepts: documentation/concepts.md
       - Game Classes: documentation/classes.md
       - In-Built Libraries: documentation/libraries.md
       - Constants: documentation/constants.md
