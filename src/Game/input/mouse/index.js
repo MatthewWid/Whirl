@@ -1,15 +1,18 @@
 // MobSin.input.mouse
 
-const formatMousePos = (e, c) => ({
-	rawEvent: e,
+const formatMousePos = (evt, c) => ({
+	// Raw MouseEvent object
+	rawEvent: evt,
+	// Position relative to the viewport/world
 	pos: {
 		// TODO: Include viewport and camera offsets in calculation
-		x: e.pageX - c.offsetLeft,
-		y: e.pageY - c.offsetTop
+		x: evt.pageX - c.offsetLeft,
+		y: evt.pageY - c.offsetTop
 	},
+	// Position relative to the origin of the page
 	page: {
-		x: e.pageX,
-		y: e.pageY
+		x: evt.pageX,
+		y: evt.pageY
 	}
 });
 
@@ -24,14 +27,37 @@ function registerMouseElement(target) {
 	}
 	const {c} = target;
 	this.object.attachSystem(target, {event: true});
+	let posLast = {
+		x: 0,
+		y: 0
+	};
 
-	c.addEventListener("click", (e) => {
-		const evtInfo = formatMousePos(e, c);
-		
+	c.addEventListener("click", (evt) => {
+		evt.preventDefault();
+		const evtInfo = formatMousePos(evt, c);
+
 		target.event.emit("mouseClick", {
 			...evtInfo
 		});
 	});
+	c.addEventListener("mousemove", (evt) => {
+		evt.preventDefault();
+		const evtInfo = formatMousePos(evt, c);
+
+		target.event.emit("mouseMove", {
+			...evtInfo,
+			posLast: {
+				...posLast
+			},
+			posDiff: {
+				x: evtInfo.pos.x - posLast.x,
+				y: evtInfo.pos.y - posLast.y
+			}
+		});
+		posLast = {
+			...evtInfo.pos
+		};
+	})
 
 	return true;
 }
