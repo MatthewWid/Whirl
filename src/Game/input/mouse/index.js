@@ -57,7 +57,7 @@ function registerMouseElement(target) {
 		posLast = {
 			...evtInfo.pos
 		};
-	})
+	});
 
 	return true;
 }
