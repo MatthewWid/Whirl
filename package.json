@@ -6,7 +6,8 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "watchify ./src/MobSin.js -o ./build/mobsin.js",
-		"build": "browserify ./src/MobSin.js -o ./build/mobsin.js"
+		"build": "browserify ./src/MobSin.js -o ./build/mobsin.js",
+		"doc": "mkdocs serve"
 	},
 	"devDependencies": {
 		"browserify": "^16.2.2",
