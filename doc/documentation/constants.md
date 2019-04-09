@@ -94,11 +94,13 @@ MobSin.keys.getByKeyCode(16); // "Shift"
 
 Returns the constant string "`_DEFAULTSTAGE`".
 
-Primarily used in [viewport instantiation](../classes#viewport) to automatically set up a default [Stage](../classes#stage) object instead of providing an already created one.
+Used in [viewport instantiation](../classes/#parameters_6) to automatically set up a default [Stage](../classes#stage) object instead of providing an already created one.
 
 ```javascript
 MobSin.STAGE
 ```
+
+The newly instantiated stage will automatically have the same dimensions as the viewport.
 
 ---
 
@@ -106,8 +108,10 @@ MobSin.STAGE
 
 Returns the constant string "`_DEFAULTCAMERA`".
 
-Primarily used in [viewport instantiation](../classes#viewport) to automatically set up a default [Camera](../classes#camera) object instead of providing an already created one.
+Used in [viewport instantiation](../classes/#parameters_6) to automatically set up a default [Camera](../classes#camera) object instead of providing an already created one.
 
 ```javascript
 MobSin.CAMERA
 ```
+
+The newly instantiated camera will automatically have the same position and dimensions as the viewport.
