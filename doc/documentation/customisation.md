@@ -1,5 +1,5 @@
 # Plugins
 
-# The Global Store
+# Custom Objects
 
-# Making Custom Sprites
+# Custom Sprites

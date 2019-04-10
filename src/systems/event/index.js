@@ -46,7 +46,6 @@ module.exports = (_game, _obj) => {
 
 			return _obj;
 		},
-		// Remove all event listeners of the given name
 		removeAll: (name) => {
 			delete _obj.events[name];
 		}
