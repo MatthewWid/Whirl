@@ -15,7 +15,7 @@ You can see the raw global store of your game instance under `Game.globalStore` 
 To traverse the global store you should use the provided methods under the `object` property of a game instance.
 
 ```javascript
-Game.object
+[game].object
 ```
 
 ## Methods
@@ -27,7 +27,7 @@ For all "Get ..." methods if no results are found (meaning no objects are matche
 Returns an array of every item in the global store.
 
 ```javascript
-Game.object.getAll()
+[game].object.getAll()
 ```
 
 The returned array has no inherent ordering and thus the order the of the returned array will not necessarily be consistent on every call.
@@ -41,7 +41,7 @@ All objects that are instantiated within a game instance (Regardless of whether 
 Keep in mind all IDs should be unique so although an array may be returned it should never have more than one 
 
 ```javascript
-Game.object.getById(<id>)
+[game].object.getById(<id>)
 ```
 
 <span class="tI tI-1">
@@ -58,7 +58,7 @@ Returns an array of objects in the global store whose `name` property matches th
 Viewports, Stages, Sprites and Assets all a have `name` property that you provide when creating a new instance of them.
 
 ```javascript
-Game.object.getByName(<name>)
+[game].object.getByName(<name>)
 ```
 
 <span class="tI tI-1">
@@ -77,7 +77,7 @@ All objects instantiated under a game instance give a name for their "type" that
 To learn more about types and making your own see [the customisation section](../customisation).
 
 ```javascript
-Game.object.getByType(<type>)
+[game].object.getByType(<type>)
 ```
 
 <span class="tI tI-1">
@@ -95,7 +95,7 @@ Removes an object from the global store given an `<id>` property and returns the
 This method directly modifies the global store and therefore should not be used unless there are **no other references to the object anywhere else in the game instance** (such as being stored in a stage world, viewport, camera, etc.). Doing so may break functionality in unexpected and sometimes hard to debug ways.
 
 ```javascript
-	Game.object.destroyById(<id>)
+[game].object.destroyById(<id>)
 ```
 
 <span class="tI tI-1">
@@ -108,19 +108,19 @@ This method directly modifies the global store and therefore should not be used 
 # Custom Events
 
 ```javascript
-Object.event
+[object].event
 ```
 
 # Animation Tweens
 
 ```javascript
-Object.tween
+[object].tween
 
-Game.tweenManager
+[game].tweenManager
 ```
 
 # Child Hierarchy
 
 ```javascript
-Object.child
+[object].child
 ```
