@@ -6,11 +6,58 @@ Objects instantiated this way are stored in [the global store](#the-global-store
 
 You can read more about instantiating your own custom game elements in [the customisation section](../customisation), but for the most part in-built game objects (such as viewports, stages, sprites, plugins, etc.) will instantiate themselves in the game instance for you.
 
+To attach a game system to an object that is not already equpped with one you can call the `attachSystem` method.
+
+```javascript
+[game].object.attachSystem(<obj>, <systems>)
+```
+
+<span class="tI tI-1">
+	**Object** `<obj>`
+</span>
+<span class="tI tI-2">
+	Object to attach the event system(s) to.
+</span>
+
+<span class="tI tI-1">
+	**Object** `<systems>`
+</span>
+<span class="tI tI-2">
+	Object indicating list of systems to attach to the given object.  
+	The property value must be set to `true` to register.  
+	The current valid object systems are:
+</span>
+<span class="tI tI-3">
+	• `event`  
+	• `tween`  
+	• `child`
+</span>
+
+**Example(s):**
+
+Creating a custom sprite and then attaching the `event` and `tween` object system to it.
+
+```javascript
+// Create a new game instance and an empty object.
+const game = MobSin.Game();
+const customSprite = {};
+// Instantiate the empty object into the game instance.
+game.object.init(customSprite, "Custom.Sprite");
+
+// Attach the `event` and `tween` system.
+game.object.attachSystem(customSprite, {
+	event: true,
+	tween: true
+});
+```
+
+Object systems can also be attached with the `init` method during instantiation as a third argument.
+
 # The Global Store
 
 Most objects instantiated within a MobSin game instance are stored in what is called "The Global Store". This is a persistent list of all objects that exist in the current game instance.
 
-You can see the raw global store of your game instance under `Game.globalStore` but you should **never modify this directly**. You should also never rely on the order of the array representing the raw global store as it can change between game updates, object modification and other various ways.
+You can see the raw global store of your game instance under `[game].globalStore` but you should **never modify this directly**. You should also never rely on the order of the array representing the raw global store as it can change between game updates, object modification and other various ways.
 
 To traverse the global store you should use the provided methods under the `object` property of a game instance.
 
@@ -107,9 +154,92 @@ This method directly modifies the global store and therefore should not be used 
 
 # Custom Events
 
+MobSin uses a dynamic custom event system to emit information from objects that can be picked up by listeners on that object. Many MobSin objects come with their own premade events, but you can also make your own that listens on or emits events from any object that has the event system attached.
+
+Events are identified by name. There can be multiple listeners on a single event that will all fire when that even is called. Events are called in the order that the listeners were initially added in.
+
 ```javascript
 [object].event
 ```
+
+```javascript
+[game].object.attachSystem([object], {event: true})
+```
+
+## Methods
+
+### On
+
+Adds a new event listener for the given event name.
+
+```javascript
+[object].event.on(<name>, <callback>, <once>)
+```
+
+<span class="tI tI-1">
+	**String** `<name>`
+</span>
+<span class="tI tI-2">
+	Name of the event to listen on.
+</span>
+
+<span class="tI tI-1">
+	**Function** `<callback>`
+</span>
+<span class="tI tI-2">
+	Callback function that is called every time an event is emitted on the given event name.  
+	Takes a single object parameter that contains the emitted data.  
+	The object paramater also has attached to it the following properties:
+</span>
+<span class="tI tI-3">
+	`_eventId` - The ID of the current event listener.  
+	`_object` - The object the event is being called on.
+</span>
+
+<span class="tI tI-1">
+	**Boolean** `<once>`
+</span>
+<span class="tI tI-2">
+	If set to `true` will remove the event listener after one emit to the event name.
+</span>
+
+**Example(s):**
+
+Listen for the event `hit` that when called upon will damage the player by the given `damage` value.
+
+```javascript
+myPlayer.event.on("hit", (info) => {
+	myPlayer.data.health -= info.damage;
+});
+```
+
+Listen for the event `loadedImage` that is listened to once and then when emitted to stops listening.
+
+```javascript
+myPlayer.event.on("loadedImage", (info) => {
+	console.log("Player image loaded!");
+}, true);
+```
+
+### On Once
+
+Implicitly the same as `.event.on` but with the `<once>` argument set to `true`.
+
+See the ['On' method parameters](#on) as they are the same except with the last parameter omitted.
+
+**Example(s):**
+
+```javascript
+myPlayer.event.onOnce("loadedImage", (info) => {
+	console.log("Player image loaded!");
+});
+```
+
+### Emit
+
+### Remove By ID
+
+### Remove All
 
 # Animation Tweens
 
@@ -119,8 +249,16 @@ This method directly modifies the global store and therefore should not be used 
 [game].tweenManager
 ```
 
+```javascript
+[game].object.attachSystem([object], {tween: true})
+```
+
 # Child Hierarchy
 
 ```javascript
 [object].child
+```
+
+```javascript
+[game].object.attachSystem([object], {child: true})
 ```
