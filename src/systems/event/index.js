@@ -26,6 +26,7 @@ module.exports = (_game, _obj) => {
 			if (_obj.events[name]) {
 				for (let i = _obj.events[name].length - 1; i >= 0; i--) {
 					data._eventId = _obj.events[name][i]._id;
+					data._object = _obj;
 					_obj.events[name][i](data);
 
 					if (_obj.events[name][i]._once) {
