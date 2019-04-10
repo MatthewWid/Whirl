@@ -31,6 +31,10 @@ module.exports = (_game) => {
 			return _obj;
 		},
 		attachSystem: (_obj, useSystems = {}) => {
+			if (!_obj.hasOwnProperty("_systems")) {
+				console.warn("MobSin | Object is not instantiated into a game instance and therefore cannot have game systems attached to it.");
+				return false;
+			}
 			for (sys in useSystems) {
 				if (useSystems[sys] && _obj._systems.indexOf(sys) === -1) {
 					systems[sys](_game, _obj);
@@ -39,6 +43,7 @@ module.exports = (_game) => {
 				}
 				console.warn(`MobSin | System "${sys}" has already been attached.`);
 			}
+			return true;
 		},
 		// Generate a new unique ID for a game object
 		nextID: () => {
