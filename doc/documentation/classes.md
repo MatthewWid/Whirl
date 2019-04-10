@@ -418,11 +418,7 @@ Rectangle sprite bounds are defined by a top-left point and a width and height.
 
 ```javascript
 MobSin.Sprite(<Game>, <name>, <fill>, <options>)
-```
-
-**or**
-
-```javascript
+// or
 MobSin.Sprite.Rectangle(<Game>, <name>, <fill>, <options>)
 ```
 
