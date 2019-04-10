@@ -37,8 +37,6 @@ module.exports = (_game, _obj) => {
 			
 			return _obj;
 		},
-		// Remove a specific event listener by its ID
-		// Takes the event name and the listener ID
 		removeById: (name, id) => {
 			_obj.events[name] = _obj.events[name].filter((evt) => evt._id != id);
 						

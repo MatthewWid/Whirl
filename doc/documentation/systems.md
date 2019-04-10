@@ -6,7 +6,7 @@ Objects instantiated this way are stored in [the global store](#the-global-store
 
 You can read more about instantiating your own custom game elements in [the customisation section](../customisation), but for the most part in-built game objects (such as viewports, stages, sprites, plugins, etc.) will instantiate themselves in the game instance for you.
 
-To attach a game system to an object that is not already equpped with one you can call the `attachSystem` method.
+To attach a game system to an object that is not already equpped with one you can call the `attachSystem` method. Objects must be instantiated in a game instance first to have a game system attached to them.
 
 ```javascript
 [game].object.attachSystem(<obj>, <systems>)
@@ -197,7 +197,7 @@ Adds a new event listener for the given event name.
 </span>
 
 <span class="tI tI-1">
-	**Boolean** `<once>`
+	**Boolean** `<once>` (Optional) (Default: `false`)
 </span>
 <span class="tI tI-2">
 	If set to `true` will remove the event listener after one emit to the event name.
@@ -205,7 +205,7 @@ Adds a new event listener for the given event name.
 
 **Example(s):**
 
-Listen for the event `hit` that when called upon will damage the player by the given `damage` value.
+Listen for the event `hit` on the `myPlayer` object that when called upon will damage the player by the given `damage` value.
 
 ```javascript
 myPlayer.event.on("hit", (info) => {
@@ -237,9 +237,94 @@ myPlayer.event.onOnce("loadedImage", (info) => {
 
 ### Emit
 
+Emits an event on the given name with given data.
+
+```javascript
+[object].event.emit(<name>, <data>)
+```
+
+<span class="tI tI-1">
+	**String** `<name>`
+</span>
+<span class="tI tI-2">
+	Name of the event to emit on.
+</span>
+
+<span class="tI tI-1">
+	**Object** `<data>` (Optional) (Default: `{}`)
+</span>
+<span class="tI tI-2">
+	Data to emit with the event.  
+	You can add any property to this object, but do not overwrite the additional properties added by the event system (`_eventId` and `_object`).
+</span>
+
+**Example(s):**
+
+Emit the `hit` event on the `myPlayer` object that passes `damage: 5` on the data object.
+
+```javascript
+myPlayer.event.emit("hit", {
+	damage: 5
+});
+```
+
 ### Remove By ID
 
+Removes a specific event listener by its unique identity number.
+
+Each event listener has a unique identification number that is passed to the callback function whenever the listener is emitted to in the `_eventId` property.
+
+```javascript
+[object].event.removeById(<name>, <id>)
+```
+
+<span class="tI tI-1">
+	**String** `<name>`
+</span>
+<span class="tI tI-2">
+	Name of the event.
+</span>
+
+<span class="tI tI-1">
+	**Integer** `<id>`
+</span>
+<span class="tI tI-2">
+	ID number of the listener within the event.
+</span>
+
+**Example(s):**
+
+```javascript
+myPlayer.event.on("hit", (info) => {
+	myPlayer.data.health -= info.damage;
+
+	// Make the player invincible so they can't be hit anymore by removing the event listener
+	myPlayer.event.removeById("name", info._eventId);
+});
+```
+
 ### Remove All
+
+Removes all event listeners on a specified event name.
+
+```javascript
+[object].event.removeAll(<name>)
+```
+
+<span class="tI tI-1">
+	**String** `<name>`
+</span>
+<span class="tI tI-2">
+	Name of the event to remove all listeners from.
+</span>
+
+**Example(s):**
+
+Remove all listeners listening on the `hit` event on the `myPlayer` object.
+
+```javascript
+myPlayer.event.removeAll("hit");
+```
 
 # Animation Tweens
 
