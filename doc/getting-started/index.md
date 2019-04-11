@@ -98,4 +98,12 @@ Let's recap what the code given to us has done:
 
 Our game is now being rendered to the canvas, but it remains empty because there is nothing to render yet.
 
-## Creating our First Sprite
+## Creating the First Sprite
+
+# Advanced: Setting Up From Scratch
+
+This article will detail how to set up a game yourself from scratch without the use of the `.setup` method to do it for you.
+
+It will go into how to create your own viewport, your own stage and a custom camera, as well as utilising event listeners to define your own functions that are called exactly when you want them to be (such as the `update` and `setup` functions given to the `.setup` method).
+
+Touched on briefly will also be information about the innerworkings of the game setup and a game instance's updater.
