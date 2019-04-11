@@ -328,6 +328,8 @@ myPlayer.event.removeAll("hit");
 
 # Animation Tweens
 
+Tweens are animation instructions that continually put intermediate frames between two points over a given time.
+
 ```javascript
 [object].tween
 
