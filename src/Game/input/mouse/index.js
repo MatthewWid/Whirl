@@ -16,7 +16,7 @@ const formatMousePos = (evt, c) => ({
 	}
 });
 
-function registerMouseElement(target) {
+function registerMouseViewport(target) {
 	if (!target) {
 		console.error("MobSin | No target element given when trying to register a mouse event element.");
 		return false;
@@ -63,7 +63,7 @@ function registerMouseElement(target) {
 }
 
 const mouse = {
-	registerMouseElement
+	registerMouseViewport
 };
 
 module.exports = mouse;

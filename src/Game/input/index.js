@@ -11,13 +11,13 @@ module.exports = (_game) => {
 	_game.input = {
 		setupKeyboard: keyboard.setup.bind(_game),
 		setKeyElement: keyboard.setKeyElement.bind(_game),
-		registerMouseElement: mouse.registerMouseElement.bind(_game)
+		registerMouseViewport: mouse.registerMouseViewport.bind(_game)
 	};
 
 	_game.event.on("requestMouseEvents", (e) => {
 		if (e.object._type === "MobSin.Viewport" && _game.config.input) {
 			// Attach mouse event to e.object if `input` is true
-			_game.input.registerMouseElement(e.object);
+			_game.input.registerMouseViewport(e.object);
 		}
 	});
 
