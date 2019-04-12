@@ -17,7 +17,7 @@ module.exports = (_game) => {
 	_game.event.on("requestMouseEvents", (e) => {
 		if (e.object._type === "MobSin.Viewport" && _game.config.input) {
 			// Attach mouse event to e.object if `input` is true
-			_game.input.registerMouseViewport(e.object);
+			_game.input.registerMouseViewport(e.object, ["mouseClick", "mouseMove"]);
 		}
 	});
 

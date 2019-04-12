@@ -16,7 +16,45 @@ const formatMousePos = (evt, c) => ({
 	}
 });
 
-function registerMouseViewport(target) {
+const eventRegisters = {
+	"mouseClick": (c, vp) => {
+		c.addEventListener("click", (evt) => {
+			evt.preventDefault();
+			const evtInfo = formatMousePos(evt, c);
+
+			vp.event.emit("mouseClick", {
+				...evtInfo
+			});
+		});
+	},
+	"mouseMove": (c, vp) => {
+		let posLast = {
+			x: 0,
+			y: 0
+		};
+
+		c.addEventListener("mousemove", (evt) => {
+			evt.preventDefault();
+			const evtInfo = formatMousePos(evt, c);
+
+			vp.event.emit("mouseMove", {
+				...evtInfo,
+				posLast: {
+					...posLast
+				},
+				posDiff: {
+					x: evtInfo.pos.x - posLast.x,
+					y: evtInfo.pos.y - posLast.y
+				}
+			});
+			posLast = {
+				...evtInfo.pos
+			};
+		});
+	}
+};
+
+function registerMouseViewport(target, events = []) {
 	if (!target) {
 		console.error("MobSin | No target element given when trying to register a mouse event element.");
 		return false;
@@ -27,37 +65,10 @@ function registerMouseViewport(target) {
 	}
 	const {c} = target;
 	this.object.attachSystem(target, {event: true});
-	let posLast = {
-		x: 0,
-		y: 0
-	};
 
-	c.addEventListener("click", (evt) => {
-		evt.preventDefault();
-		const evtInfo = formatMousePos(evt, c);
-
-		target.event.emit("mouseClick", {
-			...evtInfo
-		});
-	});
-	c.addEventListener("mousemove", (evt) => {
-		evt.preventDefault();
-		const evtInfo = formatMousePos(evt, c);
-
-		target.event.emit("mouseMove", {
-			...evtInfo,
-			posLast: {
-				...posLast
-			},
-			posDiff: {
-				x: evtInfo.pos.x - posLast.x,
-				y: evtInfo.pos.y - posLast.y
-			}
-		});
-		posLast = {
-			...evtInfo.pos
-		};
-	});
+	for (event in events) {
+		eventRegisters[events[event]](c, target);
+	}
 
 	return true;
 }
