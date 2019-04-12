@@ -18,10 +18,23 @@ module.exports = (_game, _obj) => {
 		getByName: (query) => {
 			return _obj.children.filter((e) => e.name === query);
 		},
+		getById: (query) => {
+			return _obj.children.filter((e) => e._id === query);
+		},
 		// Get immediate children of object
 		getAll: () => {
 			return _obj.children;
 		},
+		// getByIdDeep: (query, curr = _obj) => {
+		// 	if (query === curr._id) {
+		// 		return curr;
+		// 	}
+		// 	for (let i = 0, n = curr.children.length; i < n; i++) {
+		// 		if (curr.child.getByIdDeep(query, curr.children[i]) !== false) {
+		// 			return curr;
+		// 		}
+		// 	}
+		// },
 		// Get all children, including children of children, with recursion
 		// TODO:
 		// Add an accumulator object for accumulating values on each level of children
