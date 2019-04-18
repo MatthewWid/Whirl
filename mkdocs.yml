@@ -20,6 +20,7 @@ nav:
     - Getting Started: getting-started/index.md
     - About:
       - Licence: about/licence.md
+      - Attributions: about/attributions.md
 
 markdown_extensions:
     - toc:
