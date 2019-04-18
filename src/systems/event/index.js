@@ -1,4 +1,4 @@
-// MobSin.systems.event
+// Whirl.systems.event
 
 module.exports = (_game, _obj) => {
 	_obj.events = {

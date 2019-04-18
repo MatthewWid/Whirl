@@ -1,4 +1,4 @@
-// MobSin.Camera
+// Whirl.Camera
 
 let shapes = require("../shapes");
 
@@ -26,7 +26,7 @@ let shapes = require("../shapes");
 		- roundPixels
 */
 function Camera(_game, presets = {}) {
-	_game.object.init(this, "MobSin.Camera", {tween: true});
+	_game.object.init(this, "Whirl.Camera", {tween: true});
 
 	this.anchor = {
 		x: (presets.anchor || {}).x || 0,

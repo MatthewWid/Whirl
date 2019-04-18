@@ -1,4 +1,4 @@
-// MobSin.easing.quadratic
+// Whirl.easing.quadratic
 
 module.exports = {
 	in: require("./in"),

@@ -1,4 +1,4 @@
-// MobSin.Sprite.Circle
+// Whirl.Sprite.Circle
 
 let _BaseSprite = require("../_Base");
 let render = require("./render");

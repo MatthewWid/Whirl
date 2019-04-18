@@ -1,12 +1,12 @@
 {
-	"name": "mobsin",
+	"name": "whirl",
 	"description": "A JavaScript canvas game engine",
-	"repository": "https://github.com/MatthewWid/MobSin.git",
+	"repository": "https://github.com/MatthewWid/Whirl.git",
 	"author": "MatthewWid",
 	"license": "MIT",
 	"scripts": {
-		"dev": "watchify ./src/MobSin.js -o ./build/mobsin.js",
-		"build": "browserify ./src/MobSin.js -o ./build/mobsin.js",
+		"dev": "watchify ./src/Whirl.js -o ./build/whirl.js",
+		"build": "browserify ./src/Whirl.js -o ./build/whirl.js",
 		"doc": "mkdocs serve",
 		"doc-sass": "sass --watch ./doc/css/scss:./doc/css/css --style compressed --sourcemap=none"
 	},

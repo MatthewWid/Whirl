@@ -1,4 +1,4 @@
-// MobSin.easing
+// Whirl.easing
 
 module.exports = {
 	linear: require("./linear"),

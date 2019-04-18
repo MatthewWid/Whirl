@@ -1,4 +1,4 @@
-// MobSin.util.randRGB
+// Whirl.util.randRGB
 
 module.exports = (cfg = {}) => {
 	let r = Math.floor(Math.random() * 256);

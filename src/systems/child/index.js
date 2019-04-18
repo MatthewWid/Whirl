@@ -1,4 +1,4 @@
-// MobSin.systems.child
+// Whirl.systems.child
 
 module.exports = (_game, _obj) => {
 	_obj.children = [];

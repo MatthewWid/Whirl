@@ -1,4 +1,4 @@
-// MobSin.math.stepTo
+// Whirl.math.stepTo
 
 module.exports = (val, target, increment = 1) => {
 	if (val == target) {

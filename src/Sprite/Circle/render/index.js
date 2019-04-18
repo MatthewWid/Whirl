@@ -1,4 +1,4 @@
-// MobSin.Sprite.Circle.render
+// Whirl.Sprite.Circle.render
 
 let render = {
 	image: require("./image"),

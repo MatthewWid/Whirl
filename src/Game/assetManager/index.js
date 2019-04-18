@@ -1,4 +1,4 @@
-// MobSin.game.assetManager
+// Whirl.game.assetManager
 
 module.exports = (_game) => {
 	let Asset = require("./Asset");
@@ -43,5 +43,5 @@ module.exports = (_game) => {
 			return _game.assets;
 		}
 	};
-	_game.object.init(_game.assetManager, "MobSin.system.assetManager", {event: true}, false);
+	_game.object.init(_game.assetManager, "Whirl.system.assetManager", {event: true}, false);
 };

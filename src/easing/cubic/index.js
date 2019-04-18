@@ -1,4 +1,4 @@
-// MobSin.easing.cubic
+// Whirl.easing.cubic
 
 module.exports = {
 	in: require("./in"),

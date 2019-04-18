@@ -1,4 +1,4 @@
-// MobSin.Sprite._Base
+// Whirl.Sprite._Base
 
 /*
 	A Sprite is a generic renderable "thing" in your game.
@@ -12,7 +12,7 @@
 	- z
 */
 function _BaseSprite(_game, name, fill, presets = {}) {
-	_game.object.init(this, "MobSin.Sprite", {tween: true});
+	_game.object.init(this, "Whirl.Sprite", {tween: true});
 
 	// The name of this Sprite
 	this.name = name || "";
@@ -35,7 +35,7 @@ function _BaseSprite(_game, name, fill, presets = {}) {
 		// If an image asset is given will with that image.
 		} else if (
 			typeof newFill === "object" &&
-			newFill._type === "MobSin.Asset" &&
+			newFill._type === "Whirl.Asset" &&
 			newFill.type === "image"
 		) {
 			this.fill = {

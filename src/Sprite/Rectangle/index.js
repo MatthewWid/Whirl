@@ -1,4 +1,4 @@
-// MobSin.Sprite.Rectangle
+// Whirl.Sprite.Rectangle
 
 let _BaseSprite = require("../_Base");
 let render = require("./render");

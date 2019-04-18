@@ -1,4 +1,4 @@
-// MobSin.input.mouse
+// Whirl.input.mouse
 
 const formatMousePos = (evt, c) => ({
 	// Raw MouseEvent object
@@ -56,11 +56,11 @@ const eventRegisters = {
 
 function registerMouseViewport(target, events = []) {
 	if (!target) {
-		console.error("MobSin | No target element given when trying to register a mouse event element.");
+		console.error("Whirl | No target element given when trying to register a mouse event element.");
 		return false;
 	}
-	if (target._type !== "MobSin.Viewport" || !target.c) {
-		console.error("MobSin | Target element must be a MobSin.Viewport with a valid canvas element.");
+	if (target._type !== "Whirl.Viewport" || !target.c) {
+		console.error("Whirl | Target element must be a Whirl.Viewport with a valid canvas element.");
 		return false;
 	}
 	const {c} = target;

@@ -1,4 +1,4 @@
-// MobSin.Sprite
+// Whirl.Sprite
 
 /*
 	All Sprites inherit properties from the _BaseSprite class.
@@ -6,7 +6,7 @@
 	Once inherited, your Sprite is required to have:
 		- Parameters that accept the Game instance, the Sprite name, the Sprite fill and the Sprite presets:
 			(_game, name, fill, presets = {})
-		- A '.bounds' property defining its boundaries (Using a MobSin.Shape).
+		- A '.bounds' property defining its boundaries (Using a Whirl.Shape).
 		- A '.physBounds' property defining its actual boundaries in the game world taking into account scale, anchor points, transforms, etc.
 		- A '_calculatePhysBounds()' method that sets its '_.physBounds' property.
 		- A '_render(CanvasContext)' method that renders the Sprite to a given Canvas context.

@@ -1,4 +1,4 @@
-// MobSin.game
+// Whirl.game
 
 function Game(presets = {}) {
 	// game.config
@@ -6,7 +6,7 @@ function Game(presets = {}) {
 
 	// game.object
 	require("./gameObject")(this);
-	this.object.init(this, "MobSin.Game", {event: true}, false);
+	this.object.init(this, "Whirl.Game", {event: true}, false);
 
 	// game.assetManager
 	require("./assetManager")(this);
@@ -24,7 +24,7 @@ function Game(presets = {}) {
 	require("./input")(this);
 
 	// game.pluginManager
-	// Eg, MobSinQuickStart, MobSinDebugger, MobSinShorten, MatterJS, TweenJS, etc.
+	// Eg, WhirlQuickStart, WhirlDebugger, WhirlShorten, MatterJS, TweenJS, etc.
 	require("./pluginManager")(this);
 
 	let updater = require("./updater")(this);

@@ -1,4 +1,4 @@
-// MobSin.game.viewportManager
+// Whirl.game.viewportManager
 
 module.exports = (_game) => {
 	let Viewport = require("./Viewport");

@@ -1,7 +1,6 @@
-// MobSin.js
-// By MatthewWid
+// Whirl
 
-const MobSin = {
+const Whirl = {
 	// Game functions and modules
 	Game: require("./Game"), // Make a new game instance
 	math: require("./math"), // Math functions
@@ -21,5 +20,5 @@ const MobSin = {
 	keys: require("./keys")
 };
 
-module.exports = MobSin;
-global.MobSin = MobSin;
+module.exports = Whirl;
+global.Whirl = Whirl;

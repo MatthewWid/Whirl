@@ -1,4 +1,4 @@
-// MobSin.math
+// Whirl.math
 
 module.exports = {
 	lerp: require("./lerp"),
@@ -8,5 +8,5 @@ module.exports = {
 	stepTo: require("./stepTo"),
 	average: require("./average"),
 	map: require("./map")
-	// Constructor for Vector
+	// TODO: Constructor for Vector
 };

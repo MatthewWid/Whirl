@@ -1,4 +1,4 @@
-// MobSin.game.tweenManager.Tween
+// Whirl.game.tweenManager.Tween
 
 let linearTweenFunction = require("../../../easing/linear");
 let roundTo = require("../../../math/roundTo");
@@ -16,11 +16,11 @@ let roundTo = require("../../../math/roundTo");
 	- canPurge
 */
 function Tween(_game, _obj, from = {}, to, time, presets = {}) {
-	_game.object.init(this, "MobSin.Tween", {event: true});
+	_game.object.init(this, "Whirl.Tween", {event: true});
 
 	this.object = _obj;
 	// The easing function used for this tween
-	// See 'MobSin.tweens'
+	// See 'Whirl.easing'
 	// If no easing function is given then a linear tween will be defaulted to
 	this._easing = presets.easing || linearTweenFunction;
 

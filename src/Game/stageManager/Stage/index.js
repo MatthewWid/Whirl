@@ -1,4 +1,4 @@
-// MobSin.game.stageManager.Stage
+// Whirl.game.stageManager.Stage
 
 let Rectangle = require("../../../shapes/Rectangle");
 const _sortChildren = require("../../../lib/sortChildren");
@@ -16,7 +16,7 @@ const _sortChildren = require("../../../lib/sortChildren");
 	- renderable
 */
 function Stage(_game, name, presets = {}) {
-	_game.object.init(this, "MobSin.Stage", {child: true});
+	_game.object.init(this, "Whirl.Stage", {child: true});
 
 	this.name = name || "";
 	

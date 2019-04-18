@@ -1,4 +1,4 @@
-// MobSin.systems
+// Whirl.systems
 
 // Systems are extra pieces of functionality that extend an objects own functionality
 // Eg, attaching the 'event' system to a Sprite will now mean that sprite can emit its own events.

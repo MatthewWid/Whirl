@@ -1,4 +1,4 @@
-// MobSin.Sprite.Circle.render.colour
+// Whirl.Sprite.Circle.render.colour
 
 function render_colour(_ctx, _sprite) {
 	_ctx.fillStyle = _sprite.fill.data;

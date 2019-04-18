@@ -3,11 +3,11 @@
 let NameShorten = {
 	_meta: {
 		name: "NameShorten",
-		desc: "Shorten methods and variable names used by the MobSin game engine.",
+		desc: "Shorten methods and variable names used by the Whirl game engine.",
 		repo: ""
 	},
 	connected: (_game) => {
-		window.ms = MobSin;
+		window.wh = Whirl;
 
 		_game.a = _game.assetManager;
 		_game.i = _game.input;

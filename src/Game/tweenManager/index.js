@@ -1,4 +1,4 @@
-// MobSin.game.tweenManager
+// Whirl.game.tweenManager
 
 let Tween = require("./Tween");
 let TweenGroup = require("./TweenGroup");

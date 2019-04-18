@@ -14,10 +14,10 @@ function setup(data) {
 // 3. Call the 'update' function when the "willUpdate" event fires
 // 4. Set up the game with the given canvas and make it 400x400 pixels
 // 5. Start the game loop
-MobSin.Game()
+Whirl.Game()
 	.setup({
 		setup,
-		update
+		update,
 
 		canvas: "#canvas",
 		cW: 400,

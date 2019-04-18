@@ -1,8 +1,8 @@
-// MobSin.Game.setup
+// Whirl.Game.setup
 
 function setup(presets) {
 	if (presets.canvas) {
-		const mainViewport = this.viewportManager.add("main", presets.canvas, MobSin.STAGE, MobSin.CAMERA, {
+		const mainViewport = this.viewportManager.add("main", presets.canvas, Whirl.STAGE, Whirl.CAMERA, {
 			cW: presets.cW || presets.canvasWidth || canvas.width,
 			cH: presets.cH || presets.canvasHeight || canvas.height
 		});

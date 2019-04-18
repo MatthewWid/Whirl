@@ -1,4 +1,4 @@
-// MobSin.systems.tween
+// Whirl.systems.tween
 
 module.exports = (_game, _obj) => {
 	// Pass the 'modify' preset to instead target the given objects target property and not the object itself

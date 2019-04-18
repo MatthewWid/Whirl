@@ -1,4 +1,4 @@
-// MobSin.shapes.circle
+// Whirl.shapes.circle
 
 function Circle(x, y, r) {
 	this._shape = "circle";

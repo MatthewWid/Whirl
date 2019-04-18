@@ -1,4 +1,4 @@
-// MobSin.Text
+// Whirl.Text
 
 /*
 	A text object used to render text in the world.
@@ -12,7 +12,7 @@
 	- fill
 */
 function Text(_game, content, presets = {}) {
-	_game.object.init(this, "MobSin.Text", {tween: true});
+	_game.object.init(this, "Whirl.Text", {tween: true});
 
 	// The actual text of this text object
 	this.content = content || "";

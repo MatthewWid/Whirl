@@ -1,3 +1,3 @@
-// MobSin.easing.linear
+// Whirl.easing.linear
 
 module.exports = (t) => t;

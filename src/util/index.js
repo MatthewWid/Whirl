@@ -1,4 +1,4 @@
-// MobSin.util
+// Whirl.util
 
 module.exports = {
 	randRGB: require("./randRGB"),

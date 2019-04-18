@@ -13,10 +13,10 @@ function setup(data) {
 	// Listen for clicks on the viewport
 	viewport.event.on("mouseClick", (evt) => {
 		// When clicked create a new Sprite at the mouse position
-		const newSprite = MobSin.Sprite(
+		const newSprite = Whirl.Sprite(
 			game,
 			`block${i}`,
-			MobSin.util.randRGB(),
+			Whirl.util.randRGB(),
 			{
 				x: evt.pos.x,
 				y: evt.pos.y
@@ -43,7 +43,7 @@ function setup(data) {
 			// modify the "bounds" object of the sprite
 			// set the easing function of the tween to out-quadratic
 			modify: "bounds",
-			easing: MobSin.easing.quadratic.out
+			easing: Whirl.easing.quadratic.out
 		});
 
 		// Add the Sprite to the game world
@@ -51,7 +51,7 @@ function setup(data) {
 	});
 }
 
-const game = MobSin.Game()
+const game = Whirl.Game()
 	.setup({
 		setup,
 		update,

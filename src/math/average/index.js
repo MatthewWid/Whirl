@@ -1,4 +1,4 @@
-// MobSin.math.average
+// Whirl.math.average
 
 module.exports = (arr) => {
 	let sum = 0;

@@ -1,4 +1,4 @@
-// MobSin.keys
+// Whirl.keys
 
 let keys = {
 	"a": 65,

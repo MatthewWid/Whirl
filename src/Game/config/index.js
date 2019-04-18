@@ -1,4 +1,4 @@
-// MobSin.game.config
+// Whirl.game.config
 
 module.exports = (_game, presets) => {
 	_game.config = {

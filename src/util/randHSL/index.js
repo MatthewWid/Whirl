@@ -1,4 +1,4 @@
-// MobSin.util.randHSL
+// Whirl.util.randHSL
 
 module.exports = (cfg = {}) => {
 	let hue = Math.floor(Math.random() * 360);

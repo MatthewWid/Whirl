@@ -1,29 +1,29 @@
 document.getElementsByTagName("html")[0].style.backgroundColor = "#EEE";
 
-let ms = MobSin;
+let wh = Whirl;
 
-let game = ms.Game();
+let game = wh.Game();
 
-let v = game.viewportManager.add("vp", "#canvas", ms.STAGE, ms.CAMERA, {
+let v = game.viewportManager.add("vp", "#canvas", wh.STAGE, wh.CAMERA, {
 	cW: 400,
 	cH: 400
 });
 v.activeStage.child.add(
-	ms.Sprite(game, "background", "rgb(0, 0, 0)", {
+	wh.Sprite(game, "background", "rgb(0, 0, 0)", {
 		w: 400,
 		h: 400
 	})
 );
 
 game.event.on("didUpdate", (data) => {
-	c.r = ms.math.stepTo(c.r, c.rT, c.step);
-	c.g = ms.math.stepTo(c.g, c.gT, c.step);
-	c.b = ms.math.stepTo(c.b, c.bT, c.step);
+	c.r = wh.math.stepTo(c.r, c.rT, c.step);
+	c.g = wh.math.stepTo(c.g, c.gT, c.step);
+	c.b = wh.math.stepTo(c.b, c.bT, c.step);
 
 	if (
-		ms.math.between(c.rT, c.r, c.rT, 3) &&
-		ms.math.between(c.gT, c.g, c.gT, 3) &&
-		ms.math.between(c.bT, c.b, c.bT, 3)
+		wh.math.between(c.rT, c.r, c.rT, 3) &&
+		wh.math.between(c.gT, c.g, c.gT, 3) &&
+		wh.math.between(c.bT, c.b, c.bT, 3)
 	) {
 		setNewCol();
 	}
@@ -35,9 +35,9 @@ game.event.on("willRender", () => {
 
 // Set a new target colour
 function setNewCol() {
-	c.rT = ms.math.random(255);
-	c.gT = ms.math.random(255);
-	c.bT = ms.math.random(255);
+	c.rT = wh.math.random(255);
+	c.gT = wh.math.random(255);
+	c.bT = wh.math.random(255);
 }
 
 let c = {

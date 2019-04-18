@@ -1,4 +1,4 @@
-// MobSin.util.shuffleArr
+// Whirl.util.shuffleArr
 
 module.exports = (arr) => {
 	let shuffled = [...arr];

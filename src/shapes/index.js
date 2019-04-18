@@ -1,4 +1,4 @@
-// MobSin.shapes
+// Whirl.shapes
 
 let shapes = {
 	Rectangle: require("./Rectangle"),

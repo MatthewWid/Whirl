@@ -1,4 +1,4 @@
-// MobSin.game.updater
+// Whirl.game.updater
 
 let render;
 

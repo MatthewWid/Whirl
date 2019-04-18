@@ -1,4 +1,4 @@
-// MobSin.game.viewportManager.Viewport
+// Whirl.game.viewportManager.Viewport
 
 let Rectangle = require("../../../shapes/Rectangle");
 let Camera = require("../../../Camera");
@@ -23,7 +23,7 @@ let Camera = require("../../../Camera");
 	- clip
 */
 function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
-	_game.object.init(this, "MobSin.Viewport");
+	_game.object.init(this, "Whirl.Viewport");
 
 	// Mandatory presets
 	this.name = name || "";

@@ -1,6 +1,6 @@
 node_modules
 examples/*/styles/.sass-cache
-build/mobsin.js
+build/whirl.js
 changelog.txt
 doc/css/.sass-cache
 .sass-cache/

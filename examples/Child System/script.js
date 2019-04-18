@@ -1,17 +1,17 @@
 document.getElementsByTagName("html")[0].style.backgroundColor = "#FFF";
 
-let ms = MobSin;
+let wh = Whirl;
 
-let game = ms.Game();
+let game = wh.Game();
 
 // Create three containers for "dad", "son" and "daughter"
-let dad = ms.Container(game);
+let dad = wh.Container(game);
 dad.data.name = "dad";
 
-let son = ms.Container(game);
+let son = wh.Container(game);
 son.data.name = "son";
 
-let daughter = ms.Container(game);
+let daughter = wh.Container(game);
 daughter.data.name = "daughter";
 
 // Create a new container called "dad"

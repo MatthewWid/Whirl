@@ -1,8 +1,8 @@
 document.getElementsByTagName("html")[0].style.backgroundColor = "#FFF";
 
-let ms = MobSin;
+let wh = Whirl;
 
-let game = ms.Game();
+let game = wh.Game();
 
 // Load an array of assets
 game.assetManager.load([
@@ -26,12 +26,12 @@ game.assetManager.load([
 	console.log(data);
 });
 
-let myVp = game.viewportManager.add("vp", "#canvas", ms.STAGE, ms.CAMERA, {
+let myVp = game.viewportManager.add("vp", "#canvas", wh.STAGE, wh.CAMERA, {
 	cW: 400,
 	cH: 400
 });
 
-let player = ms.Sprite(game, "player", game.assetManager.get("player"), {
+let player = wh.Sprite(game, "player", game.assetManager.get("player"), {
 	x: 50,
 	y: 50,
 	w: 50,

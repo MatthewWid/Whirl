@@ -1,4 +1,4 @@
-// MobSin.game.pluginManager
+// Whirl.game.pluginManager
 
 module.exports = (_game) => {
 	_game.plugins = [];

@@ -1,4 +1,4 @@
-// MobSin.shapes.Point
+// Whirl.shapes.Point
 
 function Point(x, y) {
 	this._shape = "point";

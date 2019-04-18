@@ -1,3 +1,3 @@
-// MobSin.easing.quadratic.out
+// Whirl.easing.quadratic.out
 
 module.exports = (t) => t * (2 - t);

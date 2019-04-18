@@ -1,4 +1,4 @@
-// MobSin.game.stageManager
+// Whirl.game.stageManager
 
 module.exports = (_game) => {
 	let Stage = require("./Stage");

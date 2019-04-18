@@ -1,4 +1,4 @@
-// MobSin.game.tweenManager.TweenGroup
+// Whirl.game.tweenManager.TweenGroup
 
 // A TweenGroup is a list of tweens that are automatically chained together (From start to finish)
 

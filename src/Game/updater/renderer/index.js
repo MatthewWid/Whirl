@@ -1,4 +1,4 @@
-// MobSin.game.updater.renderer
+// Whirl.game.updater.renderer
 
 function render() {
 	this.event.emit("willRender", {
