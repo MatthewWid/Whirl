@@ -7,7 +7,8 @@
 	"scripts": {
 		"dev": "watchify ./src/MobSin.js -o ./build/mobsin.js",
 		"build": "browserify ./src/MobSin.js -o ./build/mobsin.js",
-		"doc": "mkdocs serve"
+		"doc": "mkdocs serve",
+		"doc-sass": "sass --watch ./doc/css/scss:./doc/css/css --style compressed --sourcemap=none"
 	},
 	"devDependencies": {
 		"browserify": "^16.2.2",
