@@ -1,6 +1,6 @@
 # Getting Started
 
-This article will be an introduction to the MobSin game engine showcasing certain features and building a small interactive application.
+This article will be an introduction to the Whirl game engine showcasing certain features and building a small interactive application.
 
 After completing this walkthrough you are encouraged to read [the full documentation](../documentation/classes) to get an in-depth understanding of what each feature of the engine does, what it is and how to use it.
 
@@ -25,7 +25,7 @@ function setup(data) {
 	const {game, viewport, stage, camera} = data;
 }
 
-MobSin.Game()
+Whirl.Game()
 	.setup({
 		setup,
 		update
@@ -43,7 +43,7 @@ Let's go through each line one by one.
 function update(data) {
 ```
 
-This is our own function that we give to MobSin - it will be called once every update loop. You can use this function to update, modify and check objects within your game world or have anything you could want to run once every frame here.
+This is our own function that we give to Whirl - it will be called once every update loop. You can use this function to update, modify and check objects within your game world or have anything you could want to run once every frame here.
 
 ```javascript
 function setup(data) {
@@ -51,17 +51,17 @@ function setup(data) {
 }
 ```
 
-This is our own function that we give to MobSin - it will be called after the engine has finished setting up things like game state, the game canvas, viewports, game worlds, etc.
+This is our own function that we give to Whirl - it will be called after the engine has finished setting up things like game state, the game canvas, viewports, game worlds, etc.
 
 You can use this function to perform all the setup your game will need such as creating objects, inserting sprites, positioning cameras, loading assets and more. We will get into doing some of these later on.
 
 Our function receives a single paramater `data` that gives us access to new objects created by the game setup. We will go into what a "viewport", "stage" and "camera" is later. For now know that `game` is a reference to the game instance are creating.
 
 ```javascript
-MobSin.Game()
+Whirl.Game()
 ```
 
-To create a game we must create a new instance of the game class that MobSin provides us. When `MobSin.Game()` is called it will internally set up  everything the game needs to run such as mouse and keyboard input, custom plugins and other various useful functions and processes.
+To create a game we must create a new instance of the game class that Whirl provides us. When `Whirl.Game()` is called it will internally set up  everything the game needs to run such as mouse and keyboard input, custom plugins and other various useful functions and processes.
 
 You can also configure certain aspects of the game instance by passing [configuration variables](../documentation/classes/#parameters) as a JavaScript object to this function, but we'll just keep everything default for now.
 
@@ -76,11 +76,11 @@ You can also configure certain aspects of the game instance by passing [configur
 })
 ```
 
-We could set up everything we want for the game ourself; the canvas, viewport, game world, event hooks, etc. but this requires a bit of code and we want to get started as quickly as possible. Thankfully for us MobSin provides [a handy setup function](../documentation/classes/#methods) that will automatically do this all for us.
+We could set up everything we want for the game ourself; the canvas, viewport, game world, event hooks, etc. but this requires a bit of code and we want to get started as quickly as possible. Thankfully for us Whirl provides [a handy setup function](../documentation/classes/#methods) that will automatically do this all for us.
 
 We pass our `setup` and `update` functions (using the new ES6 object property shorthand) as properties `setup` and `update` respectively to indicate that when the game starts we want it call our setup function and each time the game loop completes we want it to call our update function.
 
-`canvas: "#canvas"` tells MobSin to use the targeted canvas element to render to (Check the `index.html` file in the `/Simple Setup/` directory!).  
+`canvas: "#canvas"` tells Whirl to use the targeted canvas element to render to (Check the `index.html` file in the `/Simple Setup/` directory!).  
 `cW: 400` and `cH: 400` will size our canvas to be 400x400 pixels.
 
 ```javascript
@@ -91,7 +91,7 @@ After all that we call our [`start()` method](../documentation/classes/#methods)
 
 Let's recap what the code given to us has done:
 
-* Created a new MobSin game instance.
+* Created a new Whirl game instance.
 * Told the game to call our `setup` function when the game is finished setting up and our `update` function after each update loop.
 * Provides a canvas element for the game to render to.
 * Starts the game loop.

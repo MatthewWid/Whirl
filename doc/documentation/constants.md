@@ -5,7 +5,7 @@ Maps English keyboard characters to their respective key codes and vice-versa.
 Primarily used in keyboard input to write key names instead of key codes.
 
 ```javascript
-MobSin.keys
+Whirl.keys
 ```
 
 The keys listed below are in JSON file-format and are also accessed as such.
@@ -69,11 +69,11 @@ The keys listed below are in JSON file-format and are also accessed as such.
 **Example(s):**
 
 ```javascript
-MobSin.keys["x"]; // 88
+Whirl.keys["x"]; // 88
 
-MobSin.keys["ArrowRight"]; // 39
+Whirl.keys["ArrowRight"]; // 39
 
-MobSin.keys["Shift"]; // 16
+Whirl.keys["Shift"]; // 16
 ```
 
 Keys can also be searched for in reverse using the `getByKeyCode` method.
@@ -81,11 +81,11 @@ Keys can also be searched for in reverse using the `getByKeyCode` method.
 **Example(s):**
 
 ```javascript
-MobSin.keys.getByKeyCode(88); // "x"
+Whirl.keys.getByKeyCode(88); // "x"
 
-MobSin.keys.getByKeyCode(39); // "ArrowRight"
+Whirl.keys.getByKeyCode(39); // "ArrowRight"
 
-MobSin.keys.getByKeyCode(16); // "Shift"
+Whirl.keys.getByKeyCode(16); // "Shift"
 ```
 
 ---
@@ -97,7 +97,7 @@ Returns the constant string "`_DEFAULTSTAGE`".
 Used in [viewport instantiation](../classes/#parameters_6) to automatically set up a default [Stage](../classes#stage) object instead of providing an already created one.
 
 ```javascript
-MobSin.STAGE
+Whirl.STAGE
 ```
 
 The newly instantiated stage will automatically have the same dimensions as the viewport.
@@ -111,7 +111,7 @@ Returns the constant string "`_DEFAULTCAMERA`".
 Used in [viewport instantiation](../classes/#parameters_6) to automatically set up a default [Camera](../classes#camera) object instead of providing an already created one.
 
 ```javascript
-MobSin.CAMERA
+Whirl.CAMERA
 ```
 
 The newly instantiated camera will automatically have the same position and dimensions as the viewport.

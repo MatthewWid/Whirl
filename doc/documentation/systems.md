@@ -39,7 +39,7 @@ Creating a custom sprite and then attaching the `event` and `tween` object syste
 
 ```javascript
 // Create a new game instance and an empty object.
-const game = MobSin.Game();
+const game = Whirl.Game();
 const customSprite = {};
 // Instantiate the empty object into the game instance.
 game.object.init(customSprite, "Custom.Sprite");
@@ -55,7 +55,7 @@ Object systems can also be attached with the `init` method during instantiation 
 
 # The Global Store
 
-Most objects instantiated within a MobSin game instance are stored in what is called "The Global Store". This is a persistent list of all objects that exist in the current game instance.
+Most objects instantiated within a Whirl game instance are stored in what is called "The Global Store". This is a persistent list of all objects that exist in the current game instance.
 
 You can see the raw global store of your game instance under `[game].globalStore` but you should **never modify this directly**. You should also never rely on the order of the array representing the raw global store as it can change between game updates, object modification and other various ways.
 
@@ -119,7 +119,7 @@ Viewports, Stages, Sprites and Assets all a have `name` property that you provid
 
 Returns an array of objects in the global store whose `_type` property matches the given `<type>` string.
 
-All objects instantiated under a game instance give a name for their "type" that identifies where the object came from and its own class. For example, a viewport's `_type` is `MobSin.Viewport`, and a sprite's `_type` is `MobSin.Sprite`.
+All objects instantiated under a game instance give a name for their "type" that identifies where the object came from and its own class. For example, a viewport's `_type` is `Whirl.Viewport`, and a sprite's `_type` is `Whirl.Sprite`.
 
 To learn more about types and making your own see [the customisation section](../customisation).
 
@@ -154,7 +154,7 @@ This method directly modifies the global store and therefore should not be used 
 
 # Custom Events
 
-MobSin uses a dynamic custom event system to emit information from objects that can be picked up by listeners on that object. Many MobSin objects come with their own premade events, but you can also make your own that listens on or emits events from any object that has the event system attached.
+Whirl uses a dynamic custom event system to emit information from objects that can be picked up by listeners on that object. Many Whirl objects come with their own premade events, but you can also make your own that listens on or emits events from any object that has the event system attached.
 
 Events are identified by name. There can be multiple listeners on a single event that will all fire when that even is called. Events are called in the order that the listeners were initially added in.
 

@@ -1,17 +1,17 @@
 # Game Classes
 
-All top-level classes are namespaced under the global `MobSin` object. Therefore, any top-level class documented here is implied to be a property of the `MobSin` object unless specifically under a sub-header of another class.
+All top-level classes are namespaced under the global `Whirl` object. Therefore, any top-level class documented here is implied to be a property of the `Whirl` object unless specifically under a sub-header of another class.
 
 All classes are initialised as you call them. You should not use the `new` keyword.
 
 ---
 
-# MobSin
+# Whirl
 
-The global `MobSin` object contains all the classes, constructors and constants that make up the **MobSin** game engine.
+The global `Whirl` object contains all the classes, constructors and constants that make up the **Whirl** game engine.
 
 ```javascript
-MobSin
+Whirl
 ```
 
 ## Properties
@@ -91,7 +91,7 @@ Returns a new instance of a Game object.
 The `Game` object is the actual running and workforce of the engine that updates your game, handles various object managers and deals with all interactions and rendering.
 
 ```javascript
-MobSin.Game(<options>)
+Whirl.Game(<options>)
 ```
 
 ## Parameters
@@ -186,7 +186,7 @@ function gameLoop(data) {
 }
 
 
-const myGame = MobSin.Game()
+const myGame = Whirl.Game()
     .setup({
 		setup: gameSetup,
 		update: gameLoop,
@@ -218,7 +218,7 @@ const myGame = MobSin.Game()
 </span>
 
 ```javascript
-const myGame = MobSin.Game()
+const myGame = Whirl.Game()
 	.start();
 ```
 
@@ -241,7 +241,7 @@ const myGame = MobSin.Game()
 </span>
 
 ```javascript
-const myGame = MobSin.Game()
+const myGame = Whirl.Game()
 	.start();
 
 myGame.stop();
@@ -255,17 +255,17 @@ Returns a new instance of a `Sprite.Rectangle()` object unless specified otherwi
 
 Sprites are visible "*things*" in your game world. They have a position, bounding box, a fill colour or image and a plethora of other properties that can be modified.
 
-All Sprites inherit from a `MobSin.Sprite._baseSprite` class and different types of Sprites extend the functionality of the base Sprite.
+All Sprites inherit from a `Whirl.Sprite._baseSprite` class and different types of Sprites extend the functionality of the base Sprite.
 
 Inherits the `tween` object system.
 
 ```javascript
-MobSin.Sprite(<Game>, <name>, <fill>, <options>)
+Whirl.Sprite(<Game>, <name>, <fill>, <options>)
 ```
 
-By just calling `MobSin.Sprite()` it will return a Rectangle Sprite. Different types of sprites can be instantiated by adding `.<Sprite Type>(...)`.
+By just calling `Whirl.Sprite()` it will return a Rectangle Sprite. Different types of sprites can be instantiated by adding `.<Sprite Type>(...)`.
 
-The following Sprite types are available: `MobSin.Sprite.Rectangle(...)` and `MobSin.Sprite.Circle(...)`.
+The following Sprite types are available: `Whirl.Sprite.Rectangle(...)` and `Whirl.Sprite.Circle(...)`.
 
 ### Parameters
 
@@ -303,7 +303,7 @@ The following Sprite types are available: `MobSin.Sprite.Rectangle(...)` and `Mo
 </span>
 
 <span class="tI tI-1">
-	If an **object** is given, it must be a `MobSin.Asset` image object.  
+	If an **object** is given, it must be a `Whirl.Asset` image object.  
 	Most Sprite types will attempt to scale the image to their `bounds`.
 </span>
 
@@ -417,9 +417,9 @@ Extends and inherits the [base sprite](#sprite) parameters, properties and metho
 Rectangle sprite bounds are defined by a top-left point and a width and height.
 
 ```javascript
-MobSin.Sprite(<Game>, <name>, <fill>, <options>)
+Whirl.Sprite(<Game>, <name>, <fill>, <options>)
 // or
-MobSin.Sprite.Rectangle(<Game>, <name>, <fill>, <options>)
+Whirl.Sprite.Rectangle(<Game>, <name>, <fill>, <options>)
 ```
 
 ### Parameters
@@ -445,7 +445,7 @@ MobSin.Sprite.Rectangle(<Game>, <name>, <fill>, <options>)
 <span class="tI tI-1">
 	**Object**  
 	The bounding position and dimensions of this sprite.  
-	Derived from `MobSin.shapes.Rectangle(...)`.
+	Derived from `Whirl.shapes.Rectangle(...)`.
 </span>
 <span class="tI tI-2">
 	`.x` - X-coordinate of the bounding box.  
@@ -504,7 +504,7 @@ Extends and inherits the [base sprite](#sprite) parameters, properties and metho
 Circle sprites bounds are defined by a center point and a radius.
 
 ```javascript
-MobSin.Sprite.Circle(<Game>, <name>, <fill>, <options>)
+Whirl.Sprite.Circle(<Game>, <name>, <fill>, <options>)
 ```
 
 ### Parameters
@@ -524,7 +524,7 @@ MobSin.Sprite.Circle(<Game>, <name>, <fill>, <options>)
 <span class="tI tI-1">
 	**Object**  
 	The bounding position and dimensions of this Sprite.  
-	Derived from `MobSin.shapes.Circle(...)`.
+	Derived from `Whirl.shapes.Circle(...)`.
 </span>
 <span class="tI tI-2">
 	`.x` - X-coordinate of the bounding box.  
@@ -543,7 +543,7 @@ Cameras serve as the view into your world (the [Stage](#stage)). Scrolling the c
 Inherits the `tween` object system.
 
 ```javascript
-MobSin.Camera(<Game>, <options>)
+Whirl.Camera(<Game>, <options>)
 ```
 
 ### Parameters
@@ -582,7 +582,7 @@ MobSin.Camera(<Game>, <options>)
 <span class="tI tI-1">
 	**Object**  
 	The position and dimensions of the Camera on screen.  
-	Derived from `MobSin.shapes.Rectangle(...)`.
+	Derived from `Whirl.shapes.Rectangle(...)`.
 </span>
 <span class="tI tI-2">
 	`.x` - X-coordinate of the bounding box.  
@@ -664,7 +664,7 @@ MobSin.Camera(<Game>, <options>)
 </span>
 <span class="tI tI-3">
 	The Sprite object that the Camera should lock to.  
-	This can be any object with a `bounds` property derived from `MobSin.shapes.Rectangle(...)` such as a [rectangle Sprite](#rectangle).
+	This can be any object with a `bounds` property derived from `Whirl.shapes.Rectangle(...)` such as a [rectangle Sprite](#rectangle).
 </span>
 
 <span class="tI tI-1">
@@ -680,14 +680,14 @@ MobSin.Camera(<Game>, <options>)
 </span>
 
 ```javascript
-const mySprite = MobSin.Sprite(myGame, "Blocky", "#F00", {
+const mySprite = Whirl.Sprite(myGame, "Blocky", "#F00", {
 	x: 50,
 	y: 90,
 	w: 40,
 	h: 40
 });
 
-const myCamera = MobSin.Camera(myGame, {
+const myCamera = Whirl.Camera(myGame, {
 	w: 400,
 	h: 400
 })
@@ -788,7 +788,7 @@ The above code would return a reference to the Stage object as contained in the 
 	**Object**  
 	The limits of the game world.  
 	Objects with physics applied cannot leave the limits of the game world.  
-	Derived from `MobSin.shapes.Rectangle(...)`.
+	Derived from `Whirl.shapes.Rectangle(...)`.
 </span>
 <span class="tI tI-2">
 	`.x` - X-coordinate of the stage limits.  
@@ -853,7 +853,7 @@ The above code would return a reference to the Viewport object as contained in t
 </span>
 
 <span class="tI tI-1">
-	Alternatively, `MobSin.STAGE` can be given and a new [Stage](#stage) object will be automatically created and associated with the Viewport.
+	Alternatively, `Whirl.STAGE` can be given and a new [Stage](#stage) object will be automatically created and associated with the Viewport.
 </span>
 
 **Object** or **String** `<Camera>`
@@ -864,7 +864,7 @@ The above code would return a reference to the Viewport object as contained in t
 </span>
 
 <span class="tI tI-1">
-	Alternatively, `MobSin.CAMERA` can be given and a new [Camera](#camera) object with the same dimensions will be automatically created and associated with the Viewport.
+	Alternatively, `Whirl.CAMERA` can be given and a new [Camera](#camera) object with the same dimensions will be automatically created and associated with the Viewport.
 </span>
 
 **Object** `<options>`
@@ -900,7 +900,7 @@ The above code would return a reference to the Viewport object as contained in t
 <span class="tI tI-1">
 	**Object**  
 	The bounding position and dimensions of this viewport on the screen.  
-	Derived from `MobSin.shapes.Rectangle(...)`.
+	Derived from `Whirl.shapes.Rectangle(...)`.
 </span>
 <span class="tI tI-2">
 	`.x` - X-coordinate of the bounding box.  
@@ -1008,7 +1008,7 @@ myViewport.setCanvas("#myCanvas");
 </span>
 
 <span class="tI tI-3">
-	The `MobSin.STAGE` constant can be given instead and a new [Stage](#stage) object will be automatically created with the same position and dimensions as the viewport.
+	The `Whirl.STAGE` constant can be given instead and a new [Stage](#stage) object will be automatically created with the same position and dimensions as the viewport.
 </span>
 
 `.setCamera(<Camera>)`
@@ -1026,7 +1026,7 @@ myViewport.setCanvas("#myCanvas");
 </span>
 
 <span class="tI tI-3">
-	The `MobSin.CAMERA` constant can be given instead and a new [Camera](#camera) object will be automatically created with the same position and dimensions as the viewport.
+	The `Whirl.CAMERA` constant can be given instead and a new [Camera](#camera) object will be automatically created with the same position and dimensions as the viewport.
 </span>
 
 <span class="tI tI-1">
@@ -1052,7 +1052,7 @@ myViewport.setCanvas("#myCanvas");
 </span>
 
 ```javascript
-const myCamera = MobSin.Camera(myGame, {
+const myCamera = Whirl.Camera(myGame, {
 	x: 50,
 	y: 75,
 	w: 200,
