@@ -16,6 +16,12 @@ Some features offered by the **Whirl** game engine are:
 * A **modularised viewport manager** that enables you to create multiple game viewports and screens *without* the need for multiple canvasses and extra HTML elements.
 * **Standardised object importation methods** that make it easy to create your own custom plugins and special game objects that can be imported and used in your games.
 
+# Documentation
+
+Whirl is (almost) fully documented from it's event system to all of its given classes. The documentation contains details on **installation** and all default **game classes**, **in-built libraries**, **constants**, **object systems** and more.
+
+[**See the documentation.**](https://matthewwid.github.io/Whirl/)
+
 # Examples
 
 Example usage of the various features of **Whirl** are included in the `/examples/` directory.
