@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    <title>In-Built Libraries - Whirl Game Engine</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+
+
+    <link href="../../css/css/global.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="../..">Whirl Game Engine</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../install/">Installation</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../classes/">Game Classes</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">In-Built Libraries</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../constants/">Constants</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../systems/">Object Systems</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../customisation/">Customisation</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../getting-started/">Getting Started</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../about/licence/">Licence</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../about/attributions/">Attributions</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../classes/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../constants/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/MatthewWid/Whirl"><i class="fa fa-github"></i> GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#in-built-libraries">In-Built Libraries</a></li>
+        <li class="first-level "><a href="#utility-functions">Utility Functions</a></li>
+            <li class="second-level"><a href="#format-comma">Format Comma</a></li>
+                
+            <li class="second-level"><a href="#random-value-from-array">Random Value from Array</a></li>
+                
+            <li class="second-level"><a href="#random-hsl">Random HSL</a></li>
+                
+            <li class="second-level"><a href="#random-rgb">Random RGB</a></li>
+                
+            <li class="second-level"><a href="#shuffle-array">Shuffle Array</a></li>
+                
+        <li class="first-level "><a href="#mathematical-functions">Mathematical Functions</a></li>
+            <li class="second-level"><a href="#average">Average</a></li>
+                
+            <li class="second-level"><a href="#between-bounds">Between Bounds</a></li>
+                
+            <li class="second-level"><a href="#clamp">Clamp</a></li>
+                
+            <li class="second-level"><a href="#linear-interpolation">Linear Interpolation</a></li>
+                
+            <li class="second-level"><a href="#map-value-between-ranges">Map Value Between Ranges</a></li>
+                
+            <li class="second-level"><a href="#random">Random</a></li>
+                
+            <li class="second-level"><a href="#rounding">Rounding</a></li>
+                
+            <li class="second-level"><a href="#step-towards">Step Towards</a></li>
+                
+        <li class="first-level "><a href="#easing-functions">Easing Functions</a></li>
+            <li class="second-level"><a href="#linear">Linear</a></li>
+                
+            <li class="second-level"><a href="#quadratic">Quadratic</a></li>
+                
+            <li class="second-level"><a href="#cubic">Cubic</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="in-built-libraries">In-Built Libraries<a class="headerlink" href="#in-built-libraries" title="Permanent link">&para;</a></h1>
+<p>Below is documentation for libraries that Whirl provides that aren't necessarily needed when creating a game but can be convenient so as to not reinvent the wheel with common operations you may do as part of a game.</p>
+<p>Such libraries include general utility functions, mathematical functions and easing functions.</p>
+<h1 id="utility-functions">Utility Functions<a class="headerlink" href="#utility-functions" title="Permanent link">&para;</a></h1>
+<p>Library of general utility functions.</p>
+<pre><code class="javascript">Whirl.util.&lt;function&gt;
+</code></pre>
+
+<h2 id="format-comma">Format Comma<a class="headerlink" href="#format-comma" title="Permanent link">&para;</a></h2>
+<p>Format a number to a string separating thousands with commas.</p>
+<pre><code class="javascript">Whirl.util.formatComma(&lt;number&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Integer</strong> <code>&lt;number&gt;</code>
+</span>
+<span class="tI tI-2">
+    Number to be formatted.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.util.formatComma(1); // &quot;1&quot;
+Whirl.util.formatComma(1000); // &quot;1,000&quot;
+Whirl.util.formatComma(3985721); // &quot;3,985,721&quot;
+Whirl.util.formatComma(9874.56); // &quot;9,874.56&quot;
+</code></pre>
+
+<h2 id="random-value-from-array">Random Value from Array<a class="headerlink" href="#random-value-from-array" title="Permanent link">&para;</a></h2>
+<p>Returns a random <strong>value</strong> from a given array.</p>
+<pre><code class="javascript">Whirl.util.randArr(&lt;arr&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Array</strong> <code>&lt;arr&gt;</code>
+</span>
+<span class="tI tI-2">
+    Array to retrieve a random value from.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.util.randArr([1, 5, 2]); // 5
+Whirl.util.randArr([1, 5, 2]); // 2
+Whirl.util.randArr([3, 8, 9]); // 9
+</code></pre>
+
+<h2 id="random-hsl">Random HSL<a class="headerlink" href="#random-hsl" title="Permanent link">&para;</a></h2>
+<p>Returns a random HSL (Hue, Saturation, Lightness) value of either a string or JSON object (<code>hsl(h, s, l)</code>).</p>
+<pre><code class="javascript">Whirl.util.randHSL(&lt;cfg&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Object</strong> <code>&lt;cfg&gt;</code>
+</span>
+<span class="tI tI-2">
+    Object that provides optional configuration variables when generating the HSL value.
+</span>
+<span class="tI tI-2">
+    <code>alpha</code> - If given, the given alpha value will also be given with the generated value (<code>hsl(h, s, l, a)</code>).<br />
+<code>json</code> - If <code>true</code>, will return a JSON representation of the HSL value instead of a string.<br />
+<code>sat</code> - If given, will override the generated <em>saturation</em> value with the given value.<br />
+<code>lit</code> - If given, will override the generated <em>lightness</em> value with the given value.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.util.randHSL(); // &quot;hsl(39, 3%, 7%)&quot;
+Whirl.util.randHSL(); // &quot;hsl(48, 85%, 78%)&quot;
+Whirl.util.randHSL({alpha: true}); // &quot;hsla(85, 15%, 67%, 0.8)&quot;
+Whirl.util.randHSL({json: true}); // {hue: 177, sat: 20, lit: 27}
+Whirl.util.randHSL({alpha: true, json: true}); // {hue: 174, sat: 66, lit: 40, a: 0.8}
+Whirl.util.randHSL({json: true, sat: 80}); // {hue: 169, sat: 80, lit: 60}
+Whirl.util.randHSL({json: true, lit: 45}); // {hue: 339, sat: 52, lit: 45}
+</code></pre>
+
+<h2 id="random-rgb">Random RGB<a class="headerlink" href="#random-rgb" title="Permanent link">&para;</a></h2>
+<p>Returns a random RGB (Red, Green, Blue) value of either a string or JSON object (<code>rgb(x, y, z)</code>).</p>
+<pre><code class="javascript">Whirl.util.randRGB(&lt;cfg&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Object</strong> <code>&lt;cfg&gt;</code>
+</span>
+<span class="tI tI-2">
+    Object that provides optional configuration variables when generating the RGB value.
+</span>
+<span class="tI tI-2">
+    <code>alpha</code> - If given, the alpha value will also be given with the generated value (<code>rgb(x, y, z, a)</code>).<br />
+<code>json</code> - If <code>true</code>, will return JSON representation of the RGB value instead of a string.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.util.randRGB(); // &quot;rgb(149, 64, 141)&quot;
+Whirl.util.randRGB(); // &quot;rgb(93, 223, 226)&quot;
+Whirl.util.randRGB({alpha: true}); // &quot;rgba(78, 159, 140, 0.3)&quot;
+Whirl.util.randRGB({json: true}); // {r: 207, g: 70, b: 192}
+Whirl.util.randRGB({alpha: true, json: true}); // {r: 66, g: 139, b: 72, a: 0.8}
+</code></pre>
+
+<h2 id="shuffle-array">Shuffle Array<a class="headerlink" href="#shuffle-array" title="Permanent link">&para;</a></h2>
+<p>Returns a shuffled <em>copy</em> of (not reference to) a given array.<br />
+Does not mutate the original array, but returns a reference to a new shuffled array based on the original given array.</p>
+<pre><code class="javascript">Whirl.util.shuffleArr(&lt;arr&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Array</strong> <code>&lt;arr&gt;</code>
+</span>
+<span class="tI tI-2">
+    Array to be duplicated and shuffled.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.util.shuffleArr([1, 5, 3, 2]); // [2, 5, 3, 1]
+Whirl.util.shuffleArr([1, 5, 3, 2]); // [2, 1, 5, 3]
+</code></pre>
+
+<h1 id="mathematical-functions">Mathematical Functions<a class="headerlink" href="#mathematical-functions" title="Permanent link">&para;</a></h1>
+<p>Library of mathematical functions.</p>
+<pre><code class="javascript">Whirl.math.&lt;function&gt;
+</code></pre>
+
+<h2 id="average">Average<a class="headerlink" href="#average" title="Permanent link">&para;</a></h2>
+<p>Returns the average of the given set of numbers in an array.</p>
+<pre><code class="javascript">Whirl.math.average(&lt;arr&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Array</strong> <code>&lt;arr&gt;</code>
+</span>
+<span class="tI tI-2">
+    Array of numbers to averaged.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.math.average([1, 2, 3]); // 2
+Whirl.math.average([1, 2, 3, 4]); // 2.5
+Whirl.math.average([8, 3, 9.2, 12, 5.5]); // 7.540000000000001
+</code></pre>
+
+<h2 id="between-bounds">Between Bounds<a class="headerlink" href="#between-bounds" title="Permanent link">&para;</a></h2>
+<p>Returns <code>true</code> if a given value is greater than or equal to a minimum value and less than a maximum value, otherwise returns <code>false</code>.  </p>
+<pre><code class="javascript">Whirl.math.between(&lt;val&gt;, &lt;min&gt;, &lt;max&gt;, &lt;leniency&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;val&gt;</code>
+</span>
+<span class="tI tI-2">
+    Value to be checked if it is between the minimum and maximum.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;min&gt;</code>
+</span>
+<span class="tI tI-2">
+    Minimum value of the range to be checked.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;max&gt;</code>
+</span>
+<span class="tI tI-2">
+    Maximum value of the range to be checked.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;leniency&gt;</code> (Optional) (Default: <code>0</code>)
+</span>
+<span class="tI tI-2">
+    If given, will still return <code>true</code> if the value is outside of the minimum or maximum range but still within the <strong>leniency</strong> value's range from the minimum or maximum value.<br />
+    For example, will still return true if <code>&lt;val&gt;</code> is <strong>two (2)</strong>, <code>&lt;min&gt;</code> is <strong>four (4)</strong> and <code>&lt;leniency&gt;</code> is <strong>three (3)</strong> because <strong>two (2)</strong> (<code>&lt;val&gt;</code>) is still at most <strong>three (3)</strong> (<code>&lt;leniency&gt;</code>) away from <strong>four (4)</strong> (<code>&lt;min&gt;</code>).
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.math.between(8, 5, 10); // true
+Whirl.math.between(12, 5, 10); // false
+Whirl.math.between(12, 5, 10, 4); // true
+</code></pre>
+
+<h2 id="clamp">Clamp<a class="headerlink" href="#clamp" title="Permanent link">&para;</a></h2>
+<p>Clamps a given value between a given minimum and maximum value.<br />
+Returns the given value if it is within the range, otherwise returns the minimum or maximum value if the value is lower than or greater than the given range, respectivly.</p>
+<pre><code class="javascript">Whirl.math.clamp(&lt;val&gt;, &lt;min&gt;, &lt;max&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;val&gt;</code>
+</span>
+<span class="tI tI-2">
+    Value to be clamped.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;min&gt;</code>
+</span>
+<span class="tI tI-2">
+    Minimum value of the range to be clamped to.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;max&gt;</code>
+</span>
+<span class="tI tI-2">
+    Minimum value of the range to be clamped to.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.math.clamp(10, 5, 15); // 10
+Whirl.math.clamp(12, 5, 15); // 12
+Whirl.math.clamp(3, 5, 15); // 5
+Whirl.math.clamp(19, 5, 15); // 15
+</code></pre>
+
+<h2 id="linear-interpolation">Linear Interpolation<a class="headerlink" href="#linear-interpolation" title="Permanent link">&para;</a></h2>
+<p>Interpolate between a given start and end value by a given interpolant value.</p>
+<pre><code class="javascript">Whirl.math.lerp(&lt;start&gt;, &lt;end&gt;, &lt;through&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;start&gt;</code>
+</span>
+<span class="tI tI-2">
+    Start or beginning value.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;end&gt;</code>
+</span>
+<span class="tI tI-2">
+    Last or ending value.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Float</strong> <code>&lt;through&gt;</code>
+</span>
+<span class="tI tI-2">
+    Value being the interpolant between the start and end values.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.math.lerp(0, 100, 0.1); // 10
+Whirl.math.lerp(0, 50, 0.5); // 25
+Whirl.math.lerp(50, 0, 0.5); // 25
+Whirl.math.lerp(0, 50, 2); // 100
+</code></pre>
+
+<h2 id="map-value-between-ranges">Map Value Between Ranges<a class="headerlink" href="#map-value-between-ranges" title="Permanent link">&para;</a></h2>
+<p>Extrapolate how far through a given range of values a given point is to another given range of values.</p>
+<p>For example, <strong>five (5)</strong> is <strong>fifty percent (50%)</strong> of the way between <strong>zero (0)</strong> and <strong>ten (10)</strong>. To map the given point linearly between the range zero (0) to ten (10) to the range <strong>fifty (50)</strong> to <strong>one-hundred (100)</strong> would mean going <strong>fifty percent (50%)</strong> of the way between fifty (50) and one-hundred (100) to get <strong>seventy-five (75)</strong>.</p>
+<pre><code class="javascript">Whirl.math.map(&lt;value&gt;, &lt;in_min&gt;, &lt;in_max&gt;, &lt;out_min&gt;, &lt;out_max&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;value&gt;</code>
+</span>
+<span class="tI tI-2">
+    Value to use as a point between the first given range.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;in_min&gt;</code>
+</span>
+<span class="tI tI-2">
+    Lower bound of the input range.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;in_max&gt;</code>
+</span>
+<span class="tI tI-2">
+    Upper bound of the input range.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;out_min&gt;</code>
+</span>
+<span class="tI tI-2">
+    Lower bound of the output range.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;out_max&gt;</code>
+</span>
+<span class="tI tI-2">
+    Upper bound of the output range.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.math.map(5, 3, 7, 50, 100); // 75
+Whirl.math.map(25, 0, 50, 100, 200); // 150
+Whirl.math.map(75, 50, 100, 1000, 2000); // 1500
+Whirl.math.map(5, 10, 20, 100, 200); // 50
+</code></pre>
+
+<h2 id="random">Random<a class="headerlink" href="#random" title="Permanent link">&para;</a></h2>
+<p>Returns a random float in the range of zero (0) to one (1) (inclusive of zero (0) but not of one (1)).<br />
+If <strong>one</strong> argument is given then will return an integer in the range of zero (0) up to the given value.<br />
+If <strong>two</strong> arguments are given then will return an integer in the range between the two given arguments.</p>
+<pre><code class="javascript">Whirl.math.random(&lt;a&gt;, &lt;b&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;a&gt;</code> (Optional)
+</span>
+<span class="tI tI-2">
+    If given without <code>&lt;b&gt;</code> being given, will be the upper bound of the range of the random number.<br />
+    If given <strong>with</strong> <code>&lt;b&gt;</code> being given, will be the lower bound of the range of the random number.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;b&gt;</code> (Optional)
+</span>
+<span class="tI tI-2">
+    The upper bound of the range of the random number.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.math.random(); // 0.6019569996537999
+Whirl.math.random(); // 0.2947829307200911
+
+Whirl.math.random(5); // 0
+Whirl.math.random(5); // 4
+
+Whirl.math.random(5, 10); // 7
+Whirl.math.random(5, 10); // 9
+</code></pre>
+
+<h2 id="rounding">Rounding<a class="headerlink" href="#rounding" title="Permanent link">&para;</a></h2>
+<p>Rounds a given value to the nearest multiple of a given value.<br />
+If no rounding number is given, will round the value to the nearest integer.</p>
+<pre><code class="javascript">Whirl.math.roundTo(&lt;num&gt;, &lt;rounder&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;num&gt;</code>
+</span>
+<span class="tI tI-2">
+    Number to be rounded.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Integer</strong> <code>&lt;rounder&gt;</code> (Optional) (Default: <code>1</code>)
+</span>
+<span class="tI tI-2">
+    Multiple to round the <code>&lt;num&gt;</code> value to.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.math.roundTo(89, 100); // 100
+Whirl.math.roundTo(24, 100); // 0
+Whirl.math.roundTo(5, 10); // 10
+Whirl.math.roundTo(1729, 200); // 1800
+</code></pre>
+
+<h2 id="step-towards">Step Towards<a class="headerlink" href="#step-towards" title="Permanent link">&para;</a></h2>
+<p>Steps/Increments a given value towards a target value by a given increment.<br />
+If after stepping/incrementing the value it exceeds the target then the target itself will be returned.</p>
+<pre><code class="javascript">Whirl.math.stepTo(&lt;val&gt;, &lt;target&gt;, &lt;increment&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;val&gt;</code>
+</span>
+<span class="tI tI-2">
+    Value to step.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;target&gt;</code>
+</span>
+<span class="tI tI-2">
+    Target value to step the given value towards.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>&lt;increment&gt;</code> (Optional) (Default: <code>1</code>)
+</span>
+<span class="tI tI-2">
+    Increment to move the given value by.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.math.stepTo(5, 10); // 6
+Whirl.math.stepTo(5, 10, 3); // 8
+Whirl.math.stepTo(6, 1, 3); // 3
+
+Whirl.math.stepTo(7, 0, 8); // 0
+Whirl.math.stepTo(10, 14, 20); // 14
+</code></pre>
+
+<h1 id="easing-functions">Easing Functions<a class="headerlink" href="#easing-functions" title="Permanent link">&para;</a></h1>
+<p>Library of easing functions to alter the rate of change of a given value.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear</td>
+<td>No acceleration.</td>
+</tr>
+<tr>
+<td>In</td>
+<td>Acceleration from zero velocity.</td>
+</tr>
+<tr>
+<td>Out</td>
+<td>Decelerating  to zero velocity.</td>
+</tr>
+<tr>
+<td>In Out</td>
+<td>Acceleration until halfway, then deceleration.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linear">Linear<a class="headerlink" href="#linear" title="Permanent link">&para;</a></h2>
+<p>Implies a linear rate of change (<code>t</code>).</p>
+<pre><code class="javascript">Whirl.easing.linear(&lt;t&gt;)
+</code></pre>
+
+<h2 id="quadratic">Quadratic<a class="headerlink" href="#quadratic" title="Permanent link">&para;</a></h2>
+<p>Implies a rate of change by a degree of two (2) (<code>t^2</code>);</p>
+<pre><code class="javascript">Whirl.easing.quadratic.in(&lt;t&gt;)
+
+Whirl.easing.quadratic.out(&lt;t&gt;)
+
+Whirl.easing.quadratic.inOut(&lt;t&gt;)
+</code></pre>
+
+<h2 id="cubic">Cubic<a class="headerlink" href="#cubic" title="Permanent link">&para;</a></h2>
+<p>Implies a rate of change by a degree of three (3) (<code>t^3</code>);</p>
+<pre><code class="javascript">Whirl.easing.cubic.in(&lt;t&gt;)
+
+Whirl.easing.cubic.out(&lt;t&gt;)
+
+Whirl.easing.cubic.inOut(&lt;t&gt;)
+</code></pre></div>
+        
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../..';
+    </script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

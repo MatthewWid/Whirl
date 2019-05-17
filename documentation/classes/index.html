@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    <title>Game Classes - Whirl Game Engine</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+
+
+    <link href="../../css/css/global.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="../..">Whirl Game Engine</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../install/">Installation</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Game Classes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../libraries/">In-Built Libraries</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../constants/">Constants</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../systems/">Object Systems</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../customisation/">Customisation</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../getting-started/">Getting Started</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../about/licence/">Licence</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../about/attributions/">Attributions</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../install/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../libraries/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/MatthewWid/Whirl"><i class="fa fa-github"></i> GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#game-classes">Game Classes</a></li>
+        <li class="first-level "><a href="#whirl">Whirl</a></li>
+            <li class="second-level"><a href="#properties">Properties</a></li>
+                
+                <li class="third-level"><a href="#constructors">Constructors</a></li>
+                <li class="third-level"><a href="#functions">Functions</a></li>
+                <li class="third-level"><a href="#constants">Constants</a></li>
+        <li class="first-level "><a href="#game">.Game()</a></li>
+            <li class="second-level"><a href="#parameters">Parameters</a></li>
+                
+            <li class="second-level"><a href="#properties_1">Properties</a></li>
+                
+            <li class="second-level"><a href="#methods">Methods</a></li>
+                
+        <li class="first-level "><a href="#sprite">.Sprite()</a></li>
+            <li class="second-level"><a href="#parameters_1">Parameters</a></li>
+                
+            <li class="second-level"><a href="#properties_2">Properties</a></li>
+                
+            <li class="second-level"><a href="#methods_1">Methods</a></li>
+                
+            <li class="second-level"><a href="#rectangle">.Rectangle()</a></li>
+                
+                <li class="third-level"><a href="#parameters_2">Parameters</a></li>
+                <li class="third-level"><a href="#properties_3">Properties</a></li>
+                <li class="third-level"><a href="#methods_2">Methods</a></li>
+            <li class="second-level"><a href="#circle">.Circle()</a></li>
+                
+                <li class="third-level"><a href="#parameters_3">Parameters</a></li>
+                <li class="third-level"><a href="#properties_4">Properties</a></li>
+        <li class="first-level "><a href="#camera">.Camera()</a></li>
+            <li class="second-level"><a href="#parameters_4">Parameters</a></li>
+                
+            <li class="second-level"><a href="#properties_5">Properties</a></li>
+                
+            <li class="second-level"><a href="#methods_3">Methods</a></li>
+                
+        <li class="first-level "><a href="#stage">Stage</a></li>
+            <li class="second-level"><a href="#parameters_5">Parameters</a></li>
+                
+            <li class="second-level"><a href="#properties_6">Properties</a></li>
+                
+            <li class="second-level"><a href="#methods_4">Methods</a></li>
+                
+        <li class="first-level "><a href="#viewport">Viewport</a></li>
+            <li class="second-level"><a href="#parameters_6">Parameters</a></li>
+                
+            <li class="second-level"><a href="#properties_7">Properties</a></li>
+                
+            <li class="second-level"><a href="#methods_5">Methods</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="game-classes">Game Classes<a class="headerlink" href="#game-classes" title="Permanent link">&para;</a></h1>
+<p>All top-level classes are namespaced under the global <code>Whirl</code> object. Therefore, any top-level class documented here is implied to be a property of the <code>Whirl</code> object unless specifically under a sub-header of another class.</p>
+<p>All classes are initialised as you call them. You should not use the <code>new</code> keyword.</p>
+<hr />
+<h1 id="whirl">Whirl<a class="headerlink" href="#whirl" title="Permanent link">&para;</a></h1>
+<p>The global <code>Whirl</code> object contains all the classes, constructors and constants that make up the <strong>Whirl</strong> game engine.</p>
+<pre><code class="javascript">Whirl
+</code></pre>
+
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h3 id="constructors">Constructors<a class="headerlink" href="#constructors" title="Permanent link">&para;</a></h3>
+<p><code>.Game()</code></p>
+<p><span class="tI tI-1">
+    Returns a new <a href="#game">Game</a> instance object.
+</span></p>
+<p><code>.Sprite()</code></p>
+<p><span class="tI tI-1">
+    Returns a new <a href="#sprite">Sprite</a> instance object.
+</span></p>
+<p><code>.Camera()</code></p>
+<p><span class="tI tI-1">
+    Returns a new <a href="#camera">Camera</a> instance object.
+</span></p>
+<p><code>.Text()</code></p>
+<p><span class="tI tI-1">
+    Returns a new advanced Text instance object.
+</span></p>
+<p><code>.shapes</code></p>
+<p><span class="tI tI-1">
+    An object containing constructors for shapes for use in bounding boxes.
+</span></p>
+<h3 id="functions">Functions<a class="headerlink" href="#functions" title="Permanent link">&para;</a></h3>
+<p><code>.util</code></p>
+<p><span class="tI tI-1">
+    An object containing various utility functions to assist in certain task.
+</span></p>
+<p><code>.math</code></p>
+<p><span class="tI tI-1">
+    An object containing various mathematical functions and calculations.
+</span></p>
+<p><code>.easing</code></p>
+<p><span class="tI tI-1">
+    An object containing functions for mathematical easing numerical values.
+</span></p>
+<h3 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h3>
+<p><code>.STAGE</code></p>
+<p><span class="tI tI-1">
+    Used in <a href="#viewport">Viewport</a> instantiation to indicate the engine to automatically create a new <a href="#stage">Stage</a>.
+</span></p>
+<p><code>.CAMERA</code></p>
+<p><span class="tI tI-1">
+    Used in <a href="#viewport">Viewport</a> instantiation to indicate to the engine to automatically create a new <a href="#camera">Camera</a>.
+</span></p>
+<hr />
+<h1 id="game">.Game()<a class="headerlink" href="#game" title="Permanent link">&para;</a></h1>
+<p>Returns a new instance of a Game object.</p>
+<p>The <code>Game</code> object is the actual running and workforce of the engine that updates your game, handles various object managers and deals with all interactions and rendering.</p>
+<pre><code class="javascript">Whirl.Game(&lt;options&gt;)
+</code></pre>
+
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<p><strong>Object</strong> <code>&lt;options&gt;</code></p>
+<p><span class="tI tI-1">
+    Preset configuration options for the Game instance.<br />
+<strong>Boolean</strong> <code>ignoreWarnings</code> - Ignore debug warnings (Default: <code>true</code>).<br />
+<strong>Boolean</strong> <code>input</code> - Set up input event listeners on game startup and bind input listeners to any objects created in the future (Default: <code>true</code>).<br />
+<strong>HTMLElement</strong> <code>keyElement</code> - Element that listens for keyboard input events (Default: <code>document.body</code>).
+</span></p>
+<p><span class="tI tI-1">
+    Any other properties given to the <code>&lt;options&gt;</code> object will also be attached to the <code>Game.config</code> object, too.
+</span></p>
+<h2 id="properties_1">Properties<a class="headerlink" href="#properties_1" title="Permanent link">&para;</a></h2>
+<p><code>.config</code></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+    Persistent configuration of the Game instance.<br />
+    Also includes any additional properties given when initially creating a game instance.
+</span>
+<span class="tI tI-2">
+    <code>.ignoreWarnings</code> - Ignore debug warnings.<br />
+<code>.input</code> - Viewports created while the <code>Game.config.input</code> option is set to <code>true</code> will automatically have keyboard/mouse input event listeners attached to them.
+</span></p>
+<p><code>.frameRate</code></p>
+<p><span class="tI tI-1">
+    <strong>Integer</strong><br />
+    Limits the maximum frames per second (FPS).<br />
+    Default <code>60</code>.
+</span></p>
+<p><code>.frameCount</code></p>
+<p><span class="tI tI-1">
+    <strong>Integer</strong><br />
+    The number of update frames elapsed since the game's start.<br />
+    Will only start counting once the game has been started with the <code>Game.start()</code> method, not when the game is instantiated.
+</span></p>
+<h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
+<p><code>.setup(&lt;options&gt;)</code></p>
+<p><span class="tI tI-1">
+    Returns the Game object.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong> <code>&lt;options&gt;</code>
+</span></p>
+<p><span class="tI tI-2">
+    <strong>String</strong> <code>canvas</code> - Selector for an HTML5 <code>&lt;canvas&gt;</code> element.<br />
+<strong>String</strong> <code>canvasWidth</code> or <code>cW</code> - Width in pixels to resize the canvas element to.<br />
+<strong>String</strong> <code>canvasHeight</code> or <code>cH</code> - Height in pixels to resize the canvas element to.<br />
+    If a canvas width or height value is not given then the canvas will not resize.<br />
+<strong>Function</strong> <code>setup</code> - Called when the game has finished setting up (Called with the <code>didSetup</code> event).<br />
+<strong>Funtion</strong> <code>update</code> - Called when the game will update.
+</span></p>
+<p><span class="tI tI-1">
+    Automatically sets up the game with a <a href="#viewport">Viewport</a>, <a href="#stage">Stage</a> and <a href="#camera">Camera</a>.
+</span></p>
+<p><span class="tI tI-1">
+    This is not required to set up a game. Alternatively, a <a href="#viewport">Viewport</a>, <a href="#stage">Stage</a> and <a href="#camera">Camera</a> can be set up manually using the Viewport Manager.
+</span></p>
+<p><span class="tI tI-1">
+    Once setup has completed, the <code>didSetup</code> event is emitted on the Game object.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Example:</strong>
+</span></p>
+<pre><code class="javascript">function gameSetup(data) {
+    // Create objects, import assets, insert plugins, etc.
+}
+
+function gameLoop(data) {
+    // Update object positions, detect key presses, animate sprites, etc.
+}
+
+
+const myGame = Whirl.Game()
+    .setup({
+        setup: gameSetup,
+        update: gameLoop,
+
+        canvas: &quot;#myCanvas&quot;,
+        canvasWidth: 400,
+        canvasHeight: 400
+    })
+    .start();
+</code></pre>
+
+<p><code>.start()</code></p>
+<p><span class="tI tI-1">
+    Returns the Game object.
+</span></p>
+<ol>
+<li>Sets the <code>Game.running</code> flag to <code>true</code>.</li>
+<li>Emits the <code>willStart</code> event.</li>
+<li>Starts the update and render loop.</li>
+</ol>
+<p><span class="tI tI-1">
+    By default the game does not start on creation, and must be started with this method.<br />
+    Will not execute if the game is already running.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Example:</strong>
+</span></p>
+<pre><code class="javascript">const myGame = Whirl.Game()
+    .start();
+</code></pre>
+
+<p><code>.stop()</code></p>
+<p><span class="tI tI-1">
+    Returns the Game object.
+</span></p>
+<ol>
+<li>Sets the <code>Game.running</code> flag to <code>false</code>.</li>
+<li>Emits the <code>willStop</code> event.</li>
+</ol>
+<p><span class="tI tI-1">
+    This is a <em>request</em> to stop the game loop. It will not take effect immediately, but at the beginning of the next available check. Therefore, an extra update tick may run even after calling <code>.stop()</code>.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Example:</strong>
+</span></p>
+<pre><code class="javascript">const myGame = Whirl.Game()
+    .start();
+
+myGame.stop();
+</code></pre>
+
+<hr />
+<h1 id="sprite">.Sprite()<a class="headerlink" href="#sprite" title="Permanent link">&para;</a></h1>
+<p>Returns a new instance of a <code>Sprite.Rectangle()</code> object unless specified otherwise.</p>
+<p>Sprites are visible "<em>things</em>" in your game world. They have a position, bounding box, a fill colour or image and a plethora of other properties that can be modified.</p>
+<p>All Sprites inherit from a <code>Whirl.Sprite._baseSprite</code> class and different types of Sprites extend the functionality of the base Sprite.</p>
+<p>Inherits the <code>tween</code> object system.</p>
+<pre><code class="javascript">Whirl.Sprite(&lt;Game&gt;, &lt;name&gt;, &lt;fill&gt;, &lt;options&gt;)
+</code></pre>
+
+<p>By just calling <code>Whirl.Sprite()</code> it will return a Rectangle Sprite. Different types of sprites can be instantiated by adding <code>.&lt;Sprite Type&gt;(...)</code>.</p>
+<p>The following Sprite types are available: <code>Whirl.Sprite.Rectangle(...)</code> and <code>Whirl.Sprite.Circle(...)</code>.</p>
+<h3 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h3>
+<p><strong>Object</strong> <code>&lt;Game&gt;</code></p>
+<p><span class="tI tI-1">
+    An already instantiated <a href="#game">Game</a> object.
+</span></p>
+<p><span class="tI tI-1">
+    All sprites must be instantiated into an existing game instance so that they can be handled by the global object manager.
+</span></p>
+<p><strong>String</strong> <code>&lt;name&gt;</code></p>
+<p><span class="tI tI-1">
+    A custom name for the Sprite.
+</span></p>
+<p><span class="tI tI-1">
+    This name is used for identification as well as better indexing capabilities and searching the global object store.
+</span></p>
+<p><strong>String</strong> or <strong>Object</strong> or <strong>NULL</strong> <code>&lt;fill&gt;</code></p>
+<p><span class="tI tI-1">
+    A colour or image to fill the Sprite with.<br />
+    Performs the same function as the <code>.setFill(...)</code> method.
+</span></p>
+<p><span class="tI tI-1">
+    Providing a <strong>string</strong> will attempt to resolve the fill to a <em>colour</em>.<br />
+<strong>Do not</strong> give colour values with transparency. Instead use the <code>.alpha</code> property.<br />
+<strong>Example:</strong> <code>rgb(0, 255, 220)</code> or <code>#F00</code> or <code>cyan</code> etc.
+</span></p>
+<p><span class="tI tI-1">
+    If an <strong>object</strong> is given, it must be a <code>Whirl.Asset</code> image object.<br />
+    Most Sprite types will attempt to scale the image to their <code>bounds</code>.
+</span></p>
+<p><span class="tI tI-1">
+    If <code>null</code> or any other non-valid fill value is given then the Sprite will be given a transparent colour fill by default.
+</span></p>
+<p><strong>Object</strong> <code>&lt;options&gt;</code></p>
+<p><span class="tI tI-1">
+    <strong>String</strong> <code>outline</code> - String colour value for a one-pixel thick outline of the Sprite (Default: <code>false</code>).<br />
+<strong>Float</strong> <code>alpha</code> - Alpha/transparency for the Sprite (<code>0</code> to <code>1</code>) (Default: <code>1</code>).<br />
+<strong>Float</strong> <code>scale</code> - The scale of this Sprite - scales its bounding box size (Default: <code>1</code>).<br />
+<strong>Integer</strong> <code>z</code> - The z-index (Layer) of this Sprite (Default: <code>0</code>).
+</span></p>
+<h3 id="properties_2">Properties<a class="headerlink" href="#properties_2" title="Permanent link">&para;</a></h3>
+<p><code>.name</code></p>
+<p><span class="tI tI-1">
+    <strong>String</strong><br />
+    The name of the Sprite.
+</span></p>
+<p><span class="tI tI-1">
+    Used by the global object manager to search for Sprites.
+</span></p>
+<p><code>.fill</code> (Read-only)</p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+<strong>Do not modify directly. Use the <code>.setFill()</code> method.</strong><br />
+    Information about the Sprite's fill.<br />
+</span>
+<span class="tI tI-2">
+    <code>.type</code> - Type of fill. Can either be "<code>colour</code>" or "<code>image</code>".<br />
+<code>.data</code> - Data of the fill. The colour value or the image asset.
+</span></p>
+<p><code>.outline</code></p>
+<p><span class="tI tI-1">
+    <strong>String</strong><br />
+    If not set to a falsey value, a one-pixel thick line of the given colour value will be drawn around the sprite.<br />
+    Not affected by the <code>.alpha</code> property.<br />
+    Typically used for debugging.
+</span></p>
+<p><code>.alpha</code></p>
+<p><span class="tI tI-1">
+    <strong>Float</strong><br />
+    Adjusts the alpha/transparency for the Sprite.<br />
+    Must only be between <code>0</code> and <code>1</code>.<br />
+    An alpha of <code>1</code> means the sprite is visible as normal. An alpha of <code>0</code> means the sprite is completely invisible.
+</span></p>
+<p><code>.scale</code></p>
+<p><span class="tI tI-1">
+    <strong>Float</strong><br />
+    Scales the Sprite's <code>bounds</code> by the given value.<br />
+    By default all Sprites scale from their top-left origin point, however this can be changed if the Sprite offers an <code>anchor</code> property.
+</span></p>
+<p><code>.z</code></p>
+<p><span class="tI tI-1">
+    <strong>Integer</strong><br />
+    The z-axis value for this Sprite. Allows for 'layering' of Sprites over one-another.<br />
+    A Sprite with a <code>z</code> value higher than another's will appear ontop of the other.<br />
+    Sprites with the same <code>z</code> value will be ordered by their initial order in the object store.
+</span></p>
+<h3 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h3>
+<p><code>.setFill(&lt;fill&gt;)</code></p>
+<p><span class="tI tI-1">
+    See the <a href="#parameters_1">Sprite &lt;fill> parameter</a>.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Example(s):</strong>
+</span></p>
+<pre><code class="javascript">mySprite.setFill(&quot;rgb(100, 255, 255)&quot;);
+
+mySprite.setFill(&quot;#F00&quot;);
+
+mySprite.setFill(&quot;blue&quot;);
+</code></pre>
+
+<p><code>.tween.</code></p>
+<p><span class="tI tI-1">
+    See the tween object system.
+</span></p>
+<hr />
+<h2 id="rectangle">.Rectangle()<a class="headerlink" href="#rectangle" title="Permanent link">&para;</a></h2>
+<p>Returns a new instance of a rectangle Sprite object.</p>
+<p>Extends and inherits the <a href="#sprite">base sprite</a> parameters, properties and methods.</p>
+<p>Rectangle sprite bounds are defined by a top-left point and a width and height.</p>
+<pre><code class="javascript">Whirl.Sprite(&lt;Game&gt;, &lt;name&gt;, &lt;fill&gt;, &lt;options&gt;)
+// or
+Whirl.Sprite.Rectangle(&lt;Game&gt;, &lt;name&gt;, &lt;fill&gt;, &lt;options&gt;)
+</code></pre>
+
+<h3 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h3>
+<p><strong>Object</strong> <code>&lt;options&gt;</code></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>x</code> - X-coordinate of the bounding box (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>y</code> - Y-coordinate of the bounding box (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>w</code> - Width of the bounding box (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>h</code> - Height of the bounding box (Default: <code>0</code>).<br />
+<strong>Object</strong> <code>anchor</code> - Moves the anchor/origin point:
+    <span class="tI tI-1">
+        <strong>Float</strong> <code>x</code> - X-coordinate of the anchor point (Default: <code>0</code>).<br />
+<strong>Float</strong> <code>y</code> - X-coordinate of the anchor point (Default: <code>0</code>).
+    </span>
+</span></p>
+<h3 id="properties_3">Properties<a class="headerlink" href="#properties_3" title="Permanent link">&para;</a></h3>
+<p><code>.bounds</code></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+    The bounding position and dimensions of this sprite.<br />
+    Derived from <code>Whirl.shapes.Rectangle(...)</code>.
+</span>
+<span class="tI tI-2">
+    <code>.x</code> - X-coordinate of the bounding box.<br />
+<code>.y</code> - Y-coordinate of the bounding box.<br />
+<code>.w</code> - Width of the bounding box.<br />
+<code>.h</code> - Height of the bounding box.
+</span></p>
+<p><code>.anchor</code></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+    Sets the anchor / origin point of the sprite's coordinates.
+</span>
+<span class="tI tI-2">
+    <code>.x</code> - X-coordinate of the origin point.<br />
+<code>.y</code> - Y-coordinate of the origin point.
+</span></p>
+<p><span class="tI tI-1">
+    By default the <code>x</code> and <code>y</code> origin point are located at <code>(0, 0)</code>, the top-left point of the sprite.<br />
+<code>(1, 1)</code> would be the bottom-right and <code>(0.5, 0.5)</code> would be the very center.
+</span></p>
+<h3 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h3>
+<p><code>.resizeToImage(&lt;scale&gt;)</code></p>
+<p><span class="tI tI-1">
+    Will not execute if the Sprite does not have an <code>image</code> fill type.<br />
+    Automatically sets the bounding box's width and height to the same dimensions as the image's width and height.
+</span></p>
+<p><span class="tI tI-2">
+    <strong>Float</strong> <code>&lt;scale&gt;</code>
+</span></p>
+<p><span class="tI tI-3">
+    Scales the width and height value of the Sprite after modifying it (Default: <code>1</code>).
+</span></p>
+<p><code>.anchor.center()</code></p>
+<p><span class="tI tI-1">
+    Sets the anchor point to <code>(0.5, 0.5)</code>.
+</span></p>
+<hr />
+<h2 id="circle">.Circle()<a class="headerlink" href="#circle" title="Permanent link">&para;</a></h2>
+<p>Returns a new instance of a circle Sprite object.</p>
+<p>Extends and inherits the <a href="#sprite">base sprite</a> parameters, properties and methods.</p>
+<p>Circle sprites bounds are defined by a center point and a radius.</p>
+<pre><code class="javascript">Whirl.Sprite.Circle(&lt;Game&gt;, &lt;name&gt;, &lt;fill&gt;, &lt;options&gt;)
+</code></pre>
+
+<h3 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h3>
+<p><strong>Object</strong> <code>&lt;options&gt;</code></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>x</code> - X-coordinate of the center point (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>y</code> - Y-coordinate of the center point (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>r</code> - Radius of the circle (Default: <code>0</code>).
+</span></p>
+<h3 id="properties_4">Properties<a class="headerlink" href="#properties_4" title="Permanent link">&para;</a></h3>
+<p><code>.bounds</code></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+    The bounding position and dimensions of this Sprite.<br />
+    Derived from <code>Whirl.shapes.Circle(...)</code>.
+</span>
+<span class="tI tI-2">
+    <code>.x</code> - X-coordinate of the bounding box.<br />
+<code>.y</code> - Y-coordinate of the bounding box.<br />
+<code>.r</code> - Radius of the circle.
+</span></p>
+<hr />
+<h1 id="camera">.Camera()<a class="headerlink" href="#camera" title="Permanent link">&para;</a></h1>
+<p>Returns a new instance of a Camera object.</p>
+<p>Cameras serve as the view into your world (the <a href="#stage">Stage</a>). Scrolling the camera around lets you look around different parts of your world. Cameras can be scrolled around, lock onto objects, zoom in/out, apply effects and more.</p>
+<p>Inherits the <code>tween</code> object system.</p>
+<pre><code class="javascript">Whirl.Camera(&lt;Game&gt;, &lt;options&gt;)
+</code></pre>
+
+<h3 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h3>
+<p><strong>Object</strong> <code>&lt;Game&gt;</code></p>
+<p><span class="tI tI-1">
+    An already instantiated <a href="#game">Game</a> object.
+</span></p>
+<p><strong>Object</strong> <code>&lt;options&gt;</code></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>.x</code> - X-coordinate of the bounding box (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>.y</code> - Y-coordinate of the bounding box (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>.w</code> - Width of the camera view (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>.h</code> - Height of the camera view (Default: <code>0</code>).<br />
+<strong>Object</strong> <code>anchor</code> - Moves the anchor/origin point:
+    <span class="tI tI-1">
+        <strong>Float</strong> <code>x</code> - X-coordinate of the anchor point (Default: <code>0</code>).<br />
+<strong>Float</strong> <code>y</code> - Y-coordinate of the anchor point (Default: <code>0</code>).
+    </span>
+    <strong>Object</strong> <code>scroll</code> - Scrolls the Camera view around the game world:
+    <span class="tI tI-1">
+        <strong>Float</strong> <code>x</code> - X-coordinate of the scroll position (Default: <code>0</code>).<br />
+<strong>Float</strong> <code>y</code> - Y-coordinate of the scroll position (Default: <code>0</code>).
+    </span>
+    <strong>Float</strong> <code>zoom</code> - Zoom level of the Camera (Default: <code>1</code>).<br />
+<strong>Boolean</strong> <code>roundPixels</code> - Whether to round the scroll position to the nearest whole number (Default <code>true</code>).
+</span></p>
+<h3 id="properties_5">Properties<a class="headerlink" href="#properties_5" title="Permanent link">&para;</a></h3>
+<p><code>.bounds</code></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+    The position and dimensions of the Camera on screen.<br />
+    Derived from <code>Whirl.shapes.Rectangle(...)</code>.
+</span>
+<span class="tI tI-2">
+    <code>.x</code> - X-coordinate of the bounding box.<br />
+<code>.y</code> - Y-coordinate of the bounding box.<br />
+<code>.w</code> - Width of the bounding box.<br />
+<code>.h</code> - Height of the bounding box.
+</span>
+<span class="tI tI-1">
+    Note that the <code>.bounds</code> property defines where the Camera will draw to <em>on the screen</em>, not where it will draw from <em>in the world</em>.<br />
+    Use the <code>.scroll</code> property to move around in space.
+</span>
+<span class="tI tI-1">
+    The width and height properties do not cut off rendering on the screen, but are used to determine render culling zones and no-update zones.
+</span></p>
+<p><code>.anchor</code></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+    Sets the anchor / origin point of the camera's coordinates and zoom.
+</span>
+<span class="tI tI-2">
+    <code>.x</code> - X-coordinate of the origin point.<br />
+<code>.y</code> - Y-coordinate of the origin point.
+</span>
+<span class="tI tI-1">
+    Has no effect if the Camera is locked to an object (<code>._lockObject</code>).
+</span></p>
+<p><code>._lockObject</code> (Read-only)</p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+<strong>Do not modify directly. Use the <code>.lockTo(...)</code> and <code>.removeLock()</code> methods.</strong><br />
+    Reference to the object that the Camera is locked to.
+</span></p>
+<p><code>.scroll</code></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+    The position in the world that the Camera is observing. Moves the camera's view around the game world.
+</span>
+<span class="tI tI-2">
+    <code>.x</code> - X-coordinate of the scroll position.<br />
+<code>.y</code> - Y-coordinate of the scroll position.
+</span>
+<span class="tI tI-1">
+    Changing this will have no effect if the Camera is locked to an object (<code>._lockObject</code>) as its scroll position is bound to the object it is locked to.
+</span></p>
+<p><code>.zoom</code></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong><br />
+    The zoom of the camera. Scales what the camera sees up/down by the given amount.
+    Will always zoom around the anchor point.<br />
+    A zoom level of <code>1</code> (Default) means no scaling / a normal view.<br />
+    A zoom level of <code>2</code> would zoom <em>in</em> twice the normal amount - you would see half of normal view.<br />
+    A zoom level of <code>.5</code> would zoom <em>out</em> twice the normal amount - you would see double the amount of the normal view.
+</span></p>
+<p><code>.roundPixels</code></p>
+<p><span class="tI tI-1">
+    Rounds the scroll (<code>.scroll</code>) position to the nearest whole number if the Camera is locked to an object.
+</span></p>
+<h3 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h3>
+<p><code>.lockTo(&lt;sprite&gt;)</code></p>
+<p><span class="tI tI-1">
+    "Locks" the Camera to a specific Sprite.
+</span></p>
+<p><span class="tI tI-2">
+    <strong>Object</strong> <code>&lt;sprite&gt;</code>
+</span>
+<span class="tI tI-3">
+    The Sprite object that the Camera should lock to.<br />
+    This can be any object with a <code>bounds</code> property derived from <code>Whirl.shapes.Rectangle(...)</code> such as a <a href="#rectangle">rectangle Sprite</a>.
+</span></p>
+<p><span class="tI tI-1">
+    When a Camera is locked to a Sprite it will attempt to keep the Sprite in the exact center of the screen each update; moving the scroll (<code>.scroll</code>) position to the center of the Sprite's bounds.
+</span></p>
+<p><span class="tI tI-1">
+    While it is locked, the camera zoom (<code>.zoom</code>) will instead zoom around the center of the screen, equivalent to an anchor point of <code>(0.5, 0.5)</code>.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Example:</strong>
+</span></p>
+<pre><code class="javascript">const mySprite = Whirl.Sprite(myGame, &quot;Blocky&quot;, &quot;#F00&quot;, {
+    x: 50,
+    y: 90,
+    w: 40,
+    h: 40
+});
+
+const myCamera = Whirl.Camera(myGame, {
+    w: 400,
+    h: 400
+})
+    .lockTo(mySprite);
+</code></pre>
+
+<p><code>.removeLock()</code></p>
+<p><span class="tI tI-1">
+    Removes the lock and lock reference (<code>._lockObject</code>) from the Camera.
+</span></p>
+<p><span class="tI tI-1">
+    When "unlocked", the scroll (<code>.scroll</code>) will stay in its last position that it was locked at, essentially not moving.
+</span></p>
+<p><span class="tI tI-1">
+    The zoom (<code>.zoom</code>) and anchor (<code>.anchor</code>) positions remain unchanged throughout the time that the Camera is locked, so will still be the same after unlocking.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Example:</strong>
+</span></p>
+<pre><code class="javascript">myCamera.removeLock();
+</code></pre>
+
+<p><code>.anchor.center()</code></p>
+<p><span class="tI tI-1">
+    Sets the anchor point to <code>(0.5, 0.5)</code>.
+</span></p>
+<p><code>.tween.</code></p>
+<p><span class="tI tI-1">
+    See the tween object system.
+</span></p>
+<hr />
+<h1 id="stage">Stage<a class="headerlink" href="#stage" title="Permanent link">&para;</a></h1>
+<p>A stage is the 'world' of your game that you put your game objects into. It used for keeping track of and updating game objects in the world.</p>
+<p>Objects not contained in a Stage are not rendered or updated.</p>
+<p>Stages and their contents are rendered using a <a href="#viewport">Viewport</a> and will update by themselves even when not being rendered.</p>
+<p>Inherits the <code>child</code> object system.</p>
+<pre><code class="javascript">&lt;Game&gt;.stageManager.add(&lt;name&gt;, &lt;options&gt;)
+</code></pre>
+
+<p><code>&lt;Game&gt;</code> represents an already instantiated <a href="#game">game instance</a>.</p>
+<p>The above code would return a reference to the Stage object as contained in the Stage Manager.</p>
+<h3 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h3>
+<p><strong>String</strong> <code>&lt;name&gt;</code></p>
+<p><span class="tI tI-1">
+    A custom name for the Stage.
+</span></p>
+<p><span class="tI tI-1">
+    This name is used for identification and is searched and indexed by the Stage Manager.
+</span></p>
+<p><strong>Object</strong> <code>&lt;options&gt;</code></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>.x</code> - X-coordinate of the stage limits (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>.y</code> - Y-coordinate of the stage limits (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>.w</code> - Width of the stage limits (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>.y</code> - Height of the stage limits (Default: <code>0</code>).
+</span></p>
+<h3 id="properties_6">Properties<a class="headerlink" href="#properties_6" title="Permanent link">&para;</a></h3>
+<p><code>.name</code></p>
+<p><span class="tI tI-1">
+    <strong>String</strong><br />
+    The name of the Stage.
+</span></p>
+<p><span class="tI tI-1">
+    Used by the stage and global object manager to search for Stages.
+</span></p>
+<p><code>.limits</code></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+    The limits of the game world.<br />
+    Objects with physics applied cannot leave the limits of the game world.<br />
+    Derived from <code>Whirl.shapes.Rectangle(...)</code>.
+</span>
+<span class="tI tI-2">
+    <code>.x</code> - X-coordinate of the stage limits.<br />
+<code>.y</code> - Y-coordinate of the stage limits.<br />
+<code>.w</code> - Width of the stage limits.<br />
+<code>.h</code> - Height of the stage limits.
+</span></p>
+<h3 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h3>
+<p><code>.child.</code></p>
+<p><span class="tI tI-1">
+    See the child object system.
+</span></p>
+<p><span class="tI tI-1">
+    Objects must be contained inside a Stage using the child object system.<br />
+    Only objects that are children of a Stage are updated and/or rendered.
+</span></p>
+<hr />
+<h1 id="viewport">Viewport<a class="headerlink" href="#viewport" title="Permanent link">&para;</a></h1>
+<p>A viewport is a screen that renders to an HTML5 Canvas.</p>
+<p>Viewports hold the render settings used by the canvas element and require a <a href="#stage">Stage</a> and <a href="#camera">Camera</a> to use for rendering.</p>
+<pre><code class="javascript">&lt;Game&gt;.viewportManager.add(&lt;name&gt;, &lt;canvas&gt;, &lt;Stage&gt;, &lt;Camera&gt;, &lt;options&gt;)
+</code></pre>
+
+<p><code>&lt;Game&gt;</code> represents an already instantiated <a href="#game">game instance</a>.</p>
+<p>The above code would return a reference to the Viewport object as contained in the Viewport Manager.</p>
+<h3 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h3>
+<p><strong>String</strong> <code>&lt;name&gt;</code></p>
+<p><span class="tI tI-1">
+    A custom name for the Viewport.
+</span></p>
+<p><span class="tI tI-1">
+    This name is used for identification and is searched and indexed by the Viewport Manager.
+</span></p>
+<p><strong>String</strong> <code>&lt;canvas&gt;</code></p>
+<p><span class="tI tI-1">
+    Selector for a <code>&lt;canvas&gt;</code> element contained in the DOM.<br />
+    Performs the same function as the <code>.setCanvas(...)</code> method.
+</span></p>
+<p><strong>Object</strong> or <strong>String</strong> <code>&lt;Stage&gt;</code></p>
+<p><span class="tI tI-1">
+    An already instantiated <a href="#stage">Stage</a> object.<br />
+    Performs the same function as the <code>.setStage(...)</code> method.
+</span></p>
+<p><span class="tI tI-1">
+    Alternatively, <code>Whirl.STAGE</code> can be given and a new <a href="#stage">Stage</a> object will be automatically created and associated with the Viewport.
+</span></p>
+<p><strong>Object</strong> or <strong>String</strong> <code>&lt;Camera&gt;</code></p>
+<p><span class="tI tI-1">
+    An already instantiated <a href="#camera">Camera</a> object.<br />
+    Performs the same function as the <code>.setCamera(...)</code> method.
+</span></p>
+<p><span class="tI tI-1">
+    Alternatively, <code>Whirl.CAMERA</code> can be given and a new <a href="#camera">Camera</a> object with the same dimensions will be automatically created and associated with the Viewport.
+</span></p>
+<p><strong>Object</strong> <code>&lt;options&gt;</code></p>
+<p><span class="tI tI-1">
+    <strong>Number</strong> <code>x</code> - X-coordinate of the bounding box (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>y</code> - Y-coordinate of the bounding box (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>w</code> - Width of the bounding box (Default: <code>0</code>).<br />
+<strong>Number</strong> <code>h</code> - Height of the bounding box (Default: <code>0</code>).<br />
+<strong>Integer</strong> <code>cW</code> - Resize the <code>&lt;canvas&gt;</code> element to a given width.<br />
+<strong>Integer</strong> <code>cH</code> - Resize the <code>&lt;canvas&gt;</code> element to a given height.<br />
+<strong>Boolean</strong> <code>imageSmoothing</code> - Canvas anti-aliasing enabled or not (Default: <code>true</code>).<br />
+<strong>Boolean</strong> <code>clear</code> - Clear canvas at the beginning of each render loop (Default: <code>true</code>).<br />
+<strong>Boolean</strong> <code>clip</code> - Clip out anything rendered beyond the Viewport's boundaries (Default: <code>true</code>).<br />
+<strong>Boolean</strong> <code>fitCamera</code> - Resize and move the <a href="#camera">Camera</a> to the same coordinates and dimensions as the Viewport (Default: <code>true</code>).
+</span></p>
+<h3 id="properties_7">Properties<a class="headerlink" href="#properties_7" title="Permanent link">&para;</a></h3>
+<p><code>.name</code></p>
+<p><span class="tI tI-1">
+    <strong>String</strong><br />
+    The name of the Viewport.
+</span></p>
+<p><span class="tI tI-1">
+    Used by the viewport and global object manager to search for Viewports.
+</span></p>
+<p><code>.bounds</code></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+    The bounding position and dimensions of this viewport on the screen.<br />
+    Derived from <code>Whirl.shapes.Rectangle(...)</code>.
+</span>
+<span class="tI tI-2">
+    <code>.x</code> - X-coordinate of the bounding box.<br />
+<code>.y</code> - Y-coordinate of the bounding box.<br />
+<code>.w</code> - Width of the bounding box.<br />
+<code>.h</code> - Height of the bounding box.
+</span>
+<span class="tI tI-1">
+    Viewports should be static. Object clipping and screen clearing is based on the <code>.bounds</code> property and therefore it <strong>should not</strong> be modified after the initial definition in the <code>&lt;options&gt;</code> parameter.
+</span></p>
+<p><code>.c</code> (Read-only)</p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+<strong>Do not modify directly. Use the <code>.setCanvas(...)</code> method.</strong><br />
+    Reference to the HTML5 canvas element that the viewport will render to.<br />
+    This holds the actual element node, not just a selector or a copy.
+</span></p>
+<p><code>.ctx</code> (Read-only)</p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+<strong>Do not modify directly. Use the <code>.setCanvas(...)</code> method.</strong><br />
+    Reference to the drawing context of the viewport's canvas.
+</span></p>
+<p><code>.activeStage</code> (Read-only)</p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+<strong>Do not modify directly. Use the <code>.setStage(...)</code> method.</strong><br />
+    Reference to the <a href="#stage">Stage</a> being rendered.
+</span></p>
+<p><code>.activeCamera</code> (Read-only)</p>
+<p><span class="tI tI-1">
+    <strong>Object</strong><br />
+<strong>Do not modify directly. Use the <code>.setCamera(...)</code> method.</strong><br />
+    Reference to the <a href="#camera">Camera</a> being used for rendering.
+</span></p>
+<p><code>.imageSmoothing</code></p>
+<p><span class="tI tI-1">
+    <strong>Boolean</strong><br />
+    Whether scaled images are smoothed (anti-aliased) or not.<br />
+    Useful for games that use pixel art a lot.
+</span></p>
+<p><code>.clear</code></p>
+<p><span class="tI tI-1">
+    <strong>Boolean</strong><br />
+    Clear the canvas at the beginning of every render loop.<br />
+    Only the area that the viewport occupies on the canvas is cleared. If the viewport has the same dimensions as the canvas then the entire canvas will be cleared.
+</span></p>
+<p><code>.clip</code></p>
+<p><span class="tI tI-1">
+    <strong>Boolean</strong><br />
+    Clip out anything in the entire canvas that is not within the viewport's boundaries.<br />
+    It is recommended to disable this if there is more than one viewport being used on the same canvas.
+</span></p>
+<h3 id="methods_5">Methods<a class="headerlink" href="#methods_5" title="Permanent link">&para;</a></h3>
+<p><code>.setCanvas(&lt;canvas&gt;)</code></p>
+<p><span class="tI tI-1">
+    Sets the HTML5 canvas element to render to.<br />
+    Also see the <code>.c</code> and <code>.ctx</code> <a href="#properties_7">viewport properties</a>.
+</span></p>
+<p><span class="tI tI-2">
+    <strong>String</strong> <code>&lt;canvas&gt;</code>
+</span>
+<span class="tI tI-3">
+    Selector string for an HTML5 <code>&lt;canvas&gt;</code> element.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Example:</strong>
+</span></p>
+<pre><code class="javascript">myViewport.setCanvas(&quot;#myCanvas&quot;);
+</code></pre>
+
+<p><code>.setStage(&lt;Stage&gt;)</code></p>
+<p><span class="tI tI-1">
+    Sets the current <a href="#stage">stage</a> to be rendered.<br />
+    Also see the <code>.activeStage</code> <a href="#properties_7">viewport property</a>.
+</span></p>
+<p><span class="tI tI-2">
+    <strong>Object</strong> <code>&lt;Stage&gt;</code>
+</span>
+<span class="tI tI-3">
+    An already instantiated <a href="#stage">Stage</a> object.
+</span></p>
+<p><span class="tI tI-3">
+    The <code>Whirl.STAGE</code> constant can be given instead and a new <a href="#stage">Stage</a> object will be automatically created with the same position and dimensions as the viewport.
+</span></p>
+<p><code>.setCamera(&lt;Camera&gt;)</code></p>
+<p><span class="tI tI-1">
+    Sets the current <a href="#camera">camera</a> to be used for rendering.<br />
+    Also see the <code>.activeCamera</code> <a href="#properties_7">viewport property</a>.
+</span></p>
+<p><span class="tI tI-2">
+    <strong>Object</strong> <code>&lt;Camera&gt;</code>
+</span>
+<span class="tI tI-3">
+    An already instantiated <a href="#camera">Camera</a> object.
+</span></p>
+<p><span class="tI tI-3">
+    The <code>Whirl.CAMERA</code> constant can be given instead and a new <a href="#camera">Camera</a> object will be automatically created with the same position and dimensions as the viewport.
+</span></p>
+<p><span class="tI tI-1">
+    If the <code>fitCamera</code> <a href="#parameters_6">viewport parameter</a> is not explicitly set to the <code>false</code> then the given <a href="#camera">camera</a> will be repositioned and resized to the same position and dimensions of the viewport.
+</span></p>
+<p><code>.bringCamera()</code></p>
+<p><span class="tI tI-1">
+    Returns the Viewport object.
+</span></p>
+<p><span class="tI tI-1">
+    Moves the active <a href="#camera">camera</a>'s <code>scroll</code> position to the top-left point of the viewport's position.
+</span></p>
+<p><span class="tI tI-1">
+    If the viewport is placed anywhere that isnt <code>(0, 0)</code> it is recommended to bring the <a href="#camera">camera</a> to avoid discrepancies between rendering zones and unwanted clipping of objects by the viewport after they have been rendered.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Example:</strong>
+</span></p>
+<pre><code class="javascript">const myCamera = Whirl.Camera(myGame, {
+    x: 50,
+    y: 75,
+    w: 200,
+    h: 200
+});
+
+const myViewport = myGame.viewportManager.add(..., ..., ..., myCamera, {
+    x: 0,
+    y: 0,
+    w: 400,
+    h: 400
+})
+    .bringCamera();
+
+// The camera is now moved from (50, 75) and 200 width and height to (0, 0) and 400 width and height.
+</code></pre></div>
+        
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../..';
+    </script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

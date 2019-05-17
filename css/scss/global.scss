@@ -1,0 +1,129 @@
+$nav-bg: #2196f3 !important;
+
+.navbar-default {
+	background-color: $nav-bg;
+	border-bottom-color: #00BCD4;
+
+	.navbar-brand {
+		position: relative;
+		margin-left: 25px !important;
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 5px;
+			right: calc(100% - 8px);
+			width: 32px;
+			height: 32px;
+			background-image: url(../../logo/logo.png);
+			background-size: cover;
+			background-position: center;
+		}
+	}
+	
+	.dropdown.open {
+		& > a, .dropdown-menu {
+			background-color: $nav-bg;
+		}
+	}
+	.navbar-nav {
+		background-color: $nav-bg;
+
+		& > li {
+			&.active > a, & > a:hover, & > a:focus {
+				color: #191919 !important;
+				background-color: #fbfbfb !important;
+			}
+		}
+		.dropdown-menu > li > a:hover,
+		.dropdown-menu > .active > a,
+		.dropdown-menu > .active > a:hover {
+			color: #191919 !important;
+			background-color: #fbfbfb !important;
+		}
+		&.navbar-right {
+			li:nth-of-type(2), li:nth-of-type(3) {
+				display: none !important;
+			}
+		}
+	}
+
+	.navbar-collapse {
+		border-color: transparent !important;
+	}
+}
+.bs-sidebar {
+	overflow-y: auto;
+	max-height: 86vh;
+
+	.bs-sidenav {
+		margin-top: 0;
+		margin-bottom: 0;
+		font-size: 14px;
+		
+		& > li.second-level {
+			padding-left: .5em;
+		}
+		& > li.third-level {
+			padding-left: 1em !important;
+		}
+		& > li > a {
+			padding: 2px 20px !important;
+		}
+	}
+}
+
+.homepage div[role="main"] {
+	& > h1 {
+		font-size: 4em;
+
+		small {
+			font-size: .3em;
+		}
+	}
+
+	h2 {
+		color: #3a3a3a;
+	}
+}
+
+// Tab indent
+span.tI {
+	display: block;
+
+	&.tI-1 {
+		margin-left: 2em !important;
+	}
+	&.tI-2 {
+		margin-left: 4em !important;
+	}
+	&.tI-3 {
+		margin-left: 6em !important;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	a.headerlink {
+		display: none;
+		margin-left: .4em;
+	}
+	&:hover a.headerlink {
+		display: inline;
+	}
+}
+
+@media (max-width: 992px) {
+    .container > .col-md-3 {
+        margin-top: 50px;
+    }
+}
+
+// @media (min-width: 768px) {
+// 	.container {
+// 		width: 830px !important;
+// 	}
+// }
+
+footer {
+	display: none !important;
+}

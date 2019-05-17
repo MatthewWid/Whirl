@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Getting Started - Whirl Game Engine</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+
+
+    <link href="../css/css/global.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body class="homepage" >
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="..">Whirl Game Engine</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../documentation/install/">Installation</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../documentation/classes/">Game Classes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../documentation/libraries/">In-Built Libraries</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../documentation/constants/">Constants</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../documentation/systems/">Object Systems</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../documentation/customisation/">Customisation</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">Getting Started</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../about/licence/">Licence</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../about/attributions/">Attributions</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../documentation/customisation/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../about/licence/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/MatthewWid/Whirl"><i class="fa fa-github"></i> GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#getting-started">Getting Started</a></li>
+            <li class="second-level"><a href="#installation-and-setup">Installation and Setup</a></li>
+                
+            <li class="second-level"><a href="#the-starter-file">The Starter File</a></li>
+                
+            <li class="second-level"><a href="#creating-the-first-sprite">Creating the First Sprite</a></li>
+                
+        <li class="first-level "><a href="#advanced-setting-up-from-scratch">Advanced: Setting Up From Scratch</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
+<p>This article will be an introduction to the Whirl game engine showcasing certain features and building a small interactive application.</p>
+<p>After completing this walkthrough you are encouraged to read <a href="../documentation/classes">the full documentation</a> to get an in-depth understanding of what each feature of the engine does, what it is and how to use it.</p>
+<h2 id="installation-and-setup">Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Permanent link">&para;</a></h2>
+<p>The first thing we need is the engine itself. Follow the four simple steps in the <a href="../documentation/install">installation guide</a> to build the JavaScript file from the source code, then open <code>examples/Simple Setup/index.html</code> file in your browser and the <code>script.js</code> in a text editor of your choice.</p>
+<p>If you have done everything correctly you should see an empty black screen with a white box - that is the canvas we will be drawing to.</p>
+<h2 id="the-starter-file">The Starter File<a class="headerlink" href="#the-starter-file" title="Permanent link">&para;</a></h2>
+<p>We will mainly be working in the <code>script.js</code> file located in the <code>/Simple Setup/</code> example project directory. Let's take a look a look at what is set up for us beforehand.</p>
+<p>Here is the code we are given:</p>
+<pre><code class="javascript">function update(data) {
+
+}
+
+function setup(data) {
+    const {game, viewport, stage, camera} = data;
+}
+
+Whirl.Game()
+    .setup({
+        setup,
+        update
+
+        canvas: &quot;#canvas&quot;,
+        cW: 400,
+        cH: 400
+    })
+    .start();
+</code></pre>
+
+<p>Let's go through each line one by one.</p>
+<pre><code class="javascript">function update(data) {
+</code></pre>
+
+<p>This is our own function that we give to Whirl - it will be called once every update loop. You can use this function to update, modify and check objects within your game world or have anything you could want to run once every frame here.</p>
+<pre><code class="javascript">function setup(data) {
+    const {game, viewport, stage, camera} = data;
+}
+</code></pre>
+
+<p>This is our own function that we give to Whirl - it will be called after the engine has finished setting up things like game state, the game canvas, viewports, game worlds, etc.</p>
+<p>You can use this function to perform all the setup your game will need such as creating objects, inserting sprites, positioning cameras, loading assets and more. We will get into doing some of these later on.</p>
+<p>Our function receives a single paramater <code>data</code> that gives us access to new objects created by the game setup. We will go into what a "viewport", "stage" and "camera" is later. For now know that <code>game</code> is a reference to the game instance are creating.</p>
+<pre><code class="javascript">Whirl.Game()
+</code></pre>
+
+<p>To create a game we must create a new instance of the game class that Whirl provides us. When <code>Whirl.Game()</code> is called it will internally set up  everything the game needs to run such as mouse and keyboard input, custom plugins and other various useful functions and processes.</p>
+<p>You can also configure certain aspects of the game instance by passing <a href="../documentation/classes/#parameters">configuration variables</a> as a JavaScript object to this function, but we'll just keep everything default for now.</p>
+<pre><code class="javascript">.setup({
+    setup,
+    update
+
+    canvas: &quot;#canvas&quot;,
+    cW: 400,
+    cH: 400
+})
+</code></pre>
+
+<p>We could set up everything we want for the game ourself; the canvas, viewport, game world, event hooks, etc. but this requires a bit of code and we want to get started as quickly as possible. Thankfully for us Whirl provides <a href="../documentation/classes/#methods">a handy setup function</a> that will automatically do this all for us.</p>
+<p>We pass our <code>setup</code> and <code>update</code> functions (using the new ES6 object property shorthand) as properties <code>setup</code> and <code>update</code> respectively to indicate that when the game starts we want it call our setup function and each time the game loop completes we want it to call our update function.</p>
+<p><code>canvas: "#canvas"</code> tells Whirl to use the targeted canvas element to render to (Check the <code>index.html</code> file in the <code>/Simple Setup/</code> directory!).<br />
+<code>cW: 400</code> and <code>cH: 400</code> will size our canvas to be 400x400 pixels.</p>
+<pre><code class="javascript">.start();
+</code></pre>
+
+<p>After all that we call our <a href="../documentation/classes/#methods"><code>start()</code> method</a> to begin running the game.</p>
+<p>Let's recap what the code given to us has done:</p>
+<ul>
+<li>Created a new Whirl game instance.</li>
+<li>Told the game to call our <code>setup</code> function when the game is finished setting up and our <code>update</code> function after each update loop.</li>
+<li>Provides a canvas element for the game to render to.</li>
+<li>Starts the game loop.</li>
+</ul>
+<p>Our game is now being rendered to the canvas, but it remains empty because there is nothing to render yet.</p>
+<h2 id="creating-the-first-sprite">Creating the First Sprite<a class="headerlink" href="#creating-the-first-sprite" title="Permanent link">&para;</a></h2>
+<h1 id="advanced-setting-up-from-scratch">Advanced: Setting Up From Scratch<a class="headerlink" href="#advanced-setting-up-from-scratch" title="Permanent link">&para;</a></h1>
+<p>This article will detail how to set up a game yourself from scratch without the use of the <code>.setup</code> method to do it for you.</p>
+<p>It will go into how to create your own viewport, your own stage and a custom camera, as well as utilising event listeners to define your own functions that are called exactly when you want them to be (such as the <code>update</code> and <code>setup</code> functions given to the <code>.setup</code> method).</p>
+<p>Touched on briefly will also be information about the innerworkings of the game setup and a game instance's updater.</p></div>
+        
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '..';
+    </script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2019-05-17 10:22:01
+-->

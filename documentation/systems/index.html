@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    <title>Object Systems - Whirl Game Engine</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+
+
+    <link href="../../css/css/global.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="../..">Whirl Game Engine</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../install/">Installation</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../classes/">Game Classes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../libraries/">In-Built Libraries</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../constants/">Constants</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Object Systems</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../customisation/">Customisation</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../getting-started/">Getting Started</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../about/licence/">Licence</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../about/attributions/">Attributions</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../constants/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../customisation/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/MatthewWid/Whirl"><i class="fa fa-github"></i> GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#object-systems">Object Systems</a></li>
+        <li class="first-level "><a href="#the-global-store">The Global Store</a></li>
+            <li class="second-level"><a href="#methods">Methods</a></li>
+                
+                <li class="third-level"><a href="#get-all">Get All</a></li>
+                <li class="third-level"><a href="#get-by-id">Get By ID</a></li>
+                <li class="third-level"><a href="#get-by-name">Get By Name</a></li>
+                <li class="third-level"><a href="#get-by-type">Get By Type</a></li>
+                <li class="third-level"><a href="#destroy-by-id">Destroy By ID</a></li>
+        <li class="first-level "><a href="#custom-events">Custom Events</a></li>
+            <li class="second-level"><a href="#methods_1">Methods</a></li>
+                
+                <li class="third-level"><a href="#on">On</a></li>
+                <li class="third-level"><a href="#on-once">On Once</a></li>
+                <li class="third-level"><a href="#emit">Emit</a></li>
+                <li class="third-level"><a href="#remove-by-id">Remove By ID</a></li>
+                <li class="third-level"><a href="#remove-all">Remove All</a></li>
+        <li class="first-level "><a href="#animation-tweens">Animation Tweens</a></li>
+        <li class="first-level "><a href="#child-hierarchy">Child Hierarchy</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="object-systems">Object Systems<a class="headerlink" href="#object-systems" title="Permanent link">&para;</a></h1>
+<p>Object systems are reusable pieces of code that can be attached to game objects during instantiation (Think React hooks, if you're familiar).</p>
+<p>Objects instantiated this way are stored in <a href="#the-global-store">the global store</a> unless specifically ordered not to be.</p>
+<p>You can read more about instantiating your own custom game elements in <a href="../customisation">the customisation section</a>, but for the most part in-built game objects (such as viewports, stages, sprites, plugins, etc.) will instantiate themselves in the game instance for you.</p>
+<p>To attach a game system to an object that is not already equpped with one you can call the <code>attachSystem</code> method. Objects must be instantiated in a game instance first to have a game system attached to them.</p>
+<pre><code class="javascript">[game].object.attachSystem(&lt;obj&gt;, &lt;systems&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Object</strong> <code>&lt;obj&gt;</code>
+</span>
+<span class="tI tI-2">
+    Object to attach the event system(s) to.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong> <code>&lt;systems&gt;</code>
+</span>
+<span class="tI tI-2">
+    Object indicating list of systems to attach to the given object.<br />
+    The property value must be set to <code>true</code> to register.<br />
+    The current valid object systems are:
+</span>
+<span class="tI tI-3">
+    • <code>event</code><br />
+    • <code>tween</code><br />
+    • <code>child</code>
+</span></p>
+<p><strong>Example(s):</strong></p>
+<p>Creating a custom sprite and then attaching the <code>event</code> and <code>tween</code> object system to it.</p>
+<pre><code class="javascript">// Create a new game instance and an empty object.
+const game = Whirl.Game();
+const customSprite = {};
+// Instantiate the empty object into the game instance.
+game.object.init(customSprite, &quot;Custom.Sprite&quot;);
+
+// Attach the `event` and `tween` system.
+game.object.attachSystem(customSprite, {
+    event: true,
+    tween: true
+});
+</code></pre>
+
+<p>Object systems can also be attached with the <code>init</code> method during instantiation as a third argument.</p>
+<h1 id="the-global-store">The Global Store<a class="headerlink" href="#the-global-store" title="Permanent link">&para;</a></h1>
+<p>Most objects instantiated within a Whirl game instance are stored in what is called "The Global Store". This is a persistent list of all objects that exist in the current game instance.</p>
+<p>You can see the raw global store of your game instance under <code>[game].globalStore</code> but you should <strong>never modify this directly</strong>. You should also never rely on the order of the array representing the raw global store as it can change between game updates, object modification and other various ways.</p>
+<p>To traverse the global store you should use the provided methods under the <code>object</code> property of a game instance.</p>
+<pre><code class="javascript">[game].object
+</code></pre>
+
+<h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
+<p>For all "Get ..." methods if no results are found (meaning no objects are matched) then an empty array will be returned (<code>[]</code>).</p>
+<h3 id="get-all">Get All<a class="headerlink" href="#get-all" title="Permanent link">&para;</a></h3>
+<p>Returns an array of every item in the global store.</p>
+<pre><code class="javascript">[game].object.getAll()
+</code></pre>
+
+<p>The returned array has no inherent ordering and thus the order the of the returned array will not necessarily be consistent on every call.</p>
+<h3 id="get-by-id">Get By ID<a class="headerlink" href="#get-by-id" title="Permanent link">&para;</a></h3>
+<p>Returns an array of objects in the global store whose <code>_id</code> property match the given <code>&lt;id&gt;</code> search value.</p>
+<p>All objects that are instantiated within a game instance (Regardless of whether they are stored within the global store or not) are assigned a unique <code>_id</code> integer value that uniquely identifies every object created under the game instance since the game was instantiated.</p>
+<p>Keep in mind all IDs should be unique so although an array may be returned it should never have more than one </p>
+<pre><code class="javascript">[game].object.getById(&lt;id&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Integer</strong> <code>&lt;id&gt;</code>
+</span>
+<span class="tI tI-2">
+    Unique ID number by which to search the global store by.
+</span></p>
+<h3 id="get-by-name">Get By Name<a class="headerlink" href="#get-by-name" title="Permanent link">&para;</a></h3>
+<p>Returns an array of objects in the global store whose <code>name</code> property matches the given <code>&lt;name&gt;</code> search string.</p>
+<p>Viewports, Stages, Sprites and Assets all a have <code>name</code> property that you provide when creating a new instance of them.</p>
+<pre><code class="javascript">[game].object.getByName(&lt;name&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>String</strong> <code>&lt;name&gt;</code>
+</span>
+<span class="tI tI-2">
+    String to match an object's name in the global store.
+</span></p>
+<h3 id="get-by-type">Get By Type<a class="headerlink" href="#get-by-type" title="Permanent link">&para;</a></h3>
+<p>Returns an array of objects in the global store whose <code>_type</code> property matches the given <code>&lt;type&gt;</code> string.</p>
+<p>All objects instantiated under a game instance give a name for their "type" that identifies where the object came from and its own class. For example, a viewport's <code>_type</code> is <code>Whirl.Viewport</code>, and a sprite's <code>_type</code> is <code>Whirl.Sprite</code>.</p>
+<p>To learn more about types and making your own see <a href="../customisation">the customisation section</a>.</p>
+<pre><code class="javascript">[game].object.getByType(&lt;type&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>String</strong> <code>&lt;type&gt;</code>
+</span>
+<span class="tI tI-2">
+    String to match an object's type in the global store.
+</span></p>
+<h3 id="destroy-by-id">Destroy By ID<a class="headerlink" href="#destroy-by-id" title="Permanent link">&para;</a></h3>
+<p>Removes an object from the global store given an <code>&lt;id&gt;</code> property and returns the removed object. Returns <code>false</code> if no object to remove is found.</p>
+<p><em>Use with caution:</em><br />
+This method directly modifies the global store and therefore should not be used unless there are <strong>no other references to the object anywhere else in the game instance</strong> (such as being stored in a stage world, viewport, camera, etc.). Doing so may break functionality in unexpected and sometimes hard to debug ways.</p>
+<pre><code class="javascript">[game].object.destroyById(&lt;id&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Integer</strong> <code>&lt;id&gt;</code>
+</span>
+<span class="tI tI-2">
+    Unique ID number by which to search the global store by and match an object to be removed.
+</span></p>
+<h1 id="custom-events">Custom Events<a class="headerlink" href="#custom-events" title="Permanent link">&para;</a></h1>
+<p>Whirl uses a dynamic custom event system to emit information from objects that can be picked up by listeners on that object. Many Whirl objects come with their own premade events, but you can also make your own that listens on or emits events from any object that has the event system attached.</p>
+<p>Events are identified by name. There can be multiple listeners on a single event that will all fire when that even is called. Events are called in the order that the listeners were initially added in.</p>
+<pre><code class="javascript">[object].event
+</code></pre>
+
+<pre><code class="javascript">[game].object.attachSystem([object], {event: true})
+</code></pre>
+
+<h2 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h2>
+<h3 id="on">On<a class="headerlink" href="#on" title="Permanent link">&para;</a></h3>
+<p>Adds a new event listener for the given event name.</p>
+<pre><code class="javascript">[object].event.on(&lt;name&gt;, &lt;callback&gt;, &lt;once&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>String</strong> <code>&lt;name&gt;</code>
+</span>
+<span class="tI tI-2">
+    Name of the event to listen on.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Function</strong> <code>&lt;callback&gt;</code>
+</span>
+<span class="tI tI-2">
+    Callback function that is called every time an event is emitted on the given event name.<br />
+    Takes a single object parameter that contains the emitted data.<br />
+    The object paramater also has attached to it the following properties:
+</span>
+<span class="tI tI-3">
+    <code>_eventId</code> - The ID of the current event listener.<br />
+<code>_object</code> - The object the event is being called on.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Boolean</strong> <code>&lt;once&gt;</code> (Optional) (Default: <code>false</code>)
+</span>
+<span class="tI tI-2">
+    If set to <code>true</code> will remove the event listener after one emit to the event name.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<p>Listen for the event <code>hit</code> on the <code>myPlayer</code> object that when called upon will damage the player by the given <code>damage</code> value.</p>
+<pre><code class="javascript">myPlayer.event.on(&quot;hit&quot;, (info) =&gt; {
+    myPlayer.data.health -= info.damage;
+});
+</code></pre>
+
+<p>Listen for the event <code>loadedImage</code> that is listened to once and then when emitted to stops listening.</p>
+<pre><code class="javascript">myPlayer.event.on(&quot;loadedImage&quot;, (info) =&gt; {
+    console.log(&quot;Player image loaded!&quot;);
+}, true);
+</code></pre>
+
+<h3 id="on-once">On Once<a class="headerlink" href="#on-once" title="Permanent link">&para;</a></h3>
+<p>Implicitly the same as <code>.event.on</code> but with the <code>&lt;once&gt;</code> argument set to <code>true</code>.</p>
+<p>See the <a href="#on">'On' method parameters</a> as they are the same except with the last parameter omitted.</p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">myPlayer.event.onOnce(&quot;loadedImage&quot;, (info) =&gt; {
+    console.log(&quot;Player image loaded!&quot;);
+});
+</code></pre>
+
+<h3 id="emit">Emit<a class="headerlink" href="#emit" title="Permanent link">&para;</a></h3>
+<p>Emits an event on the given name with given data.</p>
+<pre><code class="javascript">[object].event.emit(&lt;name&gt;, &lt;data&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>String</strong> <code>&lt;name&gt;</code>
+</span>
+<span class="tI tI-2">
+    Name of the event to emit on.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong> <code>&lt;data&gt;</code> (Optional) (Default: <code>{}</code>)
+</span>
+<span class="tI tI-2">
+    Data to emit with the event.<br />
+    You can add any property to this object, but do not overwrite the additional properties added by the event system (<code>_eventId</code> and <code>_object</code>).
+</span></p>
+<p><strong>Example(s):</strong></p>
+<p>Emit the <code>hit</code> event on the <code>myPlayer</code> object that passes <code>damage: 5</code> on the data object.</p>
+<pre><code class="javascript">myPlayer.event.emit(&quot;hit&quot;, {
+    damage: 5
+});
+</code></pre>
+
+<h3 id="remove-by-id">Remove By ID<a class="headerlink" href="#remove-by-id" title="Permanent link">&para;</a></h3>
+<p>Removes a specific event listener by its unique identity number.</p>
+<p>Each event listener has a unique identification number that is passed to the callback function whenever the listener is emitted to in the <code>_eventId</code> property.</p>
+<pre><code class="javascript">[object].event.removeById(&lt;name&gt;, &lt;id&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>String</strong> <code>&lt;name&gt;</code>
+</span>
+<span class="tI tI-2">
+    Name of the event.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Integer</strong> <code>&lt;id&gt;</code>
+</span>
+<span class="tI tI-2">
+    ID number of the listener within the event.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">myPlayer.event.on(&quot;hit&quot;, (info) =&gt; {
+    myPlayer.data.health -= info.damage;
+
+    // Make the player invincible so they can't be hit anymore by removing the event listener
+    myPlayer.event.removeById(&quot;name&quot;, info._eventId);
+});
+</code></pre>
+
+<h3 id="remove-all">Remove All<a class="headerlink" href="#remove-all" title="Permanent link">&para;</a></h3>
+<p>Removes all event listeners on a specified event name.</p>
+<pre><code class="javascript">[object].event.removeAll(&lt;name&gt;)
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>String</strong> <code>&lt;name&gt;</code>
+</span>
+<span class="tI tI-2">
+    Name of the event to remove all listeners from.
+</span></p>
+<p><strong>Example(s):</strong></p>
+<p>Remove all listeners listening on the <code>hit</code> event on the <code>myPlayer</code> object.</p>
+<pre><code class="javascript">myPlayer.event.removeAll(&quot;hit&quot;);
+</code></pre>
+
+<h1 id="animation-tweens">Animation Tweens<a class="headerlink" href="#animation-tweens" title="Permanent link">&para;</a></h1>
+<p>Tweens are animation instructions that continually put intermediate frames between two points over a given time.</p>
+<pre><code class="javascript">[object].tween
+
+[game].tweenManager
+</code></pre>
+
+<pre><code class="javascript">[game].object.attachSystem([object], {tween: true})
+</code></pre>
+
+<h1 id="child-hierarchy">Child Hierarchy<a class="headerlink" href="#child-hierarchy" title="Permanent link">&para;</a></h1>
+<pre><code class="javascript">[object].child
+</code></pre>
+
+<pre><code class="javascript">[game].object.attachSystem([object], {child: true})
+</code></pre></div>
+        
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../..';
+    </script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>

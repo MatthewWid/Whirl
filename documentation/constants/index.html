@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    <title>Constants - Whirl Game Engine</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href='//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+
+
+    <link href="../../css/css/global.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            <a class="navbar-brand" href="../..">Whirl Game Engine</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../install/">Installation</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../classes/">Game Classes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../libraries/">In-Built Libraries</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Constants</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../systems/">Object Systems</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../customisation/">Customisation</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../getting-started/">Getting Started</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../about/licence/">Licence</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../about/attributions/">Attributions</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fa fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../libraries/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../systems/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/MatthewWid/Whirl"><i class="fa fa-github"></i> GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#keys">keys</a></li>
+        <li class="first-level "><a href="#stage">STAGE</a></li>
+        <li class="first-level "><a href="#camera">CAMERA</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="keys">keys<a class="headerlink" href="#keys" title="Permanent link">&para;</a></h1>
+<p>Maps English keyboard characters to their respective key codes and vice-versa.</p>
+<p>Primarily used in keyboard input to write key names instead of key codes.</p>
+<pre><code class="javascript">Whirl.keys
+</code></pre>
+
+<p>The keys listed below are in JSON file-format and are also accessed as such.</p>
+<pre><code class="json">&quot;a&quot;: 65,
+&quot;b&quot;: 66,
+&quot;c&quot;: 67,
+&quot;d&quot;: 68,
+&quot;e&quot;: 69,
+&quot;f&quot;: 70,
+&quot;g&quot;: 71,
+&quot;h&quot;: 72,
+&quot;i&quot;: 73,
+&quot;j&quot;: 74,
+&quot;k&quot;: 75,
+&quot;l&quot;: 76,
+&quot;m&quot;: 77,
+&quot;n&quot;: 78,
+&quot;o&quot;: 79,
+&quot;p&quot;: 80,
+&quot;q&quot;: 81,
+&quot;r&quot;: 82,
+&quot;s&quot;: 83,
+&quot;t&quot;: 84,
+&quot;u&quot;: 85,
+&quot;v&quot;: 86,
+&quot;w&quot;: 87,
+&quot;x&quot;: 88,
+&quot;y&quot;: 89,
+&quot;z&quot;: 90,
+
+&quot;0&quot;: 48,
+&quot;1&quot;: 49,
+&quot;2&quot;: 50,
+&quot;3&quot;: 51,
+&quot;4&quot;: 52,
+&quot;5&quot;: 53,
+&quot;6&quot;: 54,
+&quot;7&quot;: 55,
+&quot;8&quot;: 56,
+&quot;9&quot;: 57,
+
+&quot;ArrowUp&quot;: 38,
+&quot;ArrowRight&quot;: 39,
+&quot;ArrowDown&quot;: 40,
+&quot;ArrowLeft&quot;: 37,
+
+&quot;Shift&quot;: 16,
+&quot;Space&quot;: 32,
+&quot;Alt&quot;: 18,
+&quot;Control&quot;: 17,
+&quot;Minus&quot;: 189,
+&quot;Equal&quot;: 187,
+&quot;Backquote&quot;: 192,
+&quot;Comma&quot;: 188,
+&quot;Period&quot;: 190,
+&quot;Slash&quot;: 191
+</code></pre>
+
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.keys[&quot;x&quot;]; // 88
+
+Whirl.keys[&quot;ArrowRight&quot;]; // 39
+
+Whirl.keys[&quot;Shift&quot;]; // 16
+</code></pre>
+
+<p>Keys can also be searched for in reverse using the <code>getByKeyCode</code> method.</p>
+<p><strong>Example(s):</strong></p>
+<pre><code class="javascript">Whirl.keys.getByKeyCode(88); // &quot;x&quot;
+
+Whirl.keys.getByKeyCode(39); // &quot;ArrowRight&quot;
+
+Whirl.keys.getByKeyCode(16); // &quot;Shift&quot;
+</code></pre>
+
+<hr />
+<h1 id="stage">STAGE<a class="headerlink" href="#stage" title="Permanent link">&para;</a></h1>
+<p>Returns the constant string "<code>_DEFAULTSTAGE</code>".</p>
+<p>Used in <a href="../classes/#parameters_6">viewport instantiation</a> to automatically set up a default <a href="../classes#stage">Stage</a> object instead of providing an already created one.</p>
+<pre><code class="javascript">Whirl.STAGE
+</code></pre>
+
+<p>The newly instantiated stage will automatically have the same dimensions as the viewport.</p>
+<hr />
+<h1 id="camera">CAMERA<a class="headerlink" href="#camera" title="Permanent link">&para;</a></h1>
+<p>Returns the constant string "<code>_DEFAULTCAMERA</code>".</p>
+<p>Used in <a href="../classes/#parameters_6">viewport instantiation</a> to automatically set up a default <a href="../classes#camera">Camera</a> object instead of providing an already created one.</p>
+<pre><code class="javascript">Whirl.CAMERA
+</code></pre>
+
+<p>The newly instantiated camera will automatically have the same position and dimensions as the viewport.</p></div>
+        
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p></small>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '../..';
+    </script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
