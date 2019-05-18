@@ -1,7 +1,9 @@
 // Whirl.Game.setup
 
 function setup(presets) {
-	let setupData = {};
+	let setupData = {
+		game: this
+	};
 
 	if (presets.canvas) {
 		const mainViewport = this.viewportManager.add("main", presets.canvas, Whirl.STAGE, Whirl.CAMERA, {
