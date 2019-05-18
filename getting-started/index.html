@@ -179,7 +179,7 @@
                 
             <li class="second-level"><a href="#the-starter-file">The Starter File</a></li>
                 
-            <li class="second-level"><a href="#creating-the-first-sprite">Creating the First Sprite</a></li>
+            <li class="second-level"><a href="#creating-our-first-sprite">Creating our First Sprite</a></li>
                 
         <li class="first-level "><a href="#advanced-setting-up-from-scratch">Advanced: Setting Up From Scratch</a></li>
     </ul>
@@ -244,22 +244,22 @@ Whirl.Game()
 </code></pre>
 
 <p>We could set up everything we want for the game ourself; the canvas, viewport, game world, event hooks, etc. but this requires a bit of code and we want to get started as quickly as possible. Thankfully for us Whirl provides <a href="../documentation/classes/#methods">a handy setup function</a> that will automatically do this all for us.</p>
-<p>We pass our <code>setup</code> and <code>update</code> functions (using the new ES6 object property shorthand) as properties <code>setup</code> and <code>update</code> respectively to indicate that when the game starts we want it call our setup function and each time the game loop completes we want it to call our update function.</p>
-<p><code>canvas: "#canvas"</code> tells Whirl to use the targeted canvas element to render to (Check the <code>index.html</code> file in the <code>/Simple Setup/</code> directory!).<br />
-<code>cW: 400</code> and <code>cH: 400</code> will size our canvas to be 400x400 pixels.</p>
+<p>We pass our <code>setup</code> and <code>update</code> functions (using the new ES6 object property shorthand) as the properties <code>setup</code> and <code>update</code> respectively to indicate that when the game starts we want our setup function to be called and each time the game updates we want our update function to be called.</p>
+<p><code>canvas: "#canvas"</code> tells Whirl to render to the canvas with the given ID <code>canvas</code> (Check the <code>index.html</code> file in the <code>/Simple Setup/</code> directory!).<br />
+<code>cW: 400</code> and <code>cH: 400</code> will set our canvas size to be 400x400 pixels.</p>
 <pre><code class="javascript">.start();
 </code></pre>
 
-<p>After all that we call our <a href="../documentation/classes/#methods"><code>start()</code> method</a> to begin running the game.</p>
+<p>After that code we call our <a href="../documentation/classes/#methods"><code>start()</code> method</a> to begin running the game.</p>
 <p>Let's recap what the code given to us has done:</p>
 <ul>
 <li>Created a new Whirl game instance.</li>
 <li>Told the game to call our <code>setup</code> function when the game is finished setting up and our <code>update</code> function after each update loop.</li>
-<li>Provides a canvas element for the game to render to.</li>
-<li>Starts the game loop.</li>
+<li>Provide a canvas element for the game to render to.</li>
+<li>Start the game loop.</li>
 </ul>
 <p>Our game is now being rendered to the canvas, but it remains empty because there is nothing to render yet.</p>
-<h2 id="creating-the-first-sprite">Creating the First Sprite<a class="headerlink" href="#creating-the-first-sprite" title="Permanent link">&para;</a></h2>
+<h2 id="creating-our-first-sprite">Creating our First Sprite<a class="headerlink" href="#creating-our-first-sprite" title="Permanent link">&para;</a></h2>
 <h1 id="advanced-setting-up-from-scratch">Advanced: Setting Up From Scratch<a class="headerlink" href="#advanced-setting-up-from-scratch" title="Permanent link">&para;</a></h1>
 <p>This article will detail how to set up a game yourself from scratch without the use of the <code>.setup</code> method to do it for you.</p>
 <p>It will go into how to create your own viewport, your own stage and a custom camera, as well as utilising event listeners to define your own functions that are called exactly when you want them to be (such as the <code>update</code> and <code>setup</code> functions given to the <code>.setup</code> method).</p>
@@ -318,5 +318,5 @@ Whirl.Game()
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-05-17 10:22:01
+Build Date UTC : 2019-05-18 10:39:21
 -->

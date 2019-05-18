@@ -192,6 +192,8 @@
                 <li class="third-level"><a href="#remove-by-id">Remove By ID</a></li>
                 <li class="third-level"><a href="#remove-all">Remove All</a></li>
         <li class="first-level "><a href="#animation-tweens">Animation Tweens</a></li>
+            <li class="second-level"><a href="#tween">Tween</a></li>
+                
         <li class="first-level "><a href="#child-hierarchy">Child Hierarchy</a></li>
     </ul>
 </div></div>
@@ -307,11 +309,13 @@ This method directly modifies the global store and therefore should not be used 
     Unique ID number by which to search the global store by and match an object to be removed.
 </span></p>
 <h1 id="custom-events">Custom Events<a class="headerlink" href="#custom-events" title="Permanent link">&para;</a></h1>
-<p>Whirl uses a dynamic custom event system to emit information from objects that can be picked up by listeners on that object. Many Whirl objects come with their own premade events, but you can also make your own that listens on or emits events from any object that has the event system attached.</p>
-<p>Events are identified by name. There can be multiple listeners on a single event that will all fire when that even is called. Events are called in the order that the listeners were initially added in.</p>
+<p>Whirl uses a dynamic event system to emit information from objects that can be picked up by listeners on that object. Many Whirl objects come with their own premade events, but you can also make your own that listen on or emit events from any object that has the event system attached to it.</p>
+<p>Events are identified by a given name. There can be multiple listeners on a single event that will all fire when that even is called. Events are called in the order that the listeners were initially added in.</p>
+<p>Events do not have to be initialised beforehand. You can listen on any event name and it will be fired if something emits on that same name.</p>
 <pre><code class="javascript">[object].event
 </code></pre>
 
+<p>Attach the event system to a game object:</p>
 <pre><code class="javascript">[game].object.attachSystem([object], {event: true})
 </code></pre>
 
@@ -337,7 +341,7 @@ This method directly modifies the global store and therefore should not be used 
 </span>
 <span class="tI tI-3">
     <code>_eventId</code> - The ID of the current event listener.<br />
-<code>_object</code> - The object the event is being called on.
+<code>_object</code> - The object that the event is being called on.
 </span></p>
 <p><span class="tI tI-1">
     <strong>Boolean</strong> <code>&lt;once&gt;</code> (Optional) (Default: <code>false</code>)
@@ -347,13 +351,13 @@ This method directly modifies the global store and therefore should not be used 
 </span></p>
 <p><strong>Example(s):</strong></p>
 <p>Listen for the event <code>hit</code> on the <code>myPlayer</code> object that when called upon will damage the player by the given <code>damage</code> value.</p>
-<pre><code class="javascript">myPlayer.event.on(&quot;hit&quot;, (info) =&gt; {
-    myPlayer.data.health -= info.damage;
+<pre><code class="javascript">myPlayer.event.on(&quot;hit&quot;, (data) =&gt; {
+    myPlayer.data.health -= data.damage;
 });
 </code></pre>
 
 <p>Listen for the event <code>loadedImage</code> that is listened to once and then when emitted to stops listening.</p>
-<pre><code class="javascript">myPlayer.event.on(&quot;loadedImage&quot;, (info) =&gt; {
+<pre><code class="javascript">myPlayer.event.on(&quot;loadedImage&quot;, (data) =&gt; {
     console.log(&quot;Player image loaded!&quot;);
 }, true);
 </code></pre>
@@ -362,7 +366,7 @@ This method directly modifies the global store and therefore should not be used 
 <p>Implicitly the same as <code>.event.on</code> but with the <code>&lt;once&gt;</code> argument set to <code>true</code>.</p>
 <p>See the <a href="#on">'On' method parameters</a> as they are the same except with the last parameter omitted.</p>
 <p><strong>Example(s):</strong></p>
-<pre><code class="javascript">myPlayer.event.onOnce(&quot;loadedImage&quot;, (info) =&gt; {
+<pre><code class="javascript">myPlayer.event.onOnce(&quot;loadedImage&quot;, (data) =&gt; {
     console.log(&quot;Player image loaded!&quot;);
 });
 </code></pre>
@@ -411,11 +415,11 @@ This method directly modifies the global store and therefore should not be used 
     ID number of the listener within the event.
 </span></p>
 <p><strong>Example(s):</strong></p>
-<pre><code class="javascript">myPlayer.event.on(&quot;hit&quot;, (info) =&gt; {
-    myPlayer.data.health -= info.damage;
+<pre><code class="javascript">myPlayer.event.on(&quot;hit&quot;, (data) =&gt; {
+    myPlayer.data.health -= data.damage;
 
     // Make the player invincible so they can't be hit anymore by removing the event listener
-    myPlayer.event.removeById(&quot;name&quot;, info._eventId);
+    myPlayer.event.removeById(&quot;name&quot;, data._eventId);
 });
 </code></pre>
 
@@ -436,19 +440,88 @@ This method directly modifies the global store and therefore should not be used 
 </code></pre>
 
 <h1 id="animation-tweens">Animation Tweens<a class="headerlink" href="#animation-tweens" title="Permanent link">&para;</a></h1>
-<p>Tweens are animation instructions that continually put intermediate frames between two points over a given time.</p>
+<p>Tweens are instructions that continually put intermediate frames between two points over a given time.</p>
+<p>Tweens are created, manipulated and deleted by the game instance's tween manager. You can create a tween using the tween manager directly or create a tween from object itself (on it's <code>.tween</code> property) which will implicitely call the tween manager.</p>
+<p>Creating a tween using the tween manager does not require the object to have the <code>tween</code> system attached to it as tween data is stored separately within the tween manager itself. To use the tween shorthand <code>[object].tween</code> you must first ensure that the <code>tween</code> system is attached to the object.</p>
+<p><em>Tweens are updated on the same tick as the main game loop, but the timing and duration is set independently of the game update rate. This means that the exact ending of a tween can occur at a different time to when the game finishes an update causing a slight millisecond delay between the tween finishing and the result being shown.</em></p>
 <pre><code class="javascript">[object].tween
 
 [game].tweenManager
 </code></pre>
 
+<p>Attach the tween system to a game object:</p>
 <pre><code class="javascript">[game].object.attachSystem([object], {tween: true})
 </code></pre>
 
+<h2 id="tween">Tween<a class="headerlink" href="#tween" title="Permanent link">&para;</a></h2>
+<p>Returns a <code>Tween</code> object that holds data about a tween and can be modified later.</p>
+<p>Create a tween on an object.</p>
+<p>Tweens cannot modify nested properties of an object. To modify a nested object then you must create a separate tween for that object itself.</p>
+<pre><code class="javascript">// Create a tween using the Tween Manager
+[game].tweenManager.create([object], [from], [to], [time], [presets])
+
+// Create a tween using the Tween object system
+[object].tween([from], [to], [time], [presets])
+</code></pre>
+
+<p><span class="tI tI-1">
+    <strong>Object</strong> <code>&lt;object&gt;</code>
+</span>
+<span class="tI tI-2">
+    Object that the tween will apply to.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong> <code>&lt;from&gt;</code> (Optional) (Default: <code>{}</code>)
+</span>
+<span class="tI tI-2">
+    Object that defines properties of the given <code>&lt;object&gt;</code> to edit and their values that are set from the beginning of the tween.
+</span></p>
+<p><span class="tI tI-2">
+    Properties given here should correlate to the properties of the given <code>&lt;object&gt;</code>.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong> <code>&lt;to&gt;</code>
+</span>
+<span class="tI tI-2">
+    Object that defines properties of the given <code>&lt;object&gt;</code> to tween their values <em>to</em> (as opposed to from) the ending of the tween.
+</span></p>
+<p><span class="tI tI-2">
+    Properties given here should correlate to the given properties of the given <code>&lt;object&gt;</code>.
+</span></p>
+<p><span class="tI tI-2">
+    If no properties are given to the <code>&lt;from&gt;</code> object then instead of transitioning the values between the <code>&lt;from&gt;</code> and <code>&lt;to&gt;</code> objects the values will be transitioned from their pre-existing state and <em>increased</em> by the values given in the <code>&lt;to&gt;</code> object.
+</span></p>
+<p><span class="tI tI-2">
+    For example, if an object's properties are <code>{x: 20, y: 60}</code> and the tween <code>&lt;from&gt;</code> object is <code>{x: 50}</code> and <code>&lt;to&gt;</code> is <code>{x: 100}</code> then the tween will transition the <code>x</code> property from <code>50</code> to <code>100</code>.
+</span></p>
+<p><span class="tI tI-2">
+    If the <code>&lt;from&gt;</code> object is <code>{}</code> (or <code>undefined</code>) and <code>&lt;to&gt;</code> is <code>{x: 100}</code> then the tween will transition the <code>x</code> property from <code>20</code> to <code>120</code> as the <code>x</code> property was <code>20</code> and is now being <em>increased</em> by <code>100</code>. 
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Integer</strong> <code>&lt;time&gt;</code>
+</span>
+<span class="tI tI-2">
+    Time (in milliseconds) that the tween takes to transition between the <code>&lt;from&gt;</code> and <code>&lt;to&gt;</code> values.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Object</strong> <code>&lt;presets&gt;</code>
+</span>
+<span class="tI tI-2">
+    Presets/Configuration to give to the tween. All presets are optional.
+</span></p>
+<p><span class="tI tI-2">
+    <strong>Function</strong> <code>easing</code> - Easing function to use for the tween. See all <a href="../../documentation/libraries/#easing-functions">Whirl easing functions</a>. You may also supply a custom easing function. (Default: <code>Whirl.easing.linear</code>).<br />
+<strong>Boolean</strong> <code>start</code> - Begin the tween animation immediately as it is created (Default: <code>true</code>).<br />
+<strong>Number</strong> <code>step</code> - Value to step between on each update loop. After each update by the tween the value will be rounded to the given <code>&lt;step&gt;</code> value (Default: No rounding).<br />
+<strong>Boolean</strong> <code>roundValues</code> - Whether the values being modified should be rounded to the nearest integer (Default: <code>false</code>).<br />
+<strong>Boolean</strong> <code>loop</code> - Whether the Tween will restart after completing. If a Tween has another Tween chained to it then it will not loop regardless of this flag (Default: <code>false</code>).<br />
+<strong>Boolean</strong> <code>canPurge</code> - Whether the Tween can be purged from the internal list of tweens stored in the tween manager (Default: <code>true</code>).
+</span></p>
 <h1 id="child-hierarchy">Child Hierarchy<a class="headerlink" href="#child-hierarchy" title="Permanent link">&para;</a></h1>
 <pre><code class="javascript">[object].child
 </code></pre>
 
+<p>Attach the child system to a game object:</p>
 <pre><code class="javascript">[game].object.attachSystem([object], {child: true})
 </code></pre></div>
         
