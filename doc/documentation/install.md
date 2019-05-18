@@ -2,31 +2,30 @@
 
 **Whirl** is designed to be capable of running offline and in the browser.
 
-You will need [Browserify](http://browserify.org/) to compile the source down into a single, usable Javascript file.  
-If you're developing with the purpose of contributing to Whirl, you may also want [Watchify](https://github.com/browserify/watchify).
+You first need to compile the library from the source and then include it in your project.
 
-**1. Clone the repository:**
+**1. Clone the repository.**
 
 ```bash
 git clone https://github.com/MatthewWid/Whirl.git
 ```
 
-**2. Navigate to the root directory:**
+**2. Navigate to the root directory.**
 
 ```bash
 cd "Whirl"
 ```
 
-**3. Install dependencies:**
+**3. Install dependencies.**
 
 ```bash
 npm install
 ```
 
-**4. Build the source:**
+**4. Build the source.**
 
 ```bash
-npm run build
+npm run prod
 ```
 
 You should now see that a file called `whirl.js` has appeared in the `/build/` directory.
