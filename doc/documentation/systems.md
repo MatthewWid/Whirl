@@ -154,13 +154,17 @@ This method directly modifies the global store and therefore should not be used 
 
 # Custom Events
 
-Whirl uses a dynamic custom event system to emit information from objects that can be picked up by listeners on that object. Many Whirl objects come with their own premade events, but you can also make your own that listens on or emits events from any object that has the event system attached.
+Whirl uses a dynamic event system to emit information from objects that can be picked up by listeners on that object. Many Whirl objects come with their own premade events, but you can also make your own that listen on or emit events from any object that has the event system attached to it.
 
-Events are identified by name. There can be multiple listeners on a single event that will all fire when that even is called. Events are called in the order that the listeners were initially added in.
+Events are identified by a given name. There can be multiple listeners on a single event that will all fire when that even is called. Events are called in the order that the listeners were initially added in.
+
+Events do not have to be initialised beforehand. You can listen pn any event name and it will be fired if something emits on that same name.
 
 ```javascript
 [object].event
 ```
+
+Attach the event system to a game object:
 
 ```javascript
 [game].object.attachSystem([object], {event: true})
@@ -193,7 +197,7 @@ Adds a new event listener for the given event name.
 </span>
 <span class="tI tI-3">
 	`_eventId` - The ID of the current event listener.  
-	`_object` - The object the event is being called on.
+	`_object` - The object that the event is being called on.
 </span>
 
 <span class="tI tI-1">
@@ -208,15 +212,15 @@ Adds a new event listener for the given event name.
 Listen for the event `hit` on the `myPlayer` object that when called upon will damage the player by the given `damage` value.
 
 ```javascript
-myPlayer.event.on("hit", (info) => {
-	myPlayer.data.health -= info.damage;
+myPlayer.event.on("hit", (data) => {
+	myPlayer.data.health -= data.damage;
 });
 ```
 
 Listen for the event `loadedImage` that is listened to once and then when emitted to stops listening.
 
 ```javascript
-myPlayer.event.on("loadedImage", (info) => {
+myPlayer.event.on("loadedImage", (data) => {
 	console.log("Player image loaded!");
 }, true);
 ```
@@ -230,7 +234,7 @@ See the ['On' method parameters](#on) as they are the same except with the last 
 **Example(s):**
 
 ```javascript
-myPlayer.event.onOnce("loadedImage", (info) => {
+myPlayer.event.onOnce("loadedImage", (data) => {
 	console.log("Player image loaded!");
 });
 ```
@@ -295,11 +299,11 @@ Each event listener has a unique identification number that is passed to the cal
 **Example(s):**
 
 ```javascript
-myPlayer.event.on("hit", (info) => {
-	myPlayer.data.health -= info.damage;
+myPlayer.event.on("hit", (data) => {
+	myPlayer.data.health -= data.damage;
 
 	// Make the player invincible so they can't be hit anymore by removing the event listener
-	myPlayer.event.removeById("name", info._eventId);
+	myPlayer.event.removeById("name", data._eventId);
 });
 ```
 
