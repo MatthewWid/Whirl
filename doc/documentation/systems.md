@@ -358,6 +358,8 @@ Returns a `Tween` object that holds data about a tween and can be modified later
 
 Create a tween on an object.
 
+Tweens cannot modify nested properties of an object. To modify a nested object then you must create a separate tween for that object itself.
+
 ```javascript
 // Create a tween using the Tween Manager
 [game].tweenManager.create([object], [from], [to], [time], [presets])
