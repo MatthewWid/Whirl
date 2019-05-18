@@ -78,27 +78,27 @@ You can also configure certain aspects of the game instance by passing [configur
 
 We could set up everything we want for the game ourself; the canvas, viewport, game world, event hooks, etc. but this requires a bit of code and we want to get started as quickly as possible. Thankfully for us Whirl provides [a handy setup function](../documentation/classes/#methods) that will automatically do this all for us.
 
-We pass our `setup` and `update` functions (using the new ES6 object property shorthand) as properties `setup` and `update` respectively to indicate that when the game starts we want it call our setup function and each time the game loop completes we want it to call our update function.
+We pass our `setup` and `update` functions (using the new ES6 object property shorthand) as the properties `setup` and `update` respectively to indicate that when the game starts we want our setup function to be called and each time the game updates we want our update function to be called.
 
-`canvas: "#canvas"` tells Whirl to use the targeted canvas element to render to (Check the `index.html` file in the `/Simple Setup/` directory!).  
-`cW: 400` and `cH: 400` will size our canvas to be 400x400 pixels.
+`canvas: "#canvas"` tells Whirl to render to the canvas with the given ID `canvas` (Check the `index.html` file in the `/Simple Setup/` directory!).  
+`cW: 400` and `cH: 400` will set our canvas size to be 400x400 pixels.
 
 ```javascript
 .start();
 ```
 
-After all that we call our [`start()` method](../documentation/classes/#methods) to begin running the game.
+After that code we call our [`start()` method](../documentation/classes/#methods) to begin running the game.
 
 Let's recap what the code given to us has done:
 
 * Created a new Whirl game instance.
 * Told the game to call our `setup` function when the game is finished setting up and our `update` function after each update loop.
-* Provides a canvas element for the game to render to.
-* Starts the game loop.
+* Provide a canvas element for the game to render to.
+* Start the game loop.
 
 Our game is now being rendered to the canvas, but it remains empty because there is nothing to render yet.
 
-## Creating the First Sprite
+## Creating our First Sprite
 
 # Advanced: Setting Up From Scratch
 
