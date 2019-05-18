@@ -158,7 +158,7 @@ Whirl uses a dynamic event system to emit information from objects that can be p
 
 Events are identified by a given name. There can be multiple listeners on a single event that will all fire when that even is called. Events are called in the order that the listeners were initially added in.
 
-Events do not have to be initialised beforehand. You can listen pn any event name and it will be fired if something emits on that same name.
+Events do not have to be initialised beforehand. You can listen on any event name and it will be fired if something emits on that same name.
 
 ```javascript
 [object].event
@@ -332,7 +332,13 @@ myPlayer.event.removeAll("hit");
 
 # Animation Tweens
 
-Tweens are animation instructions that continually put intermediate frames between two points over a given time.
+Tweens are instructions that continually put intermediate frames between two points over a given time.
+
+Tweens are created, manipulated and deleted by the game instance's tween manager. You can create a tween using the tween manager directly or create a tween from object itself (on it's `.tween` property) which will implicitely call the tween manager.
+
+Creating a tween using the tween manager does not require the object to have the `tween` system attached to it as tween data is stored separately within the tween manager itself. To use the tween shorthand `[object].tween` you must first ensure that the `tween` system is attached to the object.
+
+*Tweens are updated on the same tick as the main game loop, but the timing and duration is set independently of the game update rate. This means that the exact ending of a tween can occur at a different time to when the game finishes an update causing a slight millisecond delay between the tween finishing and the result being shown.*
 
 ```javascript
 [object].tween
@@ -340,15 +346,97 @@ Tweens are animation instructions that continually put intermediate frames betwe
 [game].tweenManager
 ```
 
+Attach the tween system to a game object:
+
 ```javascript
 [game].object.attachSystem([object], {tween: true})
 ```
+
+## Tween
+
+Returns a `Tween` object that holds data about a tween and can be modified later.
+
+Create a tween on an object.
+
+```javascript
+// Create a tween using the Tween Manager
+[game].tweenManager.create([object], [from], [to], [time], [presets])
+
+// Create a tween using the Tween object system
+[object].tween([from], [to], [time], [presets])
+```
+
+<span class="tI tI-1">
+	**Object** `<object>`
+</span>
+<span class="tI tI-2">
+	Object that the tween will apply to.
+</span>
+
+<span class="tI tI-1">
+	**Object** `<from>` (Optional) (Default: `{}`)
+</span>
+<span class="tI tI-2">
+	Object that defines properties of the given `<object>` to edit and their values that are set from the beginning of the tween.
+</span>
+
+<span class="tI tI-2">
+	Properties given here should correlate to the properties of the given `<object>`.
+</span>
+
+<span class="tI tI-1">
+	**Object** `<to>`
+</span>
+<span class="tI tI-2">
+	Object that defines properties of the given `<object>` to tween their values *to* (as opposed to from) the ending of the tween.
+</span>
+
+<span class="tI tI-2">
+	Properties given here should correlate to the given properties of the given `<object>`.
+</span>
+
+<span class="tI tI-2">
+	If no properties are given to the `<from>` object then instead of transitioning the values between the `<from>` and `<to>` objects the values will be transitioned from their pre-existing state and *increased* by the values given in the `<to>` object.
+</span>
+
+<span class="tI tI-2">
+	For example, if an object's properties are `{x: 20, y: 60}` and the tween `<from>` object is `{x: 50}` and `<to>` is `{x: 100}` then the tween will transition the `x` property from `50` to `100`.
+</span>
+
+<span class="tI tI-2">
+	If the `<from>` object is `{}` (or `undefined`) and `<to>` is `{x: 100}` then the tween will transition the `x` property from `20` to `120` as the `x` property was `20` and is now being *increased* by `100`. 
+</span>
+
+<span class="tI tI-1">
+	**Integer** `<time>`
+</span>
+<span class="tI tI-2">
+	Time (in milliseconds) that the tween takes to transition between the `<from>` and `<to>` values.
+</span>
+
+<span class="tI tI-1">
+	**Object** `<presets>`
+</span>
+<span class="tI tI-2">
+	Presets/Configuration to give to the tween. All presets are optional.
+</span>
+
+<span class="tI tI-2">
+	**Function** `easing` - Easing function to use for the tween. See all [Whirl easing functions](../../documentation/libraries/#easing-functions). You may also supply a custom easing function. (Default: `Whirl.easing.linear`).  
+	**Boolean** `start` - Begin the tween animation immediately as it is created (Default: `true`).  
+	**Number** `step` - Value to step between on each update loop. After each update by the tween the value will be rounded to the given `<step>` value (Default: No rounding).  
+	**Boolean** `roundValues` - Whether the values being modified should be rounded to the nearest integer (Default: `false`).  
+	**Boolean** `loop` - Whether the Tween will restart after completing. If a Tween has another Tween chained to it then it will not loop regardless of this flag (Default: `false`).  
+	**Boolean** `canPurge` - Whether the Tween can be purged from the internal list of tweens stored in the tween manager (Default: `true`).
+</span>
 
 # Child Hierarchy
 
 ```javascript
 [object].child
 ```
+
+Attach the child system to a game object:
 
 ```javascript
 [game].object.attachSystem([object], {child: true})
