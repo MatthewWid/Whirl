@@ -1,6 +1,6 @@
 <p align="center"><img src="./doc/logo/logo_text.png" alt="drawing" width="50%" /></p>
 
-<p align="center"><b>Whirl is a powerful, lightweight and extensible 2D game engine written in Javascript.</b></p>
+<p align="center"><b>Whirl is a modern, lightweight and extensible 2D game engine written in Javascript.</b></p>
 
 <p align="center"><sup><i>This project is still a work in progress and has not yet reached completion.<br>Everything is subject to change.</i></sup></p>
 
@@ -10,11 +10,11 @@
 
 Some features offered by the **Whirl** game engine are:
 
-* A **dynamic custom events system** that allows for the creation and broadcasting of events across game objects.
-* A **child-parent tree architecture** of game objects that allows you to easily organise your game world into a simple hierarchy.
-* A **state-like world system** that makes it easy to load, unload and switch your scene or level instantly.
-* A **modularised viewport manager** that enables you to create multiple game viewports and screens *without* the need for multiple canvasses and extra HTML elements.
-* **Standardised object importation methods** that make it easy to create your own custom plugins and special game objects that can be imported and used in your games.
+* **Dynamic custom event system** that allows for the creation and broadcasting of events across game objects.
+* **Child-parent tree architecture** of game objects that allows you to easily organise your game world into a managable hierarchy of objects.
+* **State-like world system** that makes it easy to load, unload and switch your scene or level instantly.
+* **Modularised viewport manager** that enables you to create multiple game viewports and screens *without* the need for multiple canvas elements, stacked HTML elements or game instances.
+* **Standardised object importation methods** that make it easy to create your own custom plugins and special game objects that can be imported and used in your games - your objects are modular and reusable.
 
 # Documentation
 
@@ -32,17 +32,19 @@ Simply clone the repository, build the source ([See the "Build" section](#build)
 
 # Build
 
-**Whirl** takes advantage of [Browserify](http://browserify.org/) to compile its source code down into a single, usable Javascript file.
+**Whirl** takes advantage of [webpack](https://webpack.js.org/) to compile its source code down into a single, usable Javascript file.
 
-1. Clone the repository with `git clone <URL>`.
-2. Navigate to the root directory in your terminal.
-3. `npm install` the dependencies\*.
-4. Run `npm run build` to compile the source into `\build\Whirl.js`.
+1. Clone the repository - `git clone <... Whirl.git>`.
+2. Navigate into the root directory - `cd Whirl`.
+3. Install the dependencies - `npm install` or `yarn`.
+4. Build the source - `npm run prod` or `yarn prod`.
 
-Once compiled, you can simply include `Whirl.js` into your HTML page with a script tag:
+Once completed, you can find the built file in `/build/whirl.js` and simply include it with a script tag:
 
-    <script src="Whirl.js"></script>
+    <script src="whirl.js"></script>
+    
+Or import as a module:
+
+    const Whirl = require("whirl");
     
 From there you are free to use the plethora of features offered by **Whirl**. Happy coding!
-
-<sup>\* <i>You may need to globally install Browserify and Watchify to be able to compile successfully.</i></sup>
