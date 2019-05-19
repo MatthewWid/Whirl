@@ -1,6 +1,6 @@
 <p align="center"><img src="./doc/logo/logo_text.png" alt="drawing" width="50%" /></p>
 
-<p align="center"><b>Whirl is a modern, lightweight and extensible 2D game engine written in Javascript.</b></p>
+<p align="center"><b>Whirl is a modern, lightweight and extensible 2D game engine written in JavaScript.</b></p>
 
 <p align="center"><sup><i>This project is still a work in progress and has not yet reached completion.<br>Everything is subject to change.</i></sup></p>
 
