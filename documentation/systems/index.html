@@ -203,7 +203,7 @@
 <p>Object systems are reusable pieces of code that can be attached to game objects during instantiation (Think React hooks, if you're familiar).</p>
 <p>Objects instantiated this way are stored in <a href="#the-global-store">the global store</a> unless specifically ordered not to be.</p>
 <p>You can read more about instantiating your own custom game elements in <a href="../customisation">the customisation section</a>, but for the most part in-built game objects (such as viewports, stages, sprites, plugins, etc.) will instantiate themselves in the game instance for you.</p>
-<p>To attach a game system to an object that is not already equpped with one you can call the <code>attachSystem</code> method. Objects must be instantiated in a game instance first to have a game system attached to them.</p>
+<p>To attach an object system to an object that is not already equipped with one you can call the <code>attachSystem</code> method. Objects must be instantiated in a game instance first to have a game system attached to them.</p>
 <pre><code class="javascript">[game].object.attachSystem(&lt;obj&gt;, &lt;systems&gt;)
 </code></pre>
 
@@ -226,6 +226,7 @@
     • <code>tween</code><br />
     • <code>child</code>
 </span></p>
+<p>Most in-built game objects will already come with object systems that are useful for their use case, so unless you are making your own custom game objects you may rarely need to attach extra object systems to objects you create.</p>
 <p><strong>Example(s):</strong></p>
 <p>Creating a custom sprite and then attaching the <code>event</code> and <code>tween</code> object system to it.</p>
 <pre><code class="javascript">// Create a new game instance and an empty object.
@@ -242,6 +243,12 @@ game.object.attachSystem(customSprite, {
 </code></pre>
 
 <p>Object systems can also be attached with the <code>init</code> method during instantiation as a third argument.</p>
+<pre><code class="javascript">game.object.init(customSprite, &quot;Custom.Sprite&quot;, {
+    event: true,
+    tween: true
+});
+</code></pre>
+
 <h1 id="the-global-store">The Global Store<a class="headerlink" href="#the-global-store" title="Permanent link">&para;</a></h1>
 <p>Most objects instantiated within a Whirl game instance are stored in what is called "The Global Store". This is a persistent list of all objects that exist in the current game instance.</p>
 <p>You can see the raw global store of your game instance under <code>[game].globalStore</code> but you should <strong>never modify this directly</strong>. You should also never rely on the order of the array representing the raw global store as it can change between game updates, object modification and other various ways.</p>
@@ -260,7 +267,7 @@ game.object.attachSystem(customSprite, {
 <h3 id="get-by-id">Get By ID<a class="headerlink" href="#get-by-id" title="Permanent link">&para;</a></h3>
 <p>Returns an array of objects in the global store whose <code>_id</code> property match the given <code>&lt;id&gt;</code> search value.</p>
 <p>All objects that are instantiated within a game instance (Regardless of whether they are stored within the global store or not) are assigned a unique <code>_id</code> integer value that uniquely identifies every object created under the game instance since the game was instantiated.</p>
-<p>Keep in mind all IDs should be unique so although an array may be returned it should never have more than one </p>
+<p>Keep in mind all IDs should be unique so although an array may be returned it should never have more than one value.</p>
 <pre><code class="javascript">[game].object.getById(&lt;id&gt;)
 </code></pre>
 
@@ -280,7 +287,7 @@ game.object.attachSystem(customSprite, {
     <strong>String</strong> <code>&lt;name&gt;</code>
 </span>
 <span class="tI tI-2">
-    String to match an object's name in the global store.
+    String to match an object's name by in the global store.
 </span></p>
 <h3 id="get-by-type">Get By Type<a class="headerlink" href="#get-by-type" title="Permanent link">&para;</a></h3>
 <p>Returns an array of objects in the global store whose <code>_type</code> property matches the given <code>&lt;type&gt;</code> string.</p>
@@ -293,7 +300,7 @@ game.object.attachSystem(customSprite, {
     <strong>String</strong> <code>&lt;type&gt;</code>
 </span>
 <span class="tI tI-2">
-    String to match an object's type in the global store.
+    String to match an object's type by in the global store.
 </span></p>
 <h3 id="destroy-by-id">Destroy By ID<a class="headerlink" href="#destroy-by-id" title="Permanent link">&para;</a></h3>
 <p>Removes an object from the global store given an <code>&lt;id&gt;</code> property and returns the removed object. Returns <code>false</code> if no object to remove is found.</p>
@@ -310,8 +317,8 @@ This method directly modifies the global store and therefore should not be used 
 </span></p>
 <h1 id="custom-events">Custom Events<a class="headerlink" href="#custom-events" title="Permanent link">&para;</a></h1>
 <p>Whirl uses a dynamic event system to emit information from objects that can be picked up by listeners on that object. Many Whirl objects come with their own premade events, but you can also make your own that listen on or emit events from any object that has the event system attached to it.</p>
-<p>Events are identified by a given name. There can be multiple listeners on a single event that will all fire when that even is called. Events are called in the order that the listeners were initially added in.</p>
-<p>Events do not have to be initialised beforehand. You can listen on any event name and it will be fired if something emits on that same name.</p>
+<p>Events are identified by a given name. There can be multiple listeners on a single event that will all fire when that even is called. Listener callbacks are called in the order that the listeners were initially added in.</p>
+<p>Events do not have to be initialised beforehand. You can listen on any event name and it will be fired if something emits to that same name.</p>
 <pre><code class="javascript">[object].event
 </code></pre>
 
