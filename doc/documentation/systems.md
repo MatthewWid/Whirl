@@ -94,7 +94,7 @@ Returns an array of objects in the global store whose `_id` property match the g
 
 All objects that are instantiated within a game instance (Regardless of whether they are stored within the global store or not) are assigned a unique `_id` integer value that uniquely identifies every object created under the game instance since the game was instantiated.
 
-Keep in mind all IDs should be unique so although an array may be returned it should never have more than one 
+Keep in mind all IDs should be unique so although an array may be returned it should never have more than one value.
 
 ```javascript
 [game].object.getById(<id>)
@@ -121,7 +121,7 @@ Viewports, Stages, Sprites and Assets all a have `name` property that you provid
 	**String** `<name>`
 </span>
 <span class="tI tI-2">
-	String to match an object's name in the global store.
+	String to match an object's name by in the global store.
 </span>
 
 ### Get By Type
@@ -140,7 +140,7 @@ To learn more about types and making your own see [the customisation section](..
 	**String** `<type>`
 </span>
 <span class="tI tI-2">
-	String to match an object's type in the global store.
+	String to match an object's type by in the global store.
 </span>
 
 ### Destroy By ID
@@ -165,9 +165,9 @@ This method directly modifies the global store and therefore should not be used 
 
 Whirl uses a dynamic event system to emit information from objects that can be picked up by listeners on that object. Many Whirl objects come with their own premade events, but you can also make your own that listen on or emit events from any object that has the event system attached to it.
 
-Events are identified by a given name. There can be multiple listeners on a single event that will all fire when that even is called. Events are called in the order that the listeners were initially added in.
+Events are identified by a given name. There can be multiple listeners on a single event that will all fire when that even is called. Listener callbacks are called in the order that the listeners were initially added in.
 
-Events do not have to be initialised beforehand. You can listen on any event name and it will be fired if something emits on that same name.
+Events do not have to be initialised beforehand. You can listen on any event name and it will be fired if something emits to that same name.
 
 ```javascript
 [object].event
