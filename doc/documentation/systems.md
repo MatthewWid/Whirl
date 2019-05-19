@@ -33,6 +33,8 @@ To attach an object system to an object that is not already equipped with one yo
 	• `child`
 </span>
 
+Most in-built game objects will already come with object systems that are useful for their use case, so unless you are making your own custom game objects you may rarely need to attach extra object systems to objects you create.
+
 **Example(s):**
 
 Creating a custom sprite and then attaching the `event` and `tween` object system to it.
@@ -52,6 +54,13 @@ game.object.attachSystem(customSprite, {
 ```
 
 Object systems can also be attached with the `init` method during instantiation as a third argument.
+
+```javascript
+game.object.init(customSprite, "Custom.Sprite", {
+	event: true,
+	tween: true
+});
+```
 
 # The Global Store
 
