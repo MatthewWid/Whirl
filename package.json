@@ -1,8 +1,8 @@
 {
 	"name": "whirl",
-	"description": "A JavaScript canvas game engine",
+	"version": "0.0.1"
+	"description": "Event-based fully documented 2D game engine for JavaScript canvas.",
 	"repository": "https://github.com/MatthewWid/Whirl.git",
-	"author": "MatthewWid",
 	"license": "MIT",
 	"scripts": {
 		"dev": "webpack --config ./config/webpack.dev.config.js",
