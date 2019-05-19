@@ -6,7 +6,7 @@ Objects instantiated this way are stored in [the global store](#the-global-store
 
 You can read more about instantiating your own custom game elements in [the customisation section](../customisation), but for the most part in-built game objects (such as viewports, stages, sprites, plugins, etc.) will instantiate themselves in the game instance for you.
 
-To attach a game system to an object that is not already equpped with one you can call the `attachSystem` method. Objects must be instantiated in a game instance first to have a game system attached to them.
+To attach an object system to an object that is not already equipped with one you can call the `attachSystem` method. Objects must be instantiated in a game instance first to have a game system attached to them.
 
 ```javascript
 [game].object.attachSystem(<obj>, <systems>)
