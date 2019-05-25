@@ -67,11 +67,17 @@ function Camera(_game, presets = {}) {
 	// Only affects the cameras rendered position, not its real position in the world
 	this.roundPixels = presets.hasOwnProperty("roundPixels") ? presets.roundPixels : true;
 
+	this._lerp = 1;
+	this.setLerp = (lerp = this._lerp) => {
+		this._lerp = lerp;
+	};
+
 	this._followObject = null;
-	this.follow = (_object) => {
+	this.follow = (_object, lerp) => {
 		if (_object._type === "Whirl.Sprite") {
 			this._followObject = _object;
 			this.anchor.center();
+			this.setLerp(lerp);
 		} else {
 			console.warn("Whirl | Cannot lock camera to a non-Sprite object.");
 		}
@@ -94,8 +100,8 @@ function Camera(_game, presets = {}) {
 		if (this._followObject) {
 			const mid = this._followObject._physBounds.getMidpoint();
 			this.scroll = {
-				x: mid.x * this.zoom,
-				y: mid.y * this.zoom
+				x: (mid.x * this.zoom - this.scroll.x) * this._lerp + this.scroll.x,
+				y: (mid.y * this.zoom - this.scroll.y) * this._lerp + this.scroll.y,
 			};
 
 			if (this.roundPixels) {
@@ -105,6 +111,7 @@ function Camera(_game, presets = {}) {
 				};
 			}
 		}
+
 		return {
 			x: -(this.scroll.x - (this.bounds.w * this.anchor.x)),
 			y: -(this.scroll.y - (this.bounds.h * this.anchor.y))
