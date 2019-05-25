@@ -4,6 +4,8 @@ let keys = require("../../../keys");
 
 let _game, sysId;
 function handle_keyDown(evt) {
+	evt.preventDefault();
+
 	if (_game.input.keysDown[evt.keyCode] === true) {
 		return;
 	}
@@ -16,6 +18,8 @@ function handle_keyDown(evt) {
 	});
 }
 function handle_keyUp(evt) {
+	evt.preventDefault();
+	
 	if (_game.input.keysDown[evt.keyCode] === false) {
 		return;
 	}

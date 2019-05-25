@@ -17,7 +17,7 @@ const formatMousePos = (evt, c) => ({
 });
 
 const eventRegisters = {
-	"mouseClick": (c, vp) => {
+	mouseClick: (c, vp) => {
 		c.addEventListener("click", (evt) => {
 			evt.preventDefault();
 			const evtInfo = formatMousePos(evt, c);
@@ -27,7 +27,7 @@ const eventRegisters = {
 			});
 		});
 	},
-	"mouseMove": (c, vp) => {
+	mouseMove: (c, vp) => {
 		let posLast = {
 			x: 0,
 			y: 0
