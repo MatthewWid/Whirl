@@ -21,8 +21,11 @@ function handle_keyUp(evt) {
 		keyName: keys.getByKeyCode(evt.keyCode)
 	});
 }
-function keyIsDown(keyCode) {
-	return _game.input.keysDown[keyCode] || false;
+function keyIsDown(key) {
+	return _game.input.keysDown[typeof key === "string" ? keys[key] : key] || false;
+}
+function keyIsUp(key) {
+	return keyIsDown(key) !== true;
 }
 
 const keyboard = {
@@ -40,6 +43,7 @@ const keyboard = {
 
 		this.input.keysDown = [];
 		this.input.keyIsDown = keyIsDown;
+		this.input.keyIsUp = keyIsUp;
 
 		sysId = this.object.init(this.input, "Whirl.system.input.keyboard", {event: true}, false);
 		return true;
