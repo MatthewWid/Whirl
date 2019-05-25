@@ -4,6 +4,9 @@ let keys = require("../../../keys");
 
 let _game, sysId;
 function handle_keyDown(evt) {
+	if (_game.input.keysDown[evt.keyCode] === true) {
+		return;
+	}
 	_game.input.keysDown[evt.keyCode] = true;
 
 	_game.input.event.emit("keyDown", {
@@ -13,6 +16,10 @@ function handle_keyDown(evt) {
 	});
 }
 function handle_keyUp(evt) {
+	if (_game.input.keysDown[evt.keyCode] === false) {
+		return;
+	}
+
 	_game.input.keysDown[evt.keyCode] = false;
 
 	_game.input.event.emit("keyUp", {
@@ -58,7 +65,7 @@ const keyboard = {
 		if (this.input._keyElement) {
 			// Unregister events from previous key element
 			this.input._keyElement.removeEventListener("keydown", handle_keyDown);
-		this.input._keyElement.removeEventListener("keyup", handle_keyUp);
+			this.input._keyElement.removeEventListener("keyup", handle_keyUp);
 		}
 
 		this.input._keyElement = targetEl;
