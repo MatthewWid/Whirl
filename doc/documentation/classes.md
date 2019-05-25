@@ -609,15 +609,15 @@ Whirl.Camera(<Game>, <options>)
 	`.y` - Y-coordinate of the origin point.
 </span>
 <span class="tI tI-1">
-	Has no effect if the Camera is locked to an object (`._lockObject`).
+	Has no effect if the Camera is following an object.
 </span>
 
-`._lockObject` (Read-only)
+`._followObject` (Read-only)
 
 <span class="tI tI-1">
 	**Object**  
-	**Do not modify directly. Use the `.lockTo(...)` and `.removeLock()` methods.**  
-	Reference to the object that the Camera is locked to.
+	**Do not modify directly. Use the `.follow(...)` and `.unfollow()` methods.**  
+	Reference to the object that the Camera is following.
 </span>
 
 `.scroll`
@@ -631,7 +631,7 @@ Whirl.Camera(<Game>, <options>)
 	`.y` - Y-coordinate of the scroll position.
 </span>
 <span class="tI tI-1">
-	Changing this will have no effect if the Camera is locked to an object (`._lockObject`) as its scroll position is bound to the object it is locked to.
+	Changing this will have no effect if the Camera is following an object (`._followObject`) as its scroll position is bound to the object it is following.
 </span>
 
 `.zoom`
@@ -697,7 +697,7 @@ const myCamera = Whirl.Camera(myGame, {
 `.removeLock()`
 
 <span class="tI tI-1">
-	Removes the lock and lock reference (`._lockObject`) from the Camera.
+	Stops the camera following any object it is currently following (`._followObject`).
 </span>
 
 <span class="tI tI-1">
