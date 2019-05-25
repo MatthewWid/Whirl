@@ -681,13 +681,13 @@ Whirl.Sprite.Rectangle(&lt;Game&gt;, &lt;name&gt;, &lt;fill&gt;, &lt;options&gt;
 <code>.y</code> - Y-coordinate of the origin point.
 </span>
 <span class="tI tI-1">
-    Has no effect if the Camera is locked to an object (<code>._lockObject</code>).
+    Has no effect if the Camera is following an object.
 </span></p>
-<p><code>._lockObject</code> (Read-only)</p>
+<p><code>._followObject</code> (Read-only)</p>
 <p><span class="tI tI-1">
     <strong>Object</strong><br />
-<strong>Do not modify directly. Use the <code>.lockTo(...)</code> and <code>.removeLock()</code> methods.</strong><br />
-    Reference to the object that the Camera is locked to.
+<strong>Do not modify directly. Use the <code>.follow(...)</code> and <code>.unfollow()</code> methods.</strong><br />
+    Reference to the object that the Camera is following.
 </span></p>
 <p><code>.scroll</code></p>
 <p><span class="tI tI-1">
@@ -699,7 +699,7 @@ Whirl.Sprite.Rectangle(&lt;Game&gt;, &lt;name&gt;, &lt;fill&gt;, &lt;options&gt;
 <code>.y</code> - Y-coordinate of the scroll position.
 </span>
 <span class="tI tI-1">
-    Changing this will have no effect if the Camera is locked to an object (<code>._lockObject</code>) as its scroll position is bound to the object it is locked to.
+    Changing this will have no effect if the Camera is following an object (<code>._followObject</code>) as its scroll position is bound to the object it is following.
 </span></p>
 <p><code>.zoom</code></p>
 <p><span class="tI tI-1">
@@ -751,7 +751,7 @@ const myCamera = Whirl.Camera(myGame, {
 
 <p><code>.removeLock()</code></p>
 <p><span class="tI tI-1">
-    Removes the lock and lock reference (<code>._lockObject</code>) from the Camera.
+    Stops the camera following any object it is currently following (<code>._followObject</code>).
 </span></p>
 <p><span class="tI tI-1">
     When "unlocked", the scroll (<code>.scroll</code>) will stay in its last position that it was locked at, essentially not moving.
