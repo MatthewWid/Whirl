@@ -36,7 +36,7 @@ module.exports = (_game) => {
 
 			return _game;
 		},
-		get: (name) => {
+		getByName: (name) => {
 			return _game.assets.find((e) => e.name == name);
 		},
 		getAll: () => {
