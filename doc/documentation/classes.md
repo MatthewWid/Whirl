@@ -659,26 +659,30 @@ Whirl.Camera(<Game>, <options>)
 
 ### Methods
 
-`.lockTo(<sprite>)`
+`.follow(<Sprite>, <lerp>)`
 
 <span class="tI tI-1">
-	"Locks" the Camera to a specific Sprite.
+	Makes the camera follow the given Sprite by "locking" the camera's center point to the Sprite position.  
+	Returns the Camera object.
 </span>
 
 <span class="tI tI-2">
-	**Object** `<sprite>`
+	**Object** `<Sprite>`
 </span>
 <span class="tI tI-3">
-	The Sprite object that the Camera should lock to.  
-	This can be any object with a `bounds` property derived from `Whirl.shapes.Rectangle(...)` such as a [rectangle Sprite](#rectangle).
+	Sprite object that the Camera should follow.  
+</span>
+
+<span class="tI tI-2">
+	**Float** `<lerp>` (Optional) (Default: `1`)
+</span>
+<span class="tI tI-3">
+	Implicitely calls `.setLerp` with the given `<lerp>` value.
 </span>
 
 <span class="tI tI-1">
-	When a Camera is locked to a Sprite it will attempt to keep the Sprite in the exact center of the screen each update; moving the scroll (`.scroll`) position to the center of the Sprite's bounds.
-</span>
-
-<span class="tI tI-1">
-	While it is locked, the camera zoom (`.zoom`) will instead zoom around the center of the screen, equivalent to an anchor point of `(0.5, 0.5)`.
+	When a Camera follows a Sprite it will attempt to keep the Sprite in the exact center of the screen each update, moving the scroll (`.scroll`) position to the center of the Sprite's bounds by the linear interpolation value.  
+	Invokes the `.anchor.center()` method to center the Camera on the Sprite.
 </span>
 
 <span class="tI tI-1">
@@ -687,23 +691,24 @@ Whirl.Camera(<Game>, <options>)
 
 ```javascript
 const mySprite = Whirl.Sprite(myGame, "Blocky", "#F00", {
-	x: 50,
-	y: 90,
-	w: 40,
-	h: 40
+	x: 100,
+	y: 75,
+	w: 50,
+	h: 50
 });
 
 const myCamera = Whirl.Camera(myGame, {
 	w: 400,
 	h: 400
 })
-	.lockTo(mySprite);
+	.follow(mySprite);
 ```
 
-`.removeLock()`
+`.unfollow()`
 
 <span class="tI tI-1">
-	Stops the camera following any object it is currently following (`._followObject`).
+	Stops the camera following any object it is currently following (`._followObject`).  
+	Returns the Camera object.
 </span>
 
 <span class="tI tI-1">
@@ -719,13 +724,64 @@ const myCamera = Whirl.Camera(myGame, {
 </span>
 
 ```javascript
-myCamera.removeLock();
+myCamera.unfollow();
+```
+
+`.setLerp(<lerp>)`
+
+<span class="tI tI-1">
+	Sets the linear interpolation that the camera uses to follow the Sprite.  
+	Has no effect if the Camera is not following an object (`._followObject`).  
+	Returns the Camera object.
+</span>
+
+<span class="tI tI-2">
+	**Float** `<lerp>`
+</span>
+<span class="tI tI-3">
+	Linear interpolation value to use.  
+	Value between `0` and `1`. `1` means the Camera is locked to the object, anything below will make the Camera move slower to catch up to the Sprite.
+</span>
+
+<span class="tI tI-1">
+	**Example(s):**
+</span>
+
+```javascript
+myCamera.setLerp(1);
+
+myCamera.setLerp(.6);
+
+myCamera.setLerp(.1);
+```
+
+`.centerOn(<Sprite>)`
+
+<span class="tI tI-1">
+	Moves the Camera's scroll position so that the Camera is centered on the given Sprite.  
+	Returns the Camera object.
+</span>
+
+<span class="tI tI-2">
+	**Object** `<Sprite>`
+</span>
+<span class="tI tI-3">
+	Sprite object that Camera centers on.
+</span>
+
+<span class="tI tI-1">
+	**Example(s):**
+</span>
+
+```javascript
+myCamera.centerOn(mySprite);
 ```
 
 `.anchor.center()`
 
 <span class="tI tI-1">
-	Sets the anchor point to `(0.5, 0.5)`.
+	Sets the anchor point to `(0.5, 0.5)`.  
+	Returns the Camera object.
 </span>
 
 `.tween.`
