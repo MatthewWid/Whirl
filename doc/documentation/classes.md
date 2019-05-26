@@ -162,8 +162,8 @@ Whirl.Game(<options>)
 	**String** `canvasWidth` or `cW` - Width in pixels to resize the canvas element to.  
 	**String** `canvasHeight` or `cH` - Height in pixels to resize the canvas element to.  
 	If a canvas width or height value is not given then the canvas will not resize.  
-	**Function** `setup` - Called when the game has finished setting up (Called with the `didSetup` event).  
-	**Funtion** `update` - Called when the game will update.
+	**Function** `setup` - Called *after* the game has finished setting up (Called with the `didSetup` event).  
+	**Funtion** `update` - Called when the game will update - *before* the update loop occurs each frame.
 </span>
 
 <span class="tI tI-1">
