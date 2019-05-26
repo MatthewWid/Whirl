@@ -54,15 +54,18 @@ const eventRegisters = {
 	}
 };
 
+function setupViewportStandard(_game, viewport) {
+	_game.input.registerMouseViewport(viewport, ["mouseClick", ["mouseMove"]]);
+}
+
 function setup() {
 	this.viewportManager.getAll().forEach((e) => {
-		this.input.registerMouseViewport(e, ["mouseClick", ["mouseMove"]]);
+		setupViewportStandard(this, e);
 	});
 
 	this.event.on("requestMouseEvents", (e) => {
 		if (e.object._type === "Whirl.Viewport" && this.config.input) {
-			// Attach mouse event to e.object if `input` is true
-			this.input.registerMouseViewport(e.object, ["mouseClick", "mouseMove"]);
+			setupViewportStandard(this, e.object);
 		}
 	});
 }
