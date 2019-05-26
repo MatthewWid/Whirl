@@ -129,7 +129,7 @@ Whirl.Game(<options>)
 	`.input` - See the `input` argument [in the game instantiation parameters](#parameters). After initialisation these properties should not be modified directly.
 </span>
 
-`.frameRate`
+`.frameRate` (Read-only)
 
 <span class="tI tI-1">
 	**Integer**  
@@ -137,7 +137,7 @@ Whirl.Game(<options>)
 	Default `60`.
 </span>
 
-`.frameCount`
+`.frameCount` (Read-only)
 
 <span class="tI tI-1">
 	**Integer**  
