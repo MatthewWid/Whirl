@@ -4,7 +4,7 @@
 */
 
 module.exports = (_game, evt) => {
-	if (game.config.input.preventDefault) {
+	if (_game.config.input.preventDefault) {
 		evt.preventDefault();
 	}
 };
