@@ -101,12 +101,18 @@ Whirl.Game(<options>)
 <span class="tI tI-1">
 	Preset configuration options for the Game instance.  
 	**Boolean** `ignoreWarnings` - Ignore debug warnings (Default: `true`).  
-	**Boolean** `input` - Set up input event listeners on game startup and bind input listeners to any objects created in the future (Default: `true`).  
 	**HTMLElement** `keyElement` - Element that listens for keyboard input events (Default: `document.body`).
+	**Object** or **`false`** `input` - Enable or disable certain input event listeners to be disabled or enabled. If you have a very large amount of game objects and are not using any input methods then disabling certain listeners may boost performance.  
+	Set this to `false` instead to disable all inputs - useful if you just want to create some non-interactable animations or similar.  
+</span>
+<span class="tI tI-2">
+	**Boolean** `mouse` - Whether mouse event listeners should be attached to the document and existing and subsequent viewports (Default: `true`).  
+	**Boolean** `keyboard` - Whether keyboard event listeners should be attached to the document (Default: `true`).  
+	**Boolean** `preventDefault` - Whether any events (mouse or keyboard) fired should have their default browser behaviour prevented (Default: `false`).
 </span>
 
 <span class="tI tI-1">
-	Any other properties given to the `<options>` object will also be attached to the `Game.config` object, too.
+	Any other properties given to the `<options>` object will be attached to the `Game.config` object, too.
 </span>
 
 ## Properties
@@ -120,7 +126,7 @@ Whirl.Game(<options>)
 </span>
 <span class="tI tI-2">
 	`.ignoreWarnings` - Ignore debug warnings.  
-	`.input` - Viewports created while the `Game.config.input` option is set to `true` will automatically have keyboard/mouse input event listeners attached to them.
+	`.input` - See the `input` argument [in the game instantiation parameters](#parameters). After initialisation these properties should not be modified directly.
 </span>
 
 `.frameRate`
