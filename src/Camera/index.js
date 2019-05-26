@@ -47,6 +47,8 @@ function Camera(_game, presets = {}) {
 	this._lerp = 1;
 	this.setLerp = (lerp = this._lerp) => {
 		this._lerp = lerp;
+
+		return this;
 	};
 
 	this._followObject = null;
