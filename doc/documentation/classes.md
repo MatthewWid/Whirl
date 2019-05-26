@@ -179,7 +179,7 @@ Whirl.Game(<options>)
 </span>
 
 <span class="tI tI-1">
-	**Example:**
+	**Example(s):**
 </span>
 
 ```javascript
@@ -220,7 +220,7 @@ const myGame = Whirl.Game()
 </span>
 
 <span class="tI tI-1">
-	**Example:**
+	**Example(s):**
 </span>
 
 ```javascript
@@ -243,7 +243,7 @@ const myGame = Whirl.Game()
 </span>
 
 <span class="tI tI-1">
-	**Example:**
+	**Example(s):**
 </span>
 
 ```javascript
@@ -305,7 +305,7 @@ The following Sprite types are available: `Whirl.Sprite.Rectangle(...)` and `Whi
 <span class="tI tI-1">
 	Providing a **string** will attempt to resolve the fill to a *colour*.  
 	**Do not** give colour values with transparency. Instead use the `.alpha` property.  
-	**Example:** `rgb(0, 255, 220)` or `#F00` or `cyan` etc.
+	**Example(s):** `rgb(0, 255, 220)` or `#F00` or `cyan` etc.
 </span>
 
 <span class="tI tI-1">
@@ -686,7 +686,7 @@ Whirl.Camera(<Game>, <options>)
 </span>
 
 <span class="tI tI-1">
-	**Example:**
+	**Example(s):**
 </span>
 
 ```javascript
@@ -720,7 +720,7 @@ const myCamera = Whirl.Camera(myGame, {
 </span>
 
 <span class="tI tI-1">
-	**Example:**
+	**Example(s):**
 </span>
 
 ```javascript
@@ -1048,7 +1048,7 @@ The above code would return a reference to the Viewport object as contained in t
 </span>
 
 <span class="tI tI-1">
-	**Example:**
+	**Example(s):**
 </span>
 
 ```javascript
@@ -1110,7 +1110,7 @@ myViewport.setCanvas("#myCanvas");
 </span>
 
 <span class="tI tI-1">
-	**Example:**
+	**Example(s):**
 </span>
 
 ```javascript
