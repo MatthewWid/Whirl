@@ -11,18 +11,13 @@ module.exports = (_game) => {
 	_game.input = {
 		setupKeyboard: keyboard.setup.bind(_game),
 		setKeyElement: keyboard.setKeyElement.bind(_game),
+		setupMouse: mouse.setup.bind(_game),
 		registerMouseViewport: mouse.registerMouseViewport.bind(_game)
 	};
 
-	_game.event.on("requestMouseEvents", (e) => {
-		if (e.object._type === "Whirl.Viewport" && _game.config.input) {
-			// Attach mouse event to e.object if `input` is true
-			_game.input.registerMouseViewport(e.object, ["mouseClick", "mouseMove"]);
-		}
-	});
-
 	// If `input` is true then set up all input systems with default settings
 	if (!input) return;
-	_game.input.setKeyElement(keyElement)
+	_game.input.setupMouse();
+	_game.input.setKeyElement(keyElement);
 	_game.input.setupKeyboard();
 };

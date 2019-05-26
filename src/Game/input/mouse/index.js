@@ -54,6 +54,19 @@ const eventRegisters = {
 	}
 };
 
+function setup() {
+	this.viewportManager.getAll().forEach((e) => {
+		this.input.registerMouseViewport(e, ["mouseClick", ["mouseMove"]]);
+	});
+
+	this.event.on("requestMouseEvents", (e) => {
+		if (e.object._type === "Whirl.Viewport" && this.config.input) {
+			// Attach mouse event to e.object if `input` is true
+			this.input.registerMouseViewport(e.object, ["mouseClick", "mouseMove"]);
+		}
+	});
+}
+
 function registerMouseViewport(target, events = []) {
 	if (!target) {
 		console.error("Whirl | No target element given when trying to register a mouse event element.");
@@ -74,6 +87,7 @@ function registerMouseViewport(target, events = []) {
 }
 
 const mouse = {
+	setup,
 	registerMouseViewport
 };
 
