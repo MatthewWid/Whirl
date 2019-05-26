@@ -1,10 +1,11 @@
 // Whirl.input.keyboard
 
-let keys = require("../../../keys");
+const keys = require("../../../keys");
+const attemptPreventDefault = require("../../../lib/attemptPreventDefault.js");
 
 let _game, sysId;
 function handle_keyDown(evt) {
-	evt.preventDefault();
+	attemptPreventDefault(_game, evt);
 
 	if (_game.input.keysDown[evt.keyCode] === true) {
 		return;
@@ -18,7 +19,7 @@ function handle_keyDown(evt) {
 	});
 }
 function handle_keyUp(evt) {
-	evt.preventDefault();
+	attemptPreventDefault(_game, evt);
 	
 	if (_game.input.keysDown[evt.keyCode] === false) {
 		return;

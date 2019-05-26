@@ -15,9 +15,12 @@ module.exports = (_game) => {
 		registerMouseViewport: mouse.registerMouseViewport.bind(_game)
 	};
 
-	// If `input` is true then set up all input systems with default settings
 	if (!input) return;
-	_game.input.setupMouse();
-	_game.input.setKeyElement(keyElement);
-	_game.input.setupKeyboard();
+	if (input.mouse) {
+		_game.input.setupMouse();
+	}
+	if (input.keyboard) {
+		_game.input.setKeyElement(keyElement);
+		_game.input.setupKeyboard();
+	}
 };

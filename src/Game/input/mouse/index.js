@@ -1,5 +1,7 @@
 // Whirl.input.mouse
 
+const attemptPreventDefault = require("../../../lib/attemptPreventDefault.js");
+
 const formatMousePos = (evt, c) => ({
 	// Raw MouseEvent object
 	rawEvent: evt,
@@ -17,9 +19,9 @@ const formatMousePos = (evt, c) => ({
 });
 
 const eventRegisters = {
-	mouseClick: (c, vp) => {
+	mouseClick: (_game, c, vp) => {
 		c.addEventListener("click", (evt) => {
-			evt.preventDefault();
+			attemptPreventDefault(_game, evt);
 			const evtInfo = formatMousePos(evt, c);
 
 			vp.event.emit("mouseClick", {
@@ -27,14 +29,14 @@ const eventRegisters = {
 			});
 		});
 	},
-	mouseMove: (c, vp) => {
+	mouseMove: (_game, c, vp) => {
 		let posLast = {
 			x: 0,
 			y: 0
 		};
 
 		c.addEventListener("mousemove", (evt) => {
-			evt.preventDefault();
+			attemptPreventDefault(_game, evt);
 			const evtInfo = formatMousePos(evt, c);
 
 			vp.event.emit("mouseMove", {
@@ -83,7 +85,7 @@ function registerMouseViewport(target, events = []) {
 	this.object.attachSystem(target, {event: true});
 
 	for (event in events) {
-		eventRegisters[events[event]](c, target);
+		eventRegisters[events[event]](this, c, target);
 	}
 
 	return true;
