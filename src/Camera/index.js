@@ -2,29 +2,6 @@
 
 let shapes = require("../shapes");
 
-/*
-	A camera is the view into your world (stage)
-	It grabs all objects and renders them onto your screen
-
-	Presets can be:
-
-	Position and dimensions of camera on the canvas
-		- x
-		- y
-		- w
-		- h
-
-	Anchor of the scrolling
-		- anchor {x, y}
-	
-	Scroll of camera through the game world
-		- scroll {x, y}
-
-	Zoom of camera in the game world
-		- zoom
-
-		- roundPixels
-*/
 function Camera(_game, presets = {}) {
 	_game.object.init(this, "Whirl.Camera", {tween: true});
 
@@ -81,10 +58,25 @@ function Camera(_game, presets = {}) {
 		} else {
 			console.warn("Whirl | Cannot lock camera to a non-Sprite object.");
 		}
+
 		return this;
 	};
 	this.unfollow = () => {
 		this._followObject = null;
+	};
+
+	this.centerOn = (_object) => {
+		if (_object._type === "Whirl.Sprite") {
+			const mid = _object._physBounds.getMidpoint();
+			
+			this.anchor.center();
+			this.scroll = {
+				x: (mid.x * this.zoom),
+				y: (mid.y * this.zoom)
+			};
+		}
+
+		return this;
 	};
 
 	/*
