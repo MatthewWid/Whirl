@@ -294,11 +294,17 @@
 <p><span class="tI tI-1">
     Preset configuration options for the Game instance.<br />
 <strong>Boolean</strong> <code>ignoreWarnings</code> - Ignore debug warnings (Default: <code>true</code>).<br />
-<strong>Boolean</strong> <code>input</code> - Set up input event listeners on game startup and bind input listeners to any objects created in the future (Default: <code>true</code>).<br />
 <strong>HTMLElement</strong> <code>keyElement</code> - Element that listens for keyboard input events (Default: <code>document.body</code>).
+    <strong>Object</strong> or <strong><code>false</code></strong> <code>input</code> - Enable or disable certain input event listeners to be disabled or enabled. If you have a very large amount of game objects and are not using any input methods then disabling certain listeners may boost performance.<br />
+    Set this to <code>false</code> instead to disable all inputs - useful if you just want to create some non-interactable animations or similar.<br />
+</span>
+<span class="tI tI-2">
+    <strong>Boolean</strong> <code>mouse</code> - Whether mouse event listeners should be attached to the document and existing and subsequent viewports (Default: <code>true</code>).<br />
+<strong>Boolean</strong> <code>keyboard</code> - Whether keyboard event listeners should be attached to the document (Default: <code>true</code>).<br />
+<strong>Boolean</strong> <code>preventDefault</code> - Whether any events (mouse or keyboard) fired should have their default browser behaviour prevented (Default: <code>false</code>).
 </span></p>
 <p><span class="tI tI-1">
-    Any other properties given to the <code>&lt;options&gt;</code> object will also be attached to the <code>Game.config</code> object, too.
+    Any other properties given to the <code>&lt;options&gt;</code> object will be attached to the <code>Game.config</code> object, too.
 </span></p>
 <h2 id="properties_1">Properties<a class="headerlink" href="#properties_1" title="Permanent link">&para;</a></h2>
 <p><code>.config</code></p>
@@ -309,15 +315,15 @@
 </span>
 <span class="tI tI-2">
     <code>.ignoreWarnings</code> - Ignore debug warnings.<br />
-<code>.input</code> - Viewports created while the <code>Game.config.input</code> option is set to <code>true</code> will automatically have keyboard/mouse input event listeners attached to them.
+<code>.input</code> - See the <code>input</code> argument <a href="#parameters">in the game instantiation parameters</a>. After initialisation these properties should not be modified directly.
 </span></p>
-<p><code>.frameRate</code></p>
+<p><code>.frameRate</code> (Read-only)</p>
 <p><span class="tI tI-1">
     <strong>Integer</strong><br />
     Limits the maximum frames per second (FPS).<br />
     Default <code>60</code>.
 </span></p>
-<p><code>.frameCount</code></p>
+<p><code>.frameCount</code> (Read-only)</p>
 <p><span class="tI tI-1">
     <strong>Integer</strong><br />
     The number of update frames elapsed since the game's start.<br />
@@ -349,7 +355,7 @@
     Once setup has completed, the <code>didSetup</code> event is emitted on the Game object.
 </span></p>
 <p><span class="tI tI-1">
-    <strong>Example:</strong>
+    <strong>Example(s):</strong>
 </span></p>
 <pre><code class="javascript">function gameSetup(data) {
     // Create objects, import assets, insert plugins, etc.
@@ -386,7 +392,7 @@ const myGame = Whirl.Game()
     Will not execute if the game is already running.
 </span></p>
 <p><span class="tI tI-1">
-    <strong>Example:</strong>
+    <strong>Example(s):</strong>
 </span></p>
 <pre><code class="javascript">const myGame = Whirl.Game()
     .start();
@@ -404,7 +410,7 @@ const myGame = Whirl.Game()
     This is a <em>request</em> to stop the game loop. It will not take effect immediately, but at the beginning of the next available check. Therefore, an extra update tick may run even after calling <code>.stop()</code>.
 </span></p>
 <p><span class="tI tI-1">
-    <strong>Example:</strong>
+    <strong>Example(s):</strong>
 </span></p>
 <pre><code class="javascript">const myGame = Whirl.Game()
     .start();
@@ -446,7 +452,7 @@ myGame.stop();
 <p><span class="tI tI-1">
     Providing a <strong>string</strong> will attempt to resolve the fill to a <em>colour</em>.<br />
 <strong>Do not</strong> give colour values with transparency. Instead use the <code>.alpha</code> property.<br />
-<strong>Example:</strong> <code>rgb(0, 255, 220)</code> or <code>#F00</code> or <code>cyan</code> etc.
+<strong>Example(s):</strong> <code>rgb(0, 255, 220)</code> or <code>#F00</code> or <code>cyan</code> etc.
 </span></p>
 <p><span class="tI tI-1">
     If an <strong>object</strong> is given, it must be a <code>Whirl.Asset</code> image object.<br />
@@ -511,7 +517,8 @@ myGame.stop();
 <h3 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h3>
 <p><code>.setFill(&lt;fill&gt;)</code></p>
 <p><span class="tI tI-1">
-    See the <a href="#parameters_1">Sprite &lt;fill> parameter</a>.
+    See the <a href="#parameters_1">Sprite &lt;fill> parameter</a>.<br />
+    Returns the Sprite object.
 </span></p>
 <p><span class="tI tI-1">
     <strong>Example(s):</strong>
@@ -580,7 +587,8 @@ Whirl.Sprite.Rectangle(&lt;Game&gt;, &lt;name&gt;, &lt;fill&gt;, &lt;options&gt;
 <p><code>.resizeToImage(&lt;scale&gt;)</code></p>
 <p><span class="tI tI-1">
     Will not execute if the Sprite does not have an <code>image</code> fill type.<br />
-    Automatically sets the bounding box's width and height to the same dimensions as the image's width and height.
+    Automatically sets the bounding box's width and height to the same dimensions as the image's width and height.<br />
+    Returns the Sprite object.
 </span></p>
 <p><span class="tI tI-2">
     <strong>Float</strong> <code>&lt;scale&gt;</code>
@@ -590,7 +598,8 @@ Whirl.Sprite.Rectangle(&lt;Game&gt;, &lt;name&gt;, &lt;fill&gt;, &lt;options&gt;
 </span></p>
 <p><code>.anchor.center()</code></p>
 <p><span class="tI tI-1">
-    Sets the anchor point to <code>(0.5, 0.5)</code>.
+    Sets the anchor point to <code>(0.5, 0.5)</code>.<br />
+    Returns the Sprite object.
 </span></p>
 <hr />
 <h2 id="circle">.Circle()<a class="headerlink" href="#circle" title="Permanent link">&para;</a></h2>
@@ -715,43 +724,48 @@ Whirl.Sprite.Rectangle(&lt;Game&gt;, &lt;name&gt;, &lt;fill&gt;, &lt;options&gt;
     Rounds the scroll (<code>.scroll</code>) position to the nearest whole number if the Camera is locked to an object.
 </span></p>
 <h3 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h3>
-<p><code>.lockTo(&lt;sprite&gt;)</code></p>
+<p><code>.follow(&lt;Sprite&gt;, &lt;lerp&gt;)</code></p>
 <p><span class="tI tI-1">
-    "Locks" the Camera to a specific Sprite.
+    Makes the camera follow the given Sprite by "locking" the camera's center point to the Sprite position.<br />
+    Returns the Camera object.
 </span></p>
 <p><span class="tI tI-2">
-    <strong>Object</strong> <code>&lt;sprite&gt;</code>
+    <strong>Object</strong> <code>&lt;Sprite&gt;</code>
 </span>
 <span class="tI tI-3">
-    The Sprite object that the Camera should lock to.<br />
-    This can be any object with a <code>bounds</code> property derived from <code>Whirl.shapes.Rectangle(...)</code> such as a <a href="#rectangle">rectangle Sprite</a>.
+    Sprite object that the Camera should follow.<br />
+</span></p>
+<p><span class="tI tI-2">
+    <strong>Float</strong> <code>&lt;lerp&gt;</code> (Optional) (Default: <code>1</code>)
+</span>
+<span class="tI tI-3">
+    Implicitely calls <code>.setLerp</code> with the given <code>&lt;lerp&gt;</code> value.
 </span></p>
 <p><span class="tI tI-1">
-    When a Camera is locked to a Sprite it will attempt to keep the Sprite in the exact center of the screen each update; moving the scroll (<code>.scroll</code>) position to the center of the Sprite's bounds.
+    When a Camera follows a Sprite it will attempt to keep the Sprite in the exact center of the screen each update, moving the scroll (<code>.scroll</code>) position to the center of the Sprite's bounds by the linear interpolation value.<br />
+    Invokes the <code>.anchor.center()</code> method to center the Camera on the Sprite.
 </span></p>
 <p><span class="tI tI-1">
-    While it is locked, the camera zoom (<code>.zoom</code>) will instead zoom around the center of the screen, equivalent to an anchor point of <code>(0.5, 0.5)</code>.
-</span></p>
-<p><span class="tI tI-1">
-    <strong>Example:</strong>
+    <strong>Example(s):</strong>
 </span></p>
 <pre><code class="javascript">const mySprite = Whirl.Sprite(myGame, &quot;Blocky&quot;, &quot;#F00&quot;, {
-    x: 50,
-    y: 90,
-    w: 40,
-    h: 40
+    x: 100,
+    y: 75,
+    w: 50,
+    h: 50
 });
 
 const myCamera = Whirl.Camera(myGame, {
     w: 400,
     h: 400
 })
-    .lockTo(mySprite);
+    .follow(mySprite);
 </code></pre>
 
-<p><code>.removeLock()</code></p>
+<p><code>.unfollow()</code></p>
 <p><span class="tI tI-1">
-    Stops the camera following any object it is currently following (<code>._followObject</code>).
+    Stops the camera following any object it is currently following (<code>._followObject</code>).<br />
+    Returns the Camera object.
 </span></p>
 <p><span class="tI tI-1">
     When "unlocked", the scroll (<code>.scroll</code>) will stay in its last position that it was locked at, essentially not moving.
@@ -760,14 +774,55 @@ const myCamera = Whirl.Camera(myGame, {
     The zoom (<code>.zoom</code>) and anchor (<code>.anchor</code>) positions remain unchanged throughout the time that the Camera is locked, so will still be the same after unlocking.
 </span></p>
 <p><span class="tI tI-1">
-    <strong>Example:</strong>
+    <strong>Example(s):</strong>
 </span></p>
-<pre><code class="javascript">myCamera.removeLock();
+<pre><code class="javascript">myCamera.unfollow();
+</code></pre>
+
+<p><code>.setLerp(&lt;lerp&gt;)</code></p>
+<p><span class="tI tI-1">
+    Sets the linear interpolation that the camera uses to follow the Sprite.<br />
+    Has no effect if the Camera is not following an object (<code>._followObject</code>).<br />
+    Returns the Camera object.
+</span></p>
+<p><span class="tI tI-2">
+    <strong>Float</strong> <code>&lt;lerp&gt;</code>
+</span>
+<span class="tI tI-3">
+    Linear interpolation value to use.<br />
+    Value between <code>0</code> and <code>1</code>. <code>1</code> means the Camera is locked to the object, anything below will make the Camera move slower to catch up to the Sprite.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Example(s):</strong>
+</span></p>
+<pre><code class="javascript">myCamera.setLerp(1);
+
+myCamera.setLerp(.6);
+
+myCamera.setLerp(.1);
+</code></pre>
+
+<p><code>.centerOn(&lt;Sprite&gt;)</code></p>
+<p><span class="tI tI-1">
+    Moves the Camera's scroll position so that the Camera is centered on the given Sprite.<br />
+    Returns the Camera object.
+</span></p>
+<p><span class="tI tI-2">
+    <strong>Object</strong> <code>&lt;Sprite&gt;</code>
+</span>
+<span class="tI tI-3">
+    Sprite object that Camera centers on.
+</span></p>
+<p><span class="tI tI-1">
+    <strong>Example(s):</strong>
+</span></p>
+<pre><code class="javascript">myCamera.centerOn(mySprite);
 </code></pre>
 
 <p><code>.anchor.center()</code></p>
 <p><span class="tI tI-1">
-    Sets the anchor point to <code>(0.5, 0.5)</code>.
+    Sets the anchor point to <code>(0.5, 0.5)</code>.<br />
+    Returns the Camera object.
 </span></p>
 <p><code>.tween.</code></p>
 <p><span class="tI tI-1">
@@ -952,7 +1007,8 @@ const myCamera = Whirl.Camera(myGame, {
 <p><code>.setCanvas(&lt;canvas&gt;)</code></p>
 <p><span class="tI tI-1">
     Sets the HTML5 canvas element to render to.<br />
-    Also see the <code>.c</code> and <code>.ctx</code> <a href="#properties_7">viewport properties</a>.
+    Also see the <code>.c</code> and <code>.ctx</code> <a href="#properties_7">viewport properties</a>.<br />
+    Returns the Viewport object.
 </span></p>
 <p><span class="tI tI-2">
     <strong>String</strong> <code>&lt;canvas&gt;</code>
@@ -961,7 +1017,7 @@ const myCamera = Whirl.Camera(myGame, {
     Selector string for an HTML5 <code>&lt;canvas&gt;</code> element.
 </span></p>
 <p><span class="tI tI-1">
-    <strong>Example:</strong>
+    <strong>Example(s):</strong>
 </span></p>
 <pre><code class="javascript">myViewport.setCanvas(&quot;#myCanvas&quot;);
 </code></pre>
@@ -969,7 +1025,8 @@ const myCamera = Whirl.Camera(myGame, {
 <p><code>.setStage(&lt;Stage&gt;)</code></p>
 <p><span class="tI tI-1">
     Sets the current <a href="#stage">stage</a> to be rendered.<br />
-    Also see the <code>.activeStage</code> <a href="#properties_7">viewport property</a>.
+    Also see the <code>.activeStage</code> <a href="#properties_7">viewport property</a>.<br />
+    Returns the Viewport object.
 </span></p>
 <p><span class="tI tI-2">
     <strong>Object</strong> <code>&lt;Stage&gt;</code>
@@ -983,7 +1040,8 @@ const myCamera = Whirl.Camera(myGame, {
 <p><code>.setCamera(&lt;Camera&gt;)</code></p>
 <p><span class="tI tI-1">
     Sets the current <a href="#camera">camera</a> to be used for rendering.<br />
-    Also see the <code>.activeCamera</code> <a href="#properties_7">viewport property</a>.
+    Also see the <code>.activeCamera</code> <a href="#properties_7">viewport property</a>.<br />
+    Returns the Viewport object.
 </span></p>
 <p><span class="tI tI-2">
     <strong>Object</strong> <code>&lt;Camera&gt;</code>
@@ -1008,7 +1066,7 @@ const myCamera = Whirl.Camera(myGame, {
     If the viewport is placed anywhere that isnt <code>(0, 0)</code> it is recommended to bring the <a href="#camera">camera</a> to avoid discrepancies between rendering zones and unwanted clipping of objects by the viewport after they have been rendered.
 </span></p>
 <p><span class="tI tI-1">
-    <strong>Example:</strong>
+    <strong>Example(s):</strong>
 </span></p>
 <pre><code class="javascript">const myCamera = Whirl.Camera(myGame, {
     x: 50,
