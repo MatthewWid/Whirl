@@ -13,7 +13,7 @@ module.exports = (_game) => {
 			return _game.viewports[newInd];
 		},
 		getByName: (name) => {
-			return _game.viewports.find((e) => e.name == name);
+			return _game.viewports.filter((e) => e.name === name);
 		},
 		getAll: () => {
 			return _game.viewports;

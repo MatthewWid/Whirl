@@ -13,7 +13,7 @@ module.exports = (_game) => {
 			return _game.stages[newInd];
 		},
 		getByName: (name) => {
-			return _game.stages.find((e) => e.name == name);
+			return _game.stages.filter((e) => e.name === name);
 		},
 		getAll: () => {
 			return _game.stages;
