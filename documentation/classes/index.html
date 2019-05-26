@@ -342,8 +342,8 @@
 <strong>String</strong> <code>canvasWidth</code> or <code>cW</code> - Width in pixels to resize the canvas element to.<br />
 <strong>String</strong> <code>canvasHeight</code> or <code>cH</code> - Height in pixels to resize the canvas element to.<br />
     If a canvas width or height value is not given then the canvas will not resize.<br />
-<strong>Function</strong> <code>setup</code> - Called when the game has finished setting up (Called with the <code>didSetup</code> event).<br />
-<strong>Funtion</strong> <code>update</code> - Called when the game will update.
+<strong>Function</strong> <code>setup</code> - Called <em>after</em> the game has finished setting up (Called with the <code>didSetup</code> event).<br />
+<strong>Funtion</strong> <code>update</code> - Called when the game will update - <em>before</em> the update loop occurs each frame.
 </span></p>
 <p><span class="tI tI-1">
     Automatically sets up the game with a <a href="#viewport">Viewport</a>, <a href="#stage">Stage</a> and <a href="#camera">Camera</a>.
