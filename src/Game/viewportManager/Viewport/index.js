@@ -33,6 +33,8 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	this.setCanvas = (newCanvas) => {
 		this.c = document.querySelector(newCanvas);
 		this.ctx = this.c.getContext("2d");
+
+		return this;
 	};
 	this.setCanvas(canvas);
 
@@ -58,6 +60,8 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 		} else {
 			this.activeStage = activeStage;
 		}
+
+		return this;
 	};
 	this.setStage(activeStage);
 
@@ -82,6 +86,8 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 				this.activeCamera.bounds.h = this.bounds.h;
 			}
 		}
+
+		return this;
 	};
 	this.setCamera(camera);
 
