@@ -391,7 +391,8 @@ The following Sprite types are available: `Whirl.Sprite.Rectangle(...)` and `Whi
 `.setFill(<fill>)`
 
 <span class="tI tI-1">
-	See the [Sprite <fill\> parameter](#parameters_1).
+	See the [Sprite <fill\> parameter](#parameters_1).  
+	Returns the Sprite object.
 </span>
 
 <span class="tI tI-1">
@@ -482,7 +483,8 @@ Whirl.Sprite.Rectangle(<Game>, <name>, <fill>, <options>)
 
 <span class="tI tI-1">
 	Will not execute if the Sprite does not have an `image` fill type.  
-	Automatically sets the bounding box's width and height to the same dimensions as the image's width and height.
+	Automatically sets the bounding box's width and height to the same dimensions as the image's width and height.  
+	Returns the Sprite object.
 </span>
 
 <span class="tI tI-2">
@@ -496,7 +498,8 @@ Whirl.Sprite.Rectangle(<Game>, <name>, <fill>, <options>)
 `.anchor.center()`
 
 <span class="tI tI-1">
-	Sets the anchor point to `(0.5, 0.5)`.
+	Sets the anchor point to `(0.5, 0.5)`.  
+	Returns the Sprite object.
 </span>
 
 ---
@@ -1037,7 +1040,8 @@ The above code would return a reference to the Viewport object as contained in t
 
 <span class="tI tI-1">
 	Sets the HTML5 canvas element to render to.  
-	Also see the `.c` and `.ctx` [viewport properties](#properties_7).
+	Also see the `.c` and `.ctx` [viewport properties](#properties_7).  
+	Returns the Viewport object.
 </span>
 
 <span class="tI tI-2">
@@ -1059,7 +1063,8 @@ myViewport.setCanvas("#myCanvas");
 
 <span class="tI tI-1">
 	Sets the current [stage](#stage) to be rendered.  
-	Also see the `.activeStage` [viewport property](#properties_7).
+	Also see the `.activeStage` [viewport property](#properties_7).  
+	Returns the Viewport object.
 </span>
 
 <span class="tI tI-2">
@@ -1077,7 +1082,8 @@ myViewport.setCanvas("#myCanvas");
 
 <span class="tI tI-1">
 	Sets the current [camera](#camera) to be used for rendering.  
-	Also see the `.activeCamera` [viewport property](#properties_7).
+	Also see the `.activeCamera` [viewport property](#properties_7).  
+	Returns the Viewport object.
 </span>
 
 <span class="tI tI-2">
