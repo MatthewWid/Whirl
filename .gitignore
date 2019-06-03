@@ -1,11 +1,16 @@
+# packages
 node_modules
 
+# generated
 build/whirl.js
 
+# examples
+*.css.map
 examples/*/styles/.sass-cache
 examples/Playground/
 changelog.txt
 
+# doc
 site/
 .sass-cache/
 doc/css/.sass-cache

@@ -1,4 +1,4 @@
-@import "reset.min.scss";
+@import "_reset.scss";
 
 html {
 	background-color: #333;
@@ -11,4 +11,8 @@ html {
 		margin: 20px 0;
 		box-shadow: 0 0 0 1px #BBB;
 	}
+}
+p {
+	text-align: center;
+	color: #BBB;
 }

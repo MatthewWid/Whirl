@@ -1,17 +1,13 @@
-document.getElementsByTagName("html")[0].style.backgroundColor = "#FFF";
-
-let wh = Whirl;
-
-let game = wh.Game();
+const game = Whirl.Game();
 
 // Create three containers for "dad", "son" and "daughter"
-let dad = wh.Container(game);
+const dad = Whirl.Container(game);
 dad.data.name = "dad";
 
-let son = wh.Container(game);
+const son = Whirl.Container(game);
 son.data.name = "son";
 
-let daughter = wh.Container(game);
+const daughter = Whirl.Container(game);
 daughter.data.name = "daughter";
 
 // Create a new container called "dad"
@@ -23,6 +19,6 @@ dad
 		// A container "daughter" is the child of the container "dad"
 		daughter
 	])
-	.child.getAllDeep().forEach((e) => { // Deep-lookup every child of the container "dad" and run through each returned object
+	.child.getAllDeep().forEach((e) => { // Get every child of the "dad" container
 		console.log(e._type + " | " + e.data.name); // Log the names of the returned children
 	});
