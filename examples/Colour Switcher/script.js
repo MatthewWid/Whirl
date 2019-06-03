@@ -1,4 +1,3 @@
-const game = Whirl.Game();
 const c = {
 	r: 0,
 	g: 0,
@@ -8,25 +7,23 @@ const c = {
 	bT: 0,
 	step: 1
 };
-const debugText = {
+const textConfig = {
 	padLeft: 20,
 	lineHeight: 10
 };
 let bg;
 
-
-// Debug text
-game.event.on("didRender", ({game}) => {
+function debugText({game}) {
 	const v = game.viewport("main");
 
 	v.ctx.fillStyle = "rgb(255, 255, 255)";
-	v.ctx.fillText("Frame: " + game.frameCount, debugText.padLeft, 40 + debugText.lineHeight);
+	v.ctx.fillText("Frame: " + game.frameCount, textConfig.padLeft, 40 + textConfig.lineHeight);
 
 	const keys = Object.keys(c);
 	for (let i = 0; i < keys.length; i++) {
-		v.ctx.fillText(keys[i] + ": " + c[keys[i]], debugText.padLeft, 60 + debugText.lineHeight * i);
+		v.ctx.fillText(keys[i] + ": " + c[keys[i]], textConfig.padLeft, 60 + textConfig.lineHeight * i);
 	}
-});
+}
 
 // Set a new target colour
 function setNewCol() {
@@ -66,11 +63,13 @@ function setup({game, viewport, stage, camera}) {
 	stage.child.add(bg);
 }
 
-// Setup the game
-game.setup({
-	update,
-	setup,
-	canvas: "#canvas",
-	cW: 400,
-	cH: 400
-});
+// Set up the game
+Whirl.Game()
+	.event.on("didRender", debugText)
+	.setup({
+		update,
+		setup,
+		canvas: "#canvas",
+		cW: 400,
+		cH: 400
+	});
