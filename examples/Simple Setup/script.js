@@ -1,10 +1,8 @@
-function update(data) {
+function update({game, frameCount}) {
 	// Run some code each update loop ...
 }
 
-function setup(data) {
-	const {game, viewport, stage, camera} = data;
-
+function setup({game, viewport, stage, camera}) {
 	// Set up your game
 	// Create objects, initialise stage, viewport and camera, insert plugins, etc.
 }
