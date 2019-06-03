@@ -1,46 +1,36 @@
+// Array of assets that we want loaded into our game
+const assets = [
+	// Load an image file "playerSprite.png" and call it "player_pic"
+	{
+		name: "player_pic",
+		type: "image",
+		src: "../_common/img/playerSprite.png"
+	}
+];
+
 function setup({game, viewport, stage, camera}) {
 	// We want to use pixel art, so let's turn off anti-aliasing
 	viewport.imageSmoothing = false;
 
-	// Load an array of asset files
-	game.assetManager.load([
-		// Load an image file "playerSprite.png"
-		// called "player" from the "./img/" directory
-		{
-			name: "player",
-			type: "image",
-			src: "../_common/img/playerSprite.png"
-		},
-		// Load an audio file "8bit.mp3"
-		// called "bg_music" from the "./audio/" directory
-		{
-			name: "bg_music",
-			type: "audio",
-			src: "../_common/audio/8bit.mp3"
-		}
-	])
-	.event.on("didLoadAsset", ({asset, timeTaken}) => {
-		// If the loaded asset is our playerSprite.png image then
-		// create a Sprite and fill it with the image
-		// then add the Sprite to the world
-		if (asset.name === "player") {
-			const player = Whirl.Sprite(game, "player", asset, {
-				x: 100,
-				y: 100,
-				scale: 2
-			}).anchor.center();
+	/*
+		Create a player Sprite using our 'playerSprite.png' image.
+		Use `game.asset("player_pic")` to retrieve our image asset we loaded
+		with the name "player_pic" above.
+	*/
+	const player = Whirl.Sprite(game, "player", game.asset("player_pic"), {
+		x: 100,
+		y: 100,
+		scale: 2
+	}).anchor.center();
 
-			stage.child.add(player);
-		}
-	})
-	.event.onOnce("didLoadAll", ({newAssets, timeTaken}) => {
-		console.log(newAssets);
-	});
+	// Add the Sprite to the game world
+	stage.child.add(player);
 }
 
 Whirl.Game()
 	.setup({
 		setup,
+		assets,
 		canvas: "#canvas",
 		cW: 400,
 		cH: 400
