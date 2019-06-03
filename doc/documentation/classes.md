@@ -161,9 +161,10 @@ Whirl.Game(<options>)
 	**String** `canvas` - Selector for an HTML5 `<canvas>` element.  
 	**String** `canvasWidth` or `cW` - Width in pixels to resize the canvas element to.  
 	**String** `canvasHeight` or `cH` - Height in pixels to resize the canvas element to.  
-	If a canvas width or height value is not given then the canvas will not resize.  
+	If a canvas width or height value is not given then the canvas will not be resized.  
 	**Function** `setup` - Called *after* the game has finished setting up (Called with the `didSetup` event).  
-	**Funtion** `update` - Called when the game will update - *before* the update loop occurs each frame.
+	**Funtion** `update` - Called when the game will update - *before* the update loop occurs each frame (Called with the `willUpdate` event).  
+	**Array** `assets` - Array of assets to be loaded before the game is started. Implicitely calls the asset manager's `.load` method.
 </span>
 
 <span class="tI tI-1">
@@ -171,11 +172,11 @@ Whirl.Game(<options>)
 </span>
 
 <span class="tI tI-1">
-	This is not required to set up a game. Alternatively, a [Viewport](#viewport), [Stage](#stage) and [Camera](#camera) can be set up manually using the Viewport Manager.
+	This is not required to set up a game. Alternatively, a [Viewport](#viewport), [Stage](#stage), [Camera](#camera) and assets can be set up manually. See the article ["Advanced: Setting Up From Scratch"](../../getting-started#advanced-setting-up-from-scratch).
 </span>
 
 <span class="tI tI-1">
-	Once setup has completed, the `didSetup` event is emitted on the Game object.
+	Once setup has completed, the `didSetup` event is emitted on the game object and game loop is automatically started.
 </span>
 
 <span class="tI tI-1">
@@ -191,17 +192,15 @@ function gameLoop(data) {
 	// Update object positions, detect key presses, animate sprites, etc.
 }
 
-
 const myGame = Whirl.Game()
-    .setup({
+	.setup({
 		setup: gameSetup,
 		update: gameLoop,
 
-    	canvas: "#myCanvas",
+		canvas: "#myCanvas",
 		canvasWidth: 400,
 		canvasHeight: 400
-    })
-    .start();
+	});
 ```
 
 `.start()`
