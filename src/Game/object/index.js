@@ -1,6 +1,7 @@
 // Whirl.game.object
 
 const systems = require("../../systems");
+const createObjectManager = require("../../lib/objectManager.js");
 
 module.exports = (_game) => {
 	_game._globalIndex = 0;
@@ -49,24 +50,6 @@ module.exports = (_game) => {
 		nextID: () => {
 			return _game._globalIndex++;
 		},
-		// Retrieve objects from the global object store
-		// Based on its given name
-		getByName: (query) => {
-			return _game.object.globalStore.filter((e) => e.name === query);
-		},
-		// Based on its internal ID
-		getById: (query) => {
-			return _game.object.globalStore.filter((e) => e._id === query);
-		},
-		// Based on its internal type
-		getByType: (query) => {
-			return _game.object.globalStore.filter((e) => e._type === query);
-		},
-		// Get all objects from the globalStore
-		getAll: () => {
-			return _game.object.globalStore;
-		},
-		// Remove an object from the global store based on its unique ID
 		destroyById: (query) => {
 			const searchObj = _game.object.getById(query)[0];
 			if (!searchObj) {
@@ -78,5 +61,6 @@ module.exports = (_game) => {
 		},
 		globalStore: []
 	};
+	createObjectManager(_game.object, _game.object.globalStore);
 	_game.object.init(_game, "Whirl.Game", {event: true}, false);
 };

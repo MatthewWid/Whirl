@@ -1,5 +1,7 @@
 // Whirl.game.stageManager
 
+const createObjectManager = require("../../lib/objectManager.js");
+
 module.exports = (_game) => {
 	let Stage = require("./Stage");
 
@@ -12,17 +14,12 @@ module.exports = (_game) => {
 			) - 1;
 			return _game.stages[newInd];
 		},
-		getByName: (name) => {
-			return _game.stages.filter((e) => e.name === name);
-		},
-		getAll: () => {
-			return _game.stages;
-		},
 		_updateAll: () => {
 			for (let i = 0, n = _game.stages.length; i < n; i++) {
 				_game.stages[i]._update();
 			}
 		}
 	};
+	createObjectManager(_game.stageManager, _game.stages);
 	_game.stage = (name) => _game.stageManager.getByName(name)[0] || null;
 };
