@@ -1,6 +1,6 @@
-// Whirl.game.gameObject
+// Whirl.game.object
 
-let systems = require("../../systems");
+const systems = require("../../systems");
 
 module.exports = (_game) => {
 	_game._globalIndex = 0;
@@ -78,4 +78,5 @@ module.exports = (_game) => {
 		},
 		globalStore: []
 	};
+	_game.object.init(_game, "Whirl.Game", {event: true}, false);
 };

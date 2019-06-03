@@ -5,8 +5,7 @@ function Game(presets = {}) {
 	require("./config")(this, presets);
 
 	// game.object
-	require("./gameObject")(this);
-	this.object.init(this, "Whirl.Game", {event: true}, false);
+	require("./object")(this);
 
 	// game.assetManager
 	require("./assetManager")(this);
