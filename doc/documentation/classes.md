@@ -338,7 +338,7 @@ The following Sprite types are available: `Whirl.Sprite.Rectangle(...)` and `Whi
 	Used by the global object manager to search for Sprites.
 </span>
 
-`.fill` (Read-only)
+`._fill` (Read-only)
 
 <span class="tI tI-1">
 	**Object**  
