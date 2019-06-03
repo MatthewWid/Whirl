@@ -6,16 +6,14 @@ module.exports = (_game) => {
 	_game.assets = [];
 
 	_game.assetManager = {
-		// Provide either an object or an array of objects
 		load: (assetList = []) => {
-			// Returns the newly made asset if only an asset object is given (And not array)
-			let newAssetArr = [];
+			const newAssetArr = [];
+			const totalToLoad = assetList.length;
 			let totalLoaded = 0;
-			let totalToLoad = assetList.length;
 			let totalTime = 0;
 
 			for (let i = 0, n = assetList.length; i < assetList.length; i++) {
-				let newInd = _game.assets.push(
+				const newInd = _game.assets.push(
 					new Asset(_game, assetList[i].name, assetList[i].type, assetList[i].src)
 				) - 1;
 				newAssetArr[i] = _game.assets[newInd];
@@ -34,7 +32,7 @@ module.exports = (_game) => {
 				});
 			}
 
-			return _game;
+			return _game.assetManager;
 		},
 		getByName: (name) => {
 			return _game.assets.filter((e) => e.name === name);

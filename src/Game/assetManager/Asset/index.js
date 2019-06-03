@@ -2,7 +2,6 @@
 
 function Asset(_game, name, type, src) {
 	_game.object.init(this, "Whirl.Asset", {event: true});
-
 	// Mandatory presets
 	this.name = name;
 	this.type = type;
@@ -10,7 +9,7 @@ function Asset(_game, name, type, src) {
 
 	this.data._loaded = false;
 
-	let startLoad = Date.now();
+	const startLoad = Date.now();
 
 	// Attach data and properties based on asset type
 	switch (this.type) {
