@@ -47,7 +47,9 @@ function Sprite_Rectangle(_game, name, fill, presets = {}) {
 
 		return this;
 	};
-	this.resizeToImage();
+	if (!presets.hasOwnProperty("resizeToImage") || presets.resizeToImage) {
+		this.resizeToImage();
+	}
 
 	// The physical bounds of the object taking into account the anchor point
 	// _physBounds should be considered read-only outside of the _update() method
