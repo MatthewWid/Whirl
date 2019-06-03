@@ -24,4 +24,5 @@ module.exports = (_game) => {
 			}
 		}
 	};
+	_game.stage = (name) => _game.stageManager.getByName(name)[0] || null;
 };

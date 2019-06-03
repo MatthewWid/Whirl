@@ -19,4 +19,5 @@ module.exports = (_game) => {
 			return _game.viewports;
 		}
 	};
+	_game.viewport = (name) => _game.viewportManager.getByName(name)[0] || null;
 };

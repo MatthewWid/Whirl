@@ -50,5 +50,6 @@ module.exports = (_game) => {
 			return _game.assets;
 		}
 	};
+	_game.asset = (name) => game.assetManager.getByName(name)[0] || null;
 	_game.object.init(_game.assetManager, "Whirl.system.assetManager", {event: true}, false);
 };
