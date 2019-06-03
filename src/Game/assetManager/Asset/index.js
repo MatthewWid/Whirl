@@ -1,5 +1,8 @@
 // Whirl.game.assetManager.Asset
 
+const imageLoader = require("./imageLoader.js");
+const audioLoader = require("./audioLoader.js");
+
 function Asset(_game, name, type, src) {
 	_game.object.init(this, "Whirl.Asset", {event: true});
 	// Mandatory presets
@@ -9,31 +12,14 @@ function Asset(_game, name, type, src) {
 
 	this.data._loaded = false;
 
-	const startLoad = performance.now();
-
 	// Attach data and properties based on asset type
 	switch (this.type) {
 		case "image": {
-			this.rawData = new Image();
-			this.rawData.addEventListener("load", () => {
-				this.data._loaded = true;
-				this.event.emit("didLoad", {
-					asset: this,
-					timeTaken: parseInt(performance.now() - startLoad)
-				});
-			});
-			this.rawData.src = this.src;
+			imageLoader(this);
 			break;
 		}
 		case "audio": {
-			this.rawData = new Audio(this.src);
-			this.rawData.addEventListener("loadeddata", () => {
-				this.data._loaded = true;
-				this.event.emit("didLoad", {
-					asset: this,
-					timeTaken: parseInt(performance.now() - startLoad)
-				});
-			});
+			audioLoader(this);
 			break;
 		}
 		// json
