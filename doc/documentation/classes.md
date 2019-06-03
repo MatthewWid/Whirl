@@ -262,7 +262,7 @@ Sprites are visible "*things*" in your game world. They have a position, boundin
 
 All Sprites inherit from a `Whirl.Sprite._baseSprite` class and different types of Sprites extend the functionality of the base Sprite.
 
-Inherits the `tween` object system.
+Inherits the [tween object system](../systems/#animation-tweens).
 
 ```javascript
 Whirl.Sprite(<Game>, <name>, <fill>, <options>)
@@ -409,7 +409,7 @@ mySprite.setFill("blue");
 `.tween.`
 
 <span class="tI tI-1">
-	See the tween object system.
+	See the [tween object system](../systems/#animation-tweens).
 </span>
 
 ---
@@ -548,7 +548,7 @@ Returns a new instance of a Camera object.
 
 Cameras serve as the view into your world (the [Stage](#stage)). Scrolling the camera around lets you look around different parts of your world. Cameras can be scrolled around, lock onto objects, zoom in/out, apply effects and more.
 
-Inherits the `tween` object system.
+Inherits the [tween object system](../systems/#animation-tweens).
 
 ```javascript
 Whirl.Camera(<Game>, <options>)
@@ -789,7 +789,7 @@ myCamera.centerOn(mySprite);
 `.tween.`
 
 <span class="tI tI-1">
-	See the tween object system.
+	See the [tween object system](../systems/#animation-tweens).
 </span>
 
 ---
@@ -802,7 +802,7 @@ Objects not contained in a Stage are not rendered or updated.
 
 Stages and their contents are rendered using a [Viewport](#viewport) and will update by themselves even when not being rendered.
 
-Inherits the `child` object system.
+Inherits the [child object system](../systems/#child-hierarchy).
 
 ```javascript
 <Game>.stageManager.add(<name>, <options>)
@@ -866,7 +866,7 @@ The above code would return a reference to the Stage object as contained in the 
 `.child.`
 
 <span class="tI tI-1">
-	See the child object system.
+	See the [child object system](../systems/#child-hierarchy).
 </span>
 
 <span class="tI tI-1">
