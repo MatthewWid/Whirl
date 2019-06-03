@@ -111,6 +111,8 @@ function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 				if (this.loop) {
 					this.start();
 				}
+
+				return;
 			}
 
 			// Iterate through each property to modify
@@ -126,8 +128,8 @@ function Tween(_game, _obj, from = {}, to, time, presets = {}) {
 			}
 
 			this.event.emit("didUpdate", {
-				through: through,
-				now: now
+				through,
+				now
 			});
 		}
 	};
