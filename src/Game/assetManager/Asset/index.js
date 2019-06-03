@@ -9,7 +9,7 @@ function Asset(_game, name, type, src) {
 
 	this.data._loaded = false;
 
-	const startLoad = Date.now();
+	const startLoad = performance.now();
 
 	// Attach data and properties based on asset type
 	switch (this.type) {
@@ -19,7 +19,7 @@ function Asset(_game, name, type, src) {
 				this.data._loaded = true;
 				this.event.emit("didLoad", {
 					asset: this,
-					timeTaken: Date.now() - startLoad
+					timeTaken: parseInt(performance.now() - startLoad)
 				});
 			});
 			this.rawData.src = this.src;
@@ -31,7 +31,7 @@ function Asset(_game, name, type, src) {
 				this.data._loaded = true;
 				this.event.emit("didLoad", {
 					asset: this,
-					timeTaken: Date.now() - startLoad
+					timeTaken: parseInt(performance.now() - startLoad)
 				});
 			});
 			break;
