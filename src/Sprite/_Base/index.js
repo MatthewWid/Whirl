@@ -17,7 +17,7 @@ function _BaseSprite(_game, name, fill, presets = {}) {
 	// The name of this Sprite
 	this.name = name || "";
 
-	this.fill = {
+	this._fill = {
 		type: "colour",
 		data: "transparent"
 	};
@@ -28,7 +28,7 @@ function _BaseSprite(_game, name, fill, presets = {}) {
 		}
 		// If a string is given fill with a colour that is the given string.
 		if (typeof newFill == "string" && newFill.length > 0) {
-			this.fill = {
+			this._fill = {
 				type: "colour",
 				data: newFill
 			};
@@ -38,7 +38,7 @@ function _BaseSprite(_game, name, fill, presets = {}) {
 			newFill._type === "Whirl.Asset" &&
 			newFill.type === "image"
 		) {
-			this.fill = {
+			this._fill = {
 				type: "image",
 				data: newFill
 			};

@@ -38,10 +38,10 @@ function Sprite_Rectangle(_game, name, fill, presets = {}) {
 	// Resize this Sprite's boundaries to the same dimensions as its fill image
 	// Optionally modify the resize by a given scale factor but maintain aspect ratio
 	this.resizeToImage = (scale = 1) => {
-		if (this.fill.type === "image") {
+		if (this._fill.type === "image") {
 			this.bounds.set({
-				w: this.fill.data.rawData.width * scale,
-				h: this.fill.data.rawData.height * scale
+				w: this._fill.data.rawData.width * scale,
+				h: this._fill.data.rawData.height * scale
 			});
 		}
 
@@ -67,12 +67,12 @@ function Sprite_Rectangle(_game, name, fill, presets = {}) {
 	this._render = (_ctx, offset = {}) => {
 		_ctx.save();
 
-		if (this.alpha != 0 && this.scale != 0 || (this.fill.type == "colour" && this.fill.data != "transparent")) { // Don't render if we won't see it anyway
+		if (this.alpha != 0 && this.scale != 0 || (this._fill.type == "colour" && this._fill.data != "transparent")) { // Don't render if we won't see it anyway
 			if (this.alpha != 1) {
 				_ctx.globalAlpha = this.alpha;
 			}
 
-			render[this.fill.type](_ctx, this);
+			render[this._fill.type](_ctx, this);
 		}
 
 		if (this.outline) {
