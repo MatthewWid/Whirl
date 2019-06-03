@@ -28,8 +28,7 @@ function setup({game, viewport, stage, camera}) {
 				x: 100,
 				y: 100,
 				scale: 2
-			})
-				.anchor.center();
+			}).anchor.center();
 
 			stage.child.add(player);
 		}

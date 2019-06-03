@@ -1,5 +1,10 @@
 // Whirl.Game.setup
 
+function didSetup(_game, setupData) {
+	_game.event.emit("didSetup", {...setupData})
+		.start();
+}
+
 function setup(presets) {
 	let setupData = {
 		game: this
@@ -26,9 +31,15 @@ function setup(presets) {
 		this.event.on("willUpdate", presets.update);
 		setupData.update = presets.update;
 	}
+	if (presets.assets) {
+		this.assetManager.load(presets.assets).event.on("didLoadAll", ({newAssets}) => {
+			setupData.assets = newAssets;
+			didSetup(this, setupData);
+		});
+		return this;
+	}
 
-	this.event.emit("didSetup", {...setupData});
-
+	didSetup(this, setupData);
 	return this;
 }
 
