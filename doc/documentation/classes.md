@@ -109,12 +109,89 @@ Whirl.Game(<config>)
 	**Boolean** `keyboard` - Whether keyboard event listeners should be attached to the document (Default: `true`).  
 	**Boolean** `preventDefault` - Whether any events (mouse or keyboard) should have their default browser behaviour prevented (Default: `false`).  
 	**HTMLElement** `keyElement` - Element that listens for keyboard input events (Implicitly uses `game.input.setKeyElement`) (Default: `document.body`).  
-	**HTMLElement** `mouseElement` - Base element that listens for keyboard input events (Implicitly uses `game.input.setMouseElement`) (Default: `document.body`).
+	**HTMLElement** `mouseElement` - Base element that listens for keyboard input events (Implicitly uses `game.input.setMouseElement`) (Default: `document.body`).  
+</span>
+<span class="tI tI-3">
+	 **DO NOT** set this to a canvas element that any viewports are applied to.
 </span>
 
 <span class="tI tI-1">
-	Any other properties given to the `<config>` object will be attached to the `Game.config` object, too.
+	Any other properties given to the `<config>` object will be attached to the `config` object, too.
 </span>
+
+<span class="tI tI-1">
+	**Examples(s):**
+</span>
+
+Set all inputs to their defaults values.
+
+```javascript
+const myGame = Whirl.Game();
+// or
+const myGame = Whirl.Game({
+	input: true
+});
+```
+
+`myGame.config` would then look like:
+
+```json
+{
+	"ignoreWarnings": true,
+	"input": {
+		"mouse": true,
+		"keyboard": true,
+		"preventDefault": false
+	}
+}
+```
+
+Turn off all inputs.
+
+```javascript
+const myGame = Whirl.Game({
+	input: false
+});
+```
+
+`myGame.config` would then look like:
+
+```json
+{
+	"ignoreWarnings": true,
+	"input": false
+}
+```
+
+Turn off all mouse input, use an `<input>` element text box to listen for keyboard events and prevent the default mouse and keyboard behaviour.
+
+```javascript
+// Get the input element
+const myInput = document.querySelector("input#myInput");
+
+const myGame =
+Whirl.Game({
+	input: {
+		mouse: false,
+		preventDefault: true,
+		keyElement: myInput
+	}
+});
+```
+
+`myGame.config` would then look like:
+
+```json
+{
+	"ignoreWarnings": true,
+	"input": {
+		"mouse": false,
+		"keyboard": true,
+		"preventDefault": false,
+		"keyElement": input#myInput
+	}
+}
+```
 
 ## Properties
 
