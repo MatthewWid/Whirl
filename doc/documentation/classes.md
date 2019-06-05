@@ -91,28 +91,29 @@ Returns a new instance of a Game object.
 The `Game` object is the actual running and workforce of the engine that updates your game, handles various object managers and deals with all interactions and rendering.
 
 ```javascript
-Whirl.Game(<options>)
+Whirl.Game(<config>)
 ```
 
 ## Parameters
 
-**Object** `<options>`
+**Object** `<config>`
 
 <span class="tI tI-1">
 	Preset configuration options for the Game instance.  
 	**Boolean** `ignoreWarnings` - Ignore debug warnings (Default: `true`).  
-	**HTMLElement** `keyElement` - Element that listens for keyboard input events (Default: `document.body`).
-	**Object** or **`false`** `input` - Enable or disable certain input event listeners to be disabled or enabled. If you have a very large amount of game objects and are not using any input methods then disabling certain listeners may boost performance.  
-	Set this to `false` instead to disable all inputs - useful if you just want to create some non-interactable animations or similar.  
+	**Object** or **Boolean** `input` - Enable or disable certain input event listeners. If you have a very large amount of game objects and are not using certain input methods then disabling certain listeners may yield a slight performance boost.  
+	Set to `false` to disable all inputs - useful if you just want to create some non-interactable animations or similar. Do not set or set to `true` to use the default input configuration (Listed below).  
 </span>
 <span class="tI tI-2">
 	**Boolean** `mouse` - Whether mouse event listeners should be attached to the document and existing and subsequent viewports (Default: `true`).  
 	**Boolean** `keyboard` - Whether keyboard event listeners should be attached to the document (Default: `true`).  
-	**Boolean** `preventDefault` - Whether any events (mouse or keyboard) fired should have their default browser behaviour prevented (Default: `false`).
+	**Boolean** `preventDefault` - Whether any events (mouse or keyboard) should have their default browser behaviour prevented (Default: `false`).  
+	**HTMLElement** `keyElement` - Element that listens for keyboard input events (Implicitly uses `game.input.setKeyElement`) (Default: `document.body`).  
+	**HTMLElement** `mouseElement` - Base element that listens for keyboard input events (Implicitly uses `game.input.setMouseElement`) (Default: `document.body`).
 </span>
 
 <span class="tI tI-1">
-	Any other properties given to the `<options>` object will be attached to the `Game.config` object, too.
+	Any other properties given to the `<config>` object will be attached to the `Game.config` object, too.
 </span>
 
 ## Properties
