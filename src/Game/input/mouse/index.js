@@ -3,14 +3,16 @@
 const attemptPreventDefault = require("../../../lib/attemptPreventDefault.js");
 
 // Format raw mouse event data
-const formatMousePos = (evt, c) => ({
+const formatMouseEvt = (evt, element) => ({
+	baseElement: element,
+	clickedElement: evt.target,
 	// Raw MouseEvent object
 	rawEvent: evt,
 	// Position relative to the viewport/world
 	pos: {
 		// TODO: Include viewport and camera offsets in calculation
-		x: evt.pageX - c.offsetLeft,
-		y: evt.pageY - c.offsetTop
+		x: evt.pageX - element.offsetLeft,
+		y: evt.pageY - element.offsetTop
 	},
 	// Position relative to the origin of the page
 	page: {
@@ -24,7 +26,7 @@ const eventRegisters = {
 	mouseClick: (_game, element, emitter) => {
 		element.addEventListener("click", (evt) => {
 			attemptPreventDefault(_game, evt);
-			const evtInfo = formatMousePos(evt, element);
+			const evtInfo = formatMouseEvt(evt, element);
 
 			emitter.event.emit("mouseClick", {
 				...evtInfo
@@ -39,7 +41,7 @@ const eventRegisters = {
 
 		element.addEventListener("mousemove", (evt) => {
 			attemptPreventDefault(_game, evt);
-			const evtInfo = formatMousePos(evt, element);
+			const evtInfo = formatMouseEvt(evt, element);
 
 			emitter.event.emit("mouseMove", {
 				...evtInfo,
