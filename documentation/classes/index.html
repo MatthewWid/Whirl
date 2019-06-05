@@ -286,26 +286,91 @@
 <h1 id="game">.Game()<a class="headerlink" href="#game" title="Permanent link">&para;</a></h1>
 <p>Returns a new instance of a Game object.</p>
 <p>The <code>Game</code> object is the actual running and workforce of the engine that updates your game, handles various object managers and deals with all interactions and rendering.</p>
-<pre><code class="javascript">Whirl.Game(&lt;options&gt;)
+<pre><code class="javascript">Whirl.Game(&lt;config&gt;)
 </code></pre>
 
 <h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
-<p><strong>Object</strong> <code>&lt;options&gt;</code></p>
+<p><strong>Object</strong> <code>&lt;config&gt;</code></p>
 <p><span class="tI tI-1">
     Preset configuration options for the Game instance.<br />
 <strong>Boolean</strong> <code>ignoreWarnings</code> - Ignore debug warnings (Default: <code>true</code>).<br />
-<strong>HTMLElement</strong> <code>keyElement</code> - Element that listens for keyboard input events (Default: <code>document.body</code>).
-    <strong>Object</strong> or <strong><code>false</code></strong> <code>input</code> - Enable or disable certain input event listeners to be disabled or enabled. If you have a very large amount of game objects and are not using any input methods then disabling certain listeners may boost performance.<br />
-    Set this to <code>false</code> instead to disable all inputs - useful if you just want to create some non-interactable animations or similar.<br />
+<strong>Object</strong> or <strong>Boolean</strong> <code>input</code> - Enable or disable certain input event listeners. If you have a very large amount of game objects and are not using certain input methods then disabling certain listeners may yield a slight performance boost.<br />
+    Set to <code>false</code> to disable all inputs - useful if you just want to create some non-interactable animations or similar. Do not set or set to <code>true</code> to use the default input configuration (Listed below).<br />
 </span>
 <span class="tI tI-2">
     <strong>Boolean</strong> <code>mouse</code> - Whether mouse event listeners should be attached to the document and existing and subsequent viewports (Default: <code>true</code>).<br />
 <strong>Boolean</strong> <code>keyboard</code> - Whether keyboard event listeners should be attached to the document (Default: <code>true</code>).<br />
-<strong>Boolean</strong> <code>preventDefault</code> - Whether any events (mouse or keyboard) fired should have their default browser behaviour prevented (Default: <code>false</code>).
+<strong>Boolean</strong> <code>preventDefault</code> - Whether any events (mouse or keyboard) should have their default browser behaviour prevented (Default: <code>false</code>).<br />
+<strong>HTMLElement</strong> <code>keyElement</code> - Element that listens for keyboard input events (Implicitly uses <code>game.input.setKeyElement</code>) (Default: <code>document.body</code>).<br />
+<strong>HTMLElement</strong> <code>mouseElement</code> - Base element that listens for keyboard input events (Implicitly uses <code>game.input.setMouseElement</code>) (Default: <code>document.body</code>).<br />
+</span>
+<span class="tI tI-3">
+     <strong>DO NOT</strong> set this to a canvas element that any viewports are applied to.
 </span></p>
 <p><span class="tI tI-1">
-    Any other properties given to the <code>&lt;options&gt;</code> object will be attached to the <code>Game.config</code> object, too.
+    Any other properties given to the <code>&lt;config&gt;</code> object will be attached to the <code>config</code> object, too.
 </span></p>
+<p><span class="tI tI-1">
+    <strong>Examples(s):</strong>
+</span></p>
+<p>Set all inputs to their defaults values.</p>
+<pre><code class="javascript">const myGame = Whirl.Game();
+// or
+const myGame = Whirl.Game({
+    input: true
+});
+</code></pre>
+
+<p><code>myGame.config</code> would then look like:</p>
+<pre><code class="json">{
+    &quot;ignoreWarnings&quot;: true,
+    &quot;input&quot;: {
+        &quot;mouse&quot;: true,
+        &quot;keyboard&quot;: true,
+        &quot;preventDefault&quot;: false
+    }
+}
+</code></pre>
+
+<p>Turn off all inputs.</p>
+<pre><code class="javascript">const myGame = Whirl.Game({
+    input: false
+});
+</code></pre>
+
+<p><code>myGame.config</code> would then look like:</p>
+<pre><code class="json">{
+    &quot;ignoreWarnings&quot;: true,
+    &quot;input&quot;: false
+}
+</code></pre>
+
+<p>Turn off all mouse input, use an <code>&lt;input&gt;</code> element text box to listen for keyboard events and prevent the default mouse and keyboard behaviour.</p>
+<pre><code class="javascript">// Get the input element
+const myInput = document.querySelector(&quot;input#myInput&quot;);
+
+const myGame =
+Whirl.Game({
+    input: {
+        mouse: false,
+        preventDefault: true,
+        keyElement: myInput
+    }
+});
+</code></pre>
+
+<p><code>myGame.config</code> would then look like:</p>
+<pre><code class="json">{
+    &quot;ignoreWarnings&quot;: true,
+    &quot;input&quot;: {
+        &quot;mouse&quot;: false,
+        &quot;keyboard&quot;: true,
+        &quot;preventDefault&quot;: false,
+        &quot;keyElement&quot;: input#myInput
+    }
+}
+</code></pre>
+
 <h2 id="properties_1">Properties<a class="headerlink" href="#properties_1" title="Permanent link">&para;</a></h2>
 <p><code>.config</code></p>
 <p><span class="tI tI-1">
@@ -341,18 +406,19 @@
     <strong>String</strong> <code>canvas</code> - Selector for an HTML5 <code>&lt;canvas&gt;</code> element.<br />
 <strong>String</strong> <code>canvasWidth</code> or <code>cW</code> - Width in pixels to resize the canvas element to.<br />
 <strong>String</strong> <code>canvasHeight</code> or <code>cH</code> - Height in pixels to resize the canvas element to.<br />
-    If a canvas width or height value is not given then the canvas will not resize.<br />
+    If a canvas width or height value is not given then the canvas will not be resized.<br />
 <strong>Function</strong> <code>setup</code> - Called <em>after</em> the game has finished setting up (Called with the <code>didSetup</code> event).<br />
-<strong>Funtion</strong> <code>update</code> - Called when the game will update - <em>before</em> the update loop occurs each frame.
+<strong>Funtion</strong> <code>update</code> - Called when the game will update - <em>before</em> the update loop occurs each frame (Called with the <code>willUpdate</code> event).<br />
+<strong>Array</strong> <code>assets</code> - Array of assets to be loaded before the game is started. Implicitely calls the asset manager's <code>.load</code> method.
 </span></p>
 <p><span class="tI tI-1">
     Automatically sets up the game with a <a href="#viewport">Viewport</a>, <a href="#stage">Stage</a> and <a href="#camera">Camera</a>.
 </span></p>
 <p><span class="tI tI-1">
-    This is not required to set up a game. Alternatively, a <a href="#viewport">Viewport</a>, <a href="#stage">Stage</a> and <a href="#camera">Camera</a> can be set up manually using the Viewport Manager.
+    This is not required to set up a game. Alternatively, a <a href="#viewport">Viewport</a>, <a href="#stage">Stage</a>, <a href="#camera">Camera</a> and assets can be set up manually. See the article <a href="../../getting-started#advanced-setting-up-from-scratch">"Advanced: Setting Up From Scratch"</a>.
 </span></p>
 <p><span class="tI tI-1">
-    Once setup has completed, the <code>didSetup</code> event is emitted on the Game object.
+    Once setup has completed, the <code>didSetup</code> event is emitted on the game object and game loop is automatically started.
 </span></p>
 <p><span class="tI tI-1">
     <strong>Example(s):</strong>
@@ -365,7 +431,6 @@ function gameLoop(data) {
     // Update object positions, detect key presses, animate sprites, etc.
 }
 
-
 const myGame = Whirl.Game()
     .setup({
         setup: gameSetup,
@@ -374,8 +439,7 @@ const myGame = Whirl.Game()
         canvas: &quot;#myCanvas&quot;,
         canvasWidth: 400,
         canvasHeight: 400
-    })
-    .start();
+    });
 </code></pre>
 
 <p><code>.start()</code></p>
@@ -423,7 +487,7 @@ myGame.stop();
 <p>Returns a new instance of a <code>Sprite.Rectangle()</code> object unless specified otherwise.</p>
 <p>Sprites are visible "<em>things</em>" in your game world. They have a position, bounding box, a fill colour or image and a plethora of other properties that can be modified.</p>
 <p>All Sprites inherit from a <code>Whirl.Sprite._baseSprite</code> class and different types of Sprites extend the functionality of the base Sprite.</p>
-<p>Inherits the <code>tween</code> object system.</p>
+<p>Inherits the <a href="../systems/#animation-tweens">tween object system</a>.</p>
 <pre><code class="javascript">Whirl.Sprite(&lt;Game&gt;, &lt;name&gt;, &lt;fill&gt;, &lt;options&gt;)
 </code></pre>
 
@@ -477,7 +541,7 @@ myGame.stop();
 <p><span class="tI tI-1">
     Used by the global object manager to search for Sprites.
 </span></p>
-<p><code>.fill</code> (Read-only)</p>
+<p><code>._fill</code> (Read-only)</p>
 <p><span class="tI tI-1">
     <strong>Object</strong><br />
 <strong>Do not modify directly. Use the <code>.setFill()</code> method.</strong><br />
@@ -532,7 +596,7 @@ mySprite.setFill(&quot;blue&quot;);
 
 <p><code>.tween.</code></p>
 <p><span class="tI tI-1">
-    See the tween object system.
+    See the <a href="../systems/#animation-tweens">tween object system</a>.
 </span></p>
 <hr />
 <h2 id="rectangle">.Rectangle()<a class="headerlink" href="#rectangle" title="Permanent link">&para;</a></h2>
@@ -632,7 +696,7 @@ Whirl.Sprite.Rectangle(&lt;Game&gt;, &lt;name&gt;, &lt;fill&gt;, &lt;options&gt;
 <h1 id="camera">.Camera()<a class="headerlink" href="#camera" title="Permanent link">&para;</a></h1>
 <p>Returns a new instance of a Camera object.</p>
 <p>Cameras serve as the view into your world (the <a href="#stage">Stage</a>). Scrolling the camera around lets you look around different parts of your world. Cameras can be scrolled around, lock onto objects, zoom in/out, apply effects and more.</p>
-<p>Inherits the <code>tween</code> object system.</p>
+<p>Inherits the <a href="../systems/#animation-tweens">tween object system</a>.</p>
 <pre><code class="javascript">Whirl.Camera(&lt;Game&gt;, &lt;options&gt;)
 </code></pre>
 
@@ -826,14 +890,14 @@ myCamera.setLerp(.1);
 </span></p>
 <p><code>.tween.</code></p>
 <p><span class="tI tI-1">
-    See the tween object system.
+    See the <a href="../systems/#animation-tweens">tween object system</a>.
 </span></p>
 <hr />
 <h1 id="stage">Stage<a class="headerlink" href="#stage" title="Permanent link">&para;</a></h1>
 <p>A stage is the 'world' of your game that you put your game objects into. It used for keeping track of and updating game objects in the world.</p>
 <p>Objects not contained in a Stage are not rendered or updated.</p>
 <p>Stages and their contents are rendered using a <a href="#viewport">Viewport</a> and will update by themselves even when not being rendered.</p>
-<p>Inherits the <code>child</code> object system.</p>
+<p>Inherits the <a href="../systems/#child-hierarchy">child object system</a>.</p>
 <pre><code class="javascript">&lt;Game&gt;.stageManager.add(&lt;name&gt;, &lt;options&gt;)
 </code></pre>
 
@@ -879,7 +943,7 @@ myCamera.setLerp(.1);
 <h3 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h3>
 <p><code>.child.</code></p>
 <p><span class="tI tI-1">
-    See the child object system.
+    See the <a href="../systems/#child-hierarchy">child object system</a>.
 </span></p>
 <p><span class="tI tI-1">
     Objects must be contained inside a Stage using the child object system.<br />
