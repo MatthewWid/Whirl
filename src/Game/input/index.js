@@ -12,6 +12,7 @@ module.exports = (_game) => {
 		setupKeyboard: keyboard.setup.bind(_game),
 		setKeyElement: keyboard.setKeyElement.bind(_game),
 		setupMouse: mouse.setup.bind(_game),
+		setMouseElement: mouse.setMouseElement.bind(_game),
 		registerMouseViewport: mouse.registerMouseViewport.bind(_game)
 	};
 

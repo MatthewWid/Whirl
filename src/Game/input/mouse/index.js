@@ -2,6 +2,7 @@
 
 const attemptPreventDefault = require("../../../lib/attemptPreventDefault.js");
 
+// Format raw mouse event data
 const formatMousePos = (evt, c) => ({
 	// Raw MouseEvent object
 	rawEvent: evt,
@@ -18,28 +19,29 @@ const formatMousePos = (evt, c) => ({
 	}
 });
 
+// Register specific events with the given viewports
 const eventRegisters = {
-	mouseClick: (_game, c, vp) => {
-		c.addEventListener("click", (evt) => {
+	mouseClick: (_game, element, emitter) => {
+		element.addEventListener("click", (evt) => {
 			attemptPreventDefault(_game, evt);
-			const evtInfo = formatMousePos(evt, c);
+			const evtInfo = formatMousePos(evt, element);
 
-			vp.event.emit("mouseClick", {
+			emitter.event.emit("mouseClick", {
 				...evtInfo
 			});
 		});
 	},
-	mouseMove: (_game, c, vp) => {
+	mouseMove: (_game, element, emitter) => {
 		let posLast = {
 			x: 0,
 			y: 0
 		};
 
-		c.addEventListener("mousemove", (evt) => {
+		element.addEventListener("mousemove", (evt) => {
 			attemptPreventDefault(_game, evt);
-			const evtInfo = formatMousePos(evt, c);
+			const evtInfo = formatMousePos(evt, element);
 
-			vp.event.emit("mouseMove", {
+			emitter.event.emit("mouseMove", {
 				...evtInfo,
 				posLast: {
 					...posLast
@@ -56,15 +58,29 @@ const eventRegisters = {
 	}
 };
 
+// Set the base element that mouse events will be listened on (Default: <body>)
+// Listens with all mouse events
+function setMouseElement(targetEl = document.body) {
+	Object.keys(eventRegisters).forEach((register) => {
+		eventRegisters[register](this, targetEl, this.input);
+	});
+}
+
+// Abstraction: Set up "mouseClick" and "mouseMove" event listeners on given viewport
 function setupViewportStandard(_game, viewport) {
-	_game.input.registerMouseViewport(viewport, ["mouseClick", ["mouseMove"]]);
+	_game.input.registerMouseViewport(viewport, ["mouseClick", "mouseMove"]);
 }
 
 function setup() {
+	// Set up mouse event listeners on the document body
+	setMouseElement.call(this);
+
+	// Set up mouse event listeners on all viewports
 	this.viewportManager.getAll().forEach((e) => {
 		setupViewportStandard(this, e);
 	});
 
+	// Listen for other viewports being created later and attach mouse events to them
 	this.event.on("requestMouseEvents", (e) => {
 		if (e.object._type === "Whirl.Viewport" && this.config.input) {
 			setupViewportStandard(this, e.object);
@@ -72,6 +88,7 @@ function setup() {
 	});
 }
 
+// Register mouse event listeners on given viewport
 function registerMouseViewport(target, events = []) {
 	if (!target) {
 		console.error("Whirl | No target element given when trying to register a mouse event element.");
@@ -93,6 +110,7 @@ function registerMouseViewport(target, events = []) {
 
 const mouse = {
 	setup,
+	setMouseElement,
 	registerMouseViewport
 };
 
