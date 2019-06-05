@@ -1,6 +1,7 @@
 // Whirl.game.config
 
 const inputDefault = {
+	input: true,
 	mouse: true,
 	keyboard: true,
 	preventDefault: false
@@ -9,10 +10,7 @@ const inputDefault = {
 module.exports = (_game, presets) => {
 	_game.config = {
 		ignoreWarnings: presets.ignoreWarnings || false,
-		...presets
-	};
-	_game.config.input = {
 		...inputDefault,
-		..._game.config.input
+		...presets
 	};
 };
