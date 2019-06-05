@@ -2,7 +2,7 @@
 // Constant variables used to configure certain game systems
 
 exports.defaultConfig = {
-	ignoreWarnings: false,
+	ignoreWarnings: true,
 	input: {
 		mouse: true,
 		keyboard: true,
