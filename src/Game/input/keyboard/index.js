@@ -75,6 +75,8 @@ function setKeyElement(targetEl = document.body) {
 	this.input._keyElement = targetEl;
 	this.input._keyElement.addEventListener("keydown", handle_keyDown);
 	this.input._keyElement.addEventListener("keyup", handle_keyUp);
+
+	return this;
 }
 
 const keyboard = {

@@ -67,6 +67,8 @@ function setMouseElement(targetEl = document.body) {
 	Object.keys(eventRegisters).forEach((register) => {
 		eventRegisters[register](this, targetEl, this.input);
 	});
+
+	return this;
 }
 
 // Abstraction: Set up "mouseClick" and "mouseMove" event listeners on given viewport

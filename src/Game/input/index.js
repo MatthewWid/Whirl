@@ -17,11 +17,11 @@ module.exports = (_game) => {
 
 	if (!input) return;
 	if (input.mouse) {
-		_game.input.setMouseElement();
+		_game.input.setMouseElement(input.mouseElement);
 		_game.input.setupMouse();
 	}
 	if (input.keyboard) {
-		_game.input.setKeyElement();
+		_game.input.setKeyElement(input.keyElement);
 		_game.input.setupKeyboard();
 	}
 };
