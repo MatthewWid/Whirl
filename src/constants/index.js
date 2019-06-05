@@ -3,8 +3,9 @@
 
 exports.defaultConfig = {
 	ignoreWarnings: false,
-	input: true,
-	mouse: true,
-	keyboard: true,
-	preventDefault: false
+	input: {
+		mouse: true,
+		keyboard: true,
+		preventDefault: false
+	}
 };

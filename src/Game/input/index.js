@@ -4,8 +4,7 @@ const keyboard = require("./keyboard");
 const mouse = require("./mouse");
 
 module.exports = (_game) => {
-	// Extract configuration variables and import input methods
-	const {input, keyElement} = _game.config;
+	const {input} = _game.config;
 
 	// Add setup functions to game input object
 	_game.input = {
@@ -18,10 +17,11 @@ module.exports = (_game) => {
 
 	if (!input) return;
 	if (input.mouse) {
+		_game.input.setMouseElement();
 		_game.input.setupMouse();
 	}
 	if (input.keyboard) {
-		_game.input.setKeyElement(keyElement);
+		_game.input.setKeyElement();
 		_game.input.setupKeyboard();
 	}
 };

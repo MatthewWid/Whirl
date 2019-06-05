@@ -61,6 +61,7 @@ const eventRegisters = {
 // Set the base element that mouse events will be listened on (Default: <body>)
 // Listens with all mouse events
 function setMouseElement(targetEl = document.body) {
+	this.input._mouseElement = targetEl;
 	Object.keys(eventRegisters).forEach((register) => {
 		eventRegisters[register](this, targetEl, this.input);
 	});
@@ -72,9 +73,6 @@ function setupViewportStandard(_game, viewport) {
 }
 
 function setup() {
-	// Set up mouse event listeners on the document body
-	setMouseElement.call(this);
-
 	// Set up mouse event listeners on all viewports
 	this.viewportManager.getAll().forEach((e) => {
 		setupViewportStandard(this, e);
