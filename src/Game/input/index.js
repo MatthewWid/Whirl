@@ -14,6 +14,7 @@ module.exports = (_game) => {
 		setMouseElement: mouse.setMouseElement.bind(_game),
 		registerMouseViewport: mouse.registerMouseViewport.bind(_game)
 	};
+	_game.object.init(_game.input, "Whirl.system.input", {event: true}, false);
 
 	if (!input) return;
 	if (input.mouse) {

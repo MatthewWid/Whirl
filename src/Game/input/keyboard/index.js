@@ -42,11 +42,6 @@ function keyIsUp(key) {
 
 // Set up the keyboard handler system for the first time
 function setup() {
-	if (sysId) {
-		console.error("Whirl | A keyboard system has already been setup.");
-		return false;
-	}
-
 	// If no key element is already defined, define it to defaults and add event listeners
 	if (!this.input._keyElement) {
 		keyboard.setKeyElement();
@@ -56,7 +51,6 @@ function setup() {
 	this.input.keyIsDown = keyIsDown;
 	this.input.keyIsUp = keyIsUp;
 
-	sysId = this.object.init(this.input, "Whirl.system.input.keyboard", {event: true}, false);
 	return true;
 }
 
