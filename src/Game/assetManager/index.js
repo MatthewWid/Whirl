@@ -1,8 +1,8 @@
 // Whirl.game.assetManager
 
-module.exports = (_game) => {
-	let Asset = require("./Asset");
+const Asset = require("../../Asset");
 
+module.exports = (_game) => {
 	_game.assets = [];
 
 	_game.assetManager = {
@@ -15,7 +15,7 @@ module.exports = (_game) => {
 			for (let i = 0, n = assetList.length; i < assetList.length; i++) {
 				// Add the new asset object to the game asset list
 				const newInd = _game.assets.push(
-					new Asset(_game, assetList[i].name, assetList[i].type, assetList[i].src)
+					Asset(_game, assetList[i].name, assetList[i].type, assetList[i].src)
 				) - 1;
 				newAssetArr[i] = _game.assets[newInd];
 

@@ -27,4 +27,4 @@ function Asset(_game, name, type, src) {
 	}
 }
 
-module.exports = Asset;
+module.exports = (...args) => new Asset(...args);
