@@ -1,16 +1,18 @@
 // Whirl.game.stageManager
 
+const Stage = require("../../Stage");
 const createObjectManager = require("../../lib/objectManager.js");
 
 module.exports = (_game) => {
-	let Stage = require("./Stage");
-
 	_game.stages = [];
 
 	_game.stageManager = {
-		add: (name, presets) => {
+		add: (stage) => {
+			return _game.stages.push(stage) - 1;
+		},
+		create: (name, presets) => {
 			let newInd = _game.stages.push(
-				new Stage(_game, name, presets)
+				Stage(_game, name, presets)
 			) - 1;
 			return _game.stages[newInd];
 		},

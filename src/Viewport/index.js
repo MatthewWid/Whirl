@@ -51,7 +51,7 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 
 	this.setStage = (newStage) => {
 		if (newStage === "_DEFAULTSTAGE") {
-			this.activeStage = _game.stageManager.add(this.name, {
+			this.activeStage = _game.stageManager.create(this.name, {
 				x: 0,
 				y: 0,
 				w: this.bounds.w,

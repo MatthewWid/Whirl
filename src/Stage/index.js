@@ -1,7 +1,7 @@
 // Whirl.game.stageManager.Stage
 
-let Rectangle = require("../../../shapes/Rectangle");
-const _sortChildren = require("../../../lib/sortChildren");
+const Rectangle = require("../shapes/Rectangle");
+const _sortChildren = require("../lib/sortChildren");
 
 /*
 	The stage is the game world that holds all of your game objects
@@ -36,4 +36,4 @@ function Stage(_game, name, presets = {}) {
 	};
 }
 
-module.exports = Stage;
+module.exports = (...args) => new Stage(...args);
