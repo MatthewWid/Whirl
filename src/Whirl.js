@@ -9,9 +9,11 @@ const Whirl = {
 	shapes: require("./shapes"), // Shapes and geometry
 
 	// Object constructors
+	Stage: require("./Stage"), // Stage
+	Viewport: require("./Viewport"), // Viewport
 	Camera: require("./Camera"), // Camera object
-	Container: require("./Container"), // Generic game container object
 	Sprite: require("./Sprite"), // Sprites
+	Container: require("./Container"), // Generic game container object
 	Text: require("./Text"), // Advanced text
 
 	// Hard constants
