@@ -18,7 +18,6 @@ module.exports = (_game) => {
 
 	if (!input) return;
 	if (input.mouse) {
-		_game.input.setMouseElement(input.mouseElement);
 		_game.input.setupMouse();
 	}
 	if (input.keyboard) {
