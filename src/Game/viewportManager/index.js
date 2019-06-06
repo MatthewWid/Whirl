@@ -1,16 +1,18 @@
 // Whirl.game.viewportManager
 
+const Viewport = require("../../Viewport");
 const createObjectManager = require("../../lib/objectManager.js");
 
 module.exports = (_game) => {
-	let Viewport = require("./Viewport");
-
 	_game.viewports = [];
 
 	_game.viewportManager = {
-		add: (name, canvas, activeStage, camera, presets) => {
+		add: (viewport) => {
+			return _game.viewports.push(viewport) - 1;
+		},
+		create: (name, canvas, activeStage, camera, presets) => {
 			let newInd = _game.viewports.push(
-				new Viewport(_game, name, canvas, activeStage, camera, presets)
+				Viewport(_game, name, canvas, activeStage, camera, presets)
 			) - 1;
 			return _game.viewports[newInd];
 		}

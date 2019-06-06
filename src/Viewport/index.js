@@ -1,7 +1,7 @@
 // Whirl.game.viewportManager.Viewport
 
-let Rectangle = require("../../../shapes/Rectangle");
-let Camera = require("../../../Camera");
+const Rectangle = require("../shapes/Rectangle");
+const Camera = require("../Camera");
 
 /*
 	A viewport is a screen that will be rendered to (A canvas)
@@ -148,4 +148,4 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 	});
 }
 
-module.exports = Viewport;
+module.exports = (...args) => new Viewport(...args);
