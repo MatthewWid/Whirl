@@ -1,58 +1,6 @@
 // Whirl.input.mouse
 
-const attemptPreventDefault = require("../../../lib/attemptPreventDefault.js");
-
-// Format raw mouse event data
-const formatMouseEvt = (evt) => ({
-	baseElement: evt.currentTarget,
-	clickedElement: evt.target,
-	// Raw MouseEvent object
-	rawEvent: evt,
-	// Position relative to the viewport/world
-	pos: {
-		// TODO: Include viewport and camera offsets in calculation
-		x: evt.pageX - evt.currentTarget.offsetLeft,
-		y: evt.pageY - evt.currentTarget.offsetTop
-	},
-	// Position relative to the origin of the page
-	page: {
-		x: evt.pageX,
-		y: evt.pageY
-	}
-});
-
-// Register specific events with the given viewports
-const eventRegisters = {
-	mouseClick: (_game, element, emitter) => {
-		element.addEventListener("click", (evt) => {
-			attemptPreventDefault(_game, evt);
-
-			const evtInfo = formatMouseEvt(evt);
-
-			emitter.event.emit("mouseClick", evtInfo);
-		});
-	},
-	mouseMove: (_game, element, emitter) => {
-		let posLast = {
-			x: 0,
-			y: 0
-		};
-
-		element.addEventListener("mousemove", (evt) => {
-			attemptPreventDefault(_game, evt);
-
-			const evtInfo = formatMouseEvt(evt);
-			evtInfo.posLast = posLast;
-			evtInfo.posDiff = {
-				x: evtInfo.pos.x - posLast.x,
-				y: evtInfo.pos.y - posLast.y
-			};
-			posLast = {...evtInfo.pos};
-
-			emitter.event.emit("mouseMove", evtInfo);
-		});
-	}
-};
+const eventRegisters = require("./eventRegisters");
 
 // Set the base element that mouse events will be listened on (Default: <body>)
 // Listens with all mouse events
