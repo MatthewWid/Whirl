@@ -3,16 +3,16 @@
 const attemptPreventDefault = require("../../../lib/attemptPreventDefault.js");
 
 // Format raw mouse event data
-const formatMouseEvt = (evt, element) => ({
-	baseElement: element,
+const formatMouseEvt = (evt) => ({
+	baseElement: evt.currentTarget,
 	clickedElement: evt.target,
 	// Raw MouseEvent object
 	rawEvent: evt,
 	// Position relative to the viewport/world
 	pos: {
 		// TODO: Include viewport and camera offsets in calculation
-		x: evt.pageX - element.offsetLeft,
-		y: evt.pageY - element.offsetTop
+		x: evt.pageX - evt.currentTarget.offsetLeft,
+		y: evt.pageY - evt.currentTarget.offsetTop
 	},
 	// Position relative to the origin of the page
 	page: {
@@ -26,11 +26,10 @@ const eventRegisters = {
 	mouseClick: (_game, element, emitter) => {
 		element.addEventListener("click", (evt) => {
 			attemptPreventDefault(_game, evt);
-			const evtInfo = formatMouseEvt(evt, element);
 
-			emitter.event.emit("mouseClick", {
-				...evtInfo
-			});
+			const evtInfo = formatMouseEvt(evt);
+
+			emitter.event.emit("mouseClick", evtInfo);
 		});
 	},
 	mouseMove: (_game, element, emitter) => {
@@ -41,21 +40,16 @@ const eventRegisters = {
 
 		element.addEventListener("mousemove", (evt) => {
 			attemptPreventDefault(_game, evt);
-			const evtInfo = formatMouseEvt(evt, element);
 
-			emitter.event.emit("mouseMove", {
-				...evtInfo,
-				posLast: {
-					...posLast
-				},
-				posDiff: {
-					x: evtInfo.pos.x - posLast.x,
-					y: evtInfo.pos.y - posLast.y
-				}
-			});
-			posLast = {
-				...evtInfo.pos
+			const evtInfo = formatMouseEvt(evt);
+			evtInfo.posLast = posLast;
+			evtInfo.posDiff = {
+				x: evtInfo.pos.x - posLast.x,
+				y: evtInfo.pos.y - posLast.y
 			};
+			posLast = {...evtInfo.pos};
+
+			emitter.event.emit("mouseMove", evtInfo);
 		});
 	}
 };

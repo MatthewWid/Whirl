@@ -3,7 +3,15 @@
 const keys = require("../../../keys");
 const attemptPreventDefault = require("../../../lib/attemptPreventDefault.js");
 
-let _game, sysId;
+let _game;
+
+const formatKeyEvt = (evt) => ({
+	baseElement: evt.currentTarget,
+	rawEvent: evt,
+	keyCode: evt.keyCode,
+	keyName: keys.getByKeyCode(evt.keyCode)
+});
+
 function handle_keyDown(evt) {
 	attemptPreventDefault(_game, evt);
 
@@ -12,11 +20,9 @@ function handle_keyDown(evt) {
 	}
 	_game.input.keysDown[evt.keyCode] = true;
 
-	_game.input.event.emit("keyDown", {
-		rawEvent: evt,
-		keyCode: evt.keyCode,
-		keyName: keys.getByKeyCode(evt.keyCode)
-	});
+	const evtInfo = formatKeyEvt(evt);
+
+	_game.input.event.emit("keyDown", evtInfo);
 }
 function handle_keyUp(evt) {
 	attemptPreventDefault(_game, evt);
@@ -27,11 +33,9 @@ function handle_keyUp(evt) {
 
 	_game.input.keysDown[evt.keyCode] = false;
 
-	_game.input.event.emit("keyUp", {
-		rawEvent: evt,
-		keyCode: evt.keyCode,
-		keyName: keys.getByKeyCode(evt.keyCode)
-	});
+	const evtInfo = formatKeyEvt(evt);
+
+	_game.input.event.emit("keyUp", evtInfo);
 }
 function keyIsDown(key) {
 	return _game.input.keysDown[typeof key === "string" ? keys[key] : key] || false;
