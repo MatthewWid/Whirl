@@ -2,15 +2,9 @@
 
 const keys = require("../../../keys");
 const attemptPreventDefault = require("../../../lib/attemptPreventDefault.js");
+const formatKeyEvt = require("./formatKeyEvt.js");
 
 let _game;
-
-const formatKeyEvt = (evt) => ({
-	baseElement: evt.currentTarget,
-	rawEvent: evt,
-	keyCode: evt.keyCode,
-	keyName: keys.getByKeyCode(evt.keyCode)
-});
 
 function handle_keyDown(evt) {
 	attemptPreventDefault(_game, evt);

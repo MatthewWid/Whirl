@@ -1,3 +1,5 @@
+// Whirl.input.mouse.formatMouseEvt
+
 // Format raw mouse event data
 const formatMouseEvt = (evt) => ({
 	baseElement: evt.currentTarget,
