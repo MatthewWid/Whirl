@@ -1,4 +1,4 @@
-// Whirl.input.mouse.registerMouseViewport
+// Whirl.input.setMouseElement
 
 const eventRegisters = require("./eventRegisters");
 
@@ -8,6 +8,7 @@ const eventRegisters = require("./eventRegisters");
 */
 function setMouseElement(targetEl = document.body) {
 	this.input._mouseElement = targetEl;
+	
 	Object.keys(eventRegisters).forEach((register) => {
 		eventRegisters[register](this, targetEl, this.input);
 	});

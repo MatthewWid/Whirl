@@ -1,4 +1,4 @@
-// Whirl.input.mouse.registerMouseViewport
+// Whirl.input.mouse.setup
 
 const setMouseElement = require("./setMouseElement.js");
 
@@ -23,6 +23,8 @@ function setup(targetEl) {
 			setupViewportStandard(this, e.object);
 		}
 	});
+
+	return this.input;
 }
 
 module.exports = setup;
