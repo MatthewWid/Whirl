@@ -1,8 +1,8 @@
 // Whirl.Sprite.Circle
 
-let _BaseSprite = require("../_Base");
-let render = require("./render");
-let shapes = require("../../shapes");
+const _BaseSprite = require("../_Base");
+const render = require("./render");
+const shapes = require("../../shapes");
 
 function Sprite_Circle(_game, name, fill, presets = {}) {
 	_BaseSprite.bind(this)(_game, name, fill, presets); // Extend the _BaseSprite class

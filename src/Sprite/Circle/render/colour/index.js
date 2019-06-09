@@ -1,11 +1,11 @@
 // Whirl.Sprite.Circle.render.colour
 
-function render_colour(_ctx, _sprite) {
-	_ctx.fillStyle = _sprite._fill.data;
+function renderColour(ctx, sprite) {
+	ctx.fillStyle = sprite._fill.data;
 	
-	_ctx.beginPath();
-	_ctx.arc(_sprite._physBounds.x, _sprite._physBounds.y, _sprite._physBounds.r, 0, Math.PI * 2);
-	_ctx.fill();
+	ctx.beginPath();
+	ctx.arc(sprite._physBounds.x, sprite._physBounds.y, sprite._physBounds.r, 0, Math.PI * 2);
+	ctx.fill();
 }
 
-module.exports = render_colour;
+module.exports = renderColour;

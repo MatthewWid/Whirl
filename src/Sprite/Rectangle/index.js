@@ -1,8 +1,8 @@
 // Whirl.Sprite.Rectangle
 
-let _BaseSprite = require("../_Base");
-let render = require("./render");
-let shapes = require("../../shapes");
+const _BaseSprite = require("../_Base");
+const render = require("./render");
+const shapes = require("../../shapes");
 
 /*
 	A rectangle Sprite.

@@ -1,8 +1,11 @@
 // Whirl.Sprite.Circle.render
 
-let render = {
-	image: require("./image"),
-	colour: require("./colour")
+const renderImage = require("./image");
+const renderColour = require("./colour");
+
+const render = {
+	image: renderImage,
+	colour: renderColour
 };
 
 module.exports = render;

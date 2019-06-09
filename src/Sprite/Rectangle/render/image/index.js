@@ -1,7 +1,7 @@
 // Whirl.Sprite.Rectangle.render.image
 
-function render_image(_ctx, _sprite) {
-	_ctx.drawImage(_sprite._fill.data.rawData, _sprite._physBounds.x, _sprite._physBounds.y, _sprite._physBounds.w, _sprite._physBounds.h);
+function renderImage(ctx, sprite) {
+	ctx.drawImage(sprite._fill.data.rawData, sprite._physBounds.x, sprite._physBounds.y, sprite._physBounds.w, sprite._physBounds.h);
 }
 
-module.exports = render_image;
+module.exports = renderImage;
