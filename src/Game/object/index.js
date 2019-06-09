@@ -9,25 +9,39 @@ module.exports = (_game) => {
 	_game.object = {
 		// Initialise a game object with standard properties that all objects in the game must have
 		// Objects can optionally inherit various systems that extend their functionality
-		init: (_obj, typeName, useSystems, store = true) => {
+		init: (_obj, typeName, useSystems = {}, store = true) => {
+			const objectInfo = {
+				object: _obj,
+				useSystems
+			};
+
+			if (_game.event) {
+				_game.event.emit("willInitObject", objectInfo);
+			}
+
+			// Generate new ID
 			_obj._id = _game.object.nextID();
+
+			// Grant type name
 			if (!_obj._type) {
 				_obj._type = typeName;
 			}
 
+			// Custom data
 			_obj.data = {};
+
+			// Systems bound to the object
 			_obj._systems = [];
 
+			// Attach systems to the object
 			_game.object.attachSystem(_obj, useSystems);
 
+			// Add object to the global store
 			if (store) {
 				_game.object.globalStore.push(_obj);
 			}
 
-			_game.event.emit("didInitObject", {
-				object: _obj,
-				useSystems: useSystems
-			});
+			_game.event.emit("didInitObject", objectInfo);
 
 			return _obj;
 		},
