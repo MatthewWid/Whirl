@@ -52,14 +52,14 @@ function Sprite_Rectangle(_game, name, fill, presets = {}) {
 	}
 
 	// The physical bounds of the object taking into account the anchor point
-	// _physBounds should be considered read-only outside of the _update() method
-	this._physBounds = shapes.Rectangle();
+	// _screenBounds should be considered read-only outside of the _update() method
+	this._screenBounds = shapes.Rectangle();
 	this._update = (offset = {}) => {
-		this._physBounds.set({
-			w: this.bounds.w * this.scale,
-			h: this.bounds.h * this.scale,
+		this._screenBounds.set({
 			x: Math.round(this.bounds.x - this.bounds.w * this.anchor.x * this.scale) + (offset.x || 0),
-			y: Math.round(this.bounds.y - this.bounds.h * this.anchor.y * this.scale) + (offset.y || 0)
+			y: Math.round(this.bounds.y - this.bounds.h * this.anchor.y * this.scale) + (offset.y || 0),
+			w: this.bounds.w * this.scale,
+			h: this.bounds.h * this.scale
 		});
 	};
 
@@ -80,7 +80,7 @@ function Sprite_Rectangle(_game, name, fill, presets = {}) {
 
 			_ctx.lineWidth = 2;
 			_ctx.strokeStyle = this.outline;
-			_ctx.strokeRect(this._physBounds.x - 1, this._physBounds.y - 1, this._physBounds.w + 2, this._physBounds.h + 2);
+			_ctx.strokeRect(this._screenBounds.x - 1, this._screenBounds.y - 1, this._screenBounds.w + 2, this._screenBounds.h + 2);
 		}
 
 		_ctx.restore();

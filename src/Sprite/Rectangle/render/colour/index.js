@@ -3,7 +3,7 @@
 function renderColour(ctx, sprite) {
 	ctx.fillStyle = sprite._fill.data;
 	
-	ctx.fillRect(sprite._physBounds.x, sprite._physBounds.y, sprite._physBounds.w, sprite._physBounds.h);
+	ctx.fillRect(sprite._screenBounds.x, sprite._screenBounds.y, sprite._screenBounds.w, sprite._screenBounds.h);
 }
 
 module.exports = renderColour;

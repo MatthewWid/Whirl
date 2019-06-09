@@ -69,7 +69,7 @@ function Camera(_game, presets = {}) {
 
 	this.centerOn = (_object) => {
 		if (_object._type === "Whirl.Sprite") {
-			const mid = _object._physBounds.getMidpoint();
+			const mid = _object._screenBounds.getMidpoint();
 			
 			this.anchor.center();
 			this.scroll = {
@@ -81,18 +81,9 @@ function Camera(_game, presets = {}) {
 		return this;
 	};
 
-	/*
-		TODO:
-		The physical area that this camera can see in the game world
-		used for render culling and exclusions to update
-	*/
-	this._worldView = shapes.Rectangle();
-	this._calculateWorldView = () => {};
-	this._calculateWorldView();
-
 	this._getScroll = () => {
 		if (this._followObject) {
-			const mid = this._followObject._physBounds.getMidpoint();
+			const mid = this._followObject._screenBounds.getMidpoint();
 			this.scroll = {
 				x: (mid.x * this.zoom - this.scroll.x) * this._lerp + this.scroll.x,
 				y: (mid.y * this.zoom - this.scroll.y) * this._lerp + this.scroll.y,
