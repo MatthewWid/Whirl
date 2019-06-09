@@ -1,6 +1,7 @@
 // Whirl.shapes.rectangle
 
-let shapes = require("../");
+const getMidpoint = require("./getMidpoint.js");
+const isPointInside = require("./isPointInside.js");
 
 function Rectangle(x, y, w, h) {
 	this._shape = "rectangle";
@@ -17,12 +18,9 @@ function Rectangle(x, y, w, h) {
 
 		return this;
 	};
-	this.getMidpoint = () => {
-		return {
-			x: this.x + this.w / 2,
-			y: this.y + this.h / 2
-		};
-	};
+
+	this.getMidpoint = getMidpoint.bind(this);
+	this.isPointInside = isPointInside.bind(this);
 }
 
 module.exports = (...args) => new Rectangle(...args);

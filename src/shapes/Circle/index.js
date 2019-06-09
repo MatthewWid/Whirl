@@ -1,4 +1,4 @@
-// Whirl.shapes.circle
+// Whirl.shapes.Circle
 
 function Circle(x, y, r) {
 	this._shape = "circle";
