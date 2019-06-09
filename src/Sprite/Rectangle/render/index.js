@@ -6,7 +6,7 @@ const renderTypes = {
 };
 
 // Render this sprite given a canvas context, offset coordinates and scaling
-function render(ctx, offset) {
+function render(ctx) {
 	ctx.save();
 
 	if (this.alpha != 0 && this.scale != 0 || (this._fill.type == "colour" && this._fill.data != "transparent")) { // Don't render if we won't see it anyway

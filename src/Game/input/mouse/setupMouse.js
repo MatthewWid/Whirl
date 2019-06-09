@@ -17,10 +17,10 @@ function setup(targetEl) {
 		setupViewportStandard(this, e);
 	});
 
-	// Listen for other viewports being created later and attach mouse events to them
-	this.event.on("requestMouseEvents", (e) => {
-		if (e.object._type === "Whirl.Viewport" && this.config.input) {
-			setupViewportStandard(this, e.object);
+	// Listen for future viewports being created and attach mouse events
+	this.event.on("requestMouseEvents", ({object}) => {
+		if (object._type === "Whirl.Viewport" && this.config.input) {
+			setupViewportStandard(this, object);
 		}
 	});
 

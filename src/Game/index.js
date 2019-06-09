@@ -5,7 +5,7 @@ function Game(presets = {}) {
 	require("./config")(this, presets);
 
 	// game.object
-	require("./object")(this);
+	require("./objectManager")(this);
 
 	// game.assetManager
 	require("./assetManager")(this);

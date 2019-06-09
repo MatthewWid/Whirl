@@ -16,7 +16,6 @@ const Camera = require("../Camera");
 	- y
 	- w
 	- h
-	- renderable
 	- clear
 	- imageSmoothing
 	- fitCamera
@@ -143,6 +142,8 @@ function Viewport(_game, name, canvas, activeStage, camera, presets = {}) {
 		this.ctx.restore();
 	};
 
+	// Once the viewport instance has been constructed then requests
+	// that input events be attached to the viewport
 	_game.event.emit("requestMouseEvents", {
 		object: this
 	});
