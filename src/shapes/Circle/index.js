@@ -1,5 +1,7 @@
 // Whirl.shapes.Circle
 
+const isPointInside = require("./isPointInside.js");
+
 function Circle(x, y, r) {
 	this._shape = "circle";
 	this.x = x || 0;
@@ -13,6 +15,8 @@ function Circle(x, y, r) {
 
 		return this;
 	};
+	
+	this.isPointInside = isPointInside.bind(this);
 }
 
 module.exports = (...args) => new Circle(...args);
