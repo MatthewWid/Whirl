@@ -1,19 +1,13 @@
 // Whirl.Camera
 
-let shapes = require("../shapes");
+const shapes = require("../shapes");
+const anchor = require("../lib/anchor.js");
 
 function Camera(_game, presets = {}) {
 	_game.object.init(this, "Whirl.Camera", {tween: true});
 
-	this.anchor = {
-		x: (presets.anchor || {}).x || 0,
-		y: (presets.anchor || {}).y || 0,
-		center: () => {
-			this.anchor.x = this.anchor.y = .5;
+	this.anchor = anchor(this, presets.anchor);
 
-			return this;
-		}
-	};
 	// The position and dimension on the screen that the camera will render to
 	this.bounds = shapes.Rectangle(
 		presets.x || 0,

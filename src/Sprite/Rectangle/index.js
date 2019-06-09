@@ -3,6 +3,7 @@
 const _BaseSprite = require("../_Base");
 const render = require("./render");
 const shapes = require("../../shapes");
+const anchor = require("../../lib/anchor.js");
 
 /*
 	A rectangle Sprite.
@@ -16,16 +17,7 @@ const shapes = require("../../shapes");
 function Sprite_Rectangle(_game, name, fill, presets = {}) {
 	_BaseSprite.bind(this)(_game, name, fill, presets); // Extend the _BaseSprite class
 
-	// The anchor point for where this sprite's X and Y are based off of
-	this.anchor = {
-		x: (presets.anchor || {}).x || 0,
-		y: (presets.anchor || {}).y || 0,
-		center: () => {
-			this.anchor.x = this.anchor.y = .5;
-
-			return this;
-		}
-	};
+	this.anchor = anchor(this, presets.anchor);
 
 	// The boundaries that this Sprite is contained in
 	this.bounds = shapes.Rectangle(
