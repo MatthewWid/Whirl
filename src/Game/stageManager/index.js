@@ -1,6 +1,6 @@
 // Whirl.game.stageManager
 
-const Stage = require("../../Stage");
+const Stage = require("../../objects/Stage");
 const createObjectManager = require("../../lib/objectManager.js");
 
 module.exports = (_game) => {

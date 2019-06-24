@@ -3,8 +3,8 @@
 const _BaseSprite = require("../_Base");
 const update = require("./update");
 const render = require("./render");
-const anchor = require("../../lib/anchor.js");
-const shapes = require("../../shapes");
+const anchor = require("../../../lib/anchor.js");
+const shapes = require("../../../shapes");
 const resizeToImage = require("./resizeToImage.js");
 
 /*

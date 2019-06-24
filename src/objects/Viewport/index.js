@@ -1,6 +1,6 @@
 // Whirl.game.viewportManager.Viewport
 
-const Rectangle = require("../shapes/Rectangle");
+const Rectangle = require("../../shapes/Rectangle");
 const Camera = require("../Camera");
 
 /*

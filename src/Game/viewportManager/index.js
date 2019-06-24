@@ -1,6 +1,6 @@
 // Whirl.game.viewportManager
 
-const Viewport = require("../../Viewport");
+const Viewport = require("../../objects/Viewport");
 const createObjectManager = require("../../lib/objectManager.js");
 
 module.exports = (_game) => {

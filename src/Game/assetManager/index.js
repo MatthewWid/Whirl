@@ -1,6 +1,6 @@
 // Whirl.game.assetManager
 
-const Asset = require("../../Asset");
+const Asset = require("../../objects/Asset");
 
 module.exports = (_game) => {
 	_game.assets = [];

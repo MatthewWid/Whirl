@@ -1,7 +1,7 @@
 // Whirl.Camera
 
-const shapes = require("../shapes");
-const anchor = require("../lib/anchor.js");
+const shapes = require("../../shapes");
+const anchor = require("../../lib/anchor.js");
 
 function Camera(_game, presets = {}) {
 	_game.object.init(this, "Whirl.Camera", {tween: true});

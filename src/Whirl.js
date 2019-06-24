@@ -2,19 +2,19 @@
 
 const Whirl = {
 	// Game functions and modules
-	Game: require("./Game"), // Make a new game instance
 	math: require("./math"), // Math functions
 	util: require("./util"), // Utility functions
 	easing: require("./easing"), // Tweening functions
 	shapes: require("./shapes"), // Shapes and geometry
 
 	// Object constructors
-	Stage: require("./Stage"), // Stage
-	Viewport: require("./Viewport"), // Viewport
-	Camera: require("./Camera"), // Camera object
-	Sprite: require("./Sprite"), // Sprites
-	Container: require("./Container"), // Generic game container object
-	Text: require("./Text"), // Advanced text
+	Game: require("./Game"), // Make a new game instance
+	Stage: require("./objects/Stage"), // Stage
+	Viewport: require("./objects/Viewport"), // Viewport
+	Camera: require("./objects/Camera"), // Camera object
+	Sprite: require("./objects/Sprite"), // Sprites
+	Container: require("./objects/Container"), // Generic game container object
+	Text: require("./objects/Text"), // Advanced text
 
 	// Hard constants
 	STAGE: "_DEFAULTSTAGE",

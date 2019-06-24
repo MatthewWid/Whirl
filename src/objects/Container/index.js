@@ -1,6 +1,6 @@
 // Whirl.Container
 
-const _sortChildren = require("../lib/sortChildren");
+const _sortChildren = require("../../lib/sortChildren");
 
 function Container(_game, children = [], presets = {}) {
 	_game.object.init(this, "Whirl.Container", {child: true});

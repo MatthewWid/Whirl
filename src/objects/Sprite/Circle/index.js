@@ -3,7 +3,7 @@
 const _BaseSprite = require("../_Base");
 const update = require("./update");
 const render = require("./render");
-const shapes = require("../../shapes");
+const shapes = require("../../../shapes");
 
 /*
 	A circle Sprite.
