@@ -16,12 +16,22 @@ class ConfigManager {
 	}
 
 	set(key, value) {
-		this._data[key] = value;
-
-		return value;
+		if (typeof key === "string") {
+			this._data[key] = value;
+			return value;
+		} else if (typeof key === "object") {
+			this._data = {
+				...this._data,
+				...key
+			};
+			return key;
+		}
 	}
 
 	get(key) {
+		if (!key) {
+			return {...this._data};
+		}
 		return this._data[key];
 	}
 }

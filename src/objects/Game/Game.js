@@ -7,7 +7,10 @@ class Game {
 	update = new UpdateManager(this);
 	object = new ObjectManager(this);
 
-	constructor() {
+	constructor(options = {}) {
+		// Configuration
+		this.config.set(options);
+
 		// Expose manager methods at top-level
 		this.start = this.update._start;
 		this.stop = this.update._stop;
