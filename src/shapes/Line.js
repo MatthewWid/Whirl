@@ -25,6 +25,13 @@ class Line {
 	get length() {
 		return Math.hypot(this.x1 - this.x2, this.y1 - this.y2);
 	}
+
+	get vertices() {
+		return [
+			Point(this.x1, this.y1),
+			Point(this.x2, this.y2),
+		];
+	}
 }
 
 module.exports = (...args) => new Line(...args);
