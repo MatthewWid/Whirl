@@ -17,7 +17,7 @@ class Whirl {
 	static keys = require("./keys/");
 
 	// Managers
-	object = new ObjectManager(this);;
+	object = new ObjectManager(this);
 
 	// Objects
 	static Base = Base;

@@ -1,5 +1,5 @@
 class Base {
-	_id = null;
+	_id;
 	_data = {};
 
 	constructor(game) {
