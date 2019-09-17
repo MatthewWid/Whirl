@@ -18,10 +18,14 @@ class UpdateManager {
 	_start = () => {
 		this._running = true;
 		this._update();
+
+		return this._game;
 	}
 
 	_stop = () => {
 		this._running = false;
+
+		return this._game;
 	}
 
 	_update = () => {

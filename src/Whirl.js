@@ -26,6 +26,7 @@ class Whirl {
 		this.stop = this.update._stop;
 	}
 }
+Whirl.Game = (...args) => new Whirl(...args);
 
 global.Whirl = Whirl;
 module.exports = Whirl;
