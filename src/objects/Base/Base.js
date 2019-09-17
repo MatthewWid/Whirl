@@ -1,7 +1,6 @@
 class Base {
 	_game;
 	_id;
-	_type = "Whirl.Base";
 	data = {};
 
 	constructor(game) {
