@@ -20,6 +20,19 @@ class Rectangle {
 		);
 	}
 
+	get area() {
+		return this.w * this.h;
+	}
+
+	get vertices() {
+		return [
+			Point(this.x, this.y),
+			Point(this.x + this.w, this.y),
+			Point(this.x + this.w, this.y + this.h),
+			Point(this.x, this.y + this.h)
+		];
+	}
+
 	isPointInside(px, py) {
 		let x = px;
 		let y = py;
@@ -30,8 +43,8 @@ class Rectangle {
 		}
 
 		return (
-			(this.x <= x) && (this.x + this.w >= x) &&
-			(this.y <= y) && (this.y + this.h >= y)
+			this.x <= x && this.x + this.w >= x &&
+			this.y <= y && this.y + this.h >= y
 		);
 	}
 }
