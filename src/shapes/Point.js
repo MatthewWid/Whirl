@@ -9,3 +9,4 @@ class Point {
 }
 
 module.exports = (...args) => new Point(...args);
+module.exports._class = Point;

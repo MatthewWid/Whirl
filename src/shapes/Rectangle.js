@@ -19,6 +19,22 @@ class Rectangle {
 			(this.y + this.h) / 2,
 		);
 	}
+
+	isPointInside(px, py) {
+		let x = px;
+		let y = py;
+
+		if (px instanceof Point._class) {
+			x = px.x;
+			y = px.y;
+		}
+
+		return (
+			(this.x <= x) && (this.x + this.w >= x) &&
+			(this.y <= y) && (this.y + this.h >= y)
+		);
+	}
 }
 
 module.exports = (...args) => new Rectangle(...args);
+module.exports._class = Rectangle;
