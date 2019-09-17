@@ -21,12 +21,18 @@ class Whirl {
 	update = new UpdateManager(this);
 	object = new ObjectManager(this);
 
+	// Constructor
 	constructor() {
+		// Use low-level manager methods from top-level
 		this.start = this.update._start;
 		this.stop = this.update._stop;
 	}
+
+	// Automatic instantation
+	static Game(...args) {
+		return new Whirl(...args);
+	}
 }
-Whirl.Game = (...args) => new Whirl(...args);
 
 global.Whirl = Whirl;
 module.exports = Whirl;
