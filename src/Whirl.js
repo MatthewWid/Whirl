@@ -20,6 +20,11 @@ class Whirl {
 	// Managers
 	update = new UpdateManager(this);
 	object = new ObjectManager(this);
+
+	constructor() {
+		this.start = this.update._start;
+		this.stop = this.update._stop;
+	}
 }
 
 global.Whirl = Whirl;

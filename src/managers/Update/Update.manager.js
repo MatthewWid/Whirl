@@ -6,8 +6,6 @@ class UpdateManager {
 
 	constructor(game) {
 		this._game = game;
-		game.start = this._start;
-		game.stop = this._stop;
 	}
 
 	get frameCount() {
