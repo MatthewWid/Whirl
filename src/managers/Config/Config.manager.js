@@ -5,10 +5,11 @@ class ConfigManager {
 	};
 
 	static defaultConfig = {
-		"ignore warnings": false,
-		"input mouse": true,
-		"input keyboard": true,
-		"input preventDefault": true,
+		"debug": true, // Enable warnings/performance tips/verbose logging
+		"input mouse": true, // Listen for mouse inputs
+		"input keyboard": true, // Listen for keyboard inputs
+		"input preventDefault": true, // Prevent input default behaviour
+		"canvas": null, // Canvas to render to ('null' = create a new canvas)
 	};
 
 	constructor(game) {

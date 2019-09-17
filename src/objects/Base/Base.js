@@ -5,7 +5,7 @@ class Base {
 	data = {};
 
 	constructor(game) {
-		if (!(game instanceof Whirl)) {
+		if (!(game instanceof Whirl.Game._class)) {
 			throw new Error("Whirl | Game objects must be instantiated into a valid instance of a Whirl game.");
 		}
 
