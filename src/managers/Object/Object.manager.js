@@ -8,6 +8,7 @@ class ObjectManager {
 	constructor(game) {
 		this._game = game;
 	}
+	
 	add(object) {
 		if (!(object instanceof Base)) {
 			throw new Error("Whirl | Objects under a game instance must inherit from the Base object class.");

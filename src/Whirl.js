@@ -1,3 +1,4 @@
+const UpdateManager = require("./managers/Update/");
 const ObjectManager = require("./managers/Object/");
 
 class Whirl {
@@ -11,15 +12,14 @@ class Whirl {
 	static easing = require("./easing/");
 	static util = require("./util/");
 	static keys = require("./keys/");
-
-	// Managers
-	object = new ObjectManager(this);
+	static shapes = require("./shapes/");
 
 	// Game Objects
 	static Base = require("./objects/Base/");
 
-	// Static Objects
-	static shapes = require("./shapes/");
+	// Managers
+	update = new UpdateManager(this);
+	object = new ObjectManager(this);
 }
 
 global.Whirl = Whirl;
