@@ -16,6 +16,7 @@ class Whirl {
 
 	// Game Objects
 	static Base = require("./objects/Base/");
+	static Viewport = require("./objects/Viewport/");
 
 	// Managers
 	update = new UpdateManager(this);
@@ -23,7 +24,7 @@ class Whirl {
 
 	// Constructor
 	constructor() {
-		// Use low-level manager methods from top-level
+		// Expose manager methods at top-level
 		this.start = this.update._start;
 		this.stop = this.update._stop;
 	}
