@@ -7,10 +7,19 @@ class Rectangle {
 	h;
 
 	constructor(x, y, w, h) {
-		this.x = x || 0;
-		this.y = y || 0;
-		this.w = w || 0;
-		this.h = h || 0;
+		// (Point, Point)
+		if (x instanceof Point._class && y instanceof Point._class) {
+			this.x = x.x;
+			this.y = x.y;
+			this.w = y.x - x.x;
+			this.h = y.y - x.y;
+		// (int, int, int, int)
+		} else {
+			this.x = x || 0;
+			this.y = y || 0;
+			this.w = w || 0;
+			this.h = h || 0;
+		}
 	}
 
 	get midpoint() {
