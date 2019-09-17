@@ -1,8 +1,4 @@
-// Managers
 const ObjectManager = require("./managers/Object/");
-
-// Objects
-const Base = require("./objects/Base/");
 
 class Whirl {
 	// Constants
@@ -19,8 +15,11 @@ class Whirl {
 	// Managers
 	object = new ObjectManager(this);
 
-	// Objects
-	static Base = Base;
+	// Game Objects
+	static Base = require("./objects/Base/");
+
+	// Static Objects
+	static shapes = require("./shapes/");
 }
 
 global.Whirl = Whirl;

@@ -2,7 +2,7 @@ class Base {
 	_game;
 	_id;
 	_type = "Whirl.Base";
-	_data = {};
+	data = {};
 
 	constructor(game) {
 		if (!(game instanceof Whirl)) {
