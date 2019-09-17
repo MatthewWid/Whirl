@@ -5,7 +5,7 @@ const getByCode = require("./getByCode.js");
 const keys = {
 	...keyMap,
 	getByName,
-	getByCode
+	getByCode,
 };
 
 module.exports = keys;

@@ -10,7 +10,7 @@ class ObjectManager {
 	}
 	
 	add(object) {
-		if (!(object instanceof Base)) {
+		if (!(object instanceof Base._class)) {
 			throw new Error("Whirl | Objects under a game instance must inherit from the Base object class.");
 		}
 

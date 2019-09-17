@@ -1,12 +1,12 @@
+const ConfigManager = require("../../managers/Config/");
 const UpdateManager = require("../../managers/Update/");
 const ObjectManager = require("../../managers/Object/");
 
 class Game {
-	// Managers
+	config = new ConfigManager(this);
 	update = new UpdateManager(this);
 	object = new ObjectManager(this);
 
-	// Constructor
 	constructor() {
 		// Expose manager methods at top-level
 		this.start = this.update._start;

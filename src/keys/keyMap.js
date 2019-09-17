@@ -51,7 +51,7 @@ const keyMap = {
 	"Backquote": 192, // `
 	"Comma": 188,
 	"Period": 190,
-	"Slash": 191
+	"Slash": 191,
 };
 
 module.exports = keyMap;
