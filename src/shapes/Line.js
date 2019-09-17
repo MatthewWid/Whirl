@@ -1,29 +1,31 @@
-// Whirl.shapes.Line
+const Point = require("./Point.js");
 
-function Line(x1, y1, x2, y2) {
-	this._shape = "line";
-	this.from = {
-		x: x1 || 0,
-		y: y1 || 0
-	};
-	this.to = {
-		x: x2 || 0,
-		y: y2 || 0
-	};
+class Line {
+	x1;
+	y1;
+	x2;
+	y2;
 
-	this.set = (changes) => {
-		console.log(changes);
-		this.from = {
-			x: (changes.from || {}).x || this.from.x,
-			y: (changes.from || {}).y || this.from.y
-		};
-		this.to = {
-			x: (changes.to || {}).x || this.to.x,
-			y: (changes.to || {}).y || this.to.y
-		};
+	constructor(x1, y1, x2, y2) {
+		// (Point, Point, , )
+		if (x1 instanceof Point._class && y1 instanceof Point._class) {
+			this.x1 = x1.x;
+			this.y1 = x1.y;
+			this.x2 = y1.x;
+			this.y2 = y1.y;
+		// (int, int, int, int)
+		} else {
+			this.x1 = x1 || 0;
+			this.y1 = y1 || 0;
+			this.x2 = x2 || 0;
+			this.y2 = y2 || 0;
+		}
+	}
 
-		return this;
-	};
+	get length() {
+		return Math.hypot(this.x1 - this.x2, this.y1 - this.y2);
+	}
 }
 
 module.exports = (...args) => new Line(...args);
+module.exports._class = Line;

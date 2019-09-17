@@ -37,6 +37,7 @@ class Rectangle {
 		let x = px;
 		let y = py;
 
+		// (Point)
 		if (px instanceof Point._class) {
 			x = px.x;
 			y = px.y;
