@@ -11,6 +11,25 @@ const config = {
 	module: {
 		rules: [
 			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				loader: "babel-loader",
+				options: {
+					presets: [
+						{
+							plugins: [
+								[
+									"@babel/plugin-proposal-class-properties",
+									{
+										loose: true
+									}
+								]
+							]
+						}
+					]
+				}
+			},
+			{
 				test: /\.scss$/,
 				use: [
 					MiniCssExtractPlugin.loader,
