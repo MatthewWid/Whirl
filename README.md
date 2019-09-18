@@ -2,7 +2,7 @@
 
 <p align="center"><b>Whirl is a modern, lightweight and extensible 2D game engine written in JavaScript.</b></p>
 
-<p align="center"><sup><i>This project is still a work in progress and has not yet reached completion.<br>Everything is subject to change.</i></sup></p>
+<p align="center">⚠️ This is the <code>3.0.0-alpha</code> development build. ⚠️<br><sup>Certain features may be missing and security, stability and performance may be unsuitable for a production environment.</sup></p>
 
 # Features
 
