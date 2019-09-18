@@ -19,6 +19,7 @@ nav:
       - Customisation: documentation/customisation.md
     - Getting Started: getting-started/index.md
     - About:
+      - 3.0.0 Changes: about/rewrite3.md
       - Licence: about/licence.md
       - Attributions: about/attributions.md
 
