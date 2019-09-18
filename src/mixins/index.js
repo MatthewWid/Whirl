@@ -1,3 +1,4 @@
 module.exports = {
-	mixin: require("./mixin.js"),
+	Mixin: require("./Mixin.js"),
+	Event: require("./Event.js"),
 };

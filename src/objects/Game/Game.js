@@ -1,13 +1,18 @@
+const {Mixin: {apply: mixin}, Event} = require("../../mixins/");
 const ConfigManager = require("../../managers/Config/");
 const UpdateManager = require("../../managers/Update/");
 const ObjectManager = require("../../managers/Object/");
 
 class Game {
+	mixins = [Event];
+
 	config = new ConfigManager(this);
 	update = new UpdateManager(this);
 	object = new ObjectManager(this);
 
 	constructor(options = {}) {
+		mixin(this);
+		
 		// Configuration
 		this.config.set(options);
 
