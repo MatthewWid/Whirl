@@ -1,6 +1,6 @@
 class Whirl {
 	// Constants
-	static _version = "0.1.0";
+	static _version = "3.0.0-alpha.1";
 
 	// Static Modules
 	static math = require("./math/");
