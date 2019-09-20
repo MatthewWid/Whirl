@@ -9,10 +9,11 @@ class Event {
 		this.once = once;
 	}
 
-	call(data = {}) {
+	call(source, data = {}) {
 		this._func({
 			_eId: this._eId,
-			...data
+			_source: source,
+			...data,
 		});
 	}
 }

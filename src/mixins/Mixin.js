@@ -1,6 +1,12 @@
 class Mixin {
 	static _namespace = null;
 
+	_source;
+
+	constructor(source) {
+		this._source = source;
+	}
+
 	static apply(object) {
 		const {mixins} = object;
 
@@ -19,7 +25,7 @@ class Mixin {
 			}
 
 			// Create and add mixin instance to object as property under namespace
-			object[mixin._namespace] = new mixin();
+			object[mixin._namespace] = new mixin(object);
 		});
 
 		// Remove unused 'mixins' property

@@ -28,7 +28,7 @@ class EventMixin extends Mixin {
 		if (this._events[name]) {
 			this._events[name].forEach((event) => {
 				// Call event callback with event ID appended to data
-				event.call(data);
+				event.call(this._source, data);
 
 				// If event should only be called once then remove it
 				if (event.once) {
