@@ -6,7 +6,7 @@ class Base {
 
 	constructor(game) {
 		if (!(game instanceof Whirl.Game._class)) {
-			throw new Error("Whirl | Game objects must be instantiated into a valid instance of a Whirl game.");
+			throw new Error("Whirl | Game objects must be instantiated into an instance of a Game.");
 		}
 
 		this._game = game;

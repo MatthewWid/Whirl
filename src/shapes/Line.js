@@ -7,7 +7,7 @@ class Line {
 	y2;
 
 	constructor(x1, y1, x2, y2) {
-		// (Point, Point, , )
+		// (Point, Point)
 		if (x1 instanceof Point._class && y1 instanceof Point._class) {
 			this.x1 = x1.x;
 			this.y1 = x1.y;
