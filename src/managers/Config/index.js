@@ -1,1 +1,1 @@
-module.exports = require("./Config.manager.js");
+module.exports = require("./ConfigManager.js");

@@ -1,1 +1,1 @@
-module.exports = require("./Object.manager.js");
+module.exports = require("./ObjectManager.js");

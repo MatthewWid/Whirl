@@ -1,1 +1,1 @@
-module.exports = require("./Update.manager.js");
+module.exports = require("./UpdateManager.js");
