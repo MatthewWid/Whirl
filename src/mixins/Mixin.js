@@ -1,5 +1,5 @@
 class Mixin {
-	_namespace = null;
+	static _namespace = null;
 
 	static apply(object) {
 		const {mixins} = object;
@@ -12,20 +12,14 @@ class Mixin {
 			throw new Error("Whirl | Invalid mixin type and/or format.");
 		}
 
-		mixins.forEach((mixinClass) => {
-			// Create instance of mixin
-			const mixin = new mixinClass();
-
+		mixins.forEach((mixin) => {
 			// Enforce namespace
 			if (!mixin._namespace) {
-				throw new Error(`Whirl | Mixin "${mixinClass.name}" has no namespace.`);
+				throw new Error(`Whirl | Mixin "${mixin.name}" has no namespace.`);
 			}
 
-			// Add mixin instance to object as property under namespace
-			object[mixin._namespace] = mixin;
-
-			// Remove unused '_namespace' property
-			delete object[mixin._namespace]._namespace;
+			// Create and add mixin instance to object as property under namespace
+			object[mixin._namespace] = new mixin();
 		});
 
 		// Remove unused 'mixins' property

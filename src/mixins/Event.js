@@ -1,7 +1,7 @@
 const Mixin = require("./Mixin.js");
 
 class Event extends Mixin {
-	_namespace = "event";
+	static _namespace = "event";
 	
 	_events = [];
 	_index = 0;
