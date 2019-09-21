@@ -6,6 +6,8 @@ class Viewport extends Base {
 	_ctx;
 	bounds;
 	scroll;
+	clip;
+	imageSmoothing;
 
 	constructor(game, options = {}) {
 		super(game);
@@ -30,6 +32,10 @@ class Viewport extends Base {
 			);
 		}
 
+		this.clip = options.hasOwnProperty("clip") ? options.clip : true;
+
+		this.imageSmoothing = options.hasOwnProperty("imageSmoothing") ? options.imageSmoothing : true;
+
 		this.setCanvas(options.canvas, options.resize);
 	}
 
@@ -49,6 +55,20 @@ class Viewport extends Base {
 		this._ctx = canvas.getContext("2d");
 
 		return this;
+	}
+
+	scrollTo(px, py) {
+		let x = px;
+		let y = py;
+
+		// (Point)
+		if (px instanceof Point._class) {
+			x = px.x;
+			y = px.y;
+		}
+
+		this.scroll.x = x;
+		this.scroll.y = y;
 	}
 }
 
