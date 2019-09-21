@@ -10,6 +10,7 @@ class EventMixin extends Mixin {
 	on(name, func, once = false) {
 		const event = new Event(
 			this._index++,
+			name,
 			func,
 			once
 		);
@@ -37,9 +38,9 @@ class EventMixin extends Mixin {
 			});
 
 			return true;
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 
 	remove(name, event) {
