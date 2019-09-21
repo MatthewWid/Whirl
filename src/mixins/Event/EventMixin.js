@@ -44,6 +44,11 @@ class EventMixin extends Mixin {
 	}
 
 	remove(name, event) {
+		if (!this._events[name]) {
+			console.warn(`Whirl | Failed to remove event by ID from non-existent event pool "${name}".`);
+			return;
+		}
+
 		let _eId = -1;
 
 		// (string, Event)
