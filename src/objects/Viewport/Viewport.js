@@ -8,6 +8,8 @@ class Viewport extends Base {
 	scroll;
 	clip;
 	imageSmoothing;
+	zoom;
+	lerp;
 
 	constructor(game, options = {}) {
 		super(game);
@@ -35,6 +37,10 @@ class Viewport extends Base {
 		this.clip = options.hasOwnProperty("clip") ? options.clip : true;
 
 		this.imageSmoothing = options.hasOwnProperty("imageSmoothing") ? options.imageSmoothing : true;
+
+		this.zoom = options.hasOwnProperty("zoom") ? options.zoom : 1;
+
+		this.lerp = options.hasOwnProperty("lerp") ? options.lerp : 1;
 
 		this.setCanvas(options.canvas, options.resize);
 	}
