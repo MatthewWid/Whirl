@@ -65,10 +65,14 @@ class EventMixin extends Mixin {
 		if (this._events[name].length === 0) {
 			delete this._events[name];
 		}
+
+		return this;
 	}
 
 	removeAll(name) {
 		delete this._events[name];
+
+		return this;
 	}
 }
 
