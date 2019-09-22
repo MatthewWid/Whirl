@@ -1,13 +1,26 @@
 const Base = require("../Base/");
 const {Mixin: {apply: mixin}, Child} = require("../../mixins/");
+const {Rectangle} = require("../../shapes/");
 
 class Stage extends Base {
 	mixins = [Child];
+	limit;
 
 	constructor(game, options = {}) {
 		super(game);
 
 		mixin(this);
+
+		if (options.limit instanceof Rectangle._class) {
+			this.limit = options.limit;
+		} else {
+			this.limit = Rectangle(
+				options.x || 0,
+				options.y || 0,
+				options.w || 0,
+				options.h || 0,
+			);
+		}
 	}
 }
 
