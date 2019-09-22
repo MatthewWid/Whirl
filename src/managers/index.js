@@ -3,4 +3,5 @@ module.exports = {
 	ConfigManager: require("./Config/"),
 	ObjectManager: require("./Object/"),
 	UpdateManager: require("./Update/"),
+	DebugManager: require("./Debug/"),
 };

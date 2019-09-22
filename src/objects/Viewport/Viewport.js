@@ -49,7 +49,8 @@ class Viewport extends Base {
 		const canvas = document.querySelector(selector);
 
 		if (!canvas) {
-			throw new Error("Whirl | Viewport cannot find the given canvas element to render to.");
+			const {debug} = this._game;
+			debug.error("Cannot find the given canvas element to render to.", "Viewport");
 		}
 
 		if (resize) {
