@@ -13,6 +13,7 @@ class Whirl {
 	static Game = require("./objects/Game/");
 	static Base = require("./objects/Base/");
 	static Viewport = require("./objects/Viewport/");
+	static Stage = require("./objects/Stage/");
 }
 
 global.Whirl = Whirl;
