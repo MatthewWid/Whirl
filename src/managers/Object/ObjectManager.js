@@ -1,14 +1,14 @@
+const Manager = require("../Manager.js");
 const Base = require("../../objects/Base/");
 const Viewport = require("../../objects/Viewport/");
 
-class ObjectManager {
-	_game;
+class ObjectManager extends Manager {
 	_index = 0;
 	_store = [];
 	_viewports = [];
 
 	constructor(game) {
-		this._game = game;
+		super(game);
 	}
 	
 	add(object) {

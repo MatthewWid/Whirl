@@ -1,11 +1,12 @@
-class ConfigManager {
-	_game;
+const Manager = require("../Manager.js");
+
+class ConfigManager extends Manager {
 	_data = {
 		...ConfigManager.defaultConfig,
 	};
 
 	static defaultConfig = {
-		"debug": true, // Enable warnings/performance tips/verbose logging
+		"debug": false, // Enable warnings/performance tips/verbose logging
 		"input mouse": true, // Listen for mouse inputs
 		"input keyboard": true, // Listen for keyboard inputs
 		"input preventDefault": true, // Prevent input default behaviour
@@ -13,7 +14,7 @@ class ConfigManager {
 	};
 
 	constructor(game) {
-		this._game = game;
+		super(game);
 	}
 
 	set(key, value) {

@@ -1,11 +1,12 @@
-class UpdateManager {
-	_game;
+const Manager = require("../Manager.js");
+
+class UpdateManager extends Manager {
 	_frameRate = 60;
 	_frameCount = 0;
 	_running = false;
 
 	constructor(game) {
-		this._game = game;
+		super(game);
 	}
 
 	get frameCount() {

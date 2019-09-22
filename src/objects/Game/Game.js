@@ -1,7 +1,5 @@
 const {Mixin: {apply: mixin}, Event} = require("../../mixins/");
-const ConfigManager = require("../../managers/Config/");
-const UpdateManager = require("../../managers/Update/");
-const ObjectManager = require("../../managers/Object/");
+const {ConfigManager, UpdateManager, ObjectManager} = require("../../managers/");
 
 class Game {
 	mixins = [Event];
