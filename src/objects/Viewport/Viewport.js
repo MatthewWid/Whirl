@@ -1,5 +1,6 @@
 const Base = require("../Base/");
 const {Rectangle, Point} = require("../../shapes/");
+const getValue = require("../../lib/getValue.js");
 
 class Viewport extends Base {
 	_canvas;
@@ -34,13 +35,13 @@ class Viewport extends Base {
 			);
 		}
 
-		this.clip = options.hasOwnProperty("clip") ? options.clip : true;
+		this.clip = getValue(options, "clip", true);
 
-		this.imageSmoothing = options.hasOwnProperty("imageSmoothing") ? options.imageSmoothing : true;
+		this.imageSmoothing = getValue(options, "imageSmoothing", true);
 
-		this.zoom = options.hasOwnProperty("zoom") ? options.zoom : 1;
+		this.zoom = getValue(options, "zoom", 1);
 
-		this.lerp = options.hasOwnProperty("lerp") ? options.lerp : 1;
+		this.lerp = getValue(options, "lerp", 1);
 
 		this.setCanvas(options.canvas, options.resize);
 	}
