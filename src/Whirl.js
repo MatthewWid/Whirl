@@ -14,6 +14,7 @@ class Whirl {
 	static Base = require("./objects/Base/");
 	static Viewport = require("./objects/Viewport/");
 	static Stage = require("./objects/Stage/");
+	static Entity = require("./objects/Entity/");
 }
 
 global.Whirl = Whirl;
