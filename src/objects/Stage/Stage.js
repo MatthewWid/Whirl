@@ -1,4 +1,5 @@
 const Base = require("../Base/");
+const Entity = require("../Entity/");
 const {Mixin: {apply: mixin}, Child} = require("../../mixins/");
 const {Rectangle} = require("../../shapes/");
 
@@ -10,6 +11,8 @@ class Stage extends Base {
 		super(game);
 
 		mixin(this);
+
+		this.child.validate = (object) => object instanceof Entity._class;
 
 		if (options.limit instanceof Rectangle._class) {
 			this.limit = options.limit;
