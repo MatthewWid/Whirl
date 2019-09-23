@@ -1,11 +1,13 @@
 const Manager = require("../Manager.js");
 const Base = require("../../objects/Base/");
 const Viewport = require("../../objects/Viewport/");
+const Stage = require("../../objects/Stage/");
 
 class ObjectManager extends Manager {
 	_index = 0;
 	_store = [];
 	_viewports = [];
+	_stages = [];
 
 	constructor(game) {
 		super(game);
@@ -21,6 +23,9 @@ class ObjectManager extends Manager {
 
 		if (object instanceof Viewport._class) {
 			this._viewports.push(object);
+		}
+		if (object instanceof Stage._class) {
+			this._stages.push(object);
 		}
 	}
 }
