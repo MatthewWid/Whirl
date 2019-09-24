@@ -6,6 +6,7 @@ const config = {
 	mode: "development",
 	entry: {
 		"./examples/_common/styles/css/index": path.resolve(__dirname, "..", "./examples/_common/styles/scss/index.scss"),
+		"./doc/css/css/global": path.resolve(__dirname, "..", "./doc/css/scss/global.scss"),
 	},
 	module: {
 		rules: [
@@ -14,10 +15,10 @@ const config = {
 				use: [
 					MiniCssExtractPlugin.loader,
 					"css-loader?url=false",
-					"sass-loader"
-				]
-			}
-		]
+					"sass-loader",
+				],
+			},
+		],
 	},
 	plugins: [
 		new FixStyleOnlyEntriesPlugin(),

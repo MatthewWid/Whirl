@@ -8,7 +8,6 @@
 		"dev": "webpack --config ./config/webpack.config.js --env dev",
 		"prod": "webpack --config ./config/webpack.config.js --env prod",
 		"doc:watch": "mkdocs serve",
-		"doc-sass:watch": "sass --watch ./doc/css/scss:./doc/css/css --style compressed --sourcemap=none",
 		"doc-deploy": "mkdocs gh-deploy",
 		"doc": "npm-run-all --parallel doc**:watch"
 	},
