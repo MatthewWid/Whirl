@@ -22,9 +22,8 @@
 		"sass-loader": "^7.1.0",
 		"webpack": "^4.31.0",
 		"webpack-cli": "^3.3.2",
-		"webpack-fix-style-only-entries": "^0.3.0"
-	},
-	"dependencies": {
+		"webpack-fix-style-only-entries": "^0.3.0",
 		"webpack-merge": "^4.2.2"
-	}
+	},
+	"dependencies": {}
 }
