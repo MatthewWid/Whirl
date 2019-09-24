@@ -5,8 +5,8 @@
 	"repository": "https://github.com/MatthewWid/Whirl.git",
 	"license": "MIT",
 	"scripts": {
-		"dev": "webpack --config ./config/webpack.dev.config.js",
-		"prod": "webpack --config ./config/webpack.prod.config.js",
+		"dev": "webpack --config ./config/webpack.config.js --env dev",
+		"prod": "webpack --config ./config/webpack.config.js --env prod",
 		"doc:watch": "mkdocs serve",
 		"doc-sass:watch": "sass --watch ./doc/css/scss:./doc/css/css --style compressed --sourcemap=none",
 		"doc-deploy": "mkdocs gh-deploy",
@@ -25,5 +25,7 @@
 		"webpack-cli": "^3.3.2",
 		"webpack-fix-style-only-entries": "^0.3.0"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"webpack-merge": "^4.2.2"
+	}
 }
