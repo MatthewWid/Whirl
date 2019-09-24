@@ -8,6 +8,7 @@ class Whirl {
 	static util = require("./util/");
 	static keys = require("./keys/");
 	static shapes = require("./shapes/");
+	static mixins = require("./mixins/");
 
 	// Game Objects
 	static Game = require("./objects/Game/");
