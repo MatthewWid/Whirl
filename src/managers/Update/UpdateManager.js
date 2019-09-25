@@ -50,7 +50,10 @@ class UpdateManager extends Manager {
 
 	_stop = () => {
 		// Event: willStop
-		this._game.event.emit("willStop");
+		this._game.event.emit("willStop", {
+			startTime: this._startTime,
+			elapsedTime: this._elapsedTime,
+		});
 		
 		this._running = false;
 
@@ -84,7 +87,9 @@ class UpdateManager extends Manager {
 		} else {
 			// Event: didStop
 			this._game.event.emit("didStop", {
-				frameCount: this._frameCount
+				frameCount: this._frameCount,
+				startTime: this._startTime,
+				elapsedTime: this._elapsedTime,
 			});
 		}
 	}
