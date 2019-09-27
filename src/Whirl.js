@@ -9,7 +9,9 @@ const {
 	Base,
 	Viewport,
 	Stage,
-	Entity
+	Entity,
+	Texture,
+	Colour,
 } = require("./objects/");
 
 class Whirl {
@@ -30,6 +32,8 @@ class Whirl {
 	static Viewport = Viewport;
 	static Stage = Stage;
 	static Entity = Entity;
+	static Texture = Texture;
+	static Colour = Colour;
 }
 
 global.Whirl = Whirl;
