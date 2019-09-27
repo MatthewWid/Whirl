@@ -1,7 +1,7 @@
 module.exports = {
 	Manager: require("./Manager.js"),
-	ConfigManager: require("./Config/"),
-	ObjectManager: require("./Object/"),
-	UpdateManager: require("./Update/"),
-	DebugManager: require("./Debug/"),
+	ConfigManager: require("./ConfigManager/"),
+	ObjectManager: require("./ObjectManager/"),
+	UpdateManager: require("./UpdateManager/"),
+	DebugManager: require("./DebugManager/"),
 };
