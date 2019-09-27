@@ -12,7 +12,7 @@ class Stage extends Base {
 
 		mixin(this);
 
-		this.child.validate = (object) => object instanceof Entity._class;
+		this.child.validate = (object) => object instanceof Entity;
 
 		if (options.limit instanceof Rectangle._class) {
 			this.limit = options.limit;
