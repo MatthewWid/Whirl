@@ -13,6 +13,10 @@ class Base {
 
 		game.object.add(this);
 	}
+
+	_update() {}
+
+	_render() {}
 }
 
 module.exports = Base;

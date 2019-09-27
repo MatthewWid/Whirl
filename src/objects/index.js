@@ -1,3 +1,6 @@
+const Entity = require("./Entity/");
+Entity.Sprite = require("./Sprite/");
+
 module.exports = {
 	Game: require("./Game/"),
 	Base: require("./Base/"),

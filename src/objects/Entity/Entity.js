@@ -18,10 +18,6 @@ class Entity extends Base {
 
 		this.body = getValue(options, "body");
 	}
-
-	_update() {}
-
-	_render() {}
 }
 
 module.exports = Entity;
