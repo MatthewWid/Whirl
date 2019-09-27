@@ -24,5 +24,4 @@ class Entity extends Base {
 	_render() {}
 }
 
-module.exports = (...args) => new Entity(...args);
-module.exports._class = Entity;
+module.exports = Entity;
