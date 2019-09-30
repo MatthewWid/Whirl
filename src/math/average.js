@@ -3,7 +3,7 @@
  * 
  * @memberof Whirl.math
  * 
- * @param	{number[]} arr Array of numbers to retrieve the average of.
+ * @param {number[]} arr Array of numbers to retrieve the average of.
  * @returns {number} Average of the given array of numbers.
  * 
  * @example
