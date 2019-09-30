@@ -3,6 +3,7 @@ node_modules
 
 # generated
 build/whirl.js
+build/*.map
 
 # examples
 *.css.map
