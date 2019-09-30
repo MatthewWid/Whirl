@@ -1,0 +1,11 @@
+{
+	"plugins": [
+		"plugins/markdown"
+	],
+	"templates": {
+		"systemName": "Whirl",
+		"footer": "MIT Licence",
+		"includeDate": false,
+		"linenums": true
+	}
+}
