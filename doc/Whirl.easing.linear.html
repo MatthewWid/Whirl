@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Whirl Namespace: math</title>
+	<title>Whirl Namespace: linear</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="math.html">math</a></li><li><a href="Whirl.html">Whirl</a></li>
+					<li><a href="Whirl.html">Whirl</a></li><li><a href="Whirl.easing.html">Whirl.easing</a></li><li><a href="Whirl.easing.cubic.html">Whirl.easing.cubic</a></li><li><a href="Whirl.easing.linear.html">Whirl.easing.linear</a></li><li><a href="Whirl.easing.quadratic.html">Whirl.easing.quadratic</a></li><li><a href="Whirl.math.html">Whirl.math</a></li><li><a href="Whirl.util.html">Whirl.util</a></li>
 				</ul>
 			</li>
 			
@@ -65,13 +65,15 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: math</h1>
+	<h1 class="page-title">Namespace: linear</h1>
 <section>
 
 <header>
     
         <h2>
-        math
+            <span class="ancestors"><a href="Whirl.html">Whirl</a><a href="Whirl.easing.html">.easing</a>.</span>
+        
+        linear
         </h2>
         
     
@@ -81,6 +83,8 @@
 <article>
     <div class="container-overview">
     
+        
+            <div class="description"><p>Function that imply a constant rate of change.</p></div>
         
 
         
@@ -139,6 +143,164 @@
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
+<dt>
+    <h4 class="name" id=".linear"><span class="type-signature">&lt;static> </span>linear(t)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Implies a linear rate of change.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>t</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Interpolant between one (1) and zero(0).</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+
+    </dd>
+</dl>
+
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">Whirl.easing.linear(.5); // .5Whirl.easing.linear(.2); // .2</pre>
+
+
+    
+</dd>
+
+        </dl>
     
 
     
