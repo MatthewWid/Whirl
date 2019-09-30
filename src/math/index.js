@@ -1,3 +1,8 @@
+/**
+ * Namespaces all of the mathematical helper functions.
+ * @namespace math
+ * @memberof Whirl
+ */
 module.exports = {
 	average: require("./average.js"),
 	between: require("./between.js"),

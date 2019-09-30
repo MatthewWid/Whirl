@@ -14,6 +14,11 @@ const {
 	Colour,
 } = require("./objects/");
 
+/**
+ * The global Whirl object that all constants, modules and game objects are attached to and derived from.
+ * @global
+ * @namespace
+ */
 class Whirl {
 	// Constants
 	static _version = "3.0.0-alpha.1";
