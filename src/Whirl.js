@@ -16,8 +16,9 @@ const {
 
 /**
  * The global Whirl object that all constants, modules and game objects are attached to and derived from.
+ * 
  * @global
- * @namespace
+ * @namespace Whirl
  */
 class Whirl {
 	// Constants

@@ -1,5 +1,6 @@
 /**
- * Namespaces all of the mathematical helper functions.
+ * Mathematical helper functions for general use.
+ * 
  * @namespace math
  * @memberof Whirl
  */
