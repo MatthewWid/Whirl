@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Whirl Namespace: quadratic</title>
+	<title>Whirl Class: Point</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -40,7 +40,7 @@
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="Whirl.shapes.Point.html">Whirl.shapes.Point</a></li>
+					<li><a href="Whirl.shapes.html#.Point">Whirl.shapes.Point</a></li>
 				</ul>
 			</li>
 			
@@ -72,16 +72,20 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: quadratic</h1>
+	<h1 class="page-title">Class: Point</h1>
 <section>
 
 <header>
     
         <h2>
-            <span class="ancestors"><a href="Whirl.html">Whirl</a><a href="Whirl.easing.html">.easing</a>.</span>
+            <span class="ancestors"><a href="Whirl.html">Whirl</a><a href="Whirl.shapes.html">.shapes</a>.</span>
         
-        quadratic
+        Point
         </h2>
+        
+            <div class="class-description"><p>Represents a point in space defined by an X and Y value.</p>
+<p>Can be used for things such as getting the distance or angle between two points, checking if a point is inside a rectangle, keeping track of where something is, etc.</p>
+<p>Points are constructed using the <code>Whirl.shapes.Point</code> factory method, but the underlying class can be accessed with <code>Whirl.shapes.Point._class</code>.</p></div>
         
     
 </header>
@@ -91,10 +95,134 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Functions that imply a rate of change by a degree of two (2) (<code>t^2</code>).</p></div>
+<hr>
+<dt>
+    <h4 class="name" id=".Point"><span class="type-signature"></span>new Point( [x] [, y])</h4>
+    
+    
+</dt>
+<dd>
+
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Argument</th>
         
 
         
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>X-coordinate of the point.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>Y-coordinate of the point.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
 <dl class="details">
     
 
@@ -134,7 +262,27 @@
 </dl>
 
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
         
+    <pre class="sunlight-highlight-javascript">Whirl.shapes.Point(50, 90); // Point {x: 50, y: 90}</pre>
+
+
+    
+</dd>
+
     
     </div>
 
@@ -157,7 +305,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".in"><span class="type-signature">&lt;static> </span>in(t)</h4>
+    <h4 class="name" id="distanceFrom"><span class="type-signature"></span>distanceFrom(x [, y])</h4>
     
     
 </dt>
@@ -165,7 +313,7 @@
 
     
     <div class="description">
-        <p>Interpolates a value quadratically, starting slowly and speeding up.</p>
+        <p>Get the distance between this Point and another point.</p>
     </div>
     
 
@@ -188,6 +336,8 @@
         <th>Type</th>
 
         
+        <th>Argument</th>
+        
 
         
 
@@ -200,7 +350,42 @@
 
         <tr>
             
-                <td class="name"><code>t</code></td>
+                <td class="name"><code>x</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type"><a href="Point.html">Point</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>X-coordinate of the point or a Point object itself. If a Point is provided then measure the distance from this Point to the given Point, instead of from this Point to the given X and Y values.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>y</code></td>
             
 
             <td class="type">
@@ -214,10 +399,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"><p>Interpolant between one (1) and zero(0).</p></td>
+            <td class="description last"><p>Y-coordinate of the point.</p></td>
         </tr>
 
     
@@ -280,6 +475,10 @@
     <h5>Returns:</h5>
     
             
+<div class="param-desc">
+    <p>The distance between the two points.</p>
+</div>
+
 
 
 <dl>
@@ -299,300 +498,10 @@
         
 
     
-</dd>
-
+        <h5>Example</h5>
         
-            
-<hr>
-<dt>
-    <h4 class="name" id=".inOut"><span class="type-signature">&lt;static> </span>inOut(t)</h4>
-    
-    
-</dt>
-<dd>
+    <pre class="sunlight-highlight-javascript">const point1 = Whirl.shapes.Point(50, 50); // Point {x: 50, y: 50}const point2 = Whirl.shapes.Point(90, 40); // Point {x: 90, y: 40}point1.distanceFrom(75, 75); // 35.355~...point1.distanceFrom(point2); // 41.231~...</pre>
 
-    
-    <div class="description">
-        <p>Interpolates a value quadratically, starting slowly, speeding up toward the half-way point, and slowing down again.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>t</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Interpolant between one (1) and zero(0).</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".out"><span class="type-signature">&lt;static> </span>out(t)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Interpolates a value quadratically, starting quickly and slowing down.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>t</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Interpolant between one (1) and zero(0).</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
 
     
 </dd>

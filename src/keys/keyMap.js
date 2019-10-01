@@ -1,3 +1,15 @@
+/**
+ * Arbitrary mapping of key *names* to key *codes*.
+ * 
+ * @name keys
+ * @constant
+ * @memberof Whirl.keys
+ * 
+ * @example
+ * Whirl.keys["x"]; // 88
+ * Whirl.keys["ArrowRight"]; // 39
+ * Whirl.keys["Shift"]; // 16
+ */
 const keyMap = {
 	"a": 65,
 	"b": 66,

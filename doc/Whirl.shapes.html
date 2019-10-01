@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Whirl Namespace: quadratic</title>
+	<title>Whirl Namespace: shapes</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,15 +72,15 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: quadratic</h1>
+	<h1 class="page-title">Namespace: shapes</h1>
 <section>
 
 <header>
     
         <h2>
-            <span class="ancestors"><a href="Whirl.html">Whirl</a><a href="Whirl.easing.html">.easing</a>.</span>
+            <span class="ancestors"><a href="Whirl.html">Whirl</a>.</span>
         
-        quadratic
+        shapes
         </h2>
         
     
@@ -91,7 +91,9 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Functions that imply a rate of change by a degree of two (2) (<code>t^2</code>).</p></div>
+            <div class="description"><p>Library of shape classes that can be used for things like geometry, pointer locations, collision detection, sprite, viewport and stage boundaries and more.</p>
+<p>Game classes utilise shapes internally for a myriad of functions such as bounding boxes, geometry comparisons and more.</p>
+<p>Shape classes are exported with a factory function so you can just call the class as a function and it will return a new instance. If you still need access to underlying class itself, access the <code>_class</code> property of the given class you need.</p></div>
         
 
         
@@ -143,461 +145,20 @@
     
 
     
-
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            
-<hr>
-<dt>
-    <h4 class="name" id=".in"><span class="type-signature">&lt;static> </span>in(t)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Interpolates a value quadratically, starting slowly and speeding up.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>t</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Interpolant between one (1) and zero(0).</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".inOut"><span class="type-signature">&lt;static> </span>inOut(t)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Interpolates a value quadratically, starting slowly, speeding up toward the half-way point, and slowing down again.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>t</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Interpolant between one (1) and zero(0).</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id=".out"><span class="type-signature">&lt;static> </span>out(t)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Interpolates a value quadratically, starting quickly and slowing down.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>t</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Interpolant between one (1) and zero(0).</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
+            <dt><a href="Whirl.shapes.Point.html">Point</a></dt>
+            <dd></dd>
         </dl>
+    
+
+    
+
+    
+
+    
+
     
 
     

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Whirl Namespace: quadratic</title>
+	<title>Whirl Namespace: keys</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,15 +72,15 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Namespace: quadratic</h1>
+	<h1 class="page-title">Namespace: keys</h1>
 <section>
 
 <header>
     
         <h2>
-            <span class="ancestors"><a href="Whirl.html">Whirl</a><a href="Whirl.easing.html">.easing</a>.</span>
+            <span class="ancestors"><a href="Whirl.html">Whirl</a>.</span>
         
-        quadratic
+        keys
         </h2>
         
     
@@ -91,7 +91,8 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Functions that imply a rate of change by a degree of two (2) (<code>t^2</code>).</p></div>
+            <div class="description"><p>Library of helper functions for retrieving keycodes, translating between keycodes and keynames and mapping keys to codes.</p>
+<p>Should not be confused with the input manager's <em>keyboard</em> module which actually handles keyboard input events.</p></div>
         
 
         
@@ -148,6 +149,76 @@
 
     
 
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<hr>
+<dt class="name" id=".keys">
+    <h4 id=".keys"><span class="type-signature">&lt;static, constant> </span>keys<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Arbitrary mapping of key <em>names</em> to key <em>codes</em>.</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">Whirl.keys[&quot;x&quot;]; // 88Whirl.keys[&quot;ArrowRight&quot;]; // 39Whirl.keys[&quot;Shift&quot;]; // 16</pre>
+
+
+    
+</dd>
+
+        </dl>
     
 
     
@@ -157,7 +228,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".in"><span class="type-signature">&lt;static> </span>in(t)</h4>
+    <h4 class="name" id=".getByCode"><span class="type-signature">&lt;static> </span>getByCode(keyCode)</h4>
     
     
 </dt>
@@ -165,7 +236,7 @@
 
     
     <div class="description">
-        <p>Interpolates a value quadratically, starting slowly and speeding up.</p>
+        <p>Get a keyname by its keycode.</p>
     </div>
     
 
@@ -200,7 +271,7 @@
 
         <tr>
             
-                <td class="name"><code>t</code></td>
+                <td class="name"><code>keyCode</code></td>
             
 
             <td class="type">
@@ -217,7 +288,7 @@
 
             
 
-            <td class="description last"><p>Interpolant between one (1) and zero(0).</p></td>
+            <td class="description last"><p>Keycode of a given key.</p></td>
         </tr>
 
     
@@ -280,6 +351,10 @@
     <h5>Returns:</h5>
     
             
+<div class="param-desc">
+    <p>Name of the key related to the keycode.</p>
+</div>
+
 
 
 <dl>
@@ -288,7 +363,10 @@
     </dt>
     <dd>
         
-<span class="param-type">number</span>
+<span class="param-type">string</span>
+|
+
+<span class="param-type">undefined</span>
 
 
 
@@ -297,6 +375,12 @@
 
 
         
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">Whirl.keys.getByCode(88); // &quot;x&quot;Whirl.keys.getByCode(39); // &quot;ArrowRight&quot;Whirl.keys.getByCode(16); // &quot;Shift&quot;</pre>
+
 
     
 </dd>
@@ -305,7 +389,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id=".inOut"><span class="type-signature">&lt;static> </span>inOut(t)</h4>
+    <h4 class="name" id=".getByName"><span class="type-signature">&lt;static> </span>getByName(keyName)</h4>
     
     
 </dt>
@@ -313,7 +397,7 @@
 
     
     <div class="description">
-        <p>Interpolates a value quadratically, starting slowly, speeding up toward the half-way point, and slowing down again.</p>
+        <p>Get a keycode by its keyname.</p>
     </div>
     
 
@@ -348,13 +432,13 @@
 
         <tr>
             
-                <td class="name"><code>t</code></td>
+                <td class="name"><code>keyName</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">string</span>
 
 
 
@@ -365,7 +449,7 @@
 
             
 
-            <td class="description last"><p>Interpolant between one (1) and zero(0).</p></td>
+            <td class="description last"><p>Keyname of a given key.</p></td>
         </tr>
 
     
@@ -428,6 +512,10 @@
     <h5>Returns:</h5>
     
             
+<div class="param-desc">
+    <p>Keycode of the key related to the keyname.</p>
+</div>
+
 
 
 <dl>
@@ -437,6 +525,9 @@
     <dd>
         
 <span class="param-type">number</span>
+|
+
+<span class="param-type">undefined</span>
 
 
 
@@ -447,152 +538,10 @@
         
 
     
-</dd>
-
+        <h5>Example</h5>
         
-            
-<hr>
-<dt>
-    <h4 class="name" id=".out"><span class="type-signature">&lt;static> </span>out(t)</h4>
-    
-    
-</dt>
-<dd>
+    <pre class="sunlight-highlight-javascript">Whirl.keys.getByName(&quot;x&quot;); // 88Whirl.keys.getByName(&quot;ArrowRight&quot;); // 39Whirl.keys.getByName(&quot;Shift&quot;); // 16</pre>
 
-    
-    <div class="description">
-        <p>Interpolates a value quadratically, starting quickly and slowing down.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>t</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Interpolant between one (1) and zero(0).</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
 
     
 </dd>
