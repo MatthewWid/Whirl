@@ -8,7 +8,6 @@
  * 
  * @class Point
  * @memberof Whirl.shapes
- * @constructor
  * 
  * @param {number} [x=0] X-coordinate of the point.
  * @param {number} [y=0] Y-coordinate of the point.

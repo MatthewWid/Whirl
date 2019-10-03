@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Whirl Class: Point</title>
+	<title>Whirl Class: Rectangle</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,7 +72,7 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: Point</h1>
+	<h1 class="page-title">Class: Rectangle</h1>
 <section>
 
 <header>
@@ -80,12 +80,12 @@
         <h2>
             <span class="ancestors"><a href="Whirl.html">Whirl</a><a href="Whirl.shapes.html">.shapes</a>.</span>
         
-        Point
+        Rectangle
         </h2>
         
-            <div class="class-description"><p>Represents a point in space defined by an X and Y value.</p>
-<p>Can be used for things such as getting the distance or angle between two points, checking if a point is inside a rectangle, keeping track of where something is, etc.</p>
-<p>Points are constructed using the <code>Whirl.shapes.Point</code> factory method, but the underlying class can be accessed with <code>Whirl.shapes.Point._class</code>.</p></div>
+            <div class="class-description"><p>Represents a rectangle defined by its origin point and its width and height.</p>
+<p>Can be used for things such as world boundaries, sprite boundaries, collision detection, etc.</p>
+<p>Rectangles are constructed using the <code>Whirl.shapes.Rectangle</code> factory method, but the underlying class can be accessed with <code>Whirl.shapes.Rectangle._class</code>.</p></div>
         
     
 </header>
@@ -97,7 +97,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="Point"><span class="type-signature"></span>new Point( [x] [, y])</h4>
+    <h4 class="name" id="Rectangle"><span class="type-signature"></span>new Rectangle( [x] [, y] [, w] [, h])</h4>
     
     
 </dt>
@@ -147,6 +147,9 @@
             
                 
 <span class="param-type">number</span>
+|
+
+<span class="param-type"><a href="Whirl.shapes.Point.html">Whirl.shapes.Point</a></span>
 
 
 
@@ -173,7 +176,7 @@
                 </td>
             
 
-            <td class="description last"><p>X-coordinate of the point.</p></td>
+            <td class="description last"><p>X-coordinate of the top-left origin point. If giving an instance of a Point the <code>y</code> parameter should also be a Point.</p></td>
         </tr>
 
     
@@ -181,6 +184,49 @@
         <tr>
             
                 <td class="name"><code>y</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type"><a href="Whirl.shapes.Point.html">Whirl.shapes.Point</a></span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>Y-coordinate of the top-left origin point. If <em>both</em> <code>x</code> and <code>y</code> are instead instances of a Point then the top-left point of the rectangle is defined by the first Point, and the bottom-right point is defined by the second.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>w</code></td>
             
 
             <td class="type">
@@ -213,7 +259,47 @@
                 </td>
             
 
-            <td class="description last"><p>Y-coordinate of the point.</p></td>
+            <td class="description last"><p>Width of the rectangle.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>h</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last"><p>Height of the rectangle.</p></td>
         </tr>
 
     
@@ -275,9 +361,11 @@
     
 
     
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
-    <pre class="sunlight-highlight-javascript">Whirl.shapes.Point(50, 90); // Point {x: 50, y: 90}</pre>
+    <pre class="sunlight-highlight-javascript">Whirl.shapes.Rectangle(40, 30, 100, 100); // Rectangle {x: 40, y: 30, w: 100, h: 100}</pre>
+
+    <pre class="sunlight-highlight-javascript">Whirl.shapes.Rectangle(	Whirl.shapes.Point(40, 30),	Whirl.shapes.Point(140, 130)); // Rectangle {x: 40, y: 30, w: 100, h: 100}</pre>
 
 
     
@@ -302,15 +390,15 @@
         <dl>
             
 <hr>
-<dt class="name" id="x">
-    <h4 id="x"><span class="type-signature"></span>x<span class="type-signature"> :number</span></h4>
+<dt class="name" id="area">
+    <h4 id="area"><span class="type-signature"></span>area<span class="type-signature"> :number</span></h4>
 
     
 </dt>
 <dd>
     
     <div class="description">
-        <p>X-coordiante of the point object.</p>
+        <p>The area of this rectangle.</p>
     </div>
     
 
@@ -365,6 +453,12 @@
 
 	
 </dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">Whirl.shapes.Rectangle(0, 0, 100, 100).area; // 10000</pre>
 
 
     
@@ -373,15 +467,15 @@
         
             
 <hr>
-<dt class="name" id="y">
-    <h4 id="y"><span class="type-signature"></span>y<span class="type-signature"> :number</span></h4>
+<dt class="name" id="midpoint">
+    <h4 id="midpoint"><span class="type-signature"></span>midpoint<span class="type-signature"> :<a href="Whirl.shapes.Point.html">Whirl.shapes.Point</a></span></h4>
 
     
 </dt>
 <dd>
     
     <div class="description">
-        <p>Y-coordinate of the point object.</p>
+        <p>Returns an instance of a Point representing the middle point of this rectangle.</p>
     </div>
     
 
@@ -390,7 +484,7 @@
         <ul>
             <li>
                 
-<span class="param-type">number</span>
+<span class="param-type"><a href="Whirl.shapes.Point.html">Whirl.shapes.Point</a></span>
 
 
 
@@ -436,6 +530,90 @@
 
 	
 </dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">Whirl.shapes.Rectangle(0, 0, 100, 100).midpoint; // Point {x: 50, y: 50}</pre>
+
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt class="name" id="vertices">
+    <h4 id="vertices"><span class="type-signature"></span>vertices<span class="type-signature"> :Array.&lt;<a href="Whirl.shapes.Point.html">Whirl.shapes.Point</a>></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Returns an array of Points representing the four vertices of this rectangle.<br>
+Points are sorted in the following order: Top-left, top-right, bottom-right, bottom-left.</p>
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Array.&lt;<a href="Whirl.shapes.Point.html">Whirl.shapes.Point</a>></span>
+
+
+
+            </li>
+        </ul>
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">Whirl.shapes.Rectangle(0, 0, 100, 100).vertices;//	[//		Point {x: 0, y: 0},//		Point {x: 100, y: 0},//		Point {x: 100, y: 100},//		Point {x: 0, y: 100},//	]</pre>
 
 
     
@@ -451,7 +629,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="distanceFrom"><span class="type-signature"></span>distanceFrom(x [, y])</h4>
+    <h4 class="name" id="isPointInside"><span class="type-signature"></span>isPointInside(px [, py])</h4>
     
     
 </dt>
@@ -459,7 +637,7 @@
 
     
     <div class="description">
-        <p>Get the distance between this Point and another point.</p>
+        <p>Determine if a point is inside this rectangle.</p>
     </div>
     
 
@@ -496,7 +674,7 @@
 
         <tr>
             
-                <td class="name"><code>x</code></td>
+                <td class="name"><code>px</code></td>
             
 
             <td class="type">
@@ -505,7 +683,7 @@
 <span class="param-type">number</span>
 |
 
-<span class="param-type">Point</span>
+<span class="param-type"><a href="Whirl.shapes.Point.html">Whirl.shapes.Point</a></span>
 
 
 
@@ -524,14 +702,14 @@
 
             
 
-            <td class="description last"><p>X-coordinate of the point or a Point object itself. If a Point is provided then measure the distance from this Point to the given Point, instead of from this Point to the given X and Y values.</p></td>
+            <td class="description last"><p>X-coordinate of the point. An instance of a Point object can also be given instead as the only argument to determine if it is inside this rectangle.</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>y</code></td>
+                <td class="name"><code>py</code></td>
             
 
             <td class="type">
@@ -621,10 +799,6 @@
     <h5>Returns:</h5>
     
             
-<div class="param-desc">
-    <p>The distance between the two points.</p>
-</div>
-
 
 
 <dl>
@@ -633,7 +807,7 @@
     </dt>
     <dd>
         
-<span class="param-type">number</span>
+<span class="param-type">boolean</span>
 
 
 
@@ -644,9 +818,11 @@
         
 
     
-        <h5>Example</h5>
+        <h5>Examples</h5>
         
-    <pre class="sunlight-highlight-javascript">const point1 = Whirl.shapes.Point(50, 50); // Point {x: 50, y: 50}const point2 = Whirl.shapes.Point(90, 40); // Point {x: 90, y: 40}point1.distanceFrom(75, 75); // 35.355~...point1.distanceFrom(point2); // 41.231~...</pre>
+    <pre class="sunlight-highlight-javascript">Whirl.shapes.Rectangle(0, 0, 100, 100).isPointInside(45, 79); // true</pre>
+
+    <pre class="sunlight-highlight-javascript">const point = Whirl.shapes.Point(36, 85);const rect = Whirl.shapes.Rectangle(0, 0, 100, 100);rect.isPointInside(point); // true</pre>
 
 
     
