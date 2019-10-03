@@ -4,6 +4,8 @@ node_modules
 # generated
 build/whirl.js
 build/*.map
+doc/*
+!doc/logo/
 
 # examples
 *.css.map
