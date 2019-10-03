@@ -19,11 +19,13 @@
 class Point {
 	/**
 	 * X-coordiante of the point object.
+	 * @memberof Whirl.shapes.Point#
 	 * @type {number}
 	 */
 	x;
 	/**
 	 * Y-coordinate of the point object.
+	 * @memberof Whirl.shapes.Point#
 	 * @type {number}
 	 */
 	y;
