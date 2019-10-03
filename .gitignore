@@ -2,8 +2,7 @@
 node_modules
 
 # generated
-build/whirl.js
-build/*.map
+build/*
 doc/*
 !doc/logo/
 
