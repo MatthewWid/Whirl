@@ -6,6 +6,7 @@
 		"systemName": "Whirl",
 		"footer": "MIT Licence",
 		"includeDate": false,
-		"linenums": true
+		"linenums": true,
+		"sort": false
 	}
 }
