@@ -12,7 +12,7 @@ const Point = require("./Point.js");
  * @memberof Whirl.shapes
  * 
  * @param {number|Whirl.shapes.Point} [x=0] X-coordinate of the top-left origin point. If giving an instance of a Point the `y` parameter should also be a Point.
- * @param {number|Whirl.shapes.Point} [y=0] Y-coordinate of the top-left origin point. If *both* `x` and `y` are instead instances of a Point then the top-left point of the rectangle is defined by the first Point, and the bottom-right point is defined by the second.
+ * @param {number|Whirl.shapes.Point} [y=0] Y-coordinate of the top-left origin point. If *both* `x` and `y` are instead instances of a Point then the top-left point of the rectangle is defined by the first given Point, and the bottom-right point is defined by the second.
  * @param {number} [w=0] Width of the rectangle.
  * @param {number} [h=0] Height of the rectangle.
  * 
@@ -26,19 +26,41 @@ const Point = require("./Point.js");
  * ); // Rectangle {x: 40, y: 30, w: 100, h: 100}
  */
 class Rectangle {
+	/**
+	 * X-coordinate of the top-left point of the rectangle.
+	 * 
+	 * @memberof Whirl.shapes.Rectangle#
+	 * @type {number}
+	 */
 	x;
+	/**
+	 * Y-coordinate of the top-left point of the rectangle.
+	 * 
+	 * @memberof Whirl.shapes.Rectangle#
+	 * @type {number}
+	 */
 	y;
+	/**
+	 * Width of the rectangle.
+	 * 
+	 * @memberof Whirl.shapes.Rectangle#
+	 * @type {number}
+	 */
 	w;
+	/**
+	 * Height of the rectangle.
+	 * 
+	 * @memberof Whirl.shapes.Rectangle#
+	 * @type {number}
+	 */
 	h;
 	
 	constructor(x, y, w, h) {
-		// (Point, Point)
 		if (x instanceof Point._class && y instanceof Point._class) {
 			this.x = x.x;
 			this.y = x.y;
 			this.w = y.x - x.x;
 			this.h = y.y - x.y;
-		// (int, int, int, int)
 		} else {
 			this.x = x || 0;
 			this.y = y || 0;
@@ -52,6 +74,7 @@ class Rectangle {
 	 * 
 	 * @alias Whirl.shapes.Rectangle#midpoint
 	 * @type {Whirl.shapes.Point}
+	 * @readonly
 	 * 
 	 * @example
 	 * Whirl.shapes.Rectangle(0, 0, 100, 100).midpoint; // Point {x: 50, y: 50}
@@ -64,10 +87,11 @@ class Rectangle {
 	}
 
 	/**
-	 * The area of this rectangle.
+	 * Area of this rectangle.
 	 * 
 	 * @alias Whirl.shapes.Rectangle#area
 	 * @type {number}
+	 * @readonly
 	 * 
 	 * @example
 	 * Whirl.shapes.Rectangle(0, 0, 100, 100).area; // 10000
@@ -82,6 +106,7 @@ class Rectangle {
 	 * 
 	 * @alias Whirl.shapes.Rectangle#vertices
 	 * @type {Whirl.shapes.Point[]}
+	 * @readonly
 	 * 
 	 * @example
 	 * Whirl.shapes.Rectangle(0, 0, 100, 100).vertices;
@@ -123,7 +148,6 @@ class Rectangle {
 		let x = px;
 		let y = py;
 
-		// (Point)
 		if (px instanceof Point._class) {
 			x = px.x;
 			y = px.y;
