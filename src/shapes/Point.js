@@ -7,7 +7,6 @@
  * Points are constructed using the `Whirl.shapes.Point` factory method, but the underlying class can be accessed with `Whirl.shapes.Point._class`.
  * 
  * @class Point
- * @typedef 
  * @memberof Whirl.shapes
  * @constructor
  * 

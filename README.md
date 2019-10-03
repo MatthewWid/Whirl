@@ -1,4 +1,4 @@
-<p align="center"><img src="./doc/logo/logo_text.png" alt="drawing" width="50%" /></p>
+<p align="center"><img src="./doc/logo/logo_text.png" alt="Whirl Logo" width="50%" /></p>
 
 <p align="center"><b>Whirl is a modern, lightweight and extensible 2D game engine written in JavaScript.</b></p>
 
