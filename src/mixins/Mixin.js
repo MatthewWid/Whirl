@@ -4,13 +4,50 @@
  * 
  * Mixins are typically not instantiated directly, but by the use of the `Mixin.apply` method.
  * 
- * See {@link Whirl.mixins|the mixin namespace overview for common use cases and examples of creating and using mixins}.
- * 
  * @class Mixin
  * @memberof Whirl.mixins
  * @abstract
  * 
  * @param {object} [source] Source object that this mixin must be applied to.
+ * 
+ * @example
+ * const {mixins: {Mixin, Event}} = Whirl;
+ * 
+ * // Add the `Event` mixin to `MyObject`
+ * class MyObject {
+ * 	mixins = [Event];
+ * 
+ * 	constructor() {
+ * 		Mixin.apply(this);
+ * 	}
+ * }
+ * 
+ * @example
+ * const {mixins: {Mixin}} = Whirl;
+ * 
+ * // Create a custom mixin `LogMixin`
+ * class LogMixin extends Mixin {
+ * 	static _namespace = "log"; // Attach under the `log` property
+ * 
+ * 	sayHi() {
+ * 		console.log("Hello world!");
+ * 	}
+ * }
+ * 
+ * // Create class `MyObject` and give it our `LogMixin`
+ * class MyObject {
+ * 	mixins = [LogMixin];
+ * 
+ * 	constructor() {
+ * 		Mixin.apply(this);
+ * 	}
+ * }
+ * 
+ * // Instantiate our `MyObject` class
+ * const obj = new MyObject();
+ * 
+ * // Call our `sayHi` method under our defined `log` namespace
+ * obj.log.sayHi(); // Output "Hello world" to console
  */
 class Mixin {
 	/**
