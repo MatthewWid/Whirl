@@ -179,6 +179,8 @@ class EventMixin extends Mixin {
 	/**
 	 * Manually remove an event listener from the given event.
 	 * 
+	 * Each event listener has a unique identification number that is passed to the callback function whenever the listener is emitted to.
+	 * 
 	 * If you need to stop listening to an event after the first emission then you can use the `once` method when creating a listener instead.
 	 * 
 	 * @method Whirl.mixins.Event#remove
