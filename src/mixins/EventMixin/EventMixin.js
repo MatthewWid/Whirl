@@ -46,7 +46,7 @@ const Event = require("./Event.js");
  */
 class EventMixin extends Mixin {
 	/**
-	 * This mixin is stored under the `event` namespace property.
+	 * This mixin is stored under the `event` namespace.
 	 * 
 	 * @memberof Whirl.mixins.Event
 	 * @type {string}
