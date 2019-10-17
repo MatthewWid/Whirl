@@ -78,7 +78,7 @@ class EventMixin extends Mixin {
 	 * Callback that is fired each time the event is emitted on.
 	 * 
 	 * @callback Whirl.mixins.Event~eventListener
-	 * @param {object} data Contains metadata about the event and object being listened. Any data given in the event emit is also attached to this data object.
+	 * @param {object} data Contains metadata about the event and object being listened on. Any data given in the event emission is also attached to this data object.
 	 * @param {number} data._eId Unique ID of this individual event listener. Can be used to remove this listener from the given event name.
 	 * @param {string} data._eName Name of the event that this listener is listening on.
 	 * @param {object} data._source Object that the event is being fired on.
