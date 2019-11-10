@@ -8,6 +8,8 @@ const Mixin = require("../Mixin.js");
  * 
  * Parent objects can mediate which objects are added to their pool of children by giving a validation function that filters potential children.
  * 
+ * This mixin is stored under the `child` namespace.
+ * 
  * @class Child
  * @memberof Whirl.mixins
  * @extends Whirl.mixins.Mixin
@@ -15,8 +17,7 @@ const Mixin = require("../Mixin.js");
  */
 class ChildMixin extends Mixin {
 	/**
-	 * This mixin is stored under the `child` namespace.
-	 * 
+	 * @ignore
 	 * @memberof Whirl.mixins.Child
 	 * @type {string}
 	 * @constant

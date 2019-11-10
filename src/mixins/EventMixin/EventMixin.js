@@ -9,6 +9,8 @@ const Event = require("./Event.js");
  * 
  * Event emitters do not have to be initialised beforehand. You can listen on *any* event name and it will be fired once something emits on that same event name. Similarly, you can emit to any event name regardless of if there are listeners listening to that event or not.
  * 
+ * This mixin is stored under the `event` namespace.
+ * 
  * @class Event
  * @memberof Whirl.mixins
  * @extends Whirl.mixins.Mixin
@@ -46,8 +48,7 @@ const Event = require("./Event.js");
  */
 class EventMixin extends Mixin {
 	/**
-	 * This mixin is stored under the `event` namespace.
-	 * 
+	 * @ignore
 	 * @memberof Whirl.mixins.Event
 	 * @type {string}
 	 * @constant
