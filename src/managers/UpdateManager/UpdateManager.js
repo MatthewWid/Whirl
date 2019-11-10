@@ -33,13 +33,6 @@ class UpdateManager extends Manager {
 		this._initTime = performance.now();
 	}
 
-	get frameCount() {
-		return this._frameCount;
-	}
-	get isRunning() {
-		return this._running;
-	}
-
 	_start = () => {
 		if (this.running) {
 			return this._game;
