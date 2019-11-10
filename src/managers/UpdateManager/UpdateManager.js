@@ -11,6 +11,25 @@ const Manager = require("../Manager.js");
  * @class UpdateManager
  * @memberof Whirl.Game
  * @extends Whirl.Game.Manager
+ * 
+ * @example
+ * const game = Whirl.Game();
+ * 
+ * game.start();
+ * 
+ * game.stop();
+ * 
+ * @example
+ * const game = Whirl.Game();
+ * 
+ * game.event.on("didUpdate", (data) => {
+ * 	console.log(`A total of ${data.frameCount} frame(s) have elapsed.`);
+ * });
+ * 
+ * game.start();
+ * // > A total of 1 frame(s) have elapsed.
+ * // > A total of 2 frame(s) have elapsed.
+ * // ...
  */
 class UpdateManager extends Manager {
 	/**
@@ -78,7 +97,7 @@ class UpdateManager extends Manager {
 	/**
 	 * Time in milliseconds since the game was last started with the `start` method.
 	 * 
-	 * Subsequent calls to the `start` method will reset this value to the time delta between now and the last call to the `start` method.
+	 * Subsequent calls to the `start` method will reset this value to the time delta between now and the last call to the `start` method (initially zero and then increasing).
 	 * 
 	 * @memberof Whirl.Game.UpdateManager#
 	 * @type {number}
@@ -107,6 +126,8 @@ class UpdateManager extends Manager {
 	 * Start the game update loop.
 	 * 
 	 * This initiates the update loop to begin running and it will run indefinitely until the `_stop` method is invoked.
+	 * 
+	 * Also aliased directly under the game instance object as the `start` method.
 	 * 
 	 * @method Whirl.Game.UpdateManager#_start
 	 * 
@@ -169,6 +190,8 @@ class UpdateManager extends Manager {
 	 * Note that this is a **request** to stop the game execution. Its timing is not exact in that one extra update tick may occur after this method is invoked as the update manager attempts to perform cleanup and keeps the game state consistent by not stopping in the middle of its update process.
 	 * 
 	 * In general you should never completely stop the execution of the game update loop after it has been started. The game update loop is essential for user input, asset loading, resizing, etc. Even if you are implementing something such as a pause screen for your game you should aim to pause the *physics* simulation of the game, not the game itself.
+	 * 
+	 * Also aliased directly under the game instance object as the `stop` method.
 	 * 
 	 * @method Whirl.Game.UpdateManager#_stop
 	 * 

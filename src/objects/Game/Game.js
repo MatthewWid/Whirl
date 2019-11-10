@@ -22,7 +22,7 @@ const {
  * 
  * @example
  * const game = Whirl.Game({
- * 	canvas: "myCanvas"
+ * 	canvas: "#myCanvas"
  * });
  */
 class Game {
