@@ -1,6 +1,6 @@
 /**
  * @classdesc
- * Abstract manager class used internally to instantiate all game manager subtypes.
+ * Abstract manager class used internally to instantiate and identify all game manager subtypes.
  * 
  * @abstract
  * @class Manager
