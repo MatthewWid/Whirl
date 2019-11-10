@@ -10,9 +10,9 @@ const {
  * @classdesc
  * Represents an instance of a Whirl game.
  * 
- * The game object is the actual running game and is the workforce of the engine that handles all updates, rendering and object management. It contains various managers for game updates, rendering, mouse and keyboard input, object and asset handling, physics and more.
+ * The game object is the actual running game and is the workforce of the engine that handles all updates, rendering and object management. It contains various managers for game updates, rendering, mouse and keyboard input, object storage and manipulation, asset handling, physics and more.
  * 
- * The game can be configured during its initialisation and will perform certain setup operations for you if you configure it do so (Eg, set or create a canvas, set physics and rendering, scaling modes, etc.).
+ * The game can be configured during its initialisation and will perform certain setup operations for you if you configure it do so (Eg, set or create a canvas, set physics and rendering, set scaling modes, etc.).
  * 
  * The game object should be constructed using the `Whirl.Game` factory method, but the underlying class can be accessed with `Whirl.Game._class`.
  * 

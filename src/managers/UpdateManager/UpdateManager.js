@@ -1,6 +1,23 @@
 const Manager = require("../Manager.js");
 
+/**
+ * @classdesc
+ * Update manager of the game instance that handles object updates, physics, timing, events and more.
+ * 
+ * This manager is stored under the `update` namespace.
+ * 
+ * @class UpdateManager
+ * @memberof Whirl.Game
+ * @extends Whirl.Game.Manager
+ */
 class UpdateManager extends Manager {
+	/**
+	 * Flag indicating whether the update loop is running or not.
+	 * 
+	 * @memberof Whirl.Game.UpdateManager#
+	 * @type {boolean}
+	 * @readonly
+	 */
 	_running = false; // Update loop running or not
 	_frameRate = 60; // Desired framerate per second
 	_frameCount = 0; // Total updates
