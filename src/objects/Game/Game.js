@@ -65,8 +65,8 @@ class Game {
 		this.config.set(options);
 
 		// Expose manager methods at top-level
-		this.start = this.update._start;
-		this.stop = this.update._stop;
+		this.start = this.update.start;
+		this.stop = this.update.stop;
 	}
 }
 
