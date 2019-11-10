@@ -6,7 +6,7 @@ const Mixin = require("../Mixin.js");
  * 
  * Parents control their children and can reference each child individually, whereas children cannot communicate with their parent directly. If you need to communicate with the parent object from the child you should make use of {@link Whirl.mixins.Event|the event system} and emit data upwards/globally or, if using a custom class, use composition over inheritance.
  * 
- * Parent objects can mediate which objects are added to their pool of children by giving a validation function that filters potential children.
+ * Parent objects can mediate which objects are added to their pool of children by giving a validation function that filters potential children. Without this, children of any type can be added as a descendent.
  * 
  * This mixin is stored under the `child` namespace.
  * 
@@ -14,6 +14,32 @@ const Mixin = require("../Mixin.js");
  * @memberof Whirl.mixins
  * @extends Whirl.mixins.Mixin
  * @mixin
+ * 
+ * @example
+ * const {mixins: {Mixin, Child}} = Whirl;
+ * 
+ * class MyObject {
+ * 	mixins = [Child];
+ * 
+ * 	constructor() {
+ * 		Mixin.apply(this);
+ * 	}
+ * }
+ * 
+ * const obj = new MyObject();
+ * 
+ * obj.child.get(); // []
+ * 
+ * obj.child.add([
+ * 	"Some string",
+ * 	931,
+ * 	{
+ * 		x: 5,
+ * 		y: 9
+ * 	}
+ * ]);
+ * 
+ * obj.child.get(); // ["Some string", 931, {...}]
  */
 class ChildMixin extends Mixin {
 	/**
