@@ -127,9 +127,9 @@ class UpdateManager extends Manager {
 	 * 
 	 * This initiates the update loop to begin running and it will run indefinitely until the `_stop` method is invoked.
 	 * 
-	 * Also aliased directly under the game instance object as the `start` method.
+	 * Also aliased directly under the game instance object as the `<game>.start` method.
 	 * 
-	 * @method Whirl.Game.UpdateManager#_start
+	 * @method Whirl.Game.UpdateManager#start
 	 * 
 	 * @returns {this}
 	 * 
@@ -140,7 +140,7 @@ class UpdateManager extends Manager {
 	 * // or
 	 * game.update._start();
 	 */
-	_start = () => {
+	start = () => {
 		if (this.running) {
 			return this._game;
 		}
@@ -191,9 +191,9 @@ class UpdateManager extends Manager {
 	 * 
 	 * In general you should never completely stop the execution of the game update loop after it has been started. The game update loop is essential for user input, asset loading, resizing, etc. Even if you are implementing something such as a pause screen for your game you should aim to pause the *physics* simulation of the game, not the game itself.
 	 * 
-	 * Also aliased directly under the game instance object as the `stop` method.
+	 * Also aliased directly under the game instance object as the `<game>.stop` method.
 	 * 
-	 * @method Whirl.Game.UpdateManager#_stop
+	 * @method Whirl.Game.UpdateManager#stop
 	 * 
 	 * @returns {this}
 	 * 
@@ -204,7 +204,7 @@ class UpdateManager extends Manager {
 	 * // or
 	 * game.update._stop();
 	 */
-	_stop = () => {
+	stop = () => {
 		/**
 		 * Fires when the game `stop` method is invoked but *before* its running state and timing-related properties are changed and/or reset.
 		 * 
