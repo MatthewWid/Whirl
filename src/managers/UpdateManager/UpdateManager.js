@@ -2,9 +2,11 @@ const Manager = require("../Manager.js");
 
 /**
  * @classdesc
- * Update manager of the game instance that handles object updates, physics, timing, events and more.
+ * The update manager handles object updates, physics, timing, events and more. It provides the main methods for interacting with the current running state of the game instance, provides several useful event hooks that are commonly used in a typical application and, whilst being separate to the `RenderManager`, invokes the game rendering process after the update loop has completed each tick.
  * 
- * This manager is stored under the `update` namespace.
+ * By default, an instantiated game is not running, and must be "started" by use of the update manager to begin the update loop *after* the necessary events, assets, listeners, etc. have been loaded.
+ * 
+ * This manager is stored under the `update` namespace of the game instance object.
  * 
  * @class UpdateManager
  * @memberof Whirl.Game
@@ -18,14 +20,82 @@ class UpdateManager extends Manager {
 	 * @type {boolean}
 	 * @readonly
 	 */
-	_running = false; // Update loop running or not
-	_frameRate = 60; // Desired framerate per second
-	_frameCount = 0; // Total updates
-	_frameDelta = 0; // Time since last update
-	_lastDelta = 0; // Last delta time calculated
-	_startTime = 0; // Time at Game.start()
-	_elapsedTime = 0; // Time since Game.start()
-	_initTime; // Time at Game instantation
+	_running = false;
+
+	/**
+	 * Current desired frame rate that the game updates at per second.
+	 * 
+	 * @memberof Whirl.Game.UpdateManager#
+	 * @type {number}
+	 * @readonly
+	 */
+	_frameRate = 60;
+
+	/**
+	 * Total frames elapsed whilst the game is running.
+	 * 
+	 * Stopping the game pauses the increment of this value. Starting the game again will continue incrementing it from its last value, it will not reset back to `0` after the game pauses.
+	 * 
+	 * @memberof Whirl.Game.UpdateManager#
+	 * @type {number}
+	 * @readonly
+	 */
+	_frameCount = 0;
+
+	/**
+	 * Time in milliseconds since the last update tick.
+	 * 
+	 * Indicates how long the last update tick took to process.
+	 * 
+	 * @memberof Whirl.Game.UpdateManager#
+	 * @type {number}
+	 * @readonly
+	 */
+	_frameDelta = 0;
+
+	/**
+	 * Time in milliseconds between the *last* update tick and the update tick before that.
+	 * 
+	 * Can be used for FPS and performance calculation by comparing how long the last update tick took and the current update tick took to process.
+	 * 
+	 * @memberof Whirl.Game.UpdateManager#
+	 * @type {number}
+	 * @readonly
+	 */
+	_lastDelta = 0;
+
+	/**
+	 * Timestamp in milliseconds of when the game was started with the `_start` method.
+	 * 
+	 * Subsequent calls to the `_start` method will reset this value to the timestamp of the last call.
+	 * 
+	 * @memberof Whirl.Game.UpdateManager#
+	 * @type {number}
+	 * @readonly
+	 */
+	_startTime = 0;
+
+	/**
+	 * Time in milliseconds since the game was started with the `_start` method.
+	 * 
+	 * Subsequent calls to the `_start` method will reset this value to the time delta between now and the last call to the `_start` method.
+	 * 
+	 * @memberof Whirl.Game.UpdateManager#
+	 * @type {number}
+	 * @readonly
+	 */
+	_elapsedTime = 0;
+
+	/**
+	 * Timestamp in milliseconds of when the game was instantiated.
+	 * 
+	 * This value is only set the first time that the game instance is created and remains constant after that.
+	 * 
+	 * @memberof Whirl.Game.UpdateManager#
+	 * @type {number}
+	 * @readonly
+	 */
+	_initTime;
 
 	constructor(game) {
 		super(game);
@@ -33,6 +103,22 @@ class UpdateManager extends Manager {
 		this._initTime = performance.now();
 	}
 
+	/**
+	 * Start the game update loop.
+	 * 
+	 * This initiates the update loop to begin running and it will run indefinitely until the `_stop` method is invoked.
+	 * 
+	 * @method Whirl.Game.UpdateManager#_start
+	 * 
+	 * @returns {this}
+	 * 
+	 * @example
+	 * const game = Whirl.Game();
+	 * 
+	 * game.start();
+	 * // or
+	 * game.update._start();
+	 */
 	_start = () => {
 		if (this.running) {
 			return this._game;
@@ -58,6 +144,26 @@ class UpdateManager extends Manager {
 		return this._game;
 	}
 
+	/**
+	 * Stops the entire game update loop.
+	 * 
+	 * This requests that the update manager cease execution of the update and (implicitely) the render loop before the next frame executes.
+	 * 
+	 * Note that this is a **request** to stop the game execution. Its timing is not exact in that one or two extra update ticks could still occur after the call is made as the update manager attempts to keep the game state consistent by not stopping in the middle of its update process.
+	 * 
+	 * In general you should never completely stop the execution of the game update loop after it has been started. The game update loop is essential for user input, asset loading, resizing, etc. Even if you are implementing something such as a pause screen for your game you should aim to pause the *physics* simulation of the game, not the game itself.
+	 * 
+	 * @method Whirl.Game.UpdateManager#_stop
+	 * 
+	 * @returns {this}
+	 * 
+	 * @example
+	 * const game = Whirl.Game().start();
+	 * 
+	 * game.stop();
+	 * // or
+	 * game.update._stop();
+	 */
 	_stop = () => {
 		// Event: willStop
 		this._game.event.emit("willStop", {
@@ -70,6 +176,14 @@ class UpdateManager extends Manager {
 		return this._game;
 	}
 
+	/**
+	 * Actual method that performs one update tick of the game instance.
+	 * 
+	 * @ignore
+	 * @method Whirl.Game.UpdateManager#_update
+	 * 
+	 * @param {number} delta High resolution time in milliseconds given by the environment.
+	 */
 	_update = (delta) => {
 		// Event: willUpdate
 		this._game.event.emit("willUpdate", {
