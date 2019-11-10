@@ -65,9 +65,9 @@ class UpdateManager extends Manager {
 	_lastDelta = 0;
 
 	/**
-	 * Timestamp in milliseconds of when the game was started with the `_start` method.
+	 * Timestamp in milliseconds of when the game was last started with the `start` method.
 	 * 
-	 * Subsequent calls to the `_start` method will reset this value to the timestamp of the last call.
+	 * Subsequent calls to the `start` method will reset this value to the timestamp of the last call.
 	 * 
 	 * @memberof Whirl.Game.UpdateManager#
 	 * @type {number}
@@ -76,9 +76,9 @@ class UpdateManager extends Manager {
 	_startTime = 0;
 
 	/**
-	 * Time in milliseconds since the game was started with the `_start` method.
+	 * Time in milliseconds since the game was last started with the `start` method.
 	 * 
-	 * Subsequent calls to the `_start` method will reset this value to the time delta between now and the last call to the `_start` method.
+	 * Subsequent calls to the `start` method will reset this value to the time delta between now and the last call to the `start` method.
 	 * 
 	 * @memberof Whirl.Game.UpdateManager#
 	 * @type {number}
@@ -124,7 +124,14 @@ class UpdateManager extends Manager {
 			return this._game;
 		}
 
-		// Event: willStart
+		/**
+		 * Fires when the game `start` method is invoked but *before* its running state and timing-related properties are changed and/or reset.
+		 * 
+		 * @event Whirl.Game#willStart
+		 * @type {object}
+		 * 
+		 * @property {number} initTime Timestamp in milliseconds of when the game was instantiated.
+		 */
 		this._game.event.emit("willStart", {
 			initTime: this._initTime,
 		});
@@ -135,7 +142,17 @@ class UpdateManager extends Manager {
 
 		requestAnimationFrame(this._update);
 		
-		// Event: didStart
+		/**
+		 * Fires when the game `start` method is invoked *after* its running state and timing-related properties have changed and/or reset.
+		 * 
+		 * Timing is not guarunteed in terms of if this event will be fired before or after the first consequent update tick has executed.
+		 * 
+		 * @event Whirl.Game#didStart
+		 * @type {object}
+		 * 
+		 * @property {number} initTime Timestamp in milliseconds of when the game was instantiated.
+		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
+		 */
 		this._game.event.emit("didStart", {
 			initTime: this._initTime,
 			startTime: this._startTime,
@@ -149,7 +166,7 @@ class UpdateManager extends Manager {
 	 * 
 	 * This requests that the update manager cease execution of the update and (implicitely) the render loop before the next frame executes.
 	 * 
-	 * Note that this is a **request** to stop the game execution. Its timing is not exact in that one or two extra update ticks could still occur after the call is made as the update manager attempts to keep the game state consistent by not stopping in the middle of its update process.
+	 * Note that this is a **request** to stop the game execution. Its timing is not exact in that one extra update tick may occur after this method is invoked as the update manager attempts to perform cleanup and keeps the game state consistent by not stopping in the middle of its update process.
 	 * 
 	 * In general you should never completely stop the execution of the game update loop after it has been started. The game update loop is essential for user input, asset loading, resizing, etc. Even if you are implementing something such as a pause screen for your game you should aim to pause the *physics* simulation of the game, not the game itself.
 	 * 
@@ -165,7 +182,15 @@ class UpdateManager extends Manager {
 	 * game.update._stop();
 	 */
 	_stop = () => {
-		// Event: willStop
+		/**
+		 * Fires when the game `stop` method is invoked but *before* its running state and timing-related properties are changed and/or reset.
+		 * 
+		 * @event Whirl.Game#willStop
+		 * @type {object}
+		 * 
+		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
+		 * @property {number} elapsedTime Time in milliseconds since the game was started.
+		 */
 		this._game.event.emit("willStop", {
 			startTime: this._startTime,
 			elapsedTime: this._elapsedTime,
@@ -185,7 +210,17 @@ class UpdateManager extends Manager {
 	 * @param {number} delta High resolution time in milliseconds given by the environment.
 	 */
 	_update = (delta) => {
-		// Event: willUpdate
+		/**
+		 * Fires just before the update logic of the game executes.
+		 * 
+		 * @event Whirl.Game#willUpdate
+		 * @type {object}
+		 * 
+		 * @property {number} frameCount Total frames elapsed whilst the game is running.
+		 * @property {number} frameDelta Time in milliseconds since the last update tick.
+		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
+		 * @property {number} elapsedTime Time in milliseconds since the game was started.
+		 */
 		this._game.event.emit("willUpdate", {
 			frameCount: this._frameCount,
 			frameDelta: this._frameDelta,
@@ -198,7 +233,17 @@ class UpdateManager extends Manager {
 		this._frameDelta = delta - this._lastDelta;
 		this._lastDelta = delta;
 
-		// Event: didUpdate
+		/**
+		 * Fires after the update logic of the game executes.
+		 * 
+		 * @event Whirl.Game#didUpdate
+		 * @type {object}
+		 * 
+		 * @property {number} frameCount Total frames elapsed whilst the game is running.
+		 * @property {number} frameDelta Time in milliseconds since the last update tick.
+		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
+		 * @property {number} elapsedTime Time in milliseconds since the game was started.
+		 */
 		this._game.event.emit("didUpdate", {
 			frameCount: this._frameCount,
 			frameDelta: this._frameDelta,
@@ -209,7 +254,18 @@ class UpdateManager extends Manager {
 		if (this._running) {
 			requestAnimationFrame(this._update);
 		} else {
-			// Event: didStop
+			/**
+			 * Fires after the game `stop` method is invoked and after a single update tick has occured.
+			 * 
+			 * This event is not immediately fired when the `stop` method is invoked as the update manager waits a game cycle before actually stopping the game to perform cleanup and keep the game state consistent.
+			 * 
+			 * @event Whirl.Game#didStop
+			 * @type {object}
+			 * 
+			 * @property {number} frameCount Total frames elapsed whilst the game is running.
+			 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
+			 * @property {number} elapsedTime Time in milliseconds since the game was started.
+			 */
 			this._game.event.emit("didStop", {
 				frameCount: this._frameCount,
 				startTime: this._startTime,

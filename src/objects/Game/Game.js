@@ -34,11 +34,13 @@ class Game {
 	 * @memberof Whirl.Game#
 	 */
 	config = new ConfigManager(this);
-	
+
 	/**
 	 * The update manager that handles the game update loop including object management, game scaling, physics and more.
 	 * 
 	 * @memberof Whirl.Game#
+	 * 
+	 * @see Whirl.Game.UpdateManager
 	 */
 	update = new UpdateManager(this);
 
