@@ -31,14 +31,14 @@ class ConfigManager extends Manager {
 	 * 
 	 * This object comes with certain preset values that the game uses internally, but you can also add your own additional values if need be.
 	 * 
-	 * **JSDOC* does not support spaces in property names - all instances of underscores `_` should be treated as spaces in this object's proprty list.*
-	 * 
 	 * @memberof Whirl.Game.ConfigManager#
 	 * @type {object}
 	 * 
-	 * @property {boolean} debug Toggles debug mode on and off. Debug mode enables warnings, performance tips, verbose logging, etc.
-	 * @property {boolean} input_mouse `input mouse` Automatically attach mouse event listeners.
-	 * @property {string|null} canvas Selector for the default canvas to render to. Viewports can be assigned different canvasses, but if not specified then they will default to the canvas specified here.
+	 * @property {boolean} [debug=false] Toggles debug mode on and off. Debug mode enables warnings, performance tips, verbose logging, etc.
+	 * @property {boolean} [input mouse=true] `input mouse` Automatically attach mouse event listeners to canvasses.
+	 * @property {boolean} [input keyboard=true] `input keyboard` Automatically attach keyboard event listeners to the document.
+	 * @property {boolean} [input preventDefault=true] `input preventDefault` Prevent the default browser behaviour on mouse and keyboard input events.
+	 * @property {string|null} [canvas=null] Selector for the default canvas to render to. Viewports can be assigned different canvasses, but if not specified then they will default to the canvas specified here.
 	 */
 	_data = {
 		...ConfigManager.defaultConfig,
@@ -56,12 +56,36 @@ class ConfigManager extends Manager {
 		super(game);
 	}
 
+	/**
+	 * Set or add one or many key/value pairs.
+	 * 
+	 * You should keep the configuration map object flat by **not** giving an object as a value, this may produce unexpected behaviour when trying to set a value in the nested object.
+	 * 
+	 * @method Whirl.Game.ConfigManager#set
+	 * 
+	 * @param {string|object} key Key that identifies a value in the config map. If the key already exists then the value is overwriten, otherwise a new key/value pair is made.
+	 * 	
+	 * If an object is given, will instead merge the object values with the config map object.
+	 * @param {any} [value] The value related to the key in the config map.
+	 * Optional if the first argument is an object.
+	 * @returns {any|object} If given a key/value pair, returns the given value. If given an object, the object is returned.
+	 * 
+	 * @example
+	 * game.config.set("debug", true);
+	 * game.config.set("canvas", "#myCanvas");
+	 * game.config.set("input keyboard", true);
+	 * 
+	 * @example
+	 * game.config.set({
+	 * 	"debug": true,
+	 * 	"canvas": "#myCanvas",
+	 * 	"input keyboard": true
+	 * });
+	 */
 	set(key, value) {
-		// (string, any)
 		if (typeof key === "string") {
 			this._data[key] = value;
 			return value;
-		// (object)
 		} else if (typeof key === "object") {
 			this._data = {
 				...this._data,
@@ -71,6 +95,14 @@ class ConfigManager extends Manager {
 		}
 	}
 
+	/**
+	 * Retrieve one or all values.
+	 * 
+	 * @method Whirl.Game.ConfigManager#get
+	 * 
+	 * @param {string} [key] Key of the key/value pair to retrieve the value from.
+	 * @returns {any|object} The value related to the key. If the key is not given, returns the entire configuration map object.
+	 */
 	get(key) {
 		if (!key) {
 			return {...this._data};
