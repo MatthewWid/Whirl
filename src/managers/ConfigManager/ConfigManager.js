@@ -1,4 +1,5 @@
 const Manager = require("../Manager.js");
+const {Mixin: {apply: mixin}, Event} = require("../../mixins/");
 
 /**
  * @classdesc
@@ -12,6 +13,7 @@ const Manager = require("../Manager.js");
  * 
  * @class ConfigManager
  * @memberof Whirl.Game
+ * @mixes Whirl.mixins.Event
  * 
  * @example
  * const game = new Whirl.Game();
@@ -25,6 +27,8 @@ const Manager = require("../Manager.js");
  * game.config.get("property"); // "value"
  */
 class ConfigManager extends Manager {
+	mixins = [Event];
+
 	/**
 	 * Toggles debug mode on and off. Debug mode enables warnings, performance tips, verbose logging, etc.
 	 * 
@@ -94,6 +98,7 @@ class ConfigManager extends Manager {
 
 	constructor(game) {
 		super(game);
+		mixin(this);
 	}
 
 	/**
@@ -125,12 +130,40 @@ class ConfigManager extends Manager {
 	set(key, value) {
 		if (typeof key === "string") {
 			this._data[key] = value;
+
+			/**
+			 * Fires after one or many values in the configuration are updated.
+			 * 
+			 * @event Whirl.Game.ConfigManager#didSet
+			 * @type {object}
+			 * 
+			 * @property {object} config Object of all values in the configuration, including the newly updated values.
+			 * @property {string|object} type If the value was set using a single key/value pair, will be `key-value`.
+			 * 
+			 * If many values were set using an object, will be `object`.
+			 * @property {string|undefined} key The key set. If the value was set using a single key/value pair, will be the key. Else will not exist.
+			 * @property {object|any} value The value set. Will either be the value of the single provided key/value pair, or the object given if setting multiple values at once.
+			 */
+			this.event.emit("didSet", {
+				config: {...this._data},
+				type: "key-value",
+				key,
+				value,
+			});
+
 			return value;
 		} else if (typeof key === "object") {
 			this._data = {
 				...this._data,
 				...key
 			};
+
+			this.event.emit("didSet", {
+				config: {...this._data},
+				type: "object",
+				value: {...key},
+			});
+
 			return key;
 		}
 	}
