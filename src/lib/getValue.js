@@ -1,5 +1,5 @@
 /**
- * Get the value of a property from a given object.
+ * Get the value of a property from a given object, else return a default value.
  * 
  * @ignore
  * 
