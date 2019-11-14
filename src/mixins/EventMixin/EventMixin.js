@@ -17,6 +17,16 @@ const Event = require("./Event.js");
  * @mixin
  * 
  * @example
+ * obj.event.on("sayWord", (data) => {
+ * 	console.log(`My word is: ${data.word}.`);
+ * });
+ * 
+ * // "My word is: kitten." is logged to the console
+ * obj.event.emit("sayWord", {
+ * 	word: "kitten",
+ * });
+ * 
+ * @example
  * const {mixins: {Mixin, Event}} = Whirl;
  * 
  * // Create and instantiate a class MyObject with the `Event` mixin
@@ -35,16 +45,6 @@ const Event = require("./Event.js");
  * });
  * 
  * obj.event.emit("sayHi"); // "Hello world" is logged to the console
- * 
- * @example
- * obj.event.on("sayWord", (data) => {
- * 	console.log(`My word is: ${data.word}.`);
- * });
- * 
- * // "My word is: kitten." is logged to the console
- * obj.event.emit("sayWord", {
- * 	word: "kitten",
- * });
  */
 class EventMixin extends Mixin {
 	/**
