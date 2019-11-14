@@ -12,7 +12,6 @@ const Manager = require("../Manager.js");
  * 
  * @class ConfigManager
  * @memberof Whirl.Game
- * @extends Whirl.Game.Manager
  * 
  * @example
  * const game = new Whirl.Game();

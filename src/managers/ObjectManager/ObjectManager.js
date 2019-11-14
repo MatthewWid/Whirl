@@ -11,7 +11,6 @@ const Stage = require("../../objects/Stage/");
  * 
  * @class ObjectManager
  * @memberof Whirl.Game
- * @extends Whirl.Game.Manager
  */
 class ObjectManager extends Manager {
 	/**

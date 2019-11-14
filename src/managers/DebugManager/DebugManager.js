@@ -6,7 +6,6 @@ const Manager = require("../Manager.js");
  * 
  * @class DebugManager
  * @memberof Whirl.Game
- * @extends Whirl.Game.Manager
  */
 class DebugManager extends Manager {
 	constructor(game) {

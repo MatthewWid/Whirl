@@ -10,7 +10,6 @@ const Manager = require("../Manager.js");
  * 
  * @class UpdateManager
  * @memberof Whirl.Game
- * @extends Whirl.Game.Manager
  * 
  * @example
  * const game = Whirl.Game();

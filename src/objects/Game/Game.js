@@ -22,7 +22,8 @@ const {
  * 
  * @example
  * const game = Whirl.Game({
- * 	canvas: "#myCanvas"
+ * 	"canvas": "#myCanvas",
+ * 	"debug": true,
  * });
  */
 class Game {
@@ -32,6 +33,8 @@ class Game {
 	 * The configuration manager that handles initial and continuing configuration of the game and its managers.
 	 * 
 	 * @memberof Whirl.Game#
+	 * 
+	 * @see Whirl.Game.ConfigManager
 	 */
 	config = new ConfigManager(this);
 
@@ -48,6 +51,8 @@ class Game {
 	 * The object manager that handles all existing objects in the game and the initialisation of those objects.
 	 * 
 	 * @memberof Whirl.Game#
+	 * 
+	 * @see Whirl.Game.ObjectManager
 	 */
 	object = new ObjectManager(this);
 
@@ -55,6 +60,8 @@ class Game {
 	 * The debug manager that handles debugging features such as logging, warnings and errors.
 	 * 
 	 * @memberof Whirl.Game#
+	 * 
+	 * @see Whirl.Game.DebugManager
 	 */
 	debug = new DebugManager(this);
 
