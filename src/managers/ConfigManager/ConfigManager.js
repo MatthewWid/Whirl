@@ -4,9 +4,9 @@ const Manager = require("../Manager.js");
  * @classdesc
  * The configuration manager handles global game configuration and allows the storage and modification of arbitrary data.
  * 
- * At its core, it is a simply a map of key-value pairs that stores data used to configure the behaviour of the various systems in the engine.
+ * At its core, it is a simply a map of key-value pairs that stores data used to configure the behaviour of the various systems in the engine. You can also store your own additional data for your customisation needs.
  * 
- * You can also store your own data that you could use for addons such as your own custom game objects.
+ * Never set properties of the ConfigManager directly. Instead, use the provided `set` and `get` methods.
  * 
  * This manager is stored under the `config` namespace of the game instance object.
  * 
@@ -27,18 +27,58 @@ const Manager = require("../Manager.js");
  */
 class ConfigManager extends Manager {
 	/**
+	 * Toggles debug mode on and off. Debug mode enables warnings, performance tips, verbose logging, etc.
+	 * 
+	 * @name debug
+	 * @memberof Whirl.Game.ConfigManager#
+	 * @type {boolean}
+	 * @default false
+	 */
+	
+	/**
+	 * Selector for the default canvas to render to. Viewports can be assigned different canvasses, but if not specified then they will default to the canvas specified here.
+	 * 
+	 * @name canvas
+	 * @memberof Whirl.Game.ConfigManager#
+	 * @type {string|null}
+	 * @default null
+	 */
+
+	/**
+	 * Automatically attach mouse event listeners to canvasses.
+	 * 
+	 * @name input mouse
+	 * @memberof Whirl.Game.ConfigManager#
+	 * @type {boolean}
+	 * @default true
+	 */
+
+	/**
+	 * Automatically attach keyboard event listeners to the document.
+	 * 
+	 * @name input keyboard
+	 * @memberof Whirl.Game.ConfigManager#
+	 * @type {boolean}
+	 * @default true
+	 */
+	
+	/**
+	 * Prevent the default browser behaviour on mouse and keyboard input events.
+	 * 
+	 * @name input preventDefault
+	 * @memberof Whirl.Game.ConfigManager#
+	 * @type {boolean}
+	 * @default true
+	 */
+
+	/**
 	 * The object that actually stores the configuration data internally. You should **never access or modify this object directly**. Instead, make use of the `set` and `get` methods on the configuration manager.
 	 * 
 	 * This object comes with certain preset values that the game uses internally, but you can also add your own additional values if need be.
 	 * 
+	 * @ignore
 	 * @memberof Whirl.Game.ConfigManager#
 	 * @type {object}
-	 * 
-	 * @property {boolean} [debug=false] Toggles debug mode on and off. Debug mode enables warnings, performance tips, verbose logging, etc.
-	 * @property {boolean} [input mouse=true] `input mouse` Automatically attach mouse event listeners to canvasses.
-	 * @property {boolean} [input keyboard=true] `input keyboard` Automatically attach keyboard event listeners to the document.
-	 * @property {boolean} [input preventDefault=true] `input preventDefault` Prevent the default browser behaviour on mouse and keyboard input events.
-	 * @property {string|null} [canvas=null] Selector for the default canvas to render to. Viewports can be assigned different canvasses, but if not specified then they will default to the canvas specified here.
 	 */
 	_data = {
 		...ConfigManager.defaultConfig,
