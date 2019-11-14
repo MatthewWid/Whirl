@@ -99,7 +99,7 @@ class ConfigManager extends Manager {
 	/**
 	 * Set or add one or many key/value pairs.
 	 * 
-	 * You should keep the configuration map object flat by **not** giving an object as a value, this may produce unexpected behaviour when trying to set a value in the nested object.
+	 * While you can assign any value to a key, keep in mind that value updates are made shallowly - if you provide an object or array it will not be deepmerged, but replaced when you set it.
 	 * 
 	 * @method Whirl.Game.ConfigManager#set
 	 * 
@@ -142,6 +142,12 @@ class ConfigManager extends Manager {
 	 * 
 	 * @param {string} [key] Key of the key/value pair to retrieve the value from.
 	 * @returns {any|object} The value related to the key. If the key is not given, returns the entire configuration map object.
+	 * 
+	 * @example
+	 * game.config.get(); // {...}
+	 * 
+	 * @example
+	 * game.config.get("debug"); // false
 	 */
 	get(key) {
 		if (!key) {
