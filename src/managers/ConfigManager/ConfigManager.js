@@ -141,8 +141,8 @@ class ConfigManager extends Manager {
 			 * @property {string|object} type If the value was set using a single key/value pair, will be `key-value`.
 			 * 
 			 * If many values were set using an object, will be `object`.
-			 * @property {string|undefined} key The key set. If the value was set using a single key/value pair, will be the key. Else will not exist.
-			 * @property {object|any} value The value set. Will either be the value of the single provided key/value pair, or the object given if setting multiple values at once.
+			 * @property {string|undefined} key If the value was set using a single key/value pair, will be the key. Else will not exist.
+			 * @property {object|any} value The new value. Will either be the value of the single provided key/value pair, or the object given if setting multiple values at once.
 			 */
 			this.event.emit("didSet", {
 				config: {...this._data},

@@ -19,9 +19,16 @@ const {
  * 
  * @global
  * @namespace Whirl
+ * 
  */
 class Whirl {
-	// Constants
+	/**
+	 * Denotes the current version of Whirl being used.
+	 * 
+	 * @memberof Whirl
+	 * @type {string}
+	 * @static
+	 */
 	static _version = "3.0.0-alpha.1";
 
 	// Static Modules
