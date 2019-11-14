@@ -79,6 +79,7 @@ class ConfigManager extends Manager {
 	 * @ignore
 	 * @memberof Whirl.Game.ConfigManager#
 	 * @type {object}
+	 * @readonly
 	 */
 	_data = {
 		...ConfigManager.defaultConfig,
