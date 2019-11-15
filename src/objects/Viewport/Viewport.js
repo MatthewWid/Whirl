@@ -33,6 +33,17 @@ const getValue = require("../../lib/getValue.js");
  * @param {number} options.lerp=1 Linear interpolation value to use when animatedly scrolling to a given point or game object.
  * @param {string} options.canvas Selector for the canvas element to render to. If not given, will default to the `canvas` value stored in {@link Whirl.Game.ConfigManager|the game configuration}.
  * @param {boolean} options.resize=false Resize the canvas width and height to the width and height of this viewports clipping plane.
+ * 
+ * @example
+ * const game = Whirl.Game({
+ * 	"canvas": "#myCanvas"
+ * });
+ * 
+ * const viewport = Whirl.Viewport(game, {
+ * 	w: 500,
+ * 	h: 500,
+ * 	resize: true
+ * });
  */
 class Viewport extends Base {
 	/**
@@ -169,6 +180,9 @@ class Viewport extends Base {
 	 * @param {string} [selector] Selector for the canvas element. Defaults to the canvas element defined by the `canvas` in the {@link Whirl.Game.ConfigManager|global game configuration}.
 	 * @param {boolean} [resize=false] Resize the canvas width and height to the width and height of this viewport's clipping plane.
 	 * @returns {this}
+	 * 
+	 * @example
+	 * viewport.setCanvas("#myDifferentCanvas", true);
 	 */
 	setCanvas(selector = this._game.config.get("canvas"), resize = false) {
 		const canvas = document.querySelector(selector);
@@ -202,6 +216,14 @@ class Viewport extends Base {
 	 * @param {number|Whirl.shapes.Point} px X-position of the point to scroll to. An instance of a Point object can be given instead to scroll to the position with the same coordinates as the Point object.
 	 * @param {number} [py] Y-coordinate of the point to scroll to.
 	 * @returns {this}
+	 * 
+	 * @example
+	 * viewport.scrollTo(50, 75);
+	 * 
+	 * @example
+	 * viewport.scrollTo(
+	 * 	Whirl.shapes.Point(50, 75)
+	 * );
 	 */
 	scrollTo(px, py) {
 		let x = px;
