@@ -201,6 +201,7 @@ class Viewport extends Base {
 	 * 
 	 * @param {number|Whirl.shapes.Point} px X-position of the point to scroll to. An instance of a Point object can be given instead to scroll to the position with the same coordinates as the Point object.
 	 * @param {number} [py] Y-coordinate of the point to scroll to.
+	 * @returns {this}
 	 */
 	scrollTo(px, py) {
 		let x = px;
@@ -214,6 +215,8 @@ class Viewport extends Base {
 
 		this.scroll.x = x;
 		this.scroll.y = y;
+
+		return this;
 	}
 }
 
