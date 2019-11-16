@@ -86,6 +86,7 @@ class Base {
 	 * 
 	 * Use this method to execute logic that you want executed each time a game update tick occurs.
 	 * 
+	 * @ignore
 	 * @abstract
 	 * @method Whirl.Base#_update
 	 * 
@@ -107,6 +108,7 @@ class Base {
 	 * 
 	 * Use this method to perform rendering-related logic that you want executed each a game render tick occurs.
 	 * 
+	 * @ignore
 	 * @abstract
 	 * @method Whirl.Base#_render
 	 */
