@@ -26,6 +26,11 @@ const {Rectangle, Point} = require("../../shapes/");
  * @param {Whirl.shapes.Point} options.anchor Initial anchor point that defines the origin point of this sprite's rendered position between `0` and `1`. Alternatively, give each anchor value individually with the `anchorX` and `anchorY` values.
  * @param {number} options.anchorX=0 X-coordinate of this sprite's anchor point.
  * @param {number} options.anchorY=0 Y-coordinate of this sprite's anchor point.
+ * 
+ * @example
+ * const sprite = Whirl.Sprite(game, {
+ * 	bounds: Whirl.shapes.Rectangle(200, 200, 50, 50)
+ * });
  */
 class Sprite extends Entity {
 	/**

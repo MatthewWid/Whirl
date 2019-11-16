@@ -25,6 +25,8 @@ const {
  * 	"canvas": "#myCanvas",
  * 	"debug": true,
  * });
+ * 
+ * game.start();
  */
 class Game {
 	mixins = [Event];

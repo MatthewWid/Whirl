@@ -27,6 +27,11 @@ const {Rectangle} = require("../../shapes/");
  * @param {number} options.y=0 Y-coordinate of the stage limit.
  * @param {number} options.w=0 Width of the stage limit.
  * @param {number} options.h=0 Height of the stage limit.
+ * 
+ * @example
+ * const stage = Whirl.Stage(game, {
+ * 	limit: Whirl.shapes.Rectangle(0, 0, 400, 400)
+ * });
  */
 class Stage extends Base {
 	mixins = [Child];

@@ -13,6 +13,9 @@ const {Rectangle} = require("../../shapes");
  * @class Texture
  * @memberof Whirl
  * @abstract
+ * 
+ * @example
+ * class MyTexture extends Whirl.Texture {}
  */
 class Texture {
 	/**

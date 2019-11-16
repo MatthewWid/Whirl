@@ -38,10 +38,6 @@ const getValue = require("../../lib/getValue.js");
  * @param {boolean} options.resize=false Resize the canvas width and height to the width and height of this viewports clipping plane.
  * 
  * @example
- * const game = Whirl.Game({
- * 	"canvas": "#myCanvas"
- * });
- * 
  * const viewport = Whirl.Viewport(game, {
  * 	w: 500,
  * 	h: 500,
