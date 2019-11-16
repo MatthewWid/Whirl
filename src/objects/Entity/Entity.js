@@ -73,7 +73,7 @@ class Entity extends Base {
 	/**
 	 * Rectangle shape used as the physics body for this entity.
 	 * 
-	 * The rendered output of an entity and its physics body are two separate items. The physics body can be the same as where the rendered output of the sprite is in the viewport, or could be in a completely different position with a completely different size.
+	 * The rendered output of an entity and its physics body are two separate items. The physics body could be at a completey separate location and size to where the entity is rendered, but can be configured to always be in the same position and size of the entity.
 	 * 
 	 * @memberof Whirl.Entity#
 	 * @type {Whirl.shapes.Rectangle}

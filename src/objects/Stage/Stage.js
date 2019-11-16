@@ -22,7 +22,7 @@ const {Rectangle} = require("../../shapes/");
  * @param {object} [options] Optional presets when initialising this object.
  * @param {Whirl.shapes.Rectangle} options.limit Position and size of the game world. Alternatively, give each dimension of the world border manually with the `x`, `y`, `w` and `h` options.
  * 
- * Passed as reference - changing properties of the given Rectangle instance will also affect this stage's limit in response.
+* Passed as reference - changing properties of the given Rectangle instance will also affect this stage's limit in response.
  * @param {number} options.x=0 X-coordinate of the stage limit.
  * @param {number} options.y=0 Y-coordinate of the stage limit.
  * @param {number} options.w=0 Width of the stage limit.
