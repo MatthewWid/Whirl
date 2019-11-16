@@ -30,7 +30,7 @@ const getValue = require("../../lib/getValue.js");
  * @param {number} options.scrollY=0 Y-coordinate of the scroll position.
  * @param {boolean} options.clip=true Remove all pixels that are outside of the clipping plane from the rendered output on the canvas.
  * @param {boolean} options.imageSmoothing=true Canvas anti-aliasing.
- * @param {number} options.zoom=1 Initial zoom level. Increasing the value zooms in, decreasing it zooms out.
+ * @param {number} options.zoom=1 Initial zoom level. Increasing this value zooms in, decreasing it zooms out.
  * @param {number} options.lerp=1 Linear interpolation value to use when animatedly scrolling to a given point or game object.
  * @param {string} options.canvas Selector for the canvas element to render to. If not given, will default to the `canvas` value stored in {@link Whirl.Game.ConfigManager|the game configuration}.
  * @param {boolean} options.resize=false Resize the canvas width and height to the width and height of this viewports clipping plane.
@@ -230,7 +230,6 @@ class Viewport extends Base {
 		let x = px;
 		let y = py;
 
-		// (Point)
 		if (px instanceof Point._class) {
 			x = px.x;
 			y = px.y;

@@ -4,11 +4,13 @@
  * 
  * Holds attributes that are common to all game objects such as the game instance it belongs to, its unique ID in that game instance and other-such meta-data you may use when accessing existing objects or creating your own.
  * 
- * Objects that do not inherit from the Base class cannot be added to any part of the game instance (the global store or as a child of a Stage).
+ * Objects that do not inherit from the Base class cannot be added to any part of the game instance.
  * 
  * @class Base
  * @memberof Whirl
  * @abstract
+ * 
+ * @param {Whirl.Game} game Game instance this object belongs to and should be managed by.
  * 
  * @example
  * class MyObject extends Whirl.Base {

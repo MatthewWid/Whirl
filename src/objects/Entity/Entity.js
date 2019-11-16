@@ -1,10 +1,84 @@
 const Base = require("../Base/");
 const getValue = require("../../lib/getValue.js");
 
+/**
+ * @classdesc
+ * The Entity class is the abstract class that all dynamic game objects that can exist in the game world must inherit from.
+ * 
+ * Holds attributes that are common to all objects that need to receive physics, tweening, input and rendering updates.
+ * 
+ * Objects that do not inherit from the Entity class cannot be added to the stage/game world.
+ * 
+ * @class Entity
+ * @memberof Whirl
+ * @extends Whirl.Base
+ * @abstract
+ * 
+ * @param {Whirl.Game} game Game instance this entity belongs to and should be managed by.
+ * @param {object} [options] Optional presets when initialising this object.
+ * @param {number} options.alpha=1 Alpha/Transparency of this entity.
+ * @param {number} options.scale=1 Scale of this entity. Increasing this value enlargens the object, decreasing it makes it smaller.
+ * @param {number} options.layer=0 Z-layer this object should be rendered on. Objects with a higher `layer` value that are on the same implicit level as other objects with a lower `layer` value will be rendered on top.
+ * @param {Whirl.shapes.Rectangle} options.body Rectangle shape used as the physics body for this entity.
+ * 
+ * @example
+ * class MyObject extends Whirl.Entity {
+ * 	constructor(game) {
+ * 		super(game);
+ * 	}
+ * }
+ */
 class Entity extends Base {
+	/**
+	 * Alpha/Transparency of this entity - value between `0` and `1`.
+	 * 
+	 * Decreasing this value reduces the opacity. Entities with an alpha value of `0` will not be rendered at all. Entities with an alpha value above `1` will still be rendered fully opaque as is the default.
+	 * 
+	 * @memberof Whirl.Entity#
+	 * @type {number}
+	 * @default 1
+	 */
 	alpha;
+
+	/**
+	 * Scale of this entity.
+	 * 
+	 * Increasing this value enlargens the entity, decreasing it makes it smaller.
+	 * 
+	 * Note that changing this value will scale both the entities rendered size as well as its physics body's size.
+	 * 
+	 * Image sprite entities that are scaled under a {@link Whirl.Viewport|viewport with antialiasing enabled} may become pixelated and blurry.
+	 * 
+	 * @memberof Whirl.Entity#
+	 * @type {number}
+	 * @default 1
+	 */
 	scale;
+
+	/**
+	 * Z-layer this object should be rendered on.
+	 * 
+	 * Objects with a higher `layer` value that are on the same implicit level as other objects with a lower `layer` value will be rendered on top (similar to the `z-index` CSS property).
+	 * 
+	 * Objects have an *implicit* and an *explicit* layer. The implicit layer is the level that the entity is on in the object hierarchy/tree of the game world. For example, all entities that are direct children of a stage are on the same implicit level. Within this, their explicit level can be moved up and down using this `layer` property.
+	 * 
+	 * Keep in mind that this property only affects the **rendering** of this entity. Entities on different layers will still collide and interact with eachother under the game physics engine.
+	 * 
+	 * @memberof Whirl.Entity#
+	 * @type {number}
+	 * @default 0
+	 */
 	layer;
+
+	/**
+	 * Rectangle shape used as the physics body for this entity.
+	 * 
+	 * The rendered output of an entity and its physics body are two separate items. The physics body can be the same as where the rendered output of the sprite is in the viewport, or could be in a completely different position with a completely different size.
+	 * 
+	 * @memberof Whirl.Entity#
+	 * @type {Whirl.shapes.Rectangle}
+	 * @default {null}
+	 */
 	body;
 
 	constructor(game, options = {}) {
