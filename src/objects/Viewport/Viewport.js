@@ -14,6 +14,7 @@ const getValue = require("../../lib/getValue.js");
  * 
  * @class Viewport
  * @memberof Whirl
+ * @extends Whirl.Base
  * 
  * @param {Whirl.Game} game Game instance this viewport belongs to and should be managed by.
  * @param {object} [options] Optional presets when initialising this object.
