@@ -4,6 +4,8 @@ const Texture = require("../Texture/");
  * @classdesc
  * Represents a colour texture that is a solid colour defined by an RGB value.
  * 
+ * Colour textures should be instantiated using the `Whirl.Colour` factory method, but the underlying class can be accessed with `Whirl.Colour._class`.
+ * 
  * @class Colour
  * @memberof Whirl
  * @extends Whirl.Texture

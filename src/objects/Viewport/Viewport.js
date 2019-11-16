@@ -12,6 +12,8 @@ const getValue = require("../../lib/getValue.js");
  * 
  * A viewport can be scrolled about the game world by modifying its `scroll` value. This moves where viewports camera is relative to the game world, but will keep it in the same place relative to the canvas.
  * 
+ * Viewports should be instantiated using the `Whirl.Viewport` factory method, but the underlying class can be accessed with `Whirl.Viewport._class`.
+ * 
  * @class Viewport
  * @memberof Whirl
  * @extends Whirl.Base
