@@ -20,6 +20,8 @@ const {
  * @memberof Whirl
  * @mixes Whirl.mixins.Event
  * 
+ * @param {object} [options] Options passed to the configuration manager during setup.
+ * 
  * @example
  * const game = Whirl.Game({
  * 	"canvas": "#myCanvas",
