@@ -19,7 +19,7 @@ const Colour = require("../Colour");
  *
  * The game can be configured during its initialisation and will perform certain setup operations for you if you configure it do so (Eg, set or create a canvas, set physics and rendering, set scaling modes, etc.).
  *
- * The game object should be constructed using the `Whirl.Game` factory method, but the underlying class can be accessed with `Whirl.Game._class`.
+ * The game object should be constructed using the `Whirl.Game` factory method, but the underlying class can be accessed with the `Whirl.Game._class` property.
  *
  * @class Game
  * @memberof Whirl
@@ -84,12 +84,9 @@ class Game {
 	}
 
 	// Game Object Factories
-	Base = (...args) => new Base(this, ...args);
 	Viewport = (...args) => new Viewport(this, ...args);
 	Stage = (...args) => new Stage(this, ...args);
-	Entity = (...args) => new Entity(this, ...args);
 	Sprite = (...args) => new Sprite(this, ...args);
-	Texture = (...args) => new Texture(this, ...args);
 	Colour = (...args) => new Colour(this, ...args);
 }
 

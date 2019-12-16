@@ -28,7 +28,11 @@ const {Rectangle, Point} = require("../../shapes/");
  * @param {number} options.anchorY=0 Y-coordinate of this sprite's anchor point.
  *
  * @example
- * const sprite = Whirl.Sprite(game, {
+ * game.Sprite({
+ * 	bounds: Whirl.shapes.Rectangle(200, 200, 50, 50)
+ * });
+ * // or
+ * Whirl.Sprite(game, {
  * 	bounds: Whirl.shapes.Rectangle(200, 200, 50, 50)
  * });
  */

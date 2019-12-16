@@ -19,7 +19,7 @@ const {
  * @mixes Whirl.mixins.Event
  *
  * @example
- * const game = new Whirl.Game();
+ * const game = Whirl.Game();
  *
  * game.config.get(); // {...}
  *

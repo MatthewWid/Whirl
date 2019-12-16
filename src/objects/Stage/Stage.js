@@ -14,8 +14,6 @@ const {Rectangle} = require("../../shapes/");
  *
  * Game objects are added to the stage using {@link Whirl.mixins.Child|the Child mixin}. Objects added to the stage **must** inherit from the `Entity` class.
  *
- * Stages should be instantiated using the `Whirl.Stage` factory method, but the underlying class can be accessed with `Whirl.Stage._class`.
- *
  * @class Stage
  * @memberof Whirl
  * @extends Whirl.Base
@@ -32,7 +30,11 @@ const {Rectangle} = require("../../shapes/");
  * @param {number} options.h=0 Height of the stage limit.
  *
  * @example
- * const stage = Whirl.Stage(game, {
+ * game.Stage({
+ * 	limit: Whirl.shapes.Rectangle(0, 0, 400, 400)
+ * });
+ * // or
+ * Whirl.Stage(game, {
  * 	limit: Whirl.shapes.Rectangle(0, 0, 400, 400)
  * });
  */
