@@ -2,7 +2,7 @@
 
 <p align="center"><b>Whirl is a modern, lightweight and extensible 2D game engine written in JavaScript.</b></p>
 
-<p align="center">⚠️ This is the <code>3.0.0-alpha</code> development build. ⚠️<br><sup>Certain features may be missing and security, stability and performance may be unsuitable for a production environment.</sup></p>
+<p align="center">⚠️ This is the <code>3.0.0-alpha.3</code> development build. ⚠️<br><sup>Certain features may be missing and security, stability and performance may be unsuitable for a production environment.<br><a href="https://github.com/MatthewWid/Whirl/tree/stable">See the latest stable release for a production-ready version</a>.</sup></p>
 
 # Features
 
@@ -10,17 +10,11 @@
 
 Some features offered by the **Whirl** game engine are:
 
-* **Dynamic custom event system** that allows for the creation and broadcasting of events across game objects.
-* **Child-parent tree architecture** of game objects that allows you to easily organise your game world into a managable hierarchy of objects.
-* **State-like world system** that makes it easy to load, unload and switch your scene or level instantly.
-* **Modularised viewport manager** that enables you to create multiple game viewports and screens *without* the need for multiple canvas elements, stacked HTML elements or game instances.
-* **Standardised object importation methods** that make it easy to create your own custom plugins and special game objects that can be imported and used in your games - your objects are modular and reusable.
-
-# Documentation
-
-Whirl is (almost) fully documented from it's event system to all of its given classes. The documentation contains details on **installation** and all default **game classes**, **in-built libraries**, **constants**, **object systems** and more.
-
-[**See the documentation.**](https://matthewwid.github.io/Whirl/)
+- **Dynamic custom event system** that allows for the creation and broadcasting of events across game objects.
+- **Child-parent tree architecture** of game objects that allows you to easily organise your game world into a managable hierarchy of objects.
+- **State-like world system** that makes it easy to load, unload and switch your scene or level instantly.
+- **Modularised viewport manager** that enables you to create multiple game viewports and screens _without_ the need for multiple canvas elements, stacked HTML elements or game instances.
+- **Standardised object importation methods** that make it easy to create your own custom plugins and special game objects that can be imported and used in your games - your objects are modular and reusable.
 
 # Examples
 
@@ -42,9 +36,9 @@ Simply clone the repository, build the source ([See the "Build" section](#build)
 Once completed, you can find the built file in `/build/whirl.js` and simply include it with a script tag:
 
     <script src="whirl.js"></script>
-    
+
 Or import as a module:
 
     const Whirl = require("whirl");
-    
+
 From there you are free to use the plethora of features offered by **Whirl**. Happy coding!
