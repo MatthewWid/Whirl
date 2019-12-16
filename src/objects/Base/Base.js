@@ -90,7 +90,7 @@ class Base {
 	 *
 	 * @ignore
 	 * @abstract
-	 * @method Whirl.Base#_update
+	 * @method Whirl.Base#update
 	 *
 	 * @example
 	 * class MyObject extends Whirl.Base {
@@ -98,7 +98,7 @@ class Base {
 	 *
 	 * 	...
 	 *
-	 * 	_update() {
+	 * 	update() {
 	 * 		this.health += 5;
 	 * 	}
 	 * }
@@ -112,7 +112,7 @@ class Base {
 	 *
 	 * @ignore
 	 * @abstract
-	 * @method Whirl.Base#_render
+	 * @method Whirl.Base#render
 	 */
 	render() {}
 }
