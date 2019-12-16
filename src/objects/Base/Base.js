@@ -103,7 +103,7 @@ class Base {
 	 * 	}
 	 * }
 	 */
-	_update() {}
+	update() {}
 
 	/**
 	 * Method to be overriden that is called internally by the render manager.
@@ -114,7 +114,7 @@ class Base {
 	 * @abstract
 	 * @method Whirl.Base#_render
 	 */
-	_render() {}
+	render() {}
 }
 
 module.exports = Base;

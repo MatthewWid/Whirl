@@ -6,22 +6,22 @@
  * @typedef {object} Whirl.mixins.Event~Event
  */
 class Event {
-	_eId;
-	_eName;
-	_func;
+	eId;
+	eName;
+	func;
 	once;
 
 	constructor(id, name, func, once = false) {
-		this._eId = id;
-		this._eName = name;
-		this._func = func;
+		this.eId = id;
+		this.eName = name;
+		this.func = func;
 		this.once = once;
 	}
 
 	call(source, data = {}) {
-		this._func({
-			_eId: this._eId,
-			_eName: this._eName,
+		this.func({
+			_eId: this.eId,
+			_eName: this.eName,
 			_source: source,
 			...data,
 		});

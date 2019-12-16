@@ -38,7 +38,7 @@ class UpdateManager extends Manager {
 	 * @type {boolean}
 	 * @readonly
 	 */
-	_running = false;
+	running = false;
 
 	/**
 	 * Current desired frame rate that the game updates at per second.
@@ -47,7 +47,7 @@ class UpdateManager extends Manager {
 	 * @type {number}
 	 * @readonly
 	 */
-	_frameRate = 60;
+	frameRate = 60;
 
 	/**
 	 * Total frames elapsed whilst the game is running.
@@ -58,7 +58,7 @@ class UpdateManager extends Manager {
 	 * @type {number}
 	 * @readonly
 	 */
-	_frameCount = 0;
+	frameCount = 0;
 
 	/**
 	 * Time in milliseconds since the last update tick.
@@ -69,7 +69,7 @@ class UpdateManager extends Manager {
 	 * @type {number}
 	 * @readonly
 	 */
-	_frameDelta = 0;
+	frameDelta = 0;
 
 	/**
 	 * Time in milliseconds between the *last* update tick and the update tick before that.
@@ -80,7 +80,7 @@ class UpdateManager extends Manager {
 	 * @type {number}
 	 * @readonly
 	 */
-	_lastDelta = 0;
+	lastDelta = 0;
 
 	/**
 	 * Timestamp in milliseconds of when the game was last started with the `start` method.
@@ -91,7 +91,7 @@ class UpdateManager extends Manager {
 	 * @type {number}
 	 * @readonly
 	 */
-	_startTime = 0;
+	startTime = 0;
 
 	/**
 	 * Time in milliseconds since the game was last started with the `start` method.
@@ -102,7 +102,7 @@ class UpdateManager extends Manager {
 	 * @type {number}
 	 * @readonly
 	 */
-	_elapsedTime = 0;
+	elapsedTime = 0;
 
 	/**
 	 * Timestamp in milliseconds of when the game was instantiated.
@@ -113,18 +113,18 @@ class UpdateManager extends Manager {
 	 * @type {number}
 	 * @readonly
 	 */
-	_initTime;
+	initTime;
 
 	constructor(game) {
 		super(game);
 
-		this._initTime = performance.now();
+		this.initTime = performance.now();
 	}
 
 	/**
 	 * Start the game update loop.
 	 *
-	 * This initiates the update loop to begin running and it will run indefinitely until the `_stop` method is invoked.
+	 * This initiates the update loop to begin running and it will run indefinitely until the `stop` method is invoked.
 	 *
 	 * Also aliased directly under the game instance object as the `<game>.start` method.
 	 *
@@ -137,7 +137,7 @@ class UpdateManager extends Manager {
 	 *
 	 * game.start();
 	 * // or
-	 * game.update._start();
+	 * game.update.start();
 	 */
 	start = () => {
 		if (this.running) {
@@ -153,12 +153,12 @@ class UpdateManager extends Manager {
 		 * @property {number} initTime Timestamp in milliseconds of when the game was instantiated.
 		 */
 		this._game.event.emit("willStart", {
-			initTime: this._initTime,
+			initTime: this.initTime,
 		});
 
-		this._running = true;
-		this._startTime = performance.now();
-		this._elapsedTime = 0;
+		this.running = true;
+		this.startTime = performance.now();
+		this.elapsedTime = 0;
 
 		requestAnimationFrame(this._update);
 
@@ -174,8 +174,8 @@ class UpdateManager extends Manager {
 		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
 		 */
 		this._game.event.emit("didStart", {
-			initTime: this._initTime,
-			startTime: this._startTime,
+			initTime: this.initTime,
+			startTime: this.startTime,
 		});
 
 		return this._game;
@@ -201,7 +201,7 @@ class UpdateManager extends Manager {
 	 *
 	 * game.stop();
 	 * // or
-	 * game.update._stop();
+	 * game.update.stop();
 	 */
 	stop = () => {
 		/**
@@ -214,11 +214,11 @@ class UpdateManager extends Manager {
 		 * @property {number} elapsedTime Time in milliseconds since the game was started.
 		 */
 		this._game.event.emit("willStop", {
-			startTime: this._startTime,
-			elapsedTime: this._elapsedTime,
+			startTime: this.startTime,
+			elapsedTime: this.elapsedTime,
 		});
 
-		this._running = false;
+		this.running = false;
 
 		return this._game;
 	};
@@ -244,16 +244,16 @@ class UpdateManager extends Manager {
 		 * @property {number} elapsedTime Time in milliseconds since the game was started.
 		 */
 		this._game.event.emit("willUpdate", {
-			frameCount: this._frameCount,
-			frameDelta: this._frameDelta,
-			startTime: this._startTime,
-			elapsedTime: this._elapsedTime,
+			frameCount: this.frameCount,
+			frameDelta: this.frameDelta,
+			startTime: this.startTime,
+			elapsedTime: this.elapsedTime,
 		});
 
-		this._frameCount++;
-		this._elapsedTime += delta - this._startTime;
-		this._frameDelta = delta - this._lastDelta;
-		this._lastDelta = delta;
+		this.frameCount++;
+		this.elapsedTime += delta - this.startTime;
+		this.frameDelta = delta - this.lastDelta;
+		this.lastDelta = delta;
 
 		/**
 		 * Fires after the update logic of the game executes.
@@ -267,13 +267,13 @@ class UpdateManager extends Manager {
 		 * @property {number} elapsedTime Time in milliseconds since the game was started.
 		 */
 		this._game.event.emit("didUpdate", {
-			frameCount: this._frameCount,
-			frameDelta: this._frameDelta,
-			startTime: this._startTime,
-			elapsedTime: this._elapsedTime,
+			frameCount: this.frameCount,
+			frameDelta: this.frameDelta,
+			startTime: this.startTime,
+			elapsedTime: this.elapsedTime,
 		});
 
-		if (this._running) {
+		if (this.running) {
 			requestAnimationFrame(this._update);
 		} else {
 			/**
@@ -289,9 +289,9 @@ class UpdateManager extends Manager {
 			 * @property {number} elapsedTime Time in milliseconds since the game was started.
 			 */
 			this._game.event.emit("didStop", {
-				frameCount: this._frameCount,
-				startTime: this._startTime,
-				elapsedTime: this._elapsedTime,
+				frameCount: this.frameCount,
+				startTime: this.startTime,
+				elapsedTime: this.elapsedTime,
 			});
 		}
 	};
