@@ -113,7 +113,7 @@ class ChildMixin extends Mixin {
 	 * Filter children during the process of retrieving the list of direct descendents. Each time the function is called a single child is passed to it.
 	 *
 	 * @callback Whirl.mixins.Child~getFilter
-	 * @param {any} child The child object to check if it should be included.
+	 * @param {any} child Child object to check if it should be included.
 	 * @return {boolean} `true` implies the child should be included, `false` will remove it from the list of returned children.
 	 */
 
@@ -122,7 +122,7 @@ class ChildMixin extends Mixin {
 	 *
 	 * @method Whirl.mixins.Child#get
 	 *
-	 * @param {getFilter} [filter] Function ran on each object that determines whether the child is returned in the list of children.
+	 * @param {getFilter} [filter] Runs on each object and determines if the given child should remain in the returned list.
 	 * @returns {any[]} Array representing the children of this object.
 	 */
 	get(filter) {

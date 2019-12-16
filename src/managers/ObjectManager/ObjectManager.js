@@ -90,6 +90,30 @@ class ObjectManager extends Manager {
 			this._stages.push(object);
 		}
 	}
+
+	/**
+	 * Filter objects during the process of retrieving the list of objects in the global store. Each time the function is called an indivdual item is passed to it.
+	 *
+	 * @callback Whirl.Game.ObjectManager~getFilter
+	 * @param {object} object Individual object to check if it should be included.
+	 * @return {boolean} `true` implies the object should be included, `false` will remove it from the list of returned objects.
+	 */
+
+	/**
+	 * Get all objects in the global object store, optionally filtering the result.
+	 *
+	 * @method Whirl.Game.ObjectManager#get
+	 *
+	 * @param {getFilter} [filter] Runs on each object and determines if the given object should remain in the returned list.
+	 * @returns {object[]} Array representing the (optionally filtered) items in the store.
+	 */
+	get(filter) {
+		if (filter) {
+			return [...this._store.filter(filter)];
+		}
+
+		return [...this._store];
+	}
 }
 
 module.exports = ObjectManager;
