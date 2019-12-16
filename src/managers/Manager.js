@@ -9,6 +9,13 @@
  * @see Whirl.Game
  */
 class Manager {
+	/**
+	 * The game instance this object belongs to.
+	 *
+	 * @memberof Whirl.Manager#
+	 * @type {Whirl.Game}
+	 * @readonly
+	 */
 	_game;
 
 	constructor(game) {

@@ -95,6 +95,7 @@ class EventMixin extends Mixin {
 	 * @param {string} name Name of the event to listen on.
 	 * @param {Whirl.mixins.Event~eventListener} func Event listener invoked each time this event is emitted on.
 	 * @param {boolean} [once=false] If set to `true`, will remove the event listener from listening on the event after the first time the event is emitted on.
+	 * @returns {this}
 	 *
 	 * @example
 	 * const game = Whirl.Game({canvas: "#myCanvas"});
@@ -123,6 +124,7 @@ class EventMixin extends Mixin {
 	 *
 	 * @param {string} name Name of the event to listen on.
 	 * @param {Whirl.mixins.Event~eventListener} func Event listener invoked each time this event is emitted on.
+	 * @returns {this}
 	 *
 	 * @example
 	 * // Wait for the first game physics update and then stop the game loop
@@ -143,6 +145,7 @@ class EventMixin extends Mixin {
 	 *
 	 * @param {string} name Name of the event to emit to.
 	 * @param {object} [data] Additional data to give to all event listeners.
+	 * @returns {boolean} `true` if listeners existed on the given event name, `false` otherwise.
 	 *
 	 * @example
 	 * // Emit to the 'eventName' event on the `obj` object.
@@ -183,6 +186,7 @@ class EventMixin extends Mixin {
 	 *
 	 * @param {string} name Name of the event to remove the listener from.
 	 * @param {number|Whirl.mixins.Event~Event} event Event ID or physical instance of an Event object to remove.
+	 * @returns {this}
 	 *
 	 * @example
 	 * let id;
@@ -204,7 +208,8 @@ class EventMixin extends Mixin {
 			console.warn(
 				`Whirl | EventMixin | Failed to remove event by ID from non-existent event pool "${name}".`
 			);
-			return;
+
+			return this;
 		}
 
 		let _eId = -1;
@@ -213,6 +218,12 @@ class EventMixin extends Mixin {
 			_eId = event._eId;
 		} else if (typeof event === "number") {
 			_eId = event;
+		} else {
+			console.warn(
+				`Whirl | EventMixin | Invalid event identifier given to EventMixin#remove "${event}"`
+			);
+
+			return this;
 		}
 
 		this._events[name] = this._events[name].filter((event) => event._eId !== _eId);
@@ -233,6 +244,7 @@ class EventMixin extends Mixin {
 	 * @method Whirl.mixins.Event#removeAll
 	 *
 	 * @param {string} name Name of the event to remove the listeners from.
+	 * @returns {this}
 	 *
 	 * @example
 	 * obj.event.removeAll("sayHi");
