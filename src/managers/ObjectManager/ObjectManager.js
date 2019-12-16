@@ -83,10 +83,10 @@ class ObjectManager extends Manager {
 		object._id = this._index++;
 		this._store.push(object);
 
-		if (object instanceof Viewport._class) {
+		if (object instanceof Viewport) {
 			this._viewports.push(object);
 		}
-		if (object instanceof Stage._class) {
+		if (object instanceof Stage) {
 			this._stages.push(object);
 		}
 	}

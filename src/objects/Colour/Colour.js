@@ -18,12 +18,11 @@ const Texture = require("../Texture/");
  * const colour = Whirl.Colour(200, 50, 50);
  */
 class Colour extends Texture {
-	constructor(r, g, b) {
-		super();
+	constructor(game, r, g, b) {
+		super(game);
 
 		this._data = `rgb(${r}, ${g}, ${b})`;
 	}
 }
 
-module.exports = (...args) => new Colour(...args);
-module.exports._class = Colour;
+module.exports = Colour;

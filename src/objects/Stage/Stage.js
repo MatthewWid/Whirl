@@ -68,5 +68,4 @@ class Stage extends Base {
 	}
 }
 
-module.exports = (...args) => new Stage(...args);
-module.exports._class = Stage;
+module.exports = Stage;

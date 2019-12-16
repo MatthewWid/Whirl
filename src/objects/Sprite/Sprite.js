@@ -83,5 +83,4 @@ class Sprite extends Entity {
 	}
 }
 
-module.exports = (...args) => new Sprite(...args);
-module.exports._class = Sprite;
+module.exports = Sprite;

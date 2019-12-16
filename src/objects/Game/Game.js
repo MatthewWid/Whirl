@@ -3,6 +3,13 @@ const {
 	Event,
 } = require("../../mixins/");
 const {ConfigManager, UpdateManager, ObjectManager, DebugManager} = require("../../managers/");
+const Base = require("../Base");
+const Viewport = require("../Viewport");
+const Stage = require("../Stage");
+const Entity = require("../Entity");
+const Sprite = require("../Sprite");
+const Texture = require("../Texture");
+const Colour = require("../Colour");
 
 /**
  * @classdesc
@@ -75,6 +82,15 @@ class Game {
 		this.start = this.update.start;
 		this.stop = this.update.stop;
 	}
+
+	// Game Object Factories
+	Base = (...args) => new Base(this, ...args);
+	Viewport = (...args) => new Viewport(this, ...args);
+	Stage = (...args) => new Stage(this, ...args);
+	Entity = (...args) => new Entity(this, ...args);
+	Sprite = (...args) => new Sprite(this, ...args);
+	Texture = (...args) => new Texture(this, ...args);
+	Colour = (...args) => new Colour(this, ...args);
 }
 
 module.exports = (...args) => new Game(...args);

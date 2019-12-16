@@ -1,3 +1,4 @@
+const Base = require("../Base/");
 const {Rectangle} = require("../../shapes");
 
 /**
@@ -17,7 +18,7 @@ const {Rectangle} = require("../../shapes");
  * @example
  * class MyTexture extends Whirl.Texture {}
  */
-class Texture {
+class Texture extends Base {
 	/**
 	 * Raw texture data of this texture.
 	 *

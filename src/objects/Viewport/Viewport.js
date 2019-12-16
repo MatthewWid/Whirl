@@ -232,5 +232,4 @@ class Viewport extends Base {
 	}
 }
 
-module.exports = (...args) => new Viewport(...args);
-module.exports._class = Viewport;
+module.exports = Viewport;
