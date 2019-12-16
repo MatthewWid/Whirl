@@ -8,7 +8,7 @@
 		"doc": "jsdoc ./src/ -r -d ./doc/ -c ./jsdoc.json -t node_modules/ink-docstrap/template -R ./README.md",
 		"dev": "webpack --config ./config/webpack.config.js --env dev",
 		"prod": "webpack --config ./config/webpack.config.js --env prod",
-		"prettier": "prettier ./src/**/*.js --config ./.prettierrc --ignore-path ./.prettierignore"
+		"prettier": "prettier --write ./src/**/*.js --config ./.prettierrc --ignore-path ./.prettierignore"
 	},
 	"devDependencies": {
 		"css-loader": "^2.1.1",

@@ -3,22 +3,22 @@ const Point = require("./Point.js");
 /**
  * @classdesc
  * Represents a line in space defined by two pairs of x-y coordinates representing both end-points of the line.
- * 
+ *
  * Can be used for things such as ray-tracing, distance calculations, sight-line checks, etc.
- * 
+ *
  * Lines are constructed using the `Whirl.shapes.Line` factory method, but the underlying class can be accessed with `Whirl.shapes.Line._class`.
- * 
+ *
  * @class Line
  * @memberof Whirl.shapes
- * 
+ *
  * @param {number|Whirl.shapes.Point} [x1=0] X-coordinate of the starting point. If giving an instance of a Point the `y1` parameter should also be a Point.
  * @param {number|Whirl.shapes.Point} [y1=0] Y-coordinate of the starting point. If *both* `x1` and `y1` are instead instances of a Point then the starting point is defined by the first given Point, and the ending point is defined by the second.
  * @param {number} [x2=0] X-coordinate of the ending point.
  * @param {number} [y2=0] Y-coordinate of the ending point.
- * 
+ *
  * @example
  * Whirl.shapes.Line(50, 50, 100, 100); // Line {x1: 50, y1: 50, x2: 100, y2: 100}
- * 
+ *
  * @example
  * Whirl.shapes.Line(
  * 	Whirl.shapes.Point(50, 50),
@@ -28,28 +28,28 @@ const Point = require("./Point.js");
 class Line {
 	/**
 	 * X-coordinate of the starting point.
-	 * 
+	 *
 	 * @memberof Whirl.shapes.Line#
 	 * @type {number}
 	 */
 	x1;
 	/**
 	 * Y-coordinate of the starting point.
-	 * 
+	 *
 	 * @memberof Whirl.shapes.Line#
 	 * @type {number}
 	 */
 	y1;
 	/**
 	 * X-coordinate of the ending point.
-	 * 
+	 *
 	 * @memberof Whirl.shapes.Line#
 	 * @type {number}
 	 */
 	x2;
 	/**
 	 * Y-coordinate of the ending point.
-	 * 
+	 *
 	 * @memberof Whirl.shapes.Line#
 	 * @type {number}
 	 */
@@ -71,11 +71,11 @@ class Line {
 
 	/**
 	 * Total length of this line.
-	 * 
+	 *
 	 * @alias Whirl.shapes.Line#length
 	 * @type {number}
 	 * @readonly
-	 * 
+	 *
 	 * @example
 	 * Whirl.shapes.Line(50, 50, 100, 100).length; // 70.710~...
 	 */
@@ -86,11 +86,11 @@ class Line {
 	/**
 	 * Returns an array of Points representing the two vertices of this line.
 	 * The first Point represents the starting point of the line, and the second Point represents the ending point.
-	 * 
+	 *
 	 * @alias Whirl.shapes.Line#vertices
 	 * @type {Whirl.shapes.Point[]}
 	 * @readonly
-	 * 
+	 *
 	 * @example
 	 * Whirl.shapes.Line(50, 50, 100, 100).vertices;
 	 * // [
@@ -99,10 +99,7 @@ class Line {
 	 * // ]
 	 */
 	get vertices() {
-		return [
-			Point(this.x1, this.y1),
-			Point(this.x2, this.y2),
-		];
+		return [Point(this.x1, this.y1), Point(this.x2, this.y2)];
 	}
 }
 

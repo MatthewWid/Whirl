@@ -4,27 +4,19 @@ const util = require("./util/");
 const keys = require("./keys/");
 const shapes = require("./shapes/");
 const mixins = require("./mixins/");
-const {
-	Game,
-	Base,
-	Viewport,
-	Stage,
-	Entity,
-	Texture,
-	Colour,
-} = require("./objects/");
+const {Game, Base, Viewport, Stage, Entity, Texture, Colour} = require("./objects/");
 
 /**
  * The global Whirl object that all constants, modules and game objects are attached to and derived from.
- * 
+ *
  * @global
  * @namespace Whirl
- * 
+ *
  */
 class Whirl {
 	/**
 	 * Denotes the current version of Whirl being used.
-	 * 
+	 *
 	 * @memberof Whirl
 	 * @type {string}
 	 * @static

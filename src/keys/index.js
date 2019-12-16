@@ -4,9 +4,9 @@ const getByCode = require("./getByCode.js");
 
 /**
  * Library of helper functions for retrieving keycodes, translating between keycodes and keynames and mapping keys to codes.
- * 
+ *
  * Should not be confused with the input manager's *keyboard* module which actually handles keyboard input events.
- * 
+ *
  * @namespace keys
  * @memberof Whirl
  */

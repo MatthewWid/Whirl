@@ -1,6 +1,6 @@
 /**
  * Mathematical helper functions for general use.
- * 
+ *
  * @namespace math
  * @memberof Whirl
  */

@@ -1,15 +1,15 @@
 /**
  * Generate a random HSL (Hue, Saturation, Lightness) value (`hsl(h, s, l)`).
- * 
+ *
  * @memberof Whirl.util
- * 
+ *
  * @param {Object} [cfg] Optional configuration when generating the HSL value.
  * @param {number} [cfg.alpha] Add an alpha value to the generated HSL value (`hsl(h, s, l, a)`).
  * @param {boolean} [cfg.json] Return a JSON object representation of the HSL value instead of a string.
  * @param {number} [cfg.sat] Override the randomly generated *saturation* value.
  * @param {number} [cfg.lit] Override the generated *lightness* value with the given value.
  * @returns {string|Object} Returns an object if *cfg.json* is `true`, otherwise returns a string.
- * 
+ *
  * @example
  * Whirl.util.randHSL(); // "hsl(39, 3%, 7%)"
  * Whirl.util.randHSL(); // "hsl(48, 85%, 78%)"
@@ -29,7 +29,7 @@ const randHSL = (cfg = {}) => {
 		let ret = {
 			hue: hue,
 			sat: sat,
-			lit: lit
+			lit: lit,
 		};
 		if (cfg.alpha) {
 			ret.a = a;

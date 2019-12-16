@@ -1,13 +1,13 @@
 /**
  * Generate a random RGB (Red, Green, Blue) value (`rgb(x, y, z)`).
- * 
+ *
  * @memberof Whirl.util
- * 
+ *
  * @param {Object} [cfg] Optional configuration when generating the RGB value.
  * @param {number} [cfg.alpha] Add an alpha value to the generated RGB value (`rgb(r, g, b, a)`).
  * @param {boolean} [cfg.json] Return a JSON object representation of the RGB value instead of a string.
  * @returns {string|Object} Returns an object if *cfg.json* is `true`, otherwise returns a string.
- * 
+ *
  * @example
  * Whirl.util.randRGB(); // "rgb(149, 64, 141)"
  * Whirl.util.randRGB(); // "rgb(93, 223, 226)"
@@ -25,7 +25,7 @@ const randRGB = (cfg = {}) => {
 		let ret = {
 			r: r,
 			g: g,
-			b: b
+			b: b,
 		};
 		if (cfg.alpha) {
 			ret.a = a;

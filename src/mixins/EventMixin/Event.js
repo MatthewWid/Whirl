@@ -1,8 +1,8 @@
 /**
  * Event class used internally to track event listeners, event data and the listeners' associated callback function.
- * 
+ *
  * Abstractly represents a hook into an event and is responsible for augmenting the event data payload with the event metadata.
- * 
+ *
  * @typedef {object} Whirl.mixins.Event~Event
  */
 class Event {

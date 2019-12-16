@@ -1,6 +1,6 @@
 const Base = require("./Base/");
 const Entity = require("./Entity/");
-	Entity.Sprite = require("./Sprite/");
+Entity.Sprite = require("./Sprite/");
 const Texture = require("./Texture/");
 
 const Game = require("./Game/");

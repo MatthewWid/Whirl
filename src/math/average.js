@@ -1,11 +1,11 @@
 /**
  * Get the average of a set of numbers.
- * 
+ *
  * @memberof Whirl.math
- * 
+ *
  * @param {number[]} arr Array of numbers to retrieve the average of.
  * @returns {number} Average of the given array of numbers.
- * 
+ *
  * @example
  * Whirl.math.average([1, 2, 3]); // 2
  * Whirl.math.average([1, 2, 3, 4]); // 2.5
