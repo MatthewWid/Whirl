@@ -2,7 +2,13 @@ const {
 	Mixin: {apply: mixin},
 	Event,
 } = require("../../mixins/");
-const {ConfigManager, UpdateManager, ObjectManager, DebugManager} = require("../../managers/");
+const {
+	ConfigManager,
+	ObjectManager,
+	UpdateManager,
+	RenderManager,
+	DebugManager,
+} = require("../../managers/");
 const Base = require("../Base");
 const Viewport = require("../Viewport");
 const Stage = require("../Stage");
@@ -46,6 +52,15 @@ class Game {
 	config = new ConfigManager(this);
 
 	/**
+	 * The object manager that handles all existing objects in the game and the initialisation of those objects.
+	 *
+	 * @memberof Whirl.Game#
+	 *
+	 * @see Whirl.Game.ObjectManager
+	 */
+	object = new ObjectManager(this);
+
+	/**
 	 * The update manager that handles the game update loop including object management, game scaling, physics and more.
 	 *
 	 * @memberof Whirl.Game#
@@ -55,13 +70,9 @@ class Game {
 	update = new UpdateManager(this);
 
 	/**
-	 * The object manager that handles all existing objects in the game and the initialisation of those objects.
-	 *
-	 * @memberof Whirl.Game#
-	 *
-	 * @see Whirl.Game.ObjectManager
+	 * The render manager that handles the render loop including canvas and WebGL abstraction, render batching, and all visuals invoked by the update loop.
 	 */
-	object = new ObjectManager(this);
+	render = new RenderManager(this);
 
 	/**
 	 * The debug manager that handles debugging features such as logging, warnings and errors.

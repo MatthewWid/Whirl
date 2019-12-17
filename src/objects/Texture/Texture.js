@@ -5,11 +5,9 @@ const {Rectangle} = require("../../shapes");
  * @classdesc
  * Abstract class that all game textures must inherit from.
  *
- * Textures are an applied image, colour, spritesheet, etc. that are used by other game objects to actually render something onto the canvas.
+ * Textures are an applied image, colour, spritesheet, etc. that are used by other game objects to actually render something onto the screen.
  *
- * For most use cases you will never need to interact with the Texure class directly, but you may need to instantiate its relative subclasses for things such as Sprite rendering.
- *
- * Texture data is immutable and should be treated as so. If you wish to change a texture you should instead create a new Texture.
+ * Texture data is immutable and should be treated as so. If you wish to change a texture you should instead create a new Texture and destroy the previous one.
  *
  * @class Texture
  * @memberof Whirl
