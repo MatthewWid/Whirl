@@ -1,4 +1,5 @@
 const Base = require("../Base/");
+const Stage = require("../Stage/");
 const {Rectangle, Point} = require("../../shapes/");
 const getValue = require("../../lib/getValue.js");
 
@@ -34,6 +35,7 @@ const getValue = require("../../lib/getValue.js");
  * @param {number} options.lerp=1 Linear interpolation value to use when animatedly scrolling to a given point or game object.
  * @param {string} options.canvas Selector for the canvas element to render to. If not given, will default to the `canvas` value stored in {@link Whirl.Game.ConfigManager|the game configuration}.
  * @param {boolean} options.resize=false Resize the canvas width and height to the width and height of this viewports clipping plane.
+ * @param {Stage} options.stage Initial stage to be used for rendering.
  *
  * @example
  * game.Viewport({
@@ -70,6 +72,18 @@ class Viewport extends Base {
 	 * @readonly
 	 */
 	_ctx;
+
+	/**
+	 * Reference to the Stage used for rendering.
+	 *
+	 * Do not modify this property directly. Instead, use the `setStage` method.
+	 *
+	 * @memberof Whirl.Viewport#
+	 * @type {Stage}
+	 * @readonly
+	 * @default null
+	 */
+	stage = null;
 
 	/**
 	 * Bounds of the clipping plane denoted by an X and Y coordinate and a width and height.
@@ -163,6 +177,8 @@ class Viewport extends Base {
 		this.lerp = getValue(options, "lerp", 1);
 
 		this.setCanvas(options.canvas, options.resize);
+
+		options.stage && this.setStage(options.stage);
 	}
 
 	/**
@@ -197,6 +213,40 @@ class Viewport extends Base {
 		this._ctx = canvas.getContext("2d");
 
 		return this;
+	}
+
+	/**
+	 * Set the Stage to render.
+	 *
+	 * Stages that are no longer being rendered **will continue** to receive physics updates` in the background.
+	 *
+	 * @method Whirl.Viewport#setStage
+	 *
+	 * @param {Whirl.Stage} stage New stage to be used for rendering.
+	 * @returns {this}
+	 *
+	 * @example
+	 * const stage = Whirl.Stage(game);
+	 *
+	 * const viewport = Whirl.Viewport(game);
+	 *
+	 * viewport.setStage(stage);
+	 *
+	 * @example
+	 * const stage = Whirl.Stage(game);
+	 *
+	 * const viewport = Whirl.Viewport(game, {
+	 * 	stage
+	 * });
+	 */
+	setStage(stage) {
+		if (!stage || !(stage instanceof Stage)) {
+			this._game.debug.warn("Invalid Stage instance given to Viewport#setStage.", "Viewport");
+
+			return this;
+		}
+
+		this.stage = stage;
 	}
 
 	/**
