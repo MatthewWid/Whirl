@@ -83,7 +83,7 @@ class ChildMixin extends Mixin {
 	 */
 	add(object) {
 		if (Array.isArray(object)) {
-			if (!object.every((o) => this.validate(o))) {
+			if (object.some((o) => this.validate(o) === false)) {
 				console.warn(
 					"Whirl | ChildMixin | All child objects must satisfy the validation check to be added."
 				);
@@ -95,7 +95,7 @@ class ChildMixin extends Mixin {
 				this.add(o);
 			});
 		} else {
-			if (!this.validate(object)) {
+			if (this.validate(object) === false) {
 				console.warn(
 					"Whirl | ChildMixin | Child object does not satisfy the validation check and will not be added."
 				);
@@ -159,9 +159,7 @@ class ChildMixin extends Mixin {
 	 * // Enforce that every child inherit from the `Entity` class
 	 * this.child.validate = (object) => object instanceof Whirl.Entity;
 	 */
-	validate(object) {
-		return true;
-	}
+	validate(object) {}
 }
 
 module.exports = ChildMixin;
