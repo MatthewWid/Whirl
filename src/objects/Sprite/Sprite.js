@@ -1,4 +1,5 @@
 const Entity = require("../Entity/");
+const Colour = require("../Colour/");
 const getValue = require("../../lib/getValue.js");
 const {Rectangle, Point} = require("../../shapes/");
 
@@ -62,8 +63,9 @@ class Sprite extends Entity {
 	 *
 	 * @memberof Whirl.Sprite#
 	 * @type {Whirl.Texture}
+	 * @default {@link Whirl.Colour}
 	 */
-	fill;
+	fill = null;
 
 	constructor(game, options = {}) {
 		super(game, options);
@@ -84,6 +86,8 @@ class Sprite extends Entity {
 		} else {
 			this.anchor = Point(getValue(options, "anchorX", 0), getValue(options, "anchorY", 0));
 		}
+
+		this.fill = options.fill || new Colour(game, 0, 0, 0);
 	}
 }
 
