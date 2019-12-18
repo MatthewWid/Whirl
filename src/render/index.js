@@ -1,5 +1,5 @@
 module.exports = {
 	Renderer: require("./Renderer.js"),
-	Canvas: require("./Canvas.js"),
-	Webgl: require("./Webgl.js"),
+	Canvas: require("./Canvas"),
+	Webgl: require("./Webgl"),
 };

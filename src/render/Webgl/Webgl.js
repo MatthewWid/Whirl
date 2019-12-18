@@ -1,7 +1,9 @@
 const Renderer = require("./Renderer.js");
 
-class Canvas extends Renderer {
+class Webgl extends Renderer {
+	contextType = "webgl";
+
 	render(ctx, viewport, objects) {}
 }
 
-module.exports = Canvas;
+module.exports = Webgl;
