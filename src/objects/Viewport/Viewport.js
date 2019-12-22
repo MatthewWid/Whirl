@@ -210,7 +210,7 @@ class Viewport extends Base {
 		}
 
 		this._canvas = canvas;
-		this._ctx = canvas.getContext("2d");
+		this._ctx = this._game.render.renderer.getContext(this._canvas);
 
 		return this;
 	}
