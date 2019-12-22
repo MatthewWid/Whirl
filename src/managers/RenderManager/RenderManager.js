@@ -1,5 +1,5 @@
 const Manager = require("../Manager.js");
-const {Renderer, Canvas, Webgl} = require("../../render/");
+const {Renderer, CanvasRenderer, WebglRenderer} = require("../../render/");
 
 /**
  * @classdesc
@@ -20,7 +20,8 @@ class RenderManager extends Manager {
 
 		const ConfigRenderer = game.config.get("renderer");
 
-		this._renderer = (ConfigRenderer && ConfigRenderer instanceof Renderer) || new Canvas(game);
+		this._renderer =
+			(ConfigRenderer && ConfigRenderer instanceof Renderer) || new CanvasRenderer(game);
 	}
 }
 
