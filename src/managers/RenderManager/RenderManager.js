@@ -13,16 +13,28 @@ const {Renderer, CanvasRenderer, WebglRenderer} = require("../../render/");
  * @memberof Whirl.Game
  */
 class RenderManager extends Manager {
-	_renderer = null;
+	/**
+	 * Rendering system to use to draw things onto the screen.
+	 *
+	 * This value is set during the game instantiation process and should never be changed henceforth.
+	 *
+	 * {@link Whirl.Game.ConfigManager#renderer|You can provide your own render during game setup via the ConfigManager.}
+	 *
+	 * @memberof Whirl.Game.RenderManager#
+	 * @type {Whirl.render.Renderer}
+	 * @default {@link Whirl.render.Canvas}
+	 * @readonly
+	 */
+	renderer = null;
 
 	constructor(game) {
 		super(game);
 
 		const ConfigRenderer = game.config.get("renderer");
 
-		this._renderer = ConfigRenderer instanceof Renderer || new CanvasRenderer(game);
+		this.renderer = ConfigRenderer instanceof Renderer || new CanvasRenderer(game);
 
-		game.config.set("renderer", this._renderer);
+		game.config.set("renderer", this.renderer);
 	}
 }
 
