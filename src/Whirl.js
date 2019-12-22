@@ -5,6 +5,7 @@ const keys = require("./keys/");
 const shapes = require("./shapes/");
 const mixins = require("./mixins/");
 const {Game, Base, Viewport, Stage, Entity, Texture, Colour} = require("./objects/");
+const {Renderer, CanvasRenderer, WebglRenderer} = require("./render/");
 
 /**
  * The global Whirl object that all constants, modules and game objects are attached to and derived from.
@@ -39,6 +40,11 @@ class Whirl {
 	static Entity = Entity;
 	static Texture = Texture;
 	static Colour = Colour;
+
+	// Render Systems
+	static Renderer = Renderer;
+	static CanvasRenderer = CanvasRenderer;
+	static WebglRenderer = WebglRenderer;
 }
 
 global.Whirl = Whirl;

@@ -22,6 +22,8 @@ class RenderManager extends Manager {
 
 		this._renderer =
 			(ConfigRenderer && ConfigRenderer instanceof Renderer) || new CanvasRenderer(game);
+
+		game.config.set("renderer", this._renderer);
 	}
 }
 
