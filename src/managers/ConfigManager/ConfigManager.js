@@ -51,6 +51,19 @@ class ConfigManager extends Manager {
 	 */
 
 	/**
+	 * Set the system to use for rendering objects onto a canvas - uses 2D Canvas rendering by default.
+	 *
+	 * The game renderer may only be set during game initialisation and should never be changed following the setup process's completion.
+	 *
+	 * Whirl ships with a 2D Canvas renderer or a WebGL renderer, but you can provide your own custom renderer that wraps your own custom rendering logic or other third-party libraries such as PixiJS, Paper.js, p5, etc.
+	 *
+	 * @name renderer
+	 * @memberof Whirl.Game.ConfigManager#
+	 * @type {Whirl.Renderer}
+	 * @default {@link Whirl.Canvas}
+	 */
+
+	/**
 	 * Automatically attach mouse event listeners to canvasses.
 	 *
 	 * @name input mouse
@@ -92,11 +105,12 @@ class ConfigManager extends Manager {
 	};
 
 	static defaultConfig = {
-		debug: false, // Enable warnings/performance tips/verbose logging
-		"input mouse": true, // Listen for mouse inputs
-		"input keyboard": true, // Listen for keyboard inputs
-		"input preventDefault": true, // Prevent input default behaviour
-		canvas: null, // Canvas to render to ('null' = create a new canvas)
+		debug: false,
+		"input mouse": true,
+		"input keyboard": true,
+		"input preventDefault": true,
+		canvas: null,
+		renderer: null,
 	};
 
 	constructor(game) {

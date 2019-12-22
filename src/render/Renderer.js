@@ -2,6 +2,10 @@
  * @classdesc
  * Abstracts over a system for rendering. Eg, Canvas, WebGL or rendering libraries such as PixiJS.
  *
+ * Whirl ships with a 2D Canvas renderer or a WebGL renderer, but you can provide your own custom renderer that wraps your own custom rendering logic or other third-party libraries such as PixiJS, Paper.js, p5, etc.
+ *
+ * This makes Whirl extremely customisable and versatile by affording the user complete control of the render system if they so choose to use it. You could even abstract rendering logic into more complex graphical libraries such as ThreeJS to achieve exactly the effect you need in your application or web page.
+ *
  * @class Renderer
  * @memberof Whirl
  */
