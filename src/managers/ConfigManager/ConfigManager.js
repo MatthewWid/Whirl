@@ -205,6 +205,20 @@ class ConfigManager extends Manager {
 		}
 		return this._data[key];
 	}
+
+	/**
+	 * Retrieve all keys present in the configuration map.
+	 *
+	 * @method Whirl.Game.ConfigManager#keys
+	 *
+	 * @return {string[]}
+	 *
+	 * @example
+	 * game.config.keys(); // ["debug", "input mouse", "input keyboard", ...]
+	 */
+	keys() {
+		return Object.keys(this._data);
+	}
 }
 
 module.exports = ConfigManager;
