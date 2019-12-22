@@ -45,46 +45,56 @@ class Game {
 	/**
 	 * The configuration manager that handles initial and continuing configuration of the game and its managers.
 	 *
+	 * @name config
 	 * @memberof Whirl.Game#
+	 * @type {Whirl.Game.ConfigManager}
 	 *
 	 * @see Whirl.Game.ConfigManager
 	 */
-	config = new ConfigManager(this);
 
 	/**
 	 * The object manager that handles all existing objects in the game and the initialisation of those objects.
 	 *
+	 * @name object
 	 * @memberof Whirl.Game#
+	 * @type {Whirl.Game.ObjectManager}
 	 *
 	 * @see Whirl.Game.ObjectManager
 	 */
-	object = new ObjectManager(this);
 
 	/**
 	 * The update manager that handles the game update loop including object management, game scaling, physics and more.
 	 *
+	 * @name update
 	 * @memberof Whirl.Game#
+	 * @type {Whirl.Game.UpdateManager}
 	 *
 	 * @see Whirl.Game.UpdateManager
 	 */
-	update = new UpdateManager(this);
 
 	/**
 	 * The render manager that handles the render loop including canvas and WebGL abstraction, render batching, and all visuals invoked by the update loop.
 	 */
-	render = new RenderManager(this);
 
 	/**
 	 * The debug manager that handles debugging features such as logging, warnings and errors.
 	 *
+	 * @name debug
 	 * @memberof Whirl.Game#
+	 * @type {Whirl.Game.DebugManager}
 	 *
 	 * @see Whirl.Game.DebugManager
 	 */
-	debug = new DebugManager(this);
 
 	constructor(options = {}) {
 		mixin(this);
+
+		// Managers
+		this.config = new ConfigManager(this);
+		this.object = new ObjectManager(this);
+		this.update = new UpdateManager(this);
+		this.render = new RenderManager(this);
+		this.debug = new DebugManager(this);
 
 		// Configuration
 		this.config.set(options);

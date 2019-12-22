@@ -7,8 +7,6 @@ const {Renderer, CanvasRenderer, WebglRenderer} = require("../../render/");
  *
  * In normal use you'll never need to interact with the render manager directly, instead simply change how the objects in the game world look and the changes will automatically be reflected in the rendered result.
  *
- * This manager is stored under the `render` namespace of the game instance object.
- *
  * @class RenderManager
  * @memberof Whirl.Game
  */

@@ -12,8 +12,6 @@ const {
  *
  * Never set properties of the ConfigManager directly. Instead, use the provided `set` and `get` methods.
  *
- * This manager is stored under the `config` namespace of the game instance object.
- *
  * @class ConfigManager
  * @memberof Whirl.Game
  * @mixes Whirl.mixins.Event
