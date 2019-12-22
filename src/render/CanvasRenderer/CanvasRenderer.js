@@ -10,7 +10,7 @@ const Renderer = require("../Renderer.js");
  *
  * @example
  * const game = Whirl.Game({
- * 	renderer: Whirl.render.CanvasRenderer
+ * 	renderer: Whirl.render.Canvas
  * });
  */
 class CanvasRenderer extends Renderer {

@@ -1,6 +1,6 @@
 /**
  * @classdesc
- * Abstracts over a system for rendering. Eg, Canvas, WebGL or rendering libraries such as PixiJS.
+ * Abstracts over a system for rendering. Eg, Canvas, WebGL or other rendering libraries such as PixiJS.
  *
  * Whirl ships with a 2D Canvas renderer or a WebGL renderer, but you can provide your own custom renderer that wraps your own custom rendering logic or other third-party libraries such as PixiJS, Paper.js, p5, etc.
  *
@@ -9,6 +9,17 @@
  * @class Renderer
  * @memberof Whirl.render
  * @abstract
+ *
+ * @example
+ * const {render: {Renderer}} = Whirl;
+ *
+ * class MyRenderer extends Renderer {
+ * 	getContext() {}
+ *
+ * 	render() {}
+ *
+ * 	...
+ * }
  */
 class Renderer {
 	/**

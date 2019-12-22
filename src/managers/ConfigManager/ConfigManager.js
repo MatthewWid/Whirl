@@ -59,8 +59,8 @@ class ConfigManager extends Manager {
 	 *
 	 * @name renderer
 	 * @memberof Whirl.Game.ConfigManager#
-	 * @type {Whirl.Renderer}
-	 * @default {@link Whirl.CanvasRenderer}
+	 * @type {Whirl.render.Renderer}
+	 * @default {@link Whirl.render.Canvas}
 	 */
 
 	/**
