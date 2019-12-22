@@ -67,6 +67,10 @@ class Stage extends Base {
 		} else {
 			this.limit = Rectangle(options.x || 0, options.y || 0, options.w || 0, options.h || 0);
 		}
+
+		this._game.event.on("didDestroy", ({object}) => {
+			this.child.remove(object);
+		});
 	}
 }
 

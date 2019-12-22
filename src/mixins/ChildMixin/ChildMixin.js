@@ -134,12 +134,31 @@ class ChildMixin extends Mixin {
 	}
 
 	/**
-	 * Empty the list of children this object has.
+	 * Remove a specific item from this list, or remove all items at once.
 	 *
-	 * @method Whirl.mixins.Child#
+	 * @method Whirl.mixins.Child#remove
+	 *
+	 * @param {any} [object] Specific object to remove from the child list. If not provided, will empty child list entirely.
+	 * @param {boolean} [deep=true] Whether to recurse down the potential tree of objects with children or only remove from the immediate level of children. Has no effect if `object` is not provided.
 	 */
-	remove() {
-		this._children.length = 0;
+	remove(object, deep = true) {
+		if (object) {
+			if (deep) {
+				this._children = this._children.filter((item) => {
+					if (item === object) {
+						return false;
+					} else if (item.child) {
+						item.child.remove(object, true);
+					}
+
+					return true;
+				});
+			} else {
+				this._children = this._children.filter((item) => item !== object);
+			}
+		} else {
+			this._children.length = 0;
+		}
 	}
 
 	/**
