@@ -86,20 +86,14 @@ class Base {
 	/**
 	 * Destroy this object and remove all references to it from the game instance.
 	 *
-	 * Object destruction is an expensive operation, and you're typically better off simply removing it from the Stage or Viewport it belongs to or by setting its `active` property to `false`, instead.
-	 *
-	 * You should be careful about the timings of *when* you destroy an object. Getting rid of an object in the middle of the update or physics loop may cause unexpected behaviour and errors. Ideally, you should destroy an object in the [`willUpdate` step of the game loop]{@link Whirl.Game#event:willUpdate}.
+	 * Implicitly calls the {@link Whirl.Game.ObjectManager#destroy|ObjectManager#destroy} method on this object.
 	 *
 	 * @method Whirl.Base#destroy
 	 *
-	 * @returns {this}
+	 * @returns {this} The object that was destroyed.
 	 */
 	destroy() {
-		this._game.event.emit("whirl--object-destroy", {
-			object: this,
-		});
-
-		return this;
+		return this._game.object.destroy(this);
 	}
 
 	/**

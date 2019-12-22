@@ -37,6 +37,8 @@ const getValue = require("../../lib/getValue.js");
  * @param {boolean} options.resize=false Resize the canvas width and height to the width and height of this viewports clipping plane.
  * @param {Stage} options.stage Initial stage to be used for rendering.
  *
+ * @listens Whirl.Game#didDestroy
+ *
  * @example
  * game.Viewport({
  * 	w: 500,
@@ -179,6 +181,12 @@ class Viewport extends Base {
 		this.setCanvas(options.canvas, options.resize);
 
 		options.stage && this.setStage(options.stage);
+
+		this._game.event.on("didDestroy", ({object}) => {
+			if (this.stage === object) {
+				this.setStage(null);
+			}
+		});
 	}
 
 	/**
@@ -240,8 +248,10 @@ class Viewport extends Base {
 	 * });
 	 */
 	setStage(stage) {
-		if (!stage || !(stage instanceof Stage)) {
+		if (typeof stage === "undefined" || (stage && !(stage instanceof Stage))) {
 			this._game.debug.warn("Invalid Stage instance given to Viewport#setStage.", "Viewport");
+
+			this.stage = null;
 
 			return this;
 		}

@@ -114,6 +114,46 @@ class ObjectManager extends Manager {
 
 		return [...this._store];
 	}
+
+	/**
+	 * Destroy a given object and all references to it from the game instance.
+	 *
+	 * Object destruction is an expensive operation, and you're typically better off simply removing it from the Stage or Viewport it belongs to or by setting its `active` property to `false`, instead.
+	 *
+	 * You should also be careful about the timings of *when* you destroy an object. Getting rid of an object in the middle of the update or physics loop may cause unexpected behaviour and errors. Ideally, you should destroy an object in the [`willUpdate` step of the game loop]{@link Whirl.Game#event:willUpdate}.
+	 *
+	 * @method Whirl.Game.ObjectManager#destroy
+	 *
+	 * @param {any} object Object to destroy.
+	 * @returns {any} The object that was destroyed.
+	 */
+	destroy(object) {
+		this._store = this._store.filter((item) => object._id !== item._id);
+
+		if (object instanceof Viewport) {
+			this._viewports = this._viewports.filter((item) => object._id !== item._id);
+		}
+
+		if (object instanceof Stage) {
+			this._stages = this._stages.filter((item) => object._id !== item._id);
+		}
+
+		/**
+		 * Fires when an object has been marked for destruction and after it has been removed from the global store.
+		 *
+		 * This is listened on internally, but you can also listen on this event yourself and cleanup any references to the object you yourself have created.
+		 *
+		 * @event Whirl.Game#didDestroy
+		 * @type {object}
+		 *
+		 * @property {object} object The object to be destroyed.
+		 */
+		this._game.event.emit("didDestroy", {
+			object,
+		});
+
+		return object;
+	}
 }
 
 module.exports = ObjectManager;
