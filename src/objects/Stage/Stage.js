@@ -29,6 +29,8 @@ const {Rectangle} = require("../../shapes/");
  * @param {number} options.w=0 Width of the stage limit.
  * @param {number} options.h=0 Height of the stage limit.
  *
+ * @listens Whirl.Game#didDestroy
+ *
  * @example
  * game.Stage({
  * 	limit: Whirl.shapes.Rectangle(0, 0, 400, 400)
