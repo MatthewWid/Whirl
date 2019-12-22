@@ -8,6 +8,7 @@
  *
  * @class Renderer
  * @memberof Whirl.render
+ * @abstract
  */
 class Renderer {
 	/**
@@ -19,24 +20,25 @@ class Renderer {
 	 */
 	_game;
 
-	/**
-	 * Context identifier string from which to fetch from the canvas element.
-	 *
-	 * @abstract
-	 * @memberof Whirl.render.Renderer#
-	 * @type {string("2d", "webgl", "webgl2", "bitmaprenderer")}
-	 * @readonly
-	 */
-	contextType;
-
 	constructor(game) {
 		this._game = game;
 	}
 
 	/**
+	 * Process and retrieve a context object to be used for rendering by a viewport.
+	 *
+	 * @method Whirl.render.Renderer#getContext
+	 *
+	 * @abstract
+	 * @param {HTMLElement} canvas Reference to the canvas element to render to.
+	 * @returns {RenderingContext} Canvas context to be used for rendering - Eg, {@link https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D|CanvasRenderingContext2D}, {@link https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext|WebGLRenderingContext}, etc.
+	 */
+	getContext(canvas) {}
+
+	/**
 	 * Render method that renders to a given context with the effects of a given viewport.
 	 *
-	 * @method Whirl.render.Renderer#
+	 * @method Whirl.render.Renderer#render
 	 *
 	 * @abstract
 	 * @param {any} ctx Rendering context to draw to.
@@ -48,7 +50,7 @@ class Renderer {
 	/**
 	 * Render a given Sprite.
 	 *
-	 * @method Whirl.render.Renderer#
+	 * @method Whirl.render.Renderer#Sprite
 	 *
 	 * @abstract
 	 * @param {any} ctx Rendering context to draw to.

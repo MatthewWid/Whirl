@@ -14,7 +14,7 @@ const Renderer = require("../Renderer.js");
  * });
  */
 class WebglRenderer extends Renderer {
-	contextType = "webgl";
+	getContext = (canvas) => canvas.getContext("experimental-webgl");
 
 	render(ctx, viewport, objects) {}
 }
