@@ -59,11 +59,15 @@ class Sprite extends Entity {
 	anchor;
 
 	/**
-	 * Texture used when rendering this Sprite on the screen.
+	 * Texture used when rendering this Sprite to the screen.
+	 *
+	 * You should try to reduce the number of unique textures you create under a single game instance. Instead of creating a new texture for each sprite, instead consider using a single texture and passing it to the `fill` property of multiple sprites.
+	 *
+	 * {@link Whirl.Texture|See the Texture class page for more details.}
 	 *
 	 * @memberof Whirl.Sprite#
 	 * @type {Whirl.Texture}
-	 * @default {@link Whirl.Colour}
+	 * @default {@link Whirl.Colour}(0, 0, 0)
 	 */
 	fill = null;
 
