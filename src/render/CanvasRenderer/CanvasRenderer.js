@@ -4,13 +4,13 @@ const Renderer = require("../Renderer.js");
  * @classdesc
  * Wraps rendering logic for 2D Canvas rendering.
  *
- * @class CanvasRenderer
- * @memberof Whirl
- * @extends Whirl.Renderer
+ * @class Canvas
+ * @memberof Whirl.render
+ * @extends Whirl.render.Renderer
  *
  * @example
  * const game = Whirl.Game({
- * 	renderer: Whirl.CanvasRenderer
+ * 	renderer: Whirl.render.CanvasRenderer
  * });
  */
 class CanvasRenderer extends Renderer {

@@ -20,8 +20,7 @@ class RenderManager extends Manager {
 
 		const ConfigRenderer = game.config.get("renderer");
 
-		this._renderer =
-			(ConfigRenderer && ConfigRenderer instanceof Renderer) || new CanvasRenderer(game);
+		this._renderer = ConfigRenderer instanceof Renderer || new CanvasRenderer(game);
 
 		game.config.set("renderer", this._renderer);
 	}

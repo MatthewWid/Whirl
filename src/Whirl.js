@@ -42,9 +42,11 @@ class Whirl {
 	static Colour = Colour;
 
 	// Render Systems
-	static Renderer = Renderer;
-	static CanvasRenderer = CanvasRenderer;
-	static WebglRenderer = WebglRenderer;
+	static render = {
+		Renderer: Renderer,
+		Canvas: CanvasRenderer,
+		Webgl: WebglRenderer,
+	};
 }
 
 global.Whirl = Whirl;

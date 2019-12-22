@@ -7,13 +7,13 @@
  * This makes Whirl extremely customisable and versatile by affording the user complete control of the render system if they so choose to use it. You could even abstract rendering logic into more complex graphical libraries such as ThreeJS to achieve exactly the effect you need in your application or web page.
  *
  * @class Renderer
- * @memberof Whirl
+ * @memberof Whirl.render
  */
 class Renderer {
 	/**
 	 * The game instance this renderer belongs to.
 	 *
-	 * @memberof Whirl.Renderer#
+	 * @memberof Whirl.render.Renderer#
 	 * @type {Whirl.Game}
 	 * @readonly
 	 */
@@ -23,7 +23,7 @@ class Renderer {
 	 * Context identifier string from which to fetch from the canvas element.
 	 *
 	 * @abstract
-	 * @memberof Whirl.Renderer#
+	 * @memberof Whirl.render.Renderer#
 	 * @type {string("2d", "webgl", "webgl2", "bitmaprenderer")}
 	 * @readonly
 	 */
@@ -36,6 +36,8 @@ class Renderer {
 	/**
 	 * Render method that renders to a given context with the effects of a given viewport.
 	 *
+	 * @method Whirl.render.Renderer#
+	 *
 	 * @abstract
 	 * @param {any} ctx Rendering context to draw to.
 	 * @param {Whirl.Viewport} viewport Viewport to use post-processing effects from.
@@ -45,6 +47,8 @@ class Renderer {
 
 	/**
 	 * Render a given Sprite.
+	 *
+	 * @method Whirl.render.Renderer#
 	 *
 	 * @abstract
 	 * @param {any} ctx Rendering context to draw to.
