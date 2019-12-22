@@ -284,6 +284,39 @@ class Viewport extends Base {
 
 		return this;
 	}
+
+	/**
+	 * Retrieve a list of items from which this viewport can render in its view area.
+	 *
+	 * By default, items outside of the viewports' viewbox will be culled from the list and sorted by their `layer` property.
+	 *
+	 * @method Whirl.Viewport#getRenderables
+	 *
+	 * @param {Whirl.Base} [object] Root object from which to retrieve the renderable items from.
+	 *
+	 * Defaults to recursing on the children of this viewports' {@link Whirl.Stage|Stage}, if it exists.
+	 * @returns {Whirl.Base[]} Array of renderable items within the culling zone sorted by z-layer.
+	 *
+	 * @see Whirl.Entity
+	 * @see Whirl.Stage
+	 *
+	 * @example
+	 * viewport.getRenderables(); // [...]
+	 */
+	getRenderables(object = this.stage) {
+		if (object && !this.stage) {
+			return [];
+		}
+
+		if (object.child) {
+			return object.child
+				.get()
+				.map((item) => this.getRenderables(item))
+				.sort((a, b) => b.layer - a.layer);
+		}
+
+		return object;
+	}
 }
 
 module.exports = Viewport;
