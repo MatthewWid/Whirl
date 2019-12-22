@@ -1,4 +1,5 @@
 const Entity = require("../Entity/");
+const Texture = require("../Texture/");
 const Colour = require("../Colour/");
 const getValue = require("../../lib/getValue.js");
 const {Rectangle, Point} = require("../../shapes/");
@@ -91,7 +92,39 @@ class Sprite extends Entity {
 			this.anchor = Point(getValue(options, "anchorX", 0), getValue(options, "anchorY", 0));
 		}
 
-		this.fill = options.fill || new Colour(game, 0, 0, 0);
+		this.setFill(options.fill);
+	}
+
+	/**
+	 * Set the texture to be used to render this Sprite to the screen.
+	 *
+	 * Defaults to a blank {@link Whirl.Colour|Colour texture}.
+	 *
+	 * @method Whirl.Sprite#setFill
+	 *
+	 * @param {Whirl.Texture} [fill] Texture to assign to this Sprite instance.
+	 * @returns {this}
+	 *
+	 * @example
+	 * sprite.setFill(
+	 * 	Whirl.Colour(game, 200, 200, 150),
+	 * );
+	 */
+	setFill(fill = new Colour(game, 0, 0, 0)) {
+		if (!(fill instanceof Texture)) {
+			this._game.debug.warn(
+				"Invalid Texture instance given to Sprite#setFill. Using default texture instead.",
+				"Sprite"
+			);
+
+			this.fill = new Colour(game, 0, 0, 0);
+
+			return this;
+		}
+
+		this.fill = fill;
+
+		return this;
 	}
 }
 

@@ -247,6 +247,8 @@ class Viewport extends Base {
 		}
 
 		this.stage = stage;
+
+		return this;
 	}
 
 	/**
