@@ -304,7 +304,7 @@ class Viewport extends Base {
 	 *
 	 * @method Whirl.Viewport#getRenderables
 	 *
-	 * @param {Whirl.Base} [object] Root object from which to retrieve the renderable items from.
+	 * @param {Whirl.Base} [object={@link Whirl.Viewport#stage|this.stage}] Root object from which to retrieve the renderable items from.
 	 *
 	 * Defaults to recursing on the children of this viewports' {@link Whirl.Stage|Stage}, if it exists.
 	 * @returns {Whirl.Base[]} Array of renderable items within the culling zone sorted by z-layer.
