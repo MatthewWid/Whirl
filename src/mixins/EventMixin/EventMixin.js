@@ -237,20 +237,29 @@ class EventMixin extends Mixin {
 	}
 
 	/**
-	 * Remove *all* listeners from a given event name.
+	 * Remove *all* listeners from a given event name, or remove all listeners from all events.
 	 *
-	 * In general, you should never invoke this on events created by the engine itself (such as update and render loop events) as it may break the functionality of the engine and produce unexpected errors.
+	 * In general, you should never invoke this on events created by the engine itself (such as update and render loop events) as it may break the core functionality of the engine and produce unexpected errors.
 	 *
 	 * @method Whirl.mixins.Event#removeAll
 	 *
-	 * @param {string} name Name of the event to remove the listeners from.
+	 * @param {string} [name] Name of the event to remove the listeners from.
+	 *
+	 * If not provided, removes all event listeners from all events on the object.
 	 * @returns {this}
 	 *
 	 * @example
-	 * obj.event.removeAll("sayHi");
+	 * object.event.removeAll();
+	 *
+	 * @example
+	 * object.event.removeAll("sayHi");
 	 */
 	removeAll(name) {
-		delete this._events[name];
+		if (name) {
+			delete this._events[name];
+		} else {
+			this._events = {};
+		}
 
 		return this;
 	}
