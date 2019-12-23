@@ -83,26 +83,8 @@ class ChildMixin extends Mixin {
 	 */
 	add(object) {
 		if (Array.isArray(object)) {
-			if (object.some((o) => this.validate(o) === false)) {
-				console.warn(
-					"Whirl | ChildMixin | All child objects must satisfy the validation check to be added."
-				);
-
-				return this._source;
-			}
-
-			object.forEach((o) => {
-				this.add(o);
-			});
-		} else {
-			if (this.validate(object) === false) {
-				console.warn(
-					"Whirl | ChildMixin | Child object does not satisfy the validation check and will not be added."
-				);
-
-				return this._source;
-			}
-
+			object.forEach((o) => this.add(o));
+		} else if (this.onAdd(object) !== false) {
 			this._children.push(object);
 		}
 
@@ -162,23 +144,22 @@ class ChildMixin extends Mixin {
 	}
 
 	/**
-	 * Override this method to enforce a validation on every object that is attempted to be added as a child to this object.
+	 * Runs before each object attempts to be added as a child.
 	 *
-	 * When adding a child or children, every potential child must pass this validation check or will not be added and a warning will be logged to the console.
+	 * If an array of children are added, this function will be called on each child individually.
 	 *
-	 * By default will allow any object to be added as a child.
+	 * Optionally, return `false` to reject the object from being added as a child.
 	 *
-	 * @method Whirl.mixins.Child#validate
+	 * @method Whirl.mixins.Child#onAdd
 	 *
-	 * @param {any} object Single child to be potentially be added to the object.
-	 * @returns {boolean}
+	 * @param {any} object Single child to be potentially be added to the object child pool.
+	 * @returns {boolean|undefined}
 	 *
 	 * @example
-	 * // In some method (Usually the constructor) of your custom class
 	 * // Enforce that every child inherit from the `Entity` class
-	 * this.child.validate = (object) => object instanceof Whirl.Entity;
+	 * this.child.onAdd = (object) => object instanceof Whirl.Entity;
 	 */
-	validate(object) {}
+	onAdd(object) {}
 }
 
 module.exports = ChildMixin;

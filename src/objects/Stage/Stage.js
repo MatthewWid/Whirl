@@ -63,7 +63,18 @@ class Stage extends Base {
 
 		mixin(this);
 
-		this.child.validate = (object) => object instanceof Entity;
+		this.child.onAdd = (object) => {
+			if (object instanceof Entity) {
+				object.parent = this;
+			} else {
+				this._game.debug.warn(
+					"Objects added to a Stage must inherit from the Entity class. Rejecting attempt to add object as child.",
+					"Whirl.Stage"
+				);
+
+				return false;
+			}
+		};
 
 		this.child.add(children);
 
