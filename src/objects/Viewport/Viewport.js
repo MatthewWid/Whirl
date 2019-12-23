@@ -37,6 +37,8 @@ const getValue = require("../../lib/getValue.js");
  * @param {boolean} options.resize=false Resize the canvas width and height to the width and height of this viewports clipping plane.
  * @param {Stage} options.stage Initial stage to be used for rendering.
  *
+ * Implicitely calls the `setStage` method.
+ *
  * @listens Whirl.Game#didDestroy
  *
  * @example

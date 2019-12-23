@@ -31,6 +31,8 @@ const Colour = require("../Colour");
  * @memberof Whirl
  * @mixes Whirl.mixins.Event
  *
+ * @param {object} [options] Options passed during setup. All properties on this object will be forwarded to the {@link Whirl.Game.ConfigManager|ConfigManager} and set as properties of the configuration map by implicitely calling {@link Whirl.Game.ConfigManager#set|the set method}.
+ *
  * @example
  * const game = Whirl.Game({
  * 	"canvas": "#myCanvas",
@@ -84,6 +86,18 @@ class Game {
 	 * @type {Whirl.Game.DebugManager}
 	 *
 	 * @see Whirl.Game.DebugManager
+	 */
+
+	/**
+	 * Alias to the {@link Whirl.Game.UpdateManager#start|UpdateManager#start method}.
+	 *
+	 * @method Whirl.Game#start
+	 */
+
+	/**
+	 * Alias to the {@link Whirl.Game.UpdateManager#stop|UpdateManager#stop method}.
+	 *
+	 * @method Whirl.Game#stop
 	 */
 
 	constructor(options = {}) {
