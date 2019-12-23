@@ -105,13 +105,11 @@ class Game {
 
 		// Managers
 		this.config = new ConfigManager(this);
+		this.config.set(options);
+		this.debug = new DebugManager(this);
 		this.object = new ObjectManager(this);
 		this.update = new UpdateManager(this);
 		this.render = new RenderManager(this);
-		this.debug = new DebugManager(this);
-
-		// Configuration
-		this.config.set(options);
 
 		// Expose manager methods at top-level
 		this.start = this.update.start;

@@ -254,11 +254,9 @@ class Viewport extends Base {
 			this._game.debug.warn("Invalid Stage instance given to Viewport#setStage.", "Viewport");
 
 			this.stage = null;
-
-			return this;
+		} else {
+			this.stage = stage;
 		}
-
-		this.stage = stage;
 
 		return this;
 	}

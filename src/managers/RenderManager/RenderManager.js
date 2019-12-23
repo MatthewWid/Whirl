@@ -30,7 +30,15 @@ class RenderManager extends Manager {
 
 		const ConfigRenderer = game.config.get("renderer");
 
-		this.renderer = ConfigRenderer instanceof Renderer || new CanvasRenderer(game);
+		if (!(ConfigRenderer.prototype instanceof Renderer)) {
+			if (ConfigRenderer !== null) {
+				game.debug.warn("Invalid render system given during game instantiation.", "RenderManager");
+			}
+
+			this.renderer = new CanvasRenderer(game);
+		} else {
+			this.renderer = new ConfigRenderer(game);
+		}
 
 		game.config.set("renderer", this.renderer);
 	}
