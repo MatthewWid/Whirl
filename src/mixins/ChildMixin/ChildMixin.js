@@ -68,13 +68,11 @@ class ChildMixin extends Mixin {
 	 * @param {any|any[]} object Object or array of objects to be added as children.
 	 *
 	 * @example
-	 * const {Game, Stage, Sprite} = Whirl;
+	 * const game = Whirl.Game();
 	 *
-	 * const game = Game();
+	 * const stage = game.Stage();
 	 *
-	 * const stage = Stage(game);
-	 *
-	 * const sprite = Sprite(game);
+	 * const sprite = game.Sprite();
 	 *
 	 * stage.child.add(sprite);
 	 *
