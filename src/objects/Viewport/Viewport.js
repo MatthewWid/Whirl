@@ -251,7 +251,7 @@ class Viewport extends Base {
 	 */
 	setStage(stage) {
 		if (typeof stage === "undefined" || (stage && !(stage instanceof Stage))) {
-			this._game.debug.warn("Invalid Stage instance given to Viewport#setStage.", "Viewport");
+			this._game.debug.warn("Invalid Stage instance given to Viewport#setStage.", "Whirl.Viewport");
 
 			this.stage = null;
 		} else {

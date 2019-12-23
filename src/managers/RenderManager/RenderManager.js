@@ -34,7 +34,10 @@ class RenderManager extends Manager {
 			this.renderer = new ConfigRenderer(game);
 		} else {
 			if (ConfigRenderer) {
-				game.debug.warn("Invalid render system given during game instantiation.", "RenderManager");
+				game.debug.warn(
+					"Invalid render system given during game instantiation.",
+					"Whirl.Game#RenderManager"
+				);
 			}
 
 			this.renderer = new CanvasRenderer(game);
