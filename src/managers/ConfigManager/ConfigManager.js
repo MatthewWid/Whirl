@@ -13,7 +13,7 @@ const {
  * Never set properties of the ConfigManager directly. Instead, use the provided `set` and `get` methods.
  *
  * @class ConfigManager
- * @memberof Whirl.Game
+ * @memberof Whirl.Game#
  * @mixes Whirl.mixins.Event
  *
  * @example

@@ -7,7 +7,7 @@ const Manager = require("../Manager.js");
  * By default, an instantiated game is not running, and must be "started" by use of the update manager to begin the update loop *after* the necessary events, assets, listeners, etc. have been loaded.
  *
  * @class UpdateManager
- * @memberof Whirl.Game
+ * @memberof Whirl.Game#
  *
  * @example
  * const game = Whirl.Game();
