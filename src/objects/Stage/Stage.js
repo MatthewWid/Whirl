@@ -28,6 +28,7 @@ const {Rectangle} = require("../../shapes/");
  * @param {number} options.y=0 Y-coordinate of the stage limit.
  * @param {number} options.w=0 Width of the stage limit.
  * @param {number} options.h=0 Height of the stage limit.
+ * @param {Entity[]} [children] Array of children to initialise into the stage world.
  *
  * @listens Whirl.Game#didDestroy
  *
@@ -57,7 +58,7 @@ class Stage extends Base {
 	 */
 	limit;
 
-	constructor(game, options = {}) {
+	constructor(game, options = {}, children = []) {
 		super(game);
 
 		mixin(this);
@@ -69,6 +70,8 @@ class Stage extends Base {
 		} else {
 			this.limit = Rectangle(options.x || 0, options.y || 0, options.w || 0, options.h || 0);
 		}
+
+		this.child.add(children);
 
 		this._game.event.on("didDestroy", ({object}) => {
 			this.child.remove(object);
