@@ -127,6 +127,8 @@ class ObjectManager extends Manager {
 	 *
 	 * @method Whirl.Game.ObjectManager#destroy
 	 *
+	 * @emits Whirl.Game#didDestroy
+	 *
 	 * @param {any} object Object to destroy.
 	 * @returns {any} The object that was destroyed.
 	 */

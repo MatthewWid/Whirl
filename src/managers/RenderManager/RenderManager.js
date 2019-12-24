@@ -51,6 +51,7 @@ class RenderManager extends Manager {
 	 *
 	 * @ignore
 	 * @method Whirl.Game.RenderManager#_render
+	 *
 	 * @emits Whirl.Game#willRender
 	 * @emits Whirl.Game#didRender
 	 */

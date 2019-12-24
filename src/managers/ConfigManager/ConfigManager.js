@@ -123,6 +123,8 @@ class ConfigManager extends Manager {
 	 *
 	 * @method Whirl.Game.ConfigManager#set
 	 *
+	 * @emits Whirl.Game.ConfigManager#didSet
+	 *
 	 * @param {string|object} key Key that identifies a value in the config map. If the key already exists then the value is overwriten, otherwise a new key/value pair is made.
 	 *
 	 * If an object is given, will instead merge the object values with the config map object.
