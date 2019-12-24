@@ -305,6 +305,9 @@ class Viewport extends Base {
 	 * @method Whirl.Viewport#getRenderables
 	 *
 	 * @param {Whirl.Base} [object={@link Whirl.Viewport#stage|this.stage}] Root object from which to retrieve the renderable items from.
+	 * @param {Entity[]} [renderables] Additional entities to prepend to the renderables list.
+	 *
+	 * The renderables array is used to track renderable items as tree of objects is recursed on. You should not need to add additional entities in normal use.
 	 *
 	 * Defaults to recursing on the children of this viewports' {@link Whirl.Stage|Stage}, if it exists.
 	 * @returns {Whirl.Base[]} Array of renderable items within the culling zone sorted by z-layer.
@@ -315,19 +318,19 @@ class Viewport extends Base {
 	 * @example
 	 * viewport.getRenderables(); // [...]
 	 */
-	getRenderables(object = this.stage) {
-		if (object && !this.stage) {
-			return [];
-		}
-
-		if (object.child) {
-			return object.child
+	getRenderables(object = this.stage, renderables = []) {
+		if (!object.child) {
+			if (object.active) {
+				renderables.push(object);
+			}
+		} else {
+			object.child
 				.get()
-				.map((item) => this.getRenderables(item))
-				.sort((a, b) => b.layer - a.layer);
+				.sort((a, b) => b.layer - a.layer)
+				.forEach((item) => this.getRenderables(item, renderables));
 		}
 
-		return object;
+		return renderables;
 	}
 }
 
