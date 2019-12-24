@@ -86,7 +86,7 @@ class Base {
 	/**
 	 * Destroy this object and remove all references to it from the game instance.
 	 *
-	 * Implicitly calls the {@link Whirl.Game.ObjectManager#destroy|ObjectManager#destroy} method on this object.
+	 * Implicitly calls the {@link Whirl.Game.ObjectManager#destroy|ObjectManager#destroy} method on this object and runs any additional cleanup necessary.
 	 *
 	 * @method Whirl.Base#destroy
 	 *

@@ -105,6 +105,19 @@ class Entity extends Base {
 
 		this.body = getValue(options, "body");
 	}
+
+	/**
+	 * @method Whirl.Entity#destroy
+	 *
+	 * @override
+	 */
+	destroy() {
+		if (this.parent && this.parent.child) {
+			this.parent.child.remove(this, false);
+		}
+
+		return super.destroy();
+	}
 }
 
 module.exports = Entity;
