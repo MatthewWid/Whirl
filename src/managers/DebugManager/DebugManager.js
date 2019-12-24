@@ -5,7 +5,7 @@ const Manager = require("../Manager.js");
  * The debug manager provides tools for debugging your game application by allowing you to log information about certain game objects, create warnings and error messages, and toggle between debug and non-debug mode to evaluate performance and logic errors.
  *
  * @class DebugManager
- * @memberof Whirl.Game#
+ * @memberof Whirl.Game
  */
 class DebugManager extends Manager {
 	constructor(game) {

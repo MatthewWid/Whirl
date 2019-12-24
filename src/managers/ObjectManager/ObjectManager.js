@@ -10,7 +10,7 @@ const Stage = require("../../objects/Stage/");
  * For the vast majority of use cases you will never need to interact with the ObjectManager directly, but for more advanced uses such as plugin development and debugging you may need to modify certain details about how the game stores objects and how object receive data from the game instance.
  *
  * @class ObjectManager
- * @memberof Whirl.Game#
+ * @memberof Whirl.Game
  */
 class ObjectManager extends Manager {
 	/**
