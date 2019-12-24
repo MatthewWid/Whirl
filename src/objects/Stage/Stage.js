@@ -5,10 +5,11 @@ const {
 	Child,
 } = require("../../mixins/");
 const {Rectangle} = require("../../shapes/");
+const addInheritFilter = require("../../lib/addInheritFilter.js");
 
 /**
  * @classdesc
- * The stage acts as the game world itself. It is responsible for storing game objects to rendered in the world, game physics and collision detection, world bounds, etc.
+ * Stages acts as the game world itself. It is responsible for storing game objects to rendered in the world, game physics and collision detection, world bounds, etc.
  *
  * A stage is limited by its world boundaries. If configured, objects that leave this world boundary will not be updated and/or rendered.
  *
@@ -61,18 +62,7 @@ class Stage extends Base {
 
 		mixin(this);
 
-		this.child.onAdd = (object) => {
-			if (object instanceof Entity) {
-				object.parent = this;
-			} else {
-				this._game.debug.warn(
-					"Objects added to a Stage must inherit from the Entity class. Rejecting attempt to add object as child.",
-					"Whirl.Stage"
-				);
-
-				return false;
-			}
-		};
+		this.child.onAdd = (object) => addInheritFilter(this, "Stage", Entity);
 
 		this.child.add(children);
 

@@ -3,7 +3,7 @@
  *
  * @ignore
  *
- * @param {Object} object Object to get the value from
+ * @param {object} object Object to get the value from
  * @param {string} property Property to retrieve from the given object.
  * @param {any} [defaultValue=null] Value to return if no property was found on the object.
  * @returns {any}
