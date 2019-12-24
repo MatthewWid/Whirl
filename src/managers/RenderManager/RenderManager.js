@@ -45,6 +45,32 @@ class RenderManager extends Manager {
 
 		game.config.set("renderer", this.renderer);
 	}
+
+	/**
+	 * Process and render one frame from the current game state.
+	 *
+	 * @ignore
+	 * @method Whirl.Game.RenderManager#_render
+	 * @emits Whirl.Game#willRender
+	 * @emits Whirl.Game#didRender
+	 */
+	_render() {
+		/**
+		 * Fires after the update loop has completed but before any rendering has taken place.
+		 *
+		 * @event Whirl.Game#willRender
+		 * @type {object}
+		 */
+		this._game.event.emit("willRender");
+
+		/**
+		 * Fires after the render step of the game has concluded.
+		 *
+		 * @event Whirl.Game#didRender
+		 * @type {object}
+		 */
+		this._game.event.emit("didRender");
+	}
 }
 
 module.exports = RenderManager;

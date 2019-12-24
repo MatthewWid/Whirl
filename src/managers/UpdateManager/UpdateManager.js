@@ -128,6 +128,9 @@ class UpdateManager extends Manager {
 	 *
 	 * @method Whirl.Game.UpdateManager#start
 	 *
+	 * @emits Whirl.Game#willStart
+	 * @emits Whirl.Game#didStart
+	 *
 	 * @returns {this}
 	 *
 	 * @example
@@ -192,6 +195,8 @@ class UpdateManager extends Manager {
 	 *
 	 * @method Whirl.Game.UpdateManager#stop
 	 *
+	 * @emits Whirl.Game#willStop
+	 *
 	 * @returns {this}
 	 *
 	 * @example
@@ -222,16 +227,20 @@ class UpdateManager extends Manager {
 	};
 
 	/**
-	 * Actual method that performs one update tick of the game instance.
+	 * Conducts one update tick of the game instance.
 	 *
 	 * @ignore
 	 * @method Whirl.Game.UpdateManager#_update
+	 *
+	 * @emits Whirl.Game#willUpdate
+	 * @emits Whirl.Game#didUpdate
+	 * @emits Whirl.Game#didStop
 	 *
 	 * @param {number} delta High resolution time in milliseconds given by the environment.
 	 */
 	_update = (delta) => {
 		/**
-		 * Fires just before the update logic of the game executes.
+		 * Fires just before the update logic of the game begins.
 		 *
 		 * @event Whirl.Game#willUpdate
 		 * @type {object}
@@ -253,8 +262,10 @@ class UpdateManager extends Manager {
 		this.frameDelta = delta - this.lastDelta;
 		this.lastDelta = delta;
 
+		this._game.render._render();
+
 		/**
-		 * Fires after the update logic of the game executes.
+		 * Fires after the update and rendering step of the game takes place.
 		 *
 		 * @event Whirl.Game#didUpdate
 		 * @type {object}
