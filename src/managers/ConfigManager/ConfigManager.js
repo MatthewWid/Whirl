@@ -6,14 +6,14 @@ const {
 
 /**
  * @classdesc
- * The configuration manager handles global game configuration and allows the storage and modification of arbitrary data.
+ * Handles global game configuration and allows the storage and modification of arbitrary data.
  *
  * At its core, it is a simply a map of key-value pairs that stores data used to configure the behaviour of the various systems in the engine. You can also store your own additional data for your customisation needs.
  *
  * Never set properties of the ConfigManager directly. Instead, use the provided `set` and `get` methods.
  *
  * @class ConfigManager
- * @memberof Whirl.Game#
+ * @memberof Whirl.Game
  * @mixes Whirl.mixins.Event
  *
  * @example
