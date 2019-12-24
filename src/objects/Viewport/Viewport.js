@@ -320,12 +320,10 @@ class Viewport extends Base {
 	 */
 	getRenderables(object = this.stage, renderables = []) {
 		if (!object.child) {
-			if (object.active) {
-				renderables.push(object);
-			}
+			renderables.push(object);
 		} else {
 			object.child
-				.get()
+				.get((item) => item.active)
 				.sort((a, b) => b.layer - a.layer)
 				.forEach((item) => this.getRenderables(item, renderables));
 		}
