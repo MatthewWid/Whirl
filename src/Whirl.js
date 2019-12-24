@@ -4,7 +4,17 @@ const util = require("./util/");
 const keys = require("./keys/");
 const shapes = require("./shapes/");
 const mixins = require("./mixins/");
-const {Game, Base, Viewport, Stage, Entity, Texture, Colour} = require("./objects/");
+const {
+	Base,
+	Entity,
+	Texture,
+	Game,
+	Viewport,
+	Stage,
+	Sprite,
+	Container,
+	Colour,
+} = require("./objects/");
 const {Renderer, CanvasRenderer, WebglRenderer} = require("./render/");
 
 /**
@@ -37,6 +47,8 @@ class Whirl {
 	static Base = Base;
 	static Viewport = Viewport;
 	static Stage = Stage;
+	static Sprite = Sprite;
+	static Container = Container;
 	static Entity = Entity;
 	static Texture = Texture;
 	static Colour = Colour;
