@@ -1,7 +1,7 @@
 const Manager = require("../Manager.js");
-const Base = require("../../objects/Base/");
-const Viewport = require("../../objects/Viewport/");
-const Stage = require("../../objects/Stage/");
+const Base = require("../../../../objects/Base/");
+const Viewport = require("../../../../objects/Viewport/");
+const Stage = require("../../../../objects/Stage/");
 
 /**
  * @classdesc

@@ -1,5 +1,5 @@
 const Manager = require("../Manager.js");
-const {Renderer, CanvasRenderer, WebglRenderer} = require("../../render/");
+const {Renderer, CanvasRenderer, WebglRenderer} = require("../../../../render/");
 
 /**
  * @classdesc

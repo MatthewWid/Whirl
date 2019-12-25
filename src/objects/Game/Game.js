@@ -8,7 +8,7 @@ const {
 	UpdateManager,
 	RenderManager,
 	DebugManager,
-} = require("../../managers/");
+} = require("./managers/");
 const Base = require("../Base");
 const Viewport = require("../Viewport");
 const Stage = require("../Stage");

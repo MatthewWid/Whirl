@@ -2,7 +2,7 @@ const Manager = require("../Manager.js");
 const {
 	Mixin: {apply: mixin},
 	Event,
-} = require("../../mixins/");
+} = require("../../../../mixins/");
 
 /**
  * @classdesc
