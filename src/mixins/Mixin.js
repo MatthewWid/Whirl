@@ -4,7 +4,7 @@
  *
  * Mixins are reusable pieces of functionality that are injected into a class under a specified property (the "namespace") that adds behaviours to the object without the use of inheritance.
  *
- * Mixins are typically not instantiated directly, but by the use of the `Mixin.apply` method.
+ * Mixins are typically not instantiated directly, but by the use of the {@link Whirl.mixins.Mixin.apply|Mixin.apply} method.
  *
  * @class Mixin
  * @memberof Whirl.mixins
@@ -36,7 +36,7 @@
  * 	}
  * }
  *
- * // Create class `MyObject` and give it our `LogMixin`
+ * // Create class `MyObject` and mix in `LogMixin`
  * class MyObject {
  * 	mixins = [LogMixin];
  *
@@ -46,10 +46,10 @@
  * }
  *
  * // Instantiate our `MyObject` class
- * const obj = new MyObject();
+ * const object = new MyObject();
  *
  * // Call our `sayHi` method under our defined `log` namespace
- * obj.log.sayHi(); // Output "Hello world" to console
+ * object.log.sayHi(); // "Hello world" is logged to the console
  */
 class Mixin {
 	/**
@@ -78,17 +78,18 @@ class Mixin {
 	/**
 	 * Apply mixins to a given object.
 	 *
-	 * "Applied" means that the mixin is constructed and the instantiated object is set as a property of the given object.
+	 * "Applied" means that the mixin is constructed and added to the object under a key defined by its namespace.
 	 *
-	 * The source object must have an instance variable `mixins` that contains an array of mixin constructors to apply. Mixins are applied in the order that they are given.
+	 * The source object must have an instance variable called `mixins` that contains an array of mixins to apply. Mixins are applied in the order that they are given.
 	 *
-	 * Every class in the array must inherit from this `Mixin` class and override its `_namespace` property.
+	 * Every class in the array must inherit from `Mixin` class and override its `_namespace` property.
 	 *
-	 * After every mixin has been applied, the `mixin` property will be removed from the source object.
+	 * After every mixin has been applied, the `mixin` property will be deleted from the source object.
 	 *
 	 * @method Whirl.mixins.Mixin.apply
 	 *
 	 * @param {object} object Instance of an object to apply the set of mixins to.
+	 * @param {Whirl.mixins.Mixin[]} [mixins] Provide the array of mixins explicitly instead of looking for the `mixins` property on the source object.
 	 *
 	 * @example
 	 * const {mixins: {Mixin, Event}} = Whirl;
@@ -101,12 +102,22 @@ class Mixin {
 	 * 		Mixin.apply(this);
 	 * 	}
 	 * }
+	 *
+	 * @example
+	 * const {mixins: {Mixin, Event}} = Whirl;
+	 *
+	 * // Add the `Event` mixin to `MyObject` explicitly
+	 * class MyObject {
+	 * 	constructor() {
+	 * 		Mixin.apply(this, [Event]);
+	 * 	}
+	 * }
 	 */
-	static apply(object) {
-		const {mixins} = object;
+	static apply(object, mixinList) {
+		const mixins = mixinList || object.mixins;
 
 		if (!mixins || !Array.isArray(mixins) || !mixins.every((m) => m.prototype instanceof Mixin)) {
-			throw new Error("Whirl | Invalid mixin type and/or format.");
+			throw new Error("Whirl | Invalid mixin type and/or format provided to `Mixin.apply`.");
 		}
 
 		mixins.forEach((mixin) => {
@@ -115,11 +126,11 @@ class Mixin {
 				throw new Error(`Whirl | Mixin "${mixin.name}" has no namespace.`);
 			}
 
-			// Create and add mixin instance to object as property under namespace
+			// Create and add mixin instance to object under its namespace
 			object[mixin._namespace] = new mixin(object);
 		});
 
-		// Remove unused 'mixins' property
+		// Remove unused 'mixins' property if it exists
 		delete object.mixins;
 	}
 }
