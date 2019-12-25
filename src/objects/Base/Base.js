@@ -52,11 +52,11 @@ class Base {
 	active = true;
 
 	/**
-	 * Allows you to store arbitrary data about this object.
+	 * Store arbitrary data related to this object.
 	 *
-	 * You can use this object to store any custom data about the object as you see fit whilst being assured to not experience any namespace conflicts.
+	 * You can use this object to store any custom data whilst being assured to not experience any namespace conflicts.
 	 *
-	 * This object is persisted during serialisation to JSON and gets sent along with the object over the network.
+	 * This object is persisted during serialisation to JSON and gets sent along with the object over the network, thus it should be [JSON serializable to avoid malformed data](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description).
 	 *
 	 * @memberof Whirl.Base#
 	 * @type {object}
@@ -87,8 +87,6 @@ class Base {
 
 	/**
 	 * Destroy this object and remove all references to it from the game instance.
-	 *
-	 * Implicitly calls the {@link Whirl.Game.ObjectManager#destroy|ObjectManager#destroy} method on this object and runs any additional cleanup necessary.
 	 *
 	 * @method Whirl.Base#destroy
 	 *

@@ -2,7 +2,7 @@ const Texture = require("../Texture/");
 
 /**
  * @classdesc
- * Represents a colour texture that is a solid colour defined by an RGB value.
+ * Represents a solid colour defined by an RGB value.
  *
  * @class Colour
  * @memberof Whirl

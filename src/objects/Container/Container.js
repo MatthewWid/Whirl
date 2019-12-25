@@ -7,9 +7,9 @@ const addInheritFilter = require("../../lib/addInheritFilter.js");
 
 /**
  * @classdesc
- * Containers are entities that contain other entities.
+ * Containers are entities that contain other entities. They allow for multiple entities to be grouped tgoether and have effects and offsets applied to them all at once.
  *
- * They allow for multiple entities to be grouped and have offsets and effects applied to them all at once.
+ * Containers can contain other containers, creating a tree that each apply their own effects to the lower levels.
  *
  * @class Container
  * @memberof Whirl
