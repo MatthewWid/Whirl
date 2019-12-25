@@ -1,10 +1,10 @@
 /**
  * @classdesc
- * The Base class is the abstract class that all objects that exist in the game instance must inherit from.
+ * Abstract class that all objects that exist in the game instance must inherit from.
  *
- * Holds attributes that are common to all game objects such as the game instance it belongs to, its unique ID in that game instance and other-such meta-data you may use when accessing existing objects or creating your own.
+ * Holds an objects' unique ID, the game instance it belongs to and other such meta-data common to all objects that exist within the game instance.
  *
- * Objects that do not inherit from the Base class cannot be added to any part of the game instance.
+ * Objects that do not inherit from the Base class cannot be added to any part of the game instance including the {@link Whirl.Game.ObjectManager|Object Manager}, {@link Whirl.Stage|Stage} or {@link Whirl.Container|Container} objects.
  *
  * @class Base
  * @memberof Whirl
@@ -21,7 +21,7 @@
  */
 class Base {
 	/**
-	 * The game instance this object belongs to.
+	 * Game instance this object belongs to.
 	 *
 	 * @memberof Whirl.Base#
 	 * @type {Whirl.Game}
@@ -30,7 +30,9 @@ class Base {
 	_game;
 
 	/**
-	 * The unique ID assigned to this object that distinguishes it from all other items in the global store.
+	 * ID assigned to this object that distinguishes it from all other items in the global store.
+	 *
+	 * This value is guarunteed to be unique amongst all other objects that exist in the same game instance.
 	 *
 	 * @memberof Whirl.Base#
 	 * @type {number}
@@ -50,11 +52,11 @@ class Base {
 	active = true;
 
 	/**
-	 * Object to store arbitrary data related to this object.
+	 * Allows you to store arbitrary data about this object.
 	 *
-	 * You can use this object to store any custom data about the object as you see fit whilst being assured to not experience any namespace conflicts and will be persisted when the object is saved or moved.
+	 * You can use this object to store any custom data about the object as you see fit whilst being assured to not experience any namespace conflicts.
 	 *
-	 * Values in this object *may* be updated by internal systems occasionally but these inserted keys are typically prefixed with an '`_`' so as to not conflict with any key you put in yourself. For this reason, you should never assign a new object to overwrite this object (`obj.data = {...}`), only set individual properties.
+	 * This object is persisted during serialisation to JSON and gets sent along with the object over the network.
 	 *
 	 * @memberof Whirl.Base#
 	 * @type {object}

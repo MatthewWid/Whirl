@@ -63,7 +63,7 @@ class ObjectManager extends Manager {
 	 *
 	 * @method Whirl.Game.ObjectManager#add
 	 *
-	 * @param {object} object Object to be added to the object manager.
+	 * @param {Base} object Object to be added to the object manager.
 	 */
 	add(object) {
 		if (!(object instanceof Base)) {
