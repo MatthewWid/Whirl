@@ -4,7 +4,7 @@
 	],
 	"templates": {
 		"systemName": "Whirl",
-		"footer": "MIT Licence",
+		"footer": "Whirl Game Engine - MIT Licenced",
 		"includeDate": false,
 		"linenums": true,
 		"sort": false
