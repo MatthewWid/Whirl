@@ -2,11 +2,11 @@ const Mixin = require("../Mixin.js");
 
 /**
  * @classdesc
- * Child system that Whirl uses to store groups of objects into a parent-child structure. A single parent can have multiple children, and those children in turn can have the child mixin, forming a tree of objects that interact with eachother.
+ * Child system used to store groups of objects into a parent-child structure. A single parent can have multiple children, and those children in turn can have the child mixin, forming a tree/hierarchy of objects.
  *
- * Parents control their children and can reference each child individually, whereas children cannot communicate with their parent directly. If you need to communicate with the parent object from the child you should make use of {@link Whirl.mixins.Event|the event system} and emit data upwards/globally or, if using a custom class, use composition over inheritance.
+ * Parents control their children and can reference each child individually. However, children do not know about their parent. If you need to communicate with the parent object from the child you should make use of {@link Whirl.mixins.Event|the event system} and emit data upwards/globally.
  *
- * Parent objects can mediate which objects are added to their pool of children by giving a validation function that filters potential children. Without this, children of any type can be added as a descendent.
+ * Parent objects can mediate which objects are added to their pool of children by giving a validation function that filters potential children.
  *
  * This mixin is stored under the `child` namespace.
  *
@@ -63,6 +63,8 @@ class ChildMixin extends Mixin {
 	/**
 	 * Add one or many objects as direct children of this object.
 	 *
+	 * Objects may not necessarily be added if the parent rejects it {@link Whirl.mixins.Child#onAdd|because of its filtering function}.
+	 *
 	 * @method Whirl.mixins.Child#add
 	 *
 	 * @param {any|any[]} object Object or array of objects to be added as children.
@@ -92,13 +94,17 @@ class ChildMixin extends Mixin {
 	/**
 	 * Filter children during the process of retrieving the list of direct descendents. Each time the function is called a single child is passed to it.
 	 *
+	 * Returning `true` implies the child should be included, `false` will remove it from the list of returned children.
+	 *
 	 * @callback Whirl.mixins.Child~getFilter
 	 * @param {any} child Child object to check if it should be included.
 	 * @return {boolean} `true` implies the child should be included, `false` will remove it from the list of returned children.
 	 */
 
 	/**
-	 * Get all of the direct children of this object. Optionally filter the returned children using a given filter function.
+	 * Get all children of this object. Optionally filter the returned children using a given filter function.
+	 *
+	 * Will return only the direct children of this object and will not go deeper into the tree if any children in-turn have the ChildMixin (thus being parents), too.
 	 *
 	 * @method Whirl.mixins.Child#get
 	 *
@@ -114,7 +120,11 @@ class ChildMixin extends Mixin {
 	}
 
 	/**
-	 * Remove a specific item from this list, or remove all items at once.
+	 * Remove a specific child or remove all children at once.
+	 *
+	 * The given object is checked against the list of children using [strict/referential equality](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Identity).
+	 *
+	 * Will remove all instances, including duplicates, of the given object. For example, if an object is added multiple times as a child then a single call to the `remove` method is made, all duplicate instances of the object will be removed at once.
 	 *
 	 * @method Whirl.mixins.Child#remove
 	 *
@@ -146,7 +156,7 @@ class ChildMixin extends Mixin {
 	 *
 	 * If an array of children are added, this function will be called on each child individually.
 	 *
-	 * Optionally, return `false` to reject the object from being added as a child.
+	 * Optionally return `false` to reject the object from being added as a child.
 	 *
 	 * @method Whirl.mixins.Child#onAdd
 	 *
