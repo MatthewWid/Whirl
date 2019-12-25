@@ -17,6 +17,8 @@ const addInheritFilter = require("../../lib/addInheritFilter.js");
  * @mixes Whirl.mixins.Child
  *
  * @param {Whirl.Game} game Game instance this container belongs to and should be managed by.
+ * @param {object} [options] Optional presets when initialising this object.
+ * @param {Entity[]} [children] Array of children to initialise into this container.
  *
  * @example
  * game.Container({}, [child1, child2]);
