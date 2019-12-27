@@ -6,51 +6,51 @@ const Point = require("../Point/");
  *
  * Can be used for things such as ray-tracing, distance calculations, sight-line checks, etc.
  *
- * Lines are constructed using the `Whirl.shapes.Line` factory method, but the underlying class can be accessed with `Whirl.shapes.Line._class`.
+ * Lines are constructed using the `Whirl.geometry.Line` factory method, but the underlying class can be accessed with `Whirl.geometry.Line._class`.
  *
  * @class Line
- * @memberof Whirl.shapes
+ * @memberof Whirl.geometry
  *
- * @param {number|Whirl.shapes.Point} [x1=0] X-coordinate of the starting point. If giving an instance of a Point the `y1` parameter should also be a Point.
- * @param {number|Whirl.shapes.Point} [y1=0] Y-coordinate of the starting point. If *both* `x1` and `y1` are instead instances of a Point then the starting point is defined by the first given Point, and the ending point is defined by the second.
+ * @param {number|Whirl.geometry.Point} [x1=0] X-coordinate of the starting point. If giving an instance of a Point the `y1` parameter should also be a Point.
+ * @param {number|Whirl.geometry.Point} [y1=0] Y-coordinate of the starting point. If *both* `x1` and `y1` are instead instances of a Point then the starting point is defined by the first given Point, and the ending point is defined by the second.
  * @param {number} [x2=0] X-coordinate of the ending point.
  * @param {number} [y2=0] Y-coordinate of the ending point.
  *
  * @example
- * Whirl.shapes.Line(50, 50, 100, 100); // Line {x1: 50, y1: 50, x2: 100, y2: 100}
+ * Whirl.geometry.Line(50, 50, 100, 100); // Line {x1: 50, y1: 50, x2: 100, y2: 100}
  *
  * @example
- * Whirl.shapes.Line(
- * 	Whirl.shapes.Point(50, 50),
- * 	Whirl.shapes.Point(100, 100),
+ * Whirl.geometry.Line(
+ * 	Whirl.geometry.Point(50, 50),
+ * 	Whirl.geometry.Point(100, 100),
  * ); // Line {x1: 50, y1: 50, x2: 100, y2: 100}
  */
 class Line {
 	/**
 	 * X-coordinate of the starting point.
 	 *
-	 * @memberof Whirl.shapes.Line#
+	 * @memberof Whirl.geometry.Line#
 	 * @type {number}
 	 */
 	x1;
 	/**
 	 * Y-coordinate of the starting point.
 	 *
-	 * @memberof Whirl.shapes.Line#
+	 * @memberof Whirl.geometry.Line#
 	 * @type {number}
 	 */
 	y1;
 	/**
 	 * X-coordinate of the ending point.
 	 *
-	 * @memberof Whirl.shapes.Line#
+	 * @memberof Whirl.geometry.Line#
 	 * @type {number}
 	 */
 	x2;
 	/**
 	 * Y-coordinate of the ending point.
 	 *
-	 * @memberof Whirl.shapes.Line#
+	 * @memberof Whirl.geometry.Line#
 	 * @type {number}
 	 */
 	y2;
@@ -72,12 +72,12 @@ class Line {
 	/**
 	 * Total length of this line.
 	 *
-	 * @alias Whirl.shapes.Line#length
+	 * @alias Whirl.geometry.Line#length
 	 * @type {number}
 	 * @readonly
 	 *
 	 * @example
-	 * Whirl.shapes.Line(50, 50, 100, 100).length; // 70.710~...
+	 * Whirl.geometry.Line(50, 50, 100, 100).length; // 70.710~...
 	 */
 	get length() {
 		return Math.hypot(this.x1 - this.x2, this.y1 - this.y2);
@@ -87,12 +87,12 @@ class Line {
 	 * Returns an array of Points representing the two vertices of this line.
 	 * The first Point represents the starting point of the line, and the second Point represents the ending point.
 	 *
-	 * @alias Whirl.shapes.Line#vertices
-	 * @type {Whirl.shapes.Point[]}
+	 * @alias Whirl.geometry.Line#vertices
+	 * @type {Whirl.geometry.Point[]}
 	 * @readonly
 	 *
 	 * @example
-	 * Whirl.shapes.Line(50, 50, 100, 100).vertices;
+	 * Whirl.geometry.Line(50, 50, 100, 100).vertices;
 	 * // [
 	 * //		Point {x: 50, y: 50},
 	 * //		Point {x: 100, y: 100},

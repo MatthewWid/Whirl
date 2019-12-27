@@ -22,7 +22,7 @@ const addInheritFilter = require("../../lib/addInheritFilter.js");
  *
  * @param {Whirl.Game} game Game instance this stage belongs to and should be managed by.
  * @param {object} [options] Optional presets when initialising this object.
- * @param {Whirl.shapes.Rectangle} options.limit Position and size of the game world. Alternatively, give each dimension of the world border manually with the `x`, `y`, `w` and `h` options.
+ * @param {Whirl.geometry.Rectangle} options.limit Position and size of the game world. Alternatively, give each dimension of the world border manually with the `x`, `y`, `w` and `h` options.
  *
  * Passed as reference - changing properties of the given Rectangle instance will also affect this stage's limit in response.
  * @param {number} options.x=0 X-coordinate of the stage limit.
@@ -33,11 +33,11 @@ const addInheritFilter = require("../../lib/addInheritFilter.js");
  *
  * @example
  * game.Stage({
- * 	limit: Whirl.shapes.Rectangle(0, 0, 400, 400)
+ * 	limit: Whirl.geometry.Rectangle(0, 0, 400, 400)
  * });
  * // or
  * Whirl.Stage(game, {
- * 	limit: Whirl.shapes.Rectangle(0, 0, 400, 400)
+ * 	limit: Whirl.geometry.Rectangle(0, 0, 400, 400)
  * });
  */
 class Stage extends Base {
@@ -53,7 +53,7 @@ class Stage extends Base {
 	 * * Not be able to leave the world limit.
 	 *
 	 * @memberof Whirl.Stage#
-	 * @type {Whirl.shapes.Rectangle}
+	 * @type {Whirl.geometry.Rectangle}
 	 */
 	limit;
 

@@ -18,24 +18,24 @@ const {Rectangle, Point} = require("../../geometry/");
  *
  * @param {Whirl.Game} game Game instance this sprite belongs to and should be managed by.
  * @param {object} [options] Optional presets when initialising this object.
- * @param {Whirl.shapes.Rectangle} options.bounds Position and size of this sprite. Alternatively, give each value individually with the `x`, `y`, `w` and `h` options.
+ * @param {Whirl.geometry.Rectangle} options.bounds Position and size of this sprite. Alternatively, give each value individually with the `x`, `y`, `w` and `h` options.
  *
  * Passed as reference - changing properties of the given Rectangle instance will also affect this sprite's `bounds` property in response.
  * @param {number} options.x=0 X-coordinate of this sprite.
  * @param {number} options.y=0 Y-coordinate of this sprite.
  * @param {number} options.w=0 Width of the rendered sprite.
  * @param {number} options.h=0 Height of the rendered sprite.
- * @param {Whirl.shapes.Point} options.anchor Initial anchor point that defines the origin point of this sprite's rendered position between `0` and `1`. Alternatively, give each anchor value individually with the `anchorX` and `anchorY` values.
+ * @param {Whirl.geometry.Point} options.anchor Initial anchor point that defines the origin point of this sprite's rendered position between `0` and `1`. Alternatively, give each anchor value individually with the `anchorX` and `anchorY` values.
  * @param {number} options.anchorX=0 X-coordinate of this sprite's anchor point.
  * @param {number} options.anchorY=0 Y-coordinate of this sprite's anchor point.
  *
  * @example
  * game.Sprite({
- * 	bounds: Whirl.shapes.Rectangle(200, 200, 50, 50)
+ * 	bounds: Whirl.geometry.Rectangle(200, 200, 50, 50)
  * });
  * // or
  * Whirl.Sprite(game, {
- * 	bounds: Whirl.shapes.Rectangle(200, 200, 50, 50)
+ * 	bounds: Whirl.geometry.Rectangle(200, 200, 50, 50)
  * });
  */
 class Sprite extends Entity {
@@ -45,7 +45,7 @@ class Sprite extends Entity {
 	 * Note that Sprite bounds do not affect its physics body. You could even have the Sprite render at a completely different location to its physics body but still be moved when the body is moved from a different location.
 	 *
 	 * @memberof Whirl.Sprite#
-	 * @type {Whirl.shapes.Rectangle}
+	 * @type {Whirl.geometry.Rectangle}
 	 * @default (0, 0, 0, 0)
 	 */
 	bounds;
@@ -54,7 +54,7 @@ class Sprite extends Entity {
 	 * Anchor/Origin point of the sprite's rendered position. This value should be between `0` and `1` as a percentage through the bounds of the sprite where `(0, 0)` is the top-left-most point, and `(1, 1)` is the bottom-right-most point.
 	 *
 	 * @memberof Whirl.Sprite#
-	 * @type {Whirl.shapes.Point}
+	 * @type {Whirl.geometry.Point}
 	 * @default (0, 0)
 	 */
 	anchor;

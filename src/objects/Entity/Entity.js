@@ -19,7 +19,7 @@ const getValue = require("../../lib/getValue.js");
  * @param {number} options.alpha=1 Alpha/Transparency of this entity.
  * @param {number} options.scale=1 Scale of this entity. Increasing this value enlargens the object, decreasing it makes it smaller.
  * @param {number} options.layer=0 Z-layer this object should be rendered on. Objects with a higher `layer` value that are on the same implicit level as other objects with a lower `layer` value will be rendered on top.
- * @param {Whirl.shapes.Rectangle} options.body Rectangle shape used as the physics body for this entity.
+ * @param {Whirl.geometry.Rectangle} options.body Rectangle shape used as the physics body for this entity.
  *
  * @example
  * class MyObject extends Whirl.Entity {
@@ -89,7 +89,7 @@ class Entity extends Base {
 	 * The rendered output of an entity and its physics body are two separate items. The physics body could be at a completey separate location and size to where the entity is rendered, but can be configured to always be in the same position and size of the entity.
 	 *
 	 * @memberof Whirl.Entity#
-	 * @type {Whirl.shapes.Rectangle}
+	 * @type {Whirl.geometry.Rectangle}
 	 * @default {null}
 	 */
 	body;

@@ -19,14 +19,14 @@ const getValue = require("../../lib/getValue.js");
  *
  * @param {Whirl.Game} game Game instance this viewport belongs to and should be managed by.
  * @param {object} [options] Optional presets when initialising this object.
- * @param {Whirl.shapes.Rectangle} options.bounds Set the bounds of the clipping plane. Alternatively, give each dimension of the clipping plane manually with the `x`, `y`, `w` and `h` options.
+ * @param {Whirl.geometry.Rectangle} options.bounds Set the bounds of the clipping plane. Alternatively, give each dimension of the clipping plane manually with the `x`, `y`, `w` and `h` options.
  *
  * Passed as reference - changing properties of the given Rectangle instance will also affect this viewports bounds in response.
  * @param {number} options.x=0 X-coordinate of the clipping plane relative to the screen.
  * @param {number} options.y=0 Y-coordinate of the clipping plane relative to the screen.
  * @param {number} options.w=0 Width of the clipping plane.
  * @param {number} options.h=0 Height of the clipping plane.
- * @param {Whirl.shapes.Point} options.scroll Set the initial scroll value around the world. Alternatively, give each scroll value individually with the `scrollX` and `scrollY` options.
+ * @param {Whirl.geometry.Point} options.scroll Set the initial scroll value around the world. Alternatively, give each scroll value individually with the `scrollX` and `scrollY` options.
  * @param {number} options.scrollX=0 X-coordinate of the scroll position.
  * @param {number} options.scrollY=0 Y-coordinate of the scroll position.
  * @param {boolean} options.clip=true Remove all pixels that are outside of the clipping plane from the rendered output on the canvas.
@@ -99,7 +99,7 @@ class Viewport extends Base {
 	 * Defaults to position `(0, 0)` and dimensions `0x0`.
 	 *
 	 * @memberof Whirl.Viewport#
-	 * @type {Whirl.shapes.Rectangle}
+	 * @type {Whirl.geometry.Rectangle}
 	 */
 	bounds;
 
@@ -111,7 +111,7 @@ class Viewport extends Base {
 	 * Defaults to `(0, 0)`.
 	 *
 	 * @memberof Whirl.Viewport#
-	 * @type {Whirl.shapes.Point}
+	 * @type {Whirl.geometry.Point}
 	 */
 	scroll;
 
@@ -270,7 +270,7 @@ class Viewport extends Base {
 	 *
 	 * @method Whirl.Viewport#scrollTo
 	 *
-	 * @param {number|Whirl.shapes.Point} px X-position of the point to scroll to. An instance of a Point object can be given instead to scroll to the position with the same coordinates as the Point object.
+	 * @param {number|Whirl.geometry.Point} px X-position of the point to scroll to. An instance of a Point object can be given instead to scroll to the position with the same coordinates as the Point object.
 	 * @param {number} [py] Y-coordinate of the point to scroll to.
 	 * @returns {this}
 	 *
@@ -279,7 +279,7 @@ class Viewport extends Base {
 	 *
 	 * @example
 	 * viewport.scrollTo(
-	 * 	Whirl.shapes.Point(50, 75)
+	 * 	Whirl.geometry.Point(50, 75)
 	 * );
 	 */
 	scrollTo(px, py) {
