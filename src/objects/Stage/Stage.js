@@ -62,7 +62,7 @@ class Stage extends Base {
 
 		mixin(this);
 
-		this.child.onAdd = addInheritFilter(this, "Stage", Entity);
+		this.child.onAdd = addInheritFilter(this, Entity);
 
 		this.child.add(children);
 

@@ -33,7 +33,7 @@ class Container extends Entity {
 
 		mixin(this);
 
-		this.child.onAdd = addInheritFilter(this, "Container", Entity);
+		this.child.onAdd = addInheritFilter(this, Entity, (object) => (object.parent = this));
 
 		this.child.add(children);
 	}
