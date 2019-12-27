@@ -6,6 +6,7 @@
  * @abstract
  * @class Manager
  * @memberof Whirl.Game
+ *
  * @see Whirl.Game
  */
 class Manager {

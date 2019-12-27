@@ -1,3 +1,5 @@
+const Geometry = require("../Geometry.js");
+
 /**
  * @classdesc
  * Represents a point in space defined by an X and Y value.

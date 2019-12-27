@@ -9,6 +9,7 @@
  * @memberof Whirl
  */
 module.exports = {
+	Geometry: require("./Geometry.js"),
 	Circle: require("./Circle/"),
 	Line: require("./Line/"),
 	Rectangle: require("./Rectangle/"),

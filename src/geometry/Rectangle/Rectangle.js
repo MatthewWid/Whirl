@@ -1,3 +1,4 @@
+const Geometry = require("../Geometry.js");
 const Point = require("../Point/");
 
 /**
