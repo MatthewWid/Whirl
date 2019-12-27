@@ -93,6 +93,9 @@ class Sprite extends Entity {
 		}
 
 		this.setFill(options.fill);
+
+		// Set initial state of `derived`
+		this.derived.bounds = this.bounds.duplicate();
 	}
 
 	/**

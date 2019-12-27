@@ -94,6 +94,21 @@ class Entity extends Base {
 	 */
 	body;
 
+	/**
+	 * Derived values of this Entity, taking into account offsets from the parent object, the object anchor, physics updates, etc.
+	 *
+	 * Represents the *actual* values of the Entity after all updates and modifications have been applied. Rendering and physics systems will use this value to know exactly where the Entity is on the screen.
+	 *
+	 * Each object's value is derived from its own value multiplied by the same value on its parent. This way, values cascade down the tree of objects and changes made in a parent container will affect all of its nested children.
+	 *
+	 * You should only rely on this object being in a consistent state when the {@link Whirl.Game#event:didUpdate|Game 'didUpdate' event} fires as it is calculated during the update step.
+	 *
+	 * @memberof Whirl.Entity#
+	 * @type {object}
+	 * @default {}
+	 */
+	derived = {};
+
 	constructor(game, options = {}) {
 		super(game);
 
@@ -104,6 +119,29 @@ class Entity extends Base {
 		this.layer = getValue(options, "layer", 0);
 
 		this.body = getValue(options, "body");
+
+		this.derived = {
+			alpha: this.alpha,
+			scale: this.scale,
+			layer: this.layer,
+		};
+	}
+
+	/**
+	 * Calculate the `derived` value of this Entity, taking into account any offsets applied by the parent container, viewport, stage and game.
+	 *
+	 * @method Whirl.Entity#calculateDerived
+	 *
+	 * @returns {this}
+	 */
+	calculateDerived() {
+		if (this.parent) {
+			this.derived.alpha = this.alpha * this.parent.derived.alpha;
+			this.derived.scale = this.scale * this.parent.derived.scale;
+			this.derived.layer = this.layer + this.parent.derived.layer;
+		}
+
+		return this;
 	}
 
 	/**
