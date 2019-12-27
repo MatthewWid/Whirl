@@ -5,6 +5,7 @@ node_modules
 build/*
 doc/*
 !doc/logo/
+!doc/doc/
 .vscode/
 
 # examples
