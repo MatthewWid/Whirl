@@ -17,14 +17,14 @@ const addInheritFilter = require("../../lib/addInheritFilter.js");
  *
  * @class Stage
  * @memberof Whirl
- * @extends Whirl.Base
+ * @extends Whirl.Entity
  * @mixes Whirl.mixins.Child
  *
  * @param {Whirl.Game} game Game instance this stage belongs to and should be managed by.
  * @param {object} [options] Optional presets when initialising this object.
- * @param {Whirl.geometry.Rectangle} options.limit Position and size of the game world. Alternatively, give each dimension of the world border manually with the `x`, `y`, `w` and `h` options.
+ * @param {Whirl.geometry.Rectangle} options.limits Position and size of the game world. Alternatively, give each dimension of the world border manually with the `x`, `y`, `w` and `h` options.
  *
- * Passed as reference - changing properties of the given Rectangle instance will also affect this stage's limit in response.
+ * Passed as reference - changing properties of the given Rectangle instance will also affect the stage world limit.
  * @param {number} options.x=0 X-coordinate of the stage limit.
  * @param {number} options.y=0 Y-coordinate of the stage limit.
  * @param {number} options.w=0 Width of the stage limit.
@@ -55,7 +55,7 @@ class Stage extends Base {
 	 * @memberof Whirl.Stage#
 	 * @type {Whirl.geometry.Rectangle}
 	 */
-	limit;
+	limits;
 
 	constructor(game, options = {}, children = []) {
 		super(game);
@@ -66,10 +66,10 @@ class Stage extends Base {
 
 		this.child.add(children);
 
-		if (options.limit instanceof Rectangle._class) {
-			this.limit = options.limit;
+		if (options.limits instanceof Rectangle._class) {
+			this.limits = options.limits;
 		} else {
-			this.limit = Rectangle(
+			this.limits = Rectangle(
 				getValue(options, "x", 0),
 				getValue(options, "y", 0),
 				getValue(options, "w", 0),
