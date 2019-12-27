@@ -170,12 +170,6 @@ class Viewport extends Base {
 		this.setCanvas(options.canvas, options.resize);
 
 		options.stage && this.setStage(options.stage);
-
-		this._game.event.on("didDestroy", ({object}) => {
-			if (this.stage === object) {
-				this.setStage(null);
-			}
-		});
 	}
 
 	/**

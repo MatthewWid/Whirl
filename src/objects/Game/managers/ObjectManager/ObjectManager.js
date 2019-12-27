@@ -141,6 +141,12 @@ class ObjectManager extends Manager {
 
 		if (object instanceof Stage) {
 			this._stages = this._stages.filter((item) => object._id !== item._id);
+
+			this._viewports.forEach((viewport) => {
+				if (viewport.stage === object) {
+					viewport.setStage(null);
+				}
+			});
 		}
 
 		/**
