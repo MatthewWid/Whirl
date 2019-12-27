@@ -1,6 +1,6 @@
 const Base = require("../Base/");
 const Stage = require("../Stage/");
-const {Rectangle, Point} = require("../../shapes/");
+const {Rectangle, Point} = require("../../geometry/");
 const getValue = require("../../lib/getValue.js");
 
 /**

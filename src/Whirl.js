@@ -2,7 +2,7 @@ const math = require("./math/");
 const easing = require("./easing/");
 const util = require("./util/");
 const keys = require("./keys/");
-const shapes = require("./shapes/");
+const geometry = require("./geometry/");
 const mixins = require("./mixins/");
 const {
 	Base,
@@ -39,7 +39,7 @@ class Whirl {
 	static easing = easing;
 	static util = util;
 	static keys = keys;
-	static shapes = shapes;
+	static geometry = geometry;
 	static mixins = mixins;
 
 	// Game Objects

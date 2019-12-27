@@ -1,4 +1,4 @@
-const Point = require("./Point.js");
+const Point = require("../Point/");
 
 /**
  * @classdesc

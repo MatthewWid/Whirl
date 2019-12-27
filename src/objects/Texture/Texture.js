@@ -1,5 +1,5 @@
 const Base = require("../Base/");
-const {Rectangle} = require("../../shapes");
+const {Rectangle} = require("../../geometry/");
 
 /**
  * @classdesc

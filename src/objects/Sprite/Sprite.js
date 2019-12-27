@@ -2,7 +2,7 @@ const Entity = require("../Entity/");
 const Texture = require("../Texture/");
 const Colour = require("../Colour/");
 const getValue = require("../../lib/getValue.js");
-const {Rectangle, Point} = require("../../shapes/");
+const {Rectangle, Point} = require("../../geometry/");
 
 /**
  * @classdesc

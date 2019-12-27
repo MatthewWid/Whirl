@@ -4,7 +4,7 @@ const {
 	Mixin: {apply: mixin},
 	Child,
 } = require("../../mixins/");
-const {Rectangle} = require("../../shapes/");
+const {Rectangle} = require("../../geometry/");
 const addInheritFilter = require("../../lib/addInheritFilter.js");
 
 /**
