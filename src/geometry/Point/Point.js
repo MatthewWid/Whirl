@@ -1,4 +1,5 @@
 const Geometry = require("../Geometry.js");
+const getValue = require("../../lib/getValue.js");
 
 /**
  * @classdesc
@@ -10,6 +11,7 @@ const Geometry = require("../Geometry.js");
  *
  * @class Point
  * @memberof Whirl.geometry
+ * @extends Whirl.geometry.Geometry
  *
  * @param {number} [x=0] X-coordinate of the point.
  * @param {number} [y=0] Y-coordinate of the point.
@@ -17,7 +19,7 @@ const Geometry = require("../Geometry.js");
  * @example
  * Whirl.geometry.Point(50, 90); // Point {x: 50, y: 90}
  */
-class Point {
+class Point extends Geometry {
 	/**
 	 * X-coordiante of the point object.
 	 *
@@ -25,6 +27,7 @@ class Point {
 	 * @type {number}
 	 */
 	x;
+
 	/**
 	 * Y-coordinate of the point object.
 	 *
@@ -34,8 +37,17 @@ class Point {
 	y;
 
 	constructor(x, y) {
+		super();
+
 		this.x = x || 0;
 		this.y = y || 0;
+	}
+
+	set(properties = {}) {
+		this.x = getValue(properties, "x", this.x);
+		this.y = getValue(properties, "y", this.y);
+
+		return this;
 	}
 
 	/**

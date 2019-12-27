@@ -1,5 +1,6 @@
 const Geometry = require("../Geometry.js");
 const Point = require("../Point/");
+const getValue = require("../../lib/getValue.js");
 
 /**
  * @classdesc
@@ -11,6 +12,7 @@ const Point = require("../Point/");
  *
  * @class Circle
  * @memberof Whirl.geometry
+ * @extends Whirl.geometry.Geometry
  *
  * @param {number|Whirl.geometry.Point} [x=0] X-coordinate of the center-point. If giving an instance of a Point then the first argument should be the Point instance, and the second argument should be the radius, instead.
  * @param {number} [y=0] Y-coordinate of the center-point. If the first argument is a Point instance then this argument represents the radius, instead.
@@ -25,7 +27,7 @@ const Point = require("../Point/");
  * 	50,
  * ); // Circle {x: 25, y: 25, r: 50}
  */
-class Circle {
+class Circle extends Geometry {
 	/**
 	 * X-coordinate of the center-point.
 	 *
@@ -33,6 +35,7 @@ class Circle {
 	 * @type {number}
 	 */
 	x;
+
 	/**
 	 * Y-coordinate of the center-point.
 	 *
@@ -40,6 +43,7 @@ class Circle {
 	 * @type {number}
 	 */
 	y;
+
 	/**
 	 * Radius of the circle.
 	 *
@@ -49,6 +53,8 @@ class Circle {
 	r;
 
 	constructor(x, y, r) {
+		super();
+
 		if (x instanceof Point._class) {
 			this.x = x.x;
 			this.y = x.y;
@@ -58,6 +64,14 @@ class Circle {
 			this.y = y || 0;
 			this.r = r || 0;
 		}
+	}
+
+	set(properties = {}) {
+		this.x = getValue(properties, "x", this.x);
+		this.y = getValue(properties, "y", this.y);
+		this.r = getValue(properties, "r", this.r);
+
+		return this;
 	}
 
 	/**

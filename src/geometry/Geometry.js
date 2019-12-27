@@ -18,7 +18,7 @@ class Geometry {
 	 * @param {object} [properties] Properties to override the existing properties of this object with.
 	 * @returns {this}
 	 */
-	set(properties) {
+	set(properties = {}) {
 		return this;
 	}
 }

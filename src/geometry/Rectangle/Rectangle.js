@@ -1,5 +1,6 @@
 const Geometry = require("../Geometry.js");
 const Point = require("../Point/");
+const getValue = require("../../lib/getValue.js");
 
 /**
  * @classdesc
@@ -11,6 +12,7 @@ const Point = require("../Point/");
  *
  * @class Rectangle
  * @memberof Whirl.geometry
+ * @extends Whirl.geometry.Geometry
  *
  * @param {number|Whirl.geometry.Point} [x=0] X-coordinate of the top-left origin point. If giving an instance of a Point the `y` parameter should also be a Point.
  * @param {number|Whirl.geometry.Point} [y=0] Y-coordinate of the top-left origin point. If *both* `x` and `y` are instead instances of a Point then the top-left point of the rectangle is defined by the first given Point, and the bottom-right point is defined by the second.
@@ -26,7 +28,7 @@ const Point = require("../Point/");
  * 	Whirl.geometry.Point(140, 130)
  * ); // Rectangle {x: 40, y: 30, w: 100, h: 100}
  */
-class Rectangle {
+class Rectangle extends Geometry {
 	/**
 	 * X-coordinate of the top-left point of the rectangle.
 	 *
@@ -34,6 +36,7 @@ class Rectangle {
 	 * @type {number}
 	 */
 	x;
+
 	/**
 	 * Y-coordinate of the top-left point of the rectangle.
 	 *
@@ -41,6 +44,7 @@ class Rectangle {
 	 * @type {number}
 	 */
 	y;
+
 	/**
 	 * Width of the rectangle.
 	 *
@@ -48,6 +52,7 @@ class Rectangle {
 	 * @type {number}
 	 */
 	w;
+
 	/**
 	 * Height of the rectangle.
 	 *
@@ -57,6 +62,8 @@ class Rectangle {
 	h;
 
 	constructor(x, y, w, h) {
+		super();
+
 		if (x instanceof Point._class && y instanceof Point._class) {
 			this.x = x.x;
 			this.y = x.y;
@@ -68,6 +75,15 @@ class Rectangle {
 			this.w = w || 0;
 			this.h = h || 0;
 		}
+	}
+
+	set(properties = {}) {
+		this.x = getValue(properties, "x", this.x);
+		this.y = getValue(properties, "y", this.y);
+		this.w = getValue(properties, "w", this.w);
+		this.h = getValue(properties, "h", this.h);
+
+		return this;
 	}
 
 	/**

@@ -1,5 +1,6 @@
 const Geometry = require("../Geometry.js");
 const Point = require("../Point/");
+const getValue = require("../../lib/getValue.js");
 
 /**
  * @classdesc
@@ -11,6 +12,7 @@ const Point = require("../Point/");
  *
  * @class Line
  * @memberof Whirl.geometry
+ * @extends Whirl.geometry.Geometry
  *
  * @param {number|Whirl.geometry.Point} [x1=0] X-coordinate of the starting point. If giving an instance of a Point the `y1` parameter should also be a Point.
  * @param {number|Whirl.geometry.Point} [y1=0] Y-coordinate of the starting point. If *both* `x1` and `y1` are instead instances of a Point then the starting point is defined by the first given Point, and the ending point is defined by the second.
@@ -26,7 +28,7 @@ const Point = require("../Point/");
  * 	Whirl.geometry.Point(100, 100),
  * ); // Line {x1: 50, y1: 50, x2: 100, y2: 100}
  */
-class Line {
+class Line extends Geometry {
 	/**
 	 * X-coordinate of the starting point.
 	 *
@@ -34,6 +36,7 @@ class Line {
 	 * @type {number}
 	 */
 	x1;
+
 	/**
 	 * Y-coordinate of the starting point.
 	 *
@@ -41,6 +44,7 @@ class Line {
 	 * @type {number}
 	 */
 	y1;
+
 	/**
 	 * X-coordinate of the ending point.
 	 *
@@ -48,6 +52,7 @@ class Line {
 	 * @type {number}
 	 */
 	x2;
+
 	/**
 	 * Y-coordinate of the ending point.
 	 *
@@ -57,6 +62,8 @@ class Line {
 	y2;
 
 	constructor(x1, y1, x2, y2) {
+		super();
+
 		if (x1 instanceof Point._class && y1 instanceof Point._class) {
 			this.x1 = x1.x;
 			this.y1 = x1.y;
@@ -68,6 +75,15 @@ class Line {
 			this.x2 = x2 || 0;
 			this.y2 = y2 || 0;
 		}
+	}
+
+	set(properties = {}) {
+		this.x1 = getValue(properties, "x1", this.x1);
+		this.y1 = getValue(properties, "y1", this.y1);
+		this.x2 = getValue(properties, "x2", this.x2);
+		this.y2 = getValue(properties, "y2", this.y2);
+
+		return this;
 	}
 
 	/**
