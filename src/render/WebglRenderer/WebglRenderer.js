@@ -14,7 +14,22 @@ const Renderer = require("../Renderer.js");
  * });
  */
 class WebglRenderer extends Renderer {
-	getContext = (canvas) => canvas.getContext("experimental-webgl");
+	getContext = (canvas) => {
+		const canvasElement = document.querySelector(canvas || this._game.config.get("canvas"));
+
+		if (!canvasElement) {
+			this._game.debug.error("Cannot find the given canvas element to render to.", "WebglRenderer");
+
+			return {};
+		}
+
+		const canvasContext = canvasElement.getContext("experimental-webgl");
+
+		return {
+			canvas: canvasElement,
+			ctx: canvasContext,
+		};
+	};
 
 	render(ctx, viewport, objects) {}
 }

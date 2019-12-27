@@ -56,26 +56,13 @@ const getValue = require("../../lib/getValue.js");
  */
 class Viewport extends Base {
 	/**
-	 * Reference to the canvas that this viewport will render to.
-	 *
-	 * Do not modify this property directly. Instead, use the `setCanvas` method.
+	 * Holds contextual information relevant to rendering this individual viewport.
 	 *
 	 * @memberof Whirl.Viewport#
-	 * @type {HTMLElement}
+	 * @type {Whirl.render.Renderer~RenderContext}
 	 * @readonly
 	 */
-	_canvas;
-
-	/**
-	 * Reference to the 2D rendering context of the canvas to render to.
-	 *
-	 * Do not modify this property directly. Instead, use the `setCanvas` method.
-	 *
-	 * @memberof Whirl.Viewport#
-	 * @type {CanvasRenderingContext2D}
-	 * @readonly
-	 */
-	_ctx;
+	render;
 
 	/**
 	 * Reference to the Stage used for rendering.
@@ -206,21 +193,12 @@ class Viewport extends Base {
 	 * viewport.setCanvas("#myDifferentCanvas", true);
 	 */
 	setCanvas(selector = this._game.config.get("canvas"), resize = false) {
-		const canvas = document.querySelector(selector);
-
-		if (!canvas) {
-			this._game.debug.error("Cannot find the given canvas element to render to.", "Viewport");
-
-			return this;
-		}
+		this.render = this._game.render.renderer.getContext(selector);
 
 		if (resize) {
-			canvas.width = this.bounds.w;
-			canvas.height = this.bounds.h;
+			this.render.canvas.width = this.bounds.w;
+			this.render.canvas.height = this.bounds.h;
 		}
-
-		this._canvas = canvas;
-		this._ctx = this._game.render.renderer.getContext(this._canvas);
 
 		return this;
 	}

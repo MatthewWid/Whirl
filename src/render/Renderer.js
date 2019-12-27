@@ -36,13 +36,25 @@ class Renderer {
 	}
 
 	/**
-	 * Process and retrieve a context object to be used for rendering by a viewport.
+	 * Contextual information relevant to rendering a single screen or viewport.
+	 *
+	 * During the rendering process, the currently plugged in render system ({@link Whirl.render.Canvas|Canvas} by default) be provided with this object from each viewport to know which canvas to render to and how to render onto it.
+	 *
+	 * Render systems can also add extra properties to this object that may hold additional necessary data for rendering with different systems or engines.
+	 *
+	 * @typedef {object} Whirl.render.Renderer~RenderContext
+	 * @property {Element} canvas Reference to the [canvas](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) that this viewport will render to.
+	 * @property {RenderingContext} ctx Reference to the [2D rendering context of the canvas](https://developer.mozilla.org/en-US/docs/Web/API/RenderingContext) currently being used.
+	 */
+
+	/**
+	 * Process and generate a rendering context object needed to render
 	 *
 	 * @method Whirl.render.Renderer#getContext
 	 *
 	 * @abstract
-	 * @param {HTMLElement} canvas Reference to the canvas element to render to.
-	 * @returns {RenderingContext} Canvas context to be used for rendering - Eg, {@link https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D|CanvasRenderingContext2D}, {@link https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext|WebGLRenderingContext}, etc.
+	 * @param {string} [canvas={@link Whirl.Game.ConfigManager#canvas|ConfigManager 'canvas' property}] Selector for an [HTML \<canvas\> element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) to render to.
+	 * @returns {Whirl.render.Renderer~RenderContext} Canvas context to be used for rendering - Eg, {@link https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D|CanvasRenderingContext2D}, {@link https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext|WebGLRenderingContext}, etc.
 	 */
 	getContext(canvas) {}
 
@@ -59,7 +71,7 @@ class Renderer {
 	render(ctx, viewport, objects) {}
 
 	/**
-	 * Render a given Sprite.
+	 * Render an individual Sprite.
 	 *
 	 * @method Whirl.render.Renderer#Sprite
 	 *
