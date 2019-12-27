@@ -18,9 +18,17 @@ class Geometry {
 	 * @param {object} [properties] Properties to override the existing properties of this object with.
 	 * @returns {this}
 	 */
-	set(properties = {}) {
-		return this;
-	}
+	set(properties = {}) {}
+
+	/**
+	 * Get a new instance of this geometry with the same values as the current instance.
+	 *
+	 * @abstract
+	 * @method Whirl.geometry.Geometry#duplicate
+	 *
+	 * @returns {Whirl.geometry.Geometry}
+	 */
+	duplicate() {}
 }
 
 module.exports = Geometry;

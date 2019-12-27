@@ -169,6 +169,10 @@ class Rectangle extends Geometry {
 
 		return this.x <= x && this.x + this.w >= x && this.y <= y && this.y + this.h >= y;
 	}
+
+	duplicate() {
+		return new Rectangle(this.x, this.y, this.w, this.h);
+	}
 }
 
 module.exports = (...args) => new Rectangle(...args);

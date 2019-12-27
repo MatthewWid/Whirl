@@ -77,6 +77,10 @@ class Point extends Geometry {
 
 		return Math.hypot(x - this.x, y - this.y);
 	}
+
+	duplicate() {
+		return new Point(this.x, this.y);
+	}
 }
 
 module.exports = (...args) => new Point(...args);

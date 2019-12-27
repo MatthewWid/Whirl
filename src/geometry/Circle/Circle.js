@@ -117,6 +117,10 @@ class Circle extends Geometry {
 
 		return (x - this.x) * (x - this.x) + (y - this.y) * (y - this.y) <= this.r * this.r;
 	}
+
+	duplicate() {
+		return new Circle(this.x, this.y, this.r);
+	}
 }
 
 module.exports = (...args) => new Circle(...args);
