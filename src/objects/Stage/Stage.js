@@ -69,7 +69,12 @@ class Stage extends Base {
 		if (options.limit instanceof Rectangle._class) {
 			this.limit = options.limit;
 		} else {
-			this.limit = Rectangle(options.x || 0, options.y || 0, options.w || 0, options.h || 0);
+			this.limit = Rectangle(
+				getValue(options, "x", 0),
+				getValue(options, "y", 0),
+				getValue(options, "w", 0),
+				getValue(options, "h", 0)
+			);
 		}
 	}
 }
