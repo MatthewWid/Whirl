@@ -100,10 +100,12 @@ class Stage extends Entity {
 	}
 
 	calculateDerived() {
+		super.calculateDerived();
+
 		this.derived.x = this.limits.x;
 		this.derived.y = this.limits.y;
 
-		return super.calculateDerived();
+		return this;
 	}
 }
 

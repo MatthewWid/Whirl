@@ -39,10 +39,12 @@ class Container extends Entity {
 	}
 
 	calculateDerived() {
+		super.calculateDerived();
+
 		this.derived.x = this.parent.derived.x;
 		this.derived.y = this.parent.derived.y;
 
-		return super.calculateDerived();
+		return this;
 	}
 }
 

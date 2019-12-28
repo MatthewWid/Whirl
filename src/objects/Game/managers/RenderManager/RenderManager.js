@@ -64,6 +64,11 @@ class RenderManager extends Manager {
 		 */
 		this._game.event.emit("willRender");
 
+		const viewports = this._game.object._viewports;
+		for (let i = 0; i < viewports.length; i++) {
+			this.renderer.render(viewports[i]);
+		}
+
 		/**
 		 * Fires after the render step of the game has concluded.
 		 *

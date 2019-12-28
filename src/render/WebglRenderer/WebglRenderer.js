@@ -30,8 +30,6 @@ class WebglRenderer extends Renderer {
 			ctx: canvasContext,
 		};
 	};
-
-	render(ctx, viewport, objects) {}
 }
 
 module.exports = WebglRenderer;

@@ -59,16 +59,14 @@ class Renderer {
 	getContext(canvas) {}
 
 	/**
-	 * Render method that renders to a given context with the effects of a given viewport.
+	 * Render a single viewport to the screen.
 	 *
 	 * @method Whirl.render.Renderer#render
 	 *
 	 * @abstract
-	 * @param {any} ctx Rendering context to draw to.
-	 * @param {Whirl.Viewport} viewport Viewport to use post-processing effects from.
-	 * @param {Whirl.Entity[]} objects Sorted list of objects to render.
+	 * @param {Whirl.Viewport} viewport Viewport to retrieve children from and apply post-processing effects with.
 	 */
-	render(ctx, viewport, objects) {}
+	render(viewport) {}
 
 	/**
 	 * Render an individual Sprite.
@@ -76,11 +74,10 @@ class Renderer {
 	 * @method Whirl.render.Renderer#Sprite
 	 *
 	 * @abstract
-	 * @param {any} ctx Rendering context to draw to.
 	 * @param {Whirl.Viewport} viewport Viewport to use post-processing effects from.
-	 * @param {Whirl.Entity} Sprite Sprite object to render.
+	 * @param {Whirl.Sprite} Sprite Sprite object to render.
 	 */
-	Sprite(ctx, viewport, Sprite) {}
+	Sprite(viewport, sprite) {}
 }
 
 module.exports = Renderer;

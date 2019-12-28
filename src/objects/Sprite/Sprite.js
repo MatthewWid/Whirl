@@ -131,12 +131,19 @@ class Sprite extends Entity {
 	}
 
 	calculateDerived() {
-		this.derived.bounds.x = this.bounds.x + this.parent.derived.x;
-		this.derived.bounds.y = this.bounds.y + this.parent.derived.y;
-		this.derived.bounds.w = this.bounds.w;
-		this.derived.bounds.h = this.bounds.h;
+		super.calculateDerived();
 
-		return super.calculateDerived();
+		this.derived.bounds.x =
+			this.bounds.x - this.bounds.w * this.anchor.x * this.derived.scale + this.parent.derived.x;
+
+		this.derived.bounds.y =
+			this.bounds.y - this.bounds.h * this.anchor.y * this.derived.scale + this.parent.derived.y;
+
+		this.derived.bounds.w = this.bounds.w * this.derived.scale;
+
+		this.derived.bounds.h = this.bounds.h * this.derived.scale;
+
+		return this;
 	}
 }
 

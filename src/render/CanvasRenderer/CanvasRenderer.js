@@ -1,4 +1,6 @@
 const Renderer = require("../Renderer.js");
+const Sprite = require("../../objects/Sprite/");
+const Colour = require("../../objects/Colour/");
 
 /**
  * @classdesc
@@ -34,7 +36,45 @@ class CanvasRenderer extends Renderer {
 		};
 	};
 
-	render(ctx, viewport, objects) {}
+	render(viewport) {
+		const {canvas, ctx} = viewport.render;
+		const renderables = viewport.getRenderables();
+
+		ctx.save();
+
+		ctx.translate(viewport.bounds.x, viewport.bounds.y);
+
+		ctx.clearRect(viewport.bounds.x, viewport.bounds.y, viewport.bounds.w, viewport.bounds.h);
+
+		for (let i = 0; i < renderables.length; i++) {
+			if (renderables[i] instanceof Sprite) {
+				this.Sprite(viewport, renderables[i]);
+			}
+		}
+
+		ctx.restore();
+	}
+
+	Sprite(viewport, sprite) {
+		const {canvas, ctx} = viewport.render;
+
+		ctx.save();
+
+		ctx.globalAlpha = sprite.derived.alpha;
+
+		if (sprite.fill instanceof Colour) {
+			ctx.fillStyle = sprite.fill._data;
+
+			ctx.fillRect(
+				sprite.derived.bounds.x,
+				sprite.derived.bounds.y,
+				sprite.derived.bounds.w,
+				sprite.derived.bounds.h
+			);
+		}
+
+		ctx.restore();
+	}
 }
 
 module.exports = CanvasRenderer;
