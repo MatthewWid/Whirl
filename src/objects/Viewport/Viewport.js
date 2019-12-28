@@ -296,7 +296,7 @@ class Viewport extends Base {
 		} else {
 			object.child
 				.get((item) => item.active)
-				.sort((a, b) => b.layer - a.layer)
+				.sort((a, b) => a.layer - b.layer)
 				.forEach((item) => this.getRenderables(item, renderables));
 		}
 
