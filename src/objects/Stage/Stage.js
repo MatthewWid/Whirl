@@ -78,11 +78,22 @@ class Stage extends Entity {
 		}
 	}
 
-	updateDerived(object = this) {
+	/**
+	 * Invoke the `calculateDerived` method on all children in the tree of children belonging to this Stage.
+	 *
+	 * Invoked internally by the {@link Whirl.Game.UpdateManager|UpdateManager}.
+	 *
+	 * @ignore
+	 * @method Whirl.Stage#_updateDerived
+	 *
+	 * @param {Entity} object Current object to update.
+	 * @returns {this}
+	 */
+	_updateDerived(object = this) {
 		object.calculateDerived();
 
 		if (object.child) {
-			object.child.get((item) => item.active).forEach((item) => this.updateDerived(item));
+			object.child.get((item) => item.active).forEach((item) => this._updateDerived(item));
 		}
 
 		return this;

@@ -95,17 +95,24 @@ class Entity extends Base {
 	body;
 
 	/**
-	 * Derived values of this Entity, taking into account offsets from the parent object, the object anchor, physics updates, etc.
+	 * Represents the *actual* values of this Entity after all updates and modifications have been applied, taking into account the Entity's parent and its own properties. Rendering and physics systems will use this value to know exactly where the Entity is on the screen.
 	 *
-	 * Represents the *actual* values of the Entity after all updates and modifications have been applied. Rendering and physics systems will use this value to know exactly where the Entity is on the screen.
+	 * For example, if a {@link Whirl.Sprite|Sprite} has an `anchor` of `(0.5, 0.5)` and its `bounds` {@link Whirl.geometry.Rectangle|Rectangle} property is `(100x, 100y, 50w, 50h)`, then its `derived.bounds` property would be `(75x, 75y, 50w, 50h)`, which is where it would actually end up on the screen.
 	 *
-	 * Each object's value is derived from its own value multiplied by the same value on its parent. This way, values cascade down the tree of objects and changes made in a parent container will affect all of its nested children.
+	 * Each object's value is derived from its own value and its parent value. This way, values cascade down the tree of objects and changes made in a parent container will affect all of its children under it in the tree.
 	 *
 	 * You should only rely on this object being in a consistent state when the {@link Whirl.Game#event:didUpdate|Game 'didUpdate' event} fires as it is calculated during the update step.
 	 *
+	 * Entities that act as containers (such as the {@link Whirl.Stage|Stage} and {@link Whirl.Container|Container} objects) must attach `x` and `y` properties to this object that represent how the parent will offset the position of its children.
+	 *
 	 * @memberof Whirl.Entity#
 	 * @type {object}
-	 * @default {}
+	 * @default
+	 * {
+	 * 	alpha: 1,
+	 * 	scale: 1,
+	 * 	layer: 0,
+	 * }
 	 */
 	derived = {};
 
@@ -129,6 +136,18 @@ class Entity extends Base {
 
 	/**
 	 * Calculate the `derived` value of this Entity, taking into account any offsets applied by the parent container, viewport, stage and game.
+	 *
+	 * When making your own custom entities and overriding this method, you must at some point also invoke the original Entity class `calculateDerived` method:
+	 *
+	 * ```javascript
+	 * class MyObject extends Whirl.Entity {
+	 * 	calculateDerived() {
+	 * 		// Derive your own values and place on the `derived` object here ...
+	 *
+	 * 		return super.calculateDerived();
+	 * 	}
+	 * }
+	 * ```
 	 *
 	 * @method Whirl.Entity#calculateDerived
 	 *
