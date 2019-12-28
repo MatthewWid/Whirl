@@ -104,7 +104,7 @@ class ChildMixin extends Mixin {
 	/**
 	 * Get all children of this object. Optionally filter the returned children using a given filter function.
 	 *
-	 * Will return only the direct children of this object and will not go deeper into the tree if any children in-turn have the ChildMixin (thus being parents), too.
+	 * Returns only the direct children of this object, and will *not* recursively go deeper into the tree if any children also in-turn have children.
 	 *
 	 * @method Whirl.mixins.Child#get
 	 *

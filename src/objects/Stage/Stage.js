@@ -40,7 +40,7 @@ const addInheritFilter = require("../../lib/addInheritFilter.js");
  * 	limit: Whirl.geometry.Rectangle(0, 0, 400, 400)
  * });
  */
-class Stage extends Base {
+class Stage extends Entity {
 	mixins = [Child];
 
 	/**
@@ -76,6 +76,23 @@ class Stage extends Base {
 				getValue(options, "h", 0)
 			);
 		}
+	}
+
+	updateDerived(object = this) {
+		object.calculateDerived();
+
+		if (object.child) {
+			object.child.get((item) => item.active).forEach((item) => this.updateDerived(item));
+		}
+
+		return this;
+	}
+
+	calculateDerived() {
+		this.derived.x = this.limits.x;
+		this.derived.y = this.limits.y;
+
+		return super.calculateDerived();
 	}
 }
 

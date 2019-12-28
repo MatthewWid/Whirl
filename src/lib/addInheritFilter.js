@@ -16,12 +16,10 @@
  * @param {object} inheritClass Class that the potential child must inherit from to be added successfully.
  * @param {successCallback} success Callback that runs after the object is confirmed as inheriting from the given class.
  */
-const addInheritFilter = (instance, inheritClass, success) => {
+const addInheritFilter = (instance, inheritClass) => {
 	return (object) => {
 		if (object instanceof inheritClass) {
-			if (success) {
-				success(object);
-			}
+			object.parent = instance;
 		} else {
 			instance._game.debug.warn(
 				`Objects added to a ${instance.constructor.name} must inherit from the ${inheritClass.name} class. Rejecting attempt to add object as child.`,

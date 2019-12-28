@@ -139,6 +139,10 @@ class Entity extends Base {
 			this.derived.alpha = this.alpha * this.parent.derived.alpha;
 			this.derived.scale = this.scale * this.parent.derived.scale;
 			this.derived.layer = this.layer + this.parent.derived.layer;
+		} else {
+			this.derived.alpha = this.alpha;
+			this.derived.scale = this.scale;
+			this.derived.layer = this.layer;
 		}
 
 		return this;

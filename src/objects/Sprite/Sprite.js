@@ -129,6 +129,15 @@ class Sprite extends Entity {
 
 		return this;
 	}
+
+	calculateDerived() {
+		this.derived.bounds.x = this.bounds.x + this.parent.derived.x;
+		this.derived.bounds.y = this.bounds.y + this.parent.derived.y;
+		this.derived.bounds.w = this.bounds.w;
+		this.derived.bounds.h = this.bounds.h;
+
+		return super.calculateDerived();
+	}
 }
 
 module.exports = Sprite;

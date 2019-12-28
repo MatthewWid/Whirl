@@ -262,6 +262,11 @@ class UpdateManager extends Manager {
 		this.frameDelta = delta - this.lastDelta;
 		this.lastDelta = delta;
 
+		const stages = this._game.object._stages;
+		for (let i = 0; i < stages.length; i++) {
+			stages[i].updateDerived();
+		}
+
 		this._game.render._render();
 
 		/**

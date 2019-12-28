@@ -29,13 +29,20 @@ class Container extends Entity {
 	mixins = [Child];
 
 	constructor(game, options = {}, children = []) {
-		super(game);
+		super(game, options);
 
 		mixin(this);
 
-		this.child.onAdd = addInheritFilter(this, Entity, (object) => (object.parent = this));
+		this.child.onAdd = addInheritFilter(this, Entity);
 
 		this.child.add(children);
+	}
+
+	calculateDerived() {
+		this.derived.x = this.parent.derived.x;
+		this.derived.y = this.parent.derived.y;
+
+		return super.calculateDerived();
 	}
 }
 
