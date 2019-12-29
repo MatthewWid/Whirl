@@ -3,6 +3,8 @@ const {
 	Mixin: {apply: mixin},
 	Child,
 } = require("../../mixins/");
+const {Point} = require("../../geometry/");
+const getValue = require("../../lib/getValue.js");
 const addInheritFilter = require("../../lib/addInheritFilter.js");
 
 /**
@@ -28,10 +30,23 @@ const addInheritFilter = require("../../lib/addInheritFilter.js");
 class Container extends Entity {
 	mixins = [Child];
 
+	/**
+	 * Position of this container.
+	 *
+	 * When an object is added as a child of a container its position is made relative to the container position, instead of the base game world position.
+	 *
+	 * @memberof Whirl.Container#
+	 * @type {Whirl.geometry.Point}
+	 * @default (0, 0)
+	 */
+	position;
+
 	constructor(game, options = {}, children = []) {
 		super(game, options);
 
 		mixin(this);
+
+		this.position = Point(getValue(options, "x", 0), getValue(options, "y", 0));
 
 		this.child.onAdd = addInheritFilter(this, Entity);
 
@@ -41,8 +56,8 @@ class Container extends Entity {
 	calculateDerived() {
 		super.calculateDerived();
 
-		this.derived.x = this.parent.derived.x;
-		this.derived.y = this.parent.derived.y;
+		this.derived.x = this.position.x + this.parent.derived.x;
+		this.derived.y = this.position.y + this.parent.derived.y;
 
 		return this;
 	}
