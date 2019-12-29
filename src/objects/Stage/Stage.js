@@ -5,6 +5,7 @@ const {
 	Child,
 } = require("../../mixins/");
 const {Rectangle} = require("../../geometry/");
+const getValue = require("../../lib/getValue.js");
 const addInheritFilter = require("../../lib/addInheritFilter.js");
 
 /**
@@ -62,10 +63,6 @@ class Stage extends Entity {
 
 		mixin(this);
 
-		this.child.onAdd = addInheritFilter(this, Entity);
-
-		this.child.add(children);
-
 		if (options.limits instanceof Rectangle._class) {
 			this.limits = options.limits;
 		} else {
@@ -76,6 +73,10 @@ class Stage extends Entity {
 				getValue(options, "h", 0)
 			);
 		}
+
+		this.child.onAdd = addInheritFilter(this, Entity);
+
+		this.child.add(children);
 	}
 
 	/**
