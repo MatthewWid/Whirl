@@ -30,6 +30,7 @@ const getValue = require("../../lib/getValue.js");
  * @param {number} options.scrollX=0 X-coordinate of the scroll position.
  * @param {number} options.scrollY=0 Y-coordinate of the scroll position.
  * @param {boolean} options.clip=true Remove all pixels that are outside of the clipping plane from the rendered output on the canvas.
+ * @param {boolean} options.clear=true Clear the area being rendered to before each render tick.
  * @param {boolean} options.imageSmoothing=true Canvas anti-aliasing.
  * @param {number} options.zoom=1 Initial zoom level. Increasing this value zooms in, decreasing it zooms out.
  * @param {number} options.lerp=1 Linear interpolation value to use when animatedly scrolling to a given point or game object.
@@ -112,6 +113,15 @@ class Viewport extends Base {
 	clip;
 
 	/**
+	 * Clear the area that the Viewport renders to before each render tick.
+	 *
+	 * @memberof Whirl.Viewport#
+	 * @type {boolean}
+	 * @default true
+	 */
+	clear;
+
+	/**
 	 * Enable anti-aliasing when rendering.
 	 *
 	 * For games that make use of pixel art or require precise rendering this should be disabled.
@@ -161,6 +171,8 @@ class Viewport extends Base {
 
 		this.clip = getValue(options, "clip", true);
 
+		this.clear = getValue(options, "clear", true);
+
 		this.imageSmoothing = getValue(options, "imageSmoothing", true);
 
 		this.zoom = getValue(options, "zoom", 1);
@@ -169,7 +181,9 @@ class Viewport extends Base {
 
 		this.setCanvas(options.canvas, options.resize);
 
-		options.stage && this.setStage(options.stage);
+		if (options.stage) {
+			this.setStage(options.stage);
+		}
 	}
 
 	/**

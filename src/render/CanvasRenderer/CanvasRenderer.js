@@ -44,7 +44,9 @@ class CanvasRenderer extends Renderer {
 
 		ctx.translate(viewport.bounds.x, viewport.bounds.y);
 
-		ctx.clearRect(viewport.bounds.x, viewport.bounds.y, viewport.bounds.w, viewport.bounds.h);
+		if (viewport.clear) {
+			ctx.clearRect(viewport.bounds.x, viewport.bounds.y, viewport.bounds.w, viewport.bounds.h);
+		}
 
 		for (let i = 0; i < renderables.length; i++) {
 			if (renderables[i] instanceof Sprite) {
