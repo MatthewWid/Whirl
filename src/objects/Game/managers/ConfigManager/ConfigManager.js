@@ -207,6 +207,54 @@ class ConfigManager extends Manager {
 	}
 
 	/**
+	 * Remove a value from the configuration map by setting it to `null`.
+	 *
+	 * This is generally safer than {@link Whirl.Game.ConfigManager#delete|the delete method} as the key will still exist in the map, but will simply have an empty value.
+	 *
+	 * @method Whirl.Game.ConfigManager#remove
+	 *
+	 * @param {string} key Key of the key/value pair to remove.
+	 * @returns {any|null} The value that was removed.
+	 *
+	 * Returns `null` if the key did not exist in the configuration map.
+	 */
+	remove(key) {
+		if (!this._data.hasOwnProperty(key)) {
+			return null;
+		}
+
+		const value = this._data[key];
+
+		this._data[key] = null;
+
+		return value;
+	}
+
+	/**
+	 * Delete a value from the configuration map. This will delete the key/value pair outright from the object.
+	 *
+	 * You should only use this method to delete key/value pairs *you* have introduced into the configuration map. Deleting pre-existing key/value pairs from the engine may cause unexpected errors.
+	 *
+	 * @method Whirl.Game.ConfigManager#delete
+	 *
+	 * @param {string} key Key of the key/value pair to remove.
+	 * @returns {any|null} The value that was removed.
+	 *
+	 * Returns `null` if the key did not exist in the configuration map.
+	 */
+	delete(key) {
+		if (!this._data.hasOwnProperty(key)) {
+			return null;
+		}
+
+		const value = this._data[key];
+
+		delete this._data[key];
+
+		return value;
+	}
+
+	/**
 	 * Retrieve all keys present in the configuration map.
 	 *
 	 * @method Whirl.Game.ConfigManager#keys
