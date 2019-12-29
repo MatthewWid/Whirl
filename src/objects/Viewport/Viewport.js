@@ -40,8 +40,6 @@ const getValue = require("../../lib/getValue.js");
  *
  * Implicitely calls the `setStage` method.
  *
- * @listens Whirl.Game#didDestroy
- *
  * @example
  * game.Viewport({
  * 	w: 500,
