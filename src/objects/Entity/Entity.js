@@ -111,7 +111,6 @@ class Entity extends Base {
 	 * {
 	 * 	alpha: 1,
 	 * 	scale: 1,
-	 * 	layer: 0,
 	 * }
 	 */
 	derived = {};
@@ -130,7 +129,6 @@ class Entity extends Base {
 		this.derived = {
 			alpha: this.alpha,
 			scale: this.scale,
-			layer: this.layer,
 		};
 	}
 
@@ -157,11 +155,9 @@ class Entity extends Base {
 		if (this.parent) {
 			this.derived.alpha = this.alpha * this.parent.derived.alpha;
 			this.derived.scale = this.scale * this.parent.derived.scale;
-			this.derived.layer = this.layer + this.parent.derived.layer;
 		} else {
 			this.derived.alpha = this.alpha;
 			this.derived.scale = this.scale;
-			this.derived.layer = this.layer;
 		}
 
 		return this;
