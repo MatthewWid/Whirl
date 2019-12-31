@@ -1,8 +1,4 @@
 const Manager = require("../Manager.js");
-const {
-	Mixin: {apply: mixin},
-	Event,
-} = require("../../../../mixins/");
 
 /**
  * @classdesc
@@ -14,7 +10,6 @@ const {
  *
  * @class ConfigManager
  * @memberof Whirl.Game
- * @mixes Whirl.mixins.Event
  *
  * @example
  * const game = Whirl.Game();
@@ -28,8 +23,6 @@ const {
  * game.config.get("property"); // "value"
  */
 class ConfigManager extends Manager {
-	mixins = [Event];
-
 	/**
 	 * Toggles debug mode on and off. Debug mode enables warnings, performance tips, verbose logging, etc.
 	 *
@@ -113,7 +106,6 @@ class ConfigManager extends Manager {
 
 	constructor(game) {
 		super(game);
-		mixin(this);
 	}
 
 	/**
@@ -151,7 +143,7 @@ class ConfigManager extends Manager {
 			/**
 			 * Fires after one or many values in the configuration are updated.
 			 *
-			 * @event Whirl.Game.ConfigManager#didSet
+			 * @event Whirl.Game#didSet
 			 * @type {object}
 			 *
 			 * @property {object} config Object of all values in the configuration, including the newly updated values.
@@ -160,8 +152,10 @@ class ConfigManager extends Manager {
 			 * If many values were set using an object, will be `object`.
 			 * @property {string|undefined} key If the value was set using a single key/value pair, will be the key. Else will not exist.
 			 * @property {object|any} value The new value. Will either be the value of the single provided key/value pair, or the object given if setting multiple values at once.
+			 *
+			 * @see Whirl.Game.ConfigManager#set
 			 */
-			this.event.emit("didSet", {
+			this._game.event.emit("didSet", {
 				config: {...this._data},
 				type: "key-value",
 				key,
@@ -175,7 +169,7 @@ class ConfigManager extends Manager {
 				...key,
 			};
 
-			this.event.emit("didSet", {
+			this._game.event.emit("didSet", {
 				config: {...this._data},
 				type: "object",
 				value: {...key},
