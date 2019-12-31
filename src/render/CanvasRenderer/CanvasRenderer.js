@@ -1,5 +1,4 @@
 const Renderer = require("../Renderer.js");
-const Sprite = require("../../objects/Sprite/");
 const Colour = require("../../objects/Colour/");
 
 /**
@@ -36,9 +35,8 @@ class CanvasRenderer extends Renderer {
 		};
 	};
 
-	render(viewport) {
+	preRender(viewport) {
 		const {canvas, ctx} = viewport.render;
-		const renderables = viewport.getRenderables();
 
 		ctx.save();
 
@@ -47,12 +45,10 @@ class CanvasRenderer extends Renderer {
 		if (viewport.clear) {
 			ctx.clearRect(viewport.bounds.x, viewport.bounds.y, viewport.bounds.w, viewport.bounds.h);
 		}
+	}
 
-		for (let i = 0; i < renderables.length; i++) {
-			if (renderables[i] instanceof Sprite) {
-				this.Sprite(viewport, renderables[i]);
-			}
-		}
+	postRender(viewport) {
+		const {canvas, ctx} = viewport.render;
 
 		ctx.restore();
 	}

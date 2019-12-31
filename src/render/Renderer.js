@@ -59,14 +59,28 @@ class Renderer {
 	getContext(canvas) {}
 
 	/**
-	 * Render a single viewport to the screen.
+	 * Runs just before renderable items are drawn to the screen.
 	 *
-	 * @method Whirl.render.Renderer#render
+	 * Perform set up for a given frame to render, any transformations or background effects.
+	 *
+	 * @method Whirl.render.Renderer#preRender
 	 *
 	 * @abstract
-	 * @param {Whirl.Viewport} viewport Viewport to retrieve children from and apply post-processing effects with.
+	 * @param {Whirl.Viewport} viewport Current viewport being rendered.
 	 */
-	render(viewport) {}
+	preRender(viewport, renderables) {}
+
+	/**
+	 * Runs just after renderable items are drawn to the screen.
+	 *
+	 * Perform post-processing effects and any cleanup necessary for post-rendering the given viewport.
+	 *
+	 * @method Whirl.render.Renderer#preRender
+	 *
+	 * @abstract
+	 * @param {Whirl.Viewport} viewport Current viewport being rendered.
+	 */
+	preRender(viewport, renderables) {}
 
 	/**
 	 * Render an individual Sprite.

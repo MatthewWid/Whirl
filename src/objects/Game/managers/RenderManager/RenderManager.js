@@ -1,5 +1,6 @@
 const Manager = require("../Manager.js");
 const {Renderer, CanvasRenderer, WebglRenderer} = require("../../../../render/");
+const Sprite = require("../../../Sprite/");
 
 /**
  * @classdesc
@@ -66,7 +67,7 @@ class RenderManager extends Manager {
 
 		const viewports = this._game.object._viewports;
 		for (let i = 0; i < viewports.length; i++) {
-			this.renderer.render(viewports[i]);
+			this._renderViewport(viewports[i]);
 		}
 
 		/**
@@ -76,6 +77,25 @@ class RenderManager extends Manager {
 		 * @type {object}
 		 */
 		this._game.event.emit("didRender");
+	}
+
+	/**
+	 * Render a single viewport.
+	 *
+	 * @param {Whirl.Viewport} viewport Viewport to render.
+	 */
+	_renderViewport(viewport) {
+		const renderables = viewport.getRenderables();
+
+		this.renderer.preRender(viewport, viewport);
+
+		for (let i = 0; i < renderables.length; i++) {
+			if (renderables[i] instanceof Sprite) {
+				this.renderer.Sprite(viewport, renderables[i]);
+			}
+		}
+
+		this.renderer.postRender(viewport, viewport);
 	}
 }
 
