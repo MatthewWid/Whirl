@@ -49,8 +49,6 @@ class Game {
 	 * @name config
 	 * @memberof Whirl.Game#
 	 * @type {Whirl.Game.ConfigManager}
-	 *
-	 * @see Whirl.Game.ConfigManager
 	 */
 
 	/**
@@ -59,8 +57,6 @@ class Game {
 	 * @name object
 	 * @memberof Whirl.Game#
 	 * @type {Whirl.Game.ObjectManager}
-	 *
-	 * @see Whirl.Game.ObjectManager
 	 */
 
 	/**
@@ -69,8 +65,6 @@ class Game {
 	 * @name update
 	 * @memberof Whirl.Game#
 	 * @type {Whirl.Game.UpdateManager}
-	 *
-	 * @see Whirl.Game.UpdateManager
 	 */
 
 	/**
@@ -83,8 +77,6 @@ class Game {
 	 * @name debug
 	 * @memberof Whirl.Game#
 	 * @type {Whirl.Game.DebugManager}
-	 *
-	 * @see Whirl.Game.DebugManager
 	 */
 
 	/**
