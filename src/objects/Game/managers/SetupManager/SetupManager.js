@@ -12,6 +12,8 @@ const Viewport = require("../../../Viewport/");
  * 3. Sets the {@link Whirl.Game.ConfigManager#setup|`setup` configuration variable} to `false` and {@link Whirl.Game.UpdateManager#start|starts the game loop}.
  * 4. Emits {@link Whirl.Game#event:didSetup|the didSetup event}.
  *
+ * Once setup is complete, subsequent calls to the {@link Whirl.Game.SetupManager#setup|setup method} or the {@link Whirl.Game#start|Game#start method} will not start setup again.
+ *
  * @class SetupManager
  * @memberof Whirl.Game
  */
