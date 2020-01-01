@@ -34,7 +34,7 @@ const getValue = require("../../lib/getValue.js");
  * @param {boolean} options.imageSmoothing=true Canvas anti-aliasing.
  * @param {number} options.zoom=1 Initial zoom level. Increasing this value zooms in, decreasing it zooms out.
  * @param {number} options.lerp=1 Linear interpolation value to use when animatedly scrolling to a given point or game object.
- * @param {string} options.canvas Selector for the canvas element to render to. If not given, will default to the `canvas` value stored in {@link Whirl.Game.ConfigManager|the game configuration}.
+ * @param {string} options.canvas Selector for the canvas element to render to. If not given, will default to the `canvas` value stored in {@link Whirl.Game.ConfigManager#canvas|the game configuration}.
  * @param {boolean} options.resize=false Resize the canvas width and height to the width and height of this viewports clipping plane.
  * @param {Stage} options.stage Initial stage to be used for rendering.
  *
@@ -191,7 +191,7 @@ class Viewport extends Base {
 	 *
 	 * @method Whirl.Viewport#setCanvas
 	 *
-	 * @param {string} [selector] Selector for the canvas element. Defaults to the canvas element defined by the `canvas` in the {@link Whirl.Game.ConfigManager|global game configuration}.
+	 * @param {string} [selector] Selector for the canvas element. Defaults to the canvas element defined by the `canvas` in the {@link Whirl.Game.ConfigManager#canvas|global game configuration}.
 	 * @param {boolean} [resize=false] Resize the canvas width and height to the width and height of this viewport's clipping plane.
 	 * @returns {this}
 	 *

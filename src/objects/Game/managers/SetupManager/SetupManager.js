@@ -26,6 +26,8 @@ class SetupManager extends Manager {
 	 * @method Whirl.Game.SetupManager#setup
 	 *
 	 * @returns {Whirl.Game} Game instance the SetupManager belongs to.
+	 *
+	 * @fires Whirl.Game#event:didSetup
 	 */
 	setup() {
 		const {config} = this._game;
@@ -71,6 +73,8 @@ class SetupManager extends Manager {
 
 		/**
 		 * Fires after game setup has completed and the game loop has been started.
+		 *
+		 * Will not fire if the {@link Whirl.Game.ConfigManager#setup|`setup` configuration variable} is set to `false` when initialising the game instance (as automated setup never occurs).
 		 *
 		 * @event Whirl.Game#didSetup
 		 * @type {object}
