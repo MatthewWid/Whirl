@@ -37,7 +37,7 @@ class ConfigManager extends Manager {
 	 *
 	 * @name canvas
 	 * @memberof Whirl.Game.ConfigManager#
-	 * @type {string|null}
+	 * @type {string}
 	 * @default null
 	 */
 
@@ -50,7 +50,7 @@ class ConfigManager extends Manager {
 	 *
 	 * @name root
 	 * @memberof Whirl.Game.ConfigManager#
-	 * @type {string|null}
+	 * @type {string}
 	 * @default "body"
 	 */
 

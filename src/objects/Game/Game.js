@@ -109,7 +109,7 @@ class Game {
 	Colour = (...args) => new Colour(this, ...args);
 
 	/**
-	 * Initiates {@link Whirl.Game.SetupManager|game setup} if {@link Whirl.Game.ConfigManager#setup|setup is enabled in the ConfigManager}, then {@link Whirl.Game.UpdateManager#start|starts the game loop}.
+	 * Initiates {@link Whirl.Game.SetupManager|game setup} if {@link Whirl.Game.ConfigManager#setup|setup is enabled in the ConfigManager} then {@link Whirl.Game.UpdateManager#start|starts the game loop}.
 	 *
 	 * @method Whirl.Game#start
 	 *

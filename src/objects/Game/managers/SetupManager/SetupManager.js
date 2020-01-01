@@ -5,6 +5,13 @@ const Viewport = require("../../../Viewport/");
 /**
  * Handles initial game setup including persistant storage checks, network and Internet connectivity checks, canvas creation, default values for other managers and more.
  *
+ * During setup, performs the following operations in order:
+ *
+ * 1. If there is {@link Whirl.Game.ConfigManager#canvas|no default canvas set in the configuration}, will insert (append) a canvas element (with ID `whirl-canvas-default`) into {@link Whirl.Game.ConfigManager#root|the root element} (that defaults to the `<body>` element) and sets the `canvas` configuration variable to the ID selector of the created canvas.
+ * 2. Creates a {@link Whirl.Stage|Stage} and {@link Whirl.Viewport|Viewport} object that contains it (both with dimensions `640x480`) and resizes the canvas to the size of the Viewport.
+ * 3. Sets the {@link Whirl.Game.ConfigManager#setup|`setup` configuration variable} to `false` and {@link Whirl.Game.UpdateManager#start|starts the game loop}.
+ * 4. Emits {@link Whirl.Game#event:didSetup|the didSetup event}.
+ *
  * @class SetupManager
  * @memberof Whirl.Game
  */
@@ -53,6 +60,17 @@ class SetupManager extends Manager {
 
 		this._game.update.start();
 
+		/**
+		 * Fires after game setup has completed and the game loop has been started.
+		 *
+		 * @event Whirl.Game#didSetup
+		 * @type {object}
+		 *
+		 * @property {string} canvas Selector for {@link Whirl.Game.ConfigManager#canvas|the default canvas element} being rendered to.
+		 * @property {string} root Selector the {@link Whirl.Game.ConfigManager#root|the root element} that contains the game canvasses.
+		 * @property {Whirl.Stage} stage Generated stage that holds all of the {@link Whirl.Entity|entities} that exist in the game world.
+		 * @property {Whirl.Viewport} viewport Generated viewport that contains the Stage and is used for rendering onto the canvas.
+		 */
 		this._game.event.emit("didSetup", {
 			canvas: config.get("canvas"),
 			root: config.get("root"),
