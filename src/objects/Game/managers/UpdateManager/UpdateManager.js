@@ -133,7 +133,7 @@ class UpdateManager extends Manager {
 	 * @emits Whirl.Game#willStart
 	 * @emits Whirl.Game#didStart
 	 *
-	 * @returns {this}
+	 * @returns {Whirl.Game} Game instance the UpdateManager belongs to.
 	 *
 	 * @example
 	 * const game = Whirl.Game();
@@ -197,7 +197,7 @@ class UpdateManager extends Manager {
 	 *
 	 * @emits Whirl.Game#willStop
 	 *
-	 * @returns {this}
+	 * @returns {Whirl.Game} Game instance the UpdateManager belongs to.
 	 *
 	 * @example
 	 * const game = Whirl.Game();
