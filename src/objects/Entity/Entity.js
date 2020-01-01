@@ -3,11 +3,13 @@ const getValue = require("../../lib/getValue.js");
 
 /**
  * @classdesc
- * The Entity class is the abstract class that all game objects that can exist in the game world must inherit from. Entities are the actual things that can exist in the world, whether static or dynamic, and all children of any given {@link Whirl.Stage|Stage} or Container must be an Entity.
+ * Entities are the actual renderable and interactable things that exist in the game world, whether static or dynamic.
  *
  * Holds attributes that are common to all objects that need to receive physics, tweening, input, rendering updates, etc.
  *
- * Objects that do not inherit from the Entity class cannot be added to the stage/game world.
+ * Entities can be scaled up and down in size, made transparent, re-ordered on the z-axis, receive input, interact with each other with physics and more.
+ *
+ * Objects that do not inherit from the Entity class cannot be added to the stage/game world. All children of any given {@link Whirl.Stage|Stage} or {@link Whirl.Container|Container} must be an Entity.
  *
  * @class Entity
  * @memberof Whirl
