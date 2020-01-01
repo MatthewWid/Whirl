@@ -109,7 +109,7 @@ class Game {
 	Colour = (...args) => new Colour(this, ...args);
 
 	/**
-	 * Initiates {@link Whirl.Game.SetupManager|game setup} if {@link Whirl.Game.ConfigManager#setup|setup is enabled in the ConfigManager} then {@link Whirl.Game.UpdateManager#start|starts the game loop}.
+	 * Initiates {@link Whirl.Game.SetupManager#setup|game setup} if {@link Whirl.Game.ConfigManager#setup|setup is enabled in the ConfigManager} then {@link Whirl.Game.UpdateManager#start|starts the game loop}.
 	 *
 	 * @method Whirl.Game#start
 	 *
@@ -118,9 +118,9 @@ class Game {
 	start() {
 		if (this.config.get("setup")) {
 			this.setup.setup();
+		} else {
+			this.update.start();
 		}
-
-		this.update.start();
 
 		return this;
 	}

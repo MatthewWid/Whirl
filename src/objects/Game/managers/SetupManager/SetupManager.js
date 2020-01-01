@@ -17,13 +17,22 @@ const Viewport = require("../../../Viewport/");
  */
 class SetupManager extends Manager {
 	/**
-	 * @ignore
+	 * Initiate the setup process for the game instance.
+	 *
+	 * Does nothing if {@link Whirl.Game.ConfigManager#setup|the `setup` configuration variable} is `false`.
+	 *
+	 * Implicitly called {@link Whirl.Game#start|by the Game#start method}. In general, you shouldn't need to invoke this method directly.
+	 *
 	 * @method Whirl.Game.SetupManager#setup
 	 *
 	 * @returns {Whirl.Game} Game instance the SetupManager belongs to.
 	 */
 	setup() {
 		const {config} = this._game;
+
+		if (!config.get("setup")) {
+			return this._game;
+		}
 
 		// Find if default canvas already set
 		const canvasSelector = config.get("canvas");
