@@ -9,6 +9,8 @@ const {Rectangle} = require("../../geometry/");
  *
  * This can also be useful when using *dynamic* textures, as changing the state of the texture will have its effects be reflected across all entities that have it applied.
  *
+ * Note that Textures cannot have transparency. If you wish to add transparency or partially fade out a texture then you should modify the {@link Whirl.Entity#alpha|Entity `alpha` property}.
+ *
  * @class Texture
  * @memberof Whirl
  * @abstract
