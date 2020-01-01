@@ -118,11 +118,9 @@ class Game {
 	 * @returns {this}
 	 */
 	start() {
-		if (this.config.get("setup")) {
-			this.setup.setup();
-		} else {
-			this.update.start();
-		}
+		this.setup.setup();
+
+		this.update.start();
 
 		return this;
 	}

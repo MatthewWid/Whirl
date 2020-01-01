@@ -9,7 +9,7 @@ const Viewport = require("../../../Viewport/");
  *
  * 1. If there is {@link Whirl.Game.ConfigManager#canvas|no default canvas set in the configuration}, will insert (append) a canvas element (with ID `whirl-canvas-default`) into {@link Whirl.Game.ConfigManager#root|the root element} (that defaults to the `<body>` element) and sets the `canvas` configuration variable to the ID selector of the created canvas.
  * 2. Creates a {@link Whirl.Stage|Stage} and {@link Whirl.Viewport|Viewport} object that contains it (both with dimensions `640x480`) and resizes the canvas to the size of the Viewport.
- * 3. Sets the {@link Whirl.Game.ConfigManager#setup|`setup` configuration variable} to `false` and {@link Whirl.Game.UpdateManager#start|starts the game loop}.
+ * 3. Sets the {@link Whirl.Game.ConfigManager#setup|`setup` configuration variable} to `false` to block subsequent `setup` calls.
  * 4. Emits {@link Whirl.Game#event:didSetup|the didSetup event}.
  *
  * Once setup is complete, subsequent calls to the {@link Whirl.Game.SetupManager#setup|setup method} or the {@link Whirl.Game#start|Game#start method} will not start setup again.
@@ -71,12 +71,10 @@ class SetupManager extends Manager {
 
 		config.set("setup", false);
 
-		this._game.update.start();
-
 		/**
 		 * Fires after game setup has completed and the game loop has been started.
 		 *
-		 * Will not fire if the {@link Whirl.Game.ConfigManager#setup|`setup` configuration variable} is set to `false` when initialising the game instance (as automated setup never occurs).
+		 * Will not fire if the {@link Whirl.Game.ConfigManager#setup|`setup` configuration variable} is set to `false`.
 		 *
 		 * @event Whirl.Game#didSetup
 		 * @type {object}
