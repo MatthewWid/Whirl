@@ -79,16 +79,18 @@ class SetupManager extends Manager {
 		 * @event Whirl.Game#didSetup
 		 * @type {object}
 		 *
-		 * @property {string} canvas Selector for {@link Whirl.Game.ConfigManager#canvas|the default canvas element} being rendered to.
-		 * @property {string} root Selector the {@link Whirl.Game.ConfigManager#root|the root element} that contains the game canvasses.
+		 * @property {Whirl.Game} game Current game instance.
 		 * @property {Whirl.Stage} stage Generated stage that holds all of the {@link Whirl.Entity|entities} that exist in the game world.
 		 * @property {Whirl.Viewport} viewport Generated viewport that contains the Stage and is used for rendering onto the canvas.
+		 * @property {string} canvas Selector for {@link Whirl.Game.ConfigManager#canvas|the default canvas element} being rendered to.
+		 * @property {string} root Selector the {@link Whirl.Game.ConfigManager#root|the root element} that contains the game canvasses.
 		 */
 		this._game.event.emit("didSetup", {
-			canvas: config.get("canvas"),
-			root: config.get("root"),
+			game: this._game,
 			stage,
 			viewport,
+			canvas: config.get("canvas"),
+			root: config.get("root"),
 		});
 
 		return this._game;
