@@ -1,6 +1,6 @@
 {
 	"name": "whirl",
-	"version": "3.0.0-alpha.4",
+	"version": "3.0.0-alpha.5",
 	"description": "Event-based fully documented 2D game engine for JavaScript canvas.",
 	"repository": "https://github.com/MatthewWid/Whirl.git",
 	"license": "MIT",

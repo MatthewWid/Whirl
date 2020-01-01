@@ -32,7 +32,7 @@ class Whirl {
 	 * @type {string}
 	 * @static
 	 */
-	static version = "3.0.0-alpha.4";
+	static version = "3.0.0-alpha.5";
 
 	// Static Modules
 	static math = math;
