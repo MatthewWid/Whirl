@@ -1,8 +1,16 @@
 <p align="center"><img src="./doc/logo/logo_text.png" alt="Whirl Logo" width="50%" /></p>
 
-<p align="center"><b>Whirl is a modern, lightweight and extensible 2D game engine written in JavaScript.</b></p>
+<p align="center"><b>Whirl is a fast, modern, lightweight and extensible 2D game engine written in JavaScript.</b></p>
 
-<p align="center">⚠️ This is the <code>3.0.0-alpha.4</code> development build. ⚠️<br><sup>Certain features may be missing and security, stability and performance may be unsuitable for a production environment.<br><a href="https://github.com/MatthewWid/Whirl/tree/stable">See the latest stable release for a production-ready version</a>.</sup></p>
+<p align="center">
+    ⚠️ This is the <code>3.0.0-alpha.4</code> development build. ⚠️
+    <br>
+    <sup>Certain features may be missing and security, stability and performance may be unsuitable for a production environment.
+    <br>
+    <a href="https://github.com/MatthewWid/Whirl/tree/stable">See the current stable release for the latest production-ready build</a>.
+    <br>
+    <a href="https://trello.com/b/YRtEiuLV/whirl-game-engine">See the Trello board for upcoming features and fixes</a>.</sup>
+</p>
 
 # Features
 
@@ -13,32 +21,31 @@ Some features offered by the **Whirl** game engine are:
 - **Dynamic custom event system** that allows for the creation and broadcasting of events across game objects.
 - **Child-parent tree architecture** of game objects that allows you to easily organise your game world into a managable hierarchy of objects.
 - **State-like world system** that makes it easy to load, unload and switch your scene or level instantly.
-- **Modularised viewport manager** that enables you to create multiple game viewports and screens _without_ the need for multiple canvas elements, stacked HTML elements or game instances.
-- **Standardised object importation methods** that make it easy to create your own custom plugins and special game objects that can be imported and used in your games - your objects are modular and reusable.
+- **Modularised viewport manager** that enables you to create multiple game viewports and screens _without_ the need for multiple canvas elements, stacked HTML elements or duplicate game instances.
+- **Flexibility-first approach** that makes it easy to create your own custom plugins and game objects that can be exported and reused - objects are flexible, modular and easy to work with.
 
 # Examples
 
 Example usage of the various features of **Whirl** are included in the `/examples/` directory.
 
-These examples are fully commented so you can easily understand what is going on and how it's working. Feel free to change and play around with the examples yourself!
+Feel free to change and play around with the examples yourself!
 
 Simply clone the repository, build the source ([See the "Build" section](#build)) and open up `/index.html` in any one of the examples to start tinkering.
 
 # Build
 
-**Whirl** takes advantage of [webpack](https://webpack.js.org/) to compile its source code down into a single, usable Javascript file.
+**Whirl** takes advantage of [webpack](https://webpack.js.org/) to compile its source code down into a single, universally compatible JavaScript file.
 
-1. Clone the repository - `git clone <... Whirl.git>`.
-2. Navigate into the root directory - `cd Whirl`.
-3. Install the dependencies - `npm install` or `yarn`.
-4. Build the source - `npm run prod` or `yarn prod`.
+1. Clone the repository - `git clone <repository url>`.
+2. Install build dependencies - `npm install` or `yarn`.
+3. Build from source - `npm run prod` or `yarn prod`.
 
-Once completed, you can find the built file in `/build/whirl.js` and simply include it with a script tag:
+Once completed, you can find the built file in `/build/whirl.js`. Simply include it with a script tag,
 
     <script src="whirl.js"></script>
 
-Or import as a module:
+or import as a module,
 
-    const Whirl = require("whirl");
+    const Whirl = require("./whirl");
 
-From there you are free to use the plethora of features offered by **Whirl**. Happy coding!
+From there you are free to get started and explore the powerful features of the **Whirl game engine**. Happy coding!
