@@ -124,7 +124,9 @@ class UpdateManager extends Manager {
 	 *
 	 * This initiates the update loop to begin running and it will run indefinitely until the `stop` method is invoked.
 	 *
-	 * Also aliased directly under the game instance object as the `<game>.start` method.
+	 * Does nothing if the game {@link Whirl.Game.UpdateManager#running|is already running}.
+	 *
+	 * May also be invoked directly under the game instance object with {@link Whirl.Game#start|the `<game>.start` method}.
 	 *
 	 * @method Whirl.Game.UpdateManager#start
 	 *
@@ -136,8 +138,6 @@ class UpdateManager extends Manager {
 	 * @example
 	 * const game = Whirl.Game();
 	 *
-	 * game.start();
-	 * // or
 	 * game.update.start();
 	 */
 	start = () => {
@@ -189,9 +189,9 @@ class UpdateManager extends Manager {
 	 *
 	 * Note that this is a **request** to stop the game execution. Its timing is not exact in that one extra update tick may occur after this method is invoked as the update manager attempts to perform cleanup and keeps the game state consistent by not stopping in the middle of its update process.
 	 *
-	 * In general you should never completely stop the execution of the game update loop after it has been started. The game update loop is essential for user input, asset loading, resizing, etc. Even if you are implementing something such as a pause screen for your game you should aim to pause the *physics* simulation of the game, not the game itself.
+	 * In general you should never completely stop the execution of the game update loop after it has been started. The game update loop is essential for user input, asset loading, window scaling, etc. Even if you are implementing something such as a pause screen for your game you should aim to pause the *physics* simulation of the game, not the game itself.
 	 *
-	 * Also aliased directly under the game instance object as the `<game>.stop` method.
+	 * May also be invoked directly under the game instance object with {@link Whirl.Game#start|the `<game>.start` method}.
 	 *
 	 * @method Whirl.Game.UpdateManager#stop
 	 *
@@ -200,10 +200,10 @@ class UpdateManager extends Manager {
 	 * @returns {this}
 	 *
 	 * @example
-	 * const game = Whirl.Game().start();
+	 * const game = Whirl.Game();
 	 *
-	 * game.stop();
-	 * // or
+	 * game.update.start();
+	 *
 	 * game.update.stop();
 	 */
 	stop = () => {
