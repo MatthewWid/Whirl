@@ -27,7 +27,7 @@ class SetupManager extends Manager {
 	 *
 	 * @returns {Whirl.Game} Game instance the SetupManager belongs to.
 	 *
-	 * @fires Whirl.Game#event:didSetup
+	 * @emits Whirl.Game#event:didSetup
 	 */
 	setup() {
 		const {config} = this._game;

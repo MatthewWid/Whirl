@@ -147,7 +147,7 @@ class ObjectManager extends Manager {
 		}
 
 		/**
-		 * Fires when an object has been marked for destruction and after it has been removed from the global store.
+		 * Fires when an object has been marked for destruction and after it has been removed from the global store (but not necessarily any other objects such as from a {@link Whirl.Stage|Stage's child list}).
 		 *
 		 * @event Whirl.Game#didDestroy
 		 * @type {object}
