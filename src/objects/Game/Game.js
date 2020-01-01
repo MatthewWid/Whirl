@@ -7,6 +7,7 @@ const {
 	ObjectManager,
 	UpdateManager,
 	RenderManager,
+	SetupManager,
 	DebugManager,
 } = require("./managers/");
 const Base = require("../Base");
@@ -80,15 +81,11 @@ class Game {
 	 */
 
 	/**
-	 * Alias to the {@link Whirl.Game.UpdateManager#start|UpdateManager#start method}.
+	 * The setup manager that handles initial game setup and canvas creation.
 	 *
-	 * @method Whirl.Game#start
-	 */
-
-	/**
-	 * Alias to the {@link Whirl.Game.UpdateManager#stop|UpdateManager#stop method}.
-	 *
-	 * @method Whirl.Game#stop
+	 * @name setup
+	 * @memberof Whirl.Game#
+	 * @type {Whirl.Game.SetupManager}
 	 */
 
 	constructor(options = {}) {
@@ -101,10 +98,7 @@ class Game {
 		this.object = new ObjectManager(this);
 		this.update = new UpdateManager(this);
 		this.render = new RenderManager(this);
-
-		// Expose manager methods at top-level
-		this.start = this.update.start;
-		this.stop = this.update.stop;
+		this.setup = new SetupManager(this);
 	}
 
 	// Game Object Factories
@@ -113,6 +107,36 @@ class Game {
 	Sprite = (...args) => new Sprite(this, ...args);
 	Container = (...args) => new Container(this, ...args);
 	Colour = (...args) => new Colour(this, ...args);
+
+	/**
+	 * Initiates {@link Whirl.Game.SetupManager|game setup} if {@link Whirl.Game.ConfigManager#setup|setup is enabled in the ConfigManager}, then {@link Whirl.Game.UpdateManager#start|starts the game loop}.
+	 *
+	 * @method Whirl.Game#start
+	 *
+	 * @returns {this}
+	 */
+	start() {
+		if (this.config.get("setup")) {
+			this.setup.setup();
+		}
+
+		this.update.start();
+
+		return this;
+	}
+
+	/**
+	 * {@link Whirl.Game.UpdateManager#stop|Stops the game loop}.
+	 *
+	 * @method Whirl.Game#stop
+	 *
+	 * @returns {this}
+	 */
+	stop() {
+		this.update.stop();
+
+		return this;
+	}
 }
 
 module.exports = (...args) => new Game(...args);

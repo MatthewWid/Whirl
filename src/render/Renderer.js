@@ -53,10 +53,10 @@ class Renderer {
 	 * @method Whirl.render.Renderer#getContext
 	 *
 	 * @abstract
-	 * @param {string} [canvas={@link Whirl.Game.ConfigManager#canvas|ConfigManager 'canvas' property}] Selector for an [HTML \<canvas\> element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) to render to.
+	 * @param {string} [canvasSelector={@link Whirl.Game.ConfigManager#canvas|ConfigManager 'canvas' property}] Selector for an [HTML \<canvas\> element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) to render to.
 	 * @returns {Whirl.render.Renderer~RenderContext} Canvas context to be used for rendering - Eg, {@link https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D|CanvasRenderingContext2D}, {@link https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext|WebGLRenderingContext}, etc.
 	 */
-	getContext(canvas) {}
+	getContext(selector) {}
 
 	/**
 	 * Runs just before renderable items are drawn to the screen.

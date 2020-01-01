@@ -42,6 +42,30 @@ class ConfigManager extends Manager {
 	 */
 
 	/**
+	 * Selector for the root element that all game canvasses created by the {@link Whirl.Game.SetupManager|SetupManager} should be inserted in.
+	 *
+	 * It is recommended that the root game element be empty. Only being occupied by HTML elements created by the engine itself.
+	 *
+	 * Defaults to the document body element (`document.body`).
+	 *
+	 * @name root
+	 * @memberof Whirl.Game.ConfigManager#
+	 * @type {string|null}
+	 * @default "body"
+	 */
+
+	/**
+	 * Run the {@link Whirl.Game.SetupManager|SetupManager} to create a default root element, canvas element and any other necessary game objects such as a {@link Whirl.Stage|Stage} and {@link Whirl.Viewport|Viewport} and start the game.
+	 *
+	 * Set this value to `false` if you would like to manually set up and configure the initial configuration and create the needed objects in your game.
+	 *
+	 * @name setup
+	 * @memberof Whirl.Game.ConfigManager#
+	 * @type {boolean}
+	 * @default true
+	 */
+
+	/**
 	 * Set the system to use for rendering objects onto a canvas - uses 2D Canvas rendering by default.
 	 *
 	 * The game renderer may only be set during game initialisation and should never be changed following the setup process's completion.
@@ -97,16 +121,14 @@ class ConfigManager extends Manager {
 
 	static defaultConfig = {
 		debug: false,
+		canvas: null,
+		root: "body",
+		setup: true,
+		renderer: null,
 		"input mouse": true,
 		"input keyboard": true,
 		"input preventDefault": true,
-		canvas: null,
-		renderer: null,
 	};
-
-	constructor(game) {
-		super(game);
-	}
 
 	/**
 	 * Set or add one or many key/value pairs.

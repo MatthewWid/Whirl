@@ -15,10 +15,10 @@ const Colour = require("../../objects/Colour/");
  * });
  */
 class CanvasRenderer extends Renderer {
-	getContext = (canvas) => {
-		const canvasElement = document.querySelector(canvas || this._game.config.get("canvas"));
+	getContext = (selector) => {
+		const canvas = document.querySelector(selector || this._game.config.get("canvas"));
 
-		if (!canvasElement) {
+		if (!canvas) {
 			this._game.debug.error(
 				"Cannot find the given canvas element to render to.",
 				"CanvasRenderer"
@@ -27,10 +27,10 @@ class CanvasRenderer extends Renderer {
 			return {};
 		}
 
-		const canvasContext = canvasElement.getContext("2d");
+		const canvasContext = canvas.getContext("2d");
 
 		return {
-			canvas: canvasElement,
+			canvas: canvas,
 			ctx: canvasContext,
 		};
 	};
