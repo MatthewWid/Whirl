@@ -39,7 +39,7 @@ const Event = require("./Event.js");
  * }
  * const object = new MyObject();
  *
- * // Listen for the 'sayHi' event on `obj` and log "Hello world"
+ * // Listen for the 'sayHi' event on `object` and log "Hello world"
  * object.event.on("sayHi", () => {
  * 	console.log("Hello world");
  * });
@@ -99,10 +99,17 @@ class EventMixin extends Mixin {
 	 * @param {string} name Name of the event to listen on.
 	 * @param {Whirl.mixins.Event~eventListener} func Event listener invoked each time this event is emitted on.
 	 * @param {boolean} [once=false] If set to `true`, will remove the event listener from the event after the first time the event is emitted on.
-	 * @returns {this} The EventMixin instance.
+	 * @returns {object} Source object this mixin is bound to.
 	 *
 	 * @example
-	 * const game = Whirl.Game({canvas: "#myCanvas"});
+	 * object.event.once("sayHi", () => {
+	 * 	console.log("Hi!");
+	 * });
+	 *
+	 * object.event.emit("sayHi"); // "Hi!" is logged to the console
+	 *
+	 * @example
+	 * const game = Whirl.Game();
 	 *
 	 * // Listen for the `didStart` event on the game object
 	 * game.event.on("didStart", (data) => {
@@ -120,7 +127,7 @@ class EventMixin extends Mixin {
 		// Push onto array with given name or create if not exists
 		(this._events[name] = this._events[name] || []).push(event);
 
-		return this;
+		return this._source;
 	}
 
 	/**
@@ -132,18 +139,15 @@ class EventMixin extends Mixin {
 	 *
 	 * @param {string} name Name of the event to listen on.
 	 * @param {Whirl.mixins.Event~eventListener} func Event listener invoked each time this event is emitted on.
-	 * @returns {this} The EventMixin instance.
+	 * @returns {object} Source object this mixin is bound to.
 	 *
 	 * @example
-	 * object.event.once("sayHi", () => {
-	 * 	console.log("Hi!");
-	 * });
-	 *
-	 * // "Hi!" is logged to the console
-	 * object.event.emit("sayHi");
-	 *
-	 * // No output
-	 * object.event.emit("sayHi");
+	 * object
+	 * 	.event.once("sayHi", () => {
+	 * 		console.log("Hi!");
+	 * 	})
+	 * 	.event.emit("sayHi") // "Hi!" is logged to the console
+	 * 	.event.emit("sayHi"); // No output
 	 *
 	 * @example
 	 * // Wait for the first game update and then stop the game loop
@@ -164,7 +168,7 @@ class EventMixin extends Mixin {
 	 *
 	 * @param {string} name Name of the event to emit to.
 	 * @param {object} [data] Additional data to give to all event listeners.
-	 * @returns {boolean} `true` if listeners existed on the given event name, `false` otherwise.
+	 * @returns {object} Source object this mixin is bound to.
 	 *
 	 * @example
 	 * // Emit to the 'eventName' event on the `object` object.
@@ -187,11 +191,9 @@ class EventMixin extends Mixin {
 					this.remove(name, event);
 				}
 			});
-
-			return true;
 		}
 
-		return false;
+		return this._source;
 	}
 
 	/**
@@ -205,22 +207,23 @@ class EventMixin extends Mixin {
 	 *
 	 * @param {string} name Name of the event to remove the listener from.
 	 * @param {number|Whirl.mixins.Event~Event} event Event ID or instance of {@link Whirl.mixins.Event~Event|Event} to remove.
-	 * @returns {this} The EventMixin instance.
+	 * @returns {object} Source object this mixin is bound to.
 	 *
 	 * @example
 	 * let id;
 	 *
-	 * obj.event.on("sayHi", (data) => {
-	 * 	console.log("Hello world");
+	 * obj
+	 * 	.event.on("sayHi", (data) => {
+	 * 			console.log("Hello world");
 	 *
-	 * 	id = data._eId; // store the ID of the event listener
-	 * });
+	 * 			id = data._eId; // store the ID of the event listener
+	 * 	})
 	 *
-	 * obj.event.emit("sayHi"); // "Hello world" logged to the console
+	 * 	.event.emit("sayHi") // "Hello world" logged to the console
 	 *
-	 * obj.event.remove("sayHi", id); // Remove the listener by its ID
+	 * 	.event.remove("sayHi", id) // Remove the listener by its ID
 	 *
-	 * obj.event.emit("sayHi"); // No output
+	 * 	.event.emit("sayHi") // No output
 	 */
 	remove(name, event) {
 		if (!this._events[name]) {
@@ -228,7 +231,7 @@ class EventMixin extends Mixin {
 				`Whirl | EventMixin | Failed to remove event by ID from non-existent event pool "${name}".`
 			);
 
-			return this;
+			return this._source;
 		}
 
 		let _eId = -1;
@@ -242,7 +245,7 @@ class EventMixin extends Mixin {
 				`Whirl | EventMixin | Invalid event identifier given to EventMixin#remove "${event}"`
 			);
 
-			return this;
+			return this._source;
 		}
 
 		this._events[name] = this._events[name].filter((event) => event._eId !== _eId);
@@ -252,7 +255,7 @@ class EventMixin extends Mixin {
 			delete this._events[name];
 		}
 
-		return this;
+		return this._source;
 	}
 
 	/**
@@ -272,7 +275,6 @@ class EventMixin extends Mixin {
 	 *
 	 * @example
 	 * object.event.removeAll();
-	 *
 	 */
 	removeAll(name) {
 		if (name) {
@@ -281,7 +283,7 @@ class EventMixin extends Mixin {
 			this._events = {};
 		}
 
-		return this;
+		return this._source;
 	}
 }
 
