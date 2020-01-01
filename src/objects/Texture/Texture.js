@@ -22,6 +22,7 @@ class Texture extends Base {
 	/**
 	 * Raw texture data that may be derived from the given input during instantiation.
 	 *
+	 * @ignore
 	 * @memberof Whirl.Texture#
 	 * @type {any}
 	 * @readonly

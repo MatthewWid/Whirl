@@ -19,10 +19,78 @@ const Texture = require("../Texture/");
  * Whirl.Colour(game, 200, 50, 50);
  */
 class Colour extends Texture {
+	/**
+	 * **Redness** of this colour (0-255).
+	 *
+	 * @name r
+	 * @memberof Whirl.Colour#
+	 * @type {number}
+	 * @default 0
+	 */
+	_r;
+
+	/**
+	 * **Greenness** of this colour (0-255).
+	 *
+	 * @name g
+	 * @memberof Whirl.Colour#
+	 * @type {number}
+	 * @default 0
+	 */
+	_g;
+
+	/**
+	 * **Blueness** of this colour (0-255).
+	 *
+	 * @name b
+	 * @memberof Whirl.Colour#
+	 * @type {number}
+	 * @default 0
+	 */
+	_b;
+
 	constructor(game, r, g, b) {
 		super(game);
 
-		this._data = `rgb(${r}, ${g}, ${b})`;
+		this._r = r || 0;
+		this._g = g || 0;
+		this._b = b || 0;
+
+		this.calculateData();
+	}
+
+	get r() {
+		return this._r;
+	}
+
+	set r(r) {
+		this._r = r;
+
+		this.calculateData();
+	}
+
+	get g() {
+		return this._g;
+	}
+
+	set g(g) {
+		this._g = g;
+
+		this.calculateData();
+	}
+
+	get b() {
+		return this._b;
+	}
+
+	set b(b) {
+		this._b = b;
+
+		this.calculateData();
+	}
+
+	calculateData() {
+		this._data = `rgb(${this._r}, ${this._g}, ${this._b})`;
 	}
 }
 
