@@ -7,6 +7,7 @@ html {
 	display: flex;
 	justify-content: center;
 
+	#whirl-canvas-default,
 	#canvas {
 		margin: 20px 0;
 		box-shadow: 0 0 0 1px #4d4d4d;
@@ -14,5 +15,5 @@ html {
 }
 p {
 	text-align: center;
-	color: #BBB;
+	color: #bbb;
 }
