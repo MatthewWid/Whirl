@@ -51,6 +51,11 @@ class CanvasRenderer extends Renderer {
 	postRender(viewport) {
 		const {canvas, ctx} = viewport.render;
 
+		if (viewport.clip) {
+			ctx.globalCompositeOperation = "destination-in";
+			ctx.fillRect(0, 0, viewport.bounds.w, viewport.bounds.h);
+		}
+
 		ctx.restore();
 	}
 

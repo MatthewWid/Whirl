@@ -87,7 +87,7 @@ class RenderManager extends Manager {
 	_renderViewport(viewport) {
 		const renderables = viewport.getRenderables();
 
-		this.renderer.preRender(viewport, viewport);
+		this.renderer.preRender(viewport);
 
 		for (let i = 0; i < renderables.length; i++) {
 			if (renderables[i] instanceof Sprite) {
@@ -95,7 +95,7 @@ class RenderManager extends Manager {
 			}
 		}
 
-		this.renderer.postRender(viewport, viewport);
+		this.renderer.postRender(viewport);
 	}
 }
 
