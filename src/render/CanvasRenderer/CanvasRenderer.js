@@ -60,15 +60,12 @@ class CanvasRenderer extends Renderer {
 
 		ctx.globalAlpha = sprite.derived.alpha;
 
+		ctx.translate(sprite.derived.bounds.x, sprite.derived.bounds.y);
+
 		if (sprite.fill instanceof Colour) {
 			ctx.fillStyle = sprite.fill._data;
 
-			ctx.fillRect(
-				sprite.derived.bounds.x,
-				sprite.derived.bounds.y,
-				sprite.derived.bounds.w,
-				sprite.derived.bounds.h
-			);
+			ctx.fillRect(0, 0, sprite.derived.bounds.w, sprite.derived.bounds.h);
 		}
 
 		ctx.restore();
