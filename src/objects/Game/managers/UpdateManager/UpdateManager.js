@@ -151,9 +151,11 @@ class UpdateManager extends Manager {
 		 * @event Whirl.Game#willStart
 		 * @type {object}
 		 *
+		 * @property {Whirl.Game} game Current game instance.
 		 * @property {number} initTime Timestamp in milliseconds of when the game was instantiated.
 		 */
 		this._game.event.emit("willStart", {
+			game: this._game,
 			initTime: this.initTime,
 		});
 
@@ -171,10 +173,12 @@ class UpdateManager extends Manager {
 		 * @event Whirl.Game#didStart
 		 * @type {object}
 		 *
+		 * @property {Whirl.Game} game Current game instance.
 		 * @property {number} initTime Timestamp in milliseconds of when the game was instantiated.
 		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
 		 */
 		this._game.event.emit("didStart", {
+			game: this._game,
 			initTime: this.initTime,
 			startTime: this.startTime,
 		});
@@ -213,10 +217,12 @@ class UpdateManager extends Manager {
 		 * @event Whirl.Game#willStop
 		 * @type {object}
 		 *
+		 * @property {Whirl.Game} game Current game instance.
 		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
 		 * @property {number} elapsedTime Time in milliseconds since the game was started.
 		 */
 		this._game.event.emit("willStop", {
+			game: this._game,
 			startTime: this.startTime,
 			elapsedTime: this.elapsedTime,
 		});
@@ -245,12 +251,14 @@ class UpdateManager extends Manager {
 		 * @event Whirl.Game#willUpdate
 		 * @type {object}
 		 *
+		 * @property {Whirl.Game} game Current game instance.
 		 * @property {number} frameCount Total frames elapsed whilst the game is running.
 		 * @property {number} frameDelta Time in milliseconds since the last update tick.
 		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
 		 * @property {number} elapsedTime Time in milliseconds since the game was started.
 		 */
 		this._game.event.emit("willUpdate", {
+			game: this._game,
 			frameCount: this.frameCount,
 			frameDelta: this.frameDelta,
 			startTime: this.startTime,
@@ -275,12 +283,14 @@ class UpdateManager extends Manager {
 		 * @event Whirl.Game#didUpdate
 		 * @type {object}
 		 *
+		 * @property {Whirl.Game} game Current game instance.
 		 * @property {number} frameCount Total frames elapsed whilst the game is running.
 		 * @property {number} frameDelta Time in milliseconds since the last update tick.
 		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
 		 * @property {number} elapsedTime Time in milliseconds since the game was started.
 		 */
 		this._game.event.emit("didUpdate", {
+			game: this._game,
 			frameCount: this.frameCount,
 			frameDelta: this.frameDelta,
 			startTime: this.startTime,
@@ -298,11 +308,13 @@ class UpdateManager extends Manager {
 			 * @event Whirl.Game#didStop
 			 * @type {object}
 			 *
+			 * @property {Whirl.Game} game Current game instance.
 			 * @property {number} frameCount Total frames elapsed whilst the game is running.
 			 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
 			 * @property {number} elapsedTime Time in milliseconds since the game was started.
 			 */
 			this._game.event.emit("didStop", {
+				game: this._game,
 				frameCount: this.frameCount,
 				startTime: this.startTime,
 				elapsedTime: this.elapsedTime,
