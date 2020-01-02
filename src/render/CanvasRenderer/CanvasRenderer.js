@@ -1,5 +1,6 @@
 const Renderer = require("../Renderer.js");
 const Colour = require("../../objects/Colour/");
+const radians = require("../../math/radians");
 
 /**
  * @classdesc
@@ -60,7 +61,16 @@ class CanvasRenderer extends Renderer {
 
 		ctx.globalAlpha = sprite.derived.alpha;
 
-		ctx.translate(sprite.derived.bounds.x, sprite.derived.bounds.y);
+		if (sprite.rotation) {
+			ctx.translate(
+				sprite.derived.bounds.x + sprite.derived.bounds.w / 2,
+				sprite.derived.bounds.y + sprite.derived.bounds.h / 2
+			);
+			ctx.rotate(radians(sprite.rotation));
+			ctx.translate(-sprite.derived.bounds.w / 2, -sprite.derived.bounds.h / 2);
+		} else {
+			ctx.translate(sprite.derived.bounds.x, sprite.derived.bounds.y);
+		}
 
 		if (sprite.fill instanceof Colour) {
 			ctx.fillStyle = sprite.fill._data;

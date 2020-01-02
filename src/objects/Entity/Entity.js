@@ -71,6 +71,22 @@ class Entity extends Base {
 	scale;
 
 	/**
+	 * Clockwise rotation (**in degrees**) of this entity.
+	 *
+	 * Parent entities do not propogate this value down to their children.
+	 *
+	 * Note that the built-in physics engine *does not* take this value into account, and will not rotate its corresponding physics body.
+	 *
+	 * @memberof Whirl.Entity#
+	 * @type {number}
+	 * @default 0
+	 *
+	 * @see Whirl.math.degrees
+	 * @see Whirl.math.radians
+	 */
+	rotation;
+
+	/**
 	 * Z-layer this object should be rendered on.
 	 *
 	 * Objects with a higher `layer` value that are on the same implicit level as other objects with a lower `layer` value will be rendered on top (similar to the `z-index` CSS property).
@@ -123,6 +139,8 @@ class Entity extends Base {
 		this.alpha = getValue(options, "alpha", 1);
 
 		this.scale = getValue(options, "scale", 1);
+
+		this.rotation = getValue(options, "rotation", 0);
 
 		this.layer = getValue(options, "layer", 0);
 
