@@ -44,7 +44,7 @@ class CanvasRenderer extends Renderer {
 		ctx.translate(viewport.bounds.x, viewport.bounds.y);
 
 		if (viewport.clear) {
-			ctx.clearRect(viewport.bounds.x, viewport.bounds.y, viewport.bounds.w, viewport.bounds.h);
+			ctx.clearRect(0, 0, viewport.bounds.w, viewport.bounds.h);
 		}
 	}
 
@@ -66,7 +66,9 @@ class CanvasRenderer extends Renderer {
 				sprite.derived.bounds.x + sprite.derived.bounds.w / 2,
 				sprite.derived.bounds.y + sprite.derived.bounds.h / 2
 			);
+
 			ctx.rotate(radians(sprite.rotation));
+
 			ctx.translate(-sprite.derived.bounds.w / 2, -sprite.derived.bounds.h / 2);
 		} else {
 			ctx.translate(sprite.derived.bounds.x, sprite.derived.bounds.y);
