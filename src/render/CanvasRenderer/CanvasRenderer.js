@@ -1,5 +1,6 @@
 const Renderer = require("../Renderer.js");
 const Colour = require("../../objects/Colour/");
+const Gradient = require("../../objects/Gradient/");
 const radians = require("../../math/radians");
 
 /**
@@ -81,6 +82,23 @@ class CanvasRenderer extends Renderer {
 
 		if (sprite.fill instanceof Colour) {
 			ctx.fillStyle = sprite.fill._data;
+
+			ctx.fillRect(0, 0, sprite.derived.bounds.w, sprite.derived.bounds.h);
+		} else if (sprite.fill instanceof Gradient) {
+			const gradient = ctx.createLinearGradient(
+				sprite.fill.start.x,
+				sprite.fill.start.y,
+				(sprite.fill.end.x / 100) * sprite.derived.bounds.w,
+				(sprite.fill.end.y / 100) * sprite.derived.bounds.h
+			);
+
+			for (let i = 0; i < sprite.fill.stops.length; i++) {
+				const [offset, colour] = sprite.fill.stops[i];
+
+				gradient.addColorStop(offset, colour._data);
+			}
+
+			ctx.fillStyle = gradient;
 
 			ctx.fillRect(0, 0, sprite.derived.bounds.w, sprite.derived.bounds.h);
 		}
