@@ -5,17 +5,17 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const config = {
 	mode: "development",
 	entry: {
-		"./examples/_common/styles/css/index": path.resolve(__dirname, "..", "./examples/_common/styles/scss/index.scss"),
+		"./examples/_common/styles/css/index": path.resolve(
+			__dirname,
+			"..",
+			"./examples/_common/styles/scss/index.scss"
+		),
 	},
 	module: {
 		rules: [
 			{
 				test: /\.scss$/,
-				use: [
-					MiniCssExtractPlugin.loader,
-					"css-loader?url=false",
-					"sass-loader",
-				],
+				use: [MiniCssExtractPlugin.loader, "css-loader?url=false", "sass-loader"],
 			},
 		],
 	},
@@ -25,7 +25,7 @@ const config = {
 			filename: "[name].css",
 		}),
 	],
-	"devtool": "source-map",
+	devtool: "source-map",
 	stats: "minimal",
 	watch: true,
 };

@@ -18,19 +18,19 @@ const config = {
 								[
 									"@babel/plugin-proposal-class-properties",
 									{
-										loose: true
-									}
-								]
-							]
-						}
-					]
-				}
+										loose: true,
+									},
+								],
+							],
+						},
+					],
+				},
 			},
-		]
+		],
 	},
 	output: {
 		path: path.resolve(__dirname, ".."),
-		filename: "[name].js"
+		filename: "[name].js",
 	},
 };
 
