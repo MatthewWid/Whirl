@@ -1,4 +1,5 @@
 const Manager = require("../Manager.js");
+const getValue = require("../../../../lib/getValue.js");
 
 /**
  * @classdesc
@@ -204,22 +205,29 @@ class ConfigManager extends Manager {
 	/**
 	 * Retrieve one or all values.
 	 *
+	 * Optionally, return a default value if the specified key is not found.
+	 *
 	 * @method Whirl.Game.ConfigManager#get
 	 *
 	 * @param {string} [key] Key of the key/value pair to retrieve the value from.
-	 * @returns {any|object} The value related to the key. If the key is not given, returns the entire configuration map object.
+	 * @param {any} [default=null] Default value to return if no key is found.
+	 * @returns {any|null|object} The value related to the key. If the key is not given, returns the entire configuration map object.
 	 *
 	 * @example
 	 * game.config.get(); // {...}
 	 *
 	 * @example
 	 * game.config.get("debug"); // false
+	 * 
+	 * @example
+	 * game.config.get("nonexistentkey", "my string"); // "my string"
 	 */
-	get(key) {
+	get(key, defaultValue) {
 		if (!key) {
 			return {...this._data};
 		}
-		return this._data[key];
+
+		return getValue(this._data, key, defaultValue);
 	}
 
 	/**
