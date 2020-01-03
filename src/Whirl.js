@@ -14,6 +14,7 @@ const {
 	Sprite,
 	Container,
 	Colour,
+	Gradient,
 } = require("./objects/");
 const {Renderer, CanvasRenderer, WebglRenderer} = require("./render/");
 
@@ -52,6 +53,7 @@ class Whirl {
 	static Entity = Entity;
 	static Texture = Texture;
 	static Colour = Colour;
+	static Gradient = Gradient;
 
 	// Render Systems
 	static render = {

@@ -8,6 +8,7 @@ const Stage = require("./Stage/");
 const Sprite = require("./Sprite/");
 const Container = require("./Container/");
 const Colour = require("./Colour");
+const Gradient = require("./Gradient");
 
 module.exports = {
 	// Base Classes for plugins
@@ -24,4 +25,5 @@ module.exports = {
 	Sprite,
 	Container,
 	Colour,
+	Gradient,
 };

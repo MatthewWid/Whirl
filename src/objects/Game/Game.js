@@ -10,12 +10,13 @@ const {
 	SetupManager,
 	DebugManager,
 } = require("./managers/");
-const Base = require("../Base");
-const Viewport = require("../Viewport");
-const Stage = require("../Stage");
-const Sprite = require("../Sprite");
-const Container = require("../Container");
-const Colour = require("../Colour");
+const Base = require("../Base/");
+const Viewport = require("../Viewport/");
+const Stage = require("../Stage/");
+const Sprite = require("../Sprite/");
+const Container = require("../Container/");
+const Colour = require("../Colour/");
+const Gradient = require("../Gradient/");
 
 /**
  * @classdesc
@@ -107,6 +108,7 @@ class Game {
 	Sprite = (...args) => new Sprite(this, ...args);
 	Container = (...args) => new Container(this, ...args);
 	Colour = (...args) => new Colour(this, ...args);
+	Gradient = (...args) => new Gradient(this, ...args);
 
 	/**
 	 * Starts the game loop.

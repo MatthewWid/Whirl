@@ -8,7 +8,7 @@ const Texture = require("../Texture/");
  * @memberof Whirl
  * @extends Whirl.Texture
  *
- * @param {Whirl.Game} game Game instance this sprite belongs to and should be managed by.
+ * @param {Whirl.Game} game Game instance this texture belongs to and should be managed by.
  * @param {number} r Red intensity of this colour from `0` to `255`.
  * @param {number} g Green intensity of this colour from `0` to `255`.
  * @param {number} b Green intensity of this colour from `0` to `255`.
