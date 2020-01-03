@@ -23,8 +23,8 @@ const {Rectangle, Point} = require("../../geometry/");
  * Passed as reference - changing properties of the given Rectangle instance will also affect this sprite's `bounds` property in response.
  * @param {number} options.x=0 X-coordinate of this sprite.
  * @param {number} options.y=0 Y-coordinate of this sprite.
- * @param {number} options.w=0 Width of the rendered sprite.
- * @param {number} options.h=0 Height of the rendered sprite.
+ * @param {number} options.w=50 Width of the rendered sprite.
+ * @param {number} options.h=50 Height of the rendered sprite.
  * @param {Whirl.geometry.Point} options.anchor Initial anchor point that defines the origin point of this sprite's rendered position between `0` and `1`. Alternatively, give each anchor value individually with the `anchorX` and `anchorY` values.
  * @param {number} options.anchorX=0 X-coordinate of this sprite's anchor point.
  * @param {number} options.anchorY=0 Y-coordinate of this sprite's anchor point.
@@ -46,7 +46,7 @@ class Sprite extends Entity {
 	 *
 	 * @memberof Whirl.Sprite#
 	 * @type {Whirl.geometry.Rectangle}
-	 * @default (0, 0, 0, 0)
+	 * @default (0, 0, 50, 50)
 	 */
 	bounds;
 
@@ -81,8 +81,8 @@ class Sprite extends Entity {
 			this.bounds = Rectangle(
 				getValue(options, "x", 0),
 				getValue(options, "y", 0),
-				getValue(options, "w", 0),
-				getValue(options, "h", 0)
+				getValue(options, "w", 50),
+				getValue(options, "h", 50)
 			);
 		}
 
