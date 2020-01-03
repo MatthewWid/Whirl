@@ -123,7 +123,7 @@ class SetupManager extends Manager {
 		this.stage = stage;
 
 		const viewport = new Viewport(this._game, {
-			resize: true,
+			resizeCanvas: true,
 			stage,
 		});
 

@@ -39,8 +39,9 @@ const getValue = require("../../lib/getValue.js");
  * @param {number} options.zoom=1 Initial zoom level. Increasing this value zooms in, decreasing it zooms out.
  * @param {number} options.lerp=1 Linear interpolation value to use when animatedly scrolling to a given point or game object.
  * @param {string} options.canvas Selector for the canvas element to render to. If not given, will default to the `canvas` value stored in {@link Whirl.Game.ConfigManager#canvas|the game configuration}.
- * @param {boolean} options.resize=false Resize the canvas width and height to the width and height of this viewports clipping plane.
+ * @param {boolean} options.resizeCanvas=false Resize the canvas width and height to the same width and height of this viewports clipping plane.
  * @param {Stage} options.stage Initial stage to be used for rendering.
+ * @param {boolean} options.resizeStage=false Resize the stage bounds to the same position and dimensions of this viewport.
  *
  * Implicitely calls the `setStage` method.
  *
@@ -186,10 +187,10 @@ class Viewport extends Base {
 
 		this.lerp = getValue(options, "lerp", 1);
 
-		this.setCanvas(options.canvas, options.resize);
+		this.setCanvas(options.canvas, options.resizeCanvas);
 
 		if (options.stage) {
-			this.setStage(options.stage);
+			this.setStage(options.stage, options.resizeStage);
 		}
 	}
 
@@ -226,6 +227,7 @@ class Viewport extends Base {
 	 * @method Whirl.Viewport#setStage
 	 *
 	 * @param {Whirl.Stage} stage New stage to be used for rendering.
+	 * @param {boolean} [resize=false] Modify the {@link Whirl.Stage#limits|Stage limits} to be repositioned and contained within the {@link Whirl.Viewport#bounds|bounds} of the viewport.
 	 * @returns {this}
 	 *
 	 * @example
@@ -242,13 +244,24 @@ class Viewport extends Base {
 	 * 	stage
 	 * });
 	 */
-	setStage(stage) {
+	setStage(stage, resize = false) {
 		if (typeof stage === "undefined" || (stage && !(stage instanceof Stage))) {
 			this._game.debug.warn("Invalid Stage instance given to Viewport#setStage.", "Whirl.Viewport");
 
 			this.stage = null;
-		} else {
-			this.stage = stage;
+
+			return this;
+		}
+
+		this.stage = stage;
+
+		if (resize) {
+			this.stage.limits.set({
+				x: 0,
+				y: 0,
+				w: this.bounds.w,
+				h: this.bounds.h,
+			});
 		}
 
 		return this;
