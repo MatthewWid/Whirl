@@ -107,6 +107,24 @@ class ConfigManager extends Manager {
 	 */
 
 	/**
+	 * Default width of all newly created {@link Whirl.Stage|Stages} and {@link Whirl.Viewport|Viewports}.
+	 *
+	 * @name w
+	 * @memberof Whirl.Game.ConfigManager#
+	 * @type {number}
+	 * @default 640
+	 */
+
+	/**
+	 * Default height of all newly created {@link Whirl.Stage|Stages} and {@link Whirl.Viewport|Viewports}.
+	 *
+	 * @name h
+	 * @memberof Whirl.Game.ConfigManager#
+	 * @type {number}
+	 * @default 480
+	 */
+
+	/**
 	 * The object that actually stores the configuration data internally. You should **never access or modify this object directly**. Instead, make use of the `set` and `get` methods on the configuration manager.
 	 *
 	 * This object comes with certain preset values that the game uses internally, but you can also add your own additional values if need be.
@@ -129,6 +147,8 @@ class ConfigManager extends Manager {
 		"input mouse": true,
 		"input keyboard": true,
 		"input preventDefault": true,
+		w: 640,
+		h: 480,
 	};
 
 	/**
@@ -218,7 +238,7 @@ class ConfigManager extends Manager {
 	 *
 	 * @example
 	 * game.config.get("debug"); // false
-	 * 
+	 *
 	 * @example
 	 * game.config.get("nonexistentkey", "my string"); // "my string"
 	 */

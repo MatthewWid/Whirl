@@ -23,13 +23,15 @@ const addInheritFilter = require("../../lib/addInheritFilter.js");
  *
  * @param {Whirl.Game} game Game instance this stage belongs to and should be managed by.
  * @param {object} [options] Optional presets when initialising this object.
+ *
+ * Either provide the world limits with a {@link Whirl.geometry.Rectangle|Rectangle} instance, or give each value individually with `x`, `y`, `w` and `h`.
  * @param {Whirl.geometry.Rectangle} options.limits Position and size of the game world. Alternatively, give each dimension of the world border manually with the `x`, `y`, `w` and `h` options.
  *
  * Passed as reference - changing properties of the given Rectangle instance will also affect the stage world limit.
  * @param {number} options.x=0 X-coordinate of the stage limit.
  * @param {number} options.y=0 Y-coordinate of the stage limit.
- * @param {number} options.w=0 Width of the stage limit.
- * @param {number} options.h=0 Height of the stage limit.
+ * @param {number} options.w=ConfigManager.w Width of the stage limit.
+ * @param {number} options.h=ConfigManager.h Height of the stage limit.
  * @param {Entity[]} [children] Array of children to initialise into the stage world.
  *
  * @example
@@ -69,8 +71,8 @@ class Stage extends Entity {
 			this.limits = Rectangle(
 				getValue(options, "x", 0),
 				getValue(options, "y", 0),
-				getValue(options, "w", 0),
-				getValue(options, "h", 0)
+				getValue(options, "w", this._game.config.get("w", 0)),
+				getValue(options, "h", this._game.config.get("h", 0))
 			);
 		}
 

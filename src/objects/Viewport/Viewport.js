@@ -19,13 +19,17 @@ const getValue = require("../../lib/getValue.js");
  *
  * @param {Whirl.Game} game Game instance this viewport belongs to and should be managed by.
  * @param {object} [options] Optional presets when initialising this object.
+ *
+ * Either provide the bounds with a {@link Whirl.geometry.Rectangle|Rectangle} instance, or give each value individually with `x`, `y`, `w` and `h`.
+ *
+ * Either provide the scroll position with a {@link Whirl.geometry.Point|Point} instance, or give each value individually with `scrollX` and `scrollY`.
  * @param {Whirl.geometry.Rectangle} options.bounds Set the bounds of the clipping plane. Alternatively, give each dimension of the clipping plane manually with the `x`, `y`, `w` and `h` options.
  *
  * Passed as reference - changing properties of the given Rectangle instance will also affect this viewports bounds in response.
  * @param {number} options.x=0 X-coordinate of the clipping plane relative to the screen.
  * @param {number} options.y=0 Y-coordinate of the clipping plane relative to the screen.
- * @param {number} options.w=0 Width of the clipping plane.
- * @param {number} options.h=0 Height of the clipping plane.
+ * @param {number} options.w=ConfigManager.w Width of the clipping plane.
+ * @param {number} options.h=ConfigManager.h Height of the clipping plane.
  * @param {Whirl.geometry.Point} options.scroll Set the initial scroll value around the world. Alternatively, give each scroll value individually with the `scrollX` and `scrollY` options.
  * @param {number} options.scrollX=0 X-coordinate of the scroll position.
  * @param {number} options.scrollY=0 Y-coordinate of the scroll position.
@@ -120,9 +124,9 @@ class Viewport extends Base {
 	clear;
 
 	/**
-	 * Enable anti-aliasing when rendering.
+	 * Enables anti-aliasing when rendering images.
 	 *
-	 * For games that make use of pixel art or require precise rendering this should be disabled.
+	 * For games that make use of pixel art or pixel-perfect rendered images this option should be disabled.
 	 *
 	 * @memberof Whirl.Viewport#
 	 * @type {boolean}
@@ -158,7 +162,12 @@ class Viewport extends Base {
 		if (options.bounds instanceof Rectangle._class) {
 			this.bounds = options.bounds;
 		} else {
-			this.bounds = Rectangle(options.x || 0, options.y || 0, options.w || 0, options.h || 0);
+			this.bounds = Rectangle(
+				getValue(options, "x", 0),
+				getValue(options, "y", 0),
+				getValue(options, "w", this._game.config.get("w", 0)),
+				getValue(options, "h", this._game.config.get("h", 0))
+			);
 		}
 
 		if (options.scroll instanceof Point._class) {

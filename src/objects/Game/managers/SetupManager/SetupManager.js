@@ -118,16 +118,11 @@ class SetupManager extends Manager {
 			config.set("canvas", `#${newCanvas.getAttribute("id")}`);
 		}
 
-		const stage = new Stage(this._game, {
-			w: 640,
-			h: 480,
-		});
+		const stage = new Stage(this._game);
 
 		this.stage = stage;
 
 		const viewport = new Viewport(this._game, {
-			w: 640,
-			h: 480,
 			resize: true,
 			stage,
 		});
