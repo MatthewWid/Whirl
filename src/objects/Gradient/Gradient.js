@@ -34,7 +34,7 @@ const Colour = require("../Colour/");
  * 		start: Point(0, 0),
  * 		end: Point(100, 100),
  * 		stops: [
- * 			[0, Colour(0, 0, 0)],
+ * 			[0, Colour(255, 0, 0)],
  * 			[0.5, Colour(0, 0, 255)],
  * 			[1, Colour(0, 255, 0)],
  * 		],
