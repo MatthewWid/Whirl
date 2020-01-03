@@ -97,7 +97,7 @@ class Rectangle extends Geometry {
 	 * Whirl.geometry.Rectangle(0, 0, 100, 100).midpoint; // Point {x: 50, y: 50}
 	 */
 	get midpoint() {
-		return Point((this.x + this.w) / 2, (this.y + this.h) / 2);
+		return Point(this.x + this.w / 2, this.y + this.h / 2);
 	}
 
 	/**
