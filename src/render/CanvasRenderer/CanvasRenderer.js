@@ -67,17 +67,17 @@ class CanvasRenderer extends Renderer {
 
 		ctx.globalAlpha = sprite.derived.alpha;
 
+		ctx.translate(sprite.derived.bounds.x, sprite.derived.bounds.y);
+
 		if (sprite.rotation) {
-			ctx.translate(
-				sprite.derived.bounds.x + sprite.derived.bounds.w / 2,
-				sprite.derived.bounds.y + sprite.derived.bounds.h / 2
-			);
+			const rotationOriginX = sprite.derived.bounds.w * sprite.anchor.x;
+			const rotationOriginY = sprite.derived.bounds.h * sprite.anchor.y;
+
+			ctx.translate(rotationOriginX, rotationOriginY);
 
 			ctx.rotate(radians(sprite.rotation));
 
-			ctx.translate(-sprite.derived.bounds.w / 2, -sprite.derived.bounds.h / 2);
-		} else {
-			ctx.translate(sprite.derived.bounds.x, sprite.derived.bounds.y);
+			ctx.translate(-rotationOriginX, -rotationOriginY);
 		}
 
 		if (sprite.fill instanceof Colour) {
