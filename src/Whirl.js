@@ -11,6 +11,7 @@ const {
 	Game,
 	Viewport,
 	Stage,
+	Camera,
 	Sprite,
 	Container,
 	Colour,
@@ -48,6 +49,7 @@ class Whirl {
 	static Base = Base;
 	static Viewport = Viewport;
 	static Stage = Stage;
+	static Camera = Camera;
 	static Sprite = Sprite;
 	static Container = Container;
 	static Entity = Entity;
