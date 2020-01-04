@@ -59,28 +59,52 @@ class Renderer {
 	getContext(selector) {}
 
 	/**
-	 * Runs just before renderable items are drawn to the screen.
+	 * Runs just before the first Viewport begins its individual rendering.
 	 *
-	 * Perform set up for a given frame to render, any transformations or background effects.
+	 * Perform global setup and canvas preparation.
 	 *
-	 * @method Whirl.render.Renderer#preRender
+	 * @method Whirl.render.Renderer#preRenderAll
+	 *
+	 * @abstract
+	 * @param {Whirl.Viewport[]} viewports All Viewports to be rendered.
+	 */
+	preRenderAll(viewports) {}
+
+	/**
+	 * Runs after the last Viewport finishes its individual rendering.
+	 *
+	 * Perform cleanup, batch clipping and globally applied post-processing effects.
+	 *
+	 * @method Whirl.render.Renderer#postRenderAll
+	 *
+	 * @abstract
+	 * @param {Whirl.Viewport[]} viewports All Viewports that were rendered.
+	 */
+	postRenderAll(viewports) {}
+
+	/**
+	 * Runs just before renderable items of a single Viewport are drawn to the screen.
+	 *
+	 * Perform set up for a given frame to render such as transforms and background effects.
+	 *
+	 * @method Whirl.render.Renderer#preRenderViewport
 	 *
 	 * @abstract
 	 * @param {Whirl.Viewport} viewport Current viewport being rendered.
 	 */
-	preRender(viewport, renderables) {}
+	preRenderViewport(viewport, renderables) {}
 
 	/**
-	 * Runs just after renderable items are drawn to the screen.
+	 * Runs just after the renderable items of a single Viewport are drawn to the screen.
 	 *
 	 * Perform post-processing effects and any cleanup necessary for post-rendering the given viewport.
 	 *
-	 * @method Whirl.render.Renderer#preRender
+	 * @method Whirl.render.Renderer#postRenderViewport
 	 *
 	 * @abstract
 	 * @param {Whirl.Viewport} viewport Current viewport being rendered.
 	 */
-	preRender(viewport, renderables) {}
+	postRenderViewport(viewport, renderables) {}
 
 	/**
 	 * Render an individual Sprite.
@@ -89,7 +113,7 @@ class Renderer {
 	 *
 	 * @abstract
 	 * @param {Whirl.Viewport} viewport Viewport to use post-processing effects from.
-	 * @param {Whirl.Sprite} Sprite Sprite object to render.
+	 * @param {Whirl.Sprite} sprite Sprite object to render.
 	 */
 	Sprite(viewport, sprite) {}
 }

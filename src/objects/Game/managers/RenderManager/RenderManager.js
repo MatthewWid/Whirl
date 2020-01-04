@@ -66,9 +66,14 @@ class RenderManager extends Manager {
 		this._game.event.emit("willRender");
 
 		const viewports = this._game.object._viewports;
+
+		this.renderer.preRenderAll(viewports);
+
 		for (let i = 0; i < viewports.length; i++) {
-			this._renderViewport(viewports[i]);
+			this._Viewport(viewports[i]);
 		}
+
+		this.renderer.postRenderAll(viewports);
 
 		/**
 		 * Fires after the render step of the game has concluded.
@@ -80,14 +85,17 @@ class RenderManager extends Manager {
 	}
 
 	/**
-	 * Render a single viewport.
+	 * Render a single Viewport.
+	 *
+	 * @ignore
+	 * @method Whirl.Game.RenderManager#_Viewport
 	 *
 	 * @param {Whirl.Viewport} viewport Viewport to render.
 	 */
-	_renderViewport(viewport) {
+	_Viewport(viewport) {
 		const renderables = viewport.getRenderables();
 
-		this.renderer.preRender(viewport);
+		this.renderer.preRenderViewport(viewport);
 
 		for (let i = 0; i < renderables.length; i++) {
 			if (renderables[i] instanceof Sprite) {
@@ -95,7 +103,7 @@ class RenderManager extends Manager {
 			}
 		}
 
-		this.renderer.postRender(viewport);
+		this.renderer.postRenderViewport(viewport);
 	}
 }
 

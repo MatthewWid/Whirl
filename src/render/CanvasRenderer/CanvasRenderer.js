@@ -38,7 +38,7 @@ class CanvasRenderer extends Renderer {
 		};
 	};
 
-	preRender(viewport) {
+	preRenderViewport(viewport) {
 		const {canvas, ctx} = viewport.render;
 
 		ctx.save();
@@ -50,7 +50,7 @@ class CanvasRenderer extends Renderer {
 		}
 	}
 
-	postRender(viewport) {
+	postRenderViewport(viewport) {
 		const {canvas, ctx} = viewport.render;
 
 		if (viewport.clip) {
