@@ -134,6 +134,10 @@ class ObjectManager extends Manager {
 
 		if (object instanceof Viewport) {
 			this._viewports = this._viewports.filter((item) => object._id !== item._id);
+
+			if (this._game.setup.viewport === object) {
+				this._game.setup.viewport = null;
+			}
 		}
 
 		if (object instanceof Stage) {
@@ -144,6 +148,10 @@ class ObjectManager extends Manager {
 					viewport.setStage(null);
 				}
 			});
+
+			if (this._game.setup.stage === object) {
+				this._game.setup.stage = null;
+			}
 		}
 
 		/**

@@ -352,7 +352,7 @@ class Viewport extends Base {
 	 * @example
 	 * viewport.getRenderables(); // [...]
 	 */
-	getRenderables(object = this.stage, renderables = []) {
+	getRenderables(object = this.stage || {}, renderables = []) {
 		if (!object.child) {
 			renderables.push(object);
 		} else {
