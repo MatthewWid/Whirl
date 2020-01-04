@@ -55,7 +55,7 @@ class Point extends Geometry {
 	 *
 	 * @method Whirl.geometry.Point#distanceFrom
 	 *
-	 * @param {number|Point} x X-coordinate of the point or a Point object itself. If a Point is provided then measure the distance from this Point to the given Point, instead of from this Point to the given X and Y values.
+	 * @param {number|Whirl.geometry.Point} x X-coordinate of the point or a Point object itself. If a Point is provided then measure the distance from this Point to the given Point, instead of from this Point to the given X and Y values.
 	 * @param {number} [y] Y-coordinate of the point.
 	 * @returns {number} The distance between the two points.
 	 *
@@ -76,6 +76,60 @@ class Point extends Geometry {
 		}
 
 		return Math.hypot(x - this.x, y - this.y);
+	}
+
+	/**
+	 * Get the angle from this Point to a given point.
+	 *
+	 * @method Whirl.geometry.Point#angleTo
+	 *
+	 * @param {number|Whirl.geometry.Point} px X-coordinate of the point or a Point object itself. If a {@link Whirl.geometry.Point|Point} is provided then measure the angle between this Point to the given Point, instead of from this Point to the given X and Y values.
+	 * @param {*} [py] Y-coordinate of the point.
+	 * @returns {number}
+	 */
+	angleTo(px, py) {
+		let x = px;
+		let y = py;
+
+		if (px instanceof Point) {
+			x = px.x;
+			y = px.y;
+		}
+
+		let theta = (Math.atan2(y - this.y, x - this.x) * 180) / Math.PI;
+
+		if (theta < 0) {
+			theta = 360 + theta;
+		}
+
+		return theta;
+	}
+
+	/**
+	 * Get the angle from a given point to this Point.
+	 *
+	 * @method Whirl.geometry.Point#angleFrom
+	 *
+	 * @param {number|Whirl.geometry.Point} px X-coordinate of the point or a Point object itself. If a {@link Whirl.geometry.Point|Point} is provided then measure the angle between the given Point and this Point, instead of from the given X and Y values to this Point.
+	 * @param {*} [py] Y-coordinate of the point.
+	 * @returns {number}
+	 */
+	angleFrom(px, py) {
+		let x = px;
+		let y = py;
+
+		if (px instanceof Point) {
+			x = px.x;
+			y = px.y;
+		}
+
+		let theta = (Math.atan2(this.y - y, this.x - x) * 180) / Math.PI;
+
+		if (theta < 0) {
+			theta = 360 + theta;
+		}
+
+		return theta;
 	}
 
 	duplicate() {
