@@ -38,11 +38,16 @@ const getValue = require("../../lib/getValue.js");
  * @param {number} options.zoom=1 Initial zoom level. Increasing this value zooms in, decreasing it zooms out.
  * @param {number} options.lerp=1 Linear interpolation value to use when animatedly scrolling to a given point or game object.
  * @param {string} options.canvas Selector for the canvas element to render to. If not given, will default to the `canvas` value stored in {@link Whirl.Game.ConfigManager#canvas|the game configuration}.
- * @param {boolean} options.resizeCanvas=false Resize the canvas width and height to the same width and height of this viewports clipping plane.
- * @param {Stage} options.stage Initial stage to be used for rendering.
- * @param {boolean} options.resizeStage=false Resize the stage bounds to the same position and dimensions of this viewport.
  *
- * Implicitely calls the `setStage` method.
+ * Implicitely calls the {@link Whirl.Viewport#setCanvas|`setCanvas`} method.
+ * @param {boolean} options.resizeCanvas=false Resize the canvas width and height to the same width and height of this viewports clipping plane.
+ * @param {Whirl.Stage} options.stage Initial stage to be rendered by this Viewport.
+ *
+ * Implicitely calls the {@link Whirl.Viewport#setCanvas|`setCanvas`} method.
+ * @param {boolean} options.resizeStage=false Resize the stage bounds to the same position and dimensions of this viewport.
+ * @param {Whirl.Camera} options.camera Initial camera to be used for rendering.
+ *
+ * Implicitely calls the {@link Whirl.Viewport#setCamera|`setCamera`} method.
  *
  * @example
  * game.Viewport({
@@ -202,6 +207,10 @@ class Viewport extends Base {
 
 		if (options.stage) {
 			this.setStage(options.stage, options.resizeStage);
+		}
+
+		if (options.camera) {
+			this.setCamera(options.camera);
 		}
 	}
 
