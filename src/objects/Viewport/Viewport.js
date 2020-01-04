@@ -89,7 +89,7 @@ class Viewport extends Base {
 	 *
 	 * Do not modify this property directly. Instead ,use the `setCamera` method.
 	 *
-	 * @memberof Whirl.Camera#
+	 * @memberof Whirl.Viewport#
 	 * @type {Whirl.Camera}
 	 * @readonly
 	 * @default null
