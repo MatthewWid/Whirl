@@ -1,7 +1,8 @@
 const Renderer = require("../Renderer.js");
 const Colour = require("../../objects/Colour/");
 const Gradient = require("../../objects/Gradient/");
-const radians = require("../../math/radians");
+const radians = require("../../math/radians.js");
+const clamp = require("../../math/clamp.js");
 
 /**
  * @classdesc
@@ -95,7 +96,7 @@ class CanvasRenderer extends Renderer {
 			for (let i = 0; i < sprite.fill.stops.length; i++) {
 				const [offset, colour] = sprite.fill.stops[i];
 
-				gradient.addColorStop(offset, colour._data);
+				gradient.addColorStop(clamp(offset, 0, 1), colour._data);
 			}
 
 			ctx.fillStyle = gradient;

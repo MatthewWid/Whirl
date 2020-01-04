@@ -14,8 +14,8 @@ const Colour = require("../Colour/");
  *
  * @param {Whirl.Game} game Game instance this texture belongs to and should be managed by.
  * @param {object} [options] Optional presets when initialising this object.
- * @param {Whirl.Point} options.start Start point as a percentage of the parent.
- * @param {Whirl.Point} options.end End point as a percentage of the parent.
+ * @param {Whirl.geometry.Point} options.start Start point as a percentage of the parent.
+ * @param {Whirl.geometry.Point} options.end End point as a percentage of the parent.
  * @param {Whirl.Gradient~ColourStop[]} options.stops Array of colour stop tuples that represent each colour in the gradient from start to end.
  *
  * @example
