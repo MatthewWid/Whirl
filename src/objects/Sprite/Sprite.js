@@ -26,8 +26,8 @@ const {Rectangle, Point} = require("../../geometry/");
  * @param {number} options.w=50 Width of the rendered sprite.
  * @param {number} options.h=50 Height of the rendered sprite.
  * @param {Whirl.geometry.Point} options.anchor Initial anchor point that defines the origin point of this sprite's rendered position between `0` and `1`. Alternatively, give each anchor value individually with the `anchorX` and `anchorY` values.
- * @param {number} options.anchorX=0 X-coordinate of this sprite's anchor point.
- * @param {number} options.anchorY=0 Y-coordinate of this sprite's anchor point.
+ * @param {number} options.anchorX=0 X-coordinate of the anchor point (0-1).
+ * @param {number} options.anchorY=0 Y-coordinate of this sprite's anchor point (0-1).
  *
  * @example
  * game.Sprite({
@@ -51,7 +51,9 @@ class Sprite extends Entity {
 	bounds;
 
 	/**
-	 * Anchor/Origin point of the sprite's rendered position. This value should be between `0` and `1` as a percentage through the bounds of the sprite where `(0, 0)` is the top-left-most point, and `(1, 1)` is the bottom-right-most point.
+	 * Anchor/Origin point of the rendered sprite position.
+	 *
+	 * Should be between `0` and `1` as a percentage through the bounds of the sprite where `(0, 0)` is the top-left-most point, and `(1, 1)` is the bottom-right-most point.
 	 *
 	 * @memberof Whirl.Sprite#
 	 * @type {Whirl.geometry.Point}

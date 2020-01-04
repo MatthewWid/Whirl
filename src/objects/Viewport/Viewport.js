@@ -32,6 +32,8 @@ const getValue = require("../../lib/getValue.js");
  * @param {Whirl.geometry.Point} options.scroll Set the initial scroll value around the world. Alternatively, give each scroll value individually with the `scrollX` and `scrollY` options.
  * @param {number} options.scrollX=0 X-coordinate of the scroll position.
  * @param {number} options.scrollY=0 Y-coordinate of the scroll position.
+ * @param {number} options.anchorX=0 X-coordinate of the anchor point (0-1).
+ * @param {number} options.anchorY=0 Y-coordinate of this sprite's anchor point (0-1).
  * @param {boolean} options.clip=true Remove all pixels that are outside of the clipping plane from the rendered output on the canvas.
  * @param {boolean} options.clear=true Clear the area being rendered to before each render tick.
  * @param {boolean} options.imageSmoothing=true Canvas anti-aliasing.
@@ -123,6 +125,17 @@ class Viewport extends Base {
 	scroll;
 
 	/**
+	 * Anchor/Origin point of the camera.
+	 *
+	 * Should be between `0` and `1` as a percentage through the bounds of the viewport where `(0, 0)` is the top-left-most point, and `(1, 1)` is the bottom-right-most point.
+	 *
+	 * @memberof Whirl.Viewport#
+	 * @type {Whirl.geometry.Point}
+	 * @default (0, 0)
+	 */
+	anchor;
+
+	/**
 	 * Remove all pixels that are outside of the clipping plane from the rendered output on the canvas.
 	 *
 	 * @memberof Whirl.Viewport#
@@ -191,6 +204,12 @@ class Viewport extends Base {
 			this.scroll = options.scroll;
 		} else {
 			this.scroll = Point(options.scrollX || 0, options.scrollY || 0);
+		}
+
+		if (options.anchor instanceof Point._class) {
+			this.anchor = options.anchor;
+		} else {
+			this.anchor = Point(getValue(options, "anchorX", 0), getValue(options, "anchorY", 0));
 		}
 
 		this.clip = getValue(options, "clip", true);
