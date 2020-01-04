@@ -1,17 +1,16 @@
 const Base = require("../Base/");
 const Stage = require("../Stage/");
+const Camera = require("../Camera/");
 const {Rectangle, Point} = require("../../geometry/");
 const getValue = require("../../lib/getValue.js");
 
 /**
  * @classdesc
- * A viewport is the view into your game world. It is responsible for rendering a stage to a canvas.
+ * Viewports render the game world onto a section of your screen using a {@link Whirl.Camera|Camera} and {@link Whirl.Stage|Stage}.
  *
- * Viewports can be scrolled around your world, have various camera effects and filters applied, zoomed in and out and other such visual effects that you may need in your game.
+ * A viewport is defined by a rectangular clipping plane. The clipping plane `x` and `y` values move the rendered view around the 2D screen space, and its `w` and `h` values define size of the viewport. By default, anything rendered outside of the clipping plane is *clipped* and will be cut off and on the output image.
  *
- * A viewport is defined by a clipping plane and a scroll value. The clipping plane's `x` and `y` values move the rendered view around the canvas and its `w` and `h` values define the width and height. Anything rendered outside of the clipping plane is *clipped* and will be cut off/not rendered at all.
- *
- * A viewport can be scrolled about the game world by modifying its `scroll` value. This moves where viewports camera is relative to the game world, but will keep it in the same place relative to the canvas.
+ * Think of a Viewport as looking at what is on your screen, and a Camera as what is in your world. The Camera understands what we can see in the world and where, and the Viewport actually translates it onto the screen.
  *
  * @class Viewport
  * @memberof Whirl
@@ -74,11 +73,23 @@ class Viewport extends Base {
 	 * Do not modify this property directly. Instead, use the `setStage` method.
 	 *
 	 * @memberof Whirl.Viewport#
-	 * @type {Stage}
+	 * @type {Whirl.Stage}
 	 * @readonly
 	 * @default null
 	 */
 	stage = null;
+
+	/**
+	 * Reference to the active Camera used for rendering.
+	 *
+	 * Do not modify this property directly. Instead ,use the `setCamera` method.
+	 *
+	 * @memberof Whirl.Camera#
+	 * @type {Whirl.Camera}
+	 * @readonly
+	 * @default null
+	 */
+	camera = null;
 
 	/**
 	 * Bounds of the clipping plane denoted by an X and Y coordinate and a width and height.
@@ -263,6 +274,23 @@ class Viewport extends Base {
 				h: this.bounds.h,
 			});
 		}
+
+		return this;
+	}
+
+	setCamera(camera) {
+		if (typeof camera === "undefined" || (camera && !(camera instanceof Camera))) {
+			this._game.debug.warn(
+				"Invalid Camera instance given to Viewport#setCamera.",
+				"Whirl.Viewport"
+			);
+
+			this.camera = null;
+
+			return this;
+		}
+
+		this.camera = camera;
 
 		return this;
 	}
