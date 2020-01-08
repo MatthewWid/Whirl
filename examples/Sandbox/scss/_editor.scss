@@ -4,6 +4,8 @@
 	overflow: hidden;
 
 	&-container {
+		overflow-y: scroll;
+
 		> :not(:last-child) {
 			margin-bottom: 1rem;
 		}
