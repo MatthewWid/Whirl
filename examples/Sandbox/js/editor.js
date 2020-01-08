@@ -34,7 +34,7 @@ editor.html = CodeMirror(document.getElementById("editor-html"), {
 });
 editor.html.name = "html";
 editor.html.templateSelector = null;
-editor.html.default = "<div class=\"container\"></div>\n";
+editor.html.default = "<!-- Custom canvasses, stylesheets, assets, etc. -->\n";
 
 // JS Editor
 editor.js = CodeMirror(document.getElementById("editor-js"), {
