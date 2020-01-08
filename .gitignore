@@ -9,9 +9,10 @@ doc/*
 .vscode/
 
 # examples
-*.css.map
-examples/*/styles/.sass-cache
-examples/Playground/
+examples/**/*.map
+examples/**/*.bundle.*
+examples/Sandbox/css/*
+!examples/Sandbox/css/.gitkeep
 changelog.txt
 
 # doc
