@@ -113,7 +113,7 @@ class Viewport extends Base {
 	bounds;
 
 	/**
-	 * Defines the position of where this viewport is scrolled to relative to the world.
+	 * Defines the position of where this viewport is scrolled relative to the world.
 	 *
 	 * When this value changes the viewport will not be moved around the canvas, but the world remove relative to the viewport.
 	 *
@@ -186,6 +186,19 @@ class Viewport extends Base {
 	 */
 	lerp;
 
+	/**
+	 * Similar to {@link Whirl.Entity#derived|Entity.derived} but is calculated taking into account the derived values of the rest of the world after the world values have been calculated. This allows the Viewport to track objects in the game world and apply post-processing effects to them.
+	 *
+	 * @memberof Whirl.Viewport#
+	 * @type {object}
+	 * @default
+	 * {
+	 * 	bounds: Rectangle,
+	 * 	scroll: Point,
+	 * }
+	 */
+	derived = {};
+
 	constructor(game, options = {}) {
 		super(game);
 
@@ -231,6 +244,9 @@ class Viewport extends Base {
 		if (options.camera) {
 			this.setCamera(options.camera);
 		}
+
+		this.derived.bounds = this.bounds.duplicate();
+		this.derived.scroll = this.scroll.duplicate();
 	}
 
 	/**
@@ -391,6 +407,16 @@ class Viewport extends Base {
 		}
 
 		return renderables;
+	}
+
+	calculateDerived() {
+		this.derived.bounds.x = this.bounds.x - this.bounds.w * this.anchor.x;
+		this.derived.bounds.y = this.bounds.y - this.bounds.h * this.anchor.y;
+		this.derived.bounds.w = this.bounds.w;
+		this.derived.bounds.h = this.bounds.h;
+
+		this.derived.scroll.x = this.scroll.x;
+		this.derived.scroll.y = this.scroll.y;
 	}
 }
 

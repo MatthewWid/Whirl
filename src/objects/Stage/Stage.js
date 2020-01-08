@@ -87,26 +87,22 @@ class Stage extends Entity {
 	 * Invoked internally by the {@link Whirl.Game.UpdateManager|UpdateManager}.
 	 *
 	 * @ignore
-	 * @method Whirl.Stage#_updateDerived
+	 * @method Whirl.Stage#calculateDerived
 	 *
 	 * @param {Entity} object Current object to update.
 	 * @returns {this}
 	 */
-	_updateDerived(object = this) {
-		object.calculateDerived();
+	calculateDerived(object = this) {
+		if (object === this) {
+			super.calculateDerived();
 
-		if (object.child) {
-			object.child.get((item) => item.active).forEach((item) => this._updateDerived(item));
+			this.derived.x = this.limits.x;
+			this.derived.y = this.limits.y;
 		}
 
-		return this;
-	}
-
-	calculateDerived() {
-		super.calculateDerived();
-
-		this.derived.x = this.limits.x;
-		this.derived.y = this.limits.y;
+		if (object.child) {
+			object.child.get((item) => item.active).forEach((item) => this.calculateDerived(item));
+		}
 
 		return this;
 	}

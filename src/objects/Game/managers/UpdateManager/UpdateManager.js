@@ -272,7 +272,11 @@ class UpdateManager extends Manager {
 
 		const stages = this._game.object._stages;
 		for (let i = 0; i < stages.length; i++) {
-			stages[i]._updateDerived();
+			stages[i].calculateDerived();
+		}
+		const viewports = this._game.object._viewports;
+		for (let i = 0; i < stages.length; i++) {
+			viewports[i].calculateDerived();
 		}
 
 		this._game.render._render();
