@@ -1,4 +1,5 @@
 // Imports
+const templates = require("./templates.js");
 const editor = {js: jsEditor, html: htmlEditor} = require("./editor.js");
 const preview = require("./preview.js");
 
@@ -7,7 +8,7 @@ preview.editor = editor;
 
 // Set default text in editors
 htmlEditor.setValue(`<div class="container"></div>\n`);
-jsEditor.setValue(`console.clear();\n`);
+jsEditor.setValue(templates["Simple Setup"]);
 
 // Event listeners
 [htmlEditor, jsEditor].forEach((e) => {

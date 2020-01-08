@@ -5,7 +5,8 @@ const preview = {};
 
 preview.editor = null;
 
-preview.document = document.getElementById("preview").contentDocument;
+preview.iframe = document.getElementById("preview");
+preview.document = preview.iframe.contentDocument;
 
 preview.template = template;
 

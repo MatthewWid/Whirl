@@ -8,6 +8,10 @@
 	<body>
 		{{html}}
 		<script src="../../build/whirl.js"></script>
-		<script>{{js}}</script>
+		<script>
+			(function() {
+				{{js}}
+			})();
+		</script>
 	</body>
 </html>
