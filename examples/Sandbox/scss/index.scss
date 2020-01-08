@@ -1,0 +1,31 @@
+@import "./_reset.scss";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html {
+	background-color: #131417;
+}
+html,
+body,
+#container,
+.CodeMirror {
+	height: 100% !important;
+}
+#container {
+	display: flex;
+	padding: 10px;
+
+	> :not(:last-child) {
+		margin-right: 10px;
+	}
+}
+#editor,
+#preview {
+	height: auto;
+	flex: 1;
+	border-radius: 4px;
+	overflow: hidden;
+}

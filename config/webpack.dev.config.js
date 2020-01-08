@@ -5,10 +5,20 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const config = {
 	mode: "development",
 	entry: {
-		"./examples/_common/styles/css/index": path.resolve(
+		"./examples/Sandbox/css/template": path.resolve(
 			__dirname,
 			"..",
-			"./examples/_common/styles/scss/index.scss"
+			"./examples/Sandbox/scss/template.scss"
+		),
+		"./examples/Sandbox/css/index": path.resolve(
+			__dirname,
+			"..",
+			"./examples/Sandbox/scss/index.scss"
+		),
+		"./examples/Sandbox/js/index.bundle": path.resolve(
+			__dirname,
+			"..",
+			"./examples/Sandbox/js/index.js"
 		),
 	},
 	module: {

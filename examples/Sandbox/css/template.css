@@ -27,7 +27,7 @@ table {
   border-spacing: 0; }
 
 html {
-  background-image: url("../../img/bg.jpg"); }
+  background-image: url("../img/bg.jpg"); }
 
 .container {
   display: flex;
@@ -42,4 +42,4 @@ p {
   color: #bbb; }
 
 
-/*# sourceMappingURL=index.css.map*/
+/*# sourceMappingURL=template.css.map*/
