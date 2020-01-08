@@ -24,7 +24,6 @@ editor.cmSettings = {
 	indentWithTabs: true,
 	lineNumbers: true,
 	showCursorWhenSelecting: true,
-	autofocus: true,
 };
 
 // HTML Editor
@@ -36,6 +35,7 @@ editor.html = CodeMirror(document.getElementById("editor-html"), {
 // JS Editor
 editor.js = CodeMirror(document.getElementById("editor-js"), {
 	mode: "javascript",
+	autofocus: true,
 	...editor.cmSettings,
 });
 

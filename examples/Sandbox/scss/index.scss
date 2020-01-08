@@ -5,13 +5,15 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-html {
+html,
+body {
 	background-color: #131417;
+	color: #fcfcfc;
+	font-family: "Arial", sans-serif;
 }
 html,
 body,
-#container,
-.CodeMirror {
+#container {
 	height: 100% !important;
 }
 #container {
@@ -22,13 +24,40 @@ body,
 		margin-right: 10px;
 	}
 }
-.editor,
+.editor-container,
 #preview {
 	height: auto;
 	flex: 1;
 	border-radius: 4px;
-	overflow: hidden;
+	overflow-y: auto;
 }
-#editor-html {
-	display: none;
+.editor {
+	position: relative;
+
+	&-container {
+		> :not(:last-child) {
+			padding-bottom: 1rem;
+		}
+	}
+	&__title {
+		cursor: pointer;
+		padding: 1rem;
+		font-weight: bold;
+		background-color: #212431;
+	}
+	.CodeMirror {
+		height: auto;
+		font-size: 16px;
+		z-index: 0;
+		cursor: text;
+	}
+	&--collapsed &__title + * {
+		display: none;
+	}
+	&#editor-html {
+		flex: 1;
+	}
+	&#editor-js {
+		flex: 9;
+	}
 }

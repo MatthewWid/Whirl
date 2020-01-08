@@ -10,7 +10,6 @@ preview.document = document.getElementById("preview").contentDocument;
 preview.template = template;
 
 preview.update = () => {
-	console.log("update");
 	const {editor} = preview;
 
 	if (!editor) {
