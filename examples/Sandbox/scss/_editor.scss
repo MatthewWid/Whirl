@@ -8,6 +8,10 @@
 
 		> :not(:last-child) {
 			margin-bottom: 1rem;
+
+			&.logo {
+				margin-bottom: 10px;
+			}
 		}
 	}
 	&--collapsed &__title ~ * {
