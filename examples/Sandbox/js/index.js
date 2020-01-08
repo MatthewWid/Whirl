@@ -1,26 +1,44 @@
-// Imports
-const templates = require("./templates.js");
+const {js: jsTemplates} = require("./templates.js");
 const editor = {js: jsEditor, html: htmlEditor} = require("./editor.js");
 const preview = require("./preview.js");
 
-// Set desired editor
+// Desired Editor
 preview.editor = editor;
 
-// Set default text in editors
-htmlEditor.setValue(`<div class="container"></div>\n`);
-jsEditor.setValue(templates["Simple Setup"]);
-
-// Event listeners
 [htmlEditor, jsEditor].forEach((e) => {
+	// Event Listeners
 	e.on("change", () => {
 		if (editor.config.autorun) {
 			clearTimeout(editor.timeout);
 			editor.timeout = setTimeout(preview.update, editor.config.delay);
 		}
 	});
+
+	// Load default content, either from local storage or the editor default value
+	if (editor.config.save) {
+		e.setValue(localStorage.getItem(`whirl__sandbox__${e.name}`) || e.default);
+	} else {
+		e.setValue(e.default);
+	}
 });
 
-// Title collapse
+// Template Selector
+Object.keys(jsTemplates).forEach((e, i) => {
+	const option = document.createElement("option");
+	option.value = e;
+	option.innerText = e;
+
+	jsEditor.templateSelector.appendChild(option);
+});
+jsEditor.templateSelector.addEventListener("change", () => {
+	if (jsEditor.templateSelector.value) {
+		jsEditor.setValue(jsTemplates[jsEditor.templateSelector.value]);
+	} else {
+		jsEditor.setValue("\n");
+	}
+});
+
+// Title Collapse
 Array.from(document.getElementsByClassName("editor__title")).forEach((e) => {
 	e.addEventListener("click", () => {
 		e.parentElement.classList.toggle("editor--collapsed");
@@ -28,6 +46,3 @@ Array.from(document.getElementsByClassName("editor__title")).forEach((e) => {
 
 	// e.style.backgroundColor = getComputedStyle(document.querySelector(".CodeMirror")).backgroundColor;
 });
-
-// Initial update
-preview.update();

@@ -1,5 +1,3 @@
-console.clear();
-
 /**
  * Simple boilerplate to get you up and tinkering.
  * Start off by adding a coloured Sprite to your world.

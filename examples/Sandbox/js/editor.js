@@ -12,6 +12,7 @@ const editor = {};
 editor.config = {
 	delay: 500,
 	autorun: true,
+	save: true,
 };
 
 // Timeout for auto-updating preview
@@ -31,6 +32,9 @@ editor.html = CodeMirror(document.getElementById("editor-html"), {
 	mode: "htmlmixed",
 	...editor.cmSettings,
 });
+editor.html.name = "html";
+editor.html.templateSelector = null;
+editor.html.default = "<div class=\"container\"></div>\n";
 
 // JS Editor
 editor.js = CodeMirror(document.getElementById("editor-js"), {
@@ -38,5 +42,8 @@ editor.js = CodeMirror(document.getElementById("editor-js"), {
 	autofocus: true,
 	...editor.cmSettings,
 });
+editor.js.name = "js";
+editor.js.templateSelector = document.getElementById("editor-js-templates");
+editor.js.default = "\n";
 
 module.exports = editor;

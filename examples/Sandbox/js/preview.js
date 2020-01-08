@@ -19,9 +19,17 @@ preview.update = () => {
 
 	preview.document.open();
 
-	const content = template
-		.replace("{{html}}", editor.html.getValue())
-		.replace("{{js}}", editor.js.getValue());
+	let content = template;
+
+	[editor.html, editor.js].forEach((e) => {
+		// Save editor contents between sessions
+		if (editor.config.save) {
+			localStorage.setItem(`whirl__sandbox__${e.name}`, e.getValue());
+		}
+
+		content = content.replace(`{{${e.name}}}`, e.getValue());
+	})
+
 	preview.document.write(content);
 
 	preview.document.close();
