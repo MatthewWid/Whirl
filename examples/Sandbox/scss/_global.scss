@@ -1,0 +1,40 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-image: linear-gradient(
+		135deg,
+		#1f1f1f 25%,
+		#141414 25%,
+		#141414 50%,
+		#1f1f1f 50%,
+		#1f1f1f 75%,
+		#141414 75%,
+		#141414 100%
+	);
+	background-size: 11.31px 11.31px;
+	color: #fcfcfc;
+	font-family: "Arial", sans-serif;
+}
+
+html,
+body,
+#container {
+	height: 100% !important;
+}
+
+// Containers
+#container {
+	display: flex;
+	padding: 10px;
+
+	> :not(:last-child) {
+		margin-right: 10px;
+	}
+	> div {
+		flex: 1;
+	}
+}
