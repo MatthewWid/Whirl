@@ -18,7 +18,7 @@ const clamp = require("../../math/clamp.js");
  * });
  */
 class CanvasRenderer extends Renderer {
-	getContext = (selector) => {
+	getContext(selector) {
 		const canvas = document.querySelector(selector || this._game.config.get("canvas"));
 
 		if (!canvas) {
@@ -30,13 +30,13 @@ class CanvasRenderer extends Renderer {
 			return {};
 		}
 
-		const canvasContext = canvas.getContext("2d");
+		const context = canvas.getContext("2d");
 
 		return {
 			canvas: canvas,
-			ctx: canvasContext,
+			ctx: context,
 		};
-	};
+	}
 
 	preRenderViewport(viewport) {
 		const {canvas, ctx} = viewport.render;
@@ -49,13 +49,13 @@ class CanvasRenderer extends Renderer {
 			ctx.clearRect(0, 0, viewport.bounds.w, viewport.bounds.h);
 		}
 
-		ctx.translate(viewport.derived.scroll.x, viewport.derived.scroll.y);
+		ctx.translate(-viewport.derived.scroll.x, -viewport.derived.scroll.y);
 	}
 
 	postRenderViewport(viewport) {
 		const {canvas, ctx} = viewport.render;
 
-		ctx.translate(-viewport.derived.scroll.x, -viewport.derived.scroll.y);
+		ctx.translate(viewport.derived.scroll.x, viewport.derived.scroll.y);
 
 		if (viewport.clip) {
 			ctx.globalCompositeOperation = "destination-in";

@@ -98,6 +98,8 @@ class Stage extends Entity {
 
 			this.derived.x = this.limits.x;
 			this.derived.y = this.limits.y;
+		} else {
+			object.calculateDerived();
 		}
 
 		if (object.child) {
