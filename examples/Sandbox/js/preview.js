@@ -21,7 +21,7 @@ preview.update = () => {
 
 	let content = template;
 
-	[editor.html, editor.js].forEach((e) => {
+	[editor.js, editor.html, editor.css].forEach((e) => {
 		// Save editor contents between sessions
 		if (editor.config.save) {
 			localStorage.setItem(`whirl__sandbox__${e.name}`, e.getValue());

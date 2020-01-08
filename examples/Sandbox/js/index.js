@@ -1,11 +1,11 @@
 const {js: jsTemplates} = require("./templates.js");
-const editor = {js: jsEditor, html: htmlEditor} = require("./editor.js");
+const editor = {js: jsEditor, html: htmlEditor, css: cssEditor} = require("./editor.js");
 const preview = require("./preview.js");
 
 // Desired Editor
 preview.editor = editor;
 
-[htmlEditor, jsEditor].forEach((e) => {
+[jsEditor, htmlEditor, cssEditor].forEach((e) => {
 	// Event Listeners
 	e.on("change", () => {
 		if (editor.config.autorun) {
