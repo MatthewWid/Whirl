@@ -6,6 +6,7 @@ require("codemirror/mode/htmlmixed/htmlmixed.js");
 require("codemirror/mode/css/css.js");
 require("style-loader!css-loader!codemirror/lib/codemirror.css");
 require("style-loader!css-loader!codemirror/theme/material-palenight.css");
+const {js: jsTemplates} = require("./templates.js");
 
 const editor = {};
 
@@ -36,7 +37,7 @@ editor.js = CodeMirror(document.getElementById("editor-js"), {
 });
 editor.js.name = "js";
 editor.js.templateSelector = document.getElementById("editor-js-templates");
-editor.js.default = "\n";
+editor.js.default = jsTemplates["- Choose a Template -"];
 
 // HTML Editor
 editor.html = CodeMirror(document.getElementById("editor-html"), {
@@ -45,7 +46,7 @@ editor.html = CodeMirror(document.getElementById("editor-html"), {
 });
 editor.html.name = "html";
 editor.html.templateSelector = null;
-editor.html.default = "<!-- Custom canvasses, assets and imports -->\n";
+editor.html.default = "<!-- Custom canvasses, assets and imports. -->\n";
 
 // HTML Editor
 editor.css = CodeMirror(document.getElementById("editor-css"), {
