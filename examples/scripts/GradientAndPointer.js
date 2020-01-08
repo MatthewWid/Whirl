@@ -32,7 +32,7 @@ function setup({stage, viewport, game: {Viewport, Sprite, Colour, Gradient}}) {
 			anchor: Point(0.5, 0.5),
 			fill: (gradient = Gradient({
 				start: Point(0, 0),
-				end: Point(100, 100),
+				end: Point(1, 1),
 				stops: [
 					[0, Colour(255, 0, 0)],
 					[0.5, Colour(0, 0, 255)],
@@ -58,8 +58,8 @@ function setup({stage, viewport, game: {Viewport, Sprite, Colour, Gradient}}) {
 			w: viewport.bounds.w,
 			h: viewport.bounds.h,
 			fill: Gradient({
-				start: Point(0, 50),
-				end: Point(100, 50),
+				start: Point(0, 0.5),
+				end: Point(1, 0.5),
 				stops: [
 					[0, Colour(0, 255, 255)],
 					[1, Colour(255, 255, 0)],
