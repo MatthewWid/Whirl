@@ -37,7 +37,7 @@ editor.js = CodeMirror(document.getElementById("editor-js"), {
 });
 editor.js.name = "js";
 editor.js.templateSelector = document.getElementById("editor-js-templates");
-editor.js.default = jsTemplates["- Choose a Template -"];
+editor.js.default = jsTemplates["Simple Setup"];
 
 // HTML Editor
 editor.html = CodeMirror(document.getElementById("editor-html"), {

@@ -14,7 +14,7 @@ const {
 } = Whirl;
 
 function setup({stage, viewport, game}) {
-	const {Viewport, Stage, Container, Sprite, Colour} = game;
+	const {Viewport, Stage, Container, Sprite, Colour, Gradient} = game;
 
 	// Set up your game with sprites, objects, UI, etc.
 }
