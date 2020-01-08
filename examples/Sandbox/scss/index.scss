@@ -22,10 +22,13 @@ body,
 		margin-right: 10px;
 	}
 }
-#editor,
+.editor,
 #preview {
 	height: auto;
 	flex: 1;
 	border-radius: 4px;
 	overflow: hidden;
+}
+#editor-html {
+	display: none;
 }
