@@ -87,10 +87,10 @@ class CanvasRenderer extends Renderer {
 			ctx.fillRect(0, 0, sprite.derived.bounds.w, sprite.derived.bounds.h);
 		} else if (sprite.fill instanceof Gradient) {
 			const gradient = ctx.createLinearGradient(
-				(sprite.fill.start.x / 100) * sprite.derived.bounds.w,
-				(sprite.fill.start.y / 100) * sprite.derived.bounds.h,
-				(sprite.fill.end.x / 100) * sprite.derived.bounds.w,
-				(sprite.fill.end.y / 100) * sprite.derived.bounds.h
+				sprite.fill.start.x * sprite.derived.bounds.w,
+				sprite.fill.start.y * sprite.derived.bounds.h,
+				sprite.fill.end.x * sprite.derived.bounds.w,
+				sprite.fill.end.y * sprite.derived.bounds.h
 			);
 
 			for (let i = 0; i < sprite.fill.stops.length; i++) {

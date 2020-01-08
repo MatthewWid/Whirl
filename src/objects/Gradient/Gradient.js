@@ -49,18 +49,18 @@ class Gradient extends Texture {
 	 *
 	 * @memberof Whirl.Gradient#
 	 * @type {Whirl.geometry.Point}
-	 * @default (50, 0)
+	 * @default (.5, 0)
 	 */
 	start;
 
 	/**
 	 * End point of this gradient as a percentage of its parent object.
 	 *
-	 * For example, `Point(100, 100)` will end the gradient at the bottom-right of the parent.
+	 * For example, `Point(1, 1)` will end the gradient at the bottom-right of the parent.
 	 *
 	 * @memberof Whirl.Gradient#
 	 * @type {Whirl.geometry.Point}
-	 * @default (50, 100)
+	 * @default (.5, 1)
 	 */
 	end;
 
@@ -104,14 +104,14 @@ class Gradient extends Texture {
 			this.start = options.start;
 		} else {
 			// Top-middle
-			this.start = Point(50, 0);
+			this.start = Point(0.5, 0);
 		}
 
 		if (options.end instanceof Point._class) {
 			this.end = options.end;
 		} else {
 			// Bottom-middle
-			this.end = Point(50, 100);
+			this.end = Point(0.5, 1);
 		}
 
 		this.stops = options.stops;
