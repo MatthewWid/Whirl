@@ -3,6 +3,7 @@
  * 
  * Use the arrow keys to move the player.
  * The center gradient Sprite will look at the player as she moves about.
+ * Use WASD to change the dimensions of the center gradient Sprite and see how the Gradient warps.
  * The top left gradient Sprite will spin forever.
  * 
  * Both filled Sprites use the same Gradient texture.

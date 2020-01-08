@@ -7,27 +7,29 @@
 		<title>Whirl Interactive Sandbox</title>
 	</head>
 	<body>
-		<div id="container">
-			<div class="editor-container">
+		<div class="container">
+			<div class="container__section">
 				<div class="logo">
 					<img src="../../doc/logo/logo_text_light.png" alt="Whirl Logo" />
 				</div>
-				<div class="editor" id="editor-js">
-					<div class="editor__title">JavaScript</div>
-					<div class="editor__toolbar">
-						<div class="editor__action">
-							<select id="editor-js-templates" name="editor-js-templates"></select>
+				<div class="editor-container">
+					<div class="editor" id="editor-js">
+						<div class="editor__title">JavaScript</div>
+						<div class="editor__toolbar">
+							<div class="editor__action">
+								<select id="editor-js-templates" name="editor-js-templates"></select>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="editor" id="editor-html">
-					<div class="editor__title">HTML</div>
-				</div>
-				<div class="editor" id="editor-css">
-					<div class="editor__title">CSS</div>
+					<div class="editor" id="editor-html">
+						<div class="editor__title">HTML</div>
+					</div>
+					<div class="editor" id="editor-css">
+						<div class="editor__title">CSS</div>
+					</div>
 				</div>
 			</div>
-			<div class="preview-container">
+			<div class="container__section preview-container">
 				<iframe id="preview"></iframe>
 			</div>
 		</div>
