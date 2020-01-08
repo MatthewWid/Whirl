@@ -48,10 +48,14 @@ class CanvasRenderer extends Renderer {
 		if (viewport.clear) {
 			ctx.clearRect(0, 0, viewport.bounds.w, viewport.bounds.h);
 		}
+
+		ctx.translate(viewport.derived.scroll.x, viewport.derived.scroll.y);
 	}
 
 	postRenderViewport(viewport) {
 		const {canvas, ctx} = viewport.render;
+
+		ctx.translate(-viewport.derived.scroll.x, -viewport.derived.scroll.y);
 
 		if (viewport.clip) {
 			ctx.globalCompositeOperation = "destination-in";

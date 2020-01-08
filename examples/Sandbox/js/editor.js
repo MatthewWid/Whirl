@@ -12,7 +12,7 @@ const editor = {};
 
 // Configuration
 editor.config = {
-	delay: 500,
+	delay: 600,
 	autorun: true,
 	save: true,
 };

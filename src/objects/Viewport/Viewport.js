@@ -410,13 +410,13 @@ class Viewport extends Base {
 	}
 
 	calculateDerived() {
-		this.derived.bounds.x = this.bounds.x - this.bounds.w * this.anchor.x;
-		this.derived.bounds.y = this.bounds.y - this.bounds.h * this.anchor.y;
+		this.derived.bounds.x = this.bounds.x;
+		this.derived.bounds.y = this.bounds.y;
 		this.derived.bounds.w = this.bounds.w;
 		this.derived.bounds.h = this.bounds.h;
 
-		this.derived.scroll.x = this.scroll.x;
-		this.derived.scroll.y = this.scroll.y;
+		this.derived.scroll.x = this.scroll.x + this.bounds.w * this.anchor.x;
+		this.derived.scroll.y = this.scroll.y + this.bounds.h * this.anchor.y;
 	}
 }
 
