@@ -125,6 +125,7 @@ class Entity extends Base {
 	 *
 	 * @memberof Whirl.Entity#
 	 * @type {object}
+	 * @readonly
 	 * @default
 	 * {
 	 * 	alpha: 1,

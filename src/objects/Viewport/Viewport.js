@@ -187,15 +187,18 @@ class Viewport extends Base {
 	lerp;
 
 	/**
-	 * Similar to {@link Whirl.Entity#derived|Entity.derived} but is calculated taking into account the derived values of the rest of the world after the world values have been calculated. This allows the Viewport to track objects in the game world and apply post-processing effects to them.
+	 * Similar to {@link Whirl.Entity#derived|Entity#derived}, but its calculated value takes into account the derived state of the emtire world after all other derived values have been calculated. This allows the Viewport to track objects in the game world and apply post-processing effects to them.
 	 *
 	 * @memberof Whirl.Viewport#
 	 * @type {object}
+	 * @readonly
 	 * @default
 	 * {
 	 * 	bounds: Rectangle,
 	 * 	scroll: Point,
 	 * }
+	 *
+	 * @see Whirl.Entity#derived
 	 */
 	derived = {};
 
