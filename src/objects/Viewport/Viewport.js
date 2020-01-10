@@ -1,6 +1,8 @@
 const Base = require("../Base/");
 const Stage = require("../Stage/");
 const Camera = require("../Camera/");
+const Entity = require("../Entity/");
+const Sprite = require("../Sprite/");
 const {Rectangle, Point} = require("../../geometry/");
 const getValue = require("../../lib/getValue.js");
 
@@ -39,6 +41,7 @@ const getValue = require("../../lib/getValue.js");
  * @param {boolean} options.imageSmoothing=true Canvas anti-aliasing.
  * @param {number} options.zoom=1 Initial zoom level. Increasing this value zooms in, decreasing it zooms out.
  * @param {number} options.lerp=1 Linear interpolation value to use when animatedly scrolling to a given point or game object.
+ * @param {Whirl.geometry.Point|Whirl.Entity} options.target=null Target Point or Entity to follow.
  * @param {string} options.canvas Selector for the canvas element to render to. If not given, will default to the `canvas` value stored in {@link Whirl.Game.ConfigManager#canvas|the game configuration}.
  *
  * Implicitely calls the {@link Whirl.Viewport#setCanvas|`setCanvas`} method.
@@ -189,6 +192,20 @@ class Viewport extends Base {
 	lerp;
 
 	/**
+	 * {@link Whirl.geometry.Point|Point} or {@link Whirl.Entity|Entity} being followed by the viewport using its {@link Whirl.Viewport#lerp|lerp} value.
+	 *
+	 * If `null`, the {@link Whirl.Viewport#scroll|Viewport scroll} value will remain static unless directly modified.
+	 *
+	 * Do not set this value directly. Instead, use the {@link Whirl.Viewport#setTarget|setTarget} method.
+	 *
+	 * @memberof Whirl.Viewport#
+	 * @type {Whirl.geometry.Point|Whirl.Entity|null}
+	 * @default null
+	 * @readonly
+	 */
+	target;
+
+	/**
 	 * Similar to {@link Whirl.Entity#derived|Entity#derived}, but its calculated value takes into account the derived state of the emtire world after all other derived values have been calculated. This allows the Viewport to track objects in the game world and apply post-processing effects to them.
 	 *
 	 * @memberof Whirl.Viewport#
@@ -248,6 +265,8 @@ class Viewport extends Base {
 		if (options.camera) {
 			this.setCamera(options.camera);
 		}
+
+		this.setTarget(options.target);
 
 		this.derived.scroll = this.scroll.duplicate();
 	}
@@ -343,37 +362,28 @@ class Viewport extends Base {
 	}
 
 	/**
-	 * Scroll to a specified position.
+	 * Sets the target {@link Whirl.geometry.Point|Point} or {@link Whirl.Entity|Entity} to follow.
 	 *
-	 * This method ignores the viewport's `lerp` value and will appear to immediately teleport to the position given.
+	 * Set to `null` to stop the viewport following anything, making its scroll position static again.
 	 *
-	 * Has no effect if this viewport is locked to an object in the game world.
+	 * Implicitly sets the {@link Whirl.Viewport#anchor|viewport anchor} to its center (`(0.5, 0.5)`).
 	 *
-	 * @method Whirl.Viewport#scrollTo
+	 * @method Whirl.Viewport#setTarget
 	 *
-	 * @param {number|Whirl.geometry.Point} px X-position of the point to scroll to. An instance of a Point object can be given instead to scroll to the position with the same coordinates as the Point object.
-	 * @param {number} [py] Y-coordinate of the point to scroll to.
+	 * @param {Whirl.geometry.Point|Whirl.Entity|null} [target=null] Target to follow.
 	 * @returns {this}
-	 *
-	 * @example
-	 * viewport.scrollTo(50, 75);
-	 *
-	 * @example
-	 * viewport.scrollTo(
-	 * 	Whirl.geometry.Point(50, 75)
-	 * );
 	 */
-	scrollTo(px, py) {
-		let x = px;
-		let y = py;
+	setTarget(target) {
+		if (target instanceof Point || target instanceof Entity) {
+			this.anchor.set({
+				x: 0.5,
+				y: 0.5,
+			});
 
-		if (px instanceof Point._class) {
-			x = px.x;
-			y = px.y;
+			this.target = target;
+		} else {
+			this.target = null;
 		}
-
-		this.scroll.x = x;
-		this.scroll.y = y;
 
 		return this;
 	}
