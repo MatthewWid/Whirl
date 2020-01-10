@@ -19,6 +19,10 @@
 const addInheritFilter = (instance, inheritClass) => {
 	return (object) => {
 		if (object instanceof inheritClass) {
+			if (object.parent) {
+				object.parent.child.remove(object);
+			}
+
 			object.parent = instance;
 		} else {
 			instance._game.debug.warn(
