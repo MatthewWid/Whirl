@@ -4,6 +4,7 @@
 	overflow: hidden;
 
 	&-container {
+		max-width: 100%;
 		overflow-y: scroll;
 
 		> :not(:last-child) {
