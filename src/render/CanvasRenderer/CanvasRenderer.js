@@ -38,16 +38,27 @@ class CanvasRenderer extends Renderer {
 		};
 	}
 
+	preRenderAll(viewports) {
+		for (let i = 0; i < viewports.length; i++) {
+			const viewport = viewports[i];
+
+			if (viewport.clear) {
+				viewport.render.ctx.clearRect(
+					viewport.bounds.x,
+					viewport.bounds.y,
+					viewport.bounds.w,
+					viewport.bounds.h
+				);
+			}
+		}
+	}
+
 	preRenderViewport(viewport) {
 		const {canvas, ctx} = viewport.render;
 
 		ctx.save();
 
 		ctx.translate(viewport.bounds.x, viewport.bounds.y);
-
-		if (viewport.clear) {
-			ctx.clearRect(0, 0, viewport.bounds.w, viewport.bounds.h);
-		}
 
 		ctx.translate(-viewport.derived.scroll.x, -viewport.derived.scroll.y);
 	}
