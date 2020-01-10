@@ -34,7 +34,7 @@ const getValue = require("../../lib/getValue.js");
  * @param {number} options.scrollY=0 Y-coordinate of the scroll position.
  * @param {number} options.anchorX=0 X-coordinate of the anchor point (0-1).
  * @param {number} options.anchorY=0 Y-coordinate of this sprite's anchor point (0-1).
- * @param {boolean} options.clip=true Remove all pixels that are outside of the clipping plane from the rendered output on the canvas.
+ * @param {boolean} options.clip=false Remove all pixels that are outside of the clipping plane from the rendered output on the canvas.
  * @param {boolean} options.clear=true Clear the area being rendered to before each render tick.
  * @param {boolean} options.imageSmoothing=true Canvas anti-aliasing.
  * @param {number} options.zoom=1 Initial zoom level. Increasing this value zooms in, decreasing it zooms out.
@@ -136,11 +136,13 @@ class Viewport extends Base {
 	anchor;
 
 	/**
-	 * Remove all pixels that are outside of the clipping plane from the rendered output on the canvas.
+	 * Remove all pixels that are outside of the clipping plane from the rendered output on the canvas. Cuts off everything that appears outside of the Viewport in the canvas.
+	 *
+	 * Enabling viewport clipping may cause issues when using multiple viewports as some viewports may clip the contents of others.
 	 *
 	 * @memberof Whirl.Viewport#
 	 * @type {boolean}
-	 * @default true
+	 * @default false
 	 */
 	clip;
 
@@ -227,7 +229,7 @@ class Viewport extends Base {
 			this.anchor = Point(getValue(options, "anchorX", 0), getValue(options, "anchorY", 0));
 		}
 
-		this.clip = getValue(options, "clip", true);
+		this.clip = getValue(options, "clip", false);
 
 		this.clear = getValue(options, "clear", true);
 
