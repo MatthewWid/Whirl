@@ -5,14 +5,17 @@ const Entity = require("../Entity/");
 const Sprite = require("../Sprite/");
 const {Rectangle, Point} = require("../../geometry/");
 const getValue = require("../../lib/getValue.js");
+const lerp = require("../../math/lerp.js");
 
 /**
  * @classdesc
- * Viewports render the game world onto a section of your screen using a {@link Whirl.Camera|Camera} and {@link Whirl.Stage|Stage}.
+ * Viewports render {@link Whirl.Stage|the game world} onto a section of your screen.
  *
- * A viewport is defined by a rectangular clipping plane. The clipping plane `x` and `y` values move the rendered view around the 2D screen space, and its `w` and `h` values define size of the viewport. By default, anything rendered outside of the clipping plane is *clipped* and will be cut off and on the output image.
+ * A viewport is defined by a rectangular clipping plane and a scroll value. The clipping plane `x` and `y` values move the rendered view around the screen space, and its `w` and `h` values define size of the viewport on the screen. If {@link Whirl.Viewport#clip|clip} is set to `true` anything outside of the clipping plane will not be rendered.
  *
- * Think of a Viewport as looking at what is on your screen, and a Camera as what is in your world. The Camera understands what we can see in the world and where, and the Viewport actually translates it onto the screen.
+ * Viewports can look around the game world by use of its {@link Whirl.Viewport#scroll|scroll value} which moves the camera view around the game world. Alternatively, {@link Whirl.Viewport#setTarget|set a follow target} to have the viewport automatically follow and scroll towards a {@link Whirl.geometry.Point|Point} or {@link Whirl.Entity|Entity} in the world.
+ *
+ * Think of a Viewport that renders a camera looking into your world. The viewport camera is the view relative to the game world (your stage), and the viewport itself is where it is rendered onto your screen.
  *
  * @class Viewport
  * @memberof Whirl
@@ -24,14 +27,14 @@ const getValue = require("../../lib/getValue.js");
  * Either provide the bounds with a {@link Whirl.geometry.Rectangle|Rectangle} instance, or give each value individually with `x`, `y`, `w` and `h`.
  *
  * Either provide the scroll position with a {@link Whirl.geometry.Point|Point} instance, or give each value individually with `scrollX` and `scrollY`.
- * @param {Whirl.geometry.Rectangle} options.bounds Set the bounds of the clipping plane. Alternatively, give each dimension of the clipping plane manually with the `x`, `y`, `w` and `h` options.
+ * @param {Whirl.geometry.Rectangle} options.bounds=(0,0,ConfigManager.w,ConfigManager.h) Set the bounds of the clipping plane. Alternatively, give each dimension of the clipping plane manually with the `x`, `y`, `w` and `h` options.
  *
  * Passed as reference - changing properties of the given Rectangle instance will also affect this viewports bounds in response.
  * @param {number} options.x=0 X-coordinate of the clipping plane relative to the screen.
  * @param {number} options.y=0 Y-coordinate of the clipping plane relative to the screen.
  * @param {number} options.w=ConfigManager.w Width of the clipping plane.
  * @param {number} options.h=ConfigManager.h Height of the clipping plane.
- * @param {Whirl.geometry.Point} options.scroll Set the initial scroll value around the world. Alternatively, give each scroll value individually with the `scrollX` and `scrollY` options.
+ * @param {Whirl.geometry.Point} options.scroll=(0,0) Set the initial scroll value around the world. Alternatively, give each scroll value individually with the `scrollX` and `scrollY` options.
  * @param {number} options.scrollX=0 X-coordinate of the scroll position.
  * @param {number} options.scrollY=0 Y-coordinate of the scroll position.
  * @param {number} options.anchorX=0 X-coordinate of the anchor point (0-1).
@@ -40,9 +43,12 @@ const getValue = require("../../lib/getValue.js");
  * @param {boolean} options.clear=true Clear the area being rendered to before each render tick.
  * @param {boolean} options.imageSmoothing=true Canvas anti-aliasing.
  * @param {number} options.zoom=1 Initial zoom level. Increasing this value zooms in, decreasing it zooms out.
- * @param {number} options.lerp=1 Linear interpolation value to use when animatedly scrolling to a given point or game object.
  * @param {Whirl.geometry.Point|Whirl.Entity} options.target=null Target Point or Entity to follow.
- * @param {string} options.canvas Selector for the canvas element to render to. If not given, will default to the `canvas` value stored in {@link Whirl.Game.ConfigManager#canvas|the game configuration}.
+ * @param {number} options.lerp=1 Linear interpolation value to use when animatedly scrolling to a given point or game object.
+ * @param {number} options.offset=(0,0) Set the initial offset value relative to the scroll. Alternatively, give each offset value individually with the `offsetX` and `offsetY` options.
+ * @param {number} options.offsetX=0 X-coordinate of the offset.
+ * @param {number} options.offsetY=0 Y-coordinate of the offset.
+ * @param {string} options.canvas=ConfigManager.canvas Selector for the canvas element to render to. If not given, will default to the `canvas` value stored in {@link Whirl.Game.ConfigManager#canvas|the game configuration}.
  *
  * Implicitely calls the {@link Whirl.Viewport#setCanvas|`setCanvas`} method.
  * @param {boolean} options.resizeCanvas=false Resize the canvas width and height to the same width and height of this viewports clipping plane.
@@ -195,9 +201,9 @@ class Viewport extends Base {
 	target;
 
 	/**
-	 * Linear interpolation value used when animatedly scrolling to a given point or game object.
+	 * Linear interpolation value used when scrolling to a given point or game object.
 	 *
-	 * When this viewport's camera is locked to an object in the world and the object moves, lowering this value will cause it to follow the object smoothly instead of locking onto its exact position at all times.
+	 * When the viewport camera is locked to an object in the world and the object moves, lowering this value will cause it to follow the object more smoothly instead of hard-locking onto the object.
 	 *
 	 * Has no effect if {@link Whirl.Viewport#target|target} if `null`.
 	 *
@@ -209,6 +215,8 @@ class Viewport extends Base {
 
 	/**
 	 * Offset from the follow target to move to.
+	 *
+	 * When a viewport moves toward a target, it will move toward the targets position *plus* the offset position.
 	 *
 	 * Has no effect if {@link Whirl.Viewport#target|target} if `null`.
 	 *
@@ -455,6 +463,15 @@ class Viewport extends Base {
 	}
 
 	calculateDerived() {
+		if (this.target instanceof Sprite) {
+			this.scroll.x = lerp(this.scroll.x, this.target.bounds.x, this.lerp);
+			this.scroll.y = lerp(this.scroll.y, this.target.bounds.y, this.lerp);
+		}
+		if (this.target instanceof Point._class) {
+			this.scroll.x = lerp(this.scroll.x, this.target.x, this.lerp);
+			this.scroll.y = lerp(this.scroll.y, this.target.y, this.lerp);
+		}
+
 		this.derived.scroll.x = this.scroll.x - this.bounds.w * this.anchor.x;
 		this.derived.scroll.y = this.scroll.y - this.bounds.h * this.anchor.y;
 	}
