@@ -15,4 +15,5 @@ module.exports = {
 	random: require("./random.js"),
 	roundTo: require("./roundTo.js"),
 	stepTo: require("./stepTo.js"),
+	within: require("./within.js"),
 };
