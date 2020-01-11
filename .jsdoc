@@ -8,5 +8,11 @@
 		"includeDate": false,
 		"linenums": true,
 		"sort": false
+	},
+	"opts": {
+		"recurse": true,
+		"destination": "./doc/",
+		"readme": "./README.md",
+		"template": "./node_modules/ink-docstrap/template"
 	}
 }

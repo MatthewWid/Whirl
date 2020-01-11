@@ -5,7 +5,7 @@
 	"repository": "https://github.com/MatthewWid/Whirl.git",
 	"license": "MIT",
 	"scripts": {
-		"doc": "jsdoc ./src/ -r -d ./doc/ -c ./.jsdoc -t node_modules/ink-docstrap/template -R ./README.md",
+		"doc": "jsdoc ./src/ -c ./.jsdoc",
 		"dev": "webpack --config ./config/webpack.config.js --env dev",
 		"prod": "webpack --config ./config/webpack.config.js --env prod",
 		"prettier": "prettier --write ./src/**/*.js --config ./.prettierrc --ignore-path ./.prettierignore"
