@@ -181,18 +181,7 @@ class Viewport extends Base {
 	zoom;
 
 	/**
-	 * Linear interpolation value used when animatedly scrolling to a given point or game object.
-	 *
-	 * When this viewport's camera is locked to an object in the world and the object moves, lowering this value will cause it to follow the object smoothly instead of locking onto its exact position at all times.
-	 *
-	 * @memberof Whirl.Viewport#
-	 * @type {number}
-	 * @default 1
-	 */
-	lerp;
-
-	/**
-	 * {@link Whirl.geometry.Point|Point} or {@link Whirl.Entity|Entity} being followed by the viewport using its {@link Whirl.Viewport#lerp|lerp} value.
+	 * {@link Whirl.geometry.Point|Point} or {@link Whirl.Entity|Entity} to be followed by the viewport using its {@link Whirl.Viewport#lerp|lerp} value.
 	 *
 	 * If `null`, the {@link Whirl.Viewport#scroll|Viewport scroll} value will remain static unless directly modified.
 	 *
@@ -204,6 +193,30 @@ class Viewport extends Base {
 	 * @readonly
 	 */
 	target;
+
+	/**
+	 * Linear interpolation value used when animatedly scrolling to a given point or game object.
+	 *
+	 * When this viewport's camera is locked to an object in the world and the object moves, lowering this value will cause it to follow the object smoothly instead of locking onto its exact position at all times.
+	 *
+	 * Has no effect if {@link Whirl.Viewport#target|target} if `null`.
+	 *
+	 * @memberof Whirl.Viewport#
+	 * @type {number}
+	 * @default 1
+	 */
+	lerp;
+
+	/**
+	 * Offset from the follow target to move to.
+	 *
+	 * Has no effect if {@link Whirl.Viewport#target|target} if `null`.
+	 *
+	 * @memberof Whirl.Viewport#
+	 * @type {Whirl.geometry.Point}
+	 * @default (0, 0)
+	 */
+	offset;
 
 	/**
 	 * Similar to {@link Whirl.Entity#derived|Entity#derived}, but its calculated value takes into account the derived state of the emtire world after all other derived values have been calculated. This allows the Viewport to track objects in the game world and apply post-processing effects to them.
@@ -237,7 +250,7 @@ class Viewport extends Base {
 		if (options.scroll instanceof Point._class) {
 			this.scroll = options.scroll;
 		} else {
-			this.scroll = Point(options.scrollX || 0, options.scrollY || 0);
+			this.scroll = Point(getValue(options, "scrollX", 0), getValue(options, "scrollY", 0));
 		}
 
 		if (options.anchor instanceof Point._class) {
@@ -264,6 +277,12 @@ class Viewport extends Base {
 
 		if (options.camera) {
 			this.setCamera(options.camera);
+		}
+
+		if (options.offset instanceof Point._class) {
+			this.offset = options.offset;
+		} else {
+			this.offset = Point(getValue(options, "offsetX", 0), getValue(options, "offsetY", 0));
 		}
 
 		this.setTarget(options.target);
@@ -364,23 +383,36 @@ class Viewport extends Base {
 	/**
 	 * Sets the target {@link Whirl.geometry.Point|Point} or {@link Whirl.Entity|Entity} to follow.
 	 *
-	 * Set to `null` to stop the viewport following anything, making its scroll position static again.
+	 * Set to `null` (or give no arguments) to stop the viewport following anything, making its scroll position static again.
 	 *
 	 * Implicitly sets the {@link Whirl.Viewport#anchor|viewport anchor} to its center (`(0.5, 0.5)`).
 	 *
 	 * @method Whirl.Viewport#setTarget
 	 *
-	 * @param {Whirl.geometry.Point|Whirl.Entity|null} [target=null] Target to follow.
+	 * @param {Whirl.geometry.Point|Whirl.Entity|number|null} [target=null] Target Point or Entity to follow to. Else, give an integer as an X position and a Y position as a second argument to move to.
+	 * @param {number} [y] Y-value.
 	 * @returns {this}
+	 *
+	 * @example
+	 * viewport.setTarget(sprite); // Follow Sprite 'sprite'
+	 * viewport.setTarget(Point(100, 50)); // Gradually move to position (100, 50)
+	 * viewport.setTarget(100, 50); // Gradually move to position (100, 50) but give points as two separate arguments
 	 */
-	setTarget(target) {
-		if (target instanceof Point || target instanceof Entity) {
+	setTarget(target, y) {
+		if (target instanceof Point._class || target instanceof Entity) {
 			this.anchor.set({
 				x: 0.5,
 				y: 0.5,
 			});
 
 			this.target = target;
+		} else if (typeof target === "number" && typeof y === "number") {
+			this.anchor.set({
+				x: 0.5,
+				y: 0.5,
+			});
+
+			this.target = Point(target, y);
 		} else {
 			this.target = null;
 		}
