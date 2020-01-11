@@ -464,12 +464,14 @@ class Viewport extends Base {
 
 	calculateDerived() {
 		if (this.target instanceof Sprite) {
-			this.scroll.x = lerp(this.scroll.x, this.target.bounds.x, this.lerp);
-			this.scroll.y = lerp(this.scroll.y, this.target.bounds.y, this.lerp);
+			const target = this.target.derived.bounds.midpoint;
+
+			this.scroll.x = lerp(this.scroll.x, target.x + this.offset.x, this.lerp);
+			this.scroll.y = lerp(this.scroll.y, target.y + this.offset.y, this.lerp);
 		}
 		if (this.target instanceof Point._class) {
-			this.scroll.x = lerp(this.scroll.x, this.target.x, this.lerp);
-			this.scroll.y = lerp(this.scroll.y, this.target.y, this.lerp);
+			this.scroll.x = lerp(this.scroll.x, this.target.x + this.offset.x, this.lerp);
+			this.scroll.y = lerp(this.scroll.y, this.target.y + this.offset.y, this.lerp);
 		}
 
 		this.derived.scroll.x = this.scroll.x - this.bounds.w * this.anchor.x;
