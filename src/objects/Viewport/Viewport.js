@@ -1,6 +1,5 @@
 const Base = require("../Base/");
 const Stage = require("../Stage/");
-const Camera = require("../Camera/");
 const Entity = require("../Entity/");
 const Sprite = require("../Sprite/");
 const {Rectangle, Point} = require("../../geometry/");
@@ -56,9 +55,6 @@ const lerp = require("../../math/lerp.js");
  *
  * Implicitely calls the {@link Whirl.Viewport#setCanvas|`setCanvas`} method.
  * @param {boolean} options.resizeStage=false Resize the stage bounds to the same position and dimensions of this viewport.
- * @param {Whirl.Camera} options.camera Initial camera to be used for rendering.
- *
- * Implicitely calls the {@link Whirl.Viewport#setCamera|`setCamera`} method.
  *
  * @example
  * game.Viewport({
@@ -94,18 +90,6 @@ class Viewport extends Base {
 	 * @default null
 	 */
 	stage = null;
-
-	/**
-	 * Reference to the active Camera used for rendering.
-	 *
-	 * Do not modify this property directly. Instead ,use the `setCamera` method.
-	 *
-	 * @memberof Whirl.Viewport#
-	 * @type {Whirl.Camera}
-	 * @readonly
-	 * @default null
-	 */
-	camera = null;
 
 	/**
 	 * Bounds of the clipping plane denoted by an X and Y coordinate and a width and height.
@@ -283,10 +267,6 @@ class Viewport extends Base {
 			this.setStage(options.stage, options.resizeStage);
 		}
 
-		if (options.camera) {
-			this.setCamera(options.camera);
-		}
-
 		if (options.offset instanceof Point._class) {
 			this.offset = options.offset;
 		} else {
@@ -367,23 +347,6 @@ class Viewport extends Base {
 				h: this.bounds.h,
 			});
 		}
-
-		return this;
-	}
-
-	setCamera(camera) {
-		if (typeof camera === "undefined" || (camera && !(camera instanceof Camera))) {
-			this._game.debug.warn(
-				"Invalid Camera instance given to Viewport#setCamera.",
-				"Whirl.Viewport"
-			);
-
-			this.camera = null;
-
-			return this;
-		}
-
-		this.camera = camera;
 
 		return this;
 	}

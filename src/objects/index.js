@@ -5,7 +5,6 @@ const Texture = require("./Texture/");
 const Game = require("./Game/");
 const Viewport = require("./Viewport/");
 const Stage = require("./Stage/");
-const Camera = require("./Camera/");
 const Sprite = require("./Sprite/");
 const Container = require("./Container/");
 const Colour = require("./Colour");
@@ -23,7 +22,6 @@ module.exports = {
 	Game,
 	Viewport,
 	Stage,
-	Camera,
 	Sprite,
 	Container,
 	Colour,

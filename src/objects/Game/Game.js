@@ -13,7 +13,6 @@ const {
 const Base = require("../Base/");
 const Viewport = require("../Viewport/");
 const Stage = require("../Stage/");
-const Camera = require("../Camera/");
 const Sprite = require("../Sprite/");
 const Container = require("../Container/");
 const Colour = require("../Colour/");
@@ -106,7 +105,6 @@ class Game {
 	// Game Object Factories
 	Viewport = (...args) => new Viewport(this, ...args);
 	Stage = (...args) => new Stage(this, ...args);
-	Camera = (...args) => new Camera(this, ...args);
 	Sprite = (...args) => new Sprite(this, ...args);
 	Container = (...args) => new Container(this, ...args);
 	Colour = (...args) => new Colour(this, ...args);
