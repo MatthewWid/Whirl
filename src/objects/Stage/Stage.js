@@ -10,11 +10,15 @@ const addInheritFilter = require("../../lib/addInheritFilter.js");
 
 /**
  * @classdesc
- * Stages acts as the game world itself. It is responsible for storing game objects to rendered in the world, game physics and collision detection, world bounds, etc.
+ * Stages act as as the game world itself. They are responsible for storing game objects, game physics, collision detection, world bounds, etc.
  *
  * A stage is limited by its world boundaries. If configured, objects that leave this world boundary will not be updated and/or rendered.
  *
+ * Stages, even if not being rendered by a {@link Whirl.Viewport|Viewport}, will continue updating and running the physics simulation in the background. This makes it easy to swap in and out stages being rendered by a viewport, giving you the concept of different levels and scenes that you can quickly switch back and forth between.
+ *
  * Game objects are added to the stage using {@link Whirl.mixins.Child|the Child mixin}. Objects added to the stage **must** inherit from the `Entity` class.
+ *
+ * Note that modifying Entity-related properties of a stage such as `alpha`, `scale`, `rotation` and `layer` has no effect on the game world.
  *
  * @class Stage
  * @memberof Whirl
