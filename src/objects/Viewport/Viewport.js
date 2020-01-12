@@ -395,18 +395,29 @@ class Viewport extends Base {
 	 *
 	 * Implicitly sets the {@link Whirl.Viewport#anchor|viewport anchor} to its center (`(0.5, 0.5)`).
 	 *
+	 * You may also provide a {@link Whirl.Viewport#lerp|`lerp` value} as the last argument, else it remains unchanged.
+	 *
 	 * @method Whirl.Viewport#setTarget
 	 *
 	 * @param {Whirl.geometry.Point|Whirl.Entity|number|null} [target=null] Target Point or Entity to follow to. Else, give an integer as an X position and a Y position as a second argument to move to.
-	 * @param {number} [y] Y-value.
+	 * @param {number} [y] Y-coordinate to move to.
+	 *
+	 * If the first argument is a Point or Entity instance, instead can be given as the new {@link Whirl.Viewport#lerp|lerp value} for the viewport.
+	 * @param {number} [lerp] If the first two arguments are numbers (for coordinates), give a number to this argument to set the new {@link Whirl.Viewport#lerp|lerp value} for the viewport. Else, can be given as the second argument (See examples).
 	 * @returns {this}
 	 *
 	 * @example
 	 * viewport.setTarget(sprite); // Follow Sprite 'sprite'
-	 * viewport.setTarget(Point(100, 50)); // Gradually move to position (100, 50)
-	 * viewport.setTarget(100, 50); // Gradually move to position (100, 50) but give points as two separate arguments
+	 *
+	 * viewport.setTarget(sprite, 0.05); // Follow Sprite 'sprite' and set `lerp` to 0.05
+	 *
+	 * viewport.setTarget(Point(100, 50)); // Follow to point (100, 50)
+	 *
+	 * viewport.setTarget(100, 50); // Follow to position (100, 50), giving coordinates as separate arguments
+	 *
+	 * viewport.setTarget(100, 50, 0.02); // Follow to (100, 50) and set `lerp` to 0.02
 	 */
-	setTarget(target, y) {
+	setTarget(target, y, lerp) {
 		if (target instanceof Point._class || target instanceof Entity) {
 			this.anchor.set({
 				x: 0.5,
@@ -414,6 +425,10 @@ class Viewport extends Base {
 			});
 
 			this.target = target;
+
+			if (typeof y === "number") {
+				this.lerp = y;
+			}
 		} else if (typeof target === "number" && typeof y === "number") {
 			this.anchor.set({
 				x: 0.5,
@@ -421,6 +436,10 @@ class Viewport extends Base {
 			});
 
 			this.target = Point(target, y);
+
+			if (typeof lerp === "number") {
+				this.lerp = lerp;
+			}
 		} else {
 			this.target = null;
 		}
