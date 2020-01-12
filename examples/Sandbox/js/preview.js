@@ -5,9 +5,6 @@ const preview = {};
 
 preview.editor = null;
 
-preview.iframe = document.getElementById("preview");
-preview.document = preview.iframe.contentDocument;
-
 preview.template = template;
 
 preview.update = () => {
@@ -17,6 +14,27 @@ preview.update = () => {
 		return;
 	}
 
+	let parent;
+
+	// Remove IFrame
+	if (preview.iframe) {
+		parent = preview.iframe.parentNode;
+
+		preview.iframe.remove();
+	} else {
+		parent = document.querySelector(".preview-container");
+	}
+
+	// Create new IFrame
+	const iframe = document.createElement("iframe");
+	iframe.setAttribute("id", "preview");
+	parent.appendChild(iframe);
+
+	// Store IFrame
+	preview.iframe = iframe;
+	preview.document = iframe.contentDocument;
+
+	// Populate IFrame
 	preview.document.open();
 
 	let content = template;
