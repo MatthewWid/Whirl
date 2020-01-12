@@ -46,7 +46,7 @@ preview.update = () => {
 		}
 
 		content = content.replace(`{{${e.name}}}`, e.getValue());
-	})
+	});
 
 	preview.document.write(content);
 
