@@ -6,8 +6,8 @@
 	"license": "MIT",
 	"scripts": {
 		"doc": "jsdoc ./src/ -c ./.jsdoc",
-		"dev": "webpack --config ./config/webpack.config.js --env dev",
-		"prod": "webpack --config ./config/webpack.config.js --env prod",
+		"dev": "webpack --config ./webpack/webpack.config.js --env dev",
+		"prod": "webpack --config ./webpack/webpack.config.js --env prod",
 		"prettier": "prettier --write ./src/**/*.js --config ./.prettierrc --ignore-path ./.prettierignore"
 	},
 	"devDependencies": {
