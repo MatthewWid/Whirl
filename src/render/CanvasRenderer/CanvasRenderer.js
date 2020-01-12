@@ -61,6 +61,8 @@ class CanvasRenderer extends Renderer {
 		ctx.translate(viewport.bounds.x, viewport.bounds.y);
 
 		ctx.translate(-viewport.derived.scroll.x, -viewport.derived.scroll.y);
+
+		ctx.scale(viewport.zoom, viewport.zoom);
 	}
 
 	postRenderViewport(viewport) {

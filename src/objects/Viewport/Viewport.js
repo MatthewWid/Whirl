@@ -463,19 +463,27 @@ class Viewport extends Base {
 	}
 
 	calculateDerived() {
-		if (this.target instanceof Sprite) {
-			const target = this.target.derived.bounds.midpoint;
+		if (this.target) {
+			let targetX, targetY;
 
-			this.scroll.x = lerp(this.scroll.x, target.x + this.offset.x, this.lerp);
-			this.scroll.y = lerp(this.scroll.y, target.y + this.offset.y, this.lerp);
-		}
-		if (this.target instanceof Point._class) {
-			this.scroll.x = lerp(this.scroll.x, this.target.x + this.offset.x, this.lerp);
-			this.scroll.y = lerp(this.scroll.y, this.target.y + this.offset.y, this.lerp);
+			// Get the middle point of the target
+			if (this.target instanceof Sprite) {
+				const mid = this.target.derived.bounds.midpoint;
+				targetX = mid.x;
+				targetY = mid.y;
+			}
+			if (this.target instanceof Point._class) {
+				targetX = this.target.x;
+				targetY = this.target.y;
+			}
+
+			// Set scroll position to lerp between current scroll position and target position
+			this.scroll.x = lerp(this.scroll.x, targetX + this.offset.x, this.lerp);
+			this.scroll.y = lerp(this.scroll.y, targetY + this.offset.y, this.lerp);
 		}
 
-		this.derived.scroll.x = this.scroll.x - this.bounds.w * this.anchor.x;
-		this.derived.scroll.y = this.scroll.y - this.bounds.h * this.anchor.y;
+		this.derived.scroll.x = this.scroll.x * this.zoom - this.bounds.w * this.anchor.x;
+		this.derived.scroll.y = this.scroll.y * this.zoom - this.bounds.h * this.anchor.y;
 	}
 }
 
