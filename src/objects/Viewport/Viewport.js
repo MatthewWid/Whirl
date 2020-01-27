@@ -470,10 +470,10 @@ class Viewport extends Base {
 			y = px.y;
 		}
 
-		x += this.stage.derived.x;
-		y += this.stage.derived.y;
+		x -= this.stage.derived.x;
+		y -= this.stage.derived.y;
 
-		x -= this.derived.scroll.x;
+		x += this.derived.scroll.x;
 		y -= this.derived.scroll.y;
 
 		return Point(x, y);
