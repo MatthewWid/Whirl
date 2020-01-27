@@ -145,8 +145,8 @@ class Rectangle extends Geometry {
 	 *
 	 * @method Whirl.geometry.Rectangle#isPointInside
 	 *
-	 * @param {number|Whirl.geometry.Point} px X-coordinate of the point. An instance of a Point object can also be given instead as the only argument to determine if it is inside this rectangle.
-	 * @param {number} [py] Y-coordinate of the point.
+	 * @param {number|Whirl.geometry.Point} x X-coordinate of the point. An instance of a Point object can also be given instead as the only argument to determine if it is inside this rectangle.
+	 * @param {number} [y] Y-coordinate of the point.
 	 * @returns {boolean}
 	 *
 	 * @example
