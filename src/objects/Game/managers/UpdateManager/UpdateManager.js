@@ -275,7 +275,7 @@ class UpdateManager extends Manager {
 			stages[i].calculateDerived();
 		}
 		const viewports = this._game.object._viewports;
-		for (let i = 0; i < stages.length; i++) {
+		for (let i = 0; i < viewports.length; i++) {
 			viewports[i].calculateDerived();
 		}
 
