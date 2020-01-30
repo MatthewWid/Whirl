@@ -47,7 +47,7 @@ const addInheritFilter = require("../../lib/addInheritFilter.js");
  * 	limit: Whirl.geometry.Rectangle(0, 0, 400, 400)
  * });
  */
-class Stage extends Entity {
+class Stage extends Base {
 	mixins = [Child];
 
 	/**
@@ -63,6 +63,21 @@ class Stage extends Entity {
 	 * @type {Whirl.geometry.Rectangle}
 	 */
 	limits;
+
+	/**
+	 * Similar to {@link Whirl.Entity#derived|Entity#derived}.
+	 *
+	 * @memberof Whirl.Stage#
+	 * @type {object}
+	 * @readonly
+	 * @default
+	 * {
+	 * 	limits: Rectangle
+	 * }
+	 *
+	 * @see Whirl.Entity#derived
+	 */
+	derived = {};
 
 	constructor(game, options = {}, children = []) {
 		super(game);
@@ -83,6 +98,8 @@ class Stage extends Entity {
 		this.child.onAdd = addInheritFilter(this, Entity);
 
 		this.child.add(children);
+
+		this.derived.limits = this.limits.duplicate();
 	}
 
 	/**
@@ -98,10 +115,8 @@ class Stage extends Entity {
 	 */
 	calculateDerived(object = this) {
 		if (object === this) {
-			super.calculateDerived();
-
-			this.derived.x = this.limits.x;
-			this.derived.y = this.limits.y;
+			this.derived.limits.x = this.limits.x;
+			this.derived.limits.y = this.limits.y;
 		} else {
 			object.calculateDerived();
 		}
