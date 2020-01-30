@@ -445,6 +445,32 @@ class Viewport extends Base {
 	}
 
 	/**
+	 * Translate a point on the actual output screen/canvas to a point on the Viewport screen.
+	 *
+	 * For example, if the Viewport bounds are positioned at coordinate `(50, 50)`, then calling `viewport.translateToScreen(0, 0)` (as if the user clicked at `(0, 0)` on the canvas) will return `Point {x: -50, y: -50}`.
+	 *
+	 * @method Whirl.Viewport#translateToScreen
+	 *
+	 * @param {number|Whirl.geometry.Point} x X-coordinate if the point to translate. An instance of a Point can also be given instead as the only argument.
+	 * @param {number} [y] Y-coordinate.
+	 * @returns {Whirl.geometry.Point} Point relative to the Viewport screen.
+	 */
+	translateToScreen(px, py) {
+		let x = px;
+		let y = py;
+
+		if (px instanceof Point._class) {
+			x = px.x;
+			y = px.y;
+		}
+
+		x -= this.bounds.x;
+		y -= this.bounds.y;
+
+		return Point(x, y);
+	}
+
+	/**
 	 * Translate a point on the Viewport screen to a point in the game world.
 	 *
 	 * For example, if the Stage inside a Viewport is positioned at coordinate `(50, 50)`, then calling `viewport.translateToWorld(120, 120)` will return `Point {x: 170, y: 170}`.
@@ -475,32 +501,6 @@ class Viewport extends Base {
 
 		x += this.derived.scroll.x;
 		y -= this.derived.scroll.y;
-
-		return Point(x, y);
-	}
-
-	/**
-	 * Translate a point on the actual output screen/canvas to a point on the Viewport screen.
-	 *
-	 * For example, if the Viewport bounds are positioned at coordinate `(50, 50)`, then calling `viewport.translateToScreen(0, 0)` (as if the user clicked at `(0, 0)` on the canvas) will return `Point {x: -50, y: -50}`.
-	 *
-	 * @method Whirl.Viewport#translateToScreen
-	 *
-	 * @param {number|Whirl.geometry.Point} x X-coordinate if the point to translate. An instance of a Point can also be given instead as the only argument.
-	 * @param {number} [y] Y-coordinate.
-	 * @returns {Whirl.geometry.Point} Point relative to the Viewport screen.
-	 */
-	translateToScreen(px, py) {
-		let x = px;
-		let y = py;
-
-		if (px instanceof Point._class) {
-			x = px.x;
-			y = px.y;
-		}
-
-		x -= this.bounds.x;
-		y -= this.bounds.y;
 
 		return Point(x, y);
 	}
