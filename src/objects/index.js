@@ -11,13 +11,13 @@ const Colour = require("./Colour");
 const Gradient = require("./Gradient");
 
 module.exports = {
-	// Base Classes for plugins
+	// Base classes for plugins
 	// Exported as class directly
 	Base,
 	Entity,
 	Texture,
 
-	// Game objects for normal use
+	// Game objects
 	// Exported as a factory function and a class indirectly
 	Game,
 	Viewport,
