@@ -173,13 +173,8 @@ class Entity extends Base {
 	 * @returns {this}
 	 */
 	calculateDerived() {
-		this.derived.alpha = this.alpha;
-		this.derived.scale = this.scale;
-
-		if (this.parent instanceof Entity) {
-			this.derived.alpha *= this.parent.derived.alpha;
-			this.derived.scale *= this.parent.derived.scale;
-		}
+		this.derived.alpha = this.alpha * this.parent.derived.alpha;
+		this.derived.scale = this.scale * this.parent.derived.scale;
 
 		return this;
 	}
