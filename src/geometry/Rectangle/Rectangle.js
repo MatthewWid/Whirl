@@ -145,7 +145,7 @@ class Rectangle extends Geometry {
 	 *
 	 * @method Whirl.geometry.Rectangle#isPointInside
 	 *
-	 * @param {number|Whirl.geometry.Point} x X-coordinate of the point. An instance of a Point object can also be given instead as the only argument to determine if it is inside this rectangle.
+	 * @param {number|Whirl.geometry.Point} x X-coordinate of the point. An instance of a Point object can be given instead as the only argument to determine if it is inside this rectangle.
 	 * @param {number} [y] Y-coordinate of the point.
 	 * @returns {boolean}
 	 *
@@ -168,6 +168,61 @@ class Rectangle extends Geometry {
 		}
 
 		return this.x <= x && this.x + this.w >= x && this.y <= y && this.y + this.h >= y;
+	}
+
+	/**
+	 * Determine if a rectangle overlaps this rectangle.
+	 *
+	 * @method Whirl.geometry.Rectangle#overlaps
+	 *
+	 * @param {number|Whirl.geometry.Rectangle} x X-coordinate of the rectangle. An instance of a Rectangle object can be given instead as the only argument to determine if it overlaps this rectangle.
+	 * @param {number} [y] Y-coordinate of the rectangle.
+	 * @param {number} [w] Width of the rectangle.
+	 * @param {number} [h] Height of the rectangle.
+	 * @returns {boolean}
+	 *
+	 * @example
+	 * const rectangle1 = Whirl.geometry.Rectangle(50, 50, 50, 50);
+	 * const rectangle2 = Whirl.geometry.Rectangle(75, 75, 50, 50);
+	 *
+	 * rectangle1.overlaps(rectangle2); // true
+	 *
+	 * @example
+	 * const rectangle1 = Whirl.geometry.Rectangle(50, 50, 50, 50);
+	 *
+	 * rectangle1.overlaps(75, 75, 50, 50); // true
+	 */
+	overlaps(x, y, w, h) {
+		if (x instanceof Rectangle) {
+			y = x.y;
+			w = x.w;
+			h = x.h;
+			x = x.x;
+		}
+
+		return this.x < x + w && this.x + this.w > x && this.y < y + h && this.y + this.h > y;
+	}
+
+	/**
+	 * Determine if this rectangle wholly contains another rectangle.
+	 *
+	 * If an edge touches/is equal to another edge, it is still contained by the outer rectangle.
+	 *
+	 * @param {number|Whirl.geometry.Rectangle} x X-coordinate of the rectangle. An instance of a Rectangle object can be given instead as the only argument to determine if it is contained by this rectangle.
+	 * @param {number} [y] Y-coordinate of the rectangle.
+	 * @param {number} [w] Width of the rectangle.
+	 * @param {number} [h] Height of the rectangle.
+	 * @returns {boolean}
+	 */
+	contains(x, y, w, h) {
+		if (x instanceof Rectangle) {
+			y = x.y;
+			w = x.w;
+			h = x.h;
+			x = x.x;
+		}
+
+		return this.x <= x && this.x + this.w >= x + w && this.y <= y && this.y + this.h >= y + h;
 	}
 
 	duplicate() {

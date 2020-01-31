@@ -69,7 +69,7 @@ class Stage extends Base {
 	limits;
 
 	/**
-	 * Alias to the the {@link Whirl.Stage#container|root Container} `child` mixin that this Stage holds.
+	 * Alias to the the {@link Whirl.Stage#container|root Container} {@link Whirl.mixins.ChildMixin|Child mixin} that this Stage holds.
 	 *
 	 * @name child
 	 * @memberof Whirl.Stage#
