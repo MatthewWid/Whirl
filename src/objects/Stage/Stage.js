@@ -1,28 +1,23 @@
 const Base = require("../Base/");
 const Entity = require("../Entity/");
-const {
-	Mixin: {apply: mixin},
-	Child,
-} = require("../../mixins/");
+const Container = require("../Container/");
 const {Rectangle} = require("../../geometry/");
 const getValue = require("../../lib/getValue.js");
 const addInheritFilter = require("../../lib/addInheritFilter.js");
 
 /**
  * @classdesc
- * Stages act as as the game world itself. They are responsible for storing game objects, game physics, collision detection, world bounds, etc.
+ * Stages encompass the game world itself. They are responsible for storing game objects, physics, collision detection, world bounds and more.
+ *
+ * Stages, even if not being rendered by a {@link Whirl.Viewport|Viewport}, will continue updating and running the physics simulation in the background. This makes it easy to swap in and out stages being rendered by a viewport giving you the concept of different levels and scenes that you can quickly switch back and forth between.
  *
  * A stage is limited by its world boundaries. If configured, objects that leave this world boundary will not be updated and/or rendered.
  *
- * Stages, even if not being rendered by a {@link Whirl.Viewport|Viewport}, will continue updating and running the physics simulation in the background. This makes it easy to swap in and out stages being rendered by a viewport, giving you the concept of different levels and scenes that you can quickly switch back and forth between.
- *
- * Game objects are added to the stage using {@link Whirl.mixins.Child|the Child mixin}. Objects added to the stage **must** inherit from the `Entity` class.
- *
- * Note that modifying Entity-related properties of a stage such as `alpha`, `scale`, `rotation` and `layer` has no effect on the game world.
+ * Game objects are added to the game world using the {@link Whirl.mixins.Child|Child mixin} on the {@link Whirl.Stage#container|root Container object} that the Stage holds. Objects added to the game world **must** inherit from the {@link Whirl.Entity|Entity} class.
  *
  * @class Stage
  * @memberof Whirl
- * @extends Whirl.Entity
+ * @extends Whirl.Base
  * @mixes Whirl.mixins.Child
  *
  * @param {Whirl.Game} game Game instance this stage belongs to and should be managed by.
@@ -48,7 +43,16 @@ const addInheritFilter = require("../../lib/addInheritFilter.js");
  * });
  */
 class Stage extends Base {
-	mixins = [Child];
+	/**
+	 * Root container that holds all objects in the game world.
+	 *
+	 * Do not modify this property directly. Instead, use the `setContainer` method.
+	 *
+	 * @memberof Whirl.Stage#
+	 * @type {Whirl.Container}
+	 * @readonly
+	 */
+	container;
 
 	/**
 	 * Limit of the game world in this stage.
@@ -65,24 +69,20 @@ class Stage extends Base {
 	limits;
 
 	/**
-	 * Similar to {@link Whirl.Entity#derived|Entity#derived}.
+	 * Alias to the the {@link Whirl.Stage#container|root Container} `child` mixin that this Stage holds.
 	 *
+	 * @name child
 	 * @memberof Whirl.Stage#
-	 * @type {object}
-	 * @readonly
-	 * @default
-	 * {
-	 * 	limits: Rectangle
-	 * }
+	 * @type {Whirl.mixins.Child}
 	 *
-	 * @see Whirl.Entity#derived
+	 * @example
+	 * stage.child.add(sprite);
+	 * // or
+	 * stage.container.child.add(sprite);
 	 */
-	derived = {};
 
 	constructor(game, options = {}, children = []) {
 		super(game);
-
-		mixin(this);
 
 		if (options.limits instanceof Rectangle._class) {
 			this.limits = options.limits;
@@ -95,15 +95,46 @@ class Stage extends Base {
 			);
 		}
 
-		this.child.onAdd = addInheritFilter(this, Entity);
-
-		this.child.add(children);
-
-		this.derived.limits = this.limits.duplicate();
+		this.setContainer(getValue(options, "container"));
 	}
 
 	/**
-	 * Invoke the `calculateDerived` method on all children in the tree of children belonging to this Stage.
+	 * Set the root container that holds all objects in the game world.
+	 *
+	 * If no arguments are given, creates a new Container object for you.
+	 *
+	 * @method Whirl.Stage#setContainer
+	 *
+	 * @param {Whirl.Container} [container] New root container.
+	 * @returns {this}
+	 *
+	 * @example
+	 * stage.setContainer();
+	 *
+	 * @example
+	 * const container = game.Container();
+	 * const stage = game.Stage().setContainer(container);
+	 */
+	setContainer(container) {
+		if (this.container) {
+			this.parent = null;
+		}
+
+		if (container instanceof Container) {
+			this.container = container;
+		} else {
+			this.container = new Container(this._game);
+		}
+
+		this.container.parent = this;
+
+		this.child = this.container.child;
+
+		return this;
+	}
+
+	/**
+	 * Invoke the `calculateDerived` method on all children in the tree of children in the game world.
 	 *
 	 * Invoked internally by the {@link Whirl.Game.UpdateManager|UpdateManager}.
 	 *
@@ -113,13 +144,8 @@ class Stage extends Base {
 	 * @param {Entity} object Current object to update.
 	 * @returns {this}
 	 */
-	calculateDerived(object = this) {
-		if (object === this) {
-			this.derived.limits.x = this.limits.x;
-			this.derived.limits.y = this.limits.y;
-		} else {
-			object.calculateDerived();
-		}
+	calculateDerived(object = this.container) {
+		object.calculateDerived();
 
 		if (object.child) {
 			object.child.get((item) => item.active).forEach((item) => this.calculateDerived(item));

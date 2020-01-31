@@ -80,7 +80,7 @@ class Viewport extends Base {
 	render;
 
 	/**
-	 * Reference to the Stage used for rendering.
+	 * Reference to the Stage/game world that this viewport will render.
 	 *
 	 * Do not modify this property directly. Instead, use the `setStage` method.
 	 *
@@ -496,8 +496,8 @@ class Viewport extends Base {
 			y = px.y;
 		}
 
-		x -= this.stage.derived.x;
-		y -= this.stage.derived.y;
+		x -= this.stage.limits.x;
+		y -= this.stage.limits.y;
 
 		x += this.derived.scroll.x;
 		y -= this.derived.scroll.y;

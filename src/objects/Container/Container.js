@@ -56,8 +56,13 @@ class Container extends Entity {
 	calculateDerived() {
 		super.calculateDerived();
 
-		this.derived.x = this.position.x + this.parent.derived.x;
-		this.derived.y = this.position.y + this.parent.derived.y;
+		this.derived.x = this.position.x;
+		this.derived.y = this.position.y;
+
+		if (this.parent instanceof Entity) {
+			this.derived.x += this.parent.derived.x;
+			this.derived.y += this.parent.derived.y;
+		}
 
 		return this;
 	}
