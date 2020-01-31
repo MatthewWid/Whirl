@@ -514,8 +514,7 @@ class Viewport extends Base {
 				const mid = this.target.derived.bounds.midpoint;
 				targetX = mid.x;
 				targetY = mid.y;
-			}
-			if (this.target instanceof Point._class) {
+			} else if (this.target instanceof Point._class) {
 				targetX = this.target.x;
 				targetY = this.target.y;
 			}
