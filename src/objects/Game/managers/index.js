@@ -6,4 +6,5 @@ module.exports = {
 	RenderManager: require("./RenderManager/"),
 	SetupManager: require("./SetupManager/"),
 	UpdateManager: require("./UpdateManager/"),
+	InputManager: require("./InputManager/"),
 };

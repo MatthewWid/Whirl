@@ -9,8 +9,8 @@ const {
 	RenderManager,
 	SetupManager,
 	DebugManager,
+	InputManager,
 } = require("./managers/");
-const Base = require("../Base/");
 const Viewport = require("../Viewport/");
 const Stage = require("../Stage/");
 const Sprite = require("../Sprite/");
@@ -99,6 +99,7 @@ class Game {
 		this.object = new ObjectManager(this);
 		this.update = new UpdateManager(this);
 		this.render = new RenderManager(this);
+		this.input = new InputManager(this);
 		this.setup = new SetupManager(this);
 	}
 
