@@ -173,6 +173,8 @@ class Rectangle extends Geometry {
 	/**
 	 * Determine if a rectangle overlaps this rectangle.
 	 *
+	 * If an edge touches/is equal to another edge, it is still overlaps the outer rectangle.
+	 *
 	 * @method Whirl.geometry.Rectangle#overlaps
 	 *
 	 * @param {number|Whirl.geometry.Rectangle} x X-coordinate of the rectangle. An instance of a Rectangle object can be given instead as the only argument to determine if it overlaps this rectangle.
@@ -200,7 +202,7 @@ class Rectangle extends Geometry {
 			x = x.x;
 		}
 
-		return this.x < x + w && this.x + this.w > x && this.y < y + h && this.y + this.h > y;
+		return this.x <= x + w && this.x + this.w >= x && this.y <= y + h && this.y + this.h >= y;
 	}
 
 	/**
