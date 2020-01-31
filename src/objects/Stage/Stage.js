@@ -3,7 +3,6 @@ const Entity = require("../Entity/");
 const Container = require("../Container/");
 const {Rectangle} = require("../../geometry/");
 const getValue = require("../../lib/getValue.js");
-const addInheritFilter = require("../../lib/addInheritFilter.js");
 
 /**
  * @classdesc

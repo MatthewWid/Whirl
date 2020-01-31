@@ -5,7 +5,6 @@ const {
 } = require("../../mixins/");
 const {Point} = require("../../geometry/");
 const getValue = require("../../lib/getValue.js");
-const addInheritFilter = require("../../lib/addInheritFilter.js");
 
 /**
  * @classdesc
@@ -48,7 +47,22 @@ class Container extends Entity {
 
 		this.position = Point(getValue(options, "x", 0), getValue(options, "y", 0));
 
-		this.child.onAdd = addInheritFilter(this, Entity);
+		this.child.onAdd = (object) => {
+			if (object instanceof Entity) {
+				if (object.parent) {
+					object.parent.child.remove(object);
+				}
+
+				object.parent = this;
+			} else {
+				this._game.debug.warn(
+					`Objects added to a Container must inherit from the Entity class. Rejecting attempt to add object as child.`,
+					`Whirl.Container`
+				);
+
+				return false;
+			}
+		};
 
 		this.child.add(children);
 	}
