@@ -42,11 +42,7 @@ class DebugManager extends Manager {
 			const msg = `Whirl | ${source} | ${text}`;
 
 			console.warn(msg);
-
-			return msg;
 		}
-
-		return null;
 	}
 
 	/**
@@ -74,8 +70,6 @@ class DebugManager extends Manager {
 		const msg = `Whirl | ${source} | ${text}`;
 
 		console.error(msg);
-
-		return msg;
 	}
 }
 
