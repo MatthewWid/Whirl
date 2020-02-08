@@ -40,12 +40,77 @@ class MouseElement {
 	 */
 	hasEvents = false;
 
+	listeners = [];
+
 	constructor(game, element, viewports) {
 		this.game = game;
 
 		this.element = element;
 
 		this.viewports = Array.isArray(viewports) ? viewports : [viewports];
+	}
+
+	createListener = (rawName, emitName) => {
+		const listener = {
+			rawName,
+			emitName,
+			handleEvent: (event) => {
+				if (!this.game.config.get("input mouse")) {
+					return;
+				}
+
+				if (this.game.config.get("input preventDefault")) {
+					event.preventDefault();
+				}
+
+				const {clientX: mX, clientY: mY} = event;
+
+				for (let i = 0; i < this.viewports.length; i++) {
+					const viewport = this.viewports[i];
+					const elementPos = viewport.translateToElement(mX, mY);
+
+					if (elementPos && viewport.bounds.isPointInside(elementPos)) {
+						const screenPos = viewport.translateToScreen(elementPos);
+						const worldPos = viewport.translateToWorld(screenPos);
+
+						viewport.event.emit(emitName, {
+							event,
+							elementPos,
+							screenPos,
+							worldPos,
+						});
+					}
+				}
+			},
+		};
+
+		console.log(rawName, listener);
+
+		this.element.addEventListener(rawName, listener);
+
+		this.listeners.push(listener);
+	};
+
+	attachEvents() {
+		if (this.hasEvents) {
+			return this.game.debug.error(
+				"Failed to attach mouse events - MouseElement already has events attached.",
+				"Whirl.Game.InputManager.MouseElement"
+			);
+		}
+
+		this.createListener("click", "mouseLB");
+		this.createListener("contextmenu", "mouseRB");
+
+		this.hasEvents = true;
+	}
+
+	removeEvents() {
+		this.listeners.forEach((listener) => {
+			this.element.removeEventListener(listener.rawName, listener);
+		});
+
+		this.listeners = [];
 	}
 }
 

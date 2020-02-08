@@ -1,6 +1,7 @@
 const Manager = require("../Manager.js");
 const MouseElement = require("./MouseElement.js");
 const {Mixin, Event} = require("../../../../mixins/");
+const {Point} = require("../../../../geometry/");
 
 /**
  * @classdesc
@@ -41,33 +42,40 @@ class InputManager extends Manager {
 	 *
 	 * @param {string} selector Selector for the element to listen to mouse-related events on.
 	 * @param {Whirl.Viewport} viewport Viewport to be added as a listener when mouse events fire on the element.
+	 * @param {boolean} [attach=true] Automatically attach event listeners to the registered element.
 	 *
 	 * @example
 	 * game.input.registerMouseElement("#canvas", viewport);
 	 */
-	registerMouseElement(selector, viewport) {
+	registerMouseElement(selector, viewport, attach = true) {
 		const element = document.querySelector(selector);
 
 		if (!element) {
-			this.game.debug.error(
-				"Failed to register mouse element - element from given selector does not exist",
+			return this.game.debug.error(
+				"Failed to register mouse element - element from given selector does not exist.",
 				"Whirl.Game#InputManager"
 			);
-
-			return;
 		}
 
-		const existingElement = this.mouseElements.find((el) => el.element === element);
+		let mouseElement = this.mouseElements.find((el) => el.element === element);
 
-		if (existingElement) {
-			existingElement.viewports.push(viewport);
+		if (mouseElement) {
+			mouseElement.viewports.push(viewport);
 		} else {
-			this.mouseElements.push(new MouseElement(this.game, element, viewport));
+			mouseElement = new MouseElement(this.game, element, viewport);
+
+			this.mouseElements.push(mouseElement);
 		}
 
 		if (!viewport.event) {
 			Mixin.apply(viewport, [Event]);
 		}
+
+		if (attach && !mouseElement.hasEvents) {
+			mouseElement.attachEvents();
+		}
+
+		return mouseElement;
 	}
 }
 

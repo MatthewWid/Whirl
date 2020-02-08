@@ -67,20 +67,16 @@ class ObjectManager extends Manager {
 	 */
 	add(object) {
 		if (!(object instanceof Base)) {
-			this.game.debug.warn(
+			return this.game.debug.warn(
 				"Objects under a game instance must inherit from the Base object class.",
 				"Whirl.Game#ObjectManager"
 			);
-
-			return;
 		}
 		if (this._store.includes(object)) {
-			this.game.debug.warn(
+			return this.game.debug.warn(
 				"Object already exists in the global store. Rejecting attempt to add.",
 				"Whirl.Game#ObjectManager"
 			);
-
-			return;
 		}
 
 		object._id = this._index++;
