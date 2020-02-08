@@ -1,5 +1,6 @@
 const Manager = require("../Manager.js");
 const MouseElement = require("./MouseElement.js");
+const {Mixin, Event} = require("../../../../mixins/");
 
 /**
  * @classdesc
@@ -36,6 +37,8 @@ class InputManager extends Manager {
 	 *
 	 * If the DOM element already exists in the {@link Whirl.Game.InputManager#mouseElements|mouse element cache} then the Viewport will be added as a listener on the {@link Whirl.Game.InputManager.MouseElement|MouseElement}, else a new one will be created.
 	 *
+	 * Adds the {@link Whirl.mixins.Event|Event mixin} to the Viewport if it does not already have it.
+	 *
 	 * @param {string} selector Selector for the element to listen to mouse-related events on.
 	 * @param {Whirl.Viewport} viewport Viewport to be added as a listener when mouse events fire on the element.
 	 *
@@ -60,6 +63,10 @@ class InputManager extends Manager {
 			existingElement.viewports.push(viewport);
 		} else {
 			this.mouseElements.push(new MouseElement(this.game, element, viewport));
+		}
+
+		if (!viewport.event) {
+			Mixin.apply(viewport, [Event]);
 		}
 	}
 }
