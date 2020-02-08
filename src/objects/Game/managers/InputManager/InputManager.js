@@ -40,6 +40,8 @@ class InputManager extends Manager {
 	 *
 	 * Adds the {@link Whirl.mixins.Event|Event mixin} to the Viewport if it does not already have it.
 	 *
+	 * @method Whirl.Game.InputManager#registerMouseElement
+	 *
 	 * @param {string} selector Selector for the element to listen to mouse-related events on.
 	 * @param {Whirl.Viewport} viewport Viewport to be added as a listener when mouse events fire on the element.
 	 * @param {boolean} [attach=true] Automatically attach event listeners to the registered element.
