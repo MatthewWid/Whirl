@@ -234,8 +234,8 @@ class Viewport extends Base {
 			this.bounds = Rectangle(
 				getValue(options, "x", 0),
 				getValue(options, "y", 0),
-				getValue(options, "w", this._game.config.get("w", 0)),
-				getValue(options, "h", this._game.config.get("h", 0))
+				getValue(options, "w", this.game.config.get("w", 0)),
+				getValue(options, "h", this.game.config.get("h", 0))
 			);
 		}
 
@@ -292,8 +292,8 @@ class Viewport extends Base {
 	 * @example
 	 * viewport.setCanvas("#myDifferentCanvas", true);
 	 */
-	setCanvas(selector = this._game.config.get("canvas"), resize = false) {
-		this.render = this._game.render.renderer.getContext(selector);
+	setCanvas(selector = this.game.config.get("canvas"), resize = false) {
+		this.render = this.game.render.renderer.getContext(selector);
 
 		if (resize) {
 			this.render.canvas.width = this.bounds.w;
@@ -330,7 +330,7 @@ class Viewport extends Base {
 	 */
 	setStage(stage, resize = false) {
 		if (typeof stage === "undefined" || (stage && !(stage instanceof Stage))) {
-			this._game.debug.warn("Invalid Stage instance given to Viewport#setStage.", "Whirl.Viewport");
+			this.game.debug.warn("Invalid Stage instance given to Viewport#setStage.", "Whirl.Viewport");
 
 			this.stage = null;
 

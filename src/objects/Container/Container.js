@@ -55,7 +55,7 @@ class Container extends Entity {
 
 				object.parent = this;
 			} else {
-				this._game.debug.warn(
+				this.game.debug.warn(
 					`Objects added to a Container must inherit from the Entity class. Rejecting attempt to add object as child.`,
 					`Whirl.Container`
 				);

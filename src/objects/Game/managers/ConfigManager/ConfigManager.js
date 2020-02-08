@@ -198,7 +198,7 @@ class ConfigManager extends Manager {
 			 *
 			 * @see Whirl.Game.ConfigManager#set
 			 */
-			this._game.event.emit("didSet", {
+			this.game.event.emit("didSet", {
 				config: {...this._data},
 				type: "key-value",
 				key,
@@ -212,7 +212,7 @@ class ConfigManager extends Manager {
 				...key,
 			};
 
-			this._game.event.emit("didSet", {
+			this.game.event.emit("didSet", {
 				config: {...this._data},
 				type: "object",
 				value: {...key},

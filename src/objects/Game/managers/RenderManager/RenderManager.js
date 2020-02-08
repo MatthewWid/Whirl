@@ -63,9 +63,9 @@ class RenderManager extends Manager {
 		 * @event Whirl.Game#willRender
 		 * @type {object}
 		 */
-		this._game.event.emit("willRender");
+		this.game.event.emit("willRender");
 
-		const viewports = this._game.object._viewports;
+		const viewports = this.game.object._viewports;
 
 		this.renderer.preRenderAll(viewports);
 
@@ -81,7 +81,7 @@ class RenderManager extends Manager {
 		 * @event Whirl.Game#didRender
 		 * @type {object}
 		 */
-		this._game.event.emit("didRender");
+		this.game.event.emit("didRender");
 	}
 
 	/**

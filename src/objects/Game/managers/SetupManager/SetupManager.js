@@ -93,10 +93,10 @@ class SetupManager extends Manager {
 	 * @emits Whirl.Game#event:didSetup
 	 */
 	setup() {
-		const {config} = this._game;
+		const {config} = this.game;
 
 		if (!config.get("setup")) {
-			return this._game;
+			return this.game;
 		}
 
 		// Find if default canvas already set
@@ -118,11 +118,11 @@ class SetupManager extends Manager {
 			config.set("canvas", `#${newCanvas.getAttribute("id")}`);
 		}
 
-		const stage = new Stage(this._game);
+		const stage = new Stage(this.game);
 
 		this.stage = stage;
 
-		const viewport = new Viewport(this._game, {
+		const viewport = new Viewport(this.game, {
 			resizeCanvas: true,
 			stage,
 		});
@@ -145,15 +145,15 @@ class SetupManager extends Manager {
 		 * @property {string} canvas Selector for {@link Whirl.Game.ConfigManager#canvas|the default canvas element} being rendered to.
 		 * @property {string} root Selector the {@link Whirl.Game.ConfigManager#root|the root element} that contains the game canvasses.
 		 */
-		this._game.event.emit("didSetup", {
-			game: this._game,
+		this.game.event.emit("didSetup", {
+			game: this.game,
 			stage,
 			viewport,
 			canvas: config.get("canvas"),
 			root: config.get("root"),
 		});
 
-		return this._game;
+		return this.game;
 	}
 }
 

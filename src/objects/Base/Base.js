@@ -27,7 +27,7 @@ class Base {
 	 * @type {Whirl.Game}
 	 * @readonly
 	 */
-	_game;
+	game;
 
 	/**
 	 * ID assigned to this object that distinguishes it from all other items in the global store.
@@ -80,7 +80,7 @@ class Base {
 			throw new Error("Whirl | Game objects must be instantiated into an instance of a Game.");
 		}
 
-		this._game = game;
+		this.game = game;
 
 		game.object.add(this);
 	}
@@ -97,7 +97,7 @@ class Base {
 	 * @returns {this} The object that was destroyed.
 	 */
 	destroy() {
-		return this._game.object._destroy(this);
+		return this.game.object._destroy(this);
 	}
 
 	/**

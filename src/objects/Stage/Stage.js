@@ -89,8 +89,8 @@ class Stage extends Base {
 			this.limits = Rectangle(
 				getValue(options, "x", 0),
 				getValue(options, "y", 0),
-				getValue(options, "w", this._game.config.get("w", 0)),
-				getValue(options, "h", this._game.config.get("h", 0))
+				getValue(options, "w", this.game.config.get("w", 0)),
+				getValue(options, "h", this.game.config.get("h", 0))
 			);
 		}
 
@@ -122,7 +122,7 @@ class Stage extends Base {
 		if (container instanceof Container) {
 			this.container = container;
 		} else {
-			this.container = new Container(this._game);
+			this.container = new Container(this.game);
 		}
 
 		this.container.parent = this;

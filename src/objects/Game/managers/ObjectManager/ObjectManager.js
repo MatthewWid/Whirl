@@ -67,7 +67,7 @@ class ObjectManager extends Manager {
 	 */
 	add(object) {
 		if (!(object instanceof Base)) {
-			this._game.debug.warn(
+			this.game.debug.warn(
 				"Objects under a game instance must inherit from the Base object class.",
 				"Whirl.Game#ObjectManager"
 			);
@@ -75,7 +75,7 @@ class ObjectManager extends Manager {
 			return;
 		}
 		if (this._store.includes(object)) {
-			this._game.debug.warn(
+			this.game.debug.warn(
 				"Object already exists in the global store. Rejecting attempt to add.",
 				"Whirl.Game#ObjectManager"
 			);
@@ -135,8 +135,8 @@ class ObjectManager extends Manager {
 		if (object instanceof Viewport) {
 			this._viewports = this._viewports.filter((item) => object._id !== item._id);
 
-			if (this._game.setup.viewport === object) {
-				this._game.setup.viewport = null;
+			if (this.game.setup.viewport === object) {
+				this.game.setup.viewport = null;
 			}
 		}
 
@@ -149,8 +149,8 @@ class ObjectManager extends Manager {
 				}
 			});
 
-			if (this._game.setup.stage === object) {
-				this._game.setup.stage = null;
+			if (this.game.setup.stage === object) {
+				this.game.setup.stage = null;
 			}
 		}
 
@@ -162,7 +162,7 @@ class ObjectManager extends Manager {
 		 *
 		 * @property {object} object The object to be destroyed.
 		 */
-		this._game.event.emit("didDestroy", {
+		this.game.event.emit("didDestroy", {
 			object,
 		});
 

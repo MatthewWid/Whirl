@@ -115,14 +115,14 @@ class Sprite extends Entity {
 	 * 	Whirl.Colour(game, 200, 200, 150),
 	 * );
 	 */
-	setFill(fill = new Colour(this._game, 0, 0, 0)) {
+	setFill(fill = new Colour(this.game, 0, 0, 0)) {
 		if (!(fill instanceof Texture)) {
-			this._game.debug.warn(
+			this.game.debug.warn(
 				"Invalid Texture instance given to Sprite#setFill. Using default texture instead.",
 				"Whirl.Sprite"
 			);
 
-			this.fill = new Colour(this._game, 0, 0, 0);
+			this.fill = new Colour(this.game, 0, 0, 0);
 
 			return this;
 		}

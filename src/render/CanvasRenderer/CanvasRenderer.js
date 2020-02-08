@@ -19,13 +19,10 @@ const clamp = require("../../math/clamp.js");
  */
 class CanvasRenderer extends Renderer {
 	getContext(selector) {
-		const canvas = document.querySelector(selector || this._game.config.get("canvas"));
+		const canvas = document.querySelector(selector || this.game.config.get("canvas"));
 
 		if (!canvas) {
-			this._game.debug.error(
-				"Cannot find the given canvas element to render to.",
-				"CanvasRenderer"
-			);
+			this.game.debug.error("Cannot find the given canvas element to render to.", "CanvasRenderer");
 
 			return {};
 		}

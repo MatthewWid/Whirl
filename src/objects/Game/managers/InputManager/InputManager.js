@@ -46,7 +46,7 @@ class InputManager extends Manager {
 		const element = document.querySelector(selector);
 
 		if (!element) {
-			this._game.debug.error(
+			this.game.debug.error(
 				"Failed to register mouse element - element from given selector does not exist",
 				"Whirl.Game#InputManager"
 			);
@@ -59,7 +59,7 @@ class InputManager extends Manager {
 		if (existingElement) {
 			existingElement.viewports.push(viewport);
 		} else {
-			this.mouseElements.push(new MouseElement(this._game, element, viewport));
+			this.mouseElements.push(new MouseElement(this.game, element, viewport));
 		}
 	}
 }

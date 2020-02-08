@@ -38,7 +38,7 @@ class DebugManager extends Manager {
 	 * game.debug.warn("Something could go wrong!");
 	 */
 	warn(text, source = "Generic") {
-		if (this._game.config.get("debug")) {
+		if (this.game.config.get("debug")) {
 			const msg = `Whirl | ${source} | ${text}`;
 
 			console.warn(msg);

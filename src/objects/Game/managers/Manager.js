@@ -17,10 +17,10 @@ class Manager {
 	 * @type {Whirl.Game}
 	 * @readonly
 	 */
-	_game;
+	game;
 
 	constructor(game) {
-		this._game = game;
+		this.game = game;
 	}
 }
 

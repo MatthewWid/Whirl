@@ -142,7 +142,7 @@ class UpdateManager extends Manager {
 	 */
 	start = () => {
 		if (this.running) {
-			return this._game;
+			return this.game;
 		}
 
 		/**
@@ -154,8 +154,8 @@ class UpdateManager extends Manager {
 		 * @property {Whirl.Game} game Current game instance.
 		 * @property {number} initTime Timestamp in milliseconds of when the game was instantiated.
 		 */
-		this._game.event.emit("willStart", {
-			game: this._game,
+		this.game.event.emit("willStart", {
+			game: this.game,
 			initTime: this.initTime,
 		});
 
@@ -177,13 +177,13 @@ class UpdateManager extends Manager {
 		 * @property {number} initTime Timestamp in milliseconds of when the game was instantiated.
 		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
 		 */
-		this._game.event.emit("didStart", {
-			game: this._game,
+		this.game.event.emit("didStart", {
+			game: this.game,
 			initTime: this.initTime,
 			startTime: this.startTime,
 		});
 
-		return this._game;
+		return this.game;
 	};
 
 	/**
@@ -221,15 +221,15 @@ class UpdateManager extends Manager {
 		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
 		 * @property {number} elapsedTime Time in milliseconds since the game was started.
 		 */
-		this._game.event.emit("willStop", {
-			game: this._game,
+		this.game.event.emit("willStop", {
+			game: this.game,
 			startTime: this.startTime,
 			elapsedTime: this.elapsedTime,
 		});
 
 		this.running = false;
 
-		return this._game;
+		return this.game;
 	};
 
 	/**
@@ -257,8 +257,8 @@ class UpdateManager extends Manager {
 		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
 		 * @property {number} elapsedTime Time in milliseconds since the game was started.
 		 */
-		this._game.event.emit("willUpdate", {
-			game: this._game,
+		this.game.event.emit("willUpdate", {
+			game: this.game,
 			frameCount: this.frameCount,
 			frameDelta: this.frameDelta,
 			startTime: this.startTime,
@@ -270,16 +270,16 @@ class UpdateManager extends Manager {
 		this.frameDelta = delta - this.lastDelta;
 		this.lastDelta = delta;
 
-		const stages = this._game.object._stages;
+		const stages = this.game.object._stages;
 		for (let i = 0; i < stages.length; i++) {
 			stages[i].calculateDerived();
 		}
-		const viewports = this._game.object._viewports;
+		const viewports = this.game.object._viewports;
 		for (let i = 0; i < viewports.length; i++) {
 			viewports[i].calculateDerived();
 		}
 
-		this._game.render._render();
+		this.game.render._render();
 
 		/**
 		 * Fires after the update and rendering step of the game takes place.
@@ -293,8 +293,8 @@ class UpdateManager extends Manager {
 		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
 		 * @property {number} elapsedTime Time in milliseconds since the game was started.
 		 */
-		this._game.event.emit("didUpdate", {
-			game: this._game,
+		this.game.event.emit("didUpdate", {
+			game: this.game,
 			frameCount: this.frameCount,
 			frameDelta: this.frameDelta,
 			startTime: this.startTime,
@@ -317,8 +317,8 @@ class UpdateManager extends Manager {
 			 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
 			 * @property {number} elapsedTime Time in milliseconds since the game was started.
 			 */
-			this._game.event.emit("didStop", {
-				game: this._game,
+			this.game.event.emit("didStop", {
+				game: this.game,
 				frameCount: this.frameCount,
 				startTime: this.startTime,
 				elapsedTime: this.elapsedTime,
