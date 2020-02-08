@@ -445,13 +445,43 @@ class Viewport extends Base {
 	}
 
 	/**
+	 * Translate a point on the page to a point on the element this Viewport renders to (typically a `<canvas>`).
+	 *
+	 * @method Whirl.Viewport#translateToElement
+	 *
+	 * @param {number|Whirl.geometry.Point} x X-coordinate of the point to translate. An instance of a Point can be given instead as the only argument.
+	 * @param {number} [y] Y-coordinate.
+	 * @returns {Whirl.geometry.Point|null} Point relative to the Viewports render element. Returns `null` if the Viewport has no {@link Whirl.Viewport#render|render.canvas} property.
+	 */
+	translateToElement(px, py) {
+		if (!this.render || !this.render.canvas) {
+			return null;
+		}
+
+		let x = px;
+		let y = py;
+
+		if (px instanceof Point._class) {
+			x = px.x;
+			y = px.y;
+		}
+
+		const offset = this.render.canvas.getBoundingClientRect();
+
+		x -= offset.left;
+		y -= offset.top;
+
+		return Point(x, y);
+	}
+
+	/**
 	 * Translate a point on the actual output screen/canvas to a point on the Viewport screen.
 	 *
 	 * For example, if the Viewport bounds are positioned at coordinate `(50, 50)`, then calling `viewport.translateToScreen(0, 0)` (as if the user clicked at `(0, 0)` on the canvas) will return `Point {x: -50, y: -50}`.
 	 *
 	 * @method Whirl.Viewport#translateToScreen
 	 *
-	 * @param {number|Whirl.geometry.Point} x X-coordinate if the point to translate. An instance of a Point can also be given instead as the only argument.
+	 * @param {number|Whirl.geometry.Point} x X-coordinate of the point to translate. An instance of a Point can be given instead as the only argument.
 	 * @param {number} [y] Y-coordinate.
 	 * @returns {Whirl.geometry.Point} Point relative to the Viewport screen.
 	 */
@@ -479,7 +509,7 @@ class Viewport extends Base {
 	 *
 	 * @method Whirl.Viewport#translateToWorld
 	 *
-	 * @param {number|Whirl.geometry.Point} x X-coordinate of the point. An instance of a Point can also be given instead as the only argument.
+	 * @param {number|Whirl.geometry.Point} x X-coordinate of the point. An instance of a Point can be given instead as the only argument.
 	 * @param {number} [y] Y-coordinate.
 	 * @returns {Whirl.geometry.Point|null} Point relative to the game world. If the Viewport has no {@link Whirl.Viewport#stage|`stage` value} then returns `null`.
 	 */
