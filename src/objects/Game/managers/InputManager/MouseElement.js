@@ -110,7 +110,7 @@ class MouseElement {
 	 */
 	attachEvents() {
 		if (this.hasEvents) {
-			return this.game.warn.error(
+			return this.game.debug.warn(
 				"Failed to attach mouse events - MouseElement already has events attached.",
 				"Whirl.Game.InputManager.MouseElement"
 			);
