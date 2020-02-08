@@ -16,7 +16,7 @@ class InputManager extends Manager {
 	 * @type {Whirl.Game.InputManager.MouseElement[]}
 	 * @default []
 	 */
-	mouseElementCache = [];
+	mouseElements = [];
 
 	/**
 	 * Cache of unique DOM elements with keyboard-related event listeners attached to them.
@@ -25,7 +25,7 @@ class InputManager extends Manager {
 	 * @type {Whirl.Game.InputManager.KeyElement[]}
 	 * @default []
 	 */
-	keyElementCache = [];
+	keyElements = [];
 
 	constructor(game) {
 		super(game);
@@ -34,7 +34,7 @@ class InputManager extends Manager {
 	/**
 	 * Register an element to listen for mouse-related events, associated with a specific {@link Whirl.Viewport|Viewport}.
 	 *
-	 * If the DOM element already exists in the {@link Whirl.Game.InputManager#mouseElementCache|mouse element cache} then the Viewport will be added as a listener on the {@link Whirl.Game.InputManager.MouseElement|MouseElement}, else a new one will be created.
+	 * If the DOM element already exists in the {@link Whirl.Game.InputManager#mouseElements|mouse element cache} then the Viewport will be added as a listener on the {@link Whirl.Game.InputManager.MouseElement|MouseElement}, else a new one will be created.
 	 *
 	 * @param {string} selector Selector for the element to listen to mouse-related events on.
 	 * @param {Whirl.Viewport} viewport Viewport to be added as a listener when mouse events fire on the element.
@@ -54,12 +54,12 @@ class InputManager extends Manager {
 			return;
 		}
 
-		const existingElement = this.mouseElementCache.find((el) => el.element === element);
+		const existingElement = this.mouseElements.find((el) => el.element === element);
 
 		if (existingElement) {
 			existingElement.viewports.push(viewport);
 		} else {
-			this.mouseElementCache.push(new MouseElement(this._game, element, viewport));
+			this.mouseElements.push(new MouseElement(this._game, element, viewport));
 		}
 	}
 }
