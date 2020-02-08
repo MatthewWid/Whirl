@@ -30,7 +30,9 @@ const config = {
 		],
 	},
 	plugins: [
-		new FixStyleOnlyEntriesPlugin(),
+		new FixStyleOnlyEntriesPlugin({
+			silent: true,
+		}),
 		new MiniCssExtractPlugin({
 			filename: "[name].css",
 		}),
