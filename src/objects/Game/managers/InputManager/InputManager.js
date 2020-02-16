@@ -62,6 +62,13 @@ class InputManager extends Manager {
 		let mouseElement = this.mouseElements.find((el) => el.element === element);
 
 		if (mouseElement) {
+			if (mouseElement.viewports.includes(viewport)) {
+				return this.game.debug.error(
+					"Failed to register viewport with mouse element - viewport is already listening on the given element.",
+					"Whirl.Game#InputManager"
+				);
+			}
+
 			mouseElement.viewports.push(viewport);
 		} else {
 			mouseElement = new MouseElement(this.game, element, viewport);

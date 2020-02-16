@@ -300,6 +300,10 @@ class Viewport extends Base {
 			this.render.canvas.height = this.bounds.h;
 		}
 
+		if (this.game.config.get("input mouse")) {
+			this.game.input.registerMouseElement(selector, this);
+		}
+
 		return this;
 	}
 
