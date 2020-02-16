@@ -281,6 +281,8 @@ class Viewport extends Base {
 	/**
 	 * Set the canvas element to render to.
 	 *
+	 * If {@link Whirl.Game.ConfigManager#input mouse|mouse input is enabled} then will implicitly attach mouse event listeners on this canvas, receive the {@link Whirl.mixins.Event|Event mixin} and emit the relevant mouse input events.
+	 *
 	 * If changing from one canvas to the another, the previous canvas pixels will not be cleared before switching to the other canvas.
 	 *
 	 * @method Whirl.Viewport#setCanvas

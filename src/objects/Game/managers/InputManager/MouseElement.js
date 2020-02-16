@@ -77,11 +77,11 @@ class MouseElement {
 					event.preventDefault();
 				}
 
-				const {clientX: mX, clientY: mY} = event;
+				const pagePos = Point(event.clientX, event.clientY);
 
 				for (let i = 0; i < this.viewports.length; i++) {
 					const viewport = this.viewports[i];
-					const elementPos = viewport.translateToElement(mX, mY);
+					const elementPos = viewport.translateToElement(pagePos);
 
 					if (elementPos && viewport.bounds.isPointInside(elementPos)) {
 						const screenPos = viewport.translateToScreen(elementPos);
@@ -89,6 +89,7 @@ class MouseElement {
 
 						viewport.event.emit(emitName, {
 							event,
+							pagePos,
 							elementPos,
 							screenPos,
 							worldPos,
@@ -118,6 +119,7 @@ class MouseElement {
 
 		this.createListener("click", "mouseLB");
 		this.createListener("contextmenu", "mouseRB");
+		this.createListener("wheel", "mouseScroll");
 
 		this.hasEvents = true;
 	}
