@@ -68,7 +68,7 @@ class MouseElement {
 		const listener = {
 			rawName,
 			emitName,
-			handleEvent: (event) => {
+			handleEvent: (rawEvent) => {
 				if (!this.game.config.get("input mouse")) {
 					return;
 				}
@@ -77,23 +77,23 @@ class MouseElement {
 					event.preventDefault();
 				}
 
-				const pagePos = Point(event.clientX, event.clientY);
+				const eventData = {
+					rawEvent,
+					scrollXDelta: rawEvent.deltaX || null,
+					scrollYDelta: rawEvent.deltaY || null,
+				};
+
+				const pagePos = (eventData.pagePos = Point(event.clientX, event.clientY));
 
 				for (let i = 0; i < this.viewports.length; i++) {
 					const viewport = this.viewports[i];
-					const elementPos = viewport.translateToElement(pagePos);
+					const elementPos = (eventData.elementPos = viewport.translateToElement(pagePos));
 
 					if (elementPos && viewport.bounds.isPointInside(elementPos)) {
-						const screenPos = viewport.translateToScreen(elementPos);
-						const worldPos = viewport.translateToWorld(screenPos);
+						const screenPos = (eventData.screenPos = viewport.translateToScreen(elementPos));
+						eventData.worldPos = viewport.translateToWorld(screenPos);
 
-						viewport.event.emit(emitName, {
-							event,
-							pagePos,
-							elementPos,
-							screenPos,
-							worldPos,
-						});
+						viewport.event.emit(emitName, eventData);
 					}
 				}
 			},
