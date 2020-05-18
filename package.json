@@ -1,22 +1,24 @@
 {
 	"name": "whirl-engine",
 	"version": "3.0.0-alpha.6",
-	"description": "Event-based fully documented 2D game engine for JavaScript canvas.",
+	"description": "Event-based fully documented 2D browser game engine.",
+	"license": "MIT",
+	"author": {
+		"name": "Matthew W.",
+		"url": "http://www.mwidd.com/"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/MatthewWid/Whirl.git"
 	},
 	"homepage": "https://github.com/MatthewWid/Whirl/blob/master/README.md",
-	"license": "MIT",
-	"author": {
-		"name": "Matthew W."
-	},
 	"scripts": {
-		"doc": "jsdoc ./src/ -c ./.jsdoc",
 		"dev": "webpack --config ./webpack/webpack.config.js --env dev",
 		"prod": "webpack --config ./webpack/webpack.config.js --env prod",
-		"prettier": "prettier --write ./src/**/*.js --config ./.prettierrc --ignore-path ./.prettierignore"
+		"doc": "jsdoc ./src/ -c ./.jsdoc",
+		"prettier:format": "prettier --write ./src/**/*.js --config ./.prettierrc --ignore-path ./.prettierignore"
 	},
+	"dependencies": {},
 	"devDependencies": {
 		"@babel/core": "^7.8.4",
 		"@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -35,6 +37,5 @@
 		"webpack-cli": "^3.3.10",
 		"webpack-fix-style-only-entries": "^0.4.0",
 		"webpack-merge": "^4.2.2"
-	},
-	"dependencies": {}
+	}
 }
