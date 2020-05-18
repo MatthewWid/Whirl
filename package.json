@@ -16,7 +16,8 @@
 		"dev": "webpack --config ./webpack/webpack.config.js --env dev",
 		"prod": "webpack --config ./webpack/webpack.config.js --env prod",
 		"doc": "jsdoc ./src/ -c ./.jsdoc",
-		"prettier:format": "prettier --write ./src/**/*.js --config ./.prettierrc --ignore-path ./.prettierignore"
+		"prettier:format": "prettier --write \"./src/**/*.js\" --config ./.prettierrc --ignore-path ./.prettierignore",
+		"prettier:check": "prettier --check \"./src/**/*.js\" --config ./.prettierrc --ignore-path ./.prettierignore"
 	},
 	"dependencies": {},
 	"devDependencies": {
