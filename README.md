@@ -32,13 +32,13 @@ Feel free to change and play around with the examples yourself!
 
 Simply clone the repository, build the source ([See the "Build" section](#build)) and open up `/index.html` in any one of the examples to start tinkering.
 
-# Build
+# Build from Source
 
 **Whirl** takes advantage of [webpack](https://webpack.js.org/) to compile its source code down into a single, universally compatible JavaScript file.
 
 1. Clone the repository - `git clone <repository url>`.
-2. Install build dependencies - `npm install` or `yarn`.
-3. Build from source - `npm run prod` or `yarn prod`.
+2. Install build dependencies - `npm i` or `yarn`.
+3. Build from source - `npm run prod` or `yarn run prod`.
 
 Once completed, you can find the built file in `/build/whirl.js`. Simply include it with a script tag,
 
@@ -49,3 +49,13 @@ or import as a module,
     const Whirl = require("./whirl");
 
 From there you are free to get started and explore the powerful features of the **Whirl game engine**. Happy coding!
+
+# Build the Docs
+
+**Whirl** uses [JSDoc](https://jsdoc.app/) to write and generate its documentation.
+
+1. Clone the repository - `git clone <repository url>`.
+2. Install build dependencies - `npm i` or `yarn`.
+3. Build documentation from source - `npm run doc` or `yarn run doc`.
+
+Once completed, you can find the generated documentation files in the `/doc/` directory, with `index.html` being the home page.
