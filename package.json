@@ -1,5 +1,5 @@
 {
-	"name": "whirl-engine",
+	"name": "whirljs",
 	"version": "0.3.0-alpha.6",
 	"description": "Event-based fully documented 2D browser game engine.",
 	"license": "MIT",
