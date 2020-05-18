@@ -2,7 +2,7 @@
 	"name": "whirljs",
 	"version": "0.3.0-alpha.6",
 	"description": "Event-based fully documented 2D browser game engine.",
-	"license": "MIT",
+	"main": "./src/Whirl.js",
 	"author": {
 		"name": "Matthew W.",
 		"url": "http://www.mwidd.com/"
@@ -12,6 +12,7 @@
 		"url": "https://github.com/MatthewWid/Whirl.git"
 	},
 	"homepage": "https://github.com/MatthewWid/Whirl/blob/master/README.md",
+	"license": "MIT",
 	"scripts": {
 		"dev": "webpack --config ./webpack/webpack.config.js --env dev",
 		"prod": "webpack --config ./webpack/webpack.config.js --env prod",
