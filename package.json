@@ -1,8 +1,8 @@
 {
 	"name": "whirljs",
-	"version": "0.3.0-alpha.6",
+	"version": "0.3.0-alpha.7",
 	"description": "Event-based fully documented 2D browser game engine.",
-	"main": "./src/Whirl.js",
+	"main": "./build/whirl.js",
 	"author": {
 		"name": "Matthew W.",
 		"url": "http://www.mwidd.com/"
@@ -12,13 +12,29 @@
 		"url": "https://github.com/MatthewWid/Whirl.git"
 	},
 	"homepage": "https://github.com/MatthewWid/Whirl/blob/master/README.md",
+	"bugs": {
+		"url": "https://github.com/MatthewWid/Whirl/issues"
+	},
+	"keywords": [
+		"whirl",
+		"2d",
+		"html5",
+		"canvas",
+		"game",
+		"javascript",
+		"game-engine"
+	],
 	"license": "MIT",
+	"files": [
+		"build/"
+	],
 	"scripts": {
 		"dev": "webpack --config ./webpack/webpack.config.js --env dev",
 		"prod": "webpack --config ./webpack/webpack.config.js --env prod",
 		"doc": "jsdoc ./src/ -c ./.jsdoc",
 		"prettier:format": "prettier --write \"./src/**/*.js\" --config ./.prettierrc --ignore-path ./.prettierignore",
-		"prettier:check": "prettier --check \"./src/**/*.js\" --config ./.prettierrc --ignore-path ./.prettierignore"
+		"prettier:check": "prettier --check \"./src/**/*.js\" --config ./.prettierrc --ignore-path ./.prettierignore",
+		"prepublish": "npm run prod"
 	},
 	"dependencies": {},
 	"devDependencies": {

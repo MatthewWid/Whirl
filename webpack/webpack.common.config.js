@@ -31,6 +31,9 @@ const config = {
 	output: {
 		path: path.resolve(__dirname, ".."),
 		filename: "[name].js",
+		library: "whirljs",
+		libraryTarget: "umd",
+		globalObject: "this",
 	},
 };
 

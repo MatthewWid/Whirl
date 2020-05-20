@@ -33,7 +33,7 @@ class Whirl {
 	 * @type {string}
 	 * @static
 	 */
-	static version = "0.3.0-alpha.6";
+	static version = "0.3.0-alpha.7";
 
 	// Static Modules
 	static math = math;
@@ -63,5 +63,4 @@ class Whirl {
 	};
 }
 
-global.Whirl = Whirl;
 module.exports = Whirl;
