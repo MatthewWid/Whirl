@@ -1,3 +1,5 @@
+const Game = require("../Game/");
+
 /**
  * @classdesc
  * Abstract class that all objects that exist in the game instance must inherit from.
@@ -76,7 +78,7 @@ class Base {
 	data = {};
 
 	constructor(game) {
-		if (!(game instanceof Whirl.Game._class)) {
+		if (!(game instanceof Game._class)) {
 			throw new Error("Whirl | Game objects must be instantiated into an instance of a Game.");
 		}
 
