@@ -13,7 +13,7 @@
  * Whirl.util.formatComma(9874.56); // "9,874.56"
  */
 const formatComma = (val) => {
-	return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
 module.exports = formatComma;
