@@ -13,6 +13,7 @@
 		"ecmaVersion": 11
 	},
 	"parser": "babel-eslint",
+	"ignorePatterns": ["**/examples/**/*.js"],
 	"rules": {
 		"no-unused-vars": "warn"
 	}
