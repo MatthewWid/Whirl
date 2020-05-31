@@ -1,3 +1,5 @@
+const {Point} = require("../../../../geometry/");
+
 /**
  * @classdesc
  * A MouseElement represents an element that can listen on mouse-related events and will fire the associated Viewport event listeners when done so.
