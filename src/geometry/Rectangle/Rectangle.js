@@ -20,13 +20,13 @@ const getValue = require("../../lib/getValue.js");
  * @param {number} [h=0] Height of the rectangle.
  *
  * @example
- * Whirl.geometry.Rectangle(40, 30, 100, 100); // Rectangle {x: 40, y: 30, w: 100, h: 100}
+ * Whirl.geometry.Rectangle(40, 30, 100, 100); // Rectangle {x: 40, y: 30, w: 100, h: 100}
  *
  * @example
  * Whirl.geometry.Rectangle(
  * 	Whirl.geometry.Point(40, 30),
  * 	Whirl.geometry.Point(140, 130)
- * ); // Rectangle {x: 40, y: 30, w: 100, h: 100}
+ * ); // Rectangle {x: 40, y: 30, w: 100, h: 100}
  */
 class Rectangle extends Geometry {
 	/**
