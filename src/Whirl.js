@@ -63,4 +63,5 @@ class Whirl {
 	};
 }
 
+global.Whirl = Whirl;
 module.exports = Whirl;
