@@ -12,6 +12,7 @@
 	"parserOptions": {
 		"ecmaVersion": 11
 	},
+	"parser": "babel-eslint",
 	"rules": {
 		"no-unused-vars": "warn"
 	}
