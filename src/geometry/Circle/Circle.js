@@ -19,13 +19,13 @@ const getValue = require("../../lib/getValue.js");
  * @param {number} [r=0] Radius of the circle.
  *
  * @example
- * Whirl.geometry.Circle(25, 25, 50); // Circle {x: 25, y: 25, r: 50}
+ * Whirl.geometry.Circle(25, 25, 50); // Circle {x: 25, y: 25, r: 50}
  *
  * @example
  * Whirl.geometry.Circle(
  * 	Whirl.geometry.Point(25, 25),
  * 	50,
- * ); // Circle {x: 25, y: 25, r: 50}
+ * ); // Circle {x: 25, y: 25, r: 50}
  */
 class Circle extends Geometry {
 	/**
@@ -82,7 +82,7 @@ class Circle extends Geometry {
 	 * @readonly
 	 *
 	 * @example
-	 * Whirl.geometry.Circle(25, 25, 50).midpoint; // Point {x: 25, y: 25}
+	 * Whirl.geometry.Circle(25, 25, 50).midpoint; // Point {x: 25, y: 25}
 	 */
 	get midpoint() {
 		return Point(this.x, this.y);

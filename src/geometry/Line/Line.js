@@ -20,13 +20,13 @@ const getValue = require("../../lib/getValue.js");
  * @param {number} [y2=0] Y-coordinate of the ending point.
  *
  * @example
- * Whirl.geometry.Line(50, 50, 100, 100); // Line {x1: 50, y1: 50, x2: 100, y2: 100}
+ * Whirl.geometry.Line(50, 50, 100, 100); // Line {x1: 50, y1: 50, x2: 100, y2: 100}
  *
  * @example
  * Whirl.geometry.Line(
  * 	Whirl.geometry.Point(50, 50),
  * 	Whirl.geometry.Point(100, 100),
- * ); // Line {x1: 50, y1: 50, x2: 100, y2: 100}
+ * ); // Line {x1: 50, y1: 50, x2: 100, y2: 100}
  */
 class Line extends Geometry {
 	/**
