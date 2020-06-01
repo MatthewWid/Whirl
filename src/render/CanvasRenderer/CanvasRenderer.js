@@ -51,7 +51,7 @@ class CanvasRenderer extends Renderer {
 	}
 
 	preRenderViewport(viewport) {
-		const {canvas, ctx} = viewport.render;
+		const {ctx} = viewport.render;
 
 		ctx.save();
 
@@ -63,7 +63,7 @@ class CanvasRenderer extends Renderer {
 	}
 
 	postRenderViewport(viewport) {
-		const {canvas, ctx} = viewport.render;
+		const {ctx} = viewport.render;
 
 		ctx.translate(viewport.derived.scroll.x, viewport.derived.scroll.y);
 
@@ -76,7 +76,7 @@ class CanvasRenderer extends Renderer {
 	}
 
 	Sprite(viewport, sprite) {
-		const {canvas, ctx} = viewport.render;
+		const {ctx} = viewport.render;
 
 		ctx.save();
 

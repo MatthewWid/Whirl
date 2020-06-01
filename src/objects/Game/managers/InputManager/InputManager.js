@@ -1,7 +1,6 @@
 const Manager = require("../Manager.js");
 const MouseElement = require("./MouseElement.js");
 const {Mixin, Event} = require("../../../../mixins/");
-const {Point} = require("../../../../geometry/");
 
 /**
  * @classdesc

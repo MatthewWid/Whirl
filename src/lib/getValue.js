@@ -9,6 +9,6 @@
  * @returns {any}
  */
 const getValue = (object, property, defaultValue = null) =>
-	object.hasOwnProperty(property) ? object[property] : defaultValue;
+	Object.prototype.hasOwnProperty.call(object, property) ? object[property] : defaultValue;
 
 module.exports = getValue;

@@ -263,7 +263,7 @@ class ConfigManager extends Manager {
 	 * Returns `null` if the key did not exist in the configuration map.
 	 */
 	remove(key) {
-		if (!this._data.hasOwnProperty(key)) {
+		if (!Object.prototype.hasOwnProperty.call(this._data, key)) {
 			return null;
 		}
 
@@ -287,7 +287,7 @@ class ConfigManager extends Manager {
 	 * Returns `null` if the key did not exist in the configuration map.
 	 */
 	delete(key) {
-		if (!this._data.hasOwnProperty(key)) {
+		if (!Object.prototype.hasOwnProperty.call(this._data, key)) {
 			return null;
 		}
 
