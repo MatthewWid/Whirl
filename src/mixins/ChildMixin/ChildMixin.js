@@ -167,7 +167,7 @@ class ChildMixin extends Mixin {
 	 * // Enforce that every child inherit from the `Entity` class
 	 * this.child.onAdd = (object) => object instanceof Whirl.Entity;
 	 */
-	onAdd(object) {}
+	onAdd() {}
 }
 
 module.exports = ChildMixin;

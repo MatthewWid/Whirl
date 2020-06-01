@@ -53,10 +53,10 @@ class Renderer {
 	 * @method Whirl.render.Renderer#getContext
 	 *
 	 * @abstract
-	 * @param {string} [canvasSelector={@link Whirl.Game.ConfigManager#canvas|ConfigManager 'canvas' property}] Selector for an [HTML \<canvas\> element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) to render to.
+	 * @param {string} [selector={@link Whirl.Game.ConfigManager#canvas|ConfigManager 'canvas' property}] Selector for an [HTML \<canvas\> element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) to render to.
 	 * @returns {Whirl.render.Renderer~RenderContext} Canvas context to be used for rendering - Eg, {@link https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D|CanvasRenderingContext2D}, {@link https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext|WebGLRenderingContext}, etc.
 	 */
-	getContext(selector) {}
+	getContext() {}
 
 	/**
 	 * Runs just before the first Viewport begins its individual rendering.
@@ -68,7 +68,7 @@ class Renderer {
 	 * @abstract
 	 * @param {Whirl.Viewport[]} viewports All Viewports to be rendered.
 	 */
-	preRenderAll(viewports) {}
+	preRenderAll() {}
 
 	/**
 	 * Runs after the last Viewport finishes its individual rendering.
@@ -80,7 +80,7 @@ class Renderer {
 	 * @abstract
 	 * @param {Whirl.Viewport[]} viewports All Viewports that were rendered.
 	 */
-	postRenderAll(viewports) {}
+	postRenderAll() {}
 
 	/**
 	 * Runs just before renderable items of a single Viewport are drawn to the screen.
@@ -92,7 +92,7 @@ class Renderer {
 	 * @abstract
 	 * @param {Whirl.Viewport} viewport Current viewport being rendered.
 	 */
-	preRenderViewport(viewport, renderables) {}
+	preRenderViewport() {}
 
 	/**
 	 * Runs just after the renderable items of a single Viewport are drawn to the screen.
@@ -104,7 +104,7 @@ class Renderer {
 	 * @abstract
 	 * @param {Whirl.Viewport} viewport Current viewport being rendered.
 	 */
-	postRenderViewport(viewport, renderables) {}
+	postRenderViewport() {}
 
 	/**
 	 * Render an individual Sprite.
@@ -115,7 +115,7 @@ class Renderer {
 	 * @param {Whirl.Viewport} viewport Viewport to use post-processing effects from.
 	 * @param {Whirl.Sprite} sprite Sprite object to render.
 	 */
-	Sprite(viewport, sprite) {}
+	Sprite() {}
 }
 
 module.exports = Renderer;
