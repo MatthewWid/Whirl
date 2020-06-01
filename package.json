@@ -34,7 +34,7 @@
 		"doc": "jsdoc ./src/ -c ./.jsdoc",
 		"prettier:format": "prettier --write \"./src/**/*.js\" --config ./.prettierrc --ignore-path ./.prettierignore",
 		"prettier:check": "prettier --check \"./src/**/*.js\" --config ./.prettierrc --ignore-path ./.prettierignore",
-		"prepublish": "npm run prod"
+		"prepublishOnly": "npm run prod"
 	},
 	"dependencies": {},
 	"devDependencies": {
