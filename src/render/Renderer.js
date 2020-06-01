@@ -48,7 +48,7 @@ class Renderer {
 	 */
 
 	/**
-	 * Process and generate a rendering context object needed to render
+	 * Generate a rendering context object that provides the necessary information for the renderer on each viewport.
 	 *
 	 * @method Whirl.render.Renderer#getContext
 	 *
