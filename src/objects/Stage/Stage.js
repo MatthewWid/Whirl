@@ -1,5 +1,4 @@
 const Base = require("../Base/");
-const Entity = require("../Entity/");
 const Container = require("../Container/");
 const {Rectangle} = require("../../geometry/");
 const getValue = require("../../lib/getValue.js");
@@ -30,7 +29,7 @@ const getValue = require("../../lib/getValue.js");
  * @param {number} options.y=0 Y-coordinate of the stage limit.
  * @param {number} options.w=ConfigManager.w Width of the stage limit.
  * @param {number} options.h=ConfigManager.h Height of the stage limit.
- * @param {Entity[]} [children] Array of children to initialise into the stage world.
+ * @param {Entity[]} [children] Array of children to initialise into the stage world. Will be inserted into the root {@link Whirl.Container|Container}.
  *
  * @example
  * game.Stage({
@@ -68,7 +67,7 @@ class Stage extends Base {
 	limits;
 
 	/**
-	 * Alias to the the {@link Whirl.Stage#container|root Container} {@link Whirl.mixins.ChildMixin|Child mixin} that this Stage holds.
+	 * Alias to the the root {@link Whirl.Stage#container|Container} {@link Whirl.mixins.ChildMixin|Child mixin} that this Stage holds.
 	 *
 	 * @name child
 	 * @memberof Whirl.Stage#
@@ -95,6 +94,8 @@ class Stage extends Base {
 		}
 
 		this.setContainer(getValue(options, "container"));
+
+		this.container.child.add(children);
 	}
 
 	/**
@@ -116,7 +117,7 @@ class Stage extends Base {
 	 */
 	setContainer(container) {
 		if (this.container) {
-			this.parent = null;
+			this.container.parent = null;
 		}
 
 		if (container instanceof Container) {
