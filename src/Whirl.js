@@ -4,18 +4,16 @@ const util = require("./util/");
 const keys = require("./keys/");
 const geometry = require("./geometry/");
 const mixins = require("./mixins/");
-const {
-	Base,
-	Entity,
-	Texture,
-	Game,
-	Viewport,
-	Stage,
-	Sprite,
-	Container,
-	Colour,
-	Gradient,
-} = require("./objects/");
+const Game = require("./objects/Game/");
+const Viewport = require("./objects/Viewport/");
+const Stage = require("./objects/Stage/");
+const Sprite = require("./objects/Sprite/");
+const Container = require("./objects/Container/");
+const Colour = require("./objects/Colour/");
+const Gradient = require("./objects/Gradient/");
+const Base = require("./objects/Base/");
+const Entity = require("./objects/Entity/");
+const Texture = require("./objects/Texture/");
 const {Renderer, CanvasRenderer, WebglRenderer} = require("./render/");
 
 /**
@@ -45,15 +43,15 @@ class Whirl {
 
 	// Game Objects
 	static Game = Game;
-	static Base = Base;
 	static Viewport = Viewport;
 	static Stage = Stage;
 	static Sprite = Sprite;
 	static Container = Container;
-	static Entity = Entity;
-	static Texture = Texture;
 	static Colour = Colour;
 	static Gradient = Gradient;
+	static Base = Base;
+	static Entity = Entity;
+	static Texture = Texture;
 
 	// Render Systems
 	static render = {
@@ -61,6 +59,8 @@ class Whirl {
 		Canvas: CanvasRenderer,
 		Webgl: WebglRenderer,
 	};
+
+	static createGame = (...args) => new Game(...args);
 }
 
 global.Whirl = Whirl;

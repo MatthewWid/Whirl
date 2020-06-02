@@ -142,5 +142,4 @@ class Game {
 	}
 }
 
-module.exports = (...args) => new Game(...args);
-module.exports._class = Game;
+module.exports = Game;
