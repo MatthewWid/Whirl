@@ -4,7 +4,7 @@
  */
 
 const {
-	Game,
+	createGame,
 	Base,
 	Entity,
 	Texture,
@@ -23,7 +23,7 @@ function update(data) {
 	// Run some code on each update loop ...
 }
 
-const game = Game({
+const game = createGame({
 	debug: true,
 })
 	.event.once("didSetup", setup)

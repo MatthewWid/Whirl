@@ -11,7 +11,7 @@
  */
 
 const {
-	Game,
+	createGame,
 	Base,
 	Entity,
 	Texture,
@@ -111,7 +111,7 @@ function update() {
 	sprite2.rotation = sprite2.derived.bounds.midpoint.angleTo(sprite3.derived.bounds.midpoint);
 }
 
-const game = Game({
+const game = createGame({
 	debug: true,
 })
 	.event.once("didSetup", setup)
