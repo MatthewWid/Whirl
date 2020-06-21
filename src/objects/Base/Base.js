@@ -76,12 +76,6 @@ class Base {
 	data = {};
 
 	constructor(game) {
-		const Game = require("../Game/");
-
-		if (!(game instanceof Game)) {
-			throw new Error("Whirl | Game objects must be instantiated into an instance of a Game.");
-		}
-
 		this.game = game;
 
 		game.object.add(this);
