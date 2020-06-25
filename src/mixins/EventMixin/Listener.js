@@ -18,12 +18,11 @@ class Listener {
 		this.once = once;
 	}
 
-	trigger(source, data = {}) {
-		this.callback({
-			_eId: this.eventId,
-			_eName: this.eventName,
-			_source: source,
-			...data,
+	trigger(source, data = null) {
+		this.callback(data, {
+			eventId: this.eventId,
+			eventName: this.eventName,
+			source,
 		});
 	}
 }

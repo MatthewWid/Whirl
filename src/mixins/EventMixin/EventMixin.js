@@ -81,10 +81,11 @@ class EventMixin extends Mixin {
 	 * Callback that is fired each time the event is emitted on.
 	 *
 	 * @callback Whirl.mixins.Event~listenerCallback
-	 * @param {object} data Contains meta-data about the event and the object being listened on. Any data given in the event emission is also attached to this data object.
-	 * @param {number} data._eventId Unique ID of this individual event listener. Can be used to remove this listener from the given event name.
-	 * @param {string} data._eventName Name of the event that this listener is listening on.
-	 * @param {object} data._source Object that the event is being fired on.
+	 * @param {*} data Custom data given when emitting on this event. Whirl guarantees the stable identity of this data object.
+	 * @param {object} meta Contains meta-data about the event and the object being listened on.
+	 * @param {number} meta.eventId Unique ID of this individual event listener. Can be used to remove this listener from the given event name.
+	 * @param {string} meta.eventName Name of the event that this listener is listening on.
+	 * @param {object} meta.source Object that the event is being fired on.
 	 */
 
 	/**
@@ -199,31 +200,31 @@ class EventMixin extends Mixin {
 	/**
 	 * Remove a specific event listener from listening on the given event name.
 	 *
-	 * Each event listener has a unique identification number that is passed to the callback function whenever the listener is emitted to (`_eventId`). You can either provide the listener's ID or the listener instance itself to remove.
+	 * Each event listener has a unique identification number that is passed to the callback function whenever the listener is emitted to (`eventId`). You can either provide the listener's ID or the listener instance itself to remove.
 	 *
 	 * *If you need to stop listening to an event after the first emission then you can use the {@link Whirl.mixins.Event#once|`once` method} when creating a listener instead.*
 	 *
 	 * @method Whirl.mixins.Event#remove
 	 *
 	 * @param {string} name Name of the event to remove the listener from.
-	 * @param {number|Whirl.mixins.Event~Event} event Event ID or instance of {@link Whirl.mixins.Event~Event|Event} to remove.
+	 * @param {number|Whirl.mixins.Event~Listener} listener Event ID or instance of an {@link Whirl.mixins.Event~Event|event listener} to remove.
 	 * @returns {object} Source object this mixin is bound to.
 	 *
 	 * @example
 	 * let id;
 	 *
-	 * obj
-	 * 	.event.on("sayHi", (data) => {
-	 * 			console.log("Hello world");
+	 * person
+	 * 	.event.on("speak", (message, meta) => {
+	 * 			console.log(message);
 	 *
-	 * 			id = data._eventId; // store the ID of the event listener
+	 * 			id = meta.eventId; // Store the ID of the event listener
 	 * 	})
 	 *
-	 * 	.event.emit("sayHi") // "Hello world" logged to the console
+	 * 	.event.emit("speak", "Hello world") // "Hello world" logged to the console
 	 *
-	 * 	.event.remove("sayHi", id) // Remove the listener by its ID
+	 * 	.event.remove("speak", id) // Remove the listener by its ID
 	 *
-	 * 	.event.emit("sayHi") // No output
+	 * 	.event.emit("speak", "Hello again") // No output
 	 */
 	remove(name, listener) {
 		if (!this._events[name]) {
@@ -234,12 +235,12 @@ class EventMixin extends Mixin {
 			return this._source;
 		}
 
-		let _eventId = -1;
+		let eventId = -1;
 
 		if (listener instanceof Listener) {
-			_eventId = listener._eventId;
+			eventId = listener.eventId;
 		} else if (typeof listener === "number") {
-			_eventId = listener;
+			eventId = listener;
 		} else {
 			console.warn(
 				`Whirl | EventMixin | Invalid event identifier given to EventMixin#remove "${listener}"`
@@ -248,9 +249,9 @@ class EventMixin extends Mixin {
 			return this._source;
 		}
 
-		this._events[name] = this._events[name].filter((listener) => listener._eventId !== _eventId);
+		this._events[name] = this._events[name].filter((listener) => listener.eventId !== eventId);
 
-		// Clean up empty event name arrays
+		// Clean up events with no more listeners
 		if (this._events[name].length === 0) {
 			delete this._events[name];
 		}
