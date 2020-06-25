@@ -18,7 +18,7 @@ class Event {
 		this.once = once;
 	}
 
-	call(source, data = {}) {
+	trigger(source, data = {}) {
 		this.func({
 			_eId: this.eId,
 			_eName: this.eName,

@@ -162,7 +162,7 @@ class EventMixin extends Mixin {
 	/**
 	 * Emit to the given event with optional data attached to the event.
 	 *
-	 * Immediately invokes the array of listeners in the sequential order that they were originally added in.
+	 * Immediately invokes calls all listeners in the sequential order that they were originally added in.
 	 *
 	 * @method Whirl.mixins.Event#emit
 	 *
@@ -185,7 +185,7 @@ class EventMixin extends Mixin {
 	emit(name, data = {}) {
 		if (this._events[name]) {
 			this._events[name].forEach((event) => {
-				event.call(this._source, data);
+				event.trigger(this._source, data);
 
 				if (event.once) {
 					this.remove(name, event);
