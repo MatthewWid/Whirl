@@ -113,6 +113,80 @@ class UpdateManager extends Manager {
 	 */
 	initTime;
 
+	/**
+	 * Fires when the game `start` method is invoked but *before* its running state and timing-related properties are changed and/or reset.
+	 *
+	 * @event Whirl.Game#willStart
+	 * @type {object}
+	 *
+	 * @property {Whirl.Game} game Current game instance.
+	 * @property {number} initTime Timestamp in milliseconds of when the game was instantiated.
+	 */
+
+	/**
+	 * Fires when the game `start` method is invoked *after* its running state and timing-related properties have changed and/or reset.
+	 *
+	 * Timing is not guarunteed in terms of if this event will be fired before or after the first consequent update tick has executed.
+	 *
+	 * @event Whirl.Game#didStart
+	 * @type {object}
+	 *
+	 * @property {Whirl.Game} game Current game instance.
+	 * @property {number} initTime Timestamp in milliseconds of when the game was instantiated.
+	 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
+	 */
+
+	/**
+	 * Fires when the game `stop` method is invoked but *before* its running state and timing-related properties are changed and/or reset.
+	 *
+	 * @event Whirl.Game#willStop
+	 * @type {object}
+	 *
+	 * @property {Whirl.Game} game Current game instance.
+	 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
+	 * @property {number} elapsedTime Time in milliseconds since the game was started.
+	 */
+
+	/**
+	 * Fires after the game `stop` method is invoked and after a single update tick has occured.
+	 *
+	 * This event is not immediately fired when the `stop` method is invoked as the update manager waits a game cycle before actually stopping the game to perform cleanup and keep the game state consistent.
+	 *
+	 * @event Whirl.Game#didStop
+	 * @type {object}
+	 *
+	 * @property {Whirl.Game} game Current game instance.
+	 * @property {number} frameCount Total frames elapsed whilst the game is running.
+	 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
+	 * @property {number} elapsedTime Time in milliseconds since the game was started.
+	 */
+
+	/**
+	 * Fires just before the update logic of the game begins.
+	 *
+	 * @event Whirl.Game#willUpdate
+	 * @type {object}
+	 *
+	 * @property {Whirl.Game} game Current game instance.
+	 * @property {number} frameCount Total frames elapsed whilst the game is running.
+	 * @property {number} frameDelta Time in milliseconds since the last update tick.
+	 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
+	 * @property {number} elapsedTime Time in milliseconds since the game was started.
+	 */
+
+	/**
+	 * Fires after the update and rendering step of the game takes place.
+	 *
+	 * @event Whirl.Game#didUpdate
+	 * @type {object}
+	 *
+	 * @property {Whirl.Game} game Current game instance.
+	 * @property {number} frameCount Total frames elapsed whilst the game is running.
+	 * @property {number} frameDelta Time in milliseconds since the last update tick.
+	 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
+	 * @property {number} elapsedTime Time in milliseconds since the game was started.
+	 */
+
 	constructor(game) {
 		super(game);
 
@@ -144,16 +218,6 @@ class UpdateManager extends Manager {
 		if (this.running) {
 			return this.game;
 		}
-
-		/**
-		 * Fires when the game `start` method is invoked but *before* its running state and timing-related properties are changed and/or reset.
-		 *
-		 * @event Whirl.Game#willStart
-		 * @type {object}
-		 *
-		 * @property {Whirl.Game} game Current game instance.
-		 * @property {number} initTime Timestamp in milliseconds of when the game was instantiated.
-		 */
 		this.game.event.emit("willStart", {
 			game: this.game,
 			initTime: this.initTime,
@@ -165,18 +229,6 @@ class UpdateManager extends Manager {
 
 		requestAnimationFrame(this._update);
 
-		/**
-		 * Fires when the game `start` method is invoked *after* its running state and timing-related properties have changed and/or reset.
-		 *
-		 * Timing is not guarunteed in terms of if this event will be fired before or after the first consequent update tick has executed.
-		 *
-		 * @event Whirl.Game#didStart
-		 * @type {object}
-		 *
-		 * @property {Whirl.Game} game Current game instance.
-		 * @property {number} initTime Timestamp in milliseconds of when the game was instantiated.
-		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
-		 */
 		this.game.event.emit("didStart", {
 			game: this.game,
 			initTime: this.initTime,
@@ -211,16 +263,6 @@ class UpdateManager extends Manager {
 	 * game.update.stop();
 	 */
 	stop = () => {
-		/**
-		 * Fires when the game `stop` method is invoked but *before* its running state and timing-related properties are changed and/or reset.
-		 *
-		 * @event Whirl.Game#willStop
-		 * @type {object}
-		 *
-		 * @property {Whirl.Game} game Current game instance.
-		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
-		 * @property {number} elapsedTime Time in milliseconds since the game was started.
-		 */
 		this.game.event.emit("willStop", {
 			game: this.game,
 			startTime: this.startTime,
@@ -245,18 +287,6 @@ class UpdateManager extends Manager {
 	 * @param {number} delta High resolution time in milliseconds given by the environment.
 	 */
 	_update = (delta) => {
-		/**
-		 * Fires just before the update logic of the game begins.
-		 *
-		 * @event Whirl.Game#willUpdate
-		 * @type {object}
-		 *
-		 * @property {Whirl.Game} game Current game instance.
-		 * @property {number} frameCount Total frames elapsed whilst the game is running.
-		 * @property {number} frameDelta Time in milliseconds since the last update tick.
-		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
-		 * @property {number} elapsedTime Time in milliseconds since the game was started.
-		 */
 		this.game.event.emit("willUpdate", {
 			game: this.game,
 			frameCount: this.frameCount,
@@ -274,6 +304,7 @@ class UpdateManager extends Manager {
 		for (let i = 0; i < stages.length; i++) {
 			stages[i].calculateDerived();
 		}
+
 		const viewports = this.game.object._viewports;
 		for (let i = 0; i < viewports.length; i++) {
 			viewports[i].calculateDerived();
@@ -281,18 +312,6 @@ class UpdateManager extends Manager {
 
 		this.game.render._render();
 
-		/**
-		 * Fires after the update and rendering step of the game takes place.
-		 *
-		 * @event Whirl.Game#didUpdate
-		 * @type {object}
-		 *
-		 * @property {Whirl.Game} game Current game instance.
-		 * @property {number} frameCount Total frames elapsed whilst the game is running.
-		 * @property {number} frameDelta Time in milliseconds since the last update tick.
-		 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
-		 * @property {number} elapsedTime Time in milliseconds since the game was started.
-		 */
 		this.game.event.emit("didUpdate", {
 			game: this.game,
 			frameCount: this.frameCount,
@@ -304,19 +323,6 @@ class UpdateManager extends Manager {
 		if (this.running) {
 			requestAnimationFrame(this._update);
 		} else {
-			/**
-			 * Fires after the game `stop` method is invoked and after a single update tick has occured.
-			 *
-			 * This event is not immediately fired when the `stop` method is invoked as the update manager waits a game cycle before actually stopping the game to perform cleanup and keep the game state consistent.
-			 *
-			 * @event Whirl.Game#didStop
-			 * @type {object}
-			 *
-			 * @property {Whirl.Game} game Current game instance.
-			 * @property {number} frameCount Total frames elapsed whilst the game is running.
-			 * @property {number} startTime Timestamp in milliseconds of when the game was last started.
-			 * @property {number} elapsedTime Time in milliseconds since the game was started.
-			 */
 			this.game.event.emit("didStop", {
 				game: this.game,
 				frameCount: this.frameCount,

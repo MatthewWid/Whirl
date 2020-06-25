@@ -50,6 +50,15 @@ class ObjectManager extends Manager {
 	 */
 	_stages = [];
 
+	/**
+	 * Fires when an object has been marked for destruction and after it has been removed from the global store (but not necessarily any other objects such as from a {@link Whirl.Stage|Stage's child list}).
+	 *
+	 * @event Whirl.Game#didDestroy
+	 * @type {object}
+	 *
+	 * @property {object} object The object to be destroyed.
+	 */
+
 	constructor(game) {
 		super(game);
 	}
@@ -149,15 +158,6 @@ class ObjectManager extends Manager {
 				this.game.setup.stage = null;
 			}
 		}
-
-		/**
-		 * Fires when an object has been marked for destruction and after it has been removed from the global store (but not necessarily any other objects such as from a {@link Whirl.Stage|Stage's child list}).
-		 *
-		 * @event Whirl.Game#didDestroy
-		 * @type {object}
-		 *
-		 * @property {object} object The object to be destroyed.
-		 */
 		this.game.event.emit("didDestroy", {
 			object,
 		});

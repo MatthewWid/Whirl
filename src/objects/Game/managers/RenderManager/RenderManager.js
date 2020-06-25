@@ -26,6 +26,20 @@ class RenderManager extends Manager {
 	 */
 	renderer = null;
 
+	/**
+	 * Fires after the update loop has completed but before any rendering has taken place.
+	 *
+	 * @event Whirl.Game#willRender
+	 * @type {object}
+	 */
+
+	/**
+	 * Fires after the render step of the game has concluded.
+	 *
+	 * @event Whirl.Game#didRender
+	 * @type {object}
+	 */
+
 	constructor(game) {
 		super(game);
 
@@ -57,12 +71,6 @@ class RenderManager extends Manager {
 	 * @emits Whirl.Game#didRender
 	 */
 	_render() {
-		/**
-		 * Fires after the update loop has completed but before any rendering has taken place.
-		 *
-		 * @event Whirl.Game#willRender
-		 * @type {object}
-		 */
 		this.game.event.emit("willRender");
 
 		const viewports = this.game.object._viewports;
@@ -75,12 +83,6 @@ class RenderManager extends Manager {
 
 		this.renderer.postRenderAll(viewports);
 
-		/**
-		 * Fires after the render step of the game has concluded.
-		 *
-		 * @event Whirl.Game#didRender
-		 * @type {object}
-		 */
 		this.game.event.emit("didRender");
 	}
 

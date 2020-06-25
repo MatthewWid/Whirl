@@ -80,6 +80,21 @@ class SetupManager extends Manager {
 	viewport = null;
 
 	/**
+	 * Fires after game setup has completed and the game loop has been started.
+	 *
+	 * Will not fire if the {@link Whirl.Game.ConfigManager#setup|`setup` configuration variable} is set to `false`.
+	 *
+	 * @event Whirl.Game#didSetup
+	 * @type {object}
+	 *
+	 * @property {Whirl.Game} game Current game instance.
+	 * @property {Whirl.Stage} stage Generated stage that holds all of the {@link Whirl.Entity|entities} that exist in the game world.
+	 * @property {Whirl.Viewport} viewport Generated viewport that contains the Stage and is used for rendering onto the canvas.
+	 * @property {string} canvas Selector for {@link Whirl.Game.ConfigManager#canvas|the default canvas element} being rendered to.
+	 * @property {string} root Selector the {@link Whirl.Game.ConfigManager#root|the root element} that contains the game canvasses.
+	 */
+
+	/**
 	 * Initiate the setup process for the game instance.
 	 *
 	 * Does nothing if {@link Whirl.Game.ConfigManager#setup|the `setup` configuration variable} is `false`.
@@ -131,20 +146,6 @@ class SetupManager extends Manager {
 
 		config.set("setup", false);
 
-		/**
-		 * Fires after game setup has completed and the game loop has been started.
-		 *
-		 * Will not fire if the {@link Whirl.Game.ConfigManager#setup|`setup` configuration variable} is set to `false`.
-		 *
-		 * @event Whirl.Game#didSetup
-		 * @type {object}
-		 *
-		 * @property {Whirl.Game} game Current game instance.
-		 * @property {Whirl.Stage} stage Generated stage that holds all of the {@link Whirl.Entity|entities} that exist in the game world.
-		 * @property {Whirl.Viewport} viewport Generated viewport that contains the Stage and is used for rendering onto the canvas.
-		 * @property {string} canvas Selector for {@link Whirl.Game.ConfigManager#canvas|the default canvas element} being rendered to.
-		 * @property {string} root Selector the {@link Whirl.Game.ConfigManager#root|the root element} that contains the game canvasses.
-		 */
 		this.game.event.emit("didSetup", {
 			game: this.game,
 			stage,

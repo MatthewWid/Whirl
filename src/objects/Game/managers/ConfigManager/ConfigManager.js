@@ -152,6 +152,22 @@ class ConfigManager extends Manager {
 	};
 
 	/**
+	 * Fires after one or many values in the configuration are updated.
+	 *
+	 * @event Whirl.Game#didSet
+	 * @type {object}
+	 *
+	 * @property {object} config Object of all values in the configuration, including the newly updated values.
+	 * @property {string|object} type If the value was set using a single key/value pair, will be `key-value`.
+	 *
+	 * If many values were set using an object, will be `object`.
+	 * @property {string|undefined} key If the value was set using a single key/value pair, will be the key. Else will not exist.
+	 * @property {object|any} value The new value. Will either be the value of the single provided key/value pair, or the object given if setting multiple values at once.
+	 *
+	 * @see Whirl.Game.ConfigManager#set
+	 */
+
+	/**
 	 * Set or add one or many key/value pairs.
 	 *
 	 * While you can assign any value to a key, keep in mind that value updates are made shallowly - if you provide an object or array it will not be deepmerged, but replaced when you set it.
@@ -183,21 +199,6 @@ class ConfigManager extends Manager {
 		if (typeof key === "string") {
 			this._data[key] = value;
 
-			/**
-			 * Fires after one or many values in the configuration are updated.
-			 *
-			 * @event Whirl.Game#didSet
-			 * @type {object}
-			 *
-			 * @property {object} config Object of all values in the configuration, including the newly updated values.
-			 * @property {string|object} type If the value was set using a single key/value pair, will be `key-value`.
-			 *
-			 * If many values were set using an object, will be `object`.
-			 * @property {string|undefined} key If the value was set using a single key/value pair, will be the key. Else will not exist.
-			 * @property {object|any} value The new value. Will either be the value of the single provided key/value pair, or the object given if setting multiple values at once.
-			 *
-			 * @see Whirl.Game.ConfigManager#set
-			 */
 			this.game.event.emit("didSet", {
 				config: {...this._data},
 				type: "key-value",
