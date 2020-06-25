@@ -139,7 +139,7 @@ class EventMixin extends Mixin {
 	 * @method Whirl.mixins.Event#once
 	 *
 	 * @param {string} name Name of the event to listen on.
-	 * @param {Whirl.mixins.Event~eventListener} func Event listener invoked each time this event is emitted on.
+	 * @param {Whirl.mixins.Event~listenerCallback} listener Event listener invoked each time this event is emitted on.
 	 * @returns {object} Source object this mixin is bound to.
 	 *
 	 * @example
@@ -161,19 +161,26 @@ class EventMixin extends Mixin {
 	}
 
 	/**
-	 * Emit to the given event with optional data attached to the event.
+	 * Emit to the given event, optionally attaching data to it.
 	 *
-	 * Immediately invokes calls all listeners in the sequential order that they were originally added in.
+	 * Immediately calls all listeners in the order that they were originally added in (first-to-last).
 	 *
 	 * @method Whirl.mixins.Event#emit
 	 *
 	 * @param {string} name Name of the event to emit to.
-	 * @param {object} [data] Additional data to give to all event listeners.
+	 * @param {*} [data] Additional data payload related to the event.
 	 * @returns {object} Source object this mixin is bound to.
 	 *
 	 * @example
-	 * // Emit to the 'eventName' event on the `object` object.
-	 * object.event.emit("eventName");
+	 * // Emit to the 'speak' event on the `person` object.
+	 * person.event.emit("speak");
+	 *
+	 * @example
+	 * // Emit to multiple events one after another.
+	 * dog
+	 * 	.event.emit("walk")
+	 * 	.event.emit("talk", "Bark!")
+	 * 	.event.emit("sit");
 	 *
 	 * @example
 	 * // Emit to the 'warning' event on the 'errorLogger' object.
