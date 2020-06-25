@@ -1,5 +1,5 @@
-const Manager = require("../Manager.js");
-const getValue = require("../../../../lib/getValue.js");
+import Manager from "../Manager";
+import getValue from "../../../../lib/getValue";
 
 /**
  * @classdesc
@@ -314,4 +314,4 @@ class ConfigManager extends Manager {
 	}
 }
 
-module.exports = ConfigManager;
+export default ConfigManager;

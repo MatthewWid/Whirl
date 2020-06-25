@@ -1,20 +1,20 @@
-const math = require("./math/");
-const easing = require("./easing/");
-const util = require("./util/");
-const keys = require("./keys/");
-const geometry = require("./geometry/");
-const mixins = require("./mixins/");
-const Game = require("./objects/Game/");
-const Viewport = require("./objects/Viewport/");
-const Stage = require("./objects/Stage/");
-const Sprite = require("./objects/Sprite/");
-const Container = require("./objects/Container/");
-const Colour = require("./objects/Colour/");
-const Gradient = require("./objects/Gradient/");
-const Base = require("./objects/Base/");
-const Entity = require("./objects/Entity/");
-const Texture = require("./objects/Texture/");
-const {Renderer, CanvasRenderer, WebglRenderer} = require("./render/");
+import * as math from "./math";
+import * as easing from "./easing";
+import * as util from "./util";
+import * as keys from "./keys";
+import * as geometry from "./geometry";
+import * as mixins from "./mixins";
+import * as render from "./render";
+import Game from "./objects/Game";
+import Viewport from "./objects/Viewport";
+import Stage from "./objects/Stage";
+import Sprite from "./objects/Sprite";
+import Container from "./objects/Container";
+import Colour from "./objects/Colour";
+import Gradient from "./objects/Gradient";
+import Base from "./objects/Base";
+import Entity from "./objects/Entity";
+import Texture from "./objects/Texture";
 
 /**
  * The global Whirl object that all constants, modules and game objects are attached to and derived from.
@@ -54,14 +54,11 @@ class Whirl {
 	static Texture = Texture;
 
 	// Render Systems
-	static render = {
-		Renderer: Renderer,
-		Canvas: CanvasRenderer,
-		Webgl: WebglRenderer,
-	};
+	static render = render;
 
 	static createGame = (...args) => new Game(...args);
 }
 
 global.Whirl = Whirl;
-module.exports = Whirl;
+
+export default Whirl;

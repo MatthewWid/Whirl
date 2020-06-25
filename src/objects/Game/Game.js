@@ -1,8 +1,4 @@
-const {
-	Mixin: {apply: mixin},
-	Event,
-} = require("../../mixins/");
-const {
+import {
 	ConfigManager,
 	ObjectManager,
 	UpdateManager,
@@ -10,13 +6,15 @@ const {
 	SetupManager,
 	DebugManager,
 	InputManager,
-} = require("./managers/");
-const Viewport = require("../Viewport/");
-const Stage = require("../Stage/");
-const Sprite = require("../Sprite/");
-const Container = require("../Container/");
-const Colour = require("../Colour/");
-const Gradient = require("../Gradient/");
+} from "./managers";
+import Viewport from "../Viewport";
+import Stage from "../Stage";
+import Sprite from "../Sprite";
+import Container from "../Container";
+import Colour from "../Colour";
+import Gradient from "../Gradient";
+import {apply as mixin} from "../../mixins/Mixin";
+import Event from "../../mixins/EventMixin";
 
 /**
  * @classdesc
@@ -142,4 +140,4 @@ class Game {
 	}
 }
 
-module.exports = Game;
+export default Game;

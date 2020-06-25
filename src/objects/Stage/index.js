@@ -1,1 +1,1 @@
-module.exports = require("./Stage.js");
+export {default} from "./Stage";

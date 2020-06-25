@@ -1,4 +1,4 @@
-const Base = require("../Base/");
+import Base from "../Base";
 
 /**
  * @classdesc
@@ -39,4 +39,4 @@ class Texture extends Base {
 	}
 }
 
-module.exports = Texture;
+export default Texture;

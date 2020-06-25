@@ -1,10 +1,8 @@
-const Entity = require("../Entity/");
-const {
-	Mixin: {apply: mixin},
-	Child,
-} = require("../../mixins/");
-const {Point} = require("../../geometry/");
-const getValue = require("../../lib/getValue.js");
+import Entity from "../Entity";
+import {apply as mixin} from "../../mixins/Mixin";
+import Child from "../../mixins/ChildMixin";
+import Point from "../../geometry/Point";
+import getValue from "../../lib/getValue";
 
 /**
  * @classdesc
@@ -84,4 +82,4 @@ class Container extends Entity {
 	}
 }
 
-module.exports = Container;
+export default Container;

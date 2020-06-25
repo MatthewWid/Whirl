@@ -1,1 +1,1 @@
-module.exports = require("./Sprite.js");
+export {default} from "./Sprite";

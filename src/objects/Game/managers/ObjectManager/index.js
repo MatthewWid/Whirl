@@ -1,1 +1,1 @@
-module.exports = require("./ObjectManager.js");
+export {default} from "./ObjectManager";

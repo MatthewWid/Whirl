@@ -1,1 +1,1 @@
-module.exports = require("./DebugManager.js");
+export {default} from "./DebugManager";

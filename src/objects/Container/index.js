@@ -1,1 +1,1 @@
-module.exports = require("./Container.js");
+export {default} from "./Container";

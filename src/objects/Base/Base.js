@@ -130,4 +130,4 @@ class Base {
 	render() {}
 }
 
-module.exports = Base;
+export default Base;

@@ -1,8 +1,9 @@
-const Entity = require("../Entity/");
-const Texture = require("../Texture/");
-const Colour = require("../Colour/");
-const getValue = require("../../lib/getValue.js");
-const {Rectangle, Point} = require("../../geometry/");
+import Entity from "../Entity";
+import Texture from "../Texture";
+import Colour from "../Colour";
+import getValue from "../../lib/getValue";
+import Rectangle from "../../geometry/Rectangle";
+import Point from "../../geometry/Point";
 
 /**
  * @classdesc
@@ -146,4 +147,4 @@ class Sprite extends Entity {
 	}
 }
 
-module.exports = Sprite;
+export default Sprite;

@@ -1,1 +1,1 @@
-module.exports = require("./Entity.js");
+export {default} from "./Entity";

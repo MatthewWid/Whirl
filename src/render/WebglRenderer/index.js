@@ -1,1 +1,1 @@
-module.exports = require("./WebglRenderer.js");
+export {default} from "./WebglRenderer";

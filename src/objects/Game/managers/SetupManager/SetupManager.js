@@ -1,6 +1,6 @@
-const Manager = require("../Manager.js");
-const Stage = require("../../../Stage/");
-const Viewport = require("../../../Viewport/");
+import Manager from "../Manager";
+import Stage from "../../../Stage";
+import Viewport from "../../../Viewport";
 
 /**
  * Handles initial game setup including persistant storage checks, network and Internet connectivity checks, canvas creation, default values for other managers and more.
@@ -158,4 +158,4 @@ class SetupManager extends Manager {
 	}
 }
 
-module.exports = SetupManager;
+export default SetupManager;

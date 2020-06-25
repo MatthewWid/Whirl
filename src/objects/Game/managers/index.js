@@ -1,10 +1,8 @@
-module.exports = {
-	Manager: require("./Manager.js"),
-	ConfigManager: require("./ConfigManager/"),
-	DebugManager: require("./DebugManager/"),
-	ObjectManager: require("./ObjectManager/"),
-	RenderManager: require("./RenderManager/"),
-	SetupManager: require("./SetupManager/"),
-	UpdateManager: require("./UpdateManager/"),
-	InputManager: require("./InputManager/"),
-};
+export {default as Manager} from "./Manager";
+export {default as ConfigManager} from "./ConfigManager";
+export {default as DebugManager} from "./DebugManager";
+export {default as ObjectManager} from "./ObjectManager";
+export {default as RenderManager} from "./RenderManager";
+export {default as SetupManager} from "./SetupManager";
+export {default as UpdateManager} from "./UpdateManager";
+export {default as InputManager} from "./InputManager";

@@ -1,6 +1,7 @@
-const Manager = require("../Manager.js");
-const MouseElement = require("./MouseElement.js");
-const {Mixin, Event} = require("../../../../mixins/");
+import Manager from "../Manager";
+import MouseElement from "./MouseElement";
+import Mixin from "../../../../mixins/Mixin";
+import Event from "../../../../mixins/Mixin";
 
 /**
  * @classdesc
@@ -87,4 +88,4 @@ class InputManager extends Manager {
 	}
 }
 
-module.exports = InputManager;
+export default InputManager;

@@ -1,8 +1,7 @@
-const Renderer = require("../Renderer.js");
-const Colour = require("../../objects/Colour/");
-const Gradient = require("../../objects/Gradient/");
-const radians = require("../../math/radians.js");
-const clamp = require("../../math/clamp.js");
+import Renderer from "../Renderer";
+import Colour from "../../objects/Colour";
+import Gradient from "../../objects/Gradient";
+import {radians, clamp} from "../../math";
 
 /**
  * @classdesc
@@ -122,4 +121,4 @@ class CanvasRenderer extends Renderer {
 	}
 }
 
-module.exports = CanvasRenderer;
+export default CanvasRenderer;

@@ -1,6 +1,6 @@
-const Manager = require("../Manager.js");
-const {Renderer, CanvasRenderer} = require("../../../../render/");
-const Sprite = require("../../../Sprite/");
+import Manager from "../Manager";
+import {Renderer, CanvasRenderer} from "../../../../render";
+import Sprite from "../../../Sprite";
 
 /**
  * @classdesc
@@ -109,4 +109,4 @@ class RenderManager extends Manager {
 	}
 }
 
-module.exports = RenderManager;
+export default RenderManager;

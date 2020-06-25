@@ -1,1 +1,1 @@
-module.exports = require("./Gradient.js");
+export {default} from "./Gradient";

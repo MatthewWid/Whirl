@@ -1,1 +1,1 @@
-module.exports = require("./SetupManager.js");
+export {default} from "./SetupManager";

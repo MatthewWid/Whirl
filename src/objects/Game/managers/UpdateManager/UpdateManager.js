@@ -1,4 +1,4 @@
-const Manager = require("../Manager.js");
+import Manager from "../Manager";
 
 /**
  * @classdesc
@@ -333,4 +333,4 @@ class UpdateManager extends Manager {
 	};
 }
 
-module.exports = UpdateManager;
+export default UpdateManager;

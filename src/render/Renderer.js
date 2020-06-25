@@ -118,4 +118,4 @@ class Renderer {
 	Sprite() {}
 }
 
-module.exports = Renderer;
+export default Renderer;

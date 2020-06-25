@@ -4,8 +4,6 @@
  * @namespace render
  * @memberof Whirl
  */
-module.exports = {
-	Renderer: require("./Renderer.js"),
-	CanvasRenderer: require("./CanvasRenderer"),
-	WebglRenderer: require("./WebglRenderer"),
-};
+export {default as Renderer} from "./Renderer";
+export {default as CanvasRenderer} from "./CanvasRenderer";
+export {default as WebglRenderer} from "./WebglRenderer";

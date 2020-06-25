@@ -1,1 +1,1 @@
-module.exports = require("./Texture.js");
+export {default} from "./Texture";

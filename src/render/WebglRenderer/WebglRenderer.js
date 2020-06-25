@@ -1,4 +1,4 @@
-const Renderer = require("../Renderer.js");
+import Renderer from "../Renderer";
 
 /**
  * @classdesc
@@ -32,4 +32,4 @@ class WebglRenderer extends Renderer {
 	};
 }
 
-module.exports = WebglRenderer;
+export default WebglRenderer;

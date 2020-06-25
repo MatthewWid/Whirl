@@ -1,1 +1,1 @@
-module.exports = require("./InputManager.js");
+export {default} from "./InputManager";

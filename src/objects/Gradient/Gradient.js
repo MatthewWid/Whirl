@@ -1,6 +1,6 @@
-const Texture = require("../Texture/");
-const {Point} = require("../../geometry/");
-const Colour = require("../Colour/");
+import Texture from "../Texture";
+import Point from "../../geometry/Point";
+import Colour from "../Colour";
 
 /**
  * @classdesc
@@ -133,4 +133,4 @@ class Gradient extends Texture {
 	}
 }
 
-module.exports = Gradient;
+export default Gradient;

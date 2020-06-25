@@ -1,1 +1,1 @@
-module.exports = require("./RenderManager.js");
+export {default} from "./RenderManager";

@@ -1,7 +1,7 @@
-const Manager = require("../Manager.js");
-const Base = require("../../../../objects/Base/");
-const Viewport = require("../../../../objects/Viewport/");
-const Stage = require("../../../../objects/Stage/");
+import Manager from "../Manager";
+import Base from "../../../../objects/Base";
+import Viewport from "../../../../objects/Viewport";
+import Stage from "../../../../objects/Stage";
 
 /**
  * @classdesc
@@ -166,4 +166,4 @@ class ObjectManager extends Manager {
 	}
 }
 
-module.exports = ObjectManager;
+export default ObjectManager;

@@ -1,1 +1,1 @@
-module.exports = require("./CanvasRenderer.js");
+export {default} from "./CanvasRenderer";

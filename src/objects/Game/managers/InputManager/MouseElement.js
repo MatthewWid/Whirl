@@ -1,4 +1,4 @@
-const {Point} = require("../../../../geometry/");
+import Point from "../../../../geometry/Point";
 
 /**
  * @classdesc
@@ -140,4 +140,4 @@ class MouseElement {
 	}
 }
 
-module.exports = MouseElement;
+export default MouseElement;

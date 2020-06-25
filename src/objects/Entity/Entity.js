@@ -1,5 +1,5 @@
-const Base = require("../Base/");
-const getValue = require("../../lib/getValue.js");
+import Base from "../Base";
+import getValue from "../../lib/getValue";
 
 /**
  * @classdesc
@@ -193,4 +193,4 @@ class Entity extends Base {
 	}
 }
 
-module.exports = Entity;
+export default Entity;

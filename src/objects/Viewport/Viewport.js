@@ -1,10 +1,11 @@
-const Base = require("../Base/");
-const Stage = require("../Stage/");
-const Entity = require("../Entity/");
-const Sprite = require("../Sprite/");
-const {Rectangle, Point} = require("../../geometry/");
-const getValue = require("../../lib/getValue.js");
-const lerp = require("../../math/lerp.js");
+import Base from "../Base";
+import Stage from "../Stage";
+import Entity from "../Entity";
+import Sprite from "../Sprite";
+import Rectangle from "../../geometry/Rectangle";
+import Point from "../../geometry/Point";
+import getValue from "../../lib/getValue";
+import lerp from "../../math/lerp";
 
 /**
  * @classdesc
@@ -37,7 +38,7 @@ const lerp = require("../../math/lerp.js");
  * @param {number} options.scrollX=0 X-coordinate of the scroll position.
  * @param {number} options.scrollY=0 Y-coordinate of the scroll position.
  * @param {number} options.anchorX=0 X-coordinate of the anchor point (0-1).
- * @param {number} options.anchorY=0 Y-coordinate of this sprite's anchor point (0-1).
+ * @param {number} options.anchorY=0 Y-coordinate of the anchor point (0-1).
  * @param {boolean} options.clip=false Remove all pixels that are outside of the clipping plane from the rendered output on the canvas.
  * @param {boolean} options.clear=true Clear the area being rendered to before each render tick.
  * @param {boolean} options.imageSmoothing=true Canvas anti-aliasing.
@@ -565,4 +566,4 @@ class Viewport extends Base {
 	}
 }
 
-module.exports = Viewport;
+export default Viewport;

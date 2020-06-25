@@ -1,4 +1,4 @@
-const Texture = require("../Texture/");
+import Texture from "../Texture";
 
 /**
  * @classdesc
@@ -94,4 +94,4 @@ class Colour extends Texture {
 	}
 }
 
-module.exports = Colour;
+export default Colour;

@@ -1,4 +1,4 @@
-const Manager = require("../Manager.js");
+import Manager from "../Manager";
 
 /**
  * @classdesc
@@ -73,4 +73,4 @@ class DebugManager extends Manager {
 	}
 }
 
-module.exports = DebugManager;
+export default DebugManager;

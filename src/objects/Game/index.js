@@ -1,1 +1,1 @@
-module.exports = require("./Game.js");
+export {default} from "./Game";

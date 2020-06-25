@@ -1,7 +1,7 @@
-const Base = require("../Base/");
-const Container = require("../Container/");
-const {Rectangle} = require("../../geometry/");
-const getValue = require("../../lib/getValue.js");
+import Base from "../Base";
+import Container from "../Container";
+import Rectangle from "../../geometry/Rectangle";
+import getValue from "../../lib/getValue";
 
 /**
  * @classdesc
@@ -155,4 +155,4 @@ class Stage extends Base {
 	}
 }
 
-module.exports = Stage;
+export default Stage;

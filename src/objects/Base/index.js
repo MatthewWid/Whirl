@@ -1,1 +1,1 @@
-module.exports = require("./Base.js");
+export {default} from "./Base";
