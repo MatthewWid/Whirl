@@ -1,1 +1,1 @@
-module.exports = require("./Point.js");
+export {default} from "./Point";

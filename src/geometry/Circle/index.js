@@ -1,1 +1,1 @@
-module.exports = require("./Circle.js");
+export {default} from "./Circle";

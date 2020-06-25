@@ -1,6 +1,6 @@
-const Geometry = require("../Geometry.js");
-const Point = require("../Point/");
-const getValue = require("../../lib/getValue.js");
+import Geometry from "../Geometry";
+import Point from "../Point";
+import getValue from "../../lib/getValue";
 
 /**
  * @classdesc
@@ -123,5 +123,5 @@ class Circle extends Geometry {
 	}
 }
 
-module.exports = (...args) => new Circle(...args);
-module.exports._class = Circle;
+export const _class = Circle;
+export default (...args) => new Circle(...args);

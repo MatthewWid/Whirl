@@ -40,4 +40,4 @@ const stepTo = (val, target, increment = 1) => {
 	}
 };
 
-module.exports = stepTo;
+export default stepTo;

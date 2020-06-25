@@ -41,4 +41,4 @@ const randHSL = (cfg = {}) => {
 	return `hsl${cfg.alpha ? "a" : ""}(${hue}, ${sat}%, ${lit}%${cfg.alpha ? ", " + a : ""})`;
 };
 
-module.exports = randHSL;
+export default randHSL;

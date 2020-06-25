@@ -13,8 +13,6 @@
  * @namespace easing
  * @memberof Whirl
  */
-module.exports = {
-	linear: require("./linear/"),
-	quadratic: require("./quadratic/"),
-	cubic: require("./cubic/"),
-};
+export {default as linear} from "./linear";
+export {default as quadratic} from "./quadratic";
+export {default as cubic} from "./cubic";

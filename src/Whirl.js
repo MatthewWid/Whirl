@@ -1,7 +1,7 @@
 import * as math from "./math";
 import * as easing from "./easing";
 import * as util from "./util";
-import * as keys from "./keys";
+import * as key from "./key";
 import * as geometry from "./geometry";
 import * as mixins from "./mixins";
 import * as render from "./render";
@@ -37,7 +37,7 @@ class Whirl {
 	static math = math;
 	static easing = easing;
 	static util = util;
-	static keys = keys;
+	static key = key;
 	static geometry = geometry;
 	static mixins = mixins;
 

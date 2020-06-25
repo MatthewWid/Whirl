@@ -1,1 +1,1 @@
-module.exports = require("./ChildMixin.js");
+export {default} from "./ChildMixin";

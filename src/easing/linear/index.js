@@ -4,4 +4,4 @@
  * @namespace linear
  * @memberof Whirl.easing
  */
-module.exports = require("./linear.js");
+export {default} from "./linear";

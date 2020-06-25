@@ -8,10 +8,8 @@
  * @namespace geometry
  * @memberof Whirl
  */
-module.exports = {
-	Geometry: require("./Geometry.js"),
-	Circle: require("./Circle/"),
-	Line: require("./Line/"),
-	Rectangle: require("./Rectangle/"),
-	Point: require("./Point/"),
-};
+export {default as Geometry} from "./Geometry";
+export {default as Circle} from "./Circle";
+export {default as Line} from "./Line";
+export {default as Rectangle} from "./Rectangle";
+export {default as Point} from "./Point";

@@ -1,4 +1,4 @@
-const Mixin = require("../Mixin.js");
+import Mixin from "../Mixin";
 
 /**
  * @classdesc
@@ -170,4 +170,4 @@ class ChildMixin extends Mixin {
 	onAdd() {}
 }
 
-module.exports = ChildMixin;
+export default ChildMixin;

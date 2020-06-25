@@ -17,4 +17,4 @@
  */
 const within = (val, target, range) => val <= target + range && val >= target - range;
 
-module.exports = within;
+export default within;

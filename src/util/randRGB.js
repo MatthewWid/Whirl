@@ -37,4 +37,4 @@ const randRGB = (cfg = {}) => {
 	return `rgb${cfg.alpha ? "a" : ""}(${r}, ${g}, ${b}${cfg.alpha ? ", " + a : ""})`;
 };
 
-module.exports = randRGB;
+export default randRGB;

@@ -7,4 +7,4 @@
  * @param {number} t Interpolant between one (1) and zero(0).
  * @returns {number}
  */
-module.exports = (t) => t * (2 - t);
+export default (t) => t * (2 - t);

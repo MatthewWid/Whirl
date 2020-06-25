@@ -19,4 +19,4 @@ const average = (arr) => {
 	return sum / arr.length;
 };
 
-module.exports = average;
+export default average;

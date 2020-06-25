@@ -1,1 +1,1 @@
-module.exports = require("./EventMixin.js");
+export {default} from "./EventMixin";

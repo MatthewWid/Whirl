@@ -13,4 +13,4 @@
  */
 const radians = (deg) => (deg * Math.PI) / 180;
 
-module.exports = radians;
+export default radians;

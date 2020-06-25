@@ -1,1 +1,1 @@
-module.exports = require("./Rectangle.js");
+export {default} from "./Rectangle";

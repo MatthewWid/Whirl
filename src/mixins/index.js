@@ -8,8 +8,6 @@
  * @namespace mixins
  * @memberof Whirl
  */
-module.exports = {
-	Mixin: require("./Mixin.js"),
-	Event: require("./EventMixin/"),
-	Child: require("./ChildMixin/"),
-};
+export {default as Mixin} from "./Mixin";
+export {default as Event} from "./EventMixin";
+export {default as Child} from "./ChildMixin";

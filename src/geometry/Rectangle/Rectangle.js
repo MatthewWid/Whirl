@@ -1,6 +1,6 @@
-const Geometry = require("../Geometry.js");
-const Point = require("../Point/");
-const getValue = require("../../lib/getValue.js");
+import Geometry from "../Geometry";
+import Point from "../Point";
+import getValue from "../../lib/getValue";
 
 /**
  * @classdesc
@@ -232,5 +232,5 @@ class Rectangle extends Geometry {
 	}
 }
 
-module.exports = (...args) => new Rectangle(...args);
-module.exports._class = Rectangle;
+export const _class = Rectangle;
+export default (...args) => new Rectangle(...args);

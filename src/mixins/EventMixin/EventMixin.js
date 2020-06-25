@@ -1,5 +1,5 @@
-const Mixin = require("../Mixin.js");
-const Listener = require("./Listener.js");
+import Mixin from "../Mixin";
+import Listener from "./Listener";
 
 /**
  * @classdesc
@@ -296,4 +296,4 @@ class EventMixin extends Mixin {
 	}
 }
 
-module.exports = EventMixin;
+export default EventMixin;

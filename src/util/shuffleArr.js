@@ -28,4 +28,4 @@ const shuffleArr = (arr) => {
 	return shuffled;
 };
 
-module.exports = shuffleArr;
+export default shuffleArr;

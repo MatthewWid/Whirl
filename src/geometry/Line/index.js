@@ -1,1 +1,1 @@
-module.exports = require("./Line.js");
+export {default} from "./Line";

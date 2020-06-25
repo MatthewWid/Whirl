@@ -4,16 +4,14 @@
  * @namespace math
  * @memberof Whirl
  */
-module.exports = {
-	average: require("./average.js"),
-	between: require("./between.js"),
-	clamp: require("./clamp.js"),
-	degrees: require("./degrees.js"),
-	lerp: require("./lerp.js"),
-	map: require("./map.js"),
-	radians: require("./radians.js"),
-	random: require("./random.js"),
-	roundTo: require("./roundTo.js"),
-	stepTo: require("./stepTo.js"),
-	within: require("./within.js"),
-};
+export {default as average} from "./average";
+export {default as between} from "./between";
+export {default as clamp} from "./clamp";
+export {default as degrees} from "./degrees";
+export {default as lerp} from "./lerp";
+export {default as map} from "./map";
+export {default as radians} from "./radians";
+export {default as random} from "./random";
+export {default as roundTo} from "./roundTo";
+export {default as stepTo} from "./stepTo";
+export {default as within} from "./within";

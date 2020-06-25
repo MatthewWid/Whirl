@@ -31,4 +31,4 @@ class Geometry {
 	duplicate() {}
 }
 
-module.exports = Geometry;
+export default Geometry;

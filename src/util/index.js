@@ -4,10 +4,8 @@
  * @namespace util
  * @memberof Whirl
  */
-module.exports = {
-	randRGB: require("./randRGB.js"),
-	randHSL: require("./randHSL.js"),
-	randArr: require("./randArr.js"),
-	shuffleArr: require("./shuffleArr.js"),
-	formatComma: require("./formatComma.js"),
-};
+export {default as randRGB} from "./randRGB";
+export {default as randHSL} from "./randHSL";
+export {default as randArr} from "./randArr";
+export {default as shuffleArr} from "./shuffleArr";
+export {default as formatComma} from "./formatComma";

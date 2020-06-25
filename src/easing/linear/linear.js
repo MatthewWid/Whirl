@@ -10,6 +10,4 @@
  * Whirl.easing.linear(.5); // .5
  * Whirl.easing.linear(.2); // .2
  */
-const linear = (t) => t;
-
-module.exports = linear;
+export default (t) => t;

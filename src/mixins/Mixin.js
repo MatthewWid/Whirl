@@ -135,4 +135,5 @@ class Mixin {
 	}
 }
 
-module.exports = Mixin;
+export const apply = {Mixin};
+export default Mixin;

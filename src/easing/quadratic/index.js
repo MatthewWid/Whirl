@@ -4,8 +4,12 @@
  * @namespace quadratic
  * @memberof Whirl.easing
  */
-module.exports = {
-	in: require("./in.js"),
-	out: require("./out.js"),
-	inOut: require("./inOut.js"),
+import _in from "./in";
+import out from "./out";
+import inOut from "./inOut";
+
+export default {
+	in: _in,
+	out,
+	inOut,
 };

@@ -13,4 +13,4 @@
  */
 const degrees = (rad) => rad * (180 / Math.PI);
 
-module.exports = degrees;
+export default degrees;

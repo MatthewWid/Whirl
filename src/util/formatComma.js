@@ -16,4 +16,4 @@ const formatComma = (val) => {
 	return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
-module.exports = formatComma;
+export default formatComma;

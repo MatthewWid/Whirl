@@ -3,14 +3,14 @@
  *
  * @name keys
  * @constant
- * @memberof Whirl.keys
+ * @memberof Whirl.key
  *
  * @example
- * Whirl.keys["x"]; // 88
- * Whirl.keys["ArrowRight"]; // 39
- * Whirl.keys["Shift"]; // 16
+ * Whirl.key.keys["x"]; // 88
+ * Whirl.key.keys["ArrowRight"]; // 39
+ * Whirl.key.keys["Shift"]; // 16
  */
-const keyMap = {
+const keys = {
 	a: 65,
 	b: 66,
 	c: 67,
@@ -66,4 +66,4 @@ const keyMap = {
 	Slash: 191,
 };
 
-module.exports = keyMap;
+export default keys;

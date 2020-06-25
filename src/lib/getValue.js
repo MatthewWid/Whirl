@@ -11,4 +11,4 @@
 const getValue = (object, property, defaultValue = null) =>
 	Object.prototype.hasOwnProperty.call(object, property) ? object[property] : defaultValue;
 
-module.exports = getValue;
+export default getValue;
