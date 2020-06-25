@@ -17,35 +17,36 @@ const Listener = require("./Listener.js");
  * @mixin
  *
  * @example
- * object.event.on("sayWord", (data) => {
- * 	console.log(`My word is: ${data.word}.`);
+ * // Listen on the 'sayWord' event
+ * object.event.on("sayWord", (word) => {
+ * 	console.log(`My word is: ${word}.`);
  * });
  *
- * // "My word is: kitten." is logged to the console
- * object.event.emit("sayWord", {
- * 	word: "kitten",
- * });
+ * // Emit on the 'sayWord' event
+ * object.event.emit("sayWord", "kitten"); // "My word is: kitten." is logged to the console
  *
  * @example
  * const {mixins: {Mixin, Event}} = Whirl;
  *
- * // Create and instantiate a class MyObject with the `Event` mixin
- * class MyObject {
+ * // Create a class `Person` with the `Event` mixin
+ * class Person {
  * 	mixins = [Event];
  *
  * 	constructor() {
  * 		Mixin.apply(this);
  * 	}
  * }
- * const object = new MyObject();
  *
- * // Listen for the 'sayHi' event on `object` and log "Hello world"
- * object.event.on("sayHi", () => {
+ * // Create an instance of a person
+ * const person = new MyObject();
+ *
+ * // Listen for the 'sayHi' event on `person` and log "Hello world"
+ * person.event.on("sayHi", () => {
  * 	console.log("Hello world");
  * });
  *
  * // "Hello world" is logged to the console
- * object.event.emit("sayHi");
+ * person.event.emit("sayHi");
  */
 class EventMixin extends Mixin {
 	/**
