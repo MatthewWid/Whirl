@@ -18,7 +18,7 @@ const {
 	geometry: {Rectangle, Point, Circle, Line},
 	mixins: {Mixin, Event, Child},
 	math: {random},
-} = Whirl;
+} = Whirl.default;
 
 const keys = {};
 let sprite1, sprite2, sprite3, gradient;

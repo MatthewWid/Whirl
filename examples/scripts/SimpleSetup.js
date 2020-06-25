@@ -11,7 +11,7 @@ const {
 	geometry: {Rectangle, Point, Circle, Line},
 	mixins: {Mixin, Event, Child},
 	math: {random},
-} = Whirl;
+} = Whirl.default;
 
 function setup({stage, viewport, game}) {
 	const {Viewport, Stage, Container, Sprite, Colour, Gradient} = game;
