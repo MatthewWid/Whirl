@@ -123,5 +123,6 @@ class Circle extends Geometry {
 	}
 }
 
-export const _class = Circle;
-export default (...args) => new Circle(...args);
+const createCircle = (...args) => new Circle(...args);
+createCircle._class = Circle;
+export default createCircle;

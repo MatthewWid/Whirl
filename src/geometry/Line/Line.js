@@ -124,5 +124,6 @@ class Line extends Geometry {
 	}
 }
 
-export const _class = Line;
-export default (...args) => new Line(...args);
+const createLine = (...args) => new Line(...args);
+createLine._class = Line;
+export default createLine;

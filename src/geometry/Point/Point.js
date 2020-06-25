@@ -137,5 +137,6 @@ class Point extends Geometry {
 	}
 }
 
-export const _class = Point;
-export default (...args) => new Point(...args);
+const createPoint = (...args) => new Point(...args);
+createPoint._class = Point;
+export default createPoint;

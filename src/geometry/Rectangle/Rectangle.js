@@ -232,5 +232,6 @@ class Rectangle extends Geometry {
 	}
 }
 
-export const _class = Rectangle;
-export default (...args) => new Rectangle(...args);
+const createRectangle = (...args) => new Rectangle(...args);
+createRectangle._class = Rectangle;
+export default createRectangle;
