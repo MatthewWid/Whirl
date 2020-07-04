@@ -24,38 +24,58 @@ Some features offered by the **Whirl** game engine are:
 - **Modularised viewport manager** that enables you to create multiple game viewports and screens _without_ the need for multiple canvas elements, stacked HTML elements or duplicate game instances.
 - **Flexibility-first approach** that makes it easy to create your own custom plugins and game objects that can be exported and reused - objects are flexible, modular and easy to work with.
 
-# Examples
+# Installation and Usage
 
-Example usage of the various features of **Whirl** are included in the `/examples/` directory.
+Install:
 
-Feel free to change and play around with the examples yourself!
+```bash
+# npm
+npm install whirljs
 
-Simply clone the repository, build the source ([See the "Build" section](#build)) and open up `/index.html` in any one of the examples to start tinkering.
+# Yarn
+yarn add whirljs
+```
 
-# Build from Source
+Use:
 
-**Whirl** takes advantage of [webpack](https://webpack.js.org/) to compile its source code down into a single, universally compatible JavaScript file.
+```javascript
+// ES modules
+import Whirl from "whirljs";
+
+// UMD
+const Whirl = Whirl.default;
+```
+
+Create a game:
+
+```javascript
+const game = Whirl
+    .createGame()
+    .start();
+```
+
+## Examples
+
+Example usage of the various features of Whirl are included in the `examples/scripts/` directory. Feel free to change and play around with them yourself!
+
+Simply clone the repository, [build the source](#build) and open up `examples/Sandbox/index.html` to use the in-browser code editor and get started with Whirl.
+
+## Build from Source
+
+Whirl takes advantage of [webpack](https://webpack.js.org/) to compile its source code down into a single, universally compatible JavaScript file.
 
 1. Clone the repository - `git clone <repository url>`.
-2. Install build dependencies - `npm i` or `yarn`.
-3. Build from source - `npm run prod` or `yarn run prod`.
+2. Install dependencies - `npm i` or `yarn`.
+3. Build from source - `npm run build` or `yarn run build`.
 
-Once completed, you can find the built file in `/build/whirl.js`. Simply include it with a script tag,
-
-    <script src="whirl.js"></script>
-
-or import as a module,
-
-    const Whirl = require("./whirl");
-
-From there you are free to get started with making your first game. Happy coding!
+Once completed, you can find the built file in `/build/whirl.js`.
 
 ## Build the Docs
 
 **Whirl** uses [JSDoc](https://jsdoc.app/) to write and generate its documentation.
 
 1. Clone the repository - `git clone <repository url>`.
-2. Install build dependencies - `npm i` or `yarn`.
-3. Build documentation from source - `npm run doc` or `yarn run doc`.
+2. Install dependencies - `npm i` or `yarn`.
+3. Build the documentation - `npm run doc` or `yarn run doc`.
 
-Once completed, you can find the generated documentation files in the `/doc/` directory, with `index.html` being the home page.
+Once completed, you can find the generated documentation files in the `doc/` directory, with `index.html` being the home page.
