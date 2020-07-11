@@ -9,7 +9,7 @@ import Renderer from "../Renderer";
  * @extends Whirl.render.Renderer
  *
  * @example
- * const game = Whirl.Game({
+ * const game = Whirl.createGame({
  * 	renderer: Whirl.render.Webgl
  * });
  */

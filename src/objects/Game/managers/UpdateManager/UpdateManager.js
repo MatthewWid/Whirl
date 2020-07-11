@@ -10,14 +10,14 @@ import Manager from "../Manager";
  * @memberof Whirl.Game
  *
  * @example
- * const game = Whirl.Game();
+ * const game = Whirl.createGame();
  *
  * game.start();
  *
  * game.stop();
  *
  * @example
- * const game = Whirl.Game();
+ * const game = Whirl.createGame();
  *
  * game.event.on("didUpdate", (data) => {
  * 	console.log(`A total of ${data.frameCount} frame(s) have elapsed.`);
@@ -210,7 +210,7 @@ class UpdateManager extends Manager {
 	 * @returns {Whirl.Game} Game instance the UpdateManager belongs to.
 	 *
 	 * @example
-	 * const game = Whirl.Game();
+	 * const game = Whirl.createGame();
 	 *
 	 * game.update.start();
 	 */
@@ -256,7 +256,7 @@ class UpdateManager extends Manager {
 	 * @returns {Whirl.Game} Game instance the UpdateManager belongs to.
 	 *
 	 * @example
-	 * const game = Whirl.Game();
+	 * const game = Whirl.createGame();
 	 *
 	 * game.update.start();
 	 *

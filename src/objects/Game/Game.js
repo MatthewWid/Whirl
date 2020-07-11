@@ -33,7 +33,7 @@ import Event from "~/mixins/EventMixin";
  * @param {object} [options] Options passed during setup. All properties on this object will be forwarded to the {@link Whirl.Game.ConfigManager|ConfigManager} and set as properties of the configuration map by implicitely calling {@link Whirl.Game.ConfigManager#set|the set method}.
  *
  * @example
- * const game = Whirl.Game({
+ * const game = Whirl.createGame({
  * 	"canvas": "#myCanvas",
  * 	"debug": true,
  * });

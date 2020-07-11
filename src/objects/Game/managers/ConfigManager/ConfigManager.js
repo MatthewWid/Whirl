@@ -13,7 +13,7 @@ import getValue from "~/lib/getValue";
  * @memberof Whirl.Game
  *
  * @example
- * const game = Whirl.Game();
+ * const game = Whirl.createGame();
  *
  * game.config.get(); // {...}
  *

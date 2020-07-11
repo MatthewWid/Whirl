@@ -14,7 +14,7 @@ import Viewport from "~/objects/Viewport";
  *
  * Once setup is complete, subsequent calls to the {@link Whirl.Game.SetupManager#setup|setup method} or the {@link Whirl.Game#start|Game#start method} will not start setup again.
  *
- * Using the automated setup manager is optional. If you wish to create all of the foundational game objects from scratch, simply disable the `setup` property when making your game instance (`const game = Whirl.Game({setup: false})`).
+ * Using the setup manager is optional. If you wish to create all of the foundational game objects from scratch, simply disable the `setup` property when making your game instance (`const game = Whirl.createGame({setup: false})`).
  *
  * @class SetupManager
  * @memberof Whirl.Game
@@ -33,14 +33,14 @@ import Viewport from "~/objects/Viewport";
  * }
  *
  * // Create a game instance, allowing automatic setup to take place
- * const game = Whirl.Game()
+ * const game = Whirl.createGame()
  * 	.event.once("didSetup", setup)
  * 	.start();
  *
  * @example
  * // Equivalent to the previous example, but doesn't use the `didSetup` event
  *
- * const game = {Sprite, Colour, setup: {stage}} = Whirl.Game()
+ * const game = {Sprite, Colour, setup: {stage}} = Whirl.createGame()
  * 	.setup.setup();
  *
  * stage.child.add([

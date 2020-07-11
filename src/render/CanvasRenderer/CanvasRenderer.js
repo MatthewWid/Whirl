@@ -11,7 +11,7 @@ import {radians, clamp} from "~/math";
  * @extends Whirl.render.Renderer
  *
  * @example
- * const game = Whirl.Game({
+ * const game = Whirl.createGame({
  * 	renderer: Whirl.render.Canvas
  * });
  */

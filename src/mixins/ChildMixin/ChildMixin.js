@@ -70,7 +70,7 @@ class ChildMixin extends Mixin {
 	 * @param {any|any[]} object Object or array of objects to be added as children.
 	 *
 	 * @example
-	 * const game = Whirl.Game();
+	 * const game = Whirl.createGame();
 	 *
 	 * const stage = game.Stage();
 	 *

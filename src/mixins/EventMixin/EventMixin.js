@@ -111,7 +111,7 @@ class EventMixin extends Mixin {
 	 * object.event.emit("sayHi"); // "Hi!" is logged to the console
 	 *
 	 * @example
-	 * const game = Whirl.Game();
+	 * const game = Whirl.createGame();
 	 *
 	 * // Listen for the `didStart` event on the game object
 	 * game.event.on("didStart", (data) => {
