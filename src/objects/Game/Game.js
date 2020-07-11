@@ -7,12 +7,12 @@ import {
 	DebugManager,
 	InputManager,
 } from "./managers";
-import Viewport from "~/objects/Viewport";
-import Stage from "~/objects/Stage";
-import Sprite from "~/objects/Sprite";
-import Container from "~/objects/Container";
 import Colour from "~/objects/Colour";
+import Container from "~/objects/Container";
 import Gradient from "~/objects/Gradient";
+import Sprite from "~/objects/Sprite";
+import Stage from "~/objects/Stage";
+import Viewport from "~/objects/Viewport";
 import {apply as mixin} from "~/mixins/Mixin";
 import Event from "~/mixins/EventMixin";
 
@@ -102,12 +102,12 @@ class Game {
 	}
 
 	// Game Object Factories
-	Viewport = (...args) => new Viewport(this, ...args);
-	Stage = (...args) => new Stage(this, ...args);
-	Sprite = (...args) => new Sprite(this, ...args);
-	Container = (...args) => new Container(this, ...args);
 	Colour = (...args) => new Colour(this, ...args);
+	Container = (...args) => new Container(this, ...args);
 	Gradient = (...args) => new Gradient(this, ...args);
+	Sprite = (...args) => new Sprite(this, ...args);
+	Stage = (...args) => new Stage(this, ...args);
+	Viewport = (...args) => new Viewport(this, ...args);
 
 	/**
 	 * Starts the game loop.

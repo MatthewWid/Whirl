@@ -6,16 +6,16 @@ import * as geometry from "~/geometry";
 import * as mixins from "~/mixins";
 import * as render from "~/render";
 import {
-	Game,
-	Viewport,
-	Stage,
-	Sprite,
-	Container,
-	Colour,
-	Gradient,
 	Base,
+	Colour,
+	Container,
 	Entity,
+	Game,
+	Gradient,
+	Sprite,
+	Stage,
 	Texture,
+	Viewport,
 } from "~/objects";
 
 /**
@@ -44,16 +44,16 @@ class Whirl {
 	static mixins = mixins;
 
 	// Game Objects
-	static Game = Game;
-	static Viewport = Viewport;
-	static Stage = Stage;
-	static Sprite = Sprite;
-	static Container = Container;
-	static Colour = Colour;
-	static Gradient = Gradient;
 	static Base = Base;
+	static Colour = Colour;
+	static Container = Container;
 	static Entity = Entity;
+	static Game = Game;
+	static Gradient = Gradient;
+	static Sprite = Sprite;
+	static Stage = Stage;
 	static Texture = Texture;
+	static Viewport = Viewport;
 
 	// Render Systems
 	static render = render;
