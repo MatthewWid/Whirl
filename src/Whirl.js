@@ -56,6 +56,13 @@ class Whirl {
 	// Render Systems
 	static render = render;
 
+	/**
+	 * Creates a new Whirl game instance, passing the arguments directly to the {@link Whirl.Game|game class's constructor}.
+	 *
+	 * @memberof Whirl
+	 * @function
+	 * @returns {Whirl.Game}
+	 */
 	static createGame = (...args) => new Game(...args);
 }
 
