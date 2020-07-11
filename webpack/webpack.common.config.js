@@ -38,6 +38,11 @@ const config = {
 			},
 		],
 	},
+	resolve: {
+		alias: {
+			"~": path.resolve(__dirname, "..", "./src/"),
+		},
+	},
 	output: {
 		path: path.resolve(__dirname, ".."),
 		filename: "[name].js",
