@@ -8,7 +8,7 @@ import getValue from "~/lib/getValue";
  *
  * Can be used for things such as physics with circular objects, radius bound checking, distance calculation, etc.
  *
- * Circles are constructed using the `Whirl.geometry.Circle` factory method, but the underlying class can be accessed with `Whirl.geometry.Circle._class`.
+ * Circles are constructed using the `Whirl.geometry.Circle` factory method, but the underlying class can be accessed with `Whirl.geometry.Circle.class`.
  *
  * @class Circle
  * @memberof Whirl.geometry
@@ -55,7 +55,7 @@ class Circle extends Geometry {
 	constructor(x, y, r) {
 		super();
 
-		if (x instanceof Point._class) {
+		if (x instanceof Point.class) {
 			this.x = x.x;
 			this.y = x.y;
 			this.r = y;
@@ -110,7 +110,7 @@ class Circle extends Geometry {
 		let x = px;
 		let y = py;
 
-		if (px instanceof Point._class) {
+		if (px instanceof Point.class) {
 			x = px.x;
 			y = px.y;
 		}
@@ -124,5 +124,7 @@ class Circle extends Geometry {
 }
 
 const createCircle = (...args) => new Circle(...args);
-createCircle._class = Circle;
+
+createCircle.class = Circle;
+
 export default createCircle;

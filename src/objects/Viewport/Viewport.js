@@ -229,7 +229,7 @@ class Viewport extends Base {
 	constructor(game, options = {}) {
 		super(game);
 
-		if (options.bounds instanceof Rectangle._class) {
+		if (options.bounds instanceof Rectangle.class) {
 			this.bounds = options.bounds;
 		} else {
 			this.bounds = Rectangle(
@@ -240,13 +240,13 @@ class Viewport extends Base {
 			);
 		}
 
-		if (options.scroll instanceof Point._class) {
+		if (options.scroll instanceof Point.class) {
 			this.scroll = options.scroll;
 		} else {
 			this.scroll = Point(getValue(options, "scrollX", 0), getValue(options, "scrollY", 0));
 		}
 
-		if (options.anchor instanceof Point._class) {
+		if (options.anchor instanceof Point.class) {
 			this.anchor = options.anchor;
 		} else {
 			this.anchor = Point(getValue(options, "anchorX", 0), getValue(options, "anchorY", 0));
@@ -268,7 +268,7 @@ class Viewport extends Base {
 			this.setStage(options.stage, options.resizeStage);
 		}
 
-		if (options.offset instanceof Point._class) {
+		if (options.offset instanceof Point.class) {
 			this.offset = options.offset;
 		} else {
 			this.offset = Point(getValue(options, "offsetX", 0), getValue(options, "offsetY", 0));
@@ -388,7 +388,7 @@ class Viewport extends Base {
 	 * viewport.setTarget(100, 50, 0.02); // Follow to (100, 50) and set `lerp` to 0.02
 	 */
 	setTarget(target, y, lerp) {
-		if (target instanceof Point._class || target instanceof Entity) {
+		if (target instanceof Point.class || target instanceof Entity) {
 			this.anchor.set({
 				x: 0.5,
 				y: 0.5,
@@ -468,7 +468,7 @@ class Viewport extends Base {
 		let x = px;
 		let y = py;
 
-		if (px instanceof Point._class) {
+		if (px instanceof Point.class) {
 			x = px.x;
 			y = px.y;
 		}
@@ -496,7 +496,7 @@ class Viewport extends Base {
 		let x = px;
 		let y = py;
 
-		if (px instanceof Point._class) {
+		if (px instanceof Point.class) {
 			x = px.x;
 			y = px.y;
 		}
@@ -528,7 +528,7 @@ class Viewport extends Base {
 		let x = px;
 		let y = py;
 
-		if (px instanceof Point._class) {
+		if (px instanceof Point.class) {
 			x = px.x;
 			y = px.y;
 		}
@@ -551,7 +551,7 @@ class Viewport extends Base {
 				const mid = this.target.derived.bounds.midpoint;
 				targetX = mid.x;
 				targetY = mid.y;
-			} else if (this.target instanceof Point._class) {
+			} else if (this.target instanceof Point.class) {
 				targetX = this.target.x;
 				targetY = this.target.y;
 			}

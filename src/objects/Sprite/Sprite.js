@@ -78,7 +78,7 @@ class Sprite extends Entity {
 	constructor(game, options = {}) {
 		super(game, options);
 
-		if (options.bounds instanceof Rectangle._class) {
+		if (options.bounds instanceof Rectangle.class) {
 			this.bounds = options.bounds;
 		} else {
 			this.bounds = Rectangle(
@@ -89,7 +89,7 @@ class Sprite extends Entity {
 			);
 		}
 
-		if (options.anchor instanceof Point._class) {
+		if (options.anchor instanceof Point.class) {
 			this.anchor = options.anchor;
 		} else {
 			this.anchor = Point(getValue(options, "anchorX", 0), getValue(options, "anchorY", 0));

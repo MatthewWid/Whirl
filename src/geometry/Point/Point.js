@@ -7,7 +7,7 @@ import getValue from "~/lib/getValue";
  *
  * Can be used for things such as getting the distance or angle between two points, checking if a point is inside a rectangle, keeping track of where something is, etc.
  *
- * Points are constructed using the `Whirl.geometry.Point` factory method, but the underlying class can be accessed with `Whirl.geometry.Point._class`.
+ * Points are constructed using the `Whirl.geometry.Point` factory method, but the underlying class can be accessed with `Whirl.geometry.Point.class`.
  *
  * @class Point
  * @memberof Whirl.geometry
@@ -138,5 +138,7 @@ class Point extends Geometry {
 }
 
 const createPoint = (...args) => new Point(...args);
-createPoint._class = Point;
+
+createPoint.class = Point;
+
 export default createPoint;

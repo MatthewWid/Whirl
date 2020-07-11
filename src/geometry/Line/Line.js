@@ -8,7 +8,7 @@ import getValue from "~/lib/getValue";
  *
  * Can be used for things such as ray-tracing, distance calculations, sight-line checks, etc.
  *
- * Lines are constructed using the `Whirl.geometry.Line` factory method, but the underlying class can be accessed with `Whirl.geometry.Line._class`.
+ * Lines are constructed using the `Whirl.geometry.Line` factory method, but the underlying class can be accessed with `Whirl.geometry.Line.class`.
  *
  * @class Line
  * @memberof Whirl.geometry
@@ -64,7 +64,7 @@ class Line extends Geometry {
 	constructor(x1, y1, x2, y2) {
 		super();
 
-		if (x1 instanceof Point._class && y1 instanceof Point._class) {
+		if (x1 instanceof Point.class && y1 instanceof Point.class) {
 			this.x1 = x1.x;
 			this.y1 = x1.y;
 			this.x2 = y1.x;
@@ -125,5 +125,7 @@ class Line extends Geometry {
 }
 
 const createLine = (...args) => new Line(...args);
-createLine._class = Line;
+
+createLine.class = Line;
+
 export default createLine;

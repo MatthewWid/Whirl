@@ -8,7 +8,7 @@ import getValue from "~/lib/getValue";
  *
  * Can be used for things such as world boundaries, sprite boundaries, collision detection, etc.
  *
- * Rectangles are constructed using the `Whirl.geometry.Rectangle` factory method, but the underlying class can be accessed with `Whirl.geometry.Rectangle._class`.
+ * Rectangles are constructed using the `Whirl.geometry.Rectangle` factory method, but the underlying class can be accessed with `Whirl.geometry.Rectangle.class`.
  *
  * @class Rectangle
  * @memberof Whirl.geometry
@@ -64,7 +64,7 @@ class Rectangle extends Geometry {
 	constructor(x, y, w, h) {
 		super();
 
-		if (x instanceof Point._class && y instanceof Point._class) {
+		if (x instanceof Point.class && y instanceof Point.class) {
 			this.x = x.x;
 			this.y = x.y;
 			this.w = y.x - x.x;
@@ -162,7 +162,7 @@ class Rectangle extends Geometry {
 		let x = px;
 		let y = py;
 
-		if (px instanceof Point._class) {
+		if (px instanceof Point.class) {
 			x = px.x;
 			y = px.y;
 		}
@@ -233,5 +233,7 @@ class Rectangle extends Geometry {
 }
 
 const createRectangle = (...args) => new Rectangle(...args);
-createRectangle._class = Rectangle;
+
+createRectangle.class = Rectangle;
+
 export default createRectangle;

@@ -82,7 +82,7 @@ class Stage extends Base {
 	constructor(game, options = {}, children = []) {
 		super(game);
 
-		if (options.limits instanceof Rectangle._class) {
+		if (options.limits instanceof Rectangle.class) {
 			this.limits = options.limits;
 		} else {
 			this.limits = Rectangle(

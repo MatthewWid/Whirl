@@ -24,7 +24,7 @@ import Event from "~/mixins/EventMixin";
  *
  * The game can be configured during its initialisation and will perform certain setup operations for you if you configure it do so (Eg, set or create a canvas, set physics and rendering, set scaling modes, etc.).
  *
- * The game object should be constructed using the `Whirl.Game` factory method, but the underlying class can be accessed with the `Whirl.Game._class` property.
+ * The game object should be constructed using the `Whirl.Game` factory method, but the underlying class can be accessed with the `Whirl.Game.class` property.
  *
  * @class Game
  * @memberof Whirl

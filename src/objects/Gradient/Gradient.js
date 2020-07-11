@@ -100,14 +100,14 @@ class Gradient extends Texture {
 	constructor(game, options = {}) {
 		super(game);
 
-		if (options.start instanceof Point._class) {
+		if (options.start instanceof Point.class) {
 			this.start = options.start;
 		} else {
 			// Top-middle
 			this.start = Point(0.5, 0);
 		}
 
-		if (options.end instanceof Point._class) {
+		if (options.end instanceof Point.class) {
 			this.end = options.end;
 		} else {
 			// Bottom-middle

@@ -3,7 +3,7 @@
  *
  * Game classes utilise these classes internally for a myriad of functions such as bounding boxes, geometric comparisons and more.
  *
- * Geometry classes are exported with a factory function so you may call the class as a function and it will return a new instance. If you still need access to underlying class itself, access the `_class` property of the given class you need. For example, `Whirl.geometry.Circle._class`.
+ * Geometry classes are exported with a factory function so you may call the class as a function and it will return a new instance. If you still need access to underlying class itself, access the `class` property. For example, `Whirl.geometry.Circle.class`.
  *
  * @namespace geometry
  * @memberof Whirl
