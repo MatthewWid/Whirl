@@ -1,6 +1,6 @@
-import Texture from "../Texture";
-import Point from "../../geometry/Point";
-import Colour from "../Colour";
+import Texture from "~/objects/Texture";
+import Colour from "~/objects/Colour";
+import Point from "~/geometry/Point";
 
 /**
  * @classdesc

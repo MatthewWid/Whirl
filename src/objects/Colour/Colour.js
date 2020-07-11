@@ -1,4 +1,4 @@
-import Texture from "../Texture";
+import Texture from "~/objects/Texture";
 
 /**
  * @classdesc

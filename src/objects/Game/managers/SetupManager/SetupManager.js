@@ -1,6 +1,6 @@
 import Manager from "../Manager";
-import Stage from "../../../Stage";
-import Viewport from "../../../Viewport";
+import Stage from "~/objects/Stage";
+import Viewport from "~/objects/Viewport";
 
 /**
  * Handles initial game setup including persistant storage checks, network and Internet connectivity checks, canvas creation, default values for other managers and more.

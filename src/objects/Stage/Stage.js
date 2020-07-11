@@ -1,7 +1,7 @@
-import Base from "../Base";
-import Container from "../Container";
-import Rectangle from "../../geometry/Rectangle";
-import getValue from "../../lib/getValue";
+import Base from "~/objects/Base";
+import Container from "~/objects/Container";
+import Rectangle from "~/geometry/Rectangle";
+import getValue from "~/lib/getValue";
 
 /**
  * @classdesc

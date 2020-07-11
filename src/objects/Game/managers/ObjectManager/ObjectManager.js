@@ -1,7 +1,7 @@
 import Manager from "../Manager";
-import Base from "../../../../objects/Base";
-import Viewport from "../../../../objects/Viewport";
-import Stage from "../../../../objects/Stage";
+import Base from "~/objects/Base";
+import Viewport from "~/objects/Viewport";
+import Stage from "~/objects/Stage";
 
 /**
  * @classdesc

@@ -1,7 +1,7 @@
 import Manager from "../Manager";
 import MouseElement from "./MouseElement";
-import Mixin from "../../../../mixins/Mixin";
-import Event from "../../../../mixins/EventMixin";
+import Mixin from "~/mixins/Mixin";
+import Event from "~/mixins/EventMixin";
 
 /**
  * @classdesc

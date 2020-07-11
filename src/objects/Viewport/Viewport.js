@@ -1,11 +1,11 @@
-import Base from "../Base";
-import Stage from "../Stage";
-import Entity from "../Entity";
-import Sprite from "../Sprite";
-import Rectangle from "../../geometry/Rectangle";
-import Point from "../../geometry/Point";
-import getValue from "../../lib/getValue";
-import lerp from "../../math/lerp";
+import Base from "~/objects/Base";
+import Stage from "~/objects/Stage";
+import Entity from "~/objects/Entity";
+import Sprite from "~/objects/Sprite";
+import Rectangle from "~/geometry/Rectangle";
+import Point from "~/geometry/Point";
+import getValue from "~/lib/getValue";
+import lerp from "~/math/lerp";
 
 /**
  * @classdesc

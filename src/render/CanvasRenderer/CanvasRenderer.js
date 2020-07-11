@@ -1,7 +1,6 @@
 import Renderer from "../Renderer";
-import Colour from "../../objects/Colour";
-import Gradient from "../../objects/Gradient";
-import {radians, clamp} from "../../math";
+import {Colour, Gradient} from "~/objects";
+import {radians, clamp} from "~/math";
 
 /**
  * @classdesc

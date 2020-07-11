@@ -1,5 +1,5 @@
 import Manager from "../Manager";
-import getValue from "../../../../lib/getValue";
+import getValue from "~/lib/getValue";
 
 /**
  * @classdesc

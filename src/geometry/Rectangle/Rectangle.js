@@ -1,6 +1,6 @@
-import Geometry from "../Geometry";
-import Point from "../Point";
-import getValue from "../../lib/getValue";
+import Geometry from "~/geometry/Geometry";
+import Point from "~/geometry/Point";
+import getValue from "~/lib/getValue";
 
 /**
  * @classdesc

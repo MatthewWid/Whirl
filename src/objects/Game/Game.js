@@ -7,14 +7,14 @@ import {
 	DebugManager,
 	InputManager,
 } from "./managers";
-import Viewport from "../Viewport";
-import Stage from "../Stage";
-import Sprite from "../Sprite";
-import Container from "../Container";
-import Colour from "../Colour";
-import Gradient from "../Gradient";
-import {apply as mixin} from "../../mixins/Mixin";
-import Event from "../../mixins/EventMixin";
+import Viewport from "~/objects/Viewport";
+import Stage from "~/objects/Stage";
+import Sprite from "~/objects/Sprite";
+import Container from "~/objects/Container";
+import Colour from "~/objects/Colour";
+import Gradient from "~/objects/Gradient";
+import {apply as mixin} from "~/mixins/Mixin";
+import Event from "~/mixins/EventMixin";
 
 /**
  * @classdesc

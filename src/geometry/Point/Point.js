@@ -1,5 +1,5 @@
-import Geometry from "../Geometry";
-import getValue from "../../lib/getValue";
+import Geometry from "~/geometry/Geometry";
+import getValue from "~/lib/getValue";
 
 /**
  * @classdesc

@@ -1,8 +1,8 @@
-import Entity from "../Entity";
-import {apply as mixin} from "../../mixins/Mixin";
-import Child from "../../mixins/ChildMixin";
-import Point from "../../geometry/Point";
-import getValue from "../../lib/getValue";
+import Entity from "~/objects/Entity";
+import {apply as mixin} from "~/mixins/Mixin";
+import Child from "~/mixins/ChildMixin";
+import Point from "~/geometry/Point";
+import getValue from "~/lib/getValue";
 
 /**
  * @classdesc

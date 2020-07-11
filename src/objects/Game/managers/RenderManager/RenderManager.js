@@ -1,6 +1,6 @@
 import Manager from "../Manager";
-import {Renderer, CanvasRenderer} from "../../../../render";
-import Sprite from "../../../Sprite";
+import {Renderer, CanvasRenderer} from "~/render";
+import Sprite from "~/objects/Sprite";
 
 /**
  * @classdesc

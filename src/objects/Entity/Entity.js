@@ -1,5 +1,5 @@
-import Base from "../Base";
-import getValue from "../../lib/getValue";
+import Base from "~/objects/Base";
+import getValue from "~/lib/getValue";
 
 /**
  * @classdesc

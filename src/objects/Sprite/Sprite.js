@@ -1,9 +1,9 @@
-import Entity from "../Entity";
-import Texture from "../Texture";
-import Colour from "../Colour";
-import getValue from "../../lib/getValue";
-import Rectangle from "../../geometry/Rectangle";
-import Point from "../../geometry/Point";
+import Entity from "~/objects/Entity";
+import Texture from "~/objects/Texture";
+import Colour from "~/objects/Colour";
+import getValue from "~/lib/getValue";
+import Rectangle from "~/geometry/Rectangle";
+import Point from "~/geometry/Point";
 
 /**
  * @classdesc
