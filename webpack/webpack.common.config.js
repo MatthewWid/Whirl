@@ -14,17 +14,14 @@ const config = {
 					{
 						loader: "babel-loader",
 						options: {
-							presets: [
-								{
-									plugins: [
-										[
-											"@babel/plugin-proposal-class-properties",
-											{
-												loose: true,
-											},
-										],
-									],
-								},
+							plugins: [
+								[
+									"@babel/plugin-proposal-class-properties",
+									{
+										loose: true,
+									},
+								],
+								"@babel/plugin-proposal-export-namespace-from",
 							],
 						},
 					},
