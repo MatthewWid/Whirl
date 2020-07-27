@@ -43,7 +43,7 @@ Use:
 import Whirl from "whirljs";
 
 // UMD
-const Whirl = Whirl.default;
+window.Whirl;
 ```
 
 Create a game:
