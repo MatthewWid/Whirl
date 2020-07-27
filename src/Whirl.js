@@ -13,7 +13,7 @@
  * @type {string}
  * @static
  */
-export const version = "0.3.0-alpha.10";
+export const version = "0.3.0-alpha.11";
 
 export * as math from "~/math";
 export * as easing from "~/easing";
